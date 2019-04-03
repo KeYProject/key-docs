@@ -12,6 +12,6 @@ pages:
     - master
 
 deploy:
-
+  script: echo "Deploy"
   only:
     - master
