@@ -24,5 +24,9 @@ markdown_extensions:
   - pymdownx.tilde
   - toc:
       permalink: true
+  - markdown_aafigure:
+      format: svg
+  - markdown_blockdiag:
+      format: svg
 
 theme: material
