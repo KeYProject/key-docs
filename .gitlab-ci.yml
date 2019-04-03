@@ -1,4 +1,4 @@
-image: python:alpine
+image: python
 
 before_script:
   - pip install --user mkdocs  mkdocs-material  pymdown-extensions pygments
@@ -6,7 +6,7 @@ before_script:
   ## Install ssh-agent if not already installed, it is required by Docker.
   ## (change apt-get to yum if you use an RPM-based image)
   ##
-  - 'which ssh-agent || apk add --no-cache openssh'
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
 
   ##
   ## Run ssh-agent (inside the build environment)
