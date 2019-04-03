@@ -99,41 +99,23 @@ Table: Shoes, their sizes, and what they're made of
 (The above is the caption for the table.) Pandoc also supports
 multi-line tables:
 
---------  -----------------------
-keyword   text
---------  -----------------------
-red       Sunsets, apples, and
-          other red or reddish
-          things.
+```
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+```
 
-green     Leaves, grass, frogs
-          and other things it's
-          not easy being.
---------  -----------------------
-
-A horizontal rule follows.
-
-***
-
-Here's a definition list:
-
-apples
-  : Good for making applesauce.
-oranges
-  : Citrus!
-tomatoes
-  : There's no "e" in tomatoe.
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
 
 
-![example image](example-image.jpg "An exemplary image")
+**Images** with alternative text and tooltip `![example image](example-image.jpg "An exemplary image")`
 
-Inline math equations go in like so: $\omega = d\phi / dt$. Display
-math should get its own line and be put in in double-dollarsigns:
+![KeYLogo](https://git.key-project.org/uploads/-/system/appearance/logo/1/key-color.png "Kiki is in the middle of the KeY Logo")
 
-$$I = \int \rho R^{2} dV$$
-
-And note that you can backslash-escape any punctuation characters
-which you wish to be displayed literally, ex.: \`foo\`, \*bar\*, etc.
 
 ## Markdown Extensions:
 
@@ -142,7 +124,7 @@ You should consult the following site for more examples:
 * [Admontion](https://squidfunk.github.io/mkdocs-material/extensions/admonition/)
 * [CodeHilite](https://squidfunk.github.io/mkdocs-material/extensions/codehilite/)
 * [Footnotes](https://squidfunk.github.io/mkdocs-material/extensions/footnotes/)
-* [PyMDown]https://squidfunk.github.io/mkdocs-material/extensions/pymdown/
+* [PyMDown](https://squidfunk.github.io/mkdocs-material/extensions/pymdown/)
 
 If you do not find a construct you could also look at: [PyDown
 extenstions](https://facelessuser.github.io/pymdown-extensions/#extensions)
@@ -172,13 +154,15 @@ Here is a short excerpt:
     massa, nec semper lorem quam in massa.
     
 
-There are a lots of other types!
+There are a lots of other types and keywords!
 
 ### Code Highlighting
 
     ``` python
     import tensorflow as tf
     ```
+    
+becomes
 
 ``` python
 import tensorflow as tf
@@ -238,14 +222,14 @@ Lorem ipsum[^1] dolor sit amet, consectetur adipiscing elit.[^2]
 Example:
 
 ```
-$$
+\[
 \frac{n!}{k!(n-k)!} = \binom{n}{k}
-$$
+\]
 ```
 
-$$
+\[
 \frac{n!}{k!(n-k)!} = \binom{n}{k}
-$$
+\]
 
 `Lorem ipsum dolor sit amet: $p(x|y) = \frac{p(y|x)p(x)}{p(y)}$`
 
@@ -253,6 +237,8 @@ Lorem ipsum dolor sit amet: $p(x|y) = \frac{p(y|x)p(x)}{p(y)}$
 
 
 ## Ascii figures
+
+**Currently not enabled due to a bug.**
 
 You can use [asciiflow](http://asciiflow.com/) to draw ascii diagrams easily.
 
@@ -273,6 +259,22 @@ You can use [asciiflow](http://asciiflow.com/) to draw ascii diagrams easily.
       +-----+   V
 ```
 
+
+```aafigure
+    +---------+         +---------+     +---------+
+    |  Shape  |         |  Line   |     |  Point  |
+    +---------+         +---------+   2 +---------+
+    | draw    +<--------+ start   +----O+ x       |
+    | move    +<-+      | end     |     | y       |
+    +---------+   \     +---------+     +---------+
+                   \
+                    \   +---------+
+                     +--+ Circle  |
+                        +---------+
+                        | center  |
+                        | radius  |
+                        +---------+
+```
 
 ## Block diagrams
 
