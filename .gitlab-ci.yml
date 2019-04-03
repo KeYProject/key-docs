@@ -40,7 +40,7 @@ before_script:
 pages:
   script:
     - mkdocs build
-    - rsync --chmod=555 -vr site/ $SECRET_USER@$HOST:html
+    - rsync --chmod=ugo=rX --perms -vr site/ $SECRET_USER@$HOST:html
   only:
     - master
 
