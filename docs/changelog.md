@@ -1,6 +1,18 @@
 # ChangeLog
 
-## Revision 2.4.0:
+## 2.8.0 (2019-XX-XX)
+
+## 2.6.3 (2017-10-11)
+
+## 2.6.2 (2017-04-13)
+
+## 2.6.1 (2017-01-31)
+
+## 2.6.0 (2016-12-22)
+
+## 2.4.1 (2015-02-18)
+
+## 2.4.0 (2015-02-17)
 
 * Information flow reasoning
 * Full support for symbolic execution with bitwise operations
@@ -8,21 +20,22 @@
 * Improved user interface
 * Support for CVC4 SMT solver backend
 
-## Revision 2.2.3:
+## 2.2.3 (2014-10-06)
 
 * Fix concurrency issue introduced in 2.2.2
 
-## Revision 2.2.2:
+## 2.2.2 (2014-07-11)
 
 * Support for CVC3 version 2.4.1 SMT backend
 * Bug fixes
 
-## Revision 2.2.1:
+## 2.2.1 (2014-05-27)
 
 * Test case generation using bounded SMT (requires Z3, OpenJML)
 * Bug fixes
 
-## Revision 2.2.0:
+## 2.2.0 (2014-04-29)
+
 * Counter example generation using bounded SMT (requires Z3)
 * Increased JML support / JML extensions
   * block contracts (extension) / assert statements
@@ -49,21 +62,21 @@
 * Java 8 compatibility
 * Re-implemented .key parser
 
-## Revision 2.0.2:
+##  2.0.2 (2013-09-19)
 
 * Support for latest versions of Z3 and CVC3
 * Windows 8 compatibility
 * Fix a soundness issue with types and heap access
 * Various bug fixes
  
-## Revision 2.0.1:
+##  2.0.1 (2013-06-19)
  
 * Bug fixes
   * Incompleteness with Java integer arithmetics
   * Command line mode fixes
   * various other
 
-## Revision 2.0.0:
+##  2.0.0 (2013-04-18)
  
 * New explicit heap modeling
   * Data types for location sets and heaps
@@ -101,12 +114,12 @@
   * OCL
   * Proof reuse
 
-## Revision 1.6.5:
+##  1.6.5 (2013-01-23)
 
 * Minor bugfixes
 * Java 7 compatibility
 
-## Revision 1.6.0:
+##  1.6.0 (2010-10-06)
 
 * Support for Strings
 * Enhanced JML support
@@ -117,7 +130,7 @@
 * Various bugfixes
 
 
-## Revision 1.4.0:
+##  1.4.0 (2009-03-25)
 
 * Unified proof obligation framework
   * sharing of proof obligations across different specification languages
@@ -146,7 +159,7 @@
 * various bugfixes
 
 
-## Revision 1.2.0:
+## 1.2.0 (2007-11-30)
 
 * significantly improved proof strategies wrt. quantifier treatment
    and arithmetics
@@ -158,11 +171,11 @@
 * includes _alpha_ version of the visual debugger
 * various bugfixes
 
-## Revision 1.0.1:
+##  1.0.1:
 
 * fixed an installation problem when KeY had not been installed before
 
-## Revision 1.0.0:
+##  1.0.0:
 
 
 * KeY-Book examples are based on this version
@@ -175,29 +188,29 @@
 * considerable improvements concerning arithmetics
 * lots of bugfixes and improved stability
 
-## Revision 1.0pre1a:
+##  1.0pre1a:
 
 * bug fixes and improvements
 * polynomial integer simplification
 
-## Revision 1.0pre1:
+##  1.0pre1:
 
 * pre-release of upcoming 1.0
 * several improvements and fixes
 
 
-## Revision 0.99.2:
+## 0.99.2 (?)
 
 * fixed: Initialisation procedure of the KeY prover
   (KeY did not work properly if installed on a fresh system
   without a working KeY configuration file)
 * fixed: Source Code Distribution 0.99.1 was way too big
 
-## Revision 0.99.1:
+##  0.99.1 (?)
 
 * bug fixes concerning JML front-end
 
-## Release 0.99:
+## 0.99 (?)
 
 * first version with the JML front-end
 * support of loop invariants

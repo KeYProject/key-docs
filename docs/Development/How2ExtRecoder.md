@@ -1,56 +1,59 @@
-\maketitle
-These notes explain the changes to the existing code of the KeY system
-that are necessary to add a new data type to JML. If the new data type
-is only used in JML specifications then only the changes described in
-Section [1](#sect:JML){reference-type="ref" reference="sect:JML"} need
-to be done. If you want to use ghost variables or ghost fields, in
-particular assignments to ghost variables and fields of the new adt then
-in addition the changes described in Section
-[2](#sect:Recoder){reference-type="ref" reference="sect:Recoder"} need
-to be done.
+# How to extend recoder
 
-These notes do not aim to provide an understanding of the existing code
-they just tell the user what to do by mimicking what is already there.
-We take the data type $Seq$ of finite sequences as a model.
+*Schmitt, XXXX*
+
+!!! abstract
+
+    Here should be a short abstract.
+
+These notes explain the changes to the existing code of the KeY system that are
+necessary to add a new data type to JML. If the new data type is only used in
+JML specifications then only the changes described in Section
+[1](#extension-of-the-jml-parser) need to be done. If you want to use ghost
+variables or ghost fields, in particular assignments to ghost variables and
+fields of the new adt then in addition the changes described in Section
+[2](#recoder) need to be done.
+
+These notes do not aim to provide an understanding of the existing code they
+just tell the user what to do by mimicking what is already there. We take the
+data type $Seq$ of finite sequences as a model.
 
 In the following we use `Basepath` as an abbreviation for the path\
 `gitKeY/key/key/key.core/src/de/uka/ilkd/key/`
 
-Extension Of The JML Parser {#sect:JML}
-===========================
+## Extension Of The JML Parser
 
-At the moment the following instructions do not cover the addition of
-new variable binder symbols.
+At the moment the following instructions do not cover the addition of new
+variable binder symbols.
 
-#### Change file
+### Change file: `KeYJMLLexer.g` 
 
-`KeYJMLLexer.g` in `Basepath/speclang/jml/translation`\
 Here are some existing entries:
 
-     SEQ       : '\\seq';  //KeY extension, not official JML
-     SEQCONCAT : '\\seq_concat'; //KeY extension, not official JML
-     SEQEMPTY  : '\\seq_empty';  //KeY extension, not official JML
+```
+SEQ       : '\\seq';  //KeY extension, not official JML
+SEQCONCAT : '\\seq_concat'; //KeY extension, not official JML
+SEQEMPTY  : '\\seq_empty';  //KeY extension, not official JML
+```
 
-that you change to fit the purpose. It is important to note that it is
-here that you establish the syntax that is to be used in the code for
-the data type name and its operations. In the present case that is
-`\seq` for the data type of finite sequences and `\seq_concat` for the
-concatenation operation and `\seq_empty` for the empty sequence. Note,
-the addition escape character `\`.\
-At the same time you also establish a name for the corresponding
-nonterminal grammar symbol.
+that you change to fit the purpose. It is important to note that it is here that
+you establish the syntax that is to be used in the code for the data type name
+and its operations. In the present case that is `\seq` for the data type of
+finite sequences and `\seq_concat` for the concatenation operation and
+`\seq_empty` for the empty sequence. Note, the addition escape character `\`. At
+the same time you also establish a name for the corresponding nonterminal
+grammar symbol.
 
-Personal note: I am suprised that `seqLen` does not occur here.
+*Personal note:* I am suprised that `seqLen` does not occur here.
 
-#### Change file
+### Change file: `KeYJMLParser.g` 
 
-`KeYJMLParser.g` `Basepath/speclang/jml/translation`\
-
-#### Change 1
+#### Change
 
 Look for the existing grammar rule for sequences which looks roughly
 like this:
 
+```
     sequence returns [SLExpression ret = null] throws SLTranslationException
     @init {
         ImmutableList<Term> tlist = null;
@@ -77,14 +80,16 @@ like this:
                                     services,e1,e2);
       }
     ;
+```
 
-Add a new rule replacing the name `sequences` and adapt what follows
-after the colon `:`.
+Add a new rule replacing the name `sequences` and adapt what follows after the
+colon `:`.
 
-#### Change 2
+**Change 2**
 
 In the `jmlprimary` rule take the entry
 
+```
     | (SEQEMPTY
        |
        .
@@ -94,32 +99,38 @@ In the `jmlprimary` rule take the entry
        | SEQGET
        | INDEXOF)
              => result = sequence    
+```
 
-as a model. Of course you replace `sequence` in this example by the rule
-name you chose in the first change.\
-Do not forget to add an equivalent for your new data type for the line
+as a model. Of course you replace `sequence` in this example by the rule name
+you chose in the first change. Do not forget to add an equivalent for your new
+data type for the line
 
+```
     | (LPAREN (SEQDEF | SEQ) quantifiedvardecls SEMI)
+```
 
 This is neacessary fo parsing quantifier variables of the new data type.
 
-#### Change 3
+**Change 3**
 
 In the `builtintype ` rule add a new entry for your data type mimicking
 
+```
      |   SEQ
          {
             type = javaInfo.getKeYJavaType(PrimitiveType.JAVA_SEQ);
           }
+```
 
-#### Change file
+### Change file: `TermBuilder.java`
 
-`TermBuilder.java` in `Basepath/logic`\
 Look for the section starting with the comment lines
 
+```
     //------------------------
     //sequence operators
     //-----------------------
+```
 
 add a suitably adapted section for the new data type. You will notice
 that you have to use the method names introduced in the public interface
@@ -146,45 +157,37 @@ sure if that is always correct.
 Work needs to be done for the last two methods `visit(Visitor v)` and
 `prettyPrint(PrettyPrinter p)` as will be detailed in the next steps.
 
-#### Change file
+### Change file: `Visitor.java`
 
-`Visitor.java` in directory `Basepath/java/visitor`.\
-This class is an interface. All you have to do here is to add a line
-that adapts the examples you see, e.g.\
-`void performActionOnSeqConcat(SeqConcat x);`
+This class is an interface. All you have to do here is to add a line that adapts
+the examples you see, e.g. `void performActionOnSeqConcat(SeqConcat x);`
 
-#### Change file
+### Change file: `CreatingASTVisitor.java`
 
-`CreatingASTVisitor.java` in `Basepath/java/visitor`.\
-The empty method specifications from `Visitor.java` are overwritten
-here. Just copy what you see, e.g. for `performActionOnSeqConcat` and do
-the appropriate renaming.
+The empty method specifications from `Visitor.java` are overwritten here. Just
+copy what you see, e.g. for `performActionOnSeqConcat` and do the appropriate
+renaming.
 
-#### Change file
+### Change file: `JavaASTVisitor.java`
 
-`JavaASTVisitor.java` in directory `Basepath/java/visitor`.\
-This is an abstract class. You need to add a default method
-implementation.\
-See `performActionOnSeqConcat(SeqConcat x)` for a model.
+This is an abstract class. You need to add a default method implementation. See
+`performActionOnSeqConcat(SeqConcat x)` for a model.
 
 Always when you edit a file check the import clauses. You need to add an
-adaption of\
-`import de.uka.ilkd.key.java.expression.operator.adt.SeqConcat;`\
-in all three files you edit in the last three steps. You replace of
-course `SeqConcat` by the name of the file you created in step 2.
+adaption of `import de.uka.ilkd.key.java.expression.operator.adt.SeqConcat;` in
+all three files you edit in the last three steps. You replace of course
+`SeqConcat` by the name of the file you created in step 2.
 
 The files for literals go into the directory
 `Basepath/java/expression/literal` instead.
 
-#### Change file
+### Change file: `PrettyPrinter.java` 
 
-`PrettyPrinter.java` in directory `Basepath/java`.\
-You need to add a method `printnewOp` for your operator `newOp` in the
-data type `newAdt`. tylke your leads e.g. from `printSeqConcat`. Of
-course you enter here the string you want to see printer for your
-operator.
+You need to add a method `printnewOp` for your operator `newOp` in the data type
+`newAdt`. tylke your leads e.g. from `printSeqConcat`. Of course you enter here
+the string you want to see printer for your operator.
 
-#### Create files
+### Create files
 
 in directory `Basepath/java/expression/literals`\
 This parallels the creation of files like `SeqConcat.java` for the
@@ -193,17 +196,9 @@ operation `SeqConcat`, but now for the literals declared in
 The following changes also parallel those for operators except that for
 literals `JavaASTVisitor.java` is not affected.
 
-#### Change file
-
-`Visitor.java` in directory `Basepath/java/visitor`.
-
-#### Change file
-
-`JavaASTVisitor.java` in directory `Basepath/java/visitor`.
-
-#### Change file
-
-`PrettyPrinter.java` in directory `Basepath/java`.
+### Change file: `Visitor.java` 
+### Change file: `JavaASTVisitor.java`
+### Change fil: `PrettyPrinter.java` 
 
 #### Create file
 
@@ -231,14 +226,14 @@ steps in the import statements.
 
 This is a lot of work.
 
-#### Change file
+**Change file**
 
 `LDT.java` in directory `Basepath/ldt/`\
 In the body of the method `getNewLDTInstances(Services s)` add aline for
 the new data type mimicking the existing lines, e.g.\
 `ret.put(SeqLDT.NAME, new SeqLDT(s));`
 
-#### Change file
+**Change file**
 
 `TypeConverter.java` in `Basepath/java`\
 Add a line for the new data type taking the following line for the
@@ -250,10 +245,9 @@ sequence data type as a model:
 
 and, as always, do not forget the necessary import statement.
 
-Extension Of The Recoder To KeY Translation {#sect:Recoder}
-===========================================
+## Extension Of The Recoder To KeY Translation
 
-#### Change file
+**Change file**
 
 `LDT.java` in directory `Basepath/ldt`\
 Add a line for the new data type mimicking e.g. the existing line for
@@ -261,7 +255,7 @@ the Seq data type
 
       ret.put(SeqLDT.NAME, new SeqLDT(s));
 
-#### Change file 
+**Change file** 
 
 `ProofJavaParser.jj` in `Basepath/parser/proofjava/`
 
@@ -337,7 +331,7 @@ of just adding one literal.
 Things get complicated if you want families of literals as e.g. in
 `bigint`. I did not investigate this.
 
-#### Change file
+**Change file**
 
 `Recoder2KeYConverter.java` in directory `Basepath/java`\
 convert methods needs to be added. Again look for the line\
@@ -346,7 +340,7 @@ and do the appropriate changes.
 
 Do not forget to add the necessary import statements.
 
-#### Change file
+**Change file**
 
 `PrimitiveType.java` in directory `Basepath/java/abstraction`\
 Here is the entry for the data type of finite sequence that you may take
@@ -371,7 +365,7 @@ In these files you find a field
 ` private static final long serialVersionUID` which you can safely set
 to $0$.
 
-#### Change file
+**Change file**
 
 `RecoderModelTransformer.java` in `Basepath/java/recoderext`\
 In this file the default element of the new data tpye is handled. Mimic
@@ -383,7 +377,7 @@ the line
 and include the file that replaces ` EmptySeqLiteral` in the import
 statements.
 
-#### Change file
+**Change file**
 
 `KeYCrossReferenceSourceInfo.java` in directory\
 `gitKeY/key/key/key.core/src/recoder/service`\
@@ -392,7 +386,7 @@ First include all the new files you created in the directory\
 method ` public Type getType(Expression expr)` appropriately. It seems
 that only constructor symbols need to be included.
 
-#### Change file
+**Change file**
 
 `ProgramSVSort.java` in directory\
 `Basepath/logic/sort`.\
