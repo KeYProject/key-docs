@@ -1,0 +1,17 @@
+image: python:alpine
+
+before_script:
+  - make prepare
+
+pages:
+  script: make build
+  artifacts:
+    paths:
+      - site
+  only:
+    - master
+
+deploy:
+
+  only:
+    - master
