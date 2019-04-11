@@ -26,8 +26,8 @@ markdown_extensions:
   - attr_list
   - toc:
       permalink: true
-#  - markdown_aafigure:
-#      format: svg
+  - markdown_aafigure:
+      format: svg
   - markdown_blockdiag:
       format: svg
 extra_javascript:

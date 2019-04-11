@@ -1,7 +1,7 @@
 image: python
 
 before_script:
-  - pip install  mkdocs  mkdocs-material  pymdown-extensions pygments markdown-blockdiag markdown-aafigure
+  - pip install  mkdocs  mkdocs-material  pymdown-extensions pygments markdown-blockdiag markdown-aafigure markdown-aafigure==v201904.0002
   ##
   ## Install ssh-agent if not already installed, it is required by Docker.
   ## (change apt-get to yum if you use an RPM-based image)
