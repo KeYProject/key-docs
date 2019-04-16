@@ -1,7 +1,7 @@
 pipeline {
   agent {
-    node {
-      label 'master'
+    docker {
+      image 'python'
     }
 
   }
@@ -17,9 +17,9 @@ pipeline {
       }
     }
     stage('Publish') {
-    	steps{
-            sshPublisher(publishers: [sshPublisherDesc(configName: 'KeY Docs', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/docs/www/', remoteDirectorySDF: false, removePrefix: 'site/', sourceFiles: 'site/**')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-	}
+      steps {
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'KeY Docs', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/docs/www/', remoteDirectorySDF: false, removePrefix: 'site/', sourceFiles: 'site/**')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+      }
     }
   }
 }
