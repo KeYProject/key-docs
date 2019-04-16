@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'python'
-    }
-
-  }
+  agent any
   stages {
     stage('Check packages') {
       steps {
