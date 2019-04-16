@@ -35,7 +35,7 @@ pages:
   script:
     - mkdocs build
     #- rsync --chmod=ugo=rX --perms -vr site/ ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
-    - scp -r site/* ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
+    - scp -pr site/* ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
 
   only:
     - master
