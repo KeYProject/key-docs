@@ -1,14 +1,6 @@
-image: python
+image: wadoon/key-test-docker:docs
 
 before_script:
-  - pip install  mkdocs  mkdocs-material  pymdown-extensions pygments markdown-blockdiag markdown-aafigure==v201904.0002
-  ##
-  ## Install ssh-agent if not already installed, it is required by Docker.
-  ## (change apt-get to yum if you use an RPM-based image)
-  ##
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  - 'which rsync     || ( apt-get update -y && apt-get install -y rsync)'
-
   ##
   ## Run ssh-agent (inside the build environment)
   ##
@@ -43,7 +35,7 @@ pages:
   script:
     - mkdocs build
     #- rsync --chmod=ugo=rX --perms -vr site/ ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
-    - scp -vr site/* ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
+    - scp -r site/* ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
 
   only:
     - master
