@@ -38,9 +38,12 @@ before_script:
 
 
 pages:
+  tags: 
+    - tud
   script:
     - mkdocs build
     - rsync --chmod=ugo=rX --perms -vr site/ $SECRET_USER@$HOST:html
   only:
     - master
+
 
