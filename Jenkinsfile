@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'make build'
+        sh '$HOME/.local/bin/mkdocs build'
       }
     }
     stage('Publish') {
