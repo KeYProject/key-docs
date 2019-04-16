@@ -42,7 +42,7 @@ pages:
     - tud
   script:
     - mkdocs build
-    - rsync --chmod=ugo=rX --perms -vr site/ $SECRET_USER@$HOST:html
+    - rsync --chmod=ugo=rX --perms -vr site/ ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
   only:
     - master
 
