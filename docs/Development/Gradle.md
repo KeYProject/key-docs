@@ -232,10 +232,12 @@ little bit out-dated) is
 4. Eclipse shows a preview of what would be imported. In the current version,
    you should see a tree with `key` as root and `key.core`, `key.util`, etc as
    children. Click *Finish*.
-5. Wait until import has finished. During the compilation of Eclipse, you can
+5. Wait until the import has finished. During the compilation of Eclipse, you can
    open two views: *Gradle Tasks* and *Gradle Executions* under *Windows -> Show
    View… -> Gradle*.
-6. There 
+6. For making the classpath files finally suitable for the development in Eclipse,
+   call `gradle eclipse` (if this doesn't work, try first calling `gradle cleanEclipse`)
+   and you are good to.
 
 #### Troubleshooting
 
