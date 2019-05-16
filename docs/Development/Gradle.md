@@ -237,7 +237,7 @@ little bit out-dated) is
    View… -> Gradle*.
 6. For making the classpath files finally suitable for the development in Eclipse,
    call `gradle eclipse` (if this doesn't work, try first calling `gradle cleanEclipse`)
-   and you are good to.
+   and you are good to go.
 
 #### Troubleshooting
 
