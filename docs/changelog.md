@@ -2,6 +2,80 @@
 
 ## 2.8.0 (2019-XX-XX)
 
+* Seveal small and large bug fixes: 
+(!225, !224, !222, !219, !213, !212, !209, !208, !205, !203, !201,
+!200, !199, !192, !190, !173, !170, !167, !163, !162, !158, !156, 
+!154, !153,  !151, !146, !145, !139, !136, !133, !131, !119, !117, 
+!108, !99, !92, !83, !82, !81, !78, !77, !75, !73, !71, !70, !69, !68, 
+!67, !66, !65, !58, !52, !47, !46, !45, !40, !39, !37, !33, !31, !30, !24,
+!23, !22, !14, !13, !10, !9, !8, !7, !3, !2)
+
+
+
+### Logic
+
+  * NEW: bsum taclets (!96)
+  * NEW: Taclets for more flexible handling of observer depency (!177) 
+  * NEW: Loop contracts improvements (!188)
+  * NEW: created new file intDiv.key for newly added taclets concerning 
+         (!182, !171, !180, !157, !152, !144, !141, !135, !98) 
+  * NEW: SMT preparation macro (!165)
+  * FIX: Bugfixing handling of program variables of type "any" and parsing (!133)
+  * NEW: `\infinite_uniton(int x; x >= 0; this[x])` is now available in binder syntax:
+         `(\infinite_uniton int x; x >= 0; this[x])`. 
+         Old form is deprecated and will be removed in later versions. (!132)
+  * NEW: Adding "System.arraycopy" with contract to JavaRedux (!137)
+  * FIX: Speed up in saving proofs (!120)
+  * FIX: Incompleteness issue when rewite taclet was applied and the goaltemplate… (!119)
+  * NEW: Loop contract (!?, !73)
+  * NEW: Loading and Storing proofs with compression (gzip) (!12)
+  * Lanzinger inner blocks fix (!82)
+  * More jml synonyms (!85)
+   
+### UI
+
+ * NEW: Unifying and polishing the user interface (!123): 
+   - KeY uses a docking framework, including storable/loadable layouts (!189)
+   - The settings are concentrated inside one dialog (!189)
+   - Adaptable colors and key strokes (!189)
+   - Adaptable clutter rules (!7)
+   - Key based navigation within the proof tree view (!198)
+   - FIX: Handling of regex in search (!199)
+ * NEW: Heatmaps: Coloring formulae on the sequent based on their change activity (!38, !140)
+ * NEW: Saving of proof bundles (!148)
+ * NEW: View of the current source code marking executed parts. (!99)
+ * NEW: GUI Extension inferface: You can easily plugin new GUI elements. 
+ * NEW: Origin labels tracks the origin of formulae within a sequence (!122)
+ * NEW: Intraction logging (HacKeYthon'18) brings logging of user interaction 
+        with exports to Proof Scripts (!84)
+ * NEW: Proof exploration
+ * Schiffl search filter (!4)
+ * FIX: Parsing of char, integer and long literals (!9, #1446, !214, !196)
+ * FIX: Collision of heatmap and search colors (!178)
+ * FIX: Slightly less confusing presentation of SMT solver results (!160)
+ 
+### Scripts 
+  * NEW: Rewrite command (!51)
+  * NEW: Documentation support for proof scripts (!15)
+  * NEW: KeY Proof Scripts are ported from the Key Proof Script Debugger 
+        (https://formal.iti.kit.edu/psdbg)
+  * FIX: Several fixes and breaking changes: (!153, !146, !145)
+  
+
+### Environment 
+
+ * NEW: Gradle became build tool  (!179, !205, !208, !209)
+   - Changes to the test infrastructure (!196)
+   - Export of maven dependecies
+   - New distribution formats: either a FatJar or zip file
+ * Java 11 ready (!47)
+   - remove of JavaFX dependencies (!95)
+ * Integrate tests for well-definedness checks (!87 )
+
+### Eclipse
+
+  * Support of Eclipse PHOTON (!74)
+
 ## 2.6.3 (2017-10-11)
 
 ## 2.6.2 (2017-04-13)
@@ -215,3 +289,4 @@
 * first version with the JML front-end
 * support of loop invariants
 * lots of new stuff
+  
