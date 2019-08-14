@@ -55,47 +55,42 @@ Even if all of them have their own chapter/section in this book, they will
 appear here as well, in a somewhat superficial manner, with pointers given to
 in-depth discussions in other parts.
 
-We aim at a largely self-contained presentation,
-allowing the reader to follow the chapter, and to *start* using the KeY prover,
-without necessarily having to read other chapters of the book before.
-The reader, however, can gain a better understanding by following the references
-we give to other parts of the book. In any case, we do recommend to read
-Chapter~\ref{chap:introduction} beforehand, where the reader can get a picture
-of what KeY is all about. The other chapters are *not* treated as 
-prerequisites to this one, which of course imposes limitations on how far we can
-go here. Had we built on the
-knowledge and understanding provided by the other chapters, we would be able to
-guide
-the user much further into the application of KeY to larger as well as
-more difficult scenarios. However, this would raise the threshold for getting
-started with the prover.
+We aim at a largely self-contained presentation, allowing the reader to follow
+the chapter, and to *start* using the KeY prover, without necessarily having to
+read other chapters of the book before. The reader, however, can gain a better
+understanding by following the references we give to other parts of the book. In
+any case, we do recommend to read Chapter~\ref{chap:introduction} beforehand,
+where the reader can get a picture of what KeY is all about. The other chapters
+are *not* treated as prerequisites to this one, which of course imposes
+limitations on how far we can go here. Had we built on the knowledge and
+understanding provided by the other chapters, we would be able to guide the user
+much further into the application of KeY to larger as well as more difficult
+scenarios. However, this would raise the threshold for getting started with the
+prover.
 
-The KeY framework was designed from the beginning to be usable
-*without* having to read a thick book first. Software verification is a
-difficult task anyhow. Neither the system nor the used artifacts (like the
-logic)
-should add to that difficulty, and are designed to instead lower the
-threshold for the user.
-The used logic, *dynamic logic* (DL), features transparency w.r.t.\ the
-programs to be
-verified, such that the code literally appears in the formulas, allowing the
+The KeY framework was designed from the beginning to be usable *without* having
+to read a thick book first. Software verification is a difficult task anyhow.
+Neither the system nor the used artifacts (like the logic) should add to that
+difficulty, and are designed to instead lower the threshold for the user. The
+used logic, *dynamic logic* (DL), features transparency w.r.t. the programs to
+be verified, such that the code literally appears in the formulas, allowing the
 user to relate back to the program when proving properties about it.
 
-The *taclet* language\index{taclet!language} for the declarative implementation
-of both, rules and lemmas, is kept so simple that we can well use a rule's
-declaration as a tooltip when the user is about to select the rule. The calculus
-itself is, however, complicated, as it captures the complicated semantics of
-\Java. Still, most of these complications do not concern the user, as they are
-handled in a fully automated way. Powerful strategies relieve the user from
-tedious, time consuming tasks, particularly when performing *\index{symbolic
-execution*symbolic execution}.
+The *taclet* language for the declarative implementation of both, rules and
+lemmas, is kept so simple that we can well use a rule's declaration as a tooltip
+when the user is about to select the rule. The calculus itself is, however,
+complicated, as it captures the complicated semantics of Java. Still, most of
+these complications do not concern the user, as they are handled in a fully
+automated way. Powerful strategies relieve the user from tedious, time consuming
+tasks, particularly when performing *\index{symbolic execution*symbolic
+execution}.
 
 
 In spite of a high degree of automation, in many cases there are significant,
 nontrivial tasks left for the user. It is the very purpose of the GUI to support
 those tasks well.
 
-![Verification process using the \keysystem [\[fig:toolchain\]]{#fig:toolchain
+![Verification process using the KeY system [\[fig:toolchain\]]{#fig:toolchain
 label="fig:toolchain"}](16.images/keyToolchain1.png)
 
 The general proof process using the KeY system is illustrated in
@@ -133,21 +128,21 @@ simply by positioning the mouse. A dynamic context menu will offer only the few
 proof rules which apply to this entity. Furthermore, these menus feature
 tooltips for each rule pointed to. These tooltips will be described
 in~\ref{tooltips}. When it comes to interactive variable instantiation,
-*drag-and-drop*\index{drag and drop} mechanisms greatly simplify the usage of
+*drag-and-drop* mechanisms greatly simplify the usage of
 the instantiation dialogues, and in some cases even allow to omit explicit rule
-selection. Other supported forms of \index{interaction}interaction in the
+selection. Other supported forms of interaction in the
 context of proof construction are the inspection of proof trees, the pruning of
 proof branches, and arbitrary undoing of proof steps.
 
 Performing interactive proof steps is, however, only one of the many
-functionalities offered by the \keysystem. Also, these features play their role
+functionalities offered by the KeY system. Also, these features play their role
 relatively late in the process of verifying programs. Other functionalities are
 (we go backwards in the verification process): controlling the automated
 strategies, customizing the calculus (for instance by choosing either of the
-mathematical or the \Java\ semantics for integers), and generating proof
-obligations from specifications. Working with the \keysystem\ has therefore many
+mathematical or the Java semantics for integers), and generating proof
+obligations from specifications. Working with the KeY system has therefore many
 aspects, and there are many ways to give an introduction into those. In the
-following, we focus on the \keyprover\ only, taking an `inside out' approach,
+following, we focus on the \keyprover only, taking an `inside out' approach,
 describing *how* the prover and the user communicate *which artifacts* for
 *which purpose* with each other. In addition hints for the user are provided on
 how to proceed in the verification process interactively, when automation stops.
@@ -159,7 +154,7 @@ complicates things. Also, the usage of the prover will sometimes be illustrated
 by at first performing basic steps manually, and demonstrating automation
 thereafter. Please note that the toy examples used all over this chapter serve
 the purpose of a step by step introduction of the concepts and usage of the
-\keysystem. They are not suitable for giving any indication of the capabilities
+KeY system. They are not suitable for giving any indication of the capabilities
 of the system. (See Chapter~\ref{chap:tutorial} instead.)
 
 Before we start, there is one last basic issue to discuss at this point. The
@@ -174,7 +169,7 @@ more conceptual level, things like the configuration policy for strategies and
 rule sets, among others, cannot be assumed to be frozen for all times. Even the
 theoretical grounds will develop further, as KeY is indeed a research project.
 A lot of ongoing research does not yet show in the current public release of the
-\keysystem. The problem of describing a dynamic system is approached from three
+KeY system. The problem of describing a dynamic system is approached from three
 sides. First, we will continue to keep available the book release of the system,
 \keyversion, on the KeY book's web page. Second, in order to not restrict the
 reader to that release only, we will try to minimize the dependency of the
@@ -186,9 +181,9 @@ way.
 For instance, we might say that "one can trigger the run of the automated proof
 search strategy which is restricted to a highlighted term/formula by
 \fbox{\textnormal{`Shift`}} + click on it." There is a separate document shipped
-with the \keysystem, the *Quicktour*\footnote{Available from the Download pages
+with the KeY system, the *Quicktour*\footnote{Available from the Download pages
 at \KeYURL.} which is updated more often and describes the current GUI and
-features of the \keysystem.
+features of the KeY system.
 
 Menu navigation will be displayed by connecting the cascaded menu entries with
 "$\rightarrow$", e.g., \menu{Options} $\rightarrow$ \menu{SMT Solvers Options}.
@@ -197,7 +192,7 @@ the KeY system can also be activated by keystrokes in order to be more efficient
 while performing proof tasks.
 
 
-*This chapter is meant for being read with the \keysystem\ up and running.* We
+*This chapter is meant for being read with the KeY system up and running.* We
 want to explore the system *together* with the reader, and reflect on whatever
 shows up along the path. Downloads of KeY, particularly \keyversion, the release
 version related to this book, are available on the project page, \KeYURL. The
@@ -210,15 +205,13 @@ extracted them to a folder in the reader's system.
 
 ## Exploring KeY Artifacts and Prover Simultaneously
 
-Together with the reader, we want to open, for the first time, the \keysystem,
+Together with the reader, we want to open, for the first time, the KeY system,
 in order to perform first steps and understand the basic structure of the
 interface. There are two ways to start the stand-alone \keyprover. Either you
 download the archive of KeY \keyversion, unpack it, and in the `key` directory
 execute the `key.jar` file, in the standard way `.jar` files are executed in
 your system and setup. Or you execute KeY directly from your browser, by
 navigating to the *webstart* link of KeY \keyversion, and simply click it.
-
-
 
 In both cases, the *KeY--Prover* main window pops up. Like many window-based
 GUIs, the main window offers several menus, a toolbar, and a few panes, partly
@@ -228,11 +221,10 @@ prover. Please note that most of the GUI components are labeled with tooltips,
 which are visible when hovering over that component. They give useful
 information about the features of the system.
 
-
 ## Exploring Basic Notions And Usage: Building A Propositional Proof
 
-In general, the \keyprover\ is made for proving formulas in *dynamic logic*
-(DL), an extension of *first-order logic*, which in turn is an extension of
+In general, the \keyprover is made for proving formulas in *dynamic logic* (DL),
+an extension of *first-order logic*, which in turn is an extension of
 *propositional logic*. We start with a very simple propositional formula, when
 introducing the usage of the \keyprover, because a lot of key concepts can
 already be discussed when proving the most simple theorem.
@@ -240,9 +232,7 @@ already be discussed when proving the most simple theorem.
 #### Loading the First Problem
 
 The formula we prove first is contained in the file `andCommutes.key`. In
-general,
-`.key` is the suffix for what we call *problem files*, which may,
-among
+general, `.key` is the suffix for what we call *problem files*, which may, among
 other things, contain a formula to be proven. (The general format of `.key`
 files is documented in Appendix~\ref{chap:keyreference}.) For now, we look into
 the file `andCommutes.key` itself (using your favorite text editor):
@@ -257,53 +247,41 @@ the file `andCommutes.key` itself (using your favorite text editor):
 }
 ```
 
-The `\problem` block contains the formula to be proven (with `->` 
-denoting the logical implication and `&` denoting the logical and). In 
-general, all functions, predicates, and variables appearing in a problem 
-formula are to be declared
-beforehand, which, in our case here, is done in the \verb!\predicates! block. We
-load this file by selecting *File* $\rightarrow$ *Load* (or selecting
-  \,\includegraphics[height=1.6ex]{16.images/16open.png}
-  in the tool bar) and navigating through the opened file browser.
-The system not only loads the selected `.key` file, but also the whole
-calculus, i.e., its rules, as well as locations referenced by the file. This 
-includes the source folder and its subdirectories.
+The `\problem` block contains the formula to be proven (with `->` denoting the
+logical implication and `&` denoting the logical and). In general, all
+functions, predicates, and variables appearing in a problem formula are to be
+declared beforehand, which, in our case here, is done in the \verb!\predicates!
+block. We load this file by selecting *File* $\rightarrow$ *Load* (or selecting
+\,\includegraphics[height=1.6ex]{16.images/16open.png} in the tool bar) and
+navigating through the opened file browser. The system not only loads the
+selected `.key` file, but also the whole calculus, i.e., its rules, as well as
+locations referenced by the file. This includes the source folder and its
+subdirectories.
 
 #### Reading the Initial Sequent
-\index{sequent}
-Afterwards, we see the text `==> p & q -> q & p` 
-displayed in the *Current Goal* pane. This seems to be merely the
-`\problem` formula, but actually, the arrow `==>`
-turns it into a
-*sequent*. KeY uses a sequent calculus,
-\index{sequent!calculus} meaning that sequents are the
-basic artifact on which the calculus operates. Sequents have the form
-\[\seq{\phi_1, \ldots, \phi_n}{\phi_{n+1}, \ldots, \phi_m}\]
-with $\phi_1, \ldots, \phi_n$ and $\phi_{n+1}, \ldots, \phi_m$ being two 
-(possibly
-empty) comma-separated lists of formulas, distinguished by the sequent arrow
-\,$\seq{}{}$\, (written as \,`==>`\, in both input and output of
-the \keysystem). 
-The intuitive
-meaning of a sequent is: if we assume all formulas $\phi_1, \ldots, \phi_n$ to
-hold,
-then *at least one* of the formulas $\phi_{n+1}, \ldots, \phi_m$ holds. In
-our
-particular calculus, the order of formulas within $\phi_1, \ldots, \phi_n$ and
-within
-$\phi_{n+1}, \ldots, \phi_m$ does not matter.
-Therefore, we can for instance write $\sequent{}{\phi\keyimplies\psi}$ to
-refer to
-sequents where *any* of the right-hand side formulas is an
-implication. $\Gamma$ and $\Delta$ are both used to refer to arbitrary, and
-sometimes empty, lists of formulas.  We refer to Chapter~\ref{chap:fol},
-Section~\ref{subsec02:BasicFOLCalculus}, for a proper introduction of a (simple
-first-order)
-sequent calculus. The example used there is exactly the one we use here. We
-recommend to double-check the following steps with the on paper proof given
-there.
 
-We start proving the given sequent with the \keysystem, however in a very
+Afterwards, we see the text `==> p & q -> q & p` displayed in the *Current Goal*
+pane. This seems to be merely the `\problem` formula, but actually, the arrow
+`==>` turns it into a *sequent*. KeY uses a sequent calculus, meaning that
+sequents are the basic artifact on which the calculus operates. Sequents have
+the form \[\seq{\phi_1, \ldots, \phi_n}{\phi_{n+1}, \ldots, \phi_m}\] with
+$\phi_1, \ldots, \phi_n$ and $\phi_{n+1}, \ldots, \phi_m$ being two (possibly
+empty) comma-separated lists of formulas, distinguished by the sequent arrow
+\,$\seq{}{}$\, (written as \,`==>`\, in both input and output of the KeY
+system). The intuitive meaning of a sequent is: if we assume all formulas
+$\phi_1, \ldots, \phi_n$ to hold, then *at least one* of the formulas
+$\phi_{n+1}, \ldots, \phi_m$ holds. In our particular calculus, the order of
+formulas within $\phi_1, \ldots, \phi_n$ and within $\phi_{n+1}, \ldots, \phi_m$
+does not matter. Therefore, we can for instance write
+$\sequent{}{\phi\keyimplies\psi}$ to refer to sequents where *any* of the
+right-hand side formulas is an implication. $\Gamma$ and $\Delta$ are both used
+to refer to arbitrary, and sometimes empty, lists of formulas. We refer to
+Chapter~\ref{chap:fol}, Section~\ref{subsec02:BasicFOLCalculus}, for a proper
+introduction of a (simple first-order) sequent calculus. The example used there
+is exactly the one we use here. We recommend to double-check the following steps
+with the on paper proof given there.
+
+We start proving the given sequent with the KeY system, however in a very
 interactive manner, step by step introducing and explaining the different
 aspects of
 the calculus and system. This purpose is really the *only* excuse to
@@ -332,7 +310,7 @@ case when *both sides have a formula in common*\footnote{There are two more
 cases, which are covered in Section~\ref{sec:byTrue} on
 page~\pageref{sec:byTrue}.}. (For instance, the sequent
 $\seq{\phi_1,\phi_2}{\phi_3,\phi_1}$ is trivially true. Assuming both, $\phi_1$
-and $\phi_2$, indeed implies that ``at least one of $\phi_3$ and $\phi_1$''
+and $\phi_2$, indeed implies that "at least one of $\phi_3$ and $\phi_1$"
 holds, namely $\phi_1$.) It is such primitive shapes which we aim at when
 proving.
 
@@ -420,7 +398,7 @@ For the on-paper presentation of the proof to be developed, we refer
 to Chapter~\ref{chap:fol}.
 
 #### Understanding the First Taclet
-\index{taclet}
+
 With the inner node still highlighted in the *Proof* tab, we click onto
 the checkbox \keyout{Show taclet info (Inner Nodes only)} in the left
 lower corner of the *Proof* tab.
@@ -440,7 +418,7 @@ What we see here is what is called a *taclet*. Taclets are a
 domain specific language for
 programming sequent calculus rules, developed as part of the \keyproject.
 The depicted taclet is the one
-which in the \keysystem\ *defines* the rule
+which in the KeY system *defines* the rule
 \menuRuleName{impRight}. In this chapter, we give just a hands-on
 explanation of the few taclets we come across. For a good introduction
 and discussion of the taclet framework, we refer to
@@ -461,7 +439,7 @@ of kind `\formula`:
 \schemaVariables { \formula b; \formula c; } 
 ```
 
-The sequent arrow \index{\verb+==>+ (sequent arrow)}`==>` in `\find(==> b -> c)`
+The sequent arrow `==>` in `\find(==> b -> c)`
 further restricts the applicability of the taclet to the
 *top-level*\footnote{Modulo leading updates, see
 Section~\ref{subsec:exploringDL}.} of the sequent only. For this example the
@@ -472,7 +450,7 @@ matching implication (here \mbox{`p \& q -> q \& p`}) gets deleted, and then the
 subformulas matching `b` and `c` (here \mbox{\texttt{p \& q}} and \mbox{`q \&
 p`}) are added to the sequent. To which side of the sequent `p & q` or `q & p`,
 respectively, are added is indicated by the relative position of `b` and `c`
-w.r.t.\ `==>` in the argument of `\replacewith`. The result is the new sequent
+w.r.t. `==>` in the argument of `\replacewith`. The result is the new sequent
 `p & q ==> q & p`. It is a very special case here that `\find(==> b -> c)`
 matches the whole old sequent, and `\replacewith(b ==> c)` matches the whole new
 sequent. Other formulas could appear in the old sequent. Those would remain
@@ -490,7 +468,7 @@ To test this, we click that folder and scroll down the list of taclets, until
 have just discussed. It might feel scary to see the sheer mass of taclets
 available. Please note, however, that the vast majority of taclets is never in
 the picture when *interactively* applying a rule in any practical usage of the
-\keysystem. Instead, most taclets, especially those related to symbolic
+KeY system. Instead, most taclets, especially those related to symbolic
 execution, are usually applied automatically.
 
 #### Backtracking the Proof
@@ -538,7 +516,7 @@ are
 already
 instantiated by their respective matching formula or term. We achieve this
 by setting
-the \pane{Maximum size \ldots\ of tooltips \ldots\ with schema variable
+the \pane{Maximum size \ldots of tooltips \ldots with schema variable
 instantiations
 displayed~\ldots} to, say, 40 and have the \pane{show 
 uninstantiated taclet} checkbox unchecked. When trying the tooltip for
@@ -600,10 +578,10 @@ The whole tooltip for \menuRuleName{impRight} is the one-liner:
 
 In general, the user might play around with different tooltip options in order
 to see which settings are most helpful.  However, for the course of this
-chapter, please open again the \selToolTipOptions\ again, set the ``Maximum
-size \ldots\ of tooltips \ldots\ with schema variable instantiations
-displayed~\ldots'' to~50 and check both checkboxes, ``pretty-print whole taclet~\ldots'' as
-well as ``show uninstantiated taclet.'' Nevertheless, we will not print the
+chapter, please open again the \selToolTipOptions again, set the "Maximum
+size \ldots of tooltips \ldots with schema variable instantiations
+displayed~\ldots" to~50 and check both checkboxes, "pretty-print whole taclet~\ldots" as
+well as "show uninstantiated taclet." Nevertheless, we will not print the
 `\heuristics` part of taclets in this text further on.
 
 #### Splitting Up the Proof
@@ -688,7 +666,7 @@ The reader might compare this presentation with the proof presented in the
 anywhere within the *Proof* tab, and browsing the proof using the arrow
 keys).
 
-There are also several other mechanisms in the \keysystem which 
+There are also several other mechanisms in the KeY system which 
 help inspecting the current proof state.
 Instead of expanding/collapsing whole branches, it is also possible to 
 hide intermediate proof steps in the current proof tree.
@@ -701,7 +679,7 @@ For a better overview over the open goals, there is also an option to hide close
 goals 
 in the *Proof* tab. It can be accessed similar to the 
 *Hide Intermediate Proofsteps* option.
-The \keysystem incorporates another feature supporting the comprehension of the 
+The KeY system incorporates another feature supporting the comprehension of the 
 proof, allowing for textual comments to the proof nodes. This feature 
 is accessible by right clicking onto the proof node in the proof tree and 
 choosing the menu entry *Edit Notes*. A dialog appears in which 
@@ -783,7 +761,7 @@ focus (cf.\
 `\find(==> b)`). But the `\assumes` clause makes the taclet 
 applicable only in the presence of further formulas, in this case the identical
 formula
-on the *left-hand side* (cf.\ `\assumes(b ==>)`).
+on the *left-hand side* (cf. `\assumes(b ==>)`).
 
 This discussion of the \menuRuleName{close} sequent rule and the corresponding
 \menuRuleName{close} taclet shows that taclets are more fine grained than
@@ -819,7 +797,7 @@ changed focus to the next \keyout{OPEN GOAL}, which is detailed in the
 
 
 #### Pruning the Proof Tree
-\index{proof!tree!pruning|isec}
+
 
 We apply \menuRuleName{andLeft} to the `&` on the left, in the same fashion
 as
@@ -881,7 +859,7 @@ following.
 
 Before loading the same problem again, we can choose whether we abandon
 the current proof, or alternatively keep it in the system. Abandoning a proof
-would be achieved via the main menu entry: \selAbandonTask\  or the shortcut  
+would be achieved via the main menu entry: \selAbandonTask  or the shortcut  
 \fbox{\textnormal{`Ctrl`}} +  \fbox{\textnormal{`W`}}. 
 It is however possible to keep
 several (finished or unfinished) proofs in the system, so we suggest to start
@@ -920,7 +898,7 @@ start the automated proof search strategy. A complete proof is constructed
 immediately. Its shape (see *Proof* tab) depends heavily on the current
 implementation of the proof search strategy and the use of the *One Step
 Simplifier* \includegraphics[height=1.6ex]{16.images/oneStepSimplifier.png}. One
-step simplification in the \keysystem means that the automated prover performs
+step simplification in the KeY system means that the automated prover performs
 several simplification rules applicable at once by a single rule application.
 One example for such a simplification rule is the rule \menuRuleName{eq_and}
 which simplifies the formula `true & true` to `true`. Which rules the prover has
@@ -983,7 +961,7 @@ applicable again.
 
 #### Saving and Loading Proofs
 
-\index{proof!saving}
+
 Before we leave the discussion of the current example, we save the just
 accomplished proof (admittedly for no other reason than practicing the saving of
 proofs). For that, we either use the shortcut  
@@ -1040,7 +1018,7 @@ once. The whole `\problem` formula then states that `f(c)` and
 
 #### Instantiating Quantified Formulas
 
-\index{quantifier!instantiation}\index{interaction!quantifier instantiation}
+
 We prove this simple formula interactively, for now. After loading the problem
 file,
 and applying \menuRuleName{impRight} to the initial sequent, the \pane{Current
@@ -1084,15 +1062,15 @@ instAll {
 
 #### Making Use of Equations
 
-\index{equality!application}
+
 We can use the equation `f(f(c)) = f(c)` to simplify the term
 `f(f(f(c)))`, meaning we *apply* the equation to the `f(f(c))`
 subterm of `f(f(f(c)))`. This action can again be performed via drag and
 drop, here by dragging the equation on the left side of the sequent, and
 dropping it over the `f(f(c))` subterm of `f(f(f(c)))`.\footnote{More
-detailed, we move the mouse over the ```=`'' symbol, such that the whole
+detailed, we move the mouse over the "`=`" symbol, such that the whole
 of `f(f(c)) = f(c)` is highlighted. We click, hold, and move the mouse,
-over the second ```f`'' in `f(f(f(c)))`, such that exactly the
+over the second "`f`" in `f(f(f(c)))`, such that exactly the
 subterm `f(f(c))` gets highlighted. Then, we release the mouse.} In the
 current system, there opens a context menu, allowing to select a taclet with
 the display name \menuRuleName{applyEq}.\footnote{Possibly, there are more than
@@ -1109,7 +1087,7 @@ resulting goal has two
 identical formulas on both sides of the sequent, so we *could* apply
 \menuRuleName{close}. 
 Just to demonstrate the other possibility, we undo the last rule application
-using \GoalBack\ \includegraphics[height=1.6ex]{16.images/16goalBack.png},
+using \GoalBack \includegraphics[height=1.6ex]{16.images/16goalBack.png},
 leading us back to the *Current Goal*
 \mbox{`f(f(c)) = f(c),\ldots ==> f(c) = f(f(c))`}.
 
@@ -1122,7 +1100,7 @@ the equation into `true`. (If the reader's system does not offer
   Simplification} is unchecked in the \menu{Options} menu, and try again.)
 
 #### Closing `by True' and `by False'
-\label{sec:byTrue}
+
 So far, all goals we ever closed featured identical formulas on both sides of
 the
 sequent. We have arrived at the second type of closable sequents: one with
@@ -1156,11 +1134,11 @@ the
 left side.
 
 #### Using Taclet Instantiation Dialogues
-\index{taclet!instantiation}
-In our previous proof, we used the ``drag-and-drop'' feature
+
+In our previous proof, we used the "drag-and-drop" feature
 offered
 by the \keyprover to instantiate schema variables needed to apply a rule. This 
-kind of user \index{interaction!taclet instantiation}interaction can be seen as a shortcut to
+kind of user interaction can be seen as a shortcut to
 another
 kind of user interaction: the usage of *taclet instantiation dialogues*.
 While
@@ -1210,7 +1188,7 @@ reader may finish it herself.
 
 #### Skolemizing Quantified Formulas
 
-\index{Skolem|(isec}
+
 We will now consider a slight generalization of the theorem we have just
 proved. Again assuming that `f` is a projection, instead of showing
 \mbox{`f(c) = f(f(f(c)))`} for a particular `c`, we show
@@ -1279,12 +1257,12 @@ The rest of our current proof goes exactly like for the previous problem
 formula. Instead of further discussing it here, we simply run the proof search
 strategy to resume and close the proof.
 
-\index{Skolem|)isec}
+
 
 ### Exploring Programs in Formulas: Building Dynamic Logic Proofs
 
-\label{subsec:exploringDL}
-\index{dynamic logic}
+
+
 Not first-order logic, and certainly not propositional logic, is the real target
 of
 the \keyprover. Instead, the prover is designed to handle proof obligations
@@ -1338,23 +1316,25 @@ containing programs themselves.)
 Each variant of DL has to commit to a formalism used to describe the programs
 (i.e., the $p$) in the modalities. Unlike most other variants of DL, the
 \keyproject's DL variant
-employs a real programming language, namely \Java.
-Concretely, $p$ is a sequence of (zero, one, or more) \Java\ statements.
+employs a real programming language, namely Java.
+Concretely, $p$ is a sequence of (zero, one, or more) Java statements.
 Accordingly,
-the logic is called \JavaDL.
+the logic is called JavaDL.
 
-The following is an example of a \JavaDL\ formula:
-\begin{equation}\label{eq:exchangeFormula}
+The following is an example of a JavaDL formula:
+
+\[
 \java{x} < \java{y} \keyimplies \dia{\java{t = x; x = y; y = t;}}{\;\java{y}
 < \java{x}}
-\end{equation}
-It says that in each state where the program variable \java{x} has a value
-smaller than that of the program variable \java{y}, the sequence of \Java\
-statements \java{t = x;} \java{x = y;} \java{y = t;} terminates, and
+\]
+
+It says that in each state where the program variable `x` has a value
+smaller than that of the program variable `y`, the sequence of Java
+statements `t = x;` `x = y;` `y = t;` terminates, and
 afterwards
-the value of \java{y} is smaller than that of \java{x}. It is important to note
+the value of `y` is smaller than that of `x`. It is important to note
 that
-\java{x} and \java{y} are *program* variables, not to be confused with
+`x` and `y` are *program* variables, not to be confused with
 *logical* variables. In our logic, there is a strict distinction between
 both. Logical variables must appear in the scope of a quantifier binding them,
 whereas program variables cannot be quantified over. This formula
@@ -1364,19 +1344,19 @@ logical variables.
 As we will see in the following examples, both program variables and
 logical variables can appear mixed in terms and formulas, also together with
 logical constants, functions, and predicate symbols. However, inside the
-modalities, there can be nothing but (sequents of) *pure* \Java\
-statements. For a more thorough discussion of \JavaDL, please refer to
+modalities, there can be nothing but (sequents of) *pure* Java
+statements. For a more thorough discussion of JavaDL, please refer to
 Chapter~\ref{chap:dl}.            
             
 #### Feeding the Prover with a DL Problem File
 
-The file `exchange.key` contains the \JavaDL\ formula
+The file `exchange.key` contains the JavaDL formula
 (\ref{eq:exchangeFormula}),
-in the concrete syntax used in the \keysystem:\footnote{Here as in all
+in the concrete syntax used in the KeY system:\footnote{Here as in all
 `.key`
 files, line breaks and indentation do not matter other than supporting
 readability.}
-\label{exchangeDotKey}
+
 
 ```
 \programVariables { int x, y, t; }
@@ -1393,20 +1373,20 @@ When comparing this syntax with the notation used in (\ref{eq:exchangeFormula}),
 we
 see that diamond modality brackets $\langle$ and $\rangle$ are written
 as
-`\<{` and `}\>` within the \keysystem. 
+`\<{` and `}\>` within the KeY system. 
 What we can also observe from the file is that all
-program variables which are *not* declared in the \Java\ code inside the
+program variables which are *not* declared in the Java code inside the
 modality
-(like \java{t} here) must appear within a `\programVariables`
+(like `t` here) must appear within a `\programVariables`
 declaration of
-the file (like \java{x} and \java{y} here).
+the file (like `x` and `y` here).
 
 Instead of loading this file, and proving the problem, we try out other
 examples first, which are meant to slowly introduce the principles of proving
-\JavaDL\ formulas with KeY.
+JavaDL formulas with KeY.
 
 #### Using the Prover as an Interpreter
-\label{executeByProving}
+
 We consider the file `executeByProving.key`:
 
 ```
@@ -1423,40 +1403,40 @@ As the reader might guess, the `\problem` formula is not valid, as there
 are
 no assumptions made about the predicate `p`. Anyhow, we let the
 system try to prove this formula. By doing so, we will see that the
-\keyprover\ will essentially *execute* our (rather obscure) program
-\java{i=2; j=(i=i+1)+4;}, which is possible because all values the program
+\keyprover will essentially *execute* our (rather obscure) program
+`i=2; j=(i=i+1)+4;`, which is possible because all values the program
 deals
-with are *concrete*. The execution of \Java\ programs is of course not the
+with are *concrete*. The execution of Java programs is of course not the
 purpose of the \keyprover, but it serves us here as a first step towards
 the method for handling symbolic values, *symbolic execution*, to be
 discussed
 later.
 
 We load the file `executeByProving.key` into the system. Then, we
-run the automated \JavaDL\ strategy (by clicking the play button
+run the automated JavaDL strategy (by clicking the play button
 \includegraphics[height=1.6ex]{16.images/16autoModeStart.png}). 
 The strategy stops with `==> p(3,7)` being the (only) \keyout{OPEN GOAL},
 see also the *Proof* tab. This means that the proof *could* be closed
 *if* `p(3,7)` was provable, which it is not. But that is fine, because
-all we wanted is letting the \keysystem\ compute the values of \java{i} and
-\java{j}
-after execution of \java{i=2; j=(i=i+1)+4;}. And indeed, the fact that
+all we wanted is letting the KeY system compute the values of `i` and
+`j`
+after execution of `i=2; j=(i=i+1)+4;`. And indeed, the fact that
 proving
 `p(3,7)` would be sufficient to prove the original formula tells us
-that \java{3} and \java{7} are the final values of \java{i} and \java{j}.
+that `3` and `7` are the final values of `i` and `j`.
 
 We now want to inspect the (unfinished) proof itself. For this, we select the
 first
 inner node, labeled with number \keyout{0:}, which contains the original
 sequent. By using the down-arrow key, we can scroll down the proof. The reader
 is encouraged to do so, before reading on, all the way down to the
-\keyout{OPEN GOAL}, to get an impression on how the calculus executes the \Java\
+\keyout{OPEN GOAL}, to get an impression on how the calculus executes the Java\
 statements
 at hand. This way, one can observe that one of the main principles in building a
 proof for a DL
-formula is to perform \emph{program transformation} within the modality(s). In
+formula is to perform *program transformation* within the modality(s). In
 the current
-example, the complex second assignment \java{j=(i=i+1)+4;} was transformed into
+example, the complex second assignment `j=(i=i+1)+4;` was transformed into
 a
 sequence of simpler assignments. Once a leading assignment is simple enough, it
 moves out from
@@ -1468,7 +1448,7 @@ removed by the taclet \menuRuleName{emptyModality}.
 
 #### Discovering Updates
 
-\index{update|(}
+
 Our next observation is that the formulas which appear in inner nodes of this
 proof contain a syntactical element which is not yet covered by the above
 explanations of DL. We see that already in the second inner node
@@ -1481,36 +1461,36 @@ explanations of DL. We see that already in the second inner node
      }\> p(i,j)
 ```
 
-The \java{i:=2} within the curly brackets is an example of what is called
-\emph{updates}. When scrolling down the proof, we can see that leading
+The `i:=2` within the curly brackets is an example of what is called
+*updates*. When scrolling down the proof, we can see that leading
 assignments turn into updates when they move out from the modality. The updates 
-somehow accumulate, and are simplified, in front of a ``shrinking'' modality. 
+somehow accumulate, and are simplified, in front of a "shrinking" modality. 
 Finally, they get
 applied to the remaining formula once the modality is gone.
 
 Updates are part of the version of dynamic logic invented within the \keyproject. Their main
-intention is to represent the effect of some (\Java) code they replace.
+intention is to represent the effect of some (Java) code they replace.
 This effect can be accumulated, manipulated, simplified, and applied to other
 parts of the formula, in a way which is disentangled from the manipulation of
 the program in the modality. This enables the calculus to perform \emph{symbolic
   execution} in a natural way, and has been very fruitful contribution
 of the \keyproject. First of all, updates allow proofs to symbolically execute
 programs in their natural direction, which is useful for proof inspection and
-proof \index{interaction}interaction. Moreover, the update mechanism is heavily exploited when
+proof interaction. Moreover, the update mechanism is heavily exploited when
 using the prover for other purposes, like test generation (Chapter~\ref{chap:testgen}), symbolic
 debugging (Chapter~\ref{chap:debugging_visualization}), as well as various
 analyzes for security (Chapter \ref{chap:iflow}) or runtime verification
 \citep{AhrendtChimentoPaceEtAl15}, to name a few.
 
-\emph{Elementary updates} in essence are a restricted kind of assignment,
-where the right-hand side must be a \emph{simple} expression, which in
-particular is \emph{free of side effects}. Examples are \java{i:=2}, or
-\java{i:=i + 1} (which we find further down in the proof). From elementary
+*Elementary updates* in essence are a restricted kind of assignment,
+where the right-hand side must be a *simple* expression, which in
+particular is *free of side effects*. Examples are `i:=2`, or
+`i:=i + 1` (which we find further down in the proof). From elementary
 updates, more complex updates can be constructed (see Definition~\ref{def:UpdatesDL},
 Chapter~\ref{chap:dl}).  Here, we only mention the most important kind of
-compound updates, \emph{parallel updates}, an example of which is
+compound updates, *parallel updates*, an example of which is
 `i:=3 || j:=7` further down in the proof. Updates can further be
-considered as \emph{explicit substitutions} that are yet to be applied. This
+considered as *explicit substitutions* that are yet to be applied. This
 viewpoint will get clearer further-on.
 
 Updates extend traditional DL in the following way: if $\varphi$ is a DL formula
@@ -1525,10 +1505,10 @@ occurs in the current proof in form of the sequent
 rule application of \menuRuleName{emptyModality} in the current
 proof). Now that the modality is gone, the update `{i:=3 || j:=7}` is
 applied in form of a
-\emph{substitution}, to the formula following the update, `p(i,j)`.
+*substitution*, to the formula following the update, `p(i,j)`.
 The reader can follow this step when scrolling down the proof. Altogether, this leads to a
 delayed turning of program assignments into substitutions in the logic, as
-compared to other variants of DL (or of \index{Hoare logic}Hoare logic). We will return to the
+compared to other variants of DL (or of Hoare logic). We will return to the
 generation, parallelization, and application of updates on page
 \pageref{para:updatehandling}.
 
@@ -1539,10 +1519,10 @@ generation, parallelization, and application of updates on page
 
 
 
-\index{update|)}
+
 
 #### Employing Active Statements
-\index{active statement}\index{statement, active}
+
 We now focus on the
 connection between programs in modalities on the one hand, and taclets on the
 other hand. For that, we load `updates.key`. When moving the mouse
@@ -1557,20 +1537,20 @@ around over the single formula of the *Current Goal*,
 ```
 
 we realize that, whenever the mouse points anywhere between (and including)
-```\<{`'' and
-```}\>`,'' the whole formula gets highlighted. However, the first statement
+"`\<{`" and
+"`}\>`," the whole formula gets highlighted. However, the first statement
 is highlighted in a particular way, with a different color, regardless of which
 statement we point to. This indicates that the system considers the first
-statement \java{i=1;} as the \emph{active statement} of this DL formula.
+statement `i=1;` as the *active statement* of this DL formula.
 
 Active statements are a central concept of the DL calculus used in KeY. They
 control the application/applicability of taclets. Also, all rules which modify
 the program inside of modalities operate on the active statement, by rewriting
 or removing it.  Intuitively, the active statement stands for the statement
 to be executed next. In the current example, this simply translates to the
-\emph{first} statement.
+*first* statement.
 
-We click anywhere within the modality, and \emph{pre}select (only) the taclet
+We click anywhere within the modality, and *pre*select (only) the taclet
 \menuRuleName{assignment}, just to view the actual taclet presented in the
 tooltip:
 
@@ -1595,51 +1575,51 @@ tells which kinds of modalities can be matched by this taclets, in this case all
 `#allmodal`, including $\dia{.}{.}$ in particular. And finally, the second
 argument of `\modality`,
 `.. #loc=#se; ...` specifies the code which this taclet matches on. The
-convention is that everything between ```..`'' and ```...`''
-matches the \emph{active statement}. Here, the active statement must have the
+convention is that everything between "`..`" and "`...`"
+matches the *active statement*. Here, the active statement must have the
 form `#loc=#se;`, i.e., a statement assigning a `s`imple
-`e`xpression to a `loc`ation, here \java{i=1;}. The
-```...`'' refers to the rest of the program (here \java{j=3;i=2;}), and
-the match of ```..`'' is empty, in this particular example. Having
+`e`xpression to a `loc`ation, here `i=1;`. The
+"`...`" refers to the rest of the program (here `j=3;i=2;`), and
+the match of "`..`" is empty, in this particular example. Having
 understood the `\find` part, the `\replacewith` part tells us that the
 active statement moves out into an update.
 
-After applying the taclet, we point to the active statement \java{j=3;}, and
+After applying the taclet, we point to the active statement `j=3;`, and
 again preselect the \menuRuleName{assignment}. The taclet in the tooltip is the
-same, but we note that it matches the highlighted \emph{sub}formula, below the
+same, but we note that it matches the highlighted *sub*formula, below the
 leading update. We suggest to finish the proof by pressing the play button.
 
-The reader might wonder why we talk about \emph{active} rather than \emph{first}
+The reader might wonder why we talk about *active* rather than *first*
 statements. The reason is that our calculus is designed in a way such that
-\emph{block statements} are not normally \emph{active}. By \emph{block} we mean 
+*block statements* are not normally *active*. By *block* we mean 
 both
-unlabeled and labeled \Java\ blocks, as well as try-catch blocks. If the
+unlabeled and labeled Java blocks, as well as try-catch blocks. If the
 first statement inside the modality is a block, then the active statement is the
-first statement \emph{inside} that block, if that is not a block again, and so
+first statement *inside* that block, if that is not a block again, and so
 on. This concept prevents our logic from being bloated with control
 information. Instead, the calculus works inside the blocks, until the whole
-block can be \emph{resolved}, because it is either empty, or an abrupt
-termination statement is active, like \java{break}, \java{continue},
-\java{throw}, or \java{return}. The interested reader is invited to examine
+block can be *resolved*, because it is either empty, or an abrupt
+termination statement is active, like `break`, `continue`,
+`throw`, or `return`. The interested reader is invited to examine
 this by loading the file `activeStmt.key`. 
 
 Afterwards, one can see that, as a first step in the proof, one can pull out 
-the assignment \java{i=0;}, even if
+the assignment `i=0;`, even if
 that is nested within a labeled block and a try-catch block. We suggest to
 perform this first step interactively, and prove the resulting goal
 automatically, for inspecting the proof afterwards.
 
-Now we are able to round up the explanation of the ```..`'' and
-```...`'' notation used in DL taclets. The ```..`'' matches the
+Now we are able to round up the explanation of the "`..`" and
+"`...`" notation used in DL taclets. The "`..`" matches the
 opening of leading blocks, up to the first nonblock (i.e., active) statement,
-whereas ```...`'' matches the statements following the active statement,
-plus the corresponding closings of the opened blocks.\footnote{```..`''
-and ```...`'' correspond to $\pi$ and $\omega$, respectively, in the
+whereas "`...`" matches the statements following the active statement,
+plus the corresponding closings of the opened blocks.\footnote{"`..`"
+and "`...`" correspond to $\pi$ and $\omega$, respectively, in the
 rules in Chapter~\ref{chap:dl}.}
 
 #### Executing Programs Symbolically
 
-\index{symbolic execution}
+
 So far, all DL examples we have been trying the prover on in this chapter had in
 common that they worked with concrete values. This is very untypical, but served
 the
@@ -1648,7 +1628,7 @@ time to apply the prover on problems where (some of) the values are either
 completely unknown, or only constrained by formulas typically having many
 solutions. After all, it is the ability of handling symbolic values which makes
 theorem proving more powerful than testing. It allows us to verify a program with
-respect to \emph{all} legitimate input values!
+respect to *all* legitimate input values!
 
 First, we load the problem `symbolicExecution.key`:
 
@@ -1665,14 +1645,14 @@ First, we load the problem `symbolicExecution.key`:
 
 This problem is a variation of `executeByProving.key` (see above), the
 difference
-being that the initial value of `i` is \emph{symbolic}. The
+being that the initial value of `i` is *symbolic*. The
 `c` is a logical
-\emph{constant} (i.e., a function without arguments), and thereby represents an
+*constant* (i.e., a function without arguments), and thereby represents an
 unknown, but fixed value in the range of `int`. The update `{i:=c}`
 is
-necessary because it would be illegal to have an assignment \java{i=c;} inside
+necessary because it would be illegal to have an assignment `i=c;` inside
 the
-modality, as `c` is not an element of the \Java\ language, not even a
+modality, as `c` is not an element of the Java language, not even a
 program variable. This is another important purpose of updates in our logic: to
 serve as an interface between logical terms and program variables.
 
@@ -1690,7 +1670,7 @@ symbolic computation (in a way which is typically very different from
 interactive
 proof construction). That intertwined with the `execution by 
 proving' (see~\ref{executeByProving}) method discussed above forms the
-principle of \emph{symbolic execution}, which lies at the heart of the
+principle of *symbolic execution*, which lies at the heart of the
 \keyprover.
 
 Another example for this style of formulas is the `\problem` which we load
@@ -1708,11 +1688,11 @@ from
 ```
 
 The validity of this formula
-is not completely obvious. But indeed, the obscure assignment \java{i=i*(i++);}
-computes the square of the original value of \java{i}. The point is the exact
+is not completely obvious. But indeed, the obscure assignment `i=i*(i++);`
+computes the square of the original value of `i`. The point is the exact
 evaluation order within the assignment at hand. It is of course crucial that the
 calculus emulates the evaluation order exactly
-as it is specified in the \Java\ language description by symbolic execution, 
+as it is specified in the Java language description by symbolic execution, 
 and that the calculus does not allow any other evaluation order. We prove this 
 formula automatically here.
 
@@ -1737,16 +1717,16 @@ including quantifiers. The following problem formula from
 }
 ```
 
-Please observe that it would be illegal to have an assignment \java{i=x;} 
+Please observe that it would be illegal to have an assignment `i=x;` 
 inside the
-modality, as `x` is not an element of the \Java\ language, but rather a
+modality, as `x` is not an element of the Java language, but rather a
 logical variable.
 
-This formula literally says that, `\forall` initial values \java{i}, it
+This formula literally says that, `\forall` initial values `i`, it
 holds that after
-the assignment \java{i} contains the square of that value.
+the assignment `i` contains the square of that value.
 Intuitively, this seems to be no different from stating the same for an
-\emph{arbitrary but fixed} initial value `c`, as we did in
+*arbitrary but fixed* initial value `c`, as we did in
 `postIncrement.key` above. And
 indeed, if we load `quantifyProgVals.key`, and as a first step apply the
 taclet
@@ -1768,19 +1748,19 @@ We see here that, after only one proof step, the sequent is essentially not
 different from the initial sequent of `postIncrement.key`. This seems to
 indicate that quantification over values of program variables is not
 necessary. That might be true here, but is not the case in general.  The
-important proof principle of \emph{induction} applies to quantified formulas
+important proof principle of *induction* applies to quantified formulas
 only.
 
 
 #### Proving DL Problems with Program Variables
-\index{program!variable}
 
-So far, most DL `\problem` formulas \emph{explicitly} talked about
-\emph{values}, either concrete ones (like \java{2}) or symbolic ones (like
+
+So far, most DL `\problem` formulas *explicitly* talked about
+*values*, either concrete ones (like `2`) or symbolic ones (like
 the logical constant `a` and the logical variable `x`). It
 is however also common to have DL formulas which do not talk about any (concrete
 or symbolic) values explicitly, but instead only talk about \emph{program
-variables} (and thereby \emph{implicitly} about their values). As an example, we
+variables} (and thereby *implicitly* about their values). As an example, we
 use yet another variation of the post increment problem, contained in
 `postIncrNoUpdate.key`:
 
@@ -1793,8 +1773,8 @@ use yet another variation of the post increment problem, contained in
 }
 ```
 
-Here, instead of initially updating \java{i} with some symbolic value, we store
-the value of \java{i} into some other program variable. The equation after the
+Here, instead of initially updating `i` with some symbolic value, we store
+the value of `i` into some other program variable. The equation after the
 modality is a claim about the relation between (the implicit values of) the
 program variables, in a state after program execution.  When proving this
 formula automatically with KeY, we see that the proof has no real surprise as
@@ -1804,7 +1784,7 @@ program variables, some of which are introduced within the proof.
 
 
 #### Demonstrating the Update Mechanism
-\label{para:updatehandling}
+
 
 In typical applications of the KeY prover, the user is not concerned with the
 update mechanism. Still, this issue is so
@@ -1817,13 +1797,13 @@ Section \ref{sect:updates}).
 Let us reconsider the formula
 
 \[
-\java{x} < \java{y} \keyimplies \dia{\java{t = x; x = y; y =
-t;}}{\;\java{y} < \java{x}}
+`x` < `y` \keyimplies \dia{\java{t = x; x = y; y =
+t;}}{\;`y` < `x`}
 \]
 
 and (re)load the corresponding problem file, `exchange.key` 
 (see above \ref{exchangeDotKey}) into the system. Also, we make sure that the 
-``One Step Simplifier'' button in the toolbar is unselected such that we can 
+"One Step Simplifier" button in the toolbar is unselected such that we can 
 illustrate the update mechanism fully transparent.
 
 The initial *Current Goal* looks like this:
@@ -1842,22 +1822,22 @@ understanding of the basic steps usually performed by automated strategies.
 
 We first apply the \menuRuleName{impRight} rule on the single formula of the 
 sequent.
-Next, the first assignment, \java{t=x;}, is simple enough to be moved out from the
+Next, the first assignment, `t=x;`, is simple enough to be moved out from the
 modality, into an update. We can perform this step by pointing on that
 assignment, and applying the \menuRuleName{assignment} rule. In the resulting
 sequent, that assignment got removed and the update
 `{t:=x}`\footnote{Strictly speaking, the curly brackets are not part of the
 update, but rather surround it. It is however handy to ignore this syntactic
 subtlety when discussing examples.} appeared in front of the modality. We perform the same step
-on the leading assignment \java{x=y;}. Afterwards, the sequent has the two
+on the leading assignment `x=y;`. Afterwards, the sequent has the two
 subsequent updates `{t:=x}{x:=y}` leading the formula.
 
 This is the time to illustrate a very essential step in KeY-style symbolic
-execution, which is \emph{update parallelization}.
+execution, which is *update parallelization*.
 A formula $\{u_1\}\{u_2\}\varphi$ says that $\varphi$ is true after the
-\emph{sequential} execution of $u_1$ and $u_2$. Update 
+*sequential* execution of $u_1$ and $u_2$. Update 
 parallelization transforms the
-sequential steps ($u_1$ and $u_2$) into a \emph{single}, parallel step
+sequential steps ($u_1$ and $u_2$) into a *single*, parallel step
 $\parUp{u_1}{u'_2}$, leading to the
 formula $\{\parUp{u_1}{u'_2}\}\varphi$, where $u'_2$ is the result simplifying
 $\applyUp{u_1}{u_2}$, i.e., applying $u_1$ to the $u_2$. This will get clearer
@@ -1884,7 +1864,7 @@ removes `x:=y`, as it has no effect on `y:=t`.
 Only now, when processing the resulting update `{t:=x}y:=t` further, we 
 are at the
 heart of the update parallelization, the moment where updates turn from
-\emph{delayed} substitutions to real substitutions. The reader can see that by
+*delayed* substitutions to real substitutions. The reader can see that by
 applying the rule \menuRuleName{applyOnElementary} on `{t:=x}y:=t`, and 
 then \menuRuleName{applyOnPV} (apply on Program Variable) on `{t:=x}t`. 
 With that, our parallel update looks like `{t:=x || x:=y || y:=x}`. Its 
@@ -1893,11 +1873,11 @@ element is not important anymore, as `t` does not appear in the
 postcondition `x < y`. It can therefore be dropped
 (\menuRuleName{simplifyUpdate2} on the leading curly bracket).
 The reader may take a moment to consider the result of symbolic execution of the
-original \Java program, the final update
-`{x:=y || y:=x}`. It captures the effect of the \Java code `t=x;x=y;y=t;` (in so far
-as it is relevant for remainder for the proof) in a \emph{single, parallel} step. The
+original Java program, the final update
+`{x:=y || y:=x}`. It captures the effect of the Java code `t=x;x=y;y=t;` (in so far
+as it is relevant for remainder for the proof) in a *single, parallel* step. The
 right-hand sides of the updates `x:=y` and `y:=x` are evaluated in 
-the \emph{same} state, and assigned to the left-hand sides at once.
+the *same* state, and assigned to the left-hand sides at once.
 
 With the empty modality highlighted in the \keyout{OPEN GOAL}, we can apply the
 rule \menuRuleName{emptyModality}. It deletes that modality, and results in the
@@ -1916,9 +1896,9 @@ normalization steps which help the automation, but compromise the readability.
 
 
 #### Using Classes and Objects
-\index{heap}
-Even though the DL problem formulas discussed so far all contained real \Java\
-code, we did not see either of the following central \Java\ features: classes,
+
+Even though the DL problem formulas discussed so far all contained real Java\
+code, we did not see either of the following central Java features: classes,
 objects, or method calls. The following small example features all of them. 
 We consider the file `methodCall.key`:
 \lstlabel{30use:metodCall}
@@ -1936,10 +1916,10 @@ We consider the file `methodCall.key`:
 ```
 
 The `\javaSource` declaration tells the prover where to look up the sources
-of classes and interfaces used in the file. In particular, the \Java\ source file
-\java{Person.java} is contained in the directory `methodExample/`.
-The `\problem` formula states that a \java{Person} is getting
-older at its \java{birthday()}. As a side note, this is an example where an 
+of classes and interfaces used in the file. In particular, the Java source file
+`Person.java` is contained in the directory `methodExample/`.
+The `\problem` formula states that a `Person` is getting
+older at its `birthday()`. As a side note, this is an example where an 
 update does not immediately precede a modality, but a more general DL 
 formula.
 
@@ -1953,9 +1933,9 @@ public class Person {
 }
 \end{lstjava}
 
-When loading the file into the \keysystem, the reader may recognize a 
+When loading the file into the KeY system, the reader may recognize a 
 difference  between the proof obligation given in the problem file and the
-initial proof obligation in the \keysystem: 
+initial proof obligation in the KeY system: 
 \lstlabel{30use:birthday}
 
 ```    
@@ -1977,7 +1957,7 @@ explain this in the following, thereby introducing the representation
 of object states in KeY.
 
 In the context of object-oriented programming, the set of all objects---including
-their internal state---is often referred to as the \emph{heap}. This is an
+their internal state---is often referred to as the *heap*. This is an
 implicit data structure, in so far as it cannot be directly accessed by the
 programmer. Instead, it is implicitly given via the creation and manipulation of
 individual objects. However, in KeY's dynamic logic, the heap is an explicit
@@ -1988,16 +1968,16 @@ which was described in the first book about KeY \citep{BeckertHaehnleSchmitt07}.
 For the sake of clarity, we first discuss the abstract data type of
 heaps in a classical algebraic notation, before turning to KeY's concrete
 syntax shortly. Let us assume two functions \textit{store} and \textit{select}
-with the following type signature:\label{heapFunctions}\indexFunction{select}\indexFunction{store}
+with the following type signature:\indexFunction{select}\indexFunction{store}
 
 
 \[\mathit{store}: \Heap\times\Object\times\Field\times\Any\rightarrow\Heap\]
 \[\textit{select}: \Heap\times\Object\times\Field\rightarrow\Any \]
-\emph{store} models the writing of a value (of \emph{Any} type) to a given field
+*store* models the writing of a value (of *Any* type) to a given field
 of a given object, in a given heap. The result is a new heap. The 
-function \emph{select}
+function *select*
 looks up the value of a given field of a given object, in a given heap. The
-following axioms describe the interplay of \emph{store} and \emph{select}.
+following axioms describe the interplay of *store* and *select*.
 
 \[\textit{select}(\textit{store}(h,o,f,x),o,f) \doteq x\]
 \[f \neq f' \vee o \neq o' \quad \keyimplies\quad \textit{select}(\textit{store}(h,o,f,x), o', f') \doteq \textit{select}(h, o',f')\]
@@ -2011,8 +1991,8 @@ on this.
 
 However, in the user interface of the KeY system, the above notation would 
 give unreadable output for
-real examples. In particular, we would get deeply nested \emph{store} terms during
-symbolic execution of a program (with one \emph{store} per assignment to a
+real examples. In particular, we would get deeply nested *store* terms during
+symbolic execution of a program (with one *store* per assignment to a
 field). Therefore, KeY uses the following, shorter syntax. Instead of
 $\textit{store}(h,o,f,x)$, we write \verb+h[o.f:=x]+, denoting a heap which is identical
 to \verb+h+ everywhere but at \verb+o.f+, whose value is \verb+x+. With that, a
@@ -2023,11 +2003,11 @@ Instead of $\textit{select}(h,o,f)$, we write \verb+o.f@h+, denoting the access 
 \verb+o.f+ in heap \verb+h+. With that, the above axioms become
 
 \begin{equation}
-  \label{eq:firstSelectAxiom}
+  
   `o.f@h[o.f:=x]` = \mathtt{x}
 \end{equation}
 \begin{equation}
-  \label{eq:secondSelectAxiom}
+  
   `f` \neq `f'` \vee `o` \neq `o'` \quad \keyimplies\quad `o'.f'@h[o.f:=x]`  = `o'.f'@h`
 \end{equation}
 
@@ -2035,11 +2015,11 @@ Please note that the symbol \verb+:=+ in \verb+h[o.f:=x]+ does not
 denote an
 update. Instead, it is part of the mix-fix presentation
 `\textvisiblespace [\textvisiblespace .\textvisiblespace :=\textvisiblespace ]`
-of \emph{store}. In particular, \verb+h[o.f:=x]+ does not, in itself, change
+of *store*. In particular, \verb+h[o.f:=x]+ does not, in itself, change
 \verb+h+. Instead, it constructs a new heap that is (in most cases) different from
 \verb+h+. An actual change to \verb+h+ has to be done extra, in an update like
 \verb+h := h[o.f:=x]+. Only after that, \verb+h+ has a new value,
-given by applying \emph{store} to the old value of \verb+h+.
+given by applying *store* to the old value of \verb+h+.
 
 In proofs, during symbolic execution, KeY uses largely a specific heap variable called
 exactly \verb+heap+, which is constantly modified in updates (resulting from
@@ -2048,7 +2028,7 @@ more than one heap, for instance to distinguish the heap before and after
 execution of a method call. But as the one variable called \verb+heap+
 dominates the picture, special shorthand notations are offered for this
 case. The select expression \verb+o.f@heap+ can be abbreviated by \verb+o.f+, and the update
-\verb+heap := heap[o.f:=x]+ can be abbreviated by \verb+o.f:=x+.\index{heap@$\heap$ (program variable)} Note that these
+\verb+heap := heap[o.f:=x]+ can be abbreviated by \verb+o.f:=x+. Note that these
 abbreviations only apply to the single variable called exactly \verb+heap+, not
 otherwise.
 
@@ -2122,11 +2102,11 @@ looks like this:
 
 We should not let confuse ourselves by \verb+p = null+ being present here. Recall
 that the comma on the right-hand side of a sequent essentially is a logical
-\emph{or}. Also, as stated above, we can always imagine a formula being thrown to
+*or*. Also, as stated above, we can always imagine a formula being thrown to
 the other side of the sequent, but negated. Therefore, we essentially have
-\verb+p != null+ as an \emph{assumption} here.
+\verb+p != null+ as an *assumption* here.
 Another thing to comment on is the `@Person` notation in the method call. It
-represents that the calculus has decided which \emph{implementation} of
+represents that the calculus has decided which *implementation* of
 \verb+birthday+ is to be chosen (which, in the presence of inheritance and
 hiding, can be less trivial than here, see Section~\ref{sec:method-contracts}).
 
@@ -2145,135 +2125,96 @@ After that, the code inside the modality looks like this:
   }
 ```
 
-This `method-frame` is the only really substantial extension over \Java\ which
+This `method-frame` is the only really substantial extension over Java which
 our logic allows inside modalities. It models the execution stack, and can
 appear nested in case of nested method calls. Apart from the class and the
 `this` reference, it can also specify a return variable, in case of non `void`
 methods. However, the user is rarely concerned with this construction, and if
 so, only passively. We will not discuss this construct further here, but refer
 to Section~\ref{sect12:method} instead. One interesting thing to note here,
-however, is that method frames are considered as \emph{block statements} in the
-sense of our earlier discussion of active statements, meaning that \emph{method
-frames are never active}. For our sequent at hand, this means that the active
-statement is `if (this.age>=0) {this.age++;}`. The rule
-\menuRuleName{methodBodyExpand} has also introduced the update
-\verb+heapBefore_birthday:=heap+. This is necessary because, in general, the
-formula succeeding the modality may refer to values that were stored in the heap
-at the beginning of the method call. (An example for that is presented in
-Section~\ref{16.sec.ProofSituations}.) However, in the current proof, this
-update is simplified away in the next step, because in the formula following the
-modality, there is no reference to values in the heap from before calling the
-method.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
+however, is that method frames are considered as *block statements* in the sense
+of our earlier discussion of active statements, meaning that \emph{method frames
+are never active}. For our sequent at hand, this means that the active statement
+is `if (this.age>=0) {this.age++;}`. The rule \menuRuleName{methodBodyExpand}
+has also introduced the update \verb+heapBefore_birthday:=heap+. This is
+necessary because, in general, the formula succeeding the modality may refer to
+values that were stored in the heap at the beginning of the method call. (An
+example for that is presented in Section~\ref{16.sec.ProofSituations}.) However,
+in the current proof, this update is simplified away in the next step, because
+in the formula following the modality, there is no reference to values in the
+heap from before calling the method.
 
 #### Controlling Strategy Settings
 
-\index{strategy}
-
 The expansion of methods is among the more problematic steps in program
 verification (together with the handling of loops). In place of recursion, an
-automated proof strategy working with method expansion might not even
-terminate. Another issue is that method expansion goes against the principle of
-\emph{modular} verification, without which even midsize examples become infeasible
-to verify. These are good reasons for giving the user more control over this crucial
-proof step.
+automated proof strategy working with method expansion might not even terminate.
+Another issue is that method expansion goes against the principle of *modular*
+verification, without which even midsize examples become infeasible to verify.
+These are good reasons for giving the user more control over this crucial proof
+step.
 
-KeY therefore allows the user to configure the automated
-strategies such that they \emph{refrain} from expanding methods
-automatically.\footnote{For a discussion of loop treatment, please refer to
-Chapter~\ref{chap:dl} and Section~\ref{chap:17:invariants}.}
-We try this out by loading `methodCall2.key` again, and selecting \guitext{None}
-as the \guitext{Method treatment} option in the *Proof Search Strategy* tab.
-Then we start the strategy, which now stops exactly at the sequent which we discussed
-earlier (Figure~\ref{30use:expandMethog}). We can highlight 
-the active 
-statement, apply first the taclet \menuRuleName{methodCall}. After this step we
-\emph{could} call \menuRuleName{methodBodyExpand} interactively. KeY would then
-\emph{only} apply this very taclet, and stop again. 
+KeY therefore allows the user to configure the automated strategies such that
+they *refrain* from expanding methods automatically.\footnote{For a discussion
+of loop treatment, please refer to Chapter~\ref{chap:dl} and
+Section~\ref{chap:17:invariants}.} We try this out by loading `methodCall2.key`
+again, and selecting \guitext{None} as the \guitext{Method treatment} option in
+the *Proof Search Strategy* tab. Then we start the strategy, which now stops
+exactly at the sequent which we discussed earlier
+(Figure~\ref{30use:expandMethog}). We can highlight the active statement, apply
+first the taclet \menuRuleName{methodCall}. After this step we *could* call
+\menuRuleName{methodBodyExpand} interactively. KeY would then *only* apply this
+very taclet, and stop again.
 
 
 #### Controlling Taclet Options
-\label{sec:tacletoption}
 
-\index{taclet!option}\indexKeyword{withOptions}
+
+\indexKeyword{withOptions}
 We draw out attention back to the proof of `methodCall2.key`. This 
-proof has a branch for the \java{null} case
+proof has a branch for the `null` case
 (\keyout{Null Reference (p=null)}), but that was closed after a few steps, as
 `p = null` is already present, explicitly, on the right side of the sequent
 (\menuRuleName{close}). It is, however, untypical that absence of null 
 references
-can be derived so easily. Often, the ``null branches'' complicate proofs
+can be derived so easily. Often, the ``null branches" complicate proofs
 substantially.
 
-In the KeY system the handling of null references and other runtime exceptions can 
-be adjusted by setting \emph{taclet options}
-We open the taclet option dialogue, via the main menu \selTacletOptions. Among 
-the option
-categories, we select the \guitext{runtimeExceptions}, observe that
-\guitext{ban} is chosen as default, and change that by selecting
-\guitext{allow} instead. Even if the effect of this change on our very example
-is modest, we try it out, to see what happens in 
-principle.\footnote{Please note that changing back to default settings of 
-KeY can be enforced by deleting the `.key`
-directory in the user’s home directory and restarting KeY.}.
-We then load `methodCall.key` and push the play button.
-The proof search strategy stops with two open goals in the \keyout{Null Reference (p = null)} 
-branch.
-Allowing runtime exceptions in the \keysystem results in the treatment of these 
-exceptions 
-as specified in the Java language specification, i.e., that exceptions are thrown if necessary and have 
-to be considered. KeY is able to not only consider explicit exceptions, such as throwing exceptions 
-``by-hand,'' it is also able to map the behavior of the JVM, i.e., to treat
-implicit exceptions.
-The proof tree branches at the point where the strategy reaches the method call \keyout{p.birthday} 
-in the modality.
-The branching of the proof tree results from the taclet \guitext{methodCall}.
-One branch deals with the case, that the object on which the method is called is \index{nonnull}nonnull and the other 
-branch deals with the case that the object is null.
-Depending on the setting of the taclet option \guitext{runtimeException} 
-the \emph{null branch} representing the exceptional\index{exception!runtime} case in the proof looks 
-different.
-At the moment we have set the option for runtime exceptions to allow. 
-Therefore, in the \emph{null branch}
-the method call in the modality is replaced by  \java{throw new 
-java.lang.NullPointerException ()}. 
-So an exception is instantiated and thrown which allows the verified code to 
-catch it and to continue execution in the exceptional case.
-In this case the exception has to be symbolically executed and it has to 
-be proven that the postcondition also holds after the exception had occurred in the program. 
+In the KeY system the handling of null references and other runtime exceptions
+can be adjusted by setting *taclet options* We open the taclet option
+dialogue, via the main menu \selTacletOptions. Among the option categories, we
+select the \guitext{runtimeExceptions}, observe that \guitext{ban} is chosen as
+default, and change that by selecting \guitext{allow} instead. Even if the
+effect of this change on our very example is modest, we try it out, to see what
+happens in principle.\footnote{Please note that changing back to default
+settings of KeY can be enforced by deleting the `.key` directory in the user’s
+home directory and restarting KeY.}. We then load `methodCall.key` and push the
+play button. The proof search strategy stops with two open goals in the
+\keyout{Null Reference (p = null)} branch. Allowing runtime exceptions in the
+KeY system results in the treatment of these exceptions as specified in the Java
+language specification, i.e., that exceptions are thrown if necessary and have
+to be considered. KeY is able to not only consider explicit exceptions, such as
+throwing exceptions "by-hand", it is also able to map the behavior of the JVM,
+i.e., to treat implicit exceptions. The proof tree branches at the point where
+the strategy reaches the method call \keyout{p.birthday} in the modality. The
+branching of the proof tree results from the taclet \guitext{methodCall}. One
+branch deals with the case, that the object on which the method is called is
+nonnull and the other branch deals with the case that the object
+is null. Depending on the setting of the taclet option
+\guitext{runtimeException} the *null branch* representing the
+exceptional case in the proof looks different. At the
+moment we have set the option for runtime exceptions to allow. Therefore, in the
+*null branch* the method call in the modality is replaced by \java{throw
+new java.lang.NullPointerException ()}. So an exception is instantiated and
+thrown which allows the verified code to catch it and to continue execution in
+the exceptional case. In this case the exception has to be symbolically executed
+and it has to be proven that the postcondition also holds after the exception
+had occurred in the program.
 
 
 
 Loading the same file with setting the option \guitext{runtimeException} to 
-\guitext{ban} results in a proof stopping in the \emph{null-branch} as well.
+\guitext{ban} results in a proof stopping in the *null-branch* as well.
 If the user bans runtime exceptions in the KeY system, KeY treats any occurrence 
 of a runtime exception as an irrecoverable program failure. 
 The reader can reproduce this by comparing the node before the branching of the
@@ -2295,36 +2236,29 @@ For the remaining examples we switch the option \guitext{runtimeException} to
 \guitext{ban}.
 
 
-
-\label{page:option-integer}%
-\index{taclet!option!integer semantics}%
-We briefly mention another very important taclet option, the
+% We briefly mention another very important taclet option, the
 \guitext{intRules}. Here, the user can choose between different semantics of the
-primitive \Java\ integer types \java{byte}, \java{short}, \java{int}, \java{long},
-and \java{char}. The options are: the mathematical integers (easy to use, but not fully
-sound), mathematical integers with overflow check (sound, reasonably easy to use, but
-unable to verify programs which depend on \Java's modulo semantics),
-and the true modulo semantics of \Java\ integers (sound, complete, but difficult to
-use). This book contains a separate section on \Java\ integers
-(Section~\ref{sec05:integers}), discussing the different variants in the semantics
-and the calculus.
-Please note that KeY \keyversion comes with the mathematical integer
-semantics chosen as default option, to optimize usability for beginners. However, for a
-sound treatment of integers, the user should switch to either of the other semantics. 
-
+primitive Java integer types `byte`, `short`, `int`, `long`, and `char`. The
+options are: the mathematical integers (easy to use, but not fully sound),
+mathematical integers with overflow check (sound, reasonably easy to use, but
+unable to verify programs which depend on Java's modulo semantics), and the
+true modulo semantics of Java integers (sound, complete, but difficult to use).
+This book contains a separate section on Java integers
+(Section~\ref{sec05:integers}), discussing the different variants in the
+semantics and the calculus. Please note that KeY \keyversion comes with the
+mathematical integer semantics chosen as default option, to optimize usability
+for beginners. However, for a sound treatment of integers, the user should
+switch to either of the other semantics.
 
 ## Understanding Proof Situations
-\label{16.sec.ProofSituations}
 
-\index{macro}
-We have so far used simple toy examples to 
-introduce the \keysystem to the reader. 
-However, the application area of the \keysystem is verification of 
-real-world Java programs, which are specified using the Java Modeling 
-Language (JML). Proving the correctness of larger programs with respect to 
-their specification can be a nontrivial task. s
-In spite of a high degree of automation, performing the remaining interactive 
-steps can become quite complex for the user.
+We have so far used simple toy examples to introduce the KeY system to the
+reader. However, the application area of the KeY system is verification of
+real-world Java programs, which are specified using the Java Modeling Language
+(JML). Proving the correctness of larger programs with respect to their
+specification can be a nontrivial task. s In spite of a high degree of
+automation, performing the remaining interactive steps can become quite complex
+for the user.
 
 In this section we give some hints for where to search for the necessary
 information, and how to proceed the verification process. 
@@ -2379,14 +2313,14 @@ In the following, we give some hints for the comprehension of open goals.
 The first step in understanding what happened during the proof process is to 
 have a look at the proof tree. 
 The user should start at the original proof obligation and follow the proof tree to the open goal(s). 
-The \emph{labels} at the nodes in the proof tree already give good hints what 
+The *labels* at the nodes in the proof tree already give good hints what 
 happened. The user may first draw the attention to the labels which are 
 highlighted light-blue.
 These indicate the nodes where taclets have been applied that perform symbolic 
 execution.
 Here the user gets an impression which point in the control flow of the program 
 is presented in the open goal.
-Moreover, looking at \emph{branching points} in the proof tree can give very useful
+Moreover, looking at *branching points* in the proof tree can give very useful
 insights. Looking closer into the node before the proof branches may give good
 hints about what is (supposed to be) proven in either of the branches.
 
@@ -2416,7 +2350,7 @@ Java statements.
 A good strategy is to first finish the symbolic execution of the program by 
 letting the prover continue with the proof search on the 
 branch with the open goal, such that the modality is removed from the sequent. 
-This strategy is also implemented in the \keysystem as so called 
+This strategy is also implemented in the KeY system as so called 
 macro proof step, which basically is a collection of proof steps and 
 strategies and accessible by right-clicking onto the sequent arrow and 
 selecting the context menu entry \keyout{Auto Pilot} 
@@ -2428,7 +2362,7 @@ However, this strategy does not always succeed. If the user is left with a seque
 containing a modal operator, the reader should be aware that the sequent 
 remains in the prestate.
 This means that all formulas in the sequent refer to the state before executing
-the program. (But please observe that \emph{sub}formulas, following updates or
+the program. (But please observe that *sub*formulas, following updates or
 modalities, are evaluated in different states.)
 
 
@@ -2442,7 +2376,7 @@ further proof steps.
 The user should also keep in mind that $\Gamma \Rightarrow o = null, \Delta$ 
 is equivalent to $\Gamma ,  o \neq null \Rightarrow \Delta$.
 This means that, instead of intuitively trying to prove $o =
-null$ \emph{or} $\Delta$, we can think of proving $\Delta$ under the
+null$ *or* $\Delta$, we can think of proving $\Delta$ under the
 assumption $o  \neq null$, which is effectively the same.
 The reader may again recall an example from `methodCall.key`, where this 
 was discussed earlier. 
@@ -2505,7 +2439,7 @@ method fulfills the precondition, the callee guarantees the postcondition to
 hold after termination. In this example the precondition is \lstinline+true+ 
 and the postcondition says that after the successful termination of the method 
 the field \lstinline+rec.x+ is equal to the value of the field \verb$rec.y$ 
-before the method call (indicated by the keyword \index{old@\lstinline+\old+ (JML)}\lstinline+\old+) increased by 
+before the method call (indicated by the keyword \lstinline+\old+) increased by 
 one. Similarly, the field \lstinline+rec.y+ is equal to the value of the field 
 \verb$rec.y$ before the method call increased by 1.
 For a more detailed description of JML we point the reader to 
@@ -2514,7 +2448,7 @@ method \lstinline+postInc()+ performs.
 
 When loading this file, the \menu{Proof Management} dialogue will open. In its
 \menu{Contract Targets} pane, we make sure that the folder \keyout{PostIncMod}
-(\emph{not} \keyout{PostInc}) is expanded, and therein select the method 
+(*not* \keyout{PostInc}) is expanded, and therein select the method 
 \keyout{postInc()} we want to verify. We are asked to select a contract (in this case, there
 is only one), and press the \menu{Start Proof} button. 
 The reader may make sure that the One Step Simplifier is turned on, and start 
@@ -2527,7 +2461,7 @@ highlighted in light blue and labeled with \keyout{\{ \}}) and select that
 node. In the case at hand, the automated strategy 
 searched a little too far, so we undo some automated rule applications in order 
 to understand the case that could not be proved.
-For that we left-click on the \emph{next} node in the proof tree (where the 
+For that we left-click on the *next* node in the proof tree (where the 
 empty modality is removed), and select the context menu item \keyout{Prune 
 Proof}. 
 The open goal should now look similar to the following:
@@ -2564,7 +2498,7 @@ highlight the last formula of the sequent (by focusing the leading \verb+{+ of
 \menuRuleName{andRight}, which splits one of the conjuncts. We repeat this step 
 for as long as the is more than one conjuncts left.\footnote{For 
 postconditions with a lot of conjunctions this task can be tedious. Therefore, the 
-\keysystem offers a proof macro called \pane{Propositional Expansions 
+KeY system offers a proof macro called \pane{Propositional Expansions 
 w/ splits} which the user may apply instead.}
 Now we have a closer look at the different sequents.
 
@@ -2577,9 +2511,9 @@ We start with the node whose last formula is:
 ```
 
 Focusing on (the leading \verb+{+ of) this formula, we apply the rule 
-\index{one step simplifier}*One step Simplification*. 
+*One step Simplification*. 
 This will basically apply, and thereby resolve, the parallel update as a 
-\emph{substitution} on the equation 
+*substitution* on the equation 
 \verb!self.rec.y@heapAtPre =-1 + self.rec.y!(\verb+@heap+).
 (Recall that the field access \verb&self.rec.y&, without \verb+@+,
 abbreviates \verb!self.rec.y@heap!). 
@@ -2593,9 +2527,9 @@ Therefore, the last formula of the new sequent is
 
 This formula states that the value of \verb+self.rec.y+(\verb+@heap+) is
 equal to \verb+-1+ plus the value \lstinline+self.rec.y+ on a heap that is constructed from
-\verb+heap+ through the two given \emph{store} operations. 
+\verb+heap+ through the two given *store* operations. 
 It can be instructive for the reader to try to understand whether, and why, this
-formula is true. One way to do that is to, \emph{mentally}, apply the axiom
+formula is true. One way to do that is to, *mentally*, apply the axiom
 \eqref{eq:secondSelectAxiom} (page~\pageref{eq:secondSelectAxiom}), which removes
 the \verb+[self.rec.x:=self.rec.y]+. Then apply the axiom 
 \eqref{eq:firstSelectAxiom}, which 
@@ -2624,83 +2558,71 @@ self.rec.x@heap[self.rec.y:=1+self.rec.y]
 ```
 
 This formula says that, in a heap constructed from \verb+heap+ with the two
-given \emph{stores}, the values of \verb+self.rec.y+ and \verb+self.rec.x+ are
-the same. This is not true, however. The user can see that by, again
-\emph{mentally}, applying the axioms \eqref{eq:secondSelectAxiom} and
-\eqref{eq:firstSelectAxiom} to the left side of the equation, resulting in
-\verb&1 + self.rec.y&, and axiom \eqref{eq:firstSelectAxiom} to the right side
-of the equation, resulting in \verb&self.rec.y&.
+given *stores*, the values of \verb+self.rec.y+ and \verb+self.rec.x+ are the
+same. This is not true, however. The user can see that by, again *mentally*,
+applying the axioms \eqref{eq:secondSelectAxiom} and \eqref{eq:firstSelectAxiom}
+to the left side of the equation, resulting in \verb&1 + self.rec.y&, and axiom
+\eqref{eq:firstSelectAxiom} to the right side of the equation, resulting in
+\verb&self.rec.y&.
 
 
-With this technique we have encountered a mistake in our postcondition.
-We should have stated \lstinline+rec.x==\old(rec.y)+ instead of
-`rec.x==\old(rec.y)+1` in the JML specification.
-The reason is that the postincrement expression (in the \Java\ implementation)
-returns the old value. A corrected version of the problem is included in file 
-`PostIncCorrected.java`.
- The reader is encouraged to load this file and use the automated strategy to 
-prove the problem.
-For further examples on using the \keysystem we point the reader to the 
-tutorial chapter (Chapter~\ref{chap:tutorial}).
+With this technique we have encountered a mistake in our postcondition. We
+should have stated \lstinline+rec.x==\old(rec.y)+ instead of
+`rec.x==\old(rec.y)+1` in the JML specification. The reason is that the
+postincrement expression (in the Java implementation) returns the old value.
+A corrected version of the problem is included in file `PostIncCorrected.java`.
+The reader is encouraged to load this file and use the automated strategy to
+prove the problem. For further examples on using the KeY system we point the
+reader to the tutorial chapter (Chapter~\ref{chap:tutorial}).
 
 ## Further Features
-\label{sec:16:further-features}
-Besides the introduced features and mechanisms in this chapter, the KeY 
-systems employs a variety of different features. In the following we will give 
-a glimpse into some other useful features of KeY. 
-#### Employing External Decision Procedures
-\index{decision procedure}
-Apart from strategies, which apply taclets automatically, KeY also employs
-external
-decision procedure tools for increasing the automation of proofs. 
-If formulas contain a lot of equations and inequations over terms that 
-represent structures from different theories it can be a good idea to use SMT 
-solvers instead of a full theorem prover. \index{SMT solver}SMT solvers implement 
-highly-efficient 
-algorithms for deciding the satisfiability of formulas over specific theories, 
-in 
-contrast to full theorem provers, which are designed to work on many different 
-domains.
-We refer to~\citep{BradleyManna07} and \citep{KroeningStrichman08} for a more detailed 
-introduction and
-description of decision procedures and their applications.
 
-The field of decision procedures is very dynamic, and so is the way in which 
-KeY makes use of them. The user can choose among the available decision 
-procedure tools by selecting the main menu item \selDPConfig. 
-We first load `generalProjection.key` and then choose 
-\menu{SMT solvers Options}\index{SMT solver!options} via the main menu item \menu{Options}.
-This opens the \menu{Settings for Decision Procedure} dialogue.
-The user can now adjust general SMT options as well as settings for
+Besides the introduced features and mechanisms in this chapter, the KeY systems
+employs a variety of different features. In the following we will give a glimpse
+into some other useful features of KeY.
+
+#### Employing External Decision Procedures
+
+Apart from strategies, which apply taclets automatically, KeY also employs
+external decision procedure tools for increasing the automation of proofs. If
+formulas contain a lot of equations and inequations over terms that represent
+structures from different theories it can be a good idea to use SMT solvers
+instead of a full theorem prover. SMT solvers implement
+highly-efficient algorithms for deciding the satisfiability of formulas over
+specific theories, in contrast to full theorem provers, which are designed to
+work on many different domains. We refer to~\citep{BradleyManna07} and
+\citep{KroeningStrichman08} for a more detailed introduction and description of
+decision procedures and their applications.
+
+The field of decision procedures is very dynamic, and so is the way in which KeY
+makes use of them. The user can choose among the available decision procedure
+tools by selecting the main menu item \selDPConfig. We first load
+`generalProjection.key` and then choose \menu{SMT solvers Options} via the main
+menu item \menu{Options}. This opens the \menu{Settings for Decision Procedure}
+dialogue. The user can now adjust general SMT options as well as settings for
 individual solvers.
 
-In the *General SMT Options* pane, we can choose for instance the timeout 
-for the SMT 
-solvers. Timeouts are important when working with SMT solvers, as the search 
-process can last very 
-long, without necessarily leading anywhere.
-Here we suggest using as a first step the default timeout settings. However, 
-for more
-complex problems, it can be useful to increase the
-timeout, to give the solver a better chance to find a proof.
-For now we select the external decision procedure tool Z3\footnote{To use an 
-external SMT solver it has to be installed beforehand and the path to the 
-executable of the solver has to be set in the \menu{Settings for 
-Decision Procedure} dialogue.} in the menu
-on the left-hand side in the dialogue. 
-Now we are able to adjust some settings for the 
-solver if needed, but for this example we leave the default settings and click 
-*Okay*.
-In the tool bar the \RunZ\ button now appears and
-we can press it. This opens a dialogue which shows the application of \index{Z3}Z3 and 
-whether it was successful. In this case the dialogue says valid and the reader 
+In the *General SMT Options* pane, we can choose for instance the timeout for
+the SMT solvers. Timeouts are important when working with SMT solvers, as the
+search process can last very long, without necessarily leading anywhere. Here we
+suggest using as a first step the default timeout settings. However, for more
+complex problems, it can be useful to increase the timeout, to give the solver
+a better chance to find a proof. For now we select the external decision
+procedure tool Z3\footnote{To use an external SMT solver it has to be installed
+beforehand and the path to the executable of the solver has to be set in the
+\menu{Settings for Decision Procedure} dialogue.} in the menu on the left-hand
+side in the dialogue. Now we are able to adjust some settings for the solver if
+needed, but for this example we leave the default settings and click *Okay*. In
+the tool bar the \RunZ button now appears and we can press it. This opens
+a dialogue which shows the application of Z3 and whether it was successful. In
+this case the dialogue says valid and the reader
 is now able to press the button *Apply*.   
 This closes the proof in one step(!), as the *Proof* tab is telling us. Decision
 procedures can be very efficient on certain problems. On the down side, we
 sacrificed proof transparency here.
 
-In a more realistic setting, we use decision procedures towards the end of a 
-proof (branch), to close first-order goals which emerged from proving problems
+In a more realistic setting, we use decision procedures towards the end of
+a proof (branch), to close first-order goals which emerged from proving problems
 that originally go beyond the scope of decision procedures.
 
 #### Counterexample Generator
@@ -2714,7 +2636,7 @@ validity of this formula. To use this feature, the SMT solver Z3_CE has to be
 configured in the SMT solver options dialogue.
 
 #### Model Search
-If a sequent contains a lot of (in)equations, the \keysystem offers the
+If a sequent contains a lot of (in)equations, the KeY system offers the
 possibility to adjust the proof search strategy to systematically look for
 a model. This strategy is accessible via the \pane{Proof Search Strategy} tab.
 It is a support for nonlinear inequations and model search. In addition, this
@@ -2732,14 +2654,13 @@ Another feature of KeY is the automated generation of test cases, achieving high
 code coverage criteria by construction. This feature is called \keytg. It
 constructs and analyses a (partial) proof tree for a method under test, extracts
 path conditions, generates test data, and synthesizes test code. This includes
-the generation of test oracles, or alternatively the usage of the
-\index{OpenJML}OpenJML runtime checker. Test case generation is accessible by
-pressing the button \includegraphics[height=1.6ex]{16.images/tg.png} right after
-starting a proof for the method under test. The usage and underlying principles
-of test generation with KeY are described in detail in
-Chapter~\ref{chap:testgen}. In particular, the `Quick Tutorial'
-(Section~\ref{sec:tutorial}) offers a quick introduction into the usage of
-\keytg to a new user.
+the generation of test oracles, or alternatively the usage of the OpenJML
+runtime checker. Test case generation is accessible by pressing the button
+\includegraphics[height=1.6ex]{16.images/tg.png} right after starting a proof
+for the method under test. The usage and underlying principles of test
+generation with KeY are described in detail in Chapter~\ref{chap:testgen}. In
+particular, the `Quick Tutorial' (Section~\ref{sec:tutorial}) offers a quick
+introduction into the usage of \keytg to a new user.
 
 ## What Next?
 

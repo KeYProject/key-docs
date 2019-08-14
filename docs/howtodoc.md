@@ -1,6 +1,35 @@
 # How to write documentation
 
-For full documentation visit [mkdocs.org](https://mkdocs.org).
+This webpage uses [mkdocs](https://mkdocs.org). Mkdocs generates from a bunch of
+markdown files, and a specified template this beautiful web page.
+
+As an author, you can just edit and create new markdown files in the `docs/` of
+the corresponding repository: https://git.key-project.org/key/key-docs. On each
+commit the generation is automatically started and pushed to this URL.
+Therefore, *you do not need to install mkdocs on your computer.* 
+
+The project layout is very simple: There is a configuration file `mkdocs.yml`
+which controls the plugins and settings for the generation. And also a content
+folder `docs/` which contains Markdown files and additionally resources.
+
+
+### Local setup 
+
+mkdocs is written in Python. Hence, everything you need is installable via the Python package manager (`pip`). 
+For a non-root user install use either `make prepare` or execute the following line:
+
+```
+	pip install --user  mkdocs  mkdocs-material  pymdown-extensions pygments markdown-blockdiag markdown-aafigure==v201904.0004
+```
+
+This install all needed packages for this webpage inside `$HOME/.local` and after installation the mkdocs executable should be under `$HOME/.local/bin/mkdocs`.
+
+
+serve:
+	mkdocs serve
+
+build:
+	mkdocs build
 
 ## Commands
 
@@ -9,12 +38,6 @@ For full documentation visit [mkdocs.org](https://mkdocs.org).
 * `mkdocs build` - Build the documentation site.
 * `mkdocs help` - Print this help message.
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
 
 ## Classical Markdown
 

@@ -1,4 +1,4 @@
-# KeY User and Developer Documentation
+# Overview
 
 This web page contains the information for user and developer of the KeY
 Deductive Verification System.

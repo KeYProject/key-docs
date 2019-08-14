@@ -1,16 +1,18 @@
-# ChangeLog
+# Change log
+
+## 2.10.0 (20XY-XX-XX)
+
+### UI 
+
+* NEW: *Proof Exploration* allows you to answer *What-If* questions on sequents.
+
+### Scripts 
+
+* NEW: Documentation support for proof scripts (!15)
+* NEW: KeY Proof Scripts are ported from the Key Proof Script Debugger 
+        (https://formal.iti.kit.edu/psdbg)
 
 ## 2.8.0 (2019-XX-XX)
-
-* Seveal small and large bug fixes: 
-(!225, !224, !222, !219, !213, !212, !209, !208, !205, !203, !201,
-!200, !199, !192, !190, !173, !170, !167, !163, !162, !158, !156, 
-!154, !153,  !151, !146, !145, !139, !136, !133, !131, !119, !117, 
-!108, !99, !92, !83, !82, !81, !78, !77, !75, !73, !71, !70, !69, !68, 
-!67, !66, !65, !58, !52, !47, !46, !45, !40, !39, !37, !33, !31, !30, !24,
-!23, !22, !14, !13, !10, !9, !8, !7, !3, !2)
-
-
 
 ### Logic
 
@@ -56,9 +58,6 @@
  
 ### Scripts 
   * NEW: Rewrite command (!51)
-  * NEW: Documentation support for proof scripts (!15)
-  * NEW: KeY Proof Scripts are ported from the Key Proof Script Debugger 
-        (https://formal.iti.kit.edu/psdbg)
   * FIX: Several fixes and breaking changes: (!153, !146, !145)
   
 
@@ -75,6 +74,25 @@
 ### Eclipse
 
   * Support of Eclipse PHOTON (!74)
+
+
+### Seveal small and large bug fixes: 
+
+(!225, !224, !222, !219, !213, !212, !209, !208, !205, !203, !201,
+!200, !199, !192, !190, !173, !170, !167, !163, !162, !158, !156, 
+!154, !153,  !151, !146, !145, !139, !136, !133, !131, !119, !117, 
+!108, !99, !92, !83, !82, !81, !78, !77, !75, !73, !71, !70, !69, !68, 
+!67, !66, !65, !58, !52, !47, !46, !45, !40, !39, !37, !33, !31, !30, !24,
+!23, !22, !14, !13, !10, !9, !8, !7, !3, !2)
+
+
+*We like to thank all the contributor to this release:*
+
+Alexander Weigl, Carsten Csiky, Dominic Steinhöfel, Florian Lanzinger, Jelle
+Kübler, Jonas Schiffl, Lulu Luong, Mattias Ulbrich, Michael Kirsten, Mihai
+Herda, Peter Schmitt, Richard Bubel, Sarah Grebing, Wolfram Pfeifer
+
+
 
 ## 2.6.3 (2017-10-11)
 
