@@ -10,19 +10,17 @@ source code is loaded, but needs to be run on the sources beforehand.
 
 ## Removing Generics from a Program
 
-If you have the sources installed, the program is invoked from the key/key.core
-directory via: 
+The removing generics functionality is located in the executable created by
 
 ```
-java -cp lib/recoderKey.jar:bin/ \
-    de.uka.ilkd.key.util.removegenerics.Main
+./gradlew shadowJar
 ```
 
-or, if the binaries have been installed:
+It can be invoked from the key/key.ui/build/libs folder:
+
 
 ```
-java -cp <DIR_OF_KeY.jar>/components/key.core.jar:<DIR_OF_KeY.jar>/libs/recoderKey.jar \
-        de.uka.ilkd.key.util.removegenerics.Main
+java -cp key-2.7-exe.jar de.uka.ilkd.key.util.removegenerics.Main
 ```
 
 If you provide no parameters, a usage information is printed.
@@ -31,7 +29,7 @@ If you want to remove generics in the .java-files in directory DIR and
 write the results to directory OUT, call:
 
 ```
-    java -cp....Main -d OUT DIR
+java -cp key-2.7-exe.jar de.uka.ilkd.key.util.removegenerics.Main -d OUT DIR
 ```
 
 It may be that you need to provide additional classpath information
