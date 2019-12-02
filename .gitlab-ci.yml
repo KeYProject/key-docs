@@ -29,6 +29,7 @@ before_script:
   ## with your own domain name. You can copy and repeat that command if you have
   ## more than one server to connect to.
   ##
+  - echo $HOST
   - ssh-keyscan $HOST >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
 
