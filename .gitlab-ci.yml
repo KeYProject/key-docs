@@ -21,6 +21,7 @@ before_script:
   - chmod 700 ~/.ssh
 
   - echo "$SECRET_KEY" > ~/.ssh/id_rsa
+  - chmod 700 ~/.ssh/id_rsa
   - ssh-add 
 
   ##
