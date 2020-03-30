@@ -1,6 +1,60 @@
 # Grammar
 
-## Declaration
+In KeY, there are multiple formal languages for reading specification and
+logical constructs. 
+
+On the specification we have `JML*` -- a dialect of the Java Modeling Language
+-- which comes within the Java files. JML specification are parsed and
+interpreted into `JavaDL` expression. `JavaDL` are represented by the `Term`
+class hierarchy. They can be pretty-printed with the `LogicPrinter` and read by
+facade of the `KeyParser`. Also the `KeyParser` is used to read declarations of
+logical constructs: i.e. *sorts*, *predicates*, *functions*, *taclets*,
+*transformers*, *taclet choices*, and problem options and definitions.
+
+In the following we dive into the `KeyParser`, the term hierarchy and operators
+hierarchy and the expression and declaration syntax.
+
+Internally, every expression is a tree of `Term`s, whereas the `Term` class
+defines a homomorph *Abstract Syntax Tree* (AST). Each `Term` has an operator,
+which defines its meaning, and a list of sub-terms. The internal representation
+of term is its prefix form, in which the term is printed as a tree of function
+application.
+
+This format is not intuitive for humans, hence we defined an syntax that also
+uses infix and postfix notions.
+
+## Expression Syntax 
+
+Precedence:
+
+1. Label on functions (`term «label»`)
+1. Parallel (`||`) *updates only*
+1. Assignment (`term := term`) *updates only*
+2. Equivalence (`<->`)
+3. Implication (`->`)
+4. Disunction (`|`)
+5. Conjunction (`&`)
+6. Equalities (`=`, `!=`), Negation (`! term`), Quantifier , Modality 
+7. Comparison (`<, <=, >=, >`) 
+8. Arithmetik (`+,-`)
+9. Multiplicaiton (`*`)
+10. Division (`/` and Modulo (`%`)
+11. Unary minus (`- term`)
+12. Cast (`(sort) term`)
+13. Bracket suffixes, (`term[i]`, `term[1,5]`, `term[*]`, `term[a:=2]`) 
+14. Final primitives: 
+  * Parens (`( term )`)
+  * Location set, Location term
+  * Substitution `{\subst x; y} f(x)`
+  * If-then-else and Ifex-then-else (`\if (a) TRUE \else b`) 
+  * Abbreviaton (`@name`)
+  * Function names and applicaton (`T.(U::a)`, `t.query()`, `a.b@heap2`)
+  * Literals
+
+
+## Declaration Syntax and Keywords
+
+## Reference 
 
 ### SORTS {: #Token-SORTS}
 

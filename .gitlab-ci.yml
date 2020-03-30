@@ -20,16 +20,11 @@ before_script:
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
 
-  #- echo "$SECRET_KEY" > ~/.ssh/id_rsa
-  #- chmod 700 ~/.ssh/id_rsa
-  #- ssh-add 
-
   ##
   ## Use ssh-keyscan to scan the keys of your private server. Replace gitlab.com
   ## with your own domain name. You can copy and repeat that command if you have
   ## more than one server to connect to.
   ##
-  #- echo $HOST
   - ssh-keyscan $HOST >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
 
