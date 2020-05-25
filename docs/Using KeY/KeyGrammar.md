@@ -48,7 +48,7 @@ Precedence:
   * Substitution `{\subst x; y} f(x)`
   * If-then-else and Ifex-then-else (`\if (a) TRUE \else b`) 
   * Abbreviaton (`@name`)
-  * Function names and applicaton (`T.(U::a)`, `t.query()`, `a.b@heap2`)
+  * Function names and application (`T.(U::a)`, `t.query()`, `a.b@heap2`)
   * Literals
 
 
