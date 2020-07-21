@@ -2,26 +2,68 @@
 
 !!! abstract
     
-    Cheat sheet for JML*, the JML-dialect of KeY.
+    Cheat sheet and definition for JML*, the JML-dialect of KeY.
   
+    Currently under construction.   
+
+
+## Introduction 
+
+Java Modelling Language (JML) is a specification for Java software and currently the only supported specification language in KeY.
+JML is itself an extension and also a restriction of Java, e.g., an Java expression is a valid JML expression and thus it can be used 
+inside ensures clauses, but for well-definedness reason this expression has to side-effect free.
+
+KeY supports a subset of JML, as defined in its [own reference manual](http://www.eecs.ucf.edu/~leavens/JML/jmlrefman/jmlrefman.html), 
+and has also added extension to this subset. The KeY-supported dialect is called JML*.
+
+In this document, we give rather technical, reference like overview of the grammar and tweaks of JML*.
+
+## JML* the top level view
+
+JML* specification are defined within Java comments, which starts with an `@` sign. 
+Valid JML* comments are:
+
+```
+//@ public instance invariant true;
+/*@
+    public model int x = 0;
+ */
+```
+
+In contrast to the JML reference, KeY currently *does not* support comment tags. Therefore `//+KeY@` 
+is currently not a legal.
+
 
 !!! note
+    
+    A common beginners mistakes is a white space between  `//` and `@` sign, like `// @`.
+    These commons are not considers as JML comments. 
 
-    The name of tokens are written in uppercase, e.g. `JML_START` 
-    describes either `/*@` or `//@` -- both introduce a JML 
-    specification.
+    This is also a nice trick to disable JML comments.
 
+JML comments can be placed in any valid position where also a Java comment can be placed. But in practise, 
+you should keep strict policy:
+
+* Comments with invariants, method and field declaration are part of the class, 
+  and should be placed where the member variables are declared.
+* There are also JML comments, which contains only additional modifier. 
+  These comments should be placed along the Java modifiers.
+* Method contracts should be place for a the associated method, like loop contracts should directly placed 
+  before a Java loop statement and block contracts for Java code blocks.
+* The last category are JML comments that are used as Java statements. These should be placed as Java statements.
+
+In the following, we go through each JML detail.
 
 ## JML Method Contracts
 
-<pre>
+```
 jmlContract     : [JML_START](#JML_START)
                   [methodContracts](#methodContracts) mod* 
                   [JML_END](#JML_END) ;
 
 methodContracts : ALSO? methodContract ( ALSO methodContract )*
 ;
-</pre>
+```
 
 
 ```
@@ -45,7 +87,32 @@ clause      : (   requires
                 | mby )
 	          ';'
             ;
+```
 
+## Modifiers
+
+* `pure`
+* `strictly_pure`
+* `model`
+* `helper`
+* `nullable_by_default`
+* `public`
+* `private`
+* `protected`
+* `package`
+* `non_null`
+* `nullable`
+
+## JML statements
+
+### `set <ghost_var> = <>;`
+
+### `assert <expr>`
+
+### `assume <expr>`
+
+
+```
 requires    : REQUIRES heap* expr  ;
 ensures     : ENSURES heap* expr   ;
 signals     : SIGNALS LPAREN typeType id? RPAREN expr;
