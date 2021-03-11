@@ -32,12 +32,67 @@ markdown_extensions:
       format: svg
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+#   - "js/javajml.js"
 
-theme:
+
+theme: # material theme
   name: material
   palette:
     primary: 'teal'
     accent: 'indigo'
+theme:
+  name: null
+  custom_dir: cinder/
+  colorscheme: github
+  highlightjs: true
+  hljs_languages:
+    - yaml
+
+nav:
+  - Home: index.md
+  - User Guide:
+      - user/index.md
+      - user/ADTs.md
+      - user/Classpath.md
+      - user/Interactive.md
+      - user/JavaDLinJML.md
+      - user/RemoveGenerics.md
+      - user/Polarity.md
+      - UI Features:
+          - user/Exploration.md
+          - user/NodeDiff.md
+      - Languages:
+          - user/HowToTaclet.md
+          - user/JMLGrammar.md
+          - user/KeyGrammar.md
+      - Proof Scripts:
+          - workbench/Proof Scripts/index.md
+          - workbench/Proof Scripts/commands.md
+          - workbench/Proof Scripts/language.md
+          - workbench/Proof Scripts/linearScripts.md
+          - workbench/Proof Scripts/macros.md
+          - workbench/Proof Scripts/variables.md
+
+  - Development:
+      - "Start": devel/index.md
+      - devel/Architecture.md
+      - devel/CodeingConventions.md
+      - devel/ExternalProject.md
+      - devel/Gradle.md
+      - devel/GUIExtensions.md
+      - devel/How2ExtRecoder.md
+      - devel/howtodoc.md
+      - devel/HowtoTaclet.md
+      - Testing:
+          - devel/Testing/index.md
+          - devel/ProveRules.md
+          - devel/Testing/ProveRules.md
+          - devel/Testing/RunAllProves.md
+          - devel/Testing/deterministicTestOrder.md
+          - devel/Testing/parserMessageTest.md
+      - Write Documentation: "devel/howtodoc"
+
+#  nav_style: dark
 #  logo: 'https://git.key-project.org/uploads/-/system/appearance/logo/1/key-color.png'
   #feature:
   #  tabs: true

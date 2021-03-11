@@ -86,15 +86,75 @@ Precedence:
 
 ## VARIABLE {: #Token-VARIABLE}
 
+## HEURISTICSDECL {: #Token-HEURISTICSDECL}
+
+# Definition of Taclets
+
+## General definition
+
+## Goals 
+### CLOSEGOAL {: #Token-CLOSEGOAL}
+## REPLACEWITH {: #Token-REPLACEWITH}
+## ADDRULES {: #Token-ADDRULES}
+## ADDPROGVARS {: #Token-ADDPROGVARS}
+
+## Attributes 
+
+### NONINTERACTIVE {: #Token-NONINTERACTIVE}
+### DISPLAYNAME {: #Token-DISPLAYNAME}
+### HELPTEXT {: #Token-HELPTEXT}
+### HEURISTICS {: #Token-HEURISTICS}
+
+## FIND {: #Token-FIND}
+
+## ADD {: #Token-ADD}
+
+## ASSUMES {: #Token-ASSUMES}
+
+
 ## Variable Conditions
 
-### SKOLEMTERM {: #Token-SKOLEMTERM}
+Variable conditions are additionally conditions that can be added to taclets
+with the help of the `\varcond(...)` construct. Consider the example:
 
-### SKOLEMFORMULA {: #Token-SKOLEMFORMULA}
+```
+rules {
+  xyz {
+    \find(...)
+    
+    \varcond(\new(#boolv, boolean))
+    
+    \replacewidth(...)
+  
+  }
+}
+```
 
-### TERMLABEL {: #Token-TERMLABEL}
+Internally, variable conditions correspond the `MatchCondition` class. With the
+new parser creating and adding variable conditions will be simplified.
 
-### MODIFIES {: #Token-MODIFIES}
+### `\sameObserver` (SAME_OBSERVER {:#Token-SAMEOBSERVER}
+
+A variable condition that is satisfied if the two arguments are schema
+variables, their instantiations are terms of observer functions, with the same
+function, which as exactly one heap argument and has got a dependency contract,
+
+*Limitations:* Currently, this and
+`de.uka.ilkd.key.rule.metaconstruct.ObserverEqualityMetaConstruct` only support
+observers with a single heap argument, that should be generalised.
+
+
+### `\skolemTerm` (SKOLEMTERM) {: #Token-SKOLEMTERM}
+
+### `\applyUpdateOnRigid`
+
+### `\simplifyIfThenElseUpdate` 
+
+### `\skolemFormula` SKOLEMFORMULA {: #Token-SKOLEMFORMULA}
+
+### `\termLabel` TERMLABEL {: #Token-TERMLABEL}
+
+### `\modifies` MODIFIES {: #Token-MODIFIES}
 
 ### PROGRAMVARIABLES {: #Token-PROGRAMVARIABLES}
 
@@ -118,9 +178,9 @@ Precedence:
 
 ### FREELABELIN {: #Token-FREELABELIN}
 
-### HASSORT {: #Token-HASSORT}
+### `\hasSort` (HASSORT) {: #Token-HASSORT}
 
-### FIELDTYPE {: #Token-FIELDTYPE}
+### `\fieldType` FIELDTYPE {: #Token-FIELDTYPE}
 
 ### FINAL {: #Token-FINAL}
 
@@ -196,13 +256,15 @@ Precedence:
 
 ### SUBST {: #Token-SUBST}
 
-## IF {: #Token-IF}
+# Term constructs 
 
-## IFEX {: #Token-IFEX}
 
-## THEN {: #Token-THEN}
+## if-then-else {: #Token-IF} {: #Token-THEN} {: #Token-ELSE}
 
-## ELSE {: #Token-ELSE}
+## A binding if-then-else  {: #Token-IFEX}
+
+
+# File constructs
 
 ## INCLUDE {: #Token-INCLUDE}
 
@@ -236,29 +298,7 @@ Precedence:
 
 ## SUCCEDENTPOLARITY {: #Token-SUCCEDENTPOLARITY}
 
-## CLOSEGOAL {: #Token-CLOSEGOAL}
 
-## HEURISTICSDECL {: #Token-HEURISTICSDECL}
-
-## NONINTERACTIVE {: #Token-NONINTERACTIVE}
-
-## DISPLAYNAME {: #Token-DISPLAYNAME}
-
-## HELPTEXT {: #Token-HELPTEXT}
-
-## REPLACEWITH {: #Token-REPLACEWITH}
-
-## ADDRULES {: #Token-ADDRULES}
-
-## ADDPROGVARS {: #Token-ADDPROGVARS}
-
-## HEURISTICS {: #Token-HEURISTICS}
-
-## FIND {: #Token-FIND}
-
-## ADD {: #Token-ADD}
-
-## ASSUMES {: #Token-ASSUMES}
 
 ## TRIGGER {: #Token-TRIGGER}
 
