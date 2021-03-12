@@ -83,6 +83,7 @@ nav:
       - devel/How2ExtRecoder.md
       - devel/howtodoc.md
       - devel/HowtoTaclet.md
+      - devel/NewKeyParser.md
       - Testing:
           - devel/Testing/index.md
           - devel/ProveRules.md
