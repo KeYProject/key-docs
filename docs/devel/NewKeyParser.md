@@ -2,10 +2,11 @@
 
 *weigl, 2021-03-12*
 
-.. abstract:
+!!! abstract
 
-    This note acompnies the rewrite of the KeYParser and KeYLexer to ANTLR4. It explains the changes and 
-    how to deal with them on branches. 
+    This note explains the rewrite of the KeyParser and KeyLexer to ANTLR4. It explains the background, the architecture
+    and shows how to deal breaking changes. 
+    
 
 ## Background
 
