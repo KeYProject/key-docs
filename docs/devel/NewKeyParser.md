@@ -151,6 +151,19 @@ Proofs are not handled by the parser anymore. This avoids the construction of la
 
 This is already implemented in `ProofReplayer`.
 
+
+### I have an open MR. How can I translate my change from the old parser to the new one?
+
+Let's consider that you modify the old parser, in particular the grammar file `KeYParser.g`. In the normal case, 
+you have just added some new rules or modify an existing one. 
+
+1. Split your modification of `KeYParser.g` into grammar and code.
+2. Identify the spots to changed in the new grammar file `KeyParser.g4`, and modify/add your grammar rules.
+3. Your code need to put into a visitor (see above). Identify the right analysation phase (and visitor). Usually, you have to decide whether your code is evaluated with the base declaration (sorts etc.), 2nd level declaration (functions, etc.), taclets or problem files. 
+4. Extend the correct visitor (overriding the visit-method for your new rules)
+
+
+
 ### How can I add a new variable condition?
 
 A taclet holds a list of *variable conditions*. These are conditions on the values of the  declared (schema) variables in a taclet. These conditions were a fixed set defined by the grammar in the old parser.  In the new parser, the grammar is (nearly) independent of the particular existing conditions.
