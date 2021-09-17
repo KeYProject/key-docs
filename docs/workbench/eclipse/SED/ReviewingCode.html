@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title';
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../header.html" -->
+<h2>Reviewing Code Evaluation</h2> 
+<p>
+   The goal of the evaluation is to compare direct source code review with an inspection using the <a href="index.html">Symbolic Execution Debugger (SED)</a>.
+   The evaluation is realized as part of Eclipse and fully self explaining.
+   During the evaluation you can enjoy nice introduction videos about the tools and test your knowledge while answering questions about four or six code examples.
+   Knowledge about SED and JML is helpful but not required.
+   The evaluation usually takes about <b>60 minutes</b>.
+</p>
+<h3>Participation (Installation)</h3>
+<p>
+   Please follow the steps to participate in the evaluation:
+   <ol>
+      <li>
+         Install prerequisites:
+         <ul>
+            <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">Java 7</a> or newer</li>
+            <li>
+               libwebkitgtk (Linux only)<br><code>sudo apt-get install libwebkitgtk-1.0-0</code>
+            </li>
+         </ul>
+      </li>
+      <li>
+         Ensure that your firewall allows access to <b>sed.se.informatik.tu-darmstadt.de</b> on port <b>10947</b>.
+      </li>
+      <li>
+         Download the best matching preconfigured Eclipse Luna product. It contains all required features:
+         <ul>
+            <li><a href="../../download/releases/SEDEvaluations/aix.gtk.ppc.zip">aix (gtk/ppc)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/aix.gtk.ppc64.zip">aix (gtk/ppc64)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/hpux.gtk.ia64.zip">hpux (gtk/ia64)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/linux.gtk.ppc.zip">linux (gtk/ppc)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/linux.gtk.ppc64.zip">linux (gtk/ppc64)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/linux.gtk.ppc64le.zip">linux (gtk/ppc64le)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/linux.gtk.s390.zip">linux (gtk/s390)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/linux.gtk.s390x.zip">linux (gtk/s390x)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/linux.gtk.x86.zip">linux (gtk/x86)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/linux.gtk.x86_64.zip">linux (gtk/x86_64)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/macosx.cocoa.x86.zip">macosx (cocoa/x86)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/macosx.cocoa.x86_64.zip">macosx (cocoa/x86_64)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/solaris.gtk.sparc.zip">solaris (gtk/sparc)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/solaris.gtk.x86.zip">solaris (gtk/x86)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/win32.win32.x86.zip">win32 (win32/x86)</a></li>
+            <li><a href="../../download/releases/SEDEvaluations/win32.win32.x86_64.zip">win32 (win32/x86_64)</a></li>
+         </ul>
+      </li>
+      <li>Extract the downloaded ZIP archive (e.g. into a temporary directory).</li>
+      <li>
+         Start the executable file <i>SED</i> of folder <i>SED</i>.
+         <ol>
+            <li>Use an empty workspace.</li>
+            <!--
+            <li>
+               Optionally, test connection to evaluation server.
+               <ol>
+                  <li>Select main menu item <b><i>Window, Preferences</i></b>.</li>
+                  <li>Select preference page <b><i>Run/Debug, Symbolic Execution Debugger (SED), KeY, Evaluation</b>.</li>
+                  <li>Click on <b><i>Ping Server</b>.</li>
+                  <li>If the server answered, everything is fine. Otherwise, ensure that you have internet connection and that your firewall does not block the in the preference page mentioned server.</li>
+                  <li>Close the opened result dialog and the preferenes dialog.</li>
+               </ol>
+            </li>
+            -->
+            <li>Select main menu item <b><i>Evaluation, Reviewing Code</i></b> and finish the opened wizard.</li>
+         </ol>
+      </li>
+      <li>After finishing the evaluation the extracted folder <i>SED</i> (and the used workspace) can be deleted.</li>
+   </ol>
+</p>
+<h3>Useful Hints for the Evaluation</h3>
+<p>
+<ul>
+   <li>Follow the mentioned best practices.</li>
+   <li>Do not try to understand a full symbolic execution tree at once, focus on one path at a time.</li>
+   <li>Watch the instruction videos again, if usage of the tools is unclear.<br>
+       (Previously shown instructions are available in the bottom toolbar of the evaluation wizard.)
+   </li>
+   <li>Do not spend much more than 10 minutes per code example.</li>
+</ul>
+</p>
+<h3>Contact</h3>
+<p>
+If you have any questions, feel free to contact Martin Hentschel (<a href="mailto:hentschel@cs.tu-darmstadt.de">hentschel@cs.tu-darmstadt.de</a>).
+</p>
+<h3>Screenshot</h3>
+<p>
+The following screenshot shows the evaluation wizard:
+</p>
+<center><img src="images/ReviewingCode.png"></center>
+<!--#include virtual="../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

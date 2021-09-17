@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title';
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../header.html" -->
+<h2>Visual DbC</h2>
+<p>
+Visual DbC is a proof management and visualization tool. It allows to visualize code members (e.g. types, attributes, methods) together with specifications (e.g. method contracts, invariants) and proofs in a DbC diagram similar to an UML class diagram. Proof references are used to indicate that a code member or a specification is used by a proof.  
+</p>
+<p>
+The following sections illustrate the main features of Visual DbC using screenshots. 
+Each section contains numbered screenshots that explain a usage scenario step by step. 
+Clicking on each picture produces a more detailed view. 
+The screenshots may differ from the latest release. 
+</p>
+
+<h3>Prerequisites</h3>
+<p>Visual DbC is compatible with <a href="http://www.eclipse.org" target="_blank">Eclipse</a> Indigo (3.7) or newer.</p>
+<p>Required update-sites and installation instructions are available in the <a href="../../download/index.html#eclipse">download</a> area.</p>
+
+<h3>Visualize existing source code</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/generate01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/generate01thumb.png" alt="Visualize existing source code" title="Visualize existing source code" />
+      </a>
+      <div class="highslide-caption">1. Select package to visualize its source code. Subpackages will be automatically included.</div>
+      <figcaption>1. Select package<br> to visualize its source code.<br> Subpackages will be<br> automatically included.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/generate02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/generate02thumb.png" alt="Visualize existing source code" title="Visualize existing source code" />
+      </a>
+      <div class="highslide-caption">2. Open new wizard via context menu item "New, Other..." of the selected package.</div>
+      <figcaption>2. Open new wizard via context menu item "New, Other..." of the selected package.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/generate03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/generate03thumb.png" alt="Visualize existing source code" title="Visualize existing source code" />
+      </a>
+      <div class="highslide-caption">3. Select "Visual DbC, DbC Diagram from Data Source".</div>
+      <figcaption>3. Select "Visual DbC, DbC Diagram from Data Source".</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/generate04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/generate04thumb.png" alt="Visualize existing source code" title="Visualize existing source code" />
+      </a>
+      <div class="highslide-caption">4. Define the file name of the diagram file. This file contains the graphical representations.</div>
+      <figcaption>4. Define the file name of the diagram file.<br> This file contains the graphical representations.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/generate05.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/generate05thumb.png" alt="Visualize existing source code" title="Visualize existing source code" />
+      </a>
+      <div class="highslide-caption">5. Define the file name of the model file. This file contains the content.</div>
+      <figcaption>5. Define the file name of the model file.<br> This file contains the content.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/generate06.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/generate06thumb.png" alt="Visualize existing source code" title="Visualize existing source code" />
+      </a>
+      <div class="highslide-caption">6. Optionally change the package treatment and finish the wizard.</div>
+      <figcaption>6. Optionally change the package treatment and finish the wizard.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/generate07.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/generate07thumb.png" alt="Visualize existing source code" title="Visualize existing source code" />
+      </a>
+      <div class="highslide-caption">7. Inspect the generated diagram. The layout of selected diagram elements can be improved by selecting main menu item "Diagram, Arrange, All".</div>
+      <figcaption>7. Inspect the generated diagram.<br> The layout of selected diagram elements can be improved by selecting main menu item "Diagram, Arrange, All".</figcaption>
+   </figure>
+</div>
+
+
+<h3>Do proofs with a DbC diagram</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/proof01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/proof01thumb.png" alt="Do proofs with a DbC diagram" title="Do proofs with a DbC diagram" />
+      </a>
+      <div class="highslide-caption">1. Add a proof and name it "ContractPO".</div>
+      <figcaption>1. Add a proof and name it "ContractPO".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/proof02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/proof02thumb.png" alt="Do proofs with a DbC diagram" title="Do proofs with a DbC diagram" />
+      </a>
+      <div class="highslide-caption">2. Add a proof target reference from the proof to the element to verify.</div>
+      <figcaption>2. Add a proof target reference<br> from the proof to the element to verify.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/proof03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/proof03thumb.png" alt="Do proofs with a DbC diagram" title="Do proofs with a DbC diagram" />
+      </a>
+      <div class="highslide-caption">3. Select "Open Proof" in the context menu of the proof.</div>
+      <figcaption>3. Select "Open Proof" in the context menu of the proof.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/proof04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/proof04thumb.png" alt="Do proofs with a DbC diagram" title="Do proofs with a DbC diagram" />
+      </a>
+      <div class="highslide-caption">4. Do the proof as normal in the user interface of KeY.</div>
+      <figcaption>4. Do the proof as normal in the user interface of KeY.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/proof05.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/proof05thumb.png" alt="Do proofs with a DbC diagram" title="Do proofs with a DbC diagram" />
+      </a>
+      <div class="highslide-caption">5. Detected proof references are automatically added to the diagram.</div>
+      <figcaption>5. Detected proof references are automatically added<br> to the diagram.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/proof06.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/proof06thumb.png" alt="Do proofs with a DbC diagram" title="Do proofs with a DbC diagram" />
+      </a>
+      <div class="highslide-caption">6. View "Statistic" shows the status of all proof obligations.</div>
+      <figcaption>6. View "Statistic" shows the status of all proof obligations.</figcaption>
+   </figure>
+</div>
+
+
+<h3>Visualize proof dependencies of a proof in the KeYIDE</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/proofDependencies01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/proofDependencies01thumb.png" alt="Visualize proof dependencies of a proof in the KeYIDE" title="Visualize proof dependencies of a proof in the KeYIDE" />
+      </a>
+      <div class="highslide-caption">1. Do the proof in the KeYIDE as normal.</div>
+      <figcaption>1. Do the proof in the <a href="KeYIDE.html">KeYIDE</a> as normal.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/proofDependencies02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/proofDependencies02thumb.png" alt="Visualize proof dependencies of a proof in the KeYIDE" title="Visualize proof dependencies of a proof in the KeYIDE" />
+      </a>
+      <div class="highslide-caption">2. Open view "Proof Dependencies" via main menu item "Window, Show View, Proof Dependencies".</div>
+      <figcaption>2. Open view "Proof Dependencies" via main menu item<br> "Window, Show View, Proof Dependencies".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/proofDependencies03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/proofDependencies03thumb.png" alt="Visualize proof dependencies of a proof in the KeYIDE" title="Visualize proof dependencies of a proof in the KeYIDE" />
+      </a>
+      <div class="highslide-caption">3. Inspect the used code members and specifications in view "Proof Dependencies".</div>
+      <figcaption>3. Inspect the used code members and specifications in view "Proof Dependencies".</figcaption>
+   </figure>
+</div>
+
+
+<h3>KeY basics in Eclipse and troubleshooting</h3>
+
+<ul>
+   <li><a href="../CrossProject/index.html">KeY basics in Eclipse (Cross-project Functionality)</a>
+      <ul>
+         <li><a href="../CrossProject/index.html#example">Create an example project</a></li>
+         <li><a href="../CrossProject/index.html#taclet">Change taclet options</a></li>
+         <li><a href="../CrossProject/index.html#KeYsClassPath">Define class path used by KeY</a></li>
+      </ul>
+   </li>
+   <li><a href="../CrossProject/index.html#troubleshooting">Troubleshooting</a>
+      <ul>
+         <li><a href="../CrossProject/index.html#API">Unresolved classtype (support for API classes)</a></li>
+      </ul>
+   </li>
+</ul>
+
+
+<!--#include virtual="../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

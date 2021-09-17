@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title';
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../header.html" -->
+<h2>Stubby - The Stub Generator</h2>
+<p>
+Stubby allows to generate stubs annotated with default JML specifications for used API members.
+</p>
+<p>
+The following sections illustrate the main features of Stubby using screenshots. 
+Each section contains numbered screenshots that explain a usage scenario step by step. 
+Clicking on each picture produces a more detailed view. 
+The screenshots may differ from the latest release. 
+</p>
+
+<h3>Prerequisites</h3>
+<p>Stubby is compatible with <a href="http://www.eclipse.org" target="_blank">Eclipse</a> Luna (4.4) or newer.</p>
+<p>Required update-sites and installation instructions are available in the <a href="../../download/index.html#eclipsePreview">download</a> area.</p>
+
+<h3>Generate Stubs</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/generate01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/generate01thumb.png" alt="Generate Stubs" title="Generate Stubs" />
+      </a>
+      <div class="highslide-caption">1. Select "Generate Stubs" in the context menu of a Java project.</div>
+      <figcaption>1. Select "Generate Stubs"<br /> in the context menu of a Java project.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/generate02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/generate02thumb.png" alt="Generate Stubs" title="Generate Stubs" />
+      </a>
+      <div class="highslide-caption">2. Define generation settings and finish the wizard.</div>
+      <figcaption>2. Define generation settings and finish the wizard.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/generate03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/generate03thumb.png" alt="Generate Stubs" title="Generate Stubs" />
+      </a>
+      <div class="highslide-caption">3. Inspect the generated stub files.</div>
+      <figcaption>3. Inspect the generated stub files.</figcaption>
+   </figure>
+</div>
+
+
+<h3>Edit Generated Stubs</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/edit01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/edit01thumb.png" alt="Edit Generated Stubs" title="Edit Generated Stubs" />
+      </a>
+      <div class="highslide-caption">1. Open the stub file to edit.</div>
+      <figcaption>1. Open the stub file to edit.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/edit02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/edit02thumb.png" alt="Edit Generated Stubs" title="Edit Generated Stubs" />
+      </a>
+      <div class="highslide-caption">2. Replace '@generated' with '@generated NOT' to ensure that changes will be maintained during stub generation. Modify specification afterwards.</div>
+      <figcaption>2. Replace '@generated' with '@generated NOT' to ensure that changes will be <br />  maintained during stub generation. Modify specification afterwards.</figcaption>
+   </figure>
+</div>
+
+
+
+
+<!--#include virtual="../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

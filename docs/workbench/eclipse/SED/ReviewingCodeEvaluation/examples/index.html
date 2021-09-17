@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../../../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../../../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title';
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../../../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../../../header.html" -->
+<h2>Source Code Examples of the Reviewing Code Evaluation</h2> 
+<p>
+   The source code examples of the <a href="../../ReviewingCode.html">Reviewing Code Evaluation</a> are prsented in the following.
+</p>
+<p>
+   <a href="../../ReviewingCode.html"><b><font color="red">If you plan to participate in the evaluation, please do not look at them before!</font></b></a>
+</p>
+
+
+
+
+
+
+
+
+<h3><a name="BankUtil">BankUtil</a></h3>
+
+<p>
+   A stair-step table lookup, inspired by book "Code Complete, Second Edition" (ISBN 13: 9780735619678). Click <a href="download/exampleInsuranceRate.zip">here</a> to download the source code and the proof file.
+</p>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- Begin Main generated via http://hilite.me/ ------------------------ -->      
+<!-- ----------------------------------------------------------------------- -->    
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * This class provides utility methods for a banking application.</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> BankUtil {
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Computes the insurance rate based on the given age.</span>
+<span style="color: #008800; font-style: italic">    * @param age The requested age.</span>
+<span style="color: #008800; font-style: italic">    * @return The insurance rate according to the age:</span>
+<span style="color: #008800; font-style: italic">    * &lt;ul&gt;</span>
+<span style="color: #008800; font-style: italic">    *    &lt;li&gt;{@code 200} if {@code age &lt; 18}&lt;/li&gt;</span>
+<span style="color: #008800; font-style: italic">    *    &lt;li&gt;{@code 250} if {@code age &gt;= 18} and {@code age &lt; 19}&lt;/li&gt;</span>
+<span style="color: #008800; font-style: italic">    *    &lt;li&gt;{@code 300} if {@code age &gt;= 19} and {@code age &lt; 21}&lt;/li&gt;</span>
+<span style="color: #008800; font-style: italic">    *    &lt;li&gt;{@code 450} if {@code age &gt;= 21} and {@code age &lt; 35}&lt;/li&gt;</span>
+<span style="color: #008800; font-style: italic">    *    &lt;li&gt;{@code 575} if {@code age &gt;= 35}&lt;/li&gt;</span>
+<span style="color: #008800; font-style: italic">    * &lt;ul&gt;</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">long</span> computeInsuranceRate(<span style="color: #000080; font-weight: bold">int</span> age) {
+      <span style="color: #000080; font-weight: bold">int</span>[] ageLimits = {<span style="color: #0000FF">18</span>, <span style="color: #0000FF">19</span>, <span style="color: #0000FF">21</span>, <span style="color: #0000FF">35</span>, <span style="color: #0000FF">65</span>};
+      <span style="color: #000080; font-weight: bold">long</span>[] insuranceRates = {<span style="color: #0000FF">200</span>, <span style="color: #0000FF">250</span>, <span style="color: #0000FF">300</span>, <span style="color: #0000FF">450</span>, <span style="color: #0000FF">575</span>};
+      <span style="color: #000080; font-weight: bold">int</span> ageLevel = <span style="color: #0000FF">0</span>;
+      <span style="color: #000080; font-weight: bold">long</span> insuranceRate = <span style="color: #0000FF">570</span>;
+      <span style="color: #000080; font-weight: bold">while</span> (ageLevel &lt; ageLimits.<span style="color: #FF0000">length</span> - <span style="color: #0000FF">1</span>) {
+         <span style="color: #000080; font-weight: bold">if</span> (age &lt; ageLimits[ageLevel]) {
+            <span style="color: #000080; font-weight: bold">return</span> insuranceRates[ageLevel];
+         }
+         ageLevel++;
+      }
+      <span style="color: #000080; font-weight: bold">return</span> insuranceRate;
+   }
+   
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">void</span> main(String[] args) {
+      <span style="color: #008800; font-style: italic">// TODO: Write executable code here if appropriate.</span>
+      <span style="color: #008800; font-style: italic">//System.out.println(computeInsuranceRate(age));</span>
+   }
+}
+</pre></td></tr></table></div>
+
+
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- End Main generated via http://hilite.me/ -------------------------- -->      
+<!-- ----------------------------------------------------------------------- -->   
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/BankUtil.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/SET/BankUtil.png" width="341" height="225" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/BankUtil.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/SED/BankUtil.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+
+
+
+
+
+<h3><a name="MathUtil">MathUtil</a></h3>
+
+<p>
+   An overflow causes an <code>ArrayIndexOutOfBoundsException</code>, inspired by bug item <a href="http://bugs.java.com/bugdatabase/view_bug.do?bug_id=5045582" target="_blank">JDK-5045582</a>. Click <a href="download/exampleMedian.zip">here</a> to download the source code and the proof file.
+</p>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- Begin Main generated via http://hilite.me/ ------------------------ -->      
+<!-- ----------------------------------------------------------------------- -->    
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * Provides static methods performing mathematically operations.</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> MathUtil {
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Computes the median value between the given start and end index of a </span>
+<span style="color: #008800; font-style: italic">    * sorted array without modifying it. The relation between start and end</span>
+<span style="color: #008800; font-style: italic">    * is not important. This means that the median is computed in case that</span>
+<span style="color: #008800; font-style: italic">    * {@code start &lt;= end} holds but also in case that {@code start &gt; end} holds.</span>
+<span style="color: #008800; font-style: italic">    * &lt;p&gt;</span>
+<span style="color: #008800; font-style: italic">    * In case that the number of array elements between start and end is odd (uneven),</span>
+<span style="color: #008800; font-style: italic">    * the median is the value of the array element in the middle of start and end.</span>
+<span style="color: #008800; font-style: italic">    * &lt;p&gt;</span>
+<span style="color: #008800; font-style: italic">    * In case that the number of array elements between start and end is even,</span>
+<span style="color: #008800; font-style: italic">    * the median is the average (integer division) of the two middle elements.</span>
+<span style="color: #008800; font-style: italic">    * @param array The sorted array for which to compute the median.</span>
+<span style="color: #008800; font-style: italic">    * @param start A valid index in the array.</span>
+<span style="color: #008800; font-style: italic">    * @param end A valid index in the array.</span>
+<span style="color: #008800; font-style: italic">    * @return The median value of the array between start and end index.</span>
+<span style="color: #008800; font-style: italic">    * @throws IllegalArgumentException in case of illegal parameters.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">int</span> median(<span style="color: #000080; font-weight: bold">int</span>[] array, <span style="color: #000080; font-weight: bold">int</span> start, <span style="color: #000080; font-weight: bold">int</span> end) {
+      <span style="color: #008800; font-style: italic">// Check parameters</span>
+      <span style="color: #000080; font-weight: bold">if</span> (array == <span style="color: #000080; font-weight: bold">null</span>) {
+         <span style="color: #000080; font-weight: bold">throw</span> <span style="color: #000080; font-weight: bold">new</span> IllegalArgumentException(<span style="color: #0000FF">&quot;Array is null.&quot;</span>);
+      }
+      <span style="color: #000080; font-weight: bold">if</span> (start &lt; <span style="color: #0000FF">0</span> || start &gt;= array.<span style="color: #FF0000">length</span>) {
+         <span style="color: #000080; font-weight: bold">throw</span> <span style="color: #000080; font-weight: bold">new</span> IllegalArgumentException(<span style="color: #0000FF">&quot;Start is not within the array bounds.&quot;</span>);
+      }
+      <span style="color: #000080; font-weight: bold">if</span> (end &lt; <span style="color: #0000FF">0</span> || end &gt;= array.<span style="color: #FF0000">length</span>) {
+         <span style="color: #000080; font-weight: bold">throw</span> <span style="color: #000080; font-weight: bold">new</span> IllegalArgumentException(<span style="color: #0000FF">&quot;End is not within the array bounds.&quot;</span>);
+      }
+      <span style="color: #008800; font-style: italic">// Compute median</span>
+      <span style="color: #000080; font-weight: bold">int</span> middle = (start + end) / <span style="color: #0000FF">2</span>;
+      <span style="color: #000080; font-weight: bold">if</span> ((start + end) % <span style="color: #0000FF">2</span> == <span style="color: #0000FF">0</span>) {
+         <span style="color: #000080; font-weight: bold">return</span> array[middle];
+      }
+      <span style="color: #000080; font-weight: bold">else</span> {
+         <span style="color: #000080; font-weight: bold">return</span> (array[middle] + array[middle + <span style="color: #0000FF">1</span>]) / <span style="color: #0000FF">2</span>;
+      }
+   }
+   
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">void</span> main(String[] args) {
+      <span style="color: #008800; font-style: italic">// TODO: Write executable code here if appropriate.</span>
+      <span style="color: #008800; font-style: italic">//System.out.println(median(new int[] {arrayElementsSeparatedByComma}, start, end));</span>
+   }
+}
+</pre></td></tr></table></div>
+
+
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- End Main generated via http://hilite.me/ -------------------------- -->      
+<!-- ----------------------------------------------------------------------- -->   
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/MathUtil.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/SET/MathUtil.png" width="396" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/MathUtil.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/SED/MathUtil.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+
+
+
+
+
+
+
+<h3><a name="IntegerUtil">IntegerUtil</a></h3>
+
+<p>
+   Inspired by book "Why Programs Fail, Second Edition: A Guide to Systematic Debugging" (ISBN 13: 9780123745156). Click <a href="download/exampleMiddle.zip">here</a> to download the source code and the proof file.
+</p>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- Begin Main generated via http://hilite.me/ ------------------------ -->      
+<!-- ----------------------------------------------------------------------- -->    
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * This class provides general utility methods dealing with integer numbers.</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> IntegerUtil {
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Returns the middle value of {@code x}, {@code y} and {@code z}.</span>
+<span style="color: #008800; font-style: italic">    * @param x The first integer number.</span>
+<span style="color: #008800; font-style: italic">    * @param y The second integer number.</span>
+<span style="color: #008800; font-style: italic">    * @param z The third integer number.</span>
+<span style="color: #008800; font-style: italic">    * @return The middle value of {@code x}, {@code y} and {@code z}.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">int</span> middle(<span style="color: #000080; font-weight: bold">int</span> x, <span style="color: #000080; font-weight: bold">int</span> y, <span style="color: #000080; font-weight: bold">int</span> z) {
+      <span style="color: #000080; font-weight: bold">if</span> (y &lt; z) {
+         <span style="color: #000080; font-weight: bold">if</span> (x &lt; y) {
+            <span style="color: #000080; font-weight: bold">return</span> y;
+         }
+         <span style="color: #000080; font-weight: bold">else</span> {
+            <span style="color: #000080; font-weight: bold">if</span> (x &lt; z) {
+               <span style="color: #000080; font-weight: bold">return</span> y;
+            }
+         }
+      }
+      <span style="color: #000080; font-weight: bold">else</span> {
+         <span style="color: #000080; font-weight: bold">if</span> (x &gt; y) {
+            <span style="color: #000080; font-weight: bold">return</span> y;
+         }
+         <span style="color: #000080; font-weight: bold">else</span> {
+            <span style="color: #000080; font-weight: bold">if</span> (x &gt; z) {
+               <span style="color: #000080; font-weight: bold">return</span> x;
+            }
+         }
+      }
+      <span style="color: #000080; font-weight: bold">return</span> z;
+   }
+   
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">void</span> main(String[] args) {
+      <span style="color: #008800; font-style: italic">// TODO: Write executable code here if appropriate.</span>
+      <span style="color: #008800; font-style: italic">//System.out.println(middle(x, y, z));</span>
+   }
+}
+</pre></td></tr></table></div>
+
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- End Main generated via http://hilite.me/ -------------------------- -->      
+<!-- ----------------------------------------------------------------------- -->   
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/IntegerUtil.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/SET/IntegerUtil.png" width="755" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/IntegerUtil.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/SED/IntegerUtil.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+
+
+
+
+
+
+
+
+<h3><a name="ObservableArray">ObservableArray</a></h3>
+
+<p>
+   Inspired by book "Effective Java (2nd Edition)" (ISBN 13: 9780321356680). Click <a href="download/exampleObservableArray.zip">here</a> to download the source code and the proof file.
+</p>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- Begin Main generated via http://hilite.me/ ------------------------ -->      
+<!-- ----------------------------------------------------------------------- -->    
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * An observable array which delegates all actions to an array.</span>
+<span style="color: #008800; font-style: italic"> * @see ArrayListener</span>
+<span style="color: #008800; font-style: italic"> * @see ArrayEvent</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> ObservableArray {
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * The array to which all actions are delegated.</span>
+<span style="color: #008800; font-style: italic">    * &lt;p&gt;</span>
+<span style="color: #008800; font-style: italic">    * The array is never {@code null},</span>
+<span style="color: #008800; font-style: italic">    * but the value at an array index might be {@code null}.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #008800; font-style: italic">/*@ invariant array != null;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">private</span> <span style="color: #000080; font-weight: bold">final</span> <span style="color: #008800; font-style: italic">/*@ nullable @*/</span> Object[] array;
+   
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * The optional available {@link ArrayListener} instances.</span>
+<span style="color: #008800; font-style: italic">    * &lt;p&gt;</span>
+<span style="color: #008800; font-style: italic">    * If no listeners are available, array {@link arrayListeners} might be {@code null} or empty.</span>
+<span style="color: #008800; font-style: italic">    * Also the value at an array index might be {@code null}.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">private</span> <span style="color: #008800; font-style: italic">/*@ nullable @*/</span> ArrayListener[] arrayListeners;
+   
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Constructs an {@link ObservableArray} taking ownership of the given array.</span>
+<span style="color: #008800; font-style: italic">    * &lt;p&gt;</span>
+<span style="color: #008800; font-style: italic">    * In case that the given array is {@code null} an </span>
+<span style="color: #008800; font-style: italic">    * {@link IllegalArgumentException} will be thrown.</span>
+<span style="color: #008800; font-style: italic">    * @param array The array to which all actions are delegated.</span>
+<span style="color: #008800; font-style: italic">    * @throws IllegalArgumentException if the given array is {@code null}.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> ObservableArray(Object[] array) {
+      <span style="color: #000080; font-weight: bold">if</span> (array == <span style="color: #000080; font-weight: bold">null</span>) {
+         <span style="color: #000080; font-weight: bold">throw</span> <span style="color: #000080; font-weight: bold">new</span> IllegalArgumentException(<span style="color: #0000FF">&quot;Array is null.&quot;</span>);
+      }
+      <span style="color: #000080; font-weight: bold">this</span>.<span style="color: #FF0000">array</span> = array;
+      <span style="color: #000080; font-weight: bold">this</span>.<span style="color: #FF0000">arrayListeners</span> = <span style="color: #000080; font-weight: bold">null</span>;
+   }
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Sets the value at index to the given {@link Object} and</span>
+<span style="color: #008800; font-style: italic">    * informs all at call time available {@link ArrayListener} about the change.</span>
+<span style="color: #008800; font-style: italic">    * &lt;p&gt;</span>
+<span style="color: #008800; font-style: italic">    * The change is represented as {@link ArrayEvent} which contains all</span>
+<span style="color: #008800; font-style: italic">    * details about the performed modification.</span>
+<span style="color: #008800; font-style: italic">    * @param index The index in the array to modify.</span>
+<span style="color: #008800; font-style: italic">    * @param element The element to set at the given index which might be {@code null}.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">void</span> set(<span style="color: #000080; font-weight: bold">int</span> index, Object element) {
+      array[index] = element;
+      fireElementChanged(<span style="color: #000080; font-weight: bold">new</span> ArrayEvent(<span style="color: #000080; font-weight: bold">this</span>, index, element));
+   }
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Informs all at call time available {@link ArrayListener} about an array change</span>
+<span style="color: #008800; font-style: italic">    * by calling {@link ArrayListener#elementChanged(ArrayEvent)}.</span>
+<span style="color: #008800; font-style: italic">    * @param e The {@link ArrayEvent} to be passed to the {@link ArrayListener} instances.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">private</span> <span style="color: #000080; font-weight: bold">void</span> fireElementChanged(ArrayEvent e) {
+      <span style="color: #000080; font-weight: bold">if</span> (arrayListeners != <span style="color: #000080; font-weight: bold">null</span>) {
+         <span style="color: #008800; font-style: italic">/*@ loop_invariant i &gt;= 0 &amp;&amp; i &lt;= arrayListeners.length;</span>
+<span style="color: #008800; font-style: italic">           @ decreasing arrayListeners.length - i;</span>
+<span style="color: #008800; font-style: italic">           @ assignable \everything;</span>
+<span style="color: #008800; font-style: italic">           @*/</span>
+         <span style="color: #000080; font-weight: bold">for</span> (<span style="color: #000080; font-weight: bold">int</span> i = <span style="color: #0000FF">0</span>; i &lt; arrayListeners.<span style="color: #FF0000">length</span>; i++) {
+            <span style="color: #000080; font-weight: bold">if</span> (arrayListeners[i] != <span style="color: #000080; font-weight: bold">null</span>) {
+               arrayListeners[i].<span style="color: #FF0000">elementChanged</span>(e);
+            }
+         }
+      }
+   }
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Sets the available {@link ArrayListener} instances.</span>
+<span style="color: #008800; font-style: italic">    * @param arrayListeners The new {@link ArrayListener} instances which might be {@code null}.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">void</span> setArrayListeners(ArrayListener[] arrayListeners) {
+      <span style="color: #000080; font-weight: bold">this</span>.<span style="color: #FF0000">arrayListeners</span> = arrayListeners;
+   }
+   
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">void</span> main(String[] args) {
+      <span style="color: #008800; font-style: italic">// TODO: Write executable code here if appropriate.</span>
+      <span style="color: #008800; font-style: italic">//ArrayListener arrayListener = new ArrayListener() {</span>
+      <span style="color: #008800; font-style: italic">//   @Override</span>
+      <span style="color: #008800; font-style: italic">//   public void elementChanged(ArrayEvent e) {</span>
+      <span style="color: #008800; font-style: italic">//      // TODO Auto-generated method stub</span>
+      <span style="color: #008800; font-style: italic">//   }</span>
+      <span style="color: #008800; font-style: italic">//};</span>
+      <span style="color: #008800; font-style: italic">//ObservableArray observableArray = new ObservableArray(new Object[] {arrayElementsSeparatedByComma});</span>
+      <span style="color: #008800; font-style: italic">//observableArray.setArrayListeners(new ArrayListener[] {arrayElementsSeparatedByComma});</span>
+      <span style="color: #008800; font-style: italic">//observableArray.set(index, element);</span>
+   }
+}
+</pre></td></tr></table></div>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * Allows to observe changes on an {@link ObservableArray}.</span>
+<span style="color: #008800; font-style: italic"> * @see ObservableArray</span>
+<span style="color: #008800; font-style: italic"> * @see ArrayEvent</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">interface</span> ArrayListener {
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Invoked when the element at an array index has changed.</span>
+<span style="color: #008800; font-style: italic">    * &lt;p&gt;</span>
+<span style="color: #008800; font-style: italic">    * Implementations require nothing and are allowed to change everything.</span>
+<span style="color: #008800; font-style: italic">    * An implementation only guarantees that no {@link Exception} will be thrown.</span>
+<span style="color: #008800; font-style: italic">    * @param e The {@link ArrayEvent} with all details.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #008800; font-style: italic">/*@ normal_behavior</span>
+<span style="color: #008800; font-style: italic">     @ requires true;</span>
+<span style="color: #008800; font-style: italic">     @ ensures true;</span>
+<span style="color: #008800; font-style: italic">     @ assignable \everything;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #008800; font-style: italic">/*@ helper @*/</span> <span style="color: #000080; font-weight: bold">void</span> elementChanged(ArrayEvent e);
+}
+</pre></td></tr></table></div>
+
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * An event caused by an {@link ObservableArray} and observed via</span>
+<span style="color: #008800; font-style: italic"> * {@link ArrayListener} instances.</span>
+<span style="color: #008800; font-style: italic"> * @see ObservableArray</span>
+<span style="color: #008800; font-style: italic"> * @see ArrayListener</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> ArrayEvent {
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * The {@link ObservableArray} on which the event occurred.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">private</span> <span style="color: #000080; font-weight: bold">final</span> ObservableArray source;
+	
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * The modified index in the array.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">private</span> <span style="color: #000080; font-weight: bold">final</span> <span style="color: #000080; font-weight: bold">int</span> index;
+   
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * The new element.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">private</span> <span style="color: #000080; font-weight: bold">final</span> Object newElement;
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Constructor.</span>
+<span style="color: #008800; font-style: italic">    * @param source The {@link ObservableArray} on which the event occurred.</span>
+<span style="color: #008800; font-style: italic">    * @param index The modified index in the array.</span>
+<span style="color: #008800; font-style: italic">    * @param newElement The new element.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> ArrayEvent(ObservableArray source, <span style="color: #000080; font-weight: bold">int</span> index, Object newElement) {
+      <span style="color: #000080; font-weight: bold">this</span>.<span style="color: #FF0000">source</span> = source;
+      <span style="color: #000080; font-weight: bold">this</span>.<span style="color: #FF0000">index</span> = index;
+      <span style="color: #000080; font-weight: bold">this</span>.<span style="color: #FF0000">newElement</span> = newElement;
+   }
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Returns the {@link ObservableArray} on which the event occurred.</span>
+<span style="color: #008800; font-style: italic">    * @return The {@link ObservableArray} on which the event occurred.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> ObservableArray getSource() {
+      <span style="color: #000080; font-weight: bold">return</span> source;
+   }
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Returns the modified index in the array.</span>
+<span style="color: #008800; font-style: italic">    * @return The modified index in the array.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">int</span> getIndex() {
+      <span style="color: #000080; font-weight: bold">return</span> index;
+   }
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Returns the new element.</span>
+<span style="color: #008800; font-style: italic">    * @return The new element.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> Object getNewElement() {
+      <span style="color: #000080; font-weight: bold">return</span> newElement;
+   }
+}
+</pre></td></tr></table></div>
+
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- End Main generated via http://hilite.me/ -------------------------- -->      
+<!-- ----------------------------------------------------------------------- -->   
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/ObservableArray_ObservableArray.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/SET/ObservableArray_ObservableArray.png" width="339" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/ObservableArray_ObservableArray.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/SED/ObservableArray_ObservableArray.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/ObservableArray_set.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/SET/ObservableArray_set.png" width="397" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/ObservableArray_set.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/SED/ObservableArray_set.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/ObservableArray_setArrayListeners.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/SET/ObservableArray_setArrayListeners.png" width="357" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/ObservableArray_setArrayListeners.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/SED/ObservableArray_setArrayListeners.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+
+
+
+
+
+
+
+<h3><a name="Stack">Stack</a></h3>
+
+<p>
+   Inspired by book "Effective Java (2nd Edition)" (ISBN 13: 9780321356680). Click <a href="download/exampleStack.zip">here</a> to download the source code and the proof file.
+</p>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- Begin Main generated via http://hilite.me/ ------------------------ -->      
+<!-- ----------------------------------------------------------------------- -->    
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * A stack which stores contained elements in an array.</span>
+<span style="color: #008800; font-style: italic"> * &lt;p&gt;</span>
+<span style="color: #008800; font-style: italic"> * A new element is added on top of the stack by {@link #push(Object)}</span>
+<span style="color: #008800; font-style: italic"> * and the top element can be removed by {@link #pop()}.</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">final</span> <span style="color: #000080; font-weight: bold">class</span> Stack {
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * The elements on the stack.</span>
+<span style="color: #008800; font-style: italic">    * The {@link Object} array is never {@code null} and all array indices</span>
+<span style="color: #008800; font-style: italic">    * {@code &gt;= size} are {@code null}.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #008800; font-style: italic">/*@ invariant elements != null;</span>
+<span style="color: #008800; font-style: italic">     @ invariant \typeof(elements) == \type(Object[]);</span>
+<span style="color: #008800; font-style: italic">     @ invariant (\forall int i; i &gt;= size &amp;&amp; i &lt; elements.length; elements[i] == null);</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">private</span> <span style="color: #000080; font-weight: bold">final</span> <span style="color: #008800; font-style: italic">/*@ nullable @*/</span> Object[] elements;
+   
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * The current size of the stack </span>
+<span style="color: #008800; font-style: italic">    * which is always a valid array index in {@link #elements}</span>
+<span style="color: #008800; font-style: italic">    * or the length of {@link #elements} if the stack is full.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #008800; font-style: italic">/*@ invariant size &gt;= 0 &amp;&amp; size &lt;= elements.length;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">private</span> <span style="color: #000080; font-weight: bold">int</span> size;
+   
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Constructor to create an empty stack with the specified maximal size.</span>
+<span style="color: #008800; font-style: italic">    * @param maximalSize The maximal stack size.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> Stack(<span style="color: #000080; font-weight: bold">int</span> maximalSize) {
+      elements = <span style="color: #000080; font-weight: bold">new</span> Object[maximalSize];
+      size = <span style="color: #0000FF">0</span>;
+   }
+   
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Constructor for cloning purpose which creates an independent stack</span>
+<span style="color: #008800; font-style: italic">    * with the content of the given {@link Stack}.</span>
+<span style="color: #008800; font-style: italic">    * @param existingStack The existing {@link Stack} fulfilling its class invariant</span>
+<span style="color: #008800; font-style: italic">    *                      which provides the initial content.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> Stack(Stack existingStack) {
+      <span style="color: #000080; font-weight: bold">this</span>.<span style="color: #FF0000">elements</span> = existingStack.<span style="color: #FF0000">elements</span>;
+      <span style="color: #000080; font-weight: bold">this</span>.<span style="color: #FF0000">size</span> = existingStack.<span style="color: #FF0000">size</span>;
+   }
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Adds the given {@link Object} to the stack.</span>
+<span style="color: #008800; font-style: italic">    * @param e The {@link Object} to add.</span>
+<span style="color: #008800; font-style: italic">    * @throws IllegalStateException if the stack is full.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">void</span> push(Object e) {
+      <span style="color: #000080; font-weight: bold">if</span> (size &lt; elements.<span style="color: #FF0000">length</span>) {
+         elements[size++] = e;
+      }
+      <span style="color: #000080; font-weight: bold">else</span> {
+         <span style="color: #000080; font-weight: bold">throw</span> <span style="color: #000080; font-weight: bold">new</span> IllegalStateException(<span style="color: #0000FF">&quot;Stack is full.&quot;</span>);
+      }
+   }
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Returns and removes the top entry from the stack.</span>
+<span style="color: #008800; font-style: italic">    * @return The top stack entry which was removed from the stack.</span>
+<span style="color: #008800; font-style: italic">    * @throws IllegalStateException if the stack is empty.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> Object pop() {
+      <span style="color: #000080; font-weight: bold">if</span> (size &gt;= <span style="color: #0000FF">1</span>) {
+         <span style="color: #000080; font-weight: bold">return</span> elements[--size];
+      }
+      <span style="color: #000080; font-weight: bold">else</span> {
+         <span style="color: #000080; font-weight: bold">throw</span> <span style="color: #000080; font-weight: bold">new</span> IllegalStateException(<span style="color: #0000FF">&quot;Stack is empty.&quot;</span>);
+      }
+   }
+   
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">void</span> main(String[] args) {
+      <span style="color: #008800; font-style: italic">// TODO: Write executable code here if appropriate.</span>
+      <span style="color: #008800; font-style: italic">//Stack stack = new Stack(maximalSize);</span>
+      <span style="color: #008800; font-style: italic">//Stack clone = new Stack(stack);</span>
+      <span style="color: #008800; font-style: italic">//stack.push(e);</span>
+      <span style="color: #008800; font-style: italic">//System.out.println(stack.pop());</span>
+   }
+}
+</pre></td></tr></table></div>
+
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- End Main generated via http://hilite.me/ -------------------------- -->      
+<!-- ----------------------------------------------------------------------- -->   
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/Stack_Stack_int.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/SET/Stack_Stack_int.png" width="519" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/Stack_Stack_int.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/SED/Stack_Stack_int.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/Stack_Stack_Stack.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/SET/Stack_Stack_Stack.png" width="453" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/Stack_Stack_Stack.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/SED/Stack_Stack_Stack.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/Stack_push.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/SET/Stack_push.png" width="372" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/Stack_push.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/SED/Stack_push.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/Stack_pop.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/SET/Stack_pop.png" width="448" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/Stack_pop.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/SED/Stack_pop.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+
+
+
+
+
+
+
+<h3><a name="ValueSearch">ValueSearch</a></h3>
+
+<p>
+   Contains the unreachable statement <code>return false</code>. Such a circumstance is hard to detect for instance by test case generation tools based on symbolic execution. Click <a href="download/exampleValueSearch.zip">here</a> to download the source code and the proof file.
+</p>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- Begin Main generated via http://hilite.me/ ------------------------ -->      
+<!-- ----------------------------------------------------------------------- -->    
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * Provides a linear search to find a given value.</span>
+<span style="color: #008800; font-style: italic"> * @see AbstractSearch</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> ValueSearch <span style="color: #000080; font-weight: bold">extends</span> AbstractSearch {
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * The value to search.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">private</span> <span style="color: #000080; font-weight: bold">int</span> value;
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Performs a linear search to find the first array index </span>
+<span style="color: #008800; font-style: italic">    * containing the given value. The array is not modified by the search.</span>
+<span style="color: #008800; font-style: italic">    * @param array The array in which the search is performed.</span>
+<span style="color: #008800; font-style: italic">    * @param value The value to search (search criteria).</span>
+<span style="color: #008800; font-style: italic">    * @return The index of the first found element or </span>
+<span style="color: #008800; font-style: italic">    *         {@code -1} if no element was found.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">int</span> find(<span style="color: #000080; font-weight: bold">int</span>[] array, <span style="color: #000080; font-weight: bold">int</span> value) {
+      <span style="color: #000080; font-weight: bold">return</span> <span style="color: #000080; font-weight: bold">new</span> ValueSearch().<span style="color: #FF0000">search</span>(array);
+   }
+   
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Accepts an array index if it&#39;s value is equal to {@link #value}.</span>
+<span style="color: #008800; font-style: italic">    * @param array The array in which the search is performed.</span>
+<span style="color: #008800; font-style: italic">    * @param index The current array index to check.</span>
+<span style="color: #008800; font-style: italic">    * @return {@code true} value at {@code array[index]} is equal to {@link #value}, {@code false} otherwise.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">protected</span> <span style="color: #000080; font-weight: bold">boolean</span> accept(<span style="color: #000080; font-weight: bold">int</span>[] array, <span style="color: #000080; font-weight: bold">int</span> index) {
+      <span style="color: #000080; font-weight: bold">if</span> (index &lt; <span style="color: #0000FF">0</span> || index &gt;= array.<span style="color: #FF0000">length</span>) {
+         <span style="color: #000080; font-weight: bold">return</span> <span style="color: #000080; font-weight: bold">false</span>;
+      }
+      <span style="color: #000080; font-weight: bold">else</span> {
+         <span style="color: #000080; font-weight: bold">return</span> array[index] == value;
+      }
+   }
+   
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">void</span> main(String[] args) {
+      <span style="color: #008800; font-style: italic">// TODO: Write executable code here if appropriate.</span>
+      <span style="color: #008800; font-style: italic">//System.out.println(ValueSearch.find(new int[] {arrayElementsSeparatedByComma}, value));</span>
+   }
+}
+</pre></td></tr></table></div>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * Provides the basic functionality to perform a linear search.</span>
+<span style="color: #008800; font-style: italic"> * @see ValueSearch</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">abstract</span> <span style="color: #000080; font-weight: bold">class</span> AbstractSearch {
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Performs a linear search without modifying the given array.</span>
+<span style="color: #008800; font-style: italic">    * @param array The array in which the search is performed.</span>
+<span style="color: #008800; font-style: italic">    * @return The index of the first found element or </span>
+<span style="color: #008800; font-style: italic">    *         {@code -1} if no element was found.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">protected</span> <span style="color: #000080; font-weight: bold">int</span> search(<span style="color: #000080; font-weight: bold">int</span>[] array) {
+      <span style="color: #008800; font-style: italic">/*@ loop_invariant i &gt;= 0 &amp;&amp; i &lt;= array.length;</span>
+<span style="color: #008800; font-style: italic">        @ decreasing array.length - i;</span>
+<span style="color: #008800; font-style: italic">        @ assignable i;</span>
+<span style="color: #008800; font-style: italic">        @*/</span>
+      <span style="color: #000080; font-weight: bold">for</span> (<span style="color: #000080; font-weight: bold">int</span> i = <span style="color: #0000FF">0</span>; i &lt; array.<span style="color: #FF0000">length</span>; i++) {
+         <span style="color: #000080; font-weight: bold">if</span> (accept(array, i)) {
+            <span style="color: #000080; font-weight: bold">return</span> i;
+         }
+      }
+      <span style="color: #000080; font-weight: bold">return</span> -<span style="color: #0000FF">1</span>;
+   }
+
+   <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">    * Checks whether the specified array location matches the search criteria.</span>
+<span style="color: #008800; font-style: italic">    * @param array The array in which the search is performed.</span>
+<span style="color: #008800; font-style: italic">    * @param index The current array index to check.</span>
+<span style="color: #008800; font-style: italic">    * @return {@code true} location matches search criteria, {@code false} otherwise.</span>
+<span style="color: #008800; font-style: italic">    */</span>
+   <span style="color: #000080; font-weight: bold">protected</span> <span style="color: #000080; font-weight: bold">abstract</span> <span style="color: #000080; font-weight: bold">boolean</span> accept(<span style="color: #000080; font-weight: bold">int</span>[] array, <span style="color: #000080; font-weight: bold">int</span> index);
+}
+</pre></td></tr></table></div>
+
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- End Main generated via http://hilite.me/ -------------------------- -->      
+<!-- ----------------------------------------------------------------------- -->   
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/ValueSearch.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 6 })">
+         <img src="images/SET/ValueSearch.png" width="238" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+   <figure>
+      <a href="images/SED/ValueSearch.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 6 })">
+         <img src="images/SED/ValueSearch.png" width="300" height="215" alt="SED: Screenshot of the tool." />
+      </a>
+      <div class="highslide-caption">SED: Screenshot of the tool.</div>
+      <figcaption>SED: Screenshot of the tool.</figcaption>
+   </figure>
+</div>
+
+
+
+
+
+<!--#include virtual="../../../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

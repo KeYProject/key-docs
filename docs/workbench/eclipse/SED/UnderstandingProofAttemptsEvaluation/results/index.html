@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../../../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../../../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title';
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../../../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../../../header.html" -->
+<h2>Results of the Understanding Proof Attempts Evaluation</h2> 
+<p>
+   Selected results of the <a href="../../UnderstandingProofAttempts.html">Understanding Proof Attempts Evaluation</a> are prsented in the following.
+</p>
+<p>
+   <a href="../../UnderstandingProofAttempts.html"><b><font color="red">If you plan to participate in the evaluation, please do not look at them before!</font></b></a>
+</p>
+
+<h3>Comparison of the Given Expected Answers</h3>
+
+<p>
+   The following table shows the expected correct answers. A selected answer does not mean that the question is correctly answered, only that the participant selected it in addition to possibly wrong answers. For each class of KeY experience and both tools, the percentage how often an answer is selected is given. If a correct answer was more often selected using one of the tools, the value is colored in blue.
+</p>
+
+<table border="0" cellpadding="3" cellspacing="2">
+   <tr style="background-color: #4e9ad6;font-weight: bold;">
+      <td colspan="3" rowspan="2">&nbsp;</td>
+      <td colspan="8" align="center">KeY experience (%)</td>
+   </tr>
+   <tr style="background-color: #4e9ad6;font-weight: bold;">
+      <td colspan="2" align="center">All</td>
+      <td colspan="2" align="center">None</td>
+      <td colspan="2" align="center">&lt; 2 years</td>
+      <td colspan="2" align="center">&gt;= 2 years</td>
+   </tr>
+   <tr style="background-color: #4e9ad6;font-weight: bold;">
+      <td>Proof Attempt</td>
+      <td>Question</td>
+      <td>Answer</td>
+      <td>KeY</td>
+      <td>SED</td>
+      <td>KeY</td>
+      <td>SED</td>
+      <td>KeY</td>
+      <td>SED</td>
+      <td>KeY</td>
+      <td>SED</td>
+   </tr>
+   
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="7"><a href="../proofs/index.html#Calendar">Calendar</a></td>
+      <td>Is Verified</td>
+      <td>No</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="2">Why not verified</td>
+      <td>Inv. not preserved</td>
+      <td>33</td>
+      <td style="color: blue;">50</td>
+      <td style="color: blue;">50</td>
+      <td>25</td>
+      <td>25</td>
+      <td style="color: blue;">50</td>
+      <td>33</td>
+      <td style="color: blue;">75</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Exc. is thrown</td>
+      <td>89</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>67</td>
+      <td style="color: blue;">100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>When not preserved</td>
+      <td>After Else</td>
+      <td>33</td>
+      <td>33</td>
+      <td style="color: blue;">50</td>
+      <td>25</td>
+      <td>25</td>
+      <td style="color: blue;">50</td>
+      <td style="color: blue;">33</td>
+      <td>25</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>What is thrown</td>
+      <td>ArrayStoreExc.</td>
+      <td>89</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>67</td>
+      <td style="color: blue;">100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="2">What is executed</td>
+      <td>Line 14</td>
+      <td>89</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Line 32/33</td>
+      <td>67</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>50</td>
+      <td style="color: blue;">100</td>
+      <td>67</td>
+      <td style="color: blue;">100</td>
+   </tr>
+   
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="9"><a href="../proofs/index.html#Account">Account</a></td>
+      <td>Is Verified</td>
+      <td>No</td>
+      <td>90</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Why not verified</td>
+      <td>Post. does not hold</td>
+      <td>40</td>
+      <td style="color: blue;">100</td>
+      <td>0</td>
+      <td style="color: blue;">100</td>
+      <td>25</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>When does not hold</td>
+      <td>Termination 2</td>
+      <td>40</td>
+      <td style="color: blue;">91</td>
+      <td>0</td>
+      <td style="color: blue;">100</td>
+      <td>25</td>
+      <td style="color: blue;">75</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="4">What is executed</td>
+      <td>Line 11</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Line 12</td>
+      <td>70</td>
+      <td style="color: blue;">100</td>
+      <td>67</td>
+      <td style="color: blue;">100</td>
+      <td>50</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Line 13</td>
+      <td>80</td>
+      <td style="color: blue;">100</td>
+      <td>67</td>
+      <td style="color: blue;">100</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Line 16</td>
+      <td>50</td>
+      <td style="color: blue;">100</td>
+      <td>33</td>
+      <td style="color: blue;">100</td>
+      <td>25</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="2">What is applied</td>
+      <td>MC withdraw</td>
+      <td>70</td>
+      <td style="color: blue;">82</td>
+      <td>33</td>
+      <td>33</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>MC canWithdraw</td>
+      <td>90</td>
+      <td style="color: blue;">100</td>
+      <td>67</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="12"><a href="../proofs/index.html#ArrayUtil">ArrayUtil</a></td>
+      <td>Is Verified</td>
+      <td>No</td>
+      <td style="color: blue;">100</td>
+      <td>91</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td style="color: blue;">100</td>
+      <td>75</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="2">Why not verified</td>
+      <td>Post. does not hold</td>
+      <td>40</td>
+      <td style="color: blue;">64</td>
+      <td>0</td>
+      <td style="color: blue;">67</td>
+      <td>50</td>
+      <td>50</td>
+      <td>67</td>
+      <td style="color: blue;">75</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>L. inv. not preserv.</td>
+      <td style="color: blue;">80</td>
+      <td>73</td>
+      <td style="color: blue;">100</td>
+      <td>67</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td style="color: blue;">67</td>
+      <td>50</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>When does not hold</td>
+      <td>Termination 2</td>
+      <td>40</td>
+      <td style="color: blue;">64</td>
+      <td>0</td>
+      <td style="color: blue;">33</td>
+      <td>50</td>
+      <td style="color: blue;">75</td>
+      <td>67</td>
+      <td style="color: blue;">75</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>When not preserved</td>
+      <td>Loop Body T. 1</td>
+      <td style="color: blue;">60</td>
+      <td>45</td>
+      <td style="color: blue;">67</td>
+      <td>0</td>
+      <td>50</td>
+      <td style="color: blue;">75</td>
+      <td style="color: blue;">67</td>
+      <td>50</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="7">What is executed</td>
+      <td>Line 8/17/25</td>
+      <td>90</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Line 9/10</td>
+      <td>90</td>
+      <td style="color: blue;">91</td>
+      <td style="color: blue;">100</td>
+      <td>67</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Line 13</td>
+      <td>70</td>
+      <td style="color: blue;">100</td>
+      <td>67</td>
+      <td style="color: blue;">100</td>
+      <td>50</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Line 14</td>
+      <td>70</td>
+      <td style="color: blue;">91</td>
+      <td>67</td>
+      <td style="color: blue;">100</td>
+      <td>50</td>
+      <td style="color: blue;">100</td>
+      <td style="color: blue;">100</td>
+      <td>75</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Line 26/27</td>
+      <td>80</td>
+      <td style="color: blue;">100</td>
+      <td>67</td>
+      <td style="color: blue;">100</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Line 34</td>
+      <td>50</td>
+      <td style="color: blue;">91</td>
+      <td>33</td>
+      <td style="color: blue;">100</td>
+      <td>25</td>
+      <td style="color: blue;">100</td>
+      <td style="color: blue;">100</td>
+      <td>75</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Line 39</td>
+      <td>60</td>
+      <td style="color: blue;">91</td>
+      <td>33</td>
+      <td style="color: blue;">100</td>
+      <td>50</td>
+      <td style="color: blue;">100</td>
+      <td style="color: blue;">100</td>
+      <td>75</td>
+   </tr>
+   
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="3"><a href="../proofs/index.html#MyInteger">MyInteger</a></td>
+      <td>Is Verified</td>
+      <td>No</td>
+      <td>92</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Why not verified</td>
+      <td>Post. does not hold</td>
+      <td>69</td>
+      <td style="color: blue;">88</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td style="color: blue;">60</td>
+      <td>50</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>What is executed</td>
+      <td>Line 9</td>
+      <td>92</td>
+      <td style="color: blue;">100</td>
+      <td>75</td>
+      <td style="color: blue;">100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+      <td>100</td>
+   </tr>
+   <tr style="background-color: #b1d3ec; font-weight: bold;">
+      <td colspan="3" align="right">Winning Tool Count</td>
+      <td>3</td>
+      <td style="color: blue;">32</td>
+      <td>6</td>
+      <td style="color: blue;">16</td>
+      <td>0</td>
+      <td style="color: blue;">30</td>
+      <td style="color: blue;">8</td>
+      <td>7</td>
+   </tr>
+</table>
+
+<h3>Feedback about KeY and SED Features</h3> 
+
+<table border="0" cellpadding="3" cellspacing="2">
+   <tr style="background-color: #4e9ad6;font-weight: bold;">
+      <td rowspan="3" colspan="2">&nbsp;</td>
+      <td colspan="20">KeY experience</td>
+   </tr>
+   <tr style="background-color: #4e9ad6;font-weight: bold;">
+      <td colspan="5">All Participants</td>
+      <td colspan="5">None</td>
+      <td colspan="5">&lt; 2 years</td>
+      <td colspan="5">&gt;= 2 years</td>
+   </tr>
+   <tr style="background-color: #4e9ad6;font-weight: bold;">
+      <td>Very Helpful (%)</td>
+      <td>Helpful (%)</td>
+      <td>Somewhat Helpful (%)</td>
+      <td>Not Helpful (%)</td>
+      <td>Never Used (%)</td>
+      <td>Very Helpful (%)</td>
+      <td>Helpful (%)</td>
+      <td>Somewhat Helpful (%)</td>
+      <td>Not Helpful (%)</td>
+      <td>Never Used (%)</td>
+      <td>Very Helpful (%)</td>
+      <td>Helpful (%)</td>
+      <td>Somewhat Helpful (%)</td>
+      <td>Not Helpful (%)</td>
+      <td>Never Used (%)</td>
+      <td>Very Helpful (%)</td>
+      <td>Helpful (%)</td>
+      <td>Somewhat Helpful (%)</td>
+      <td>Not Helpful (%)</td>
+      <td>Never Used (%)</td>
+   </tr>
+
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="5">KeY</td>
+      <td>Proof Tree View</td>
+      <td>57</td>
+      <td>19</td>
+      <td>23</td>
+      <td>0</td>
+      <td>0</td>
+      <td>50</td>
+      <td>16</td>
+      <td>33</td>
+      <td>0</td>
+      <td>0</td>
+      <td>50</td>
+      <td>25</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>71</td>
+      <td>14</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Goals Tab</td>
+      <td>19</td>
+      <td>28</td>
+      <td>23</td>
+      <td>4</td>
+      <td>23</td>
+      <td>0</td>
+      <td>66</td>
+      <td>0</td>
+      <td>16</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td>50</td>
+      <td>0</td>
+      <td>50</td>
+      <td>57</td>
+      <td>28</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Sequent View</td>
+      <td>28</td>
+      <td>19</td>
+      <td>38</td>
+      <td>9</td>
+      <td>4</td>
+      <td>16</td>
+      <td>16</td>
+      <td>33</td>
+      <td>33</td>
+      <td>0</td>
+      <td>12</td>
+      <td>25</td>
+      <td>62</td>
+      <td>0</td>
+      <td>0</td>
+      <td>57</td>
+      <td>14</td>
+      <td>14</td>
+      <td>0</td>
+      <td>14</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Hide Intermediate Steps</td>
+      <td>42</td>
+      <td>9</td>
+      <td>23</td>
+      <td>4</td>
+      <td>19</td>
+      <td>33</td>
+      <td>16</td>
+      <td>33</td>
+      <td>0</td>
+      <td>16</td>
+      <td>37</td>
+      <td>0</td>
+      <td>25</td>
+      <td>12</td>
+      <td>25</td>
+      <td>57</td>
+      <td>14</td>
+      <td>14</td>
+      <td>0</td>
+      <td>14</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>List Applied Contracts</td>
+      <td>14</td>
+      <td>9</td>
+      <td>19</td>
+      <td>4</td>
+      <td>52</td>
+      <td>33</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>66</td>
+      <td>0</td>
+      <td>12</td>
+      <td>37</td>
+      <td>12</td>
+      <td>37</td>
+      <td>14</td>
+      <td>14</td>
+      <td>14</td>
+      <td>0</td>
+      <td>57</td>
+   </tr>
+
+   <tr style="background-color: #b1d3ec;">
+      <td rowspan="5">SED</td>
+      <td>Symbolic Execution Tree</td>
+      <td>57</td>
+      <td>38</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>33</td>
+      <td>66</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>75</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>57</td>
+      <td>28</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Reached Source Code</td>
+      <td>52</td>
+      <td>28</td>
+      <td>4</td>
+      <td>0</td>
+      <td>14</td>
+      <td>66</td>
+      <td>0</td>
+      <td>16</td>
+      <td>0</td>
+      <td>16</td>
+      <td>50</td>
+      <td>50</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>42</td>
+      <td>28</td>
+      <td>0</td>
+      <td>0</td>
+      <td>28</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Variables View</td>
+      <td>4</td>
+      <td>9</td>
+      <td>38</td>
+      <td>14</td>
+      <td>33</td>
+      <td>0</td>
+      <td>16</td>
+      <td>33</td>
+      <td>16</td>
+      <td>33</td>
+      <td>0</td>
+      <td>0</td>
+      <td>50</td>
+      <td>12</td>
+      <td>37</td>
+      <td>14</td>
+      <td>14</td>
+      <td>28</td>
+      <td>14</td>
+      <td>28</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Memory Layouts</td>
+      <td>0</td>
+      <td>19</td>
+      <td>4</td>
+      <td>14</td>
+      <td>61</td>
+      <td>0</td>
+      <td>16</td>
+      <td>16</td>
+      <td>16</td>
+      <td>50</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>75</td>
+      <td>0</td>
+      <td>28</td>
+      <td>0</td>
+      <td>14</td>
+      <td>57</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>Truth Value Tracing</td>
+      <td>42</td>
+      <td>42</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+      <td>66</td>
+      <td>33</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>25</td>
+      <td>50</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>42</td>
+      <td>42</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+   </tr>
+</table>
+
+<h3>Participants Tool Preference</h3> 
+
+<table border="0" cellpadding="3" cellspacing="2">
+   <tr style="background-color: #4e9ad6;font-weight: bold;">
+      <td rowspan="2">&nbsp;</td>
+      <td colspan="5">KeY experience</td>
+   </tr>
+   <tr style="background-color: #4e9ad6;font-weight: bold;">
+      <td>All Participants</td>
+      <td>None</td>
+      <td>&lt; 2 years</td>
+      <td>&gt;= 2 years</td>
+   </tr>
+
+   <tr style="background-color: #b1d3ec;">
+      <td>KeY</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+      <td>42</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>KeY and SED, both are equally good</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>KeY and SED, depending on the proof</td>
+      <td>42</td>
+      <td>33</td>
+      <td>50</td>
+      <td>42</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>KeY and SED, both are equally bad and should be improved</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+   </tr>
+   <tr style="background-color: #b1d3ec;">
+      <td>SED</td>
+      <td>42</td>
+      <td>66</td>
+      <td>50</td>
+      <td>14</td>
+   </tr>
+</table>
+
+<!--#include virtual="../../../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

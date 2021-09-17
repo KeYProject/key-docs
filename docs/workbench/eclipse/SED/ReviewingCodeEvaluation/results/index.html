@@ -1,0 +1,2310 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../../../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../../../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title';
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../../../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../../../header.html" -->
+<h2>Results of the Reviewing Code Evaluation</h2> 
+<p>
+   Selected results of the <a href="../../ReviewingCode.html">Reviewing Code Evaluation</a> are prsented in the following.
+</p>
+<p>
+   <a href="../../ReviewingCode.html"><b><font color="red">If you plan to participate in the evaluation, please do not look at them before!</font></b></a>
+</p>
+
+
+
+
+
+
+<h3>Comparison of the Given Expected Answers</h3>
+
+<p>
+   The following table shows the expected correct answers. A selected answer does not mean that the question is correctly answered, only that the participant selected it in addition to possibly wrong answers. For each class of Java experience and both reviewing methods, the percentage how often an answer is selected is given. If a correct answer was more often selected using one of the methods, the value is colored in blue.
+</p>
+
+<table border="0" cellpadding="3" cellspacing="2">
+<tr style="background-color: #4e9ad6;font-weight: bold;">
+<td colspan="3" rowspan="2">&nbsp;</td>
+<td colspan="8" align="center">Java experience (%)</td>
+</tr><tr style="background-color: #4e9ad6;font-weight: bold;">
+<td colspan="2" align="center">All</td>
+<td colspan="2" align="center">None</td>
+<td colspan="2" align="center">&lt; 2 years</td>
+<td colspan="2" align="center">&gt;= 2 years</td>
+</tr><tr style="background-color: #4e9ad6;font-weight: bold;">
+<td>Example</td>
+<td>Question</td>
+<td>Answer</td>
+<td>DCR</td>
+<td>SED</td>
+<td>DCR</td>
+<td>SED</td>
+<td>DCR</td>
+<td>SED</td>
+<td>DCR</td>
+<td>SED</td>
+</tr><tr style="background-color: #b1d3ec;">
+<td rowspan="24"><a href="../examples/index.html#ObservableArray">ObservableArray</a></td>
+<td rowspan="1">As documented?</td>
+<td>Yes</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">Invariant established?</td>
+<td>Yes</td>
+<td style="color: blue;">89</td>
+<td>71</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td style="color: blue;">100</td>
+<td>67</td>
+<td style="color: blue;">86</td>
+<td>67</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="4">What is executable?</td>
+<td>Line 30</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 31</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 33</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 34</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">As documented?</td>
+<td>No</td>
+<td style="color: blue;">89</td>
+<td>71</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>67</td>
+<td>86</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="2">What is wrong?</td>
+<td>Not all informed.</td>
+<td style="color: blue;">22</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="color: blue;">29</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Exc. is thrown</td>
+<td style="color: blue;">89</td>
+<td>71</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>67</td>
+<td>86</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="3">What is thrown?</td>
+<td>NullPointerExc.</td>
+<td>22</td>
+<td style="color: blue;">71</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td style="color: blue;">67</td>
+<td>14</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>...OutOfBoundsExc.</td>
+<td style="color: blue;">78</td>
+<td>71</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td style="color: blue;">67</td>
+<td>86</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>ArrayStoreExc.</td>
+<td>22</td>
+<td style="color: blue;">71</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td style="color: blue;">67</td>
+<td>29</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">Invariant preserved?</td>
+<td>Yes</td>
+<td>89</td>
+<td style="color: blue;">100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="8">What is executable?</td>
+<td>Line 51</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 52</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 61</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 66: init.</td>
+<td>89</td>
+<td style="color: blue;">100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 66: termin.</td>
+<td>89</td>
+<td style="color: blue;">100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 62 increment</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 67</td>
+<td>89</td>
+<td style="color: blue;">100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 68</td>
+<td>89</td>
+<td style="color: blue;">100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">As documented?</td>
+<td>Yes</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">Invariant preserved?</td>
+<td>Yes</td>
+<td>89</td>
+<td style="color: blue;">100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is executable?</td>
+<td>Line 79</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="16"><a href="../examples/index.html#BankUtil">BankUtil</a></td>
+<td rowspan="1">As documented?</td>
+<td>No</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is wrong?</td>
+<td>Wrong if age &gt;= 35</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is returned?</td>
+<td>570</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="9">What is executable?</td>
+<td>Line 18</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 19</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 20</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 21</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 22</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 23</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 24</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 26</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 28</td>
+<td>88</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="4">What is true?</td>
+<td>Not in ageLimits</td>
+<td style="color: blue;">38</td>
+<td>29</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>33</td>
+<td style="color: blue;">43</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>In insuranceRates</td>
+<td style="color: blue;">100</td>
+<td>86</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td style="color: blue;">100</td>
+<td>67</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not in insuranceR.</td>
+<td style="color: blue;">88</td>
+<td>86</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td style="color: blue;">100</td>
+<td>67</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Positive</td>
+<td style="color: blue;">100</td>
+<td>86</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td style="color: blue;">100</td>
+<td>67</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="18"><a href="../examples/index.html#IntegerUtil">IntegerUtil</a></td>
+<td rowspan="1">As documented?</td>
+<td>No</td>
+<td style="color: blue;">100</td>
+<td>56</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>83</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is wrong?</td>
+<td>y instead of x</td>
+<td style="color: blue;">89</td>
+<td>56</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td>75</td>
+<td style="color: blue;">83</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="10">What is executable?</td>
+<td>Line 13</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 14</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 15</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 18</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 19</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 24</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 25</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 28</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 29</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 33</td>
+<td>89</td>
+<td style="color: blue;">100</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="6">What is true?</td>
+<td>Negative</td>
+<td style="color: blue;">89</td>
+<td>78</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td>100</td>
+<td>100</td>
+<td>75</td>
+<td style="color: blue;">83</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>0 returned</td>
+<td>89</td>
+<td>89</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>75</td>
+<td style="color: blue;">83</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Positive</td>
+<td>89</td>
+<td>89</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>75</td>
+<td style="color: blue;">83</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>x</td>
+<td style="color: blue;">100</td>
+<td>78</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td style="color: blue;">100</td>
+<td>67</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>y</td>
+<td style="color: blue;">100</td>
+<td>78</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td style="color: blue;">100</td>
+<td>67</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>z</td>
+<td style="color: blue;">100</td>
+<td>78</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td style="color: blue;">100</td>
+<td>67</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="18"><a href="../examples/index.html#MathUtil">MathUtil</a></td>
+<td rowspan="1">As documented?</td>
+<td>No</td>
+<td>60</td>
+<td style="color: blue;">86</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>50</td>
+<td style="color: blue;">83</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is wrong?</td>
+<td>Exc. is thrown</td>
+<td>30</td>
+<td style="color: blue;">86</td>
+<td>50</td>
+<td>&nbsp;</td>
+<td>25</td>
+<td style="color: blue;">100</td>
+<td>25</td>
+<td style="color: blue;">83</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is thrown?</td>
+<td>...OutOfBoundsExc.</td>
+<td>20</td>
+<td style="color: blue;">86</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>25</td>
+<td style="color: blue;">100</td>
+<td>25</td>
+<td style="color: blue;">83</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="10">What is executable?</td>
+<td>Line 22</td>
+<td>90</td>
+<td style="color: blue;">100</td>
+<td>50</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 23</td>
+<td>80</td>
+<td style="color: blue;">100</td>
+<td>50</td>
+<td>&nbsp;</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 25</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 26</td>
+<td>90</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 28</td>
+<td>90</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 29</td>
+<td>90</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 32</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 33</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 34</td>
+<td>70</td>
+<td style="color: blue;">100</td>
+<td>50</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 37</td>
+<td>90</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="5">What is true?</td>
+<td>Negative</td>
+<td>50</td>
+<td style="color: blue;">86</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td style="color: blue;">50</td>
+<td>0</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>0 returned</td>
+<td>80</td>
+<td style="color: blue;">100</td>
+<td>50</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>100</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Positive</td>
+<td>80</td>
+<td style="color: blue;">100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>In array</td>
+<td>70</td>
+<td style="color: blue;">100</td>
+<td>50</td>
+<td>&nbsp;</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not in array</td>
+<td>60</td>
+<td style="color: blue;">86</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+<td>75</td>
+<td style="color: blue;">83</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="11"><a href="../examples/index.html#ValueSearch">ValueSearch</a></td>
+<td rowspan="1">As documented?</td>
+<td>No</td>
+<td style="color: blue;">88</td>
+<td>80</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+<td style="color: blue;">100</td>
+<td>86</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="2">What is wrong?</td>
+<td>S. criteria unused</td>
+<td style="color: blue;">62</td>
+<td>30</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td style="color: blue;">50</td>
+<td>0</td>
+<td style="color: blue;">67</td>
+<td>43</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Exc. is thrown</td>
+<td>0</td>
+<td style="color: blue;">70</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td style="color: blue;">71</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is thrown?</td>
+<td>NullPointerExc.</td>
+<td>0</td>
+<td style="color: blue;">70</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td style="color: blue;">71</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="3">What is executable?</td>
+<td>Line 20</td>
+<td style="color: blue;">100</td>
+<td>90</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 30</td>
+<td>75</td>
+<td style="color: blue;">80</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td style="color: blue;">75</td>
+<td>50</td>
+<td>67</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 34</td>
+<td>62</td>
+<td style="color: blue;">80</td>
+<td>0</td>
+<td>0</td>
+<td style="color: blue;">75</td>
+<td>50</td>
+<td>67</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="4">What is true?</td>
+<td>-1 returned</td>
+<td>50</td>
+<td style="color: blue;">80</td>
+<td>0</td>
+<td>0</td>
+<td>75</td>
+<td style="color: blue;">100</td>
+<td>33</td>
+<td style="color: blue;">86</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>0 returned</td>
+<td>62</td>
+<td style="color: blue;">80</td>
+<td style="color: blue;">100</td>
+<td>0</td>
+<td style="color: blue;">75</td>
+<td>50</td>
+<td>33</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>array.length - 1</td>
+<td>38</td>
+<td style="color: blue;">70</td>
+<td>0</td>
+<td>0</td>
+<td style="color: blue;">75</td>
+<td>50</td>
+<td>0</td>
+<td style="color: blue;">86</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Index in array</td>
+<td>38</td>
+<td style="color: blue;">70</td>
+<td>0</td>
+<td>0</td>
+<td style="color: blue;">75</td>
+<td>0</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="28"><a href="../examples/index.html#Stack">Stack</a></td>
+<td rowspan="1">As documented?</td>
+<td>No</td>
+<td style="color: blue;">86</td>
+<td>55</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>50</td>
+<td>80</td>
+<td>80</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is wrong?</td>
+<td>Exc. is thrown</td>
+<td style="color: blue;">71</td>
+<td>55</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>50</td>
+<td>80</td>
+<td>80</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is thrown?</td>
+<td>Negative...S.Exc.</td>
+<td style="color: blue;">71</td>
+<td>55</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>50</td>
+<td>80</td>
+<td>80</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">Invariant established?</td>
+<td>Yes</td>
+<td style="color: blue;">71</td>
+<td>64</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td style="color: blue;">75</td>
+<td>80</td>
+<td>80</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="2">What is executable?</td>
+<td>Line 33</td>
+<td style="color: blue;">100</td>
+<td>91</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 34</td>
+<td style="color: blue;">100</td>
+<td>82</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>75</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">As documented?</td>
+<td>No</td>
+<td>57</td>
+<td style="color: blue;">64</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>75</td>
+<td>40</td>
+<td style="color: blue;">80</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="2">What is wrong?</td>
+<td>Same array</td>
+<td style="color: blue;">43</td>
+<td>18</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td style="color: blue;">50</td>
+<td>0</td>
+<td>40</td>
+<td>40</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Exc. is thrown</td>
+<td>29</td>
+<td style="color: blue;">64</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td style="color: blue;">75</td>
+<td>20</td>
+<td style="color: blue;">80</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is thrown?</td>
+<td>NullPointerExc.</td>
+<td>29</td>
+<td style="color: blue;">64</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td style="color: blue;">75</td>
+<td>20</td>
+<td style="color: blue;">80</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">Invariant established?</td>
+<td>Yes</td>
+<td style="color: blue;">86</td>
+<td>73</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td>50</td>
+<td style="color: blue;">75</td>
+<td style="color: blue;">100</td>
+<td>80</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="2">What is executable?</td>
+<td>Line 44</td>
+<td style="color: blue;">100</td>
+<td>82</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>75</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 45</td>
+<td style="color: blue;">100</td>
+<td>82</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>75</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">As documented?</td>
+<td>Yes</td>
+<td style="color: blue;">86</td>
+<td>82</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td>50</td>
+<td style="color: blue;">75</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">Invariant preserved?</td>
+<td>Yes</td>
+<td>71</td>
+<td style="color: blue;">82</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td>50</td>
+<td style="color: blue;">75</td>
+<td>80</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="3">What is executable?</td>
+<td>Line 54</td>
+<td style="color: blue;">100</td>
+<td>91</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 55</td>
+<td style="color: blue;">100</td>
+<td>91</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 58</td>
+<td style="color: blue;">100</td>
+<td>91</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">As documented?</td>
+<td>No</td>
+<td style="color: blue;">29</td>
+<td>18</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>50</td>
+<td style="color: blue;">20</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is wrong?</td>
+<td>elem. not updated</td>
+<td style="color: blue;">29</td>
+<td>18</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>50</td>
+<td style="color: blue;">20</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">Invariant preserved?</td>
+<td>No</td>
+<td style="color: blue;">57</td>
+<td>36</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td style="color: blue;">100</td>
+<td>50</td>
+<td>40</td>
+<td>40</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="1">What is wrong?</td>
+<td>Elem. not set to null</td>
+<td style="color: blue;">43</td>
+<td>36</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>50</td>
+<td>40</td>
+<td>40</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="3">What is executable?</td>
+<td>Line 68</td>
+<td style="color: blue;">100</td>
+<td>82</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 69</td>
+<td style="color: blue;">86</td>
+<td>82</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>100</td>
+<td>100</td>
+<td>80</td>
+<td style="color: blue;">100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Line 72</td>
+<td style="color: blue;">100</td>
+<td>82</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="3">What is true?</td>
+<td>Null retruned</td>
+<td style="color: blue;">86</td>
+<td>73</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>100</td>
+<td>100</td>
+<td>80</td>
+<td>80</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Object returned</td>
+<td style="color: blue;">100</td>
+<td>82</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Elem. at size - 1</td>
+<td style="color: blue;">86</td>
+<td>45</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>50</td>
+<td style="color: blue;">100</td>
+<td>60</td>
+</tr>
+<tr style="background-color: #b1d3ec; font-weight: bold;">
+<td colspan="3" align="right">Winning Tool Count</td>
+<td style="color: blue;">42</td>
+<td>37</td>
+<td style="color: blue;">8</td>
+<td>3</td>
+<td>19</td>
+<td style="color: blue;">31</td>
+<td>16</td>
+<td style="color: blue;">30</td>
+</tr>
+</table>
+
+
+
+
+
+
+<h3>Feedback about KeY and SED Features</h3> 
+
+<table border="0" cellpadding="3" cellspacing="2">
+<tr style="background-color: #4e9ad6;font-weight: bold;">
+<td rowspan="3" colspan="2">&nbsp;</td>
+<td colspan="20">Java experience</td>
+</tr>
+<tr style="background-color: #4e9ad6;font-weight: bold;">
+<td colspan="5">All Participants</td>
+<td colspan="5">None</td>
+<td colspan="5">< 2 years</td>
+<td colspan="5">>= 2 years</td>
+</tr>
+<tr style="background-color: #4e9ad6;font-weight: bold;">
+<td>Very Helpful (%)</td>
+<td>Helpful (%)</td>
+<td>Somewhat Helpful (%)</td>
+<td>Not Helpful (%)</td>
+<td>Never Used (%)</td>
+<td>Very Helpful (%)</td>
+<td>Helpful (%)</td>
+<td>Somewhat Helpful (%)</td>
+<td>Not Helpful (%)</td>
+<td>Never Used (%)</td>
+<td>Very Helpful (%)</td>
+<td>Helpful (%)</td>
+<td>Somewhat Helpful (%)</td>
+<td>Not Helpful (%)</td>
+<td>Never Used (%)</td>
+<td>Very Helpful (%)</td>
+<td>Helpful (%)</td>
+<td>Somewhat Helpful (%)</td>
+<td>Not Helpful (%)</td>
+<td>Never Used (%)</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td rowspan="4">SED</td>
+<td>Symbolic Execution Tree</td>
+<td>35</td>
+<td>0</td>
+<td>33</td>
+<td>40</td>
+<td>47</td>
+<td>0</td>
+<td>50</td>
+<td>50</td>
+<td>17</td>
+<td>100</td>
+<td>16</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Properties view</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>35</td>
+<td>0</td>
+<td>50</td>
+<td>30</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>41</td>
+<td>100</td>
+<td>50</td>
+<td>30</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Reached Source Code</td>
+<td>52</td>
+<td>100</td>
+<td>50</td>
+<td>50</td>
+<td>17</td>
+<td>0</td>
+<td>0</td>
+<td>30</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>17</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Variables View</td>
+<td>17</td>
+<td>0</td>
+<td>33</td>
+<td>10</td>
+<td>23</td>
+<td>0</td>
+<td>16</td>
+<td>30</td>
+<td>23</td>
+<td>0</td>
+<td>33</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>35</td>
+<td>100</td>
+<td>16</td>
+<td>40</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+<h3>Participants Tool Preference</h3> 
+
+<table border="0" cellpadding="3" cellspacing="2">
+<tr style="background-color: #4e9ad6;font-weight: bold;">
+<td rowspan="2">&nbsp;</td>
+<td colspan="5">Java experience</td>
+</tr>
+<tr style="background-color: #4e9ad6;font-weight: bold;">
+<td>All Participants</td>
+<td>None</td>
+<td>< 2 years</td>
+<td>>= 2 years</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>directly</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>directly and using SED, both are equally good</td>
+<td>29</td>
+<td>0</td>
+<td>33</td>
+<td>30</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>directly and using SED, depending on the source code</td>
+<td>58</td>
+<td>100</td>
+<td>50</td>
+<td>60</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>directly and using SED, both are equally bad and should be improved</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>using SED</td>
+<td>11</td>
+<td>0</td>
+<td>16</td>
+<td>10</td>
+</tr>
+</table>
+
+
+
+
+<h3>Helpfulness of both methods</h3> 
+
+<table border="0" cellpadding="3" cellspacing="2">
+<tr style="background-color: #4e9ad6;font-weight: bold;">
+<td rowspan="2" colspan="3">&nbsp;</td>
+<td colspan="8" align="center">Java experience (%)</td>
+</tr>
+<tr style="background-color: #4e9ad6;font-weight: bold;">
+<td colspan="2">All Participants</td>
+<td colspan="2">None</td>
+<td colspan="2">< 2 years</td>
+<td colspan="2">>= 2 years</td>
+</tr>
+<tr style="background-color: #4e9ad6;font-weight: bold;">
+<td>Example</td>
+<td>Method</td>
+<td>Helpfulness</td>
+<td>DCR</td>
+<td>SED</td>
+<td>DCR</td>
+<td>SED</td>
+<td>DCR</td>
+<td>SED</td>
+<td>DCR</td>
+<td>SED</td>
+<!--Reviewing_Code_Helpfulness_ObservableArray_OA -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="15"><a href="../examples/index.html#ObservableArray">ObservableArray</a></td>
+<td rowspan="5">ObservableArray</td>
+<td>Yes, Very helpful</td>
+<td>11</td>
+<td>14</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>0</td>
+<td>29</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>0</td>
+<td>43</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>67</td>
+<td>0</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>89</td>
+<td>14</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>33</td>
+<td>100</td>
+<td>0</td>
+</tr>
+<!--Reviewing_Code_Helpfulness_ObservableArray_set -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="5">set</td>
+<td>Yes, Very helpful</td>
+<td>0</td>
+<td>14</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>22</td>
+<td>43</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>67</td>
+<td>14</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>11</td>
+<td>14</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>14</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>0</td>
+<td>14</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>67</td>
+<td>14</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>33</td>
+<td>71</td>
+<td>0</td>
+</tr>
+<!--Reviewing_Code_Helpfulness_ObservableArray_setAL -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="5">setArrayListeners</td>
+<td>Yes, Very helpful</td>
+<td>0</td>
+<td>29</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>67</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>0</td>
+<td>43</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>100</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>0</td>
+<td>14</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>0</td>
+<td>14</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>100</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>100</td>
+<td>0</td>
+<td>100</td>
+<td>0</td>
+</tr>
+<!--Reviewing_Code_Helpfulness_BankUtil -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="5"><a href="../examples/index.html#BankUtil">BankUtil</a></td>
+<td rowspan="5">computeInsuranceRate</td>
+<td>Yes, Very helpful</td>
+<td>25</td>
+<td>86</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>29</td>
+<td>100</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>25</td>
+<td>14</td>
+<td>100</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>14</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>12</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>14</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>38</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>43</td>
+<td>0</td>
+</tr>
+<!--Reviewing_Code_Helpfulness_IntegerUtil -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="5"><a href="../examples/index.html#IntegerUtil">IntegerUtil</a></td>
+<td rowspan="5">middle</td>
+<td>Yes, Very helpful</td>
+<td>0</td>
+<td>33</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>0</td>
+<td>22</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>11</td>
+<td>44</td>
+<td>50</td>
+<td>100</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+<td>33</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>89</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+<td>100</td>
+<td>0</td>
+<td>100</td>
+<td>0</td>
+</tr>
+<!--Reviewing_Code_Helpfulness_MathUtil -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="5"><a href="../examples/index.html#MathUtil">MathUtil</a></td>
+<td rowspan="5">median</td>
+<td>Yes, Very helpful</td>
+<td>10</td>
+<td>14</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>25</td>
+<td>17</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>60</td>
+<td>71</td>
+<td>50</td>
+<td>&nbsp;</td>
+<td>50</td>
+<td>100</td>
+<td>75</td>
+<td>67</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>10</td>
+<td>14</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>25</td>
+<td>0</td>
+<td>0</td>
+<td>17</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>20</td>
+<td>0</td>
+<td>50</td>
+<td>&nbsp;</td>
+<td>25</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<!--Reviewing_Code_Helpfulness_ValueSearch -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="5"><a href="../examples/index.html#ValueSearch">ValueSearch</a></td>
+<td rowspan="5">find</td>
+<td>Yes, Very helpful</td>
+<td>0</td>
+<td>22</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>29</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>12</td>
+<td>56</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>33</td>
+<td>57</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>62</td>
+<td>11</td>
+<td>100</td>
+<td>&nbsp;</td>
+<td>75</td>
+<td>50</td>
+<td>33</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>0</td>
+<td>11</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>14</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>25</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>25</td>
+<td>0</td>
+<td>33</td>
+<td>0</td>
+</tr>
+<!--Reviewing_Code_Helpfulness_Stack_Si -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="20"><a href="../examples/index.html#Stack">Stack</a></td>
+<td rowspan="5">Stack(int)</td>
+<td>Yes, Very helpful</td>
+<td>0</td>
+<td>40</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+<td>40</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>29</td>
+<td>40</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>50</td>
+<td>40</td>
+<td>40</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>29</td>
+<td>20</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>50</td>
+<td>0</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>43</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+<td>40</td>
+<td>0</td>
+</tr>
+<!--Reviewing_Code_Helpfulness_Stack_SS -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="5">Stack(Stack)</td><td>Yes, Very helpful</td>
+<td>14</td>
+<td>30</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>25</td>
+<td>0</td>
+<td>40</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>14</td>
+<td>50</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>75</td>
+<td>20</td>
+<td>40</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>14</td>
+<td>10</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>0</td>
+<td>10</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>57</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+<td>60</td>
+<td>0</td>
+</tr>
+<!--Reviewing_Code_Helpfulness_Stack_push -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="5">push</td>
+<td>Yes, Very helpful</td>
+<td>14</td>
+<td>10</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>0</td>
+<td>70</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>100</td>
+<td>0</td>
+<td>60</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>29</td>
+<td>10</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>40</td>
+<td>20</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>0</td>
+<td>10</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>57</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>100</td>
+<td>0</td>
+<td>40</td>
+<td>0</td>
+</tr>
+<!--Reviewing_Code_Helpfulness_Stack_pop -->
+<tr style="background-color: #b1d3ec;">
+<td rowspan="5">pop</td>
+<td>Yes, Very helpful</td>
+<td>14</td>
+<td>11</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Helpful</td>
+<td>0</td>
+<td>56</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>75</td>
+<td>0</td>
+<td>40</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Yes, Somewhat helpful</td>
+<td>14</td>
+<td>33</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>25</td>
+<td>20</td>
+<td>40</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>No, Not helpful</td>
+<td>0</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #b1d3ec;">
+<td>Not considered</td>
+<td>71</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>100</td>
+<td>0</td>
+<td>60</td>
+<td>0</td>
+</tr>
+</table>
+
+<!--#include virtual="../../../../footer.html" -->
+
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

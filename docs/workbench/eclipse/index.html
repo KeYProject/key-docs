@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../header.html" -->
+<h2>KeY-Based Eclipse Projects</h2>
+
+<!--
+The following KeY-Based Eclipse projects are available:
+<ul>
+   <li><a href="#SED">Symbolic Execution Debugger (SED)</a></li>
+   <li><a href="#KeYResources">KeY Resources</a></li>
+   <li><a href="#Starter">KeY 4 Eclipse Starter</a></li>
+   <li><a href="#KeYIDE">KeYIDE</a></li>
+   <li><a href="#MonKeY">MonKeY</a></li>
+   <li><a href="#VisualDbC">Visual DbC</a></li>
+</ul>
+-->
+
+<h3><a name="SED">Symbolic Execution Debugger (SED)</a></h3>
+
+<p>
+   The Symbolic Execution Debugger (SED) is a debugger based on symbolic execution which allows to discover all possible execution paths simultaneously. This is achieved by the use of symbolic in lieu of concrete values resulting in a symbolic execution tree. Each node in the symbolic execution tree provides the full state and related information such as the symbolic call stack or the path conditions under which the node is reached.
+</p>
+<p>
+   The following screenshot gives an impression of how the tool looks like. More details including download instructions and a user guide are available on the <a href="SED/index.html">Symbolic Execution Debugger</a> website.
+</p>
+
+<a href="SED/index.html">
+   <img src="images/SED.png" alt="Symbolic Execution Debugger (SED)" title="Symbolic Execution Debugger (SED)" />
+</a>
+
+
+
+<h3><a name="KeYResources">KeY Resources</a></h3>
+
+<p>
+   KeY Resources provides the "KeY project" with automatic background proofs. Such projects extends the functionality of a Java project by maintaining automatically proofs in background. This means that the tool tries to do proofs automatically whenever files in a project change. Markers are used to show the proof result directly in the source editor.
+</p>
+<p>
+   The following screenshot gives an impression of how the tool looks like. More details including download instructions and a user guide are available on the <a href="KeYResources/index.html">KeY Resources</a> website.
+</p>
+
+<a href="KeYResources/index.html">
+   <img src="images/KeYResources.png" alt="KeY Resources" title="KeY Resources" />
+</a>
+
+
+<h3><a name="JMLEditing">JML Editing</a></h3>
+
+<p>
+   JML Editing extends the <a href="https://eclipse.org/jdt/" target="_blank">Java development tools (JDT)</a> with support for <a href="http://www.jmlspecs.org" target="_blank">JML</a> to make writing JML specifications as convenient as writing Java source code.
+</p>
+<p>
+   The following screenshot gives an impression of how the tool looks like. More details including download instructions are available on the <a href="JMLEditing/index.html">JML Editing</a> website.
+</p>
+
+<a href="JMLEditing/index.html">
+   <img src="images/JMLEditing.png" alt="JML Editing" title="JML Editing" />
+</a>
+
+
+<h3><a name="Starter">KeY 4 Eclipse Starter</a></h3>
+
+<p>
+   KeY 4 Eclipse Starter is a basic Eclipse extension to start KeY from within Eclipse.
+</p>
+<p>
+   The following screenshot gives an impression of how the tool looks like. More details including download instructions and a user guide are available on the <a href="Starter/index.html">KeY 4 Eclipse Starter</a> website.
+</p>
+
+<a href="Starter/index.html">
+   <img src="images/Starter.png" alt="KeY Resources" title="KeY Resources" />
+</a>
+
+
+
+<h3><a name="KeYIDE">KeYIDE</a></h3>
+
+<p>
+   KeYIDE is an alternative user interface for KeY directly integrated into Eclipse. The goal of this project is to provide the same functionality as the original user interface of KeY. Up to now only the basics (proof tree navigation, auto mode, interactive rule application) are available.
+</p>
+<p>
+   The following screenshot gives an impression of how the tool looks like. More details including download instructions and a user guide are available on the <a href="KeYIDE/index.html">KeYIDE</a> website.
+</p>
+
+<a href="KeYIDE/index.html">
+   <img src="images/KeYIDE.png" alt="KeY Resources" title="KeY Resources" />
+</a>
+
+
+
+<h3><a name="MonKeY">MonKeY</a></h3>
+
+<p>
+   MonKeY provides a batch verification of all proof obligations. This means that the tool lists all proof obligations provided by the source code and allows to prove them in a batch. Statistics such as the used time or the complexity of proofs are also provided.
+</p>
+<p>
+   The following screenshot gives an impression of how the tool looks like. More details including download instructions and a user guide are available on the <a href="MonKeY/index.html">MonKeY</a> website.
+</p>
+
+<a href="MonKeY/index.html">
+   <img src="images/MonKeY.png" alt="KeY Resources" title="KeY Resources" />
+</a>
+
+
+
+<h3><a name="VisualDbC">Visual DbC</a></h3>
+
+<p>
+   Visual DbC is a proof management and visualization tool. It allows to visualize code members (e.g. types, attributes, methods) together with specifications (e.g. method contracts, invariants) and proofs in a DbC diagram similar to an UML class diagram. Proof references are used to indicate that a code member or a specification is used by a proof.
+</p>
+<p>
+   The following screenshot gives an impression of how the tool looks like. More details including download instructions and a user guide are available on the <a href="VisualDbC/index.html">VisualDbC</a> website.
+</p>
+
+<a href="VisualDbC/index.html">
+   <img src="images/VisualDbC.png" alt="KeY Resources" title="KeY Resources" />
+</a>
+
+
+
+<h3><a name="Stubby">Stubby - The Stub Generator</a></h3>
+
+<p>
+   Stubby allows to generate stubs annotated with default JML specifications for used API members.
+</p>
+<p>
+   The following screenshot gives an impression of how generated stub files look like. More details including download instructions and a user guide are available on the <a href="Stubby/index.html">Stubby</a> website.
+</p>
+
+<a href="Stubby/index.html">
+   <img src="images/Stubby.png" alt="Stubby - The Stub Generator" title="Stubby - The Stub Generator" />
+</a>
+
+<!--#include virtual="../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

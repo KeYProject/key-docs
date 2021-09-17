@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../../../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../../../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title';
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../../../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../../../header.html" -->
+<h2>Proofs Attempts of the Understanding Proof Attempts Evaluation</h2> 
+<p>
+   The proof attempts of the <a href="../../UnderstandingProofAttempts.html">Understanding Proof Attempts Evaluation</a> are prsented in the following.
+</p>
+<p>
+   <a href="../../UnderstandingProofAttempts.html"><b><font color="red">If you plan to participate in the evaluation, please do not look at them before!</font></b></a>
+</p>
+
+<h3><a name="Account">Account</a></h3>
+
+<p>
+   This is a simplified version of an example used in the SEFM lecture at <a href="http://www.chalmers.se" target="_blank">Chalmers</a>. Click <a href="download/proofAccount.zip">here</a> to download the source code and the proof file.
+</p>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- Begin Main generated via http://hilite.me/ ------------------------ -->      
+<!-- ----------------------------------------------------------------------- -->    
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> Account {
+   <span style="color: #000080; font-weight: bold">private</span> <span style="color: #000080; font-weight: bold">int</span> balance;
+   
+   <span style="color: #008800; font-style: italic">/*@ normal_behavior</span>
+<span style="color: #008800; font-style: italic">     @ requires amount &gt; 0;</span>
+<span style="color: #008800; font-style: italic">     @ ensures balance == \old(balance) - amount;</span>
+<span style="color: #008800; font-style: italic">     @ ensures \result == amount;</span>
+<span style="color: #008800; font-style: italic">     @ assignable balance;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">int</span> checkAndWithdraw(<span style="color: #000080; font-weight: bold">int</span> amount) {
+      <span style="color: #000080; font-weight: bold">if</span> (canWithdraw(amount)) {
+         withdraw(amount);
+         <span style="color: #000080; font-weight: bold">return</span> amount; <span style="color: #008800; font-style: italic">//XXX: Termination 1</span>
+      }
+      <span style="color: #000080; font-weight: bold">else</span> {
+         <span style="color: #000080; font-weight: bold">return</span> <span style="color: #0000FF">0</span>; <span style="color: #008800; font-style: italic">//XXX: Termination 2</span>
+      }
+   }
+
+   <span style="color: #008800; font-style: italic">/*@ normal_behavior</span>
+<span style="color: #008800; font-style: italic">     @ requires amount &gt; 0;</span>
+<span style="color: #008800; font-style: italic">     @ ensures balance == \old(balance) - amount;</span>
+<span style="color: #008800; font-style: italic">     @ assignable balance;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">void</span> withdraw(<span style="color: #000080; font-weight: bold">int</span> amount) {
+      balance -= amount;
+   }
+
+   <span style="color: #008800; font-style: italic">/*@ normal_behavior</span>
+<span style="color: #008800; font-style: italic">     @ requires amount &gt; 0;</span>
+<span style="color: #008800; font-style: italic">     @ ensures true;</span>
+<span style="color: #008800; font-style: italic">     @ assignable \nothing;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">boolean</span> canWithdraw(<span style="color: #000080; font-weight: bold">int</span> amount) {
+      <span style="color: #000080; font-weight: bold">return</span> amount &gt; <span style="color: #0000FF">0</span>;
+   }
+   
+   <span style="color: #008800; font-style: italic">/*@ normal_behavior</span>
+<span style="color: #008800; font-style: italic">     @ requires true;</span>
+<span style="color: #008800; font-style: italic">     @ ensures \result == balance;</span>
+<span style="color: #008800; font-style: italic">     @ assignable \nothing;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">int</span> getBalance() {
+      <span style="color: #000080; font-weight: bold">return</span> balance;
+   }
+}
+</pre></td></tr></table></div>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- End Main generated via http://hilite.me/ -------------------------- -->      
+<!-- ----------------------------------------------------------------------- -->   
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/Account.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/SET/Account.png" width="225" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/SED/Account_Postcondition.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/SED/Account_Postcondition.png" width="300" height="215" alt="SED: Postcondition does not hold." />
+      </a>
+      <div class="highslide-caption">SED: Postcondition does not hold.</div>
+      <figcaption>SED: Postcondition does not hold.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/KeY/Account_Postcondition.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/KeY/Account_Postcondition.png" width="300" height="135" alt="KeY: Postcondition does not hold." />
+      </a>
+      <div class="highslide-caption">KeY: Postcondition does not hold.</div>
+      <figcaption>KeY: Postcondition does not hold.</figcaption>
+   </figure>
+</div>
+
+
+
+
+
+
+
+<h3><a name="Calendar">Calendar</a></h3>
+
+<p>
+   This is a is a simplified version of the <a href="http://www.key-project.org/fmco06" target="_blank">FMCO 2006 Submission: "Verifying Object-Oriented Programs with KeY: A Tutorial"</a>. Click <a href="download/proofCalendar.zip">here</a> to download the source code and the proof file.
+</p>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- Begin Main generated via http://hilite.me/ ------------------------ -->      
+<!-- ----------------------------------------------------------------------- -->    
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> Calendar {
+   <span style="color: #000080; font-weight: bold">protected</span> <span style="color: #008800; font-style: italic">/*@ non_null @*/</span> Entry[] entries = <span style="color: #000080; font-weight: bold">new</span> Entry[<span style="color: #0000FF">8</span>];
+   
+   <span style="color: #008800; font-style: italic">/*@ invariant entrySize &gt;= 0 &amp;&amp; entrySize &lt; entries.length;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">protected</span> <span style="color: #000080; font-weight: bold">int</span> entrySize = <span style="color: #0000FF">0</span>;
+
+   <span style="color: #008800; font-style: italic">/*@ normal_behavior</span>
+<span style="color: #008800; font-style: italic">     @ ensures entries[\old(entrySize)] == entry;</span>
+<span style="color: #008800; font-style: italic">     @ ensures entrySize == \old(entrySize) + 1;</span>
+<span style="color: #008800; font-style: italic">     @ assignable entries, entries[entrySize], entrySize;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">void</span> addEntry(<span style="color: #008800; font-style: italic">/*@ non_null @*/</span> Entry entry) {
+      <span style="color: #000080; font-weight: bold">if</span> (entrySize == entries.<span style="color: #FF0000">length</span>) {
+         Entry[] newEntries = <span style="color: #000080; font-weight: bold">new</span> Entry[entries.<span style="color: #FF0000">length</span> * <span style="color: #0000FF">2</span>];
+         <span style="color: #008800; font-style: italic">/*@ loop_invariant i &gt;= 0 &amp;&amp; i &lt;= entries.length;</span>
+<span style="color: #008800; font-style: italic">           @ loop_invariant (\forall int j; j &gt;= 0 &amp;&amp; j &lt; i; </span>
+<span style="color: #008800; font-style: italic">           @                         newEntries[j] == entries[j]);</span>
+<span style="color: #008800; font-style: italic">           @ decreasing entries.length - i;</span>
+<span style="color: #008800; font-style: italic">           @ assignable newEntries[*], i;</span>
+<span style="color: #008800; font-style: italic">           @*/</span>
+         <span style="color: #000080; font-weight: bold">for</span> (<span style="color: #000080; font-weight: bold">int</span> i = <span style="color: #0000FF">0</span>; i &lt; entries.<span style="color: #FF0000">length</span>; i++) {
+            newEntries[i] = entries[i];
+            <span style="color: #008800; font-style: italic">//XXX: Loop Body Termination (of the &#39;Body Preserves Invariant&#39; branch)</span>
+         }
+         entries = newEntries;
+         <span style="color: #008800; font-style: italic">//XXX: Continuation After Then</span>
+      }
+      <span style="color: #000080; font-weight: bold">else</span> {
+         <span style="color: #008800; font-style: italic">//XXX: Continuation After Else</span>
+      }
+      entries[entrySize] = entry;
+      entrySize++;
+   }
+   
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">class</span> Entry {
+   }
+}
+</pre></td></tr></table></div>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- End Main generated via http://hilite.me/ -------------------------- -->      
+<!-- ----------------------------------------------------------------------- -->   
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/Calendar.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/SET/Calendar.png" width="180" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/SED/Calendar_Exception.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/SED/Calendar_Exception.png" width="300" height="215" alt="SED: Normal behavior violated." />
+      </a>
+      <div class="highslide-caption">SED: Normal behavior violated.</div>
+      <figcaption>SED: Normal behavior violated.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/KeY/Calendar_Exception.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/KeY/Calendar_Exception.png" width="300" height="188" alt="KeY: Normal behavior violated." />
+      </a>
+      <div class="highslide-caption">KeY: Normal behavior violated.</div>
+      <figcaption>KeY: Normal behavior violated.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SED/Calendar_Invariant.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/SED/Calendar_Invariant.png" width="300" height="215" alt="SED: Invariant does not hold." />
+      </a>
+      <div class="highslide-caption">SED: Invariant does not hold.</div>
+      <figcaption>SED: Invariant does not hold.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/KeY/Calendar_Invariant.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/KeY/Calendar_Invariant.png" width="300" height="199" alt="KeY: Invariant does not hold." />
+      </a>
+      <div class="highslide-caption">KeY: Invariant does not hold.</div>
+      <figcaption>KeY: Invariant does not hold.</figcaption>
+   </figure>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<h3><a name="ArrayUtil">ArrayUtil</a></h3>
+
+<p>
+   This is a is a a simplified version of a lab exercise in the "<a href="http://www.se.tu-darmstadt.de/teaching/courses/previous-periods/formale-grundlagen-der-informatik-iii/" target="_blank">Formale Grundlagen der Informatik 3</a>" (FGdI3) lecture at <a href="http://www.tu-darmstadt.de" target="_blank">TU Darmstadt</a>. Click <a href="download/proofMin.zip">here</a> to download the source code and the proof file.
+</p>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- Begin Main generated via http://hilite.me/ ------------------------ -->      
+<!-- ----------------------------------------------------------------------- -->    
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> ArrayUtil {
+   <span style="color: #008800; font-style: italic">/*@ normal_behavior</span>
+<span style="color: #008800; font-style: italic">     @ ensures array == null || array.length == 0 ==&gt; \result == -1;</span>
+<span style="color: #008800; font-style: italic">     @ ensures array != null &amp;&amp; array.length &gt;= 1 ==&gt; (\forall int i; i &gt;= 0 &amp;&amp; i &lt; array.length; array[\result] &lt;= array[i]);</span>
+<span style="color: #008800; font-style: italic">     @ assignable \nothing;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">int</span> minIndex(<span style="color: #008800; font-style: italic">/*@ nullable @*/</span> <span style="color: #000080; font-weight: bold">int</span>[] array) {
+      <span style="color: #000080; font-weight: bold">if</span> (array != <span style="color: #000080; font-weight: bold">null</span>) {
+         <span style="color: #000080; font-weight: bold">if</span> (array.<span style="color: #FF0000">length</span> == <span style="color: #0000FF">0</span>) {
+            <span style="color: #000080; font-weight: bold">return</span> -<span style="color: #0000FF">1</span>; <span style="color: #008800; font-style: italic">//XXX: Termination 1</span>
+         }
+         <span style="color: #000080; font-weight: bold">else</span> {
+            <span style="color: #000080; font-weight: bold">if</span> (array.<span style="color: #FF0000">length</span> == <span style="color: #0000FF">1</span>) {
+               <span style="color: #000080; font-weight: bold">return</span> array[<span style="color: #0000FF">0</span>]; <span style="color: #008800; font-style: italic">//XXX: Termination 2</span>
+            }
+            <span style="color: #000080; font-weight: bold">else</span> {
+               <span style="color: #000080; font-weight: bold">int</span> minIndex = <span style="color: #0000FF">0</span>;
+               <span style="color: #008800; font-style: italic">/*@ loop_invariant i &gt;= 1 &amp;&amp; i &lt;= array.length;</span>
+<span style="color: #008800; font-style: italic">                 @ loop_invariant minIndex &gt;= 0 &amp;&amp; minIndex &lt; i;</span>
+<span style="color: #008800; font-style: italic">                 @ loop_invariant (\forall int j; j &gt;= 0 &amp;&amp; j &lt; i; </span>
+<span style="color: #008800; font-style: italic">                 @                         array[minIndex] &lt;= array[j]);</span>
+<span style="color: #008800; font-style: italic">                 @ decreases array.length - i;</span>
+<span style="color: #008800; font-style: italic">                 @ assignable minIndex, i;</span>
+<span style="color: #008800; font-style: italic">                 @*/</span>
+               <span style="color: #000080; font-weight: bold">for</span> (<span style="color: #000080; font-weight: bold">int</span> i = <span style="color: #0000FF">1</span>; i &lt; array.<span style="color: #FF0000">length</span>; i++) {
+                  <span style="color: #000080; font-weight: bold">if</span> (array[i] &lt; array[minIndex]) {
+                     minIndex = <span style="color: #0000FF">1</span>;
+                     <span style="color: #008800; font-style: italic">//XXX: Loop Body Termination  1 (of the &#39;Body Preserves Invariant&#39; branch)</span>
+                  }
+                  <span style="color: #000080; font-weight: bold">else</span> {
+                     <span style="color: #008800; font-style: italic">//XXX: Loop Body Termination 2 (of the &#39;Body Preserves Invariant&#39; branch)</span>
+                  }
+               }
+               <span style="color: #000080; font-weight: bold">return</span> minIndex; <span style="color: #008800; font-style: italic">//XXX: Termination 3</span>
+            }
+         }
+      }
+      <span style="color: #000080; font-weight: bold">else</span> {
+         <span style="color: #000080; font-weight: bold">return</span> -<span style="color: #0000FF">1</span>; <span style="color: #008800; font-style: italic">//XXX: Termination 4</span>
+      }
+   }
+}
+</pre></td></tr></table></div>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- End Main generated via http://hilite.me/ -------------------------- -->      
+<!-- ----------------------------------------------------------------------- -->   
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/ArrayUtil.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/SET/ArrayUtil.png" width="268" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/SED/ArrayUtil_LoopInvariant.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/SED/ArrayUtil_LoopInvariant.png" width="300" height="215" alt="SED: Loop invariant not preserved." />
+      </a>
+      <div class="highslide-caption">SED: Loop invariant not preserved.</div>
+      <figcaption>SED: Loop invariant not preserved.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/KeY/ArrayUtil_LoopInvariant.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/KeY/ArrayUtil_LoopInvariant.png" width="245" height="215" alt="KeY: Loop invariant not preserved." />
+      </a>
+      <div class="highslide-caption">KeY: Loop invariant not preserved.</div>
+      <figcaption>KeY: Loop invariant not preserved.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SED/ArrayUtil_Postcondition.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/SED/ArrayUtil_Postcondition.png" width="300" height="215" alt="SED: Postcondition does not hold." />
+      </a>
+      <div class="highslide-caption">SED: Postcondition does not hold.</div>
+      <figcaption>SED: Postcondition does not hold.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/KeY/ArrayUtil_Postcondition.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/KeY/ArrayUtil_Postcondition.png" width="300" height="158" alt="KeY: Postcondition does not hold." />
+      </a>
+      <div class="highslide-caption">KeY: Postcondition does not hold.</div>
+      <figcaption>KeY: Postcondition does not hold.</figcaption>
+   </figure>
+</div>
+
+
+
+
+
+
+
+<h3><a name="MyInteger">MyInteger</a></h3>
+
+<p>
+   This is the running example of the talk "JML Editing in Eclipse and KeY-IDE" presented at the workshop "<a href="http://www.lorentzcenter.nl/lc/web/2015/677/info.php3?wsid=677&venue=Snellius" target="_blank">JML: Advancing Specification Language Methodologies</a>". Click <a href="download/proofMyInteger.zip">here</a> to download the source code and the proof file.
+</p>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- Begin Main generated via http://hilite.me/ ------------------------ -->      
+<!-- ----------------------------------------------------------------------- -->    
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> MyInteger {
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">int</span> value;
+   
+   <span style="color: #008800; font-style: italic">/*@ normal_behavior</span>
+<span style="color: #008800; font-style: italic">     @ ensures value == \old(value) + summand.value;</span>
+<span style="color: #008800; font-style: italic">     @ assignable value;</span>
+<span style="color: #008800; font-style: italic">     @*/</span>
+   <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">void</span> add(<span style="color: #008800; font-style: italic">/*@ non_null @*/</span> MyInteger summand) {
+      value += summand.<span style="color: #FF0000">value</span>;
+   }
+}
+</pre></td></tr></table></div>
+
+<!-- ----------------------------------------------------------------------- -->      
+<!-- --- End Main generated via http://hilite.me/ -------------------------- -->      
+<!-- ----------------------------------------------------------------------- -->   
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/SET/MyInteger.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/SET/MyInteger.png" width="133" height="215" alt="SED: The visualized symbolic execution tree." />
+      </a>
+      <div class="highslide-caption">SED: The visualized symbolic execution tree.</div>
+      <figcaption>SED: The visualized symbolic execution tree.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/SED/MyInteger_Postcondition.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/SED/MyInteger_Postcondition.png" width="300" height="215" alt="SED: Postcondition does not hold." />
+      </a>
+      <div class="highslide-caption">SED: Postcondition does not hold.</div>
+      <figcaption>SED: Postcondition does not hold.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/KeY/MyInteger_Postcondition.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/KeY/MyInteger_Postcondition.png" width="300" height="152" alt="KeY: Postcondition does not hold." />
+      </a>
+      <div class="highslide-caption">KeY: Postcondition does not hold.</div>
+      <figcaption>KeY: Postcondition does not hold.</figcaption>
+   </figure>
+</div>
+
+<!--#include virtual="../../../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

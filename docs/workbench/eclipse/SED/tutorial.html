@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title';
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../header.html" -->
+<h2>Symbolic Execution Debugger (SED) - Tutorial</h2>
+
+<p>
+   The <a href="index.html">Symbolic Execution Debugger (SED)</a> is a language independent extension of the <a href="http://www.eclipse.org/eclipse/debug/" target="_blank">Eclipse debug platform</a> for symbolic execution.
+   By default SED comes with a <a href="index.html#SEE">symbolic execution engine based on KeY</a> supporting sequential Java annotated with <a href="http://www.jmlspecs.org/" target="_blank">JML</a> specifications.
+   The use of the SED platform using KeY as symbolic execution engine is explained in detail in this tutorial. 
+</p>
+<p>
+   The tutorial is structured as follows:
+   <ol>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#example">Example Project</a></li>
+      <li><a href="#number">Symbolic Execution and Basic Tool Usage</a></li>
+      <li><a href="#mergesort">Locate the Origin of a Bug</a></li>
+      <li><a href="#specifications">Review Code and Specifications Usage</a></li>
+      <li><a href="#key">KeY as Symbolic Execution Engine</a></li>
+   </ol>
+</p>
+<p>
+   Steps to perform are illustrated via screenshots (may differ from the latest release) and are surrounded by paragraphs providing details and background knowledge.
+   For new users we <b>recommend</b> to <b>follow all sections</b> of this tutorial <b>in the given order</b>.
+</p>
+
+<h3><a name="installation">1 Installation</a></h3>
+
+<p>
+   This section describes how to add the Symbolic Execution Debugger (SED) to an existing <a href="http://www.eclipse.org" target="_blank">Eclipse</a> installation.
+   Eclipse Indigo (3.7) and newer are supported.
+   The screenshots are created using <a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/mars1" target="_blank">Eclipse Mars (4.5)</a>.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/installation/01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="tutorial/images/installation/01.png" alt="Installation" title="Installation" />
+      </a>
+      <div class="highslide-caption">1. Select "Help, Install New Software..." in the main menu.</div>
+      <figcaption>1. Select "Help, Install New Software..." in the main menu.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/installation/02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="tutorial/images/installation/02.png" alt="Installation" title="Installation" />
+      </a>
+      <div class="highslide-caption">2. Add the best matching update
+   site listed at the <a
+   href="../../download/index.html#eclipse">download page</a>
+   according to your Eclipse version in text field "Work with" and
+   press enter. Select next the "Symbolic Execution Debugger (SED)
+   Feature" in category "Debugging" as well as all other features of interest before completing the wizard. The new functionality will be available after a restart of Eclipse.</div>
+      <figcaption>2. Add the best matching update
+   site listed at the <a
+   href="../../download/index.html#eclipse">download page</a>
+   according to your Eclipse version in text field "Work with" and
+   press enter.<br> Select next the "Symbolic Execution Debugger (SED)
+   Feature" in category "Debugging" as well as all other features of interest <br>before completing the wizard. The new functionality will be available after a restart of Eclipse.</figcaption>
+   </figure>
+</div>
+
+
+<h3><a name="example">2 Example Project</a></h3>
+
+<p>
+   This sections explains how to create the "SED Examples", an example
+   Java project to try out SED (with KeY as symbolic execution
+   engine). The following sections of this tutorial work with this project. Its content is organized as follows:
+   <ul>
+     <li><b>src</b> - The source code used to explain the functionality of the SED</li>
+     <li><b>lib_specs</b> - Stubs for Java API classes and methods
+   referenced by the source code (required for symbolic execution with
+   KeY). This folder is added to KeY's class path in the project properties page "KeY". For more details see section <a href="#key">KeY as symbolic execution engine</a>.</li>
+     <li><b>Readme.txt</b> - A file explaining the SED Examples</li>
+   </ul>
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/exampleProject/01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="tutorial/images/exampleProject/01.png" alt="Example Project" title="Example Project" />
+      </a>
+      <div class="highslide-caption">1. Select "File, New, Example..." in the main menu.</div>
+      <figcaption>1. Select "File, New, Example..." in the main menu.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/exampleProject/02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="tutorial/images/exampleProject/02.png" alt="Example Project" title="Example Project" />
+      </a>
+      <div class="highslide-caption">2. Select "Symbolic Execution Debugger (SED), SED Examples" and switch to the next wizard page.</div>
+      <figcaption>2. Select "Symbolic Execution Debugger (SED), SED Examples" and switch to the next wizard page.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/exampleProject/03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="tutorial/images/exampleProject/03.png" alt="Example Project" title="Example Project" />
+      </a>
+      <div class="highslide-caption">3. Optionally change the project name and complete the wizard.</div>
+      <figcaption>3. Optionally change the project name and complete the wizard.</figcaption>
+   </figure>
+</div>
+
+
+<h3><a name="number">3 Symbolic Execution and Basic Tool Usage</a></h3>
+
+<p>
+   We use class <code>Number</code> as a first example to explain
+   symbolic execution and the basic functionality of SED (using KeY as
+   symbolic execution engine). It has an instance field
+   <code>content</code> and method <code>equals</code>, which compares the current <code>Number</code> instance with the given one.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/01.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">1. Open class <code>Number</code>.</div>
+      <figcaption>1. Open class <code>Number</code>.</figcaption>
+   </figure>
+</div>
+
+<p>
+   Symbolic execution means to execute a program with symbolic values in lieu of concrete values performed by a symbolic execution engine.
+   Consequently, it is usually not possible to decide which execution path to take. Hence, execution splits into multiple branches to cover all feasible execution paths.
+   The result is a so called <i>symbolic execution tree</i>.
+</p>
+<p>
+   The SED allows to start symbolic execution directly at any method or even to execute only selected statements.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/02.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">2. Select method <code>equals</code> and start debugging via context menu item "Debug As, Symbolic Execution Debugger (SED)".</div>
+      <figcaption>2. Select method <code>equals</code> and start debugging via context menu item "Debug As, Symbolic Execution Debugger (SED)".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/03.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">3. Switch into perspective "Symbolic Debug", which provides all relevant views for symbolic execution.</div>
+      <figcaption>3. Switch into perspective "Symbolic Debug", which provides all relevant views for symbolic execution.</figcaption>
+   </figure>
+</div>
+
+<p>
+   View "Symbolic Debug" provides all views relevant for symbolic execution:
+   <ul>
+      <li><b>Debug</b> - Allows to switch between debug sessions and to control symbolic execution</li>
+      <li><b>Symbolic Execution Tree</b> - Visualizes the symbolic execution trees of selected debug sessions</li>
+      <li><b>Symbolic Execution Tree (Thumbnail)</b> - Miniature diagram for navigation purpose</li>
+      <li><b>Variables</b> - Shows the symbolic state of the selected node in the symbolic execution tree</li>
+      <li><b>Breakpoints</b> - Allows to manage breakpoints</li>
+      <li><b>Symbolic Execution Settings</b> - Allows to customize the symbolic execution engine</li>
+      <li><b>Properties</b> - Provides additional details about the selected node</li>
+   </ul>
+   The selection of view "Debug" is always in sync with the one of view "Symbolic Execution Tree". The corresponding part in the source code is highlighted as well.
+</p>
+<p>
+   Symbolic execution can be done stepwise or resumed until a breakpoint is hit.
+   If no breakpoint is available or hit, symbolic execution continues until a maximal number of steps has been performed on each path.
+   The limit is 1000 by default and can be changed on the preference page "Run/Debug, Symbolic Execution Debugger (SED), KeY".
+</p>
+<p>
+    Different node kinds are used to highlight the meaning of symbolic execution tree nodes. 
+    The root of a symbolic execution tree is always a <i>start</i> node representing the program fragment to execute.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/04.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">4. Perform a "Step Into".</div>
+      <figcaption>4. Perform a "Step Into".</figcaption>
+   </figure>
+</div>
+
+<p>
+   The new selected node is a <i>method call</i> node indicating that method <code>equals</code> will be inline executed next.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/05.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/05.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">5. Perform a "Step Into".</div>
+      <figcaption>5. Perform a "Step Into".</figcaption>
+   </figure>
+</div>
+
+
+<p>
+   The selected <i>branch statement</i> node represents the program state before the first statement of method <code>equals</code> is executed. 
+   The SED separates between branch, loop and normal statements not supposed to branch.
+<p>
+<p>
+   Inspecting the state of the branch statement node in view "Variables" shows that at this point nothing is known about parameter <code>n</code>.
+   Thus it can be <code>null</code> or a reference to an existing object. 
+   If multiple values are possible the SED shows the condition under which each value would be taken. 
+   The Java <code>this</code> reference is here named <code>self</code>.
+   The instance field <code>content</code> of <code>self</code> and <code>n</code> (if not <code>null</code>) have symbolic values representing any number.
+   The <code>exc</code> variable is used by KeY to separate between normal and exceptional termination.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/06.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/06.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">6. Perform a "Step Into".</div>
+      <figcaption>6. Perform a "Step Into".</figcaption>
+   </figure>
+</div>
+
+<p>
+   It depends on the actual state how the <code>if</code> guard is evaluated. The symbolic state does not restrict any of the possible outcomes.
+   Consequently, symbolic execution splits into several branches to capture all feasible execution paths.
+   Here, a first case distinction has to be made whether parameter <code>n</code> is <code>null</code> or not.
+   <i>Branch condition</i> nodes show the condition under which each path is taken.
+   The right most branch where parameter <code>n</code> is <code>null</code> terminates with an uncaught <code>NullPointerException</code> as shown by the <i>exceptional termination</i> node.
+   The left branch splits again to distinguish the cases where the <code>content</code> field of both instance has the same value or different values.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/07.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/07.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">7. Select the branch statement node and perform a "Step Into".</div>
+      <figcaption>7. Select the branch statement node and perform a "Step Into".</figcaption>
+   </figure>
+</div>
+
+<p>
+   Symbolic execution is always continued on all not terminated child branches of the selected node. 
+   Here, two <i>method return</i> nodes that show the return value of method <code>equals</code> have been added.
+   If multiple return values are possible, all of them are shown together with the condition when each is returned.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/08.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/08.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">8. Select the left return node and perform a "Step Into".</div>
+      <figcaption>8. Select the left return node and perform a "Step Into".</figcaption>
+   </figure>
+</div>
+
+<p>
+   The left most branch terminates normally without a thrown exception.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/09.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/09.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">9. Select the right return node and resume execution.</div>
+      <figcaption>9. Select the right return node and resume execution.</figcaption>
+   </figure>
+</div>
+
+<p>
+   Resume continues execution until a breakpoint is hit on any branch or until the maximal number of performed steps per path is reached.
+   Here, the last branch terminates also normally without a thrown exception.
+</p>
+<p>
+   SED supports the set of breakpoints provided by JDT (except class breakpoints) and extends them by the "KeY Watchpoint", which is a line independent state definition. In classical debugging using concrete execution, the user is responsible to start the program under inspection in an initial state, which leads to the state hitting a given breakpoint. Using symbolic execution all execution paths are explored simultaneously, in particular, execution paths which lead to a symbolic state hitting the breakpoint. No input values need to be provided!
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/10.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/10.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">10. Select statement node "return true;".</div>
+      <figcaption>10. Select statement node "return true;".</figcaption>
+   </figure>
+</div>
+
+<p>
+   Inspecting the symbolic state in view "Variables" shows that instance field <code>content</code> of <code>self</code> and <code>n</code> has the same symbolic value.
+   This knowledge was discovered during symbolic execution by the branch conditions. 
+   The path condition limiting the initial state in order to take the path is shown in view "Properties". 
+   It is a conjunction over all branch conditions on that path.
+</p>
+<p>
+   Here, the path condition is satisfied, if <code>self</code> and <code>n</code> are different objects with the same content.
+   But it is also true, if <code>self</code> and <code>n</code> point to the same object.
+   Unintended aliasing is a source of bugs. SED helps to find these source of bugs by determining and visualizing all possible memory layouts w.r.t. the path condition. 
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/11.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/11.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">11. Select context menu item "Visualize Memory Layouts" of statement node "return true;".</div>
+      <figcaption>11. Select context menu item "Visualize Memory Layouts" of statement node "return true;".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/12.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/12.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">12. Switch into perspective "State Visualization".</div>
+      <figcaption>12. Switch into perspective "State Visualization".</figcaption>
+   </figure>
+</div>
+
+<p>
+   The SED illustrates a memory layout as symbolic object diagram.
+   Similar to a UML object diagram, a symbolic object diagram shows dependencies between objects, the values of object fields and the local variables of the current state.
+</p>
+<p>
+   Here, local variables <code>self</code> and <code>n</code> point to two different objects. 
+   The value of instance field <code>content</code> is the same for both objects.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/13.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/13.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">13. Use the slider to switch to an alternative memory layout.</div>
+      <figcaption>13. Use the slider to switch to an alternative memory layout.</figcaption>
+   </figure>
+</div>
+
+<p>
+   In the shown alternative memory layout the variables <code>self</code> and <code>n</code> are aliases, i.e., they point to the same object.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/number/14.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="tutorial/images/number/14.png" alt="Symbolic Execution and Basic Tool Usage" title="Symbolic Execution and Basic Tool Usage" />
+      </a>
+      <div class="highslide-caption">14. Select "Initial" to inspect the memory before execution started.</div>
+      <figcaption>14. Select "Initial" to inspect the memory before execution started.</figcaption>
+   </figure>
+</div>
+
+<p>
+   Selecting initial state shows how the memory layout must have looked before the execution in order to end up in the current state.
+   Here, the memory layouts for the initial and the current state are identical, because the executed code is side effect free, i.e. no location has been changed.
+</p>
+
+
+<h3><a name="mergesort">4 Locate the Origin of a Bug</a></h3>
+
+<p>
+   The second example shows how SED can be used to find the origin of a bug.
+   Class <code>Mergesort</code> (modified version of the algorithm presented at <a href="http://javabeginners.de/Algorithmen/Sortieralgorithmen/Mergesort.php" target="_blank">javabeginners.de</a>) provides a buggy implementation of the Mergesort algorithm.
+   For our scenario, assume that we experienced a <code>StackOverflowError</code>, while running a large application.
+   It was possible to reproduce the error with a few steps implemented by class <code>MergesortExample</code>.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/01.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">1. Open class <code>MergesortExample</code>.</div>
+      <figcaption>1. Open class <code>MergesortExample</code>.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/02.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">2. Run <code>MergesortExample</code> via context menu item "Run As, Java Application".</div>
+      <figcaption>2. Run <code>MergesortExample</code> via context menu item "Run As, Java Application".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/03.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">3. Inspect the thrown exception in view "Console".</div>
+      <figcaption>3. Inspect the thrown exception in view "Console".</figcaption>
+   </figure>
+</div>
+
+<p>
+   The stack trace shows that method <code>sortRange</code> calls itself until the stack is full. Leveraging that using SED a debug session can start close to the suspected location of the bug, namely, at method <code>sort</code>.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/04.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">4. Open class <code>Mergesort</code>.</div>
+      <figcaption>4. Open class <code>Mergesort</code>.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/05.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/05.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">5. Select method <code>sort</code> and start debugging via context menu item "Debug As, Symbolic Execution Debugger (SED)". <br>Switch next to perspective "Symbolic Debug".</div>
+      <figcaption>5. Select method <code>sort</code> and start debugging via context menu item "Debug As, Symbolic Execution Debugger (SED)". <br>Switch next to perspective "Symbolic Debug".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/06.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/06.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">6. Perform "Step Into" three times.</div>
+      <figcaption>6. Perform "Step Into" three times.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/07.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/07.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">7. Inspect the resulting symbolic execution tree.</div>
+      <figcaption>7. Inspect the resulting symbolic execution tree.</figcaption>
+   </figure>
+</div>
+
+<p>
+   Symbolic execution starts in an arbitrary state. 
+   The discovered <code>NullPointerException</code> is spurious as method parameter as <code>intArr</code> should not be <code>null</code>.
+   Such knowledge can be provided as precondition in the debug configuration to restrict the initial state.
+</p>
+
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/08.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/08.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">8. Edit the debug configuration via menu item "Debug Configurations...".</div>
+      <figcaption>8. Edit the debug configuration via menu item "Debug Configurations...".</figcaption>
+   </figure>
+</div>
+
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/09.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/09.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">9. Define precondition <code>intArr != null</code> and click on "Debug".</div>
+      <figcaption>9. Define precondition <code>intArr != null</code> and click on "Debug".</figcaption>
+   </figure>
+</div>
+
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/10.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/10.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">10. Define breakpoint at the if statement (line 66) before resuming execution.</div>
+      <figcaption>10. Define breakpoint at the if statement (line 66) before resuming execution.</figcaption>
+   </figure>
+</div>
+
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/11.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/11.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">11. Perform a single execution step.</div>
+      <figcaption>11. Perform a single execution step.</figcaption>
+   </figure>
+</div>
+
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/12.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/12.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">12. The if statement branches as expected. Resume execution and perform then a single step to inspect the next loop iteration.</div>
+      <figcaption>12. The if statement branches as expected. Resume execution and perform then a single step to inspect the next loop iteration.</figcaption>
+   </figure>
+</div>
+
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/mergesort/13.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/mergesort/13.png" alt="Locate the Origin of a Bug" title="Locate the Origin of a Bug" />
+      </a>
+      <div class="highslide-caption">13. Execution is not branching in case the array is not empty and the defect is found. The if guard should have been <code>l &lt; r</code>.</div>
+      <figcaption>13. Execution is not branching in case the array is not empty and the defect is found. The if guard should have been <code>l &lt; r</code>.</figcaption>
+   </figure>
+</div>
+
+<p>
+   The explicit rendering of different control flow branches in the SE tree constitutes a major advantage over traditional debuggers.
+   Unexpected or missing expected branches are good candidates for possible sources of bugs.
+</p>
+<p>
+   Here, we would actually expect that the branch statement node splits symbolic execution and are surprised that this is not the case.
+   This is suspicious and deserves closer attention. 
+   Inspecting the <code>if</code> guard shows that the comparison should have been <code>l &lt; r</code> and the source of the bug is found.
+   Without the precondition the bug can be observed as well, but a little later.
+</p>
+
+
+<h3><a name="specifications">5 Review Code and Specifications Usage</a></h3>
+
+<p>
+   The third example shows how specifications can be considered during symbolic execution.
+   By default, method calls are treated by inlining possible method implementations and loops are unrolled.
+   This causes in general symbolic execution trees of infinite depth. 
+   The SED continues symbolic execution until the maximal number of applied steps per path is reached.
+</p>
+<p>
+   Symbolic execution trees of finite depth can be guaranteed by applying method contracts and loop invariants instead of inlining and unrolling.
+   The use of method contracts allows also to deal with methods for which no implementation is available.
+</p>
+<p>
+   Method <code>indexOf</code> of class <code>ArrayUtil</code> returns the first index in the given <code>array</code> accepted by the <code>filter</code>.
+
+For interface <code>Filter</code> is no implementation available, but its method <code>accept</code> is specified with JML. Its contract allows to call the method in any state that satisfies the precondition (here: true), and implicitly, in which the invariant (a property limiting states of an object) of the <code>Filter</code> implementation is satisfied. The contract guarantees then that the method terminates without throwing an exception or changing any location.
+</p>
+<p>
+   The method contract of <code>indexOf</code> requires that the method is called in a state where the invariant of <code>filter</code> is fulfilled and ensures that no exception will be thrown. Method <code>indexOf</code> invokes the <code>accept</code> method on the instance given as <code>filter</code>, using contracts KeY needs to ensure that at invocation time the method's precondition and the invariant of the <code>filter</code> object are satisfied. To ensure this, the invariant for <code>filter</code> must already be required to hold when invoking method <code>indexOf</code>. Consequently, <code>\invariant_for(filter)</code> must be added as part of the precondition of method <code>indexOf</code>. Note, in general this has to be done for all object parameters and fields on which a method is called.
+</p>
+<p>
+   For the <code>while</code> loop a loop invariant is provided, which ensures termination and limits the range of local variable <code>i</code>.
+   A loop invariant is a property which has to be preserved by each loop iteration. Thus, if the loop invariant is satisfied before the loop is entered, it is also satisfied after an arbitrary number of loop iterations when execution is continued after the loop.
+   Notice that the provided loop invariant is not strong enough for verification, but sufficient for debugging.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/indexOf/01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/indexOf/01.png" alt="Review Code and Specifications Usage" title="Review Code and Specifications Usage" />
+      </a>
+      <div class="highslide-caption">1. Open class <code>ArrayUtil</code>.</div>
+      <figcaption>1. Open class <code>ArrayUtil</code>.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/indexOf/02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/indexOf/02.png" alt="Review Code and Specifications Usage" title="Review Code and Specifications Usage" />
+      </a>
+      <div class="highslide-caption">2. Select method <code>indexOf</code> and start debugging via context menu item "Debug As, Symbolic Execution Debugger (SED)". <br>Switch next to perspective "Symbolic Debug".</div>
+      <figcaption>2. Select method <code>indexOf</code> and start debugging via context menu item "Debug As, Symbolic Execution Debugger (SED)". <br>Switch next to perspective "Symbolic Debug".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/indexOf/03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/indexOf/03.png" alt="Review Code and Specifications Usage" title="Review Code and Specifications Usage" />
+      </a>
+      <div class="highslide-caption">3. Edit the debug configuration via menu item "Debug Configurations...".</div>
+      <figcaption>3. Edit the debug configuration via menu item "Debug Configurations...".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/indexOf/04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/indexOf/04.png" alt="Review Code and Specifications Usage" title="Review Code and Specifications Usage" />
+      </a>
+      <div class="highslide-caption">4. Select "Use existing contract" and click on "Browse".</div>
+      <figcaption>4. Select "Use existing contract" and click on "Browse".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/indexOf/05.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/indexOf/05.png" alt="Review Code and Specifications Usage" title="Review Code and Specifications Usage" />
+      </a>
+      <div class="highslide-caption">5. Select the only available contract and commit the dialog.</div>
+      <figcaption>5. Select the only available contract and commit the dialog.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/indexOf/06.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/indexOf/06.png" alt="Review Code and Specifications Usage" title="Review Code and Specifications Usage" />
+      </a>
+      <div class="highslide-caption">6. Click on "Debug".</div>
+      <figcaption>6. Click on "Debug".</figcaption>
+   </figure>
+</div>
+
+<p>
+   Debugging when providing a method contract differs from debugging a method or some statements without a contract for two reasons:
+   First, the precondition of the method contract is used to limit the initial state.
+   This includes also that JML defaults will be used. 
+   In particular, fields are considered as not <code>null</code> as long as not explicitly specified as <code>nullable</code>.
+   Second, the postcondition is proven for the termination nodes. If not satisfied, the termination node indicates this by a red crossed icon.
+</p>
+
+<p>
+    To apply method contracts and loop invariants during symbolic execution, the symbolic execution engine has to be configured before performing a step or resuming execution.
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/indexOf/07.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/indexOf/07.png" alt="Review Code and Specifications Usage" title="Review Code and Specifications Usage" />
+      </a>
+      <div class="highslide-caption">7. Configure the symbolic execution engine to apply contracts and loop invariants. Then resume execution.</div>
+      <figcaption>7. Configure the symbolic execution engine to apply contracts and loop invariants. Then resume execution.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/indexOf/08.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="tutorial/images/indexOf/08.png" alt="Review Code and Specifications Usage" title="Review Code and Specifications Usage" />
+      </a>
+      <div class="highslide-caption">8. Inspect the resulting symbolic execution tree.</div>
+      <figcaption>8. Inspect the resulting symbolic execution tree.</figcaption>
+   </figure>
+</div>
+
+<p>
+   That a loop is treated by applying a loop invariant instead of unrolling it is shown by a <i>loop invariant</i> node.
+   If the loop invariant is initially not valid the node will indicate it.
+   Applying a loop invariant splits symbolic execution into two branches. 
+</p>
+<p>
+   The "Body Preserves Invariant" branch represents an arbitrary loop iteration and stops when the method body is completely executed (shown by a <i>Loop Body Termination</i> node).
+   Here, we can see that the left most branch does not preserve the loop invariant. 
+   The reason is that <code>i</code> is not increased which is required by the <code>decreasing</code> clause of the loop invariant.
+   The bug can be solved by moving the statement <code>i++</code> after the <code>if</code> statement.
+   Note that in case of a thrown exception or a jump outside the loop (<code>break</code>, <code>continue</code> or <code>return</code>) the loop invariant does not have to hold and execution is continued outside the loop.
+</p>
+<p>
+   The "Use Case" branch continues execution after the loop is exited.
+   Even if the loop invariant is not preserved, we can see in the method return nodes that the value of <code>i</code> is returned instead of the found <code>index</code>.
+</p>
+
+
+
+<h3><a name="key">6 KeY as Symbolic Execution Engine</a></h3>
+
+<p>
+   KeY is a semi-automatic verification tool that proves the correctness of sequential Java programs (without garbage collection, dynamic class loading and floats) annotated with <a href="http://www.jmlspecs.org/" target="_blank">JML</a> specifications.
+   A symbolic execution engine based on KeY is developed as part of the SED supporting the same set of Java and JML features than KeY. 
+</p>
+<p>
+   KeY and its symbolic execution engine operates on source code and not on compiled byte code. 
+   This requires to provide the source code of all used types or at least stubs of called methods. 
+   Method stubs can be specified with JML. 
+   KeY itself provides such stubs and specifications only for a very small part of the Java API.
+</p>
+<p>
+   The SED Examples make use of Java API classes like <code>System</code> or <code>PrintStream</code>, which are not contained in the stubs provided by KeY.
+   Thus it is required to provide the necessary method stubs and to place them in the folder "lib_specs".
+   A folder containing such stubs should not be part of the class path used by Eclipse's JDT.
+   Instead it has to be added to KeY's class path defined in the project properties on page "KeY". 
+   For the SED examples this is already done automatically by the wizard (see <a href="#example">Example Project</a>).
+</p>
+<p>
+   KeY separates between two different kinds of class paths:
+   <ul>
+      <li><b>Boot class path</b> - A single path providing source code and specifications of classes. Full method implementations will be considered. If not specified, the minimal fraction of KeY's specifications for Java API classes will be used.
+      <li><b>Class path</b> -  Multiple paths providing method stubs and specifications. Only method specifications will be considered and not method implementations.
+   </ul>
+</p>
+<p>
+   The following steps explain how to check and modify KeY's class path:
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/keyClassPath/01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 6 })">
+         <img src="tutorial/images/keyClassPath/01.png" alt="KeY's class path" title="KeY's class path" />
+      </a>
+      <div class="highslide-caption">1. Select context menu item "Properties" of the project with the SED examples.</div>
+      <figcaption>1. Select context menu item "Properties" of the project with the SED examples.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/keyClassPath/02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 6 })">
+         <img src="tutorial/images/keyClassPath/02.png" alt="KeY's class path" title="KeY's class path" />
+      </a>
+      <div class="highslide-caption">2. Select properties page "KeY" and inspect or modify the class path.</div>
+      <figcaption>2. Select properties page "KeY" and inspect or modify the class path.</figcaption>
+   </figure>
+</div>
+
+<p>
+   KeY provides some general settings, so called "Taclet Options", which influence symbolic execution and proofs performed by KeY in general.
+   Of special interest for symbolic execution are:
+   <ul>
+      <li><b>JavaCard</b> - Enable or disable support of JavaCard</li>
+      <li><b>assertions</b> - Treatment of Java assert statements</li>
+      <li><b>bigint</b> - Support for JML datatype <code>\bigint</code></li>
+      <li><b>intRules</b> - Used integer semantic (mathematical (default) or overflow sensitive)</li>
+      <li><b>runtimeExceptions</b> - How to deal with runtime exceptions</li>
+   </ul>
+   Taclet options have to be changed before a debug session is started.
+   However, the default settings should be sufficient in most cases and most likely their is no need to change them.
+</p>
+<p>
+   The following steps explain how to change the "Taclet Options":
+</p>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/tacletOptions/01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 7 })">
+         <img src="tutorial/images/tacletOptions/01.png" alt="Edit Taclet Options" title="Edit Taclet Options" />
+      </a>
+      <div class="highslide-caption">1. Select main menu item "Window, Preferences".</div>
+      <figcaption>1. Select main menu item "Window, Preferences".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="tutorial/images/tacletOptions/02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 7 })">
+         <img src="tutorial/images/tacletOptions/02.png" alt="Edit Taclet Options" title="Edit Taclet Options" />
+      </a>
+      <div class="highslide-caption">2. Select preference page "KeY, Taclet Options" and modify the settings.</div>
+      <figcaption>2. Select preference page "KeY, Taclet Options" and modify the settings.</figcaption>
+   </figure>
+</div>
+
+
+
+
+<!--#include virtual="../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

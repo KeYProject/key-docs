@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title'; 
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../header.html" -->
+<h2>JML Editing</h2>
+<p>
+JML Editing extends the <a href="https://eclipse.org/jdt/" target="_blank">Java development tools (JDT)</a> with support for <a href="http://www.jmlspecs.org" target="_blank">JML</a> to make writing JML specifications as convenient as writing Java source code.
+</p>
+<p>
+The following screenshot shows for instance the extended syntax highlighting of the Java Editor:<br />
+<img src="images/JMLEditing.png" alt="JML Editing" title="JML Editing" />
+</p>
+
+
+<h3>Prerequisites</h3>
+<p>JML Editing is compatible with <a href="http://www.eclipse.org" target="_blank">Eclipse</a> Luna (4.4) or newer.</p>
+<p>Required update-sites and installation instructions are available in the <a href="../../download/index.html#eclipsePreview">download</a> area.</p>
+
+
+<h3>Current Functionality</h3>
+<ul>
+   <li>Syntax highlighting for JML specifications with configurable colors</li>
+   <li>Auto completion for JML keywords</li>
+   <li>Auto indentation of JML comments while writing</li>
+   <li>Code formatter preserves JML comments</li>
+   <li>Hovers for JML keywords</li>
+   <li>Support of JDT's Rename and Move Refactorings</li>
+   <li>Error marker for syntax violations</li>
+   <li>
+      Profiles for different JML dialects
+      <ul>
+         <li>Predefined profiles for JML standard and KeY</li>
+         <li>Profiles are customizable (by the user)</li>
+         <li>Additional profiles can be offered by developers via an Eclipse extension point</li>
+         <li>Profiles are based on extendable and configurable JML parsers</li>
+      </ul>
+   </li>
+</ul>
+
+
+<h3>Future Work</h3>
+<ul>
+   <li>Support for missing JML features</li>
+   <li>Auto completion within JML keyword content</li>
+   <li>Specifications shown in the Outline view</li>
+   <li>Refactorings of JML specifications</li>
+   <li>Links within JML specifications</li>
+   <li>Error marker for semantic failures</li>
+   <li>No spell checking of JML keywords</li>
+</ul>
+
+
+<!--#include virtual="../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

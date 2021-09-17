@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title'; 
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../header.html" -->
+<h2>KeYIDE</h2>
+<p>
+KeYIDE is an alternative user interface for KeY directly integrated into Eclipse. The goal of this project is to provide the same functionality as the original user interface of KeY. 
+Up to now only the basics (proof tree navigation, auto mode, interactive rule application) are available. 
+</p>
+<p>
+The following sections illustrate the main features of the KeYIDE using screenshots. 
+Each section contains numbered screenshots that explain a usage scenario step by step. 
+Clicking on each picture produces a more detailed view. 
+The screenshots may differ from the latest release. 
+</p>
+
+<h3>Prerequisites</h3>
+<p>The KeYIDE is compatible with <a href="http://www.eclipse.org" target="_blank">Eclipse</a> Indigo (3.7) or newer.</p>
+<p>Required update-sites and installation instructions are available in the <a href="../../download/index.html#eclipse">download</a> area.</p>
+
+
+<h3>Verify a method contract</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/verifyMethod01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/verifyMethod01thumb.png" alt="Verify a method contract" title="Verify a method contract" />
+      </a>
+      <div class="highslide-caption">1. Select the method to verify.</div>
+      <figcaption>1. Select the method to verify.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/verifyMethod02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/verifyMethod02thumb.png" alt="Verify a method contract" title="Verify a method contract" />
+      </a>
+      <div class="highslide-caption">2. Start proof via main menu item "KeY, Start Proof".</div>
+      <figcaption>2. Start proof via main menu item<br> "KeY, Start Proof".</figcaption>
+   </figure>
+</div>
+   
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/verifyMethod03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/verifyMethod03thumb.png" alt="Verify a method contract" title="Verify a method contract" />
+      </a>
+      <div class="highslide-caption">3. Select Application "KeYIDE".</div>
+      <figcaption>3. Select Application "KeYIDE".</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/verifyMethod04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/verifyMethod04thumb.png" alt="Verify a method contract" title="Verify a method contract" />
+      </a>
+      <div class="highslide-caption">4. Select method contract to prove.</div>
+      <figcaption>4. Select method contract to prove.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/verifyMethod05.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/verifyMethod05thumb.png" alt="Verify a method contract" title="Verify a method contract" />
+      </a>
+      <div class="highslide-caption">5. Switch to perspective "KeY".</div>
+      <figcaption>5. Switch to perspective "KeY".</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/verifyMethod06.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/verifyMethod06thumb.png" alt="Verify a method contract" title="Verify a method contract" />
+      </a>
+      <div class="highslide-caption">6. Do proof directly in Eclipse.</div>
+      <figcaption>6. Do proof directly in Eclipse.</figcaption>
+   </figure>
+</div>
+
+
+
+
+<h3>Start auto mode</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/auto01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/auto01thumb.png" alt="Start auto mode" title="Start auto mode" />
+      </a>
+      <div class="highslide-caption">1. Change strategy settings if required.</div>
+      <figcaption>1. Change strategy settings if required.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/auto02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/auto02thumb.png" alt="Start auto mode" title="Start auto mode" />
+      </a>
+      <div class="highslide-caption">2. Start auto mode via editor specifc toolbar item "Start Auto Mode".</div>
+      <figcaption>2. Start auto mode<br> via editor specifc<br> toolbar item<br> "Start Auto Mode".</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/auto03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/auto03thumb.png" alt="Start auto mode" title="Start auto mode" />
+      </a>
+      <div class="highslide-caption">3. Wait while auto mode is active.</div>
+      <figcaption>3. Wait while auto<br> mode is active.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/auto04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/auto04thumb.png" alt="Start auto mode" title="Start auto mode" />
+      </a>
+      <div class="highslide-caption">4. Inspect result.</div>
+      <figcaption>4. Inspect result.</figcaption>
+   </figure>
+</div>
+
+
+
+
+<h3>Stop auto mode when breakpoint is hit</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/breakpoints01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/breakpoints01thumb.png" alt="Stop auto mode when breakpoint is hit" title="Stop auto mode when breakpoint is hit" />
+      </a>
+      <div class="highslide-caption">1. Define a Line, Method or Java Exception breakpoint, a Watchpoint or a KeY Watchpoint as usual.</div>
+      <figcaption>1. Define a Line, Method or Java Exception breakpoint, a Watchpoint or a KeY Watchpoint as usual.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/breakpoints02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/breakpoints02thumb.png" alt="Stop auto mode when breakpoint is hit" title="Stop auto mode when breakpoint is hit" />
+      </a>
+      <div class="highslide-caption">2. Select toolbar item "Stop at Breakpoints" before starting the auto mode.</div>
+      <figcaption>2. Select toolbar item "Stop at Breakpoints"<br> before starting the auto mode.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/breakpoints03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/breakpoints03thumb.png" alt="Stop auto mode when breakpoint is hit" title="Stop auto mode when breakpoint is hit" />
+      </a>
+      <div class="highslide-caption">3. Auto mode stops when breakpoint is hit.</div>
+      <figcaption>3. Auto mode stops when breakpoint is hit.</figcaption>
+   </figure>
+</div>
+
+
+<h3>Apply a rule interactively</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/interactive01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/interactive01thumb.png" alt="Apply a rule interactively" title="Apply a rule interactively" />
+      </a>
+      <div class="highslide-caption">1. Move the mouse over a term and apply a rule via the context menu.</div>
+      <figcaption>1. Move the mouse over a term and apply a rule via the context menu.</figcaption>
+   </figure>
+</div>
+
+
+<h3>Generate a counter example</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/counterExample01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/counterExample01thumb.png" alt="Generate a counter example" title="Generate a counter example" />
+      </a>
+      <div class="highslide-caption">1. Select context menu item "Counterexample" of a goal.</div>
+      <figcaption>1. Select context menu item "Counterexample" of a goal.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/counterExample02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/counterExample02thumb.png" alt="Generate a counter example" title="Generate a counter example" />
+      </a>
+      <div class="highslide-caption">2. Optionally visualize counter example via context menu item "Visualize Model".</div>
+      <figcaption>2. Optionally visualize counter example via context menu item "Visualize Model".</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/counterExample03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/counterExample03thumb.png" alt="Generate a counter example" title="Generate a counter example" />
+      </a>
+      <div class="highslide-caption">3. Inspect the visualized counter example.</div>
+      <figcaption>3. Inspect the visualized counter example.</figcaption>
+   </figure>
+</div>
+
+<h3>Generate test cases</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/generateTests01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 6 })">
+         <img src="images/generateTests01thumb.png" alt="Generate test cases" title="Generate test cases" />
+      </a>
+      <div class="highslide-caption">1. Select toolbar item "Generate test cases for open goals".</div>
+      <figcaption>1. Select toolbar item<br> "Generate test cases for open goals".</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/generateTests02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 6 })">
+         <img src="images/generateTests02thumb.png" alt="Generate test cases" title="Generate test cases" />
+      </a>
+      <div class="highslide-caption">2. An additional Java project is created which contains the generated test cases. Follow the instructions in the Reame.txt file to add missing libraries.</div>
+      <figcaption>2. An additional Java project is created which contains the generated test cases.<br> Follow the instructions in the Reame.txt file to add missing libraries.</figcaption>
+   </figure>
+</div>
+
+<h3>KeY basics in Eclipse and troubleshooting</h3>
+
+<ul>
+   <li><a href="../CrossProject/index.html">KeY basics in Eclipse (Cross-project Functionality)</a>
+      <ul>
+         <li><a href="../CrossProject/index.html#example">Create an example project</a></li>
+         <li><a href="../CrossProject/index.html#taclet">Change taclet options</a></li>
+         <li><a href="../CrossProject/index.html#KeYsClassPath">Define class path used by KeY</a></li>
+      </ul>
+   </li>
+   <li><a href="../CrossProject/index.html#troubleshooting">Troubleshooting</a>
+      <ul>
+         <li><a href="../CrossProject/index.html#API">Unresolved classtype (support for API classes)</a></li>
+      </ul>
+   </li>
+</ul>
+
+
+
+<!--#include virtual="../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

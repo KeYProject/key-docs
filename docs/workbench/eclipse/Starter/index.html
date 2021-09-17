@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title';
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../header.html" -->
+<h2>KeY 4 Eclipse Starter</h2>
+<p>
+KeY 4 Eclipse Starter is a basic Eclipse extension to start KeY from within Eclipse. 
+</p>
+<p>
+The following sections illustrate the main features of KeY 4 Eclipse Starter using screenshots. 
+Each section contains numbered screenshots that explain a usage scenario step by step. 
+Clicking on each picture produces a more detailed view. 
+The screenshots may differ from the latest release. 
+</p>
+
+<h3>Prerequisites</h3>
+<p>KeY 4 Eclipse Starter is compatible with <a href="http://www.eclipse.org" target="_blank">Eclipse</a> Indigo (3.7) or newer.</p>
+<p>Required update-sites and installation instructions are available in the <a href="../../download/index.html#eclipse">download</a> area.</p>
+
+<h3>Open KeY</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/open01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/open01thumb.png" alt="Open KeY" title="Open KeY" />
+      </a>
+      <div class="highslide-caption">1. Open KeY via main menu item "KeY, Open Application".</div>
+      <figcaption>1. Open KeY via main menu item <br> "KeY, Open Application".</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/open02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/open02thumb.png" alt="Open KeY" title="Open KeY" />
+      </a>
+      <div class="highslide-caption">2. Select Application "KeY".</div>
+      <figcaption>2. Select Application "KeY".</figcaption>
+   </figure>
+</div>
+   
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/open03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/open03thumb.png" alt="Open KeY" title="Open KeY" />
+      </a>
+      <div class="highslide-caption">3. Use KeY as normal.</div>
+      <figcaption>3. Use KeY as normal.</figcaption>
+   </figure>
+</div>
+
+
+<h3>Verify a method contract</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/verifyMethod01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/verifyMethod01thumb.png" alt="Verify a method contract" title="Verify a method contract" />
+      </a>
+      <div class="highslide-caption">1. Select the method to verify.</div>
+      <figcaption>1. Select the method to verify.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/verifyMethod02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/verifyMethod02thumb.png" alt="Verify a method contract" title="Verify a method contract" />
+      </a>
+      <div class="highslide-caption">2. Start proof via main menu item "KeY, Start Proof".</div>
+      <figcaption>2. Start proof via main menu item<br> "KeY, Start Proof".</figcaption>
+   </figure>
+</div>
+   
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/verifyMethod03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/verifyMethod03thumb.png" alt="Verify a method contract" title="Verify a method contract" />
+      </a>
+      <div class="highslide-caption">3. Select Application "KeY".</div>
+      <figcaption>3. Select Application "KeY".</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/verifyMethod04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/verifyMethod04thumb.png" alt="Verify a method contract" title="Verify a method contract" />
+      </a>
+      <div class="highslide-caption">4. Instantiate proof in KeY as normal.</div>
+      <figcaption>4. Instantiate proof in KeY as normal.</figcaption>
+   </figure>
+</div>
+
+
+<h3>Load a proof or key file</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/load01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/load01thumb.png" alt="Load a proof or key file" title="Load a proof or key file" />
+      </a>
+      <div class="highslide-caption">1. Select the proof or key file to load.</div>
+      <figcaption>1. Select the proof or key file to load.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/load02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/load02thumb.png" alt="Load a proof or key file" title="Load a proof or key file" />
+      </a>
+      <div class="highslide-caption">2. Start proof via main menu item "KeY, Load File".</div>
+      <figcaption>2. Start proof via main menu item<br> "KeY, Load File".</figcaption>
+   </figure>
+</div>
+   
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/load03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/load03thumb.png" alt="Load a proof or key file" title="Load a proof or key file" />
+      </a>
+      <div class="highslide-caption">3. Select Application "KeY".</div>
+      <figcaption>3. Select Application "KeY".</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/load04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/load04thumb.png" alt="Load a proof or key file" title="Load a proof or key file" />
+      </a>
+      <div class="highslide-caption">4. Instantiate proof in KeY as normal.</div>
+      <figcaption>4. Instantiate proof in KeY as normal.</figcaption>
+   </figure>
+</div>
+
+
+<h3>Stop auto mode when breakpoint is hit</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/breakpoints01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/breakpoints01thumb.png" alt="Stop auto mode when breakpoint is hit" title="Stop auto mode when breakpoint is hit" />
+      </a>
+      <div class="highslide-caption">1. Define a Line, Method or Java Exception breakpoint, a Watchpoint or a KeY Watchpoint as usual.</div>
+      <figcaption>1. Define a Line, Method or Java Exception breakpoint, a Watchpoint or a KeY Watchpoint as usual.</figcaption>
+   </figure>
+
+   <figure>
+      <a href="images/breakpoints02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/breakpoints02thumb.png" alt="Stop auto mode when breakpoint is hit" title="Stop auto mode when breakpoint is hit" />
+      </a>
+      <div class="highslide-caption">2. Select toolbar item "Stop when a breakpoint is hit." before starting the auto mode.</div>
+      <figcaption>2. Select toolbar item "Stop when a breakpoint is hit."<br> before starting the auto mode.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/breakpoints03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/breakpoints03thumb.png" alt="Stop auto mode when breakpoint is hit" title="Stop auto mode when breakpoint is hit" />
+      </a>
+      <div class="highslide-caption">3. Auto mode stops when breakpoint is hit.</div>
+      <figcaption>3. Auto mode stops when breakpoint is hit.</figcaption>
+   </figure>
+</div>
+
+<h3>KeY basics in Eclipse and troubleshooting</h3>
+
+<ul>
+   <li><a href="../CrossProject/index.html">KeY basics in Eclipse (Cross-project Functionality)</a>
+      <ul>
+         <li><a href="../CrossProject/index.html#example">Create an example project</a></li>
+         <li><a href="../CrossProject/index.html#taclet">Change taclet options</a></li>
+         <li><a href="../CrossProject/index.html#KeYsClassPath">Define class path used by KeY</a></li>
+      </ul>
+   </li>
+   <li><a href="../CrossProject/index.html#troubleshooting">Troubleshooting</a>
+      <ul>
+         <li><a href="../CrossProject/index.html#API">Unresolved classtype (support for API classes)</a></li>
+      </ul>
+   </li>
+</ul>
+
+
+
+<!--#include virtual="../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->

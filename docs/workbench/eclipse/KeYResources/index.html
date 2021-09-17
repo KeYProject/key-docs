@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>KeY Project: Integrated Deductive Software Design</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../key.css">
+<link rel="shortcut icon" href="http://i12www.ira.uka.de/~key/favicon.ico">
+  <style type="text/css">
+    .grey { background-color: lightgrey; padding: 5mm; }
+    .blue { background-color: #b1d3ec; padding: 5mm;}
+    .dl { border-left: 3px dotted #4e9ad6; padding-left: 3mm;}
+    table#selection { border: 1pt solid black; margin-left:2cm; padding:5px; }
+    table#selection * td { padding: 5px; }
+    a.boldlink { font-weight: bold; color: black; }
+    h3 { border-bottom: 1px solid black; }
+    .content { position:absolute; left:15em; top:101px; margin-right:2em; max-width:1000px;}
+    .impatient { float: right;  border: 2px solid #4e9ad6;
+border-left: 10px solid #4e9ad6; background-color: #b1d3ec;
+width:125pt; padding:4mm; text-align:center; margin-left: 1em;}
+    .update-site {  border: 2px solid #4e9ad6; border-left: 10px solid
+    #4e9ad6; background-color: #b1d3ec; width:500pt; padding:4mm; text-align:left}
+    .eclipse table, .eclipse th, .eclipse td, .eclipse tr {
+     border: 1px solid black;
+     border-spacing: 1px;
+     border-collapse:collapse;
+  }
+  </style>
+
+
+<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript">
+hs.graphicsDir = '../highslide/graphics/';
+hs.showCredits = false;
+hs.outlineType = 'custom';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.allowMultipleInstances = false;
+hs.captionEval = 'this.a.title';
+hs.headingEval = 'this.thumb.title';
+//hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: true,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: 0.75,
+		position: 'bottom center',
+      offsetX: 0,
+      offsetY: -15,
+		hideOnMouseOut: true
+	}
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />
+<style type="text/css">
+   figure { display: table-cell; padding: 5px; text-align: center; vertical-align: middle; border: 2px solid #4e9ad6; background-color: #b1d3ec;}
+   figcaption { font-size: small; }
+   .highslide img {border: 0px;}
+</style>
+
+</head>
+
+
+<body bgcolor="#FFFFFF">
+<!--#include virtual="../../header.html" -->
+<h2>KeY Resources</h2>
+<p>
+KeY Resources provides the "KeY project" with automatic background proofs. 
+Such projects extends the functionality of a Java project by maintaining automatically proofs in background. 
+This means that the tool tries to do proofs automatically whenever files in a project change. 
+Markers are used to show the proof result directly in the source editor.  
+</p>
+<p>
+The following sections illustrate the main features of KeY Resources using screenshots. 
+Each section contains numbered screenshots that explain a usage scenario step by step. 
+Clicking on each picture produces a more detailed view. 
+The screenshots may differ from the latest release. 
+</p>
+
+<h3>Prerequisites</h3>
+<p>KeY Resources is compatible with <a href="http://www.eclipse.org" target="_blank">Eclipse</a> Indigo (3.7) or newer.</p>
+<p>Required update-sites and installation instructions are available in the <a href="../../download/index.html#eclipse">download</a> area.</p>
+
+<h3>Create a KeY Project</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/create01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/create01thumb.png" alt="Create a KeY Project" title="Create a KeY Project" />
+      </a>
+      <div class="highslide-caption">1. Open new project wizard via Package Explorer context menu item "New, Project...".</div>
+      <figcaption>1. Open new project wizard via Package Explorer context menu item "New, Project...".</figcaption>
+   </figure>
+</div>
+   
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/create02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/create02thumb.png" alt="Create a KeY Project" title="Create a KeY Project" />
+      </a>
+      <div class="highslide-caption">2. Select "KeY Project".</div>
+      <figcaption>2. Select "KeY Project".</figcaption>
+   </figure>
+   
+   <figure>
+      <a href="images/create03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 1 })">
+         <img src="images/create03thumb.png" alt="Create a KeY Project" title="Create a KeY Project" />
+      </a>
+      <div class="highslide-caption">3. Define project name and finish the wizard.</div>
+      <figcaption>3. Define project name and finish the wizard.</figcaption>
+   </figure>
+</div>
+
+
+
+<h3>Work with a KeY Project</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/work01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/work01thumb.png" alt="Work with a KeY Project" title="Work with a KeY Project" />
+      </a>
+      <div class="highslide-caption">1. Edit source code as normal and save it.</div>
+      <figcaption>1. Edit source code as normal and save it.</figcaption>
+   </figure>
+   
+   <figure>
+      <a href="images/work02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/work02thumb.png" alt="Work with a KeY Project" title="Work with a KeY Project" />
+      </a>
+      <div class="highslide-caption">2. During build proofs are automatically executed ans results are shown via marker.</div>
+      <figcaption>2. During build proofs are automatically executed<br> and results are shown via marker.</figcaption>
+   </figure>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/work03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/work03thumb.png" alt="Work with a KeY Project" title="Work with a KeY Project" />
+      </a>
+      <div class="highslide-caption">3. Proofs are automatically maintained in folder "proofs".</div>
+      <figcaption>3. Proofs are automatically<br> maintained in folder "proofs".</figcaption>
+   </figure>
+   
+   <figure>
+      <a href="images/work04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/work04thumb.png" alt="Work with a KeY Project" title="Work with a KeY Project" />
+      </a>
+      <div class="highslide-caption">4. Tooltip of a marker explains the proof state and give hints how to continue.</div>
+      <figcaption>4. Tooltip of a marker explains the proof state and give hints how to continue.</figcaption>
+   </figure>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/work05.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 2 })">
+         <img src="images/work05thumb.png" alt="Work with a KeY Project" title="Work with a KeY Project" />
+      </a>
+      <div class="highslide-caption">5. Proof files can be opend in KeY or the KeYIDE via a marker by selecting "Open proof" to inspect and finish the proof. In addition, a proof can be inspected in the SED via marker menu item "Debug proof".</div>
+      <figcaption>5. Proof files can be opend in KeY or the KeYIDE via a marker by selecting "Open proof" to inspect and finish the proof.<br> In addition, a proof can be inspected in the SED via marker menu item "Debug proof".</figcaption>
+   </figure>
+</div>
+
+
+
+<h3>Inspect verification status</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/status01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/status01thumb.png" alt="Customize build settings" title="Customize build settings" />
+      </a>
+      <div class="highslide-caption">1. Select main menu item "Window, Show View, Other...".</div>
+      <figcaption>1. Select main menu item "Window, Show View, Other...".</figcaption>
+   </figure>
+   
+   <figure>
+      <a href="images/status02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/status02thumb.png" alt="Customize build settings" title="Customize build settings" />
+      </a>
+      <div class="highslide-caption">2. Open view "Verification Status".</div>
+      <figcaption>2. Open view "Verification Status".</figcaption>
+   </figure>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/status03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/status03thumb.png" alt="Customize build settings" title="Customize build settings" />
+      </a>
+      <div class="highslide-caption">3. Colors of tree items indicate verification stati.</div>
+      <figcaption>3. Colors of tree items indicate verification stati.</figcaption>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/status04.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 3 })">
+         <img src="images/status04thumb.png" alt="Customize build settings" title="Customize build settings" />
+      </a>
+      <div class="highslide-caption">4. HTML report lists tasks and assumptions used by proofs.</div>
+      <figcaption>4. HTML report lists tasks and assumptions used by proofs.</figcaption>
+   </figure>
+   </figure>
+</div>
+
+
+<h3>Inspect verification log</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/log01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/log01thumb.png" alt="Customize build settings" title="Customize build settings" />
+      </a>
+      <div class="highslide-caption">1. Select main menu item "Window, Show View, Other...".</div>
+      <figcaption>1. Select main menu item "Window, Show View, Other...".</figcaption>
+   </figure>
+   
+   <figure>
+      <a href="images/log02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/log02thumb.png" alt="Customize build settings" title="Customize build settings" />
+      </a>
+      <div class="highslide-caption">2. Open view "Verification Log".</div>
+      <figcaption>2. Open view "Verification Log".</figcaption>
+   </figure>
+   </figure>
+</div>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/log03.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 4 })">
+         <img src="images/log03thumb.png" alt="Customize build settings" title="Customize build settings" />
+      </a>
+      <div class="highslide-caption">3. Table shows used settings and times of performed verification tasks.</div>
+      <figcaption>3. Table shows used settings and times of performed verification tasks.</figcaption>
+   </figure>
+</div>
+
+
+
+<h3>Customize build settings</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/custom01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/custom01thumb.png" alt="Customize build settings" title="Customize build settings" />
+      </a>
+      <div class="highslide-caption">1. Open project properties of a KeY project via context menu item "Properties".</div>
+      <figcaption>1. Open project properties of a KeY project<br> via context menu item "Properties".</figcaption>
+   </figure>
+   
+   <figure>
+      <a href="images/custom02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 5 })">
+         <img src="images/custom02thumb.png" alt="Customize build settings" title="Customize build settings" />
+      </a>
+      <div class="highslide-caption">2. Select properties page "KeY, KeY Proof Management" and customize build settings. E.g. enable counter example and test case generation.</div>
+      <figcaption>2. Select properties page "KeY, KeY Proof Management"<br> and customize build settings.<br> E.g. enable counter example and test case generation.</figcaption>
+   </figure>
+   </figure>
+</div>
+
+
+
+
+<h3>Generated Test Cases</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/testGeneration01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 6 })">
+         <img src="images/testGeneration01thumb.png" alt="Generated Test Cases" title="Generated Test Cases" />
+      </a>
+      <div class="highslide-caption">1. Generated test cases are maintained in an additional Java project. In addition, a test suite which executes all test cases is generated.</div>
+      <figcaption>1. Generated test cases are maintained in an additional Java project.<br> In addition, a test suite which executes all test cases is generated.</figcaption>
+   </figure>
+</div>
+
+
+
+<h3>Inspect a counter example</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/counterExample01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 7 })">
+         <img src="images/counterExample01thumb.png" alt="Inspect a counter example" title="Inspect a counter example" />
+      </a>
+      <div class="highslide-caption">1. Counter examples can be opend via a marker by selecting "Show Counter Examples".
+</div>
+      <figcaption>1. Counter examples can be opend via a marker by selecting "Show Counter Examples".</figcaption>
+   </figure>
+   
+   <figure>
+      <a href="images/counterExample02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 7 })">
+         <img src="images/counterExample02thumb.png" alt="Inspect a counter example" title="Inspect a counter example" />
+      </a>
+      <div class="highslide-caption">2. Inspect the opened counter example.</div>
+      <figcaption>2. Inspect the opened counter example.</figcaption>
+   </figure>
+   </figure>
+</div>
+
+
+<h3>Convert a Java Project into a KeY Project</h3>
+
+<div class="highslide-gallery" style="display: table; border-spacing: 5px;">
+   <figure>
+      <a href="images/convert01.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 8 })">
+         <img src="images/convert01thumb.png" alt="Convert a Java Project into a KeY Project" title="Convert a Java Project into a KeY Project" />
+      </a>
+      <div class="highslide-caption">1. Select "Convert to KeY Project" in the context menu of a Java project.</div>
+      <figcaption>1. Select "Convert to KeY Project" in the context menu of a Java project.</figcaption>
+   </figure>
+   
+   <figure>
+      <a href="images/convert02.png" class="highslide" onclick="return hs.expand(this, { slideshowGroup: 8 })">
+         <img src="images/convert02thumb.png" alt="Convert a Java Project into a KeY Project" title="Convert a Java Project into a KeY Project" />
+      </a>
+      <div class="highslide-caption">2. Proofs are automatically maintained after conversion.</div>
+      <figcaption>2. Proofs are automatically maintained<br> after conversion.</figcaption>
+   </figure>
+   </figure>
+</div>
+
+<h3>KeY basics in Eclipse and troubleshooting</h3>
+
+<ul>
+   <li><a href="../CrossProject/index.html">KeY basics in Eclipse (Cross-project Functionality)</a>
+      <ul>
+         <li><a href="../CrossProject/index.html#example">Create an example project</a></li>
+         <li><a href="../CrossProject/index.html#taclet">Change taclet options</a></li>
+         <li><a href="../CrossProject/index.html#KeYsClassPath">Define class path used by KeY</a></li>
+      </ul>
+   </li>
+   <li><a href="../CrossProject/index.html#troubleshooting">Troubleshooting</a>
+      <ul>
+         <li><a href="../CrossProject/index.html#API">Unresolved classtype (support for API classes)</a></li>
+      </ul>
+   </li>
+</ul>
+
+
+<!--#include virtual="../../footer.html" -->
+</body>
+</html>
+
+                            
+
+<!--  LocalWords:  KeY
+ -->
