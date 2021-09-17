@@ -1,22 +1,25 @@
-# Proof Exploration 
+# Proof Exploration
 
--- *Author: Sarah Grebing, Alexander Weigl*, XX.XX.2019 valid for KeY-2.10.0
+-- *Author: Alexander Weigl*, August 2021 valid for KeY-2.10.0
 
 !!! abstract
-   
-    This note describes the *Proof Exploration* features in KeY-2.10
-   
-   
-   
-## Overview 
 
-We aggregrate under Proof Exploration, actions and views for supporting
-a *What-If* analysis. With the here described actions you can investigate the
-proof state and try to figure why a proof does not close.
+    This note describes the *Proof Exploration* features in KeY-2.10.
+    Proof Exploration allows a flexible editing of sequences, and
+    therefore brings a "What-If"-Analyses into KeY.
+
+
+
+## Overview
+
+We aggregrate under Proof Exploration, actions and views for
+supporting a *What-If* analysis. With the here described actions you
+can investigate the proof state and try to figure why a proof does not
+close.
 
 For this we offer following actions:
 
-* Add a formulae to the antecedent or succedent of a sequent. 
+* Add a formulae to the antecedent or succedent of a sequent.
 * Edit a formulae (or subterm) on a sequent
 * Delete formulae from the sequent
 
@@ -24,7 +27,7 @@ Proof Nodes, which are affected of exploration actions, are marked in the Proof 
 
 !!! attention
 
-    Proof Exploration actions are only available if you 
+    Proof Exploration actions are only available if you
     activate the *Exploration Mode* in the toolbar.
 
 ## Actions
