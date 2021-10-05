@@ -1,9 +1,57 @@
 # Change log
 
-## 2.10.0 (20XY-XX-XX)
+## Upcoming: 2.12.0 (2022-06-XX)
+
+### Core
+
+* **BREAK:** Minimum required Java version is 11. (!380)
+* IMP: Removal of the Eclipse Plugins. Eclipse support is now shipped in [keyclipse repository](https://git.key-project.org/key/keyclipse)
+* IMP: Removal of `System.out/err` in favor for logging with SLF4J (!240)
+* IMP: Translation of the last DL contracts to JML contracts. (!375)
+* ?? IMP: Logical Infrastructure for final values independent from the heap
+* ?? IMP: Subscripts in SequentView
+
+## 2.10.0 (2021-12-XX)
+
+### Core
+* IMP: New SMT translation (!312), rework of the SMT communication (!381), and smaller fixes (!394)
+* FIX: Comment attachment in recoder (!399, !401)
+* FIX: JML-Extension: Assert/Assume and *_free for block contracts (!342)
+* FIX: Collision of auxiliary contract (!396)
+* FIX: Path handling of key files (!395)
+* FIX: Pruning in closed branches looses rules (!388, #1480)
+* Fix for #1530: Repaired file information if a directory is opened in KeY (!386)
+* Fix for #1551: Escaping comma when saving bookmarked filenames of KeYFileChooser (!387)
+* Fix proof loading in the CLI 
+* Bugfix for #1504 (!264)
+* !385 
+* FIX: lost error messages due to MalformedURLException (!290, #1529)
+* FIX: make exception dialog able to show files in Jar files (!383)
+* FIX: Pfeifer1468consistent saving (!237)
+* FIX: catch headless to make key --auto runnable again (!382)
+* Resolve "SMT Option GUI throws NPE on startup" (!373)
+* IMP: Rewrite of the Jml Parser in ANTLR (!306) with better exception message (!376)
+  * FIX: `\singleton` of a non-location (e.g., `\singleton(3)`) now
+    raises an error (!377)
+* FIX:  (!367, #1566)
+* FIX: add loop scope unwind (!326)
+
 
 ### UI 
 
+* IMP: A better dialog for warnings (!374)
+* IMP: Performance tuning and fixes for ProofTree (!391)
+* IMP: Enables selection of proof in Proof Differences view (!256)
+* Better SourceView Tooltip (!379)
+* Add setting to disable load examples dialog window (!368)
+* SourceView: Enable syntax highlighting for JML starting with annotation markers (!325)
+
+### Development
+
+* Enabling of SonarQube in Merge Requests (!323, !378)
+* Dependency fixes for Gradle 7 (!372)
+
+<!--
 * NEW: *Proof Exploration* allows you to answer *What-If* questions on sequents.
 
 ### Scripts 
@@ -11,8 +59,21 @@
 * NEW: Documentation support for proof scripts (!15)
 * NEW: KeY Proof Scripts are ported from the Key Proof Script Debugger 
         (https://formal.iti.kit.edu/psdbg)
+-->
 
-## 2.8.0 (2020-12-XX)
+*We like to thank all the contributor to this release:*
+
+Alexander Weigl, 
+Florian Lanzinger, 
+Jonas Schiffl, 
+Lukas Grätz, 
+Mattias Ulbrich, 
+Michael Kirsten,
+Richard Bubel, 
+Wolfram Pfeifer, 
+
+
+## 2.8.0 (2020-12-01)
 
 ### Logic
 
@@ -42,7 +103,6 @@
   * FIX: user-provided notes are saved within the proof file (!304)
   * FIX: Origin labels for user interactions could not be parsed
   * FIX: Method signature resolve in JML expressions (!309)
-  * 
 
 
 ### UI
