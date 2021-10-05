@@ -1,11 +1,15 @@
-## KeY basics in Eclipse (Cross-project Functionality)
+# KeY basics in Eclipse (Cross-project Functionality)
 
 The following functionality is independent from a specific KeY-based Eclipse project.
 
-The following sections illustrate features independent from a specific KeY-based Eclipse project using screenshots. Each section contains numbered screenshots that explain a usage scenario step by step. Clicking on each picture produces a more detailed view. The screenshots may differ from the latest release.
+The following sections illustrate features independent from a specific
+KeY-based Eclipse project using screenshots. Each section contains
+numbered screenshots that explain a usage scenario step by step.
+Clicking on each picture produces a more detailed view. The
+screenshots may differ from the latest release.
 
 
-### Create an example project
+## Create an example project
 
 1. Open example project wizard via Package Explorer context menu item "New, Example...".
    
@@ -39,7 +43,7 @@ The following sections illustrate features independent from a specific KeY-based
 
     [![Change taclet options](taclet02thumb.png "Change taclet options")](taclet02.png) 
 
-### Define class path used by KeY
+## Define class path used by KeY
 
 1. Open project properties of a Java/KeY project via context menu item "Properties".
 

@@ -73,6 +73,19 @@ nav:
           - workbench/Proof Scripts/macros.md
           - workbench/Proof Scripts/variables.md
 
+  - KeYclipse:
+      - "Overview": eclipse
+      - "KeY basics": eclipse/CrossProject/
+      - "SED": eclipse/SED
+      - "Stubby": eclipse/Stubby
+    #  - eclipse/General
+      - "KeY IDE": eclipse/KeYIDE
+      - "MonKeY": eclipse/MonKeY
+      - "Starter": eclipse/Starter
+      - "VisualDBC": eclipse/VisualDbC
+      - "JML Editing": eclipse/JMLEditing
+      - "Resources" : eclipse/KeYResources
+
   - Development:
       - "Start": devel/index.md
       - devel/Architecture.md
@@ -93,6 +106,8 @@ nav:
           - devel/Testing/parserMessageTest.md
       - Write Documentation: "devel/howtodoc"
 
+
+  
 #  nav_style: dark
 #  logo: 'https://git.key-project.org/uploads/-/system/appearance/logo/1/key-color.png'
   #feature:
