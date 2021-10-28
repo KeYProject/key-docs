@@ -9,7 +9,7 @@ If you are new to the KeY System, you should start with the excerpt [Using the P
 The documentation is split into two major parts:
 
 * End user: 
-    * [How to use the KeY tool for *end user*](Using Key)
+    * [How to use the KeY tool for *end user*](Using KeY)
     * [How to write Proof Scripts for resilient, persistent and reapplicable proofs*](Proof Scripts)
 * Developer:
     * [How to use KeY as a library or add a new feature](Development)
