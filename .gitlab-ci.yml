@@ -30,11 +30,11 @@ before_script:
   - chmod 644 ~/.ssh/known_hosts
 
 pages:
+  tags: 
+    - tud
   rules:
     # only execute if triggered by pushes
     - if: $CI_PIPELINE_SOURCE == "push"
-  tags: 
-    - tud
   script:
     - mkdocs build
     #- rsync --chmod=ugo=rX --delete --perms -vr site/ ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
