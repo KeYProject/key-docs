@@ -21,7 +21,7 @@ seqdiag {
     MasterHandler -> SMTHandler [label = "handle(MasterHandler, Term)"];
     MasterHandler <- SMTHandler [label = "translate(Term)"];
     MasterHandler -> MasterHandler [label = "recursion"]
-    MasterHandler --> SMTHandler [dotted, label = "handle(MasterHandler, Term)"];
+    MasterHandler --> SMTHandler [label = "handle(MasterHandler, Term)"];
     MasterHandler <-- SMTHandler [label = "SExpr"];
     ModularSMTLib2Translator <- MasterHandler [label = "SExpr"]
 }
