@@ -1,4 +1,4 @@
-# Using the `classpath` directives in KeY
+# Using the classpath directives in KeY
 
 The `classpath` directive allows to include library code into a KeY
 project. These classes may be present either as
