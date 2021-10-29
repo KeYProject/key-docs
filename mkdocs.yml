@@ -40,13 +40,6 @@ theme: # material theme
   palette:
     primary: 'teal'
     accent: 'indigo'
-theme:
-  name: null
-  custom_dir: cinder/
-  colorscheme: github
-  highlightjs: true
-  hljs_languages:
-    - yaml
 
 nav:
   - Home: index.md
