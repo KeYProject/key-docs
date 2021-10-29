@@ -44,16 +44,16 @@ arithmetic, quantifiers, ...). Adding a new handler requires taking the followin
    
    Example (from `BooleanConnectiveHandler.preamble.xml`):
    
-   ``` xml
-   <entry key="bool.decls">
+``` xml
+<entry key="bool.decls">
 (declare-fun u2b (U) Bool)
 (declare-fun b2u (Bool) U)
 (declare-const sort_boolean T)
-    </entry>
+</entry>
 
-    <entry key="bool.axioms">
+<entry key="bool.axioms">
 (assert (instanceof (b2u true) sort_boolean))
 (assert (instanceof (b2u false) sort_boolean))
 (assert (forall ((b Bool)) (= (u2b (b2u b)) b)))
-    </entry>
-   ```
+</entry>
+```
