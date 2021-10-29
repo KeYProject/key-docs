@@ -30,6 +30,9 @@ before_script:
   - chmod 644 ~/.ssh/known_hosts
 
 pages:
+  rules:
+    # only execute if triggered by pushes
+    - if: $CI_PIPELINE_SOURCE == "push"
   tags: 
     - tud
   script:
@@ -41,10 +44,11 @@ pages:
 
 
 linkcheck:docs:
+  tags: 
+    - tud
   rules:
     # only execute if triggered by cronjob, to not trigger on pushes
     - if: $CI_PIPELINE_SOURCE == "schedule"
-  image: lycheeverse/lychee:latest
   script:
-    - lychee --output report.txt --base https://key-project.org/docs/
-    - scp -pr report.txt ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
+    - linkchecker -F html -t 5 --no-robots https://key-project.org/docs/
+    - scp -pr linkchecker-out.html ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
