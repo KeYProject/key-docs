@@ -31,10 +31,7 @@ before_script:
 
 pages:
   tags: 
-    - tud
-  rules:
-    # only execute if triggered by pushes
-    - if: $CI_PIPELINE_SOURCE == "push"
+    - tud  
   script:
     - mkdocs build
     #- rsync --chmod=ugo=rX --delete --perms -vr site/ ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
