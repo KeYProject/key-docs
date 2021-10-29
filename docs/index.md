@@ -12,7 +12,7 @@ The documentation is split into two major parts:
     * [How to use the KeY tool for *end user*](Using KeY)
     * [How to write Proof Scripts for resilient, persistent and reapplicable proofs*](Proof Scripts)
 * Developer:
-    * [How to use KeY as a library or add a new feature](Development)
+    * [How to use KeY as a library or add a new feature](devel)
     * [How we test KeY](Testing)
   
 
