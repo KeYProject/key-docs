@@ -30,6 +30,7 @@ seqdiag {
 
 A handler is responsible for KeY terms of a certain type (e.g., boolean connectors, integer
 arithmetic, quantifiers, ...). Adding a new handler requires taking the following steps:
+
 1. Create the new Handler in the `de.uka.ilkd.key.smt.newsmt2` package and make it extend the
    `SMTHandler` interface
 2. Implement the `canHandle()`, `handle()`, and `init()` methods
