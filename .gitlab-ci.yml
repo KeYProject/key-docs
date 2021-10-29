@@ -1,8 +1,5 @@
 image: wadoon/key-test-docker:docs
 
-# rules:
-#    - if: $CI_PIPELINE_SOURCE == "schedule"
-  
 
 before_script:
   ##
@@ -37,13 +34,16 @@ pages:
     - tud
   script:
     - mkdocs build
-    - rsync --chmod=ugo=rX --delete --perms -vr site/ ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
-    #- scp -pr site/* ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
+    #- rsync --chmod=ugo=rX --delete --perms -vr site/ ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
+    - scp -pr site/* ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
   only:
     - master
 
 
 linkcheck:docs:
+  rules:
+    # only execute if triggered by cronjob, to not trigger on pushes
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   image: lycheeverse/lychee:latest
   script:
     - lychee --output report.txt --base https://key-project.org/docs/
