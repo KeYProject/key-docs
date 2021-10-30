@@ -1,12 +1,15 @@
 site_name: KeY Developer Documentation
+
 plugins:
   - search
+  
 markdown_extensions:
+  - abbr
   - admonition
-  - codehilite:
-      guess_lang: false
+  - pymdownx.highlight
   - footnotes
   - meta
+  - md_in_html
   - pymdownx.arithmatex
   - pymdownx.betterem:
       smart_enable: all
@@ -14,16 +17,27 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.magiclink
+  - pymdownx.tabbed:
+      alternate_style: true 
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+            #          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
   - attr_list
+  - def_list
+  - tables
   - toc:
       permalink: true
   - markdown_aafigure:
@@ -32,14 +46,42 @@ markdown_extensions:
       format: svg
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+  - 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'
 #   - "js/javajml.js"
 
+#copyright: Copyright &copy; 2016 - 2020 Martin Donath
 
 theme: # material theme
   name: material
   palette:
-    primary: 'teal'
-    accent: 'indigo'
+    - media: "(prefers-color-scheme: light)" 
+      scheme: default
+      primary: 'blue grey'
+      accent: 'teal'
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)" 
+      scheme: slate
+      primary: 'dark'
+      accent: 'orange'
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+
+  icon:
+    repo: fontawesome/brands/gitlab
+
+#  palette:
+#    primary: 'blue grey'
+#    accent: 'teal'
+    
 
 nav:
   - Home: index.md
@@ -105,10 +147,7 @@ nav:
 #  logo: 'https://git.key-project.org/uploads/-/system/appearance/logo/1/key-color.png'
   #feature:
   #  tabs: true
-
-
-extra:
-  repo_icon: gitlab
 repo_type: gitlab
 repo_name: key-docs
 repo_url: https://git.key-project.org/key/key-docs/
+edit_uri: edit/master/docs/
