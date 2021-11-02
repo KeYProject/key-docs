@@ -110,3 +110,14 @@ The resulting directory structure for thid example is:
   - src
     - A.java *(contains the contract(s) we want to prove, and also uses java.math.BigInteger.ONE)*
   - tutorial.key
+
+## I used the Autopilot/Symbolic execution macro, but the KeY sequent still contains (part of a) program.
+
+This can have several reasons.
+
+1. A non-void method without return statement. For historic reasons, KeY accepts these.
+2. A missing `assignable` clause, e.g., in a loop invariant.
+
+## I tried proving a simple program with Integer Arithmetic, but KeY does not find a proof!
+
+Try the `DefOps` or `Model Search` proof options.
