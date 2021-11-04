@@ -52,6 +52,7 @@ nav:
   - Home: index.md
   - User Guide:
       - user/index.md
+      - user/FAQ.md
       - user/ADTs.md
       - user/Classpath.md
       - user/Interactive.md
