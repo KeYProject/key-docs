@@ -11,7 +11,7 @@
 ## Gradle Basic
 
 Gradle is similar to *Apache Ant*, but instead of writing XML documents to
-describe your tasks Gradle uses a domain-specific language build upon *Apache
+describe your tasks Gradle uses a domain-specific language built upon *Apache
 Groovy* (and also Kotlin). Currently, we are using the Groovy DSL. Essentially:
 Writing gradle build scripts is writing Groovy. So if you need to do *fancy
 stuff* you should search how to do it in Groovy.
@@ -27,7 +27,7 @@ build a Java project.
 
 The [java plugin](https://docs.gradle.org/current/userguide/java_plugin.html)
 teaches Gradle how to build Java projects. First, the plugin defines a two of
-source sets: `main` and `test` (following follow the default Gradle (Maven)
+source sets: `main` and `test` (the following follows the default Gradle (Maven)
 source set layout):
 
 * `src/main/java` -- Production Java source.
@@ -39,8 +39,8 @@ Second, the plugin defines a couple of task and interdepenecies:
 
 ![](https://docs.gradle.org/current/userguide/img/javaPluginTasks.png)
 
-You should aware of the task dependency if you write custom task. Otherwise you
-task is executed at incorrect order.
+You should be aware of the task dependency if you write a custom task. Otherwise your
+task is executed in an incorrect order.
 
 Every source set (`main` and `test`) has its own dependencies, e.g. jar files or
 projects. Also, we distinguish between compile (`implementation`) and runtime.
@@ -68,23 +68,23 @@ the Java project and `java-library`
 
 
 
-### Multiple Project
+### Multiple Projects
 
 In KeY we have a [multi-project
 build](https://docs.gradle.org/current/userguide/multi_project_builds.html).
 This means, our root project `key` consists out of multiple sub-projects, e.g.
 `key.core`, `key.ui`. In short, the sub-projects are discovered by reading the
 `settings.gradle`. The `include 'key.core'` statement activates the folder
-`key.core` as a sub-project. Note, that no `key.core/build.gradle` is required.
-Sub-projects are configured within the toplevel `build.gradle`. The declaration
-`subprojects { <body> }` execute the `<body>` to configure each known
+`key.core` as a sub-project. Note that no `key.core/build.gradle` is required.
+Sub-projects are configured within the top level `build.gradle`. The declaration
+`subprojects { <body> }` executes the `<body>` to configure each known
 sub-project, cf. `allprojects {...}`. Specifcs of single projects are configures
-by `project(<name>) { <body> }`. The `body` content is the same content, as you
+by `project(<name>) { <body> }`. The `body` content is the same content you
 would write in the `<name>/build.gradle`.
 
 ## How to work with Gradle
 
-With `gradle tasks` you can get list of known task including a simple description.
+With `gradle tasks` you can get a list of known tasks including a simple description.
 
 There are some useful flags:
 
@@ -93,7 +93,7 @@ There are some useful flags:
 * `--info` -- informationen on the task execution. Useful to examine why a task has to be run again.
 * `--scan` -- sends statistics to gradle.org and creates an HTML report. Useful to examine the dependencies.
 
-You can adress task of sub-projects by *prefixing* the task name with the
+You can address tasks of sub-projects by *prefixing* the concerning task name with the
 sub-project.
 
 
@@ -117,7 +117,7 @@ If you only want a certain project, use its name:
 $ gradle :key.core:testClasses #compiles key.core test classes and its dependencies
 ```
 
-With the task `:key:core:compileJavacc` and `:key.core:generateGrammarSource`
+With the tasks `:key:core:compileJavacc` and `:key.core:generateGrammarSource`
 you can run the grammar generation (`javacc` or `antlr3`) explicitly.
 
 ### Test
@@ -148,19 +148,19 @@ gradle test --tests SomeTestClass.*someMethod*
 Gradle aborts on the first failed test case. You can force it to keep running
 with `--continue` flag.
 
-You can let Gradle listen to code changes and let it run the test cases continously[^1]:
+You can let Gradle listen to code changes and let it run the test cases continuously[^1]:
 ```
 gradle test --continuous --tests "com.mypackage.foo.*"
 ```
 
-Gradle generates HTML test reports in `build/reports/test/` which also includes
+Gradle generates HTML test reports in `build/reports/test/` which also include
 the sysout and stacktraces.
 
-The `check` tasks executes `test` and also also executes (currently not
-activated) static analyzer like *PMD* or *Checkstyle*.
+The `check` tasks execute `test` and also also execute (currently not
+activated) static analyzers like *PMD* or *Checkstyle*.
 
 
-[More information on testing is gradle
+[For more information on testing see the gradle
 manual](https://docs.gradle.org/current/userguide/java_testing.html)
 
 ## Creating a new extension `keyext.*`
@@ -175,7 +175,7 @@ manual](https://docs.gradle.org/current/userguide/java_testing.html)
    
 ## Working with IDEs
 
-The import guides assume, that you have already checkout a KeY branch with
+The import guides assume that you have already checked out a KeY branch with
 gradle as build tool.
 
 ### Importing into  IntelliJ IDEA
@@ -243,10 +243,10 @@ little bit out-dated) is
 
 * **Compile error: Cyclic dependencies**
 
-  Eclipse does not distinguish between compile- and run-time dependencies, 
+  Eclipse does not distinguish between compile and runtime dependencies, 
   so there exists a cyclic dependency between `key.ui` and the extension packages.
   
-  Luckily, eclipse is able to compile if you just re-declare this check as
+  Luckily, Eclipse is able to compile if you just re-declare this check as
   a warning.
   
   Go to *Window -> Preferences -> Java>Compiler>Building" and set *Circular
@@ -256,9 +256,9 @@ little bit out-dated) is
 * **Eclipse complains about the Java file in the resources folder**
 
   Eclipse does not distinguish between java sources and resources folder. It
-  tries to compile everything that is in an resource folder.
+  tries to compile everything that is in a resource folder.
   
-  This problem is solved by a modification of exclude filter in `.classpath`. 
+  This problem is solved by a modification of the exclude filter in `.classpath`. 
   
   For more information see gradle's [eclipse plugin](#) and the `build.gradle`
   file.
