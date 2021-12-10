@@ -1,0 +1,492 @@
+\appendix
+
+\section{List of Menu Options}
+\label{app:menuOptions}
+
+In the following, we describe some menu items available in the main menu
+of the \kp.
+
+\begin{description}
+
+\item[\mea{File}] File related actions
+  \begin{description}
+  \item[\meb{}{Load Example}:] Opens a file browser with included example files.
+  \item[\meb{}{Load}:] Loads a problem or proof file; selecting a
+    directory opens the proof management window with the generated
+    proof obligation for the chosen specification language
+  \item[\meb{}{Reload}:] Reloads last file loaded.
+  \item[\meb{}{Edit last opened file}:] If a default external editor is set, 
+  this action opens the last opened file in the default external editor.  
+
+  \item[\meb{}{Save}:] Saves the current selected proof. Note, that if
+    there are several proofs loaded (see the upper left pane) only the one
+    currently worked on is saved. 
+   \item[\meb{}{Save as Proof Bundle}:] Saves the current selected proof as a bundle containing not only the proof itself but all source file required to reload it.
+   \item[\meb{}{Quicksave}:] Saves the current selected proof to a temporary file.
+   \item[\meb{}{Quickload}:] Loads the last quicksaved proof.
+    
+  \item[\meb{}{Proof Management}:] Allows browsing through the
+    available proof obligations.
+  \item[\meb{}{Load User-defined Taclets}:] Allows to activate and deactivate
+    theories given as taclet collection in a \texttt{.key} file.
+  \item[\meb{}{Prove}:]
+  \begin{description}
+    \item[\meb{}{User-Defined Taclets}:] Loads user-defined taclets 
+    and generates the corresponding proof obligation.
+      
+    \item[\meb{}{\KeY{}'s Taclets}:] Creates proof obligations for some selected taclets.
+
+    \item[\meb{}{Taclets using the batch mode}:]
+    \end{description}
+    
+%   
+%   \item[\meb{}{Reload Last Problem}:] 
+% 		Reloads the problem you are currently working on.
+
+  \item[\meb{}{Recent Files}:] List the last few loaded files (if
+    they are still present).
+    
+  \item[\meb{}{Exit}:] Quits the \kp\ (be warned: the current
+    proof is lost!).
+  \end{description}
+
+\item[\mea{View}] Settings influencing the look of the user interface
+  \begin{description}
+  \item[\meb{}{Use Pretty Syntax}:] If set, infix notation for functions and predicates are used.
+  \item[\meb{}{Use Unicode Symbols}:] If set, unicode symbols instead of ASCII symbols are used for logical symbols.
+  \item[\meb{}{Use Syntax Highlighting}:] Use syntax highlighting in the sequent.
+  \item[\meb{}{Term labels}:] Toggle the visibility of different kinds of term labels. As explained in Sec.~\ref{sec:prover}, these do not change the semantics of the sequent but
+  carry additional information that helps guide the automatic proof search and/or user.
+  
+  \item[\meb{}{Hide Package Prefixes}:] Print unqualified class names in the sequent instead of qualified ones.
+  
+  \item[\meb{}{Show Tooltips in Sequent View}:] Show a tooltip with additional information about the currently selected term.
+  \item[\meb{}{Show Tooltips in Source View}:] Show a tooltip with additional information about the currently selected term.
+
+  \item[\meb{}{Font size}] Changes the font size of the sequent and source views.
+
+  \item[\meb{}{ToolTip options}:] Configures the tooltip shown when
+    hovering over a taclet in the list of applicable taclets.
+  \item[\meb{}{Visual Node Diff}:] Opens a new window which allows 
+  to view the  difference between two chosen proof nodes.
+  
+  \item[\meb{}{Select goal}:] Select another goal in the current proof.
+  \item[\meb{}{Heatmap}:] Configure heatmaps. This feature---turned off by default---highlights the most recent changes in the sequent.
+  \item[\meb{}{Layout}:] Save and load the current UI layout.
+  \item[\meb{}{Exploration}:] Options pertaining to proof exploration.
+  \begin{description}
+  	\item[\meb{}{Exploration mode}:] Enables proof exploration. This allows you to rewrite, add, or remove formulas on the sequent.
+  	\item[\meb{}{Hide justification}:] Editing the sequent creates a {\em justification branch}, in which you must show that your edit does not compromise the correctness of the proof. This option allows you to hide these justification branches.
+  \end{description}
+  
+
+  \end{description}
+
+\item[\mea{Proof}] Proof specific options
+  \begin{description}
+  \item[\meb{}{Start}:] Run the proof (semi-)automatically w.r.t.\ 
+	to current strategy options.
+
+  \item[\meb{}{Undo Last Rule Application}:] Undo one proof step.
+  \item[\meb{}{Prune proof}:] Undo all proof steps below the currently selected node.
+
+  \item[\meb{}{Abandon Proof}:] Quits the currently active
+    proof. All other loaded problems will stay in the \kp.
+  \item[\meb{}{Search in proof tree}:] Opens a textfield in the proof pane, which allows to 
+  search for a string in the proof tree.
+  \item[\meb{}{Search in sequent view}:] Opens a window with a textfield in the lower-left 
+  corner of the current goal pane, which allows to search for a string in the sequent view.
+  
+  \item[\meb{}{Show used contracts}:]
+
+  \item[\meb{}{Show Active Taclet Options}:] Shows the taclet options
+    chosen for the current proof.
+
+  \item[\meb{}{Show All Active Settings}:] Opens a window displaying all settings used in the current proof.
+
+  \item[\meb{}{Show Proof Statistics}:] Shows some general statistics
+    about the proof size and interactive steps.
+
+  \item[\meb{}{Show Known Types}:] Lists all types present in the
+    current proof environment. 
+    
+  \item[\meb{}{Search for Counterexample}:] Searches for a counterexample to the current proof. This requires an SMT solver to be installed.
+  
+  \item[\meb{}{Generate Testcases}:] Generate test cases for open goals in the proof. This requires an SMT solver to be installed.
+
+  \end{description}
+  
+\item[\mea{Options}] General options
+
+
+  \begin{description}
+  	
+  \item[\meb{}{Show Settings}:] Open a settings dialog to configure \KeY's appearance.
+  \item[\meb{}{Show Taclet Options}:] In the following, each taclet
+    option is described briefly. The respective default settings are
+    given in parenthesis. The meaning of all settings is beyond the
+    scope of this quicktour. Please use the default settings unless
+    you know what you are doing.
+    Note that this list is not complete.
+
+    \begin{description}
+ \item[JavaCard:] (\textsf{off}) There are two values for this option:
+ \textsf{on} and \textsf{off}. Switches all
+ taclets axiomatising JavaCard specific features like
+ transaction on or off. 
+
+    \item[assertions:] (\textsf{on}) There exists are
+      different values for this option
+      \begin{description}
+        \item[\textsf{on}] evaluates assert statements and raises an
+          \jn{As\-ser\-tion\-Exception} if the condition evaluates to
+          false. This behaviour models the behaviour of the Java
+          virtual machine with assertions enabled globally.
+        \item[\textsf{off}] skips evaluation of assert statement. In
+          particular, the arguments of the assert statements are not
+          evaluated at all. This behaviour models the behaviour of the
+          Java virtual machine with assertions disabled globally.
+        \item[\textsf{safe}] using this option ensures that the shown property
+          is valid no matter if assertions are globally enabled or
+          disabled. Proofs with this option are typically harder. 
+      \end{description}
+      Please note: There is no support other than option \textsf{safe}
+      for enabling or disabling assertions package or class wise.
+
+     \item[initialisation:] (\textsf{disableStaticInitialisation})
+    Specifies whether static initialization should be considered.
+
+    \item[intRules:] 
+      (\textsf{arithmeticSemanticIgnoringOF}) Here you can choose
+      between different semantics for Java integer arithmetic (for
+      details
+      see~\cite{Schlager02,SchlagerPhD2007,KeYBook2007}). Three
+      choices are offered:
+
+      \begin{description}
+      \item[\textsf{javaSemantics}] (Java semantics): Corresponds
+        exactly to the semantics defined in the Java language
+        specification. In particular this means, that arithmetical
+        operations may cause over-/underflow. This setting provides
+        correctness but allows over-/underflows causing unwanted
+        side-effects.
+	This corresponds to the \texttt{code\char`\_java\char`\_math}
+	macro in JML.
+      \item[\textsf{arithmeticSemanticsIgnoringOF}] (Arithmetic
+        semantics ignoring overflow, default): Treats the primitive
+        finite Java types as if they had the same semantics as
+        mathematical integers with infinite range. Thus this setting
+        does not fulfil the correctness criteria.
+	This corresponds to the \texttt{code\char`\_bigint\char`\_math}
+	macro in JML.
+      \item[\textsf{arithmeticSemanticsCheckingOF}] (Arithmetic
+        semantics prohibiting overflow): Same as above but the result
+        of arithmetical operations is not allowed to exceed the range
+        of the Java type as defined in the language
+        specification. This setting not only enforces the java
+        semantics but also ascertains that no overflow occur.
+	This corresponds to the \texttt{code\char`\_safe\char`\_math}
+	macro in JML.
+      \end{description}
+
+    \item[programRules:] (\textsf{Java}) Changes between different
+      program languages\footnote{Ensure that \tn{Java} is selected.}.
+
+     \item[model fields] The semantics of model fields is given by 
+     the \texttt{represents} clause in the JML specification. 
+     The setting of this option decides how the represents clauses are handeled.
+     It has two possible values \textsf{treatAsAxiom} 
+     and \textsf{showSatisfiability}:
+     \begin{description}
+      \item[treatAsAxiom:] Represents clauses are seen as axioms. 
+      If this option is set the satisfiability of the represents 
+      clauses is not shwon and therefore it may introduce inconsistent
+      specifications, e.g., he following contradictory JML clause
+      will not be rejected:\\
+      \texttt{//@ represents modelField == modelField + 1;}
+      \item[showSatisfiability:] For every expansion of the represents 
+      clause, the satisfiability of the definition has to be shown.
+      Cross-definition inconsistencies can still be
+      formulated, however:\\
+	\texttt{//@ represents modelField1 == modelField2;}\\
+	 \texttt{//@ represents modelField2 == modelField1 + 1;}
+     \end{description}
+
+
+     
+     \item[runtime exceptions] There are two possible ways for the \kp\ in
+     handling runtime exceptions -- \textsf{ban} or \textsf{allow}.
+     \begin{description}
+      \item[ban:] If runtime exceptions are banned, \KeY\ treats the occurence of
+      runtime exceptions as irrecoverable program failure. Setting this option
+      results in smaller proofs and is complete for defensive programmed programs, i.e.
+      programs which do not intentionally use corner cases. 
+     
+      \item[allow:] If runtime exceptions are allowed, \KeY\ treats 
+      runtime exceptions as defined in the Java language specification, i.e.
+      implicit runtime exceptions\footnote{With implicit exceptions, we mean 
+      exceptions not explicitely programmed by the developer using 
+      \texttt{throw new java.lang.exception}.}
+      are raised and therefore such exceptions have to be considered in the proof.
+      Setting this option results in larger proofs.
+     \end{description}
+
+    \end{description}
+
+    The current setting of the taclet options can be viewed by choosing
+    \meb{Proof}{Show Active Taclet Options}.
+   \item[\meb{}{Minimize Interaction}] If this option is used and the automtaic strategy is used, 
+   \KeY{} tries to minimize user interaction. That means that for example, 
+   if the \kp{} is able to find instantiations by itself, the user is not asked to provide them.
+   \item[\meb{}{Right Click for Macros}]
+   \item[\meb{}{One Step Simplification}] In the \kp\ one step simplification 
+   is a mechanism to automatically apply several simplifying and normalization rule applications to the sequent. 
+   For the user these rule applications are aggregated 
+   into one visible rule application \textsf{One Step Simplification} 
+   in the proof tree.
+   Setting this option often leads to simpler sequents and results in finding a proof faster,
+   but the user lacks
+   transparency of the proof, because the rule applications of the one step simplifier
+   are not shown in very detail compared to all other rule applications in the \kp.
+  
+  \item[\meb{}{Show SMT Solver Options}:] This option allows you to choose
+    one or more external decision procedures that can be invoked during
+    proofs and to set options for each external solver seperately. 
+    There is a native interface to 
+    \textsf{Simplify}. A variety of other provers
+    \textsf{CVC3},  \textsf{Yices}, and \textsf{Z3}
+    are directly supported via SMTLIB~\cite{RanTin-SMTLIB}. 
+    In addition, translations of taclets to the SMTLIB language
+    can be written to a text file (\textsf{Taclet
+      Translation}) to be loaded by any SMT prover. 
+    There are further options on the set of taclets to translate.
+  \end{description}
+  
+  \item[\mea{Interaction Logging}:] These options configure the interaction log in the left pane, which logs all user interactions on the loaded proof.
+  
+  \item[\mea{Origin Tracking}:] These options configure the origin tracking feature. By default, a JavaDL term's origin in the JML specification is tracked throughout the proof and highlighted in the source pane when mousing over the term.
+  
+
+\end{description}
+\section{List of all Strategy Tab Settings}
+\label{app:strategy}
+    \begin{description}
+    \item[Max. Rule Applications] You can set the number $N_{aut}$ of
+      automatic rule applications using the slider. Even if the
+      automatic strategy can still apply rules after $N_{aut}$
+      applications, automatic proving stops. 
+    \item[Stop At] Choose when strategy execution shall stop.
+      Possible values are \texttt{Default}: strategy stops when no
+      rules are applicable or the maximal number of steps is reached and
+      \texttt{Unclosable}: strategy stops in all situations when
+      \texttt{Default} stops but also already when the first goal is
+      encountered on which no further rule is (automatically) applicable. 
+      
+    \item[One-Step Simplification] When this is \texttt{Enabled}, some sequences of simplification
+    steps are combined into a single proof step, resulting in shorter, but less transparent proofs.
+
+    \item[Proof splitting] Influences usage of rules branching a
+      proof tree. Only rules working on formulas not on
+      programs fall under the chosen policy, i.e., program rules
+      causing
+      splits are still applied even if splitting is switched off. The
+      values are \texttt{free} (withour restrictions), \texttt{Delayed}
+      (allows still splitting but prefers other rules) and \texttt{Off} (no
+      splitting).
+
+    \item[Loop treatment] This setting determines how while-loops are
+treated. They can be left untouched (\texttt{None}), handled
+using stated invariant contracts, or
+repeatedly unrolled (\texttt{Expand}). If handled using invariants,
+you can either choose the new \texttt{Loop Scope} rule (recommended),
+or the legacy \texttt{Transformation}-based rule.
+    
+     \item[Block treatment] It is possible to specify Java blocks with contracts. 
+This option allows to set how \KeY\ treats such contracts.
+\begin{description}
+	\item[internal contract:] If this option is set, Java blocks are replaced by their contract.
+	Three properties have to be shown in the proof:
+	\begin{itemize}
+		\item the validity of the contract
+		\item the precondition if the contract is satisfied
+		\item the use case of the contract
+	\end{itemize}
+	
+	\item[external contract:] If this option is set, Java blocks are replaced by their contract.
+	Only the precondition and the use case are shown in the current proof; the validity is outsourced to its own proof obligation which can be selected in the \texttt{Proof Obligation Browser}.
+	
+	\item[expand:] If this option is set, Java blocks are expanded and block contracts are not used.
+\end{description}
+
+    \item[Method treatment] Methods can also be left untouched
+(\texttt{None}), have their method contracts applied
+(\texttt{Contracts}), or be inlined, i.e. have the method body
+expanded in place (\texttt{Expand}).
+
+  \item[Merge-point statements] Merge-point statements are annotations in the source code. When two proof branches reach the same merge-point statement, they can be merged if this setting is set to \texttt{Merge}. If it is set to \texttt{Skip}, the merge-point statements are ignored; if it is set to \texttt{None}, the automatic proof search stops when encountering a merge-point statement. For more details on merge-point statements, see \cite{Steinhoefel2019}.
+      
+    \item[Dependency contracts] For the simplification of heap terms setting this option to \texttt{On}
+				the information in JML's \texttt{accessible} clause is used. 
+% 				For instance, consider the term<br>" +
+%         		             "<center><i>f(store(heap,o,a,1))</i></center>" +
+%         		             "If <i>f</i> does not depend on the location <i>(o,a)</i>, which is<br>" +
+%         		             "expressed by an <tt>accessible</tt> clause, then the term can be <br>" +
+%         		             "simplified to <i>f(heap)
+    
+    
+    \item[Query treatment] A query is a method that is used as a 
+    function in the logic and stems from the specification.
+    There are three options for query treatment in \KeY{}:
+    \begin{description}
+     \item[On:] Rewrite a query to a method call such that contracts 
+     or inlining (dependent on the method treatment setting) can be used.
+     \item[Restricted:] Same as \textsf{On} but with restrictions:
+     \begin{itemize}
+      \item Priority of expanding queries that occur earlier on a branch is higher than
+	    for queries introduced more recently. This approximates in a breath-first search
+	    with respect to query expansion.
+      \item Reexpansion of identical query terms is suppressed.
+      \item A query is not expanded if one of its arguments contains a literal greater
+            than a computed limit\footnote{The computation of this limit is done with 
+            sophisticated methods for loop detection and would go beyond the scope of this quicktour}, 
+            or smaller than a computed limit. 
+            This helps detecting loops in a proof
+      \item Queries are expanded after the loop body in the \texttt{Preserves Invariant}
+	    branch of the loop invariant rule
+      \item Queries are expanded in the \texttt{Base Case} and the conclusio of the \texttt{Step Case}
+	  branch when using Auto Induction
+     \end{itemize}
+
+     \item[Off:] The query statements are ignored and the proof has to be done without using them.
+    \end{description}
+    In addition the \kp\ offers a setting for the expansion 
+    of local queries in certain safe cases. Safe cases are:
+    \begin{itemize}
+     \item the return type of the expanded method is known
+     \item the object on which the methodcall is invoked is self or a parent of self.
+    \end{itemize}
+    This setting is indepedent of the query treatment setting.
+
+
+%       Queries used as terms in formulas are
+%       evaluated either by symbolical execution (\texttt{Expand}), or are
+%       moved to the succedent (\texttt{Prog2Succ}) so that contracts can
+%       be used, or are not evaluated at all (\texttt{None}).
+%       Setting \texttt{Expand Local Queries} to on results in an evaluation 
+%       of the queries used as terms in formulas by symbolical execution. 
+%    
+   \item[Arithmetic treatment] The \kp\ has several options for the treatment of arithmetic expressions:
+   \begin{description}
+   \item[Basic:] Using this option, polynomial expressions are simplified. 
+		 In the antecedent Gr\"{o}bner Bases are computed polynomials.
+		 Linear inequations are handled using (partial) Omega procedures.
+
+   \item[DefOps:] Using the option \textsf{DefOps}, symbols such as:\\
+                \texttt{/}, \texttt{\%}, \texttt{jdiv}, \texttt{jmod}, ...\\
+                \texttt{int\_RANGE}, \texttt{short\_MIN}, ...\\
+                \texttt{inInt}, \texttt{inByte}, ...\\
+                \texttt{addJint}, \texttt{mulJshort}, ...\\
+		 are expanded.
+                
+    \item[Model Search:] Setting the \textsf{model search} option, 
+		  the \kp\ supports non-linear equations and model search.
+		  Additionally multiplication of inequations with each other
+		  and systematic case distinctions  (cuts) can be performed.
+                This method is guaranteed to find counterexamples for
+                invalid goals that only contain polynomial (in)equations.
+                Such counterexamples turn up as trivially unprovable goals.
+                It is also able to prove many more valid goals involving
+                (in)equations, but will in general not terminate on such goals.
+                
+   \end{description}
+
+   
+   \item[Quantifier treatment] Sometimes quantifiers within the
+      sequent have to be instantiated. This can be either done
+      manually (\texttt{None}) or automatically with different
+      alternatives:
+      \begin{description}
+        \item[\texttt{No Splits}] Instantiate a quantifier only if
+          this will not cause the proof to split.
+        \item[\texttt{Unrestricted}] Instantiates a quantifier even
+          when causing splits. However the startegy tries to predict
+          the number of caused open branches and will prefer those
+          with no or only few splits.
+        \item[\texttt{No Splits with Progs}] Chooses between the
+          \texttt{No Splits} and \texttt{Unrestricted} behaviour
+          depending on prgrams present in the sequent. If a program is
+          still present, the \texttt{No splits} behavior is
+          used. Otherwise, quantifiers are instantiated without restrictions.
+      \end{description}
+  
+     \item[Class axiom rule] This setting determines how class axioms and invariants are dealt with.
+     \begin{description}
+     	\item[\texttt{Free}] Class axioms are expanded freely.
+     	\item[\texttt{Delayed}] Class axioms are only expanded after symbolic execution, i.e., when there are no more modalities on the sequent.
+     	\item[\texttt{Off}] Class axioms are never expanded automatically.
+     \end{description}
+ 
+     \item[Auto induction] This setting can allow the \kp\ to automatically perform inductive proofs for certain formulas.
+     \begin{description}
+     \item[\texttt{On}] Perform inductive proofs for formulas of a certain form.
+     \item[\texttt{Restricted}] Perform inductive proofs for formulas of a certain form, but only if the name of the induction variable ends with \texttt{Ind} or \texttt{IND}.
+     \item[\texttt{Off}] Don't perform inductive proofs automatically.
+     \end{description}
+       
+    \end{description}   
+%   \end{description}
+
+
+\section{Handy Shortcuts and Buttons}
+\label{app:shortcuts}
+In the following an overview of all shortcuts currently used 
+in the \kp\ is given. Additional, if buttons in the toolbar exist, 
+their actions are listed here as well.
+
+\begin{tabular}{llc}
+\toprule
+Action/Command & Shortcut & Button in Toolbar\\
+
+\midrule
+\multicolumn{3}{l}{\textbf{File related}}\\
+Load & Ctrl+O & \includegraphics[width=2ex]{../figures/open}\\
+Reload & Ctrl+R &\includegraphics[width=2ex]{../figures/openMostRecent}\\
+Save & Ctrl+S & \includegraphics[width=2ex]{../figures/saveFile}\\
+Proof Management & Ctrl+M & \includegraphics[width=10ex]{../figures/proofManagementButton}\\
+Exit &Ctrl+Q& -\\
+Edit last opened file & - & \includegraphics[width=2ex]{../figures/editFile}\\
+\midrule
+\multicolumn{3}{l}{\textbf{Appearance}}\\
+Use pretty syntax & Ctrl+P & -\\
+Font size: smaller & Ctrl+Up & -\\
+Font size: larger& Ctrl+Down & -\\
+\midrule
+\multicolumn{3}{l}{\textbf{Proof specific}}\\
+Start automatic strategy & Ctrl+S & \includegraphics[width=2ex]{../figures/autoModeStart}\\
+Abandon task &Ctrl+W & -\\
+Undo last rule application & Ctrl+Z & \includegraphics[width=2ex]{../figures/goalBack}\\
+Search in proof tree & Ctrl+F & -\\
+Search in sequent view & F3 & -\\
+Prune tree below selected node & - & \includegraphics[width=2ex]{../figures/pruneProof} \\
+SMT Solver & - &  \includegraphics[width=10ex]{../figures/SMTButton} \\
+\midrule
+\multicolumn{3}{l}{\textbf{Options}}\\
+Taclet options &Ctrl+T&-\\
+Toggle one Step Simplifier & Ctrl+Shift+S & \includegraphics[width=2ex]{../figures/oneStepSimplifier}\\
+\bottomrule
+\end{tabular}
+
+\section{Setting Up Own Projects}
+\label{app:configuringProjects}
+
+If not specified otherwise via a classpath directive, \KeY\ includes a
+restricted set of signatures of classes and methods from the default
+standard library. The current set of classes can be found at~\url{https://git.key-project.org/key-public/key/-/tree/stable/key/key.core/src/main/resources/de/uka/ilkd/key/java/JavaRedux}.
+
+For documentation on how to set up your own classpath, see \url{https://www.key-project.org/docs/Using\%20KeY/Classpath/}.
+	
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "quicktour"
+%%% End: 
