@@ -17,7 +17,6 @@ New constructs:
 * KeY-support:
   * New statements: `method-frame`, `loop-frame`, `merge_point`,
     symbolic execution.
-  * 
 
 ### General escape expression
 
@@ -33,9 +32,23 @@ An escape expression is a variable access or function application with an escape
 * `<escapedId>( <expr>,<expr> )`
 * `<escapedId>( <expr>,<expr>, ... )`
 
+
+### Implicit Identifiers 
+
+KeY uses a third identifier kind, the implicit identifiers. These are
+Java identifiers enclosed by angular brackets `<...>`.
+
+
+!!! note weigl
+   
+   We should change this into something unambigous. Normally,
+   synthetic fields or classes uses the dollar sign `$`.
+
 ### IndexRange
 
 * `<expr> .. <expr>`
+
+An artefact from an old time? --- defined but unused currently.
 
 ### MethodCallStatement
 
