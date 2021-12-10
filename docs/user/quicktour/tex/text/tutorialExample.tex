@@ -1,0 +1,135 @@
+\section{Tutorial Example}
+
+\subsection{Scenario}
+The tutorial example is a small paycard application consisting of two
+packages \jn{paycard} and \jn{gui}. The \jn{paycard} package contains all
+classes implementing the program logic and has no dependencies to the
+\jn{gui} package.
+
+\texttt{paycard} consists of the classes: \jn{PayCard},
+\jn{LogFile}, and \jn{LogRecord}. \jn{gui} package contains \jn{ChargeUI},
+\jn{Issue\-CardUI}, and the main class \jn{Start}. 
+
+In order to compile the project, change to the \texttt{quicktour-2.0} directory and
+execute the following command:
+
+\verb+javac -sourcepath . gui/*.java+
+
+\noindent Executing
+
+\verb+java -classpath . gui.Start+
+
+\noindent starts the application. Try this now\footnote{Potential
+  warnings can be safely ignored here.}.
+
+The first dialog when executing the main method in \jn{Start} asks the
+customer (i.e., the user of the application) to obtain a paycard. A
+paycard can be charged by the customer with a certain amount of money
+and thereafter used for cashless payment until the pre-loaded money is
+eaten up. 
+
+To prevent any risk to the customer when losing the paycard, there
+is a limit up to which money can be loaded or charged on the
+paycard. There are three paycard variants
+with different limits: a standard paycard with a limit of 1000, a junior
+paycard with a limit of 100, or a paycard with a user-defined limit.
+The initial balance of a newly issued paycard is zero. 
+
+In the second dialog coming up after obtaining a paycard, the customer
+may charge their paycard with a certain amount of money. But the charge
+operation is only successful if the current balance of the paycard
+plus the amount to charge is less than the limit of the
+paycard. Otherwise, i.e., if the current balance plus the amount to
+charge is greater or equal the limit of the paycard, the charge
+operation does not change the balance on the paycard and an attribute 
+counting unsuccessful operations is increased. 
+
+The \kt\ aims to {\em formally prove} that the implementation actually
+satisfies such requirements.  For example, one can formally verify the
+invariant that the balance on the paycard is always less than the
+limit of the paycard.
+
+The intended semantics of some classes is specified with the help of
+invariants denoted in the Java Modeling Language
+(JML)~\cite{JMLReferenceManual11,Leavens-Baker-Ruby04}. Likewise, the
+behavior of most methods is described in form of pre- and postconditions
+in JML. We do not go into details on \emph{how} JML specifications
+for Java classes are created. The tools downloadable from
+\texttt{http://jmlspecs.org/download.shtml} may be helpful here. In
+particular, \textbf{we require and assume that all JML specifications
+  are complying to the JML standards}~\cite{JMLReferenceManual11}. \KeY's
+JML front-end is no substitute for the JML parser / type checker.
+
+% Together support discontinued
+%
+%The UML/OCL version of the \kt\ provides more support for creating a
+%formal specification such as stamping out formal specifications from
+%design patterns or natural language support~\cite{umlkeyquicktour}.
+
+\subsection{A First Look on the JML Specification}
+\label{tutorialExample:firstLook}
+
+Before we can verify that the program satisfies the property mentioned
+in the previous section, we need to express it in JML. The remaining
+section tries to give a short, intuitive impression on what such a
+specification looks like. In Sect.~\ref{sec:analyze}, JML
+specifications are explained in a bit more depth.
+
+Load the file \jn{paycard/PayCard.java} in an editor of your choice and search
+for the method \jn{isValid}. You should see something like
+
+\lstset{
+  language=Java,
+  columns=flexible,
+  commentstyle=\ttfamily,
+  keywordstyle=\ttfamily\bfseries
+%  keywordstyle=\sffamily\bfseries
+}
+
+\begin{lstlisting}
+        /*@
+          @ public normal_behavior
+          @ requires true;
+          @ ensures \result == (unsuccessfulOperations<=3); 
+          @ assignable \nothing;
+          @*/
+        public /*@pure@*/ boolean isValid() {
+           if (unsuccessfulOperations<=3) {
+              return true;
+           } else {
+              return false;
+           }
+        } 
+\end{lstlisting}
+
+JML specifications are annotated as special marked
+comments in Java files. Comments containing JML
+annotations have an ``at'' sign directly after the comment sign as a start
+marker and---for multi-line comments---also as an end marker.
+
+The JML annotation in the above listing represents a JML method
+contract. A contract states that when the caller of a method ensures
+that certain conditions (precondition + certain invariants (see
+Sect.~\ref{sec:provableProp})) then the method ensures that after the
+execution the postcondition holds\footnote{The complete semantics is
+  more complex; see Sect.~\ref{sec:provableProp}
+  and~\cite{JMLReferenceManual11}.}.
+
+The precondition is \jn{true}. This means the precondition does not
+place additional conditions the caller has to fulfill in order to be
+guaranteed that after the execution of the method its postcondition
+holds, though there might be conditions stemming from invariants.
+
+The \jn{ensures} clause specifies the method's postcondition and
+states simply that the return value of the method is \jn{true} if and
+only if there have not been more than 3 unsuccessful
+operations. Otherwise, \jn{false} is returned.
+
+For the other parts of the method specification, see
+Sect.~\ref{sec:provableProp}.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "quicktour"
+%%% End: 

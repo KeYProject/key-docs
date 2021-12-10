@@ -1,0 +1,166 @@
+% !TeX spellcheck = en_GB 
+\documentclass[a4]{article}
+%\usepackage[draft]{graphicx}
+
+\usepackage{bold-extra}
+\usepackage{ifthen}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{keylogo}
+\usepackage{hyperref}
+%\usepackage{a4}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{color}
+\usepackage{subfigure}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{xspace}
+
+\lstdefinelanguage{KeYJava}[]{Java}{%
+  morekeywords={skip},
+  otherkeywords={method-frame,Throwable,java.lang.Throwable,Object,Exception},
+}
+
+% attention! this is overriden elsewhere
+\lstset{language=KeYJava, basicstyle=\ttfamily\upshape, 
+  keywordstyle=\ttfamily\bfseries}
+
+
+\setcounter{tocdepth}{2}
+%   Christian Engel, Andreas Roth, Abian Blome, \\
+%   Richard Bubel, Simon Greiner, Mattias Ulbrich, \\
+%   Moritz von Looz, Sarah Grebing\\[0.5em]
+
+\author{The \KeY{} Team\\
+  \emph{This article is a variant of~\cite{umlkeyquicktour} by} \\
+    \emph{Thomas~Baar, Reiner~H\"ahnle, and Steffen~Schlager.}  
+}
+
+\date{\today}
+
+%\input{sga}
+
+\title{\KeY\ Quicktour for JML \\ {\footnotesize Work in progress}}
+
+\newcommand{\todo}[1]{{\large \bf TODO:{#1}}}
+
+%\newcommand{\together}{Together\textregistered}
+\newcommand{\together}{\textsc{TogetherCC}}
+% Names of the  Together menus (diagrams, etc), also used for
+% entries of the KeY-Prover
+\newcommand{\tn}[1]{{\em #1}}
+
+% Names of the product we are talking about
+\newcommand{\kt}{\KeY\ tool}
+\newcommand{\kp}{\KeY\ prover}
+\newcommand{\javaWS}{Java Web Start}
+
+\newcommand{\pob}{{\sf Proof Obligation Browser}}
+\newcommand{\prm}{{\sf Proof Management}}
+\newcommand{\ctCfg}{{\sf Contract Configurator}}
+
+\newcommand{\self}{\mathit{self}}
+% Name of the Java (UML) code
+\newcommand{\jn}[1]{\texttt{#1}}
+
+% How to emphasize spezifikation code
+\newcommand{\spec}[1]{\texttt{#1}}
+
+% entries of menus
+\newcommand{\mea}[1]{\textsf{\textbf{#1}}}
+\newcommand{\meb}[2]{\textsf{\textbf{#1}} $|$ \textsf{\textbf{#2}}}
+\newcommand{\mec}[3]{\textsf{\textbf{#1}} $|$ \textsf{\textbf{#2}} $|$ \textsf{\textbf{#3}}}
+\newcommand{\med}[4]{\textsf{\textbf{#1}} $|$ \textsf{\textbf{#2}} $|$ \textsf{\textbf{#3}} $|$ \textsf{\textbf{#4}}}
+
+%%%%  Abkuerzungen zur Notation der Beweisverpflichtungen
+
+\newcommand{\inv}{INV}
+\newcommand{\pinv}[1]{INV^{P_{#1}}}
+
+\newcommand{\pre}{m.PRE}
+\newcommand{\ppre}[1]{m.PRE^{P_{#1}}}
+
+\newcommand{\post}{m.POST}
+\newcommand{\ppost}[1]{m.POST^{P_{#1}}}
+
+\newcommand{\parent}[1]{P_{#1}}
+
+\newcommand{\renameforpre}[1]{rename(#1)}
+
+\newcommand{\allq}[2]{\forall {#1\ifthenelse{\equal{#2}{}}{}{\!\!:\!#2}}\,\,}
+\newcommand{\dldia}[2]{\ensuremath{\langle#1\rangle{#2}}}  % DL formula dia
+\newcommand{\dlbox}[2]{\ensuremath{[#1]{#2}}}  % DL formula box
+
+\newcommand{\keyand}{\ensuremath{\mathrel{\&}}}
+\newcommand{\keyor}{\ensuremath\mathrel{|}}
+\newcommand{\keynot}{\ensuremath{\mathop{!}}}
+\newcommand{\keyimplies}{\ensuremath{\mathrel{-\!\!\!>}}}
+\newcommand{\keyequiv}{\ensuremath{\mathrel{<\!\!\!-\!\!\!>}}}
+\newcommand{\keyif}{\ensuremath{\mathop{\text{if}}}}
+\newcommand{\keythen}{\ensuremath{\mathop{\text{then}}}}
+\newcommand{\keyelse}{\ensuremath{\mathop{\text{else}}}}
+\newcommand{\keyeq}{\ensuremath{\doteq}}
+\newcommand{\keyneq}{\ensuremath{\mathrel{{!}{\keyeq}}}}
+\newcommand{\keyleq}{\ensuremath{\mathrel{<\!=}}}
+\newcommand{\keygeq}{\ensuremath{\mathrel{>\!=}}}
+\newcommand{\keygt}{\ensuremath{>}}
+\newcommand{\keylt}{\ensuremath{<}}
+\newcommand{\keyquantification}[3]{#1 
+  {~#2 \ifthenelse{\equal{#3}{}}{}{~#3};~}}
+\newcommand{\keyallq}[2]{\ensuremath{\keyquantification{\backslash\text{forall}}{#1}{#2}}}
+\newcommand{\keyexq}[2]{\ensuremath{\keyquantification{\backslash\text{exists}}{#1}{#2}}}
+\newcommand{\keyquantificationmath}[3]{#1 
+  {\ifthenelse{\equal{#3}{}}{#2}{#3 : #2}.\,}}
+\newcommand{\keyallqmath}[2]{\ensuremath{\keyquantificationmath{\forall}{#1}{#2}}}
+\newcommand{\keyexqmath}[2]{\ensuremath{\keyquantificationmath{\exists}{#1}{#2}}}
+\newcommand{\keytrue}{\mathop{\mathrm{true}}}
+\newcommand{\keyfalse}{\mathop{\mathrm{false}}}
+
+\newcommand{\elUp}[2]{\ensuremath{#1 := #2}}
+\newcommand{\seqUp}[2]{\ensuremath{#1 \,; #2}}
+\newcommand{\parUp}[2]{\ensuremath{#1 \,||\, #2}}
+\newcommand{\quanUp}[3]{\ensuremath{\mathtt{for~}#1 ;\, #2 ;\, #3}}
+\newcommand{\ifUp}[2]{\ensuremath{\mathtt{if~~}#1;\, #2}}
+\newcommand{\applyUp}[2]{\ensuremath{\{#1\}\;#2}}
+
+
+
+
+\hyphenation{paycard-Interactive}
+\hyphenation{Java-CardDL}
+
+\begin{document}
+
+\maketitle
+
+\include{introduction}
+
+\include{tutorialExample}
+
+%include{verificationGeneral}
+
+\include{verificationJML}
+
+%\include{verificationOCL}
+
+\include{proofObligations}
+
+
+\include{notes}
+
+\newpage
+
+\include{appendix}
+
+\bibliography{quicktour}
+\bibliographystyle{alpha}
+
+\end{document}
+
+
+
+

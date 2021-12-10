@@ -1,0 +1,106 @@
+\section{Introduction}
+\label{sec:introduction}
+
+When we started writing this document, we aimed at providing a short
+tutorial accompanying the reader at their first steps with the \KeY\
+system. The \kt\ is designed as an integrated environment for
+creating, analyzing, and verifying software models and their
+implementation. The reader shall learn how to install and use the
+basic functionality of the \kt. Besides practical advises how to
+install and get \KeY\ started, we show along a small project how to
+use the \kt\ to verify programs.
+
+Verification means proving that a program complies with its specification
+in a mathematically rigorous way. In order to fulfill this task, the
+specification needs to be given in a formal language with a precisely
+defined meaning. In the current version of the document, we focus on
+the popular \emph{Java Modeling Language}
+(JML)~\cite{JMLReferenceManual11,Leavens-Baker-Ruby04} as specification
+language.
+
+In the next sections, we show how to verify a JML-annotated (specified)
+Java\-Card program. For this purpose, \KeY\ features a calculus for the complete
+Java\-Card language including advanced features like transactions.
+
+Besides JML, the \kt\ supports Java\-Card\-DL as a specification
+language. 
+
+For a longer discussion on the architecture, design philosophy, and
+theoretical underpinnings of the \kt\, please refer to
+\cite{KeYBook2016}.
+%
+In case of questions or comments, don't hesitate to contact the
+\KeY support team at 
+\href{mailto:support@key-project.org}{\emph{support@key-project.org}}.
+
+\subsection{Version Information}
+\label{sec:version}
+
+This tutorial was tested for \KeY\ version 2.10.
+
+\subsection{Installation}
+\label{sec:install}
+
+You can choose between different methods to install and use \KeY.
+For this tutorial, we
+recommend the \javaWS\ variant described in
+Sect.~\ref{install:javaws}. 
+
+\subsubsection{The \kp{} by \javaWS}
+\label{install:javaws}
+
+\javaWS\ is a Java Technology which allows you to start applications
+directly from a website. No installation is needed. You can visit our
+homepage
+\begin{center}
+  \url{http://www.key-project.org/download}
+\end{center}
+which contains a link to \javaWS\ the \kp.
+%
+Please note that you need the \javaWS\ facility
+(which should come along with your Java distribution).
+
+\subsubsection{Byte Code and Source Code Installation}
+\label{install:byteandsourcecode}
+
+The download site offers also the binary and source-code versions of
+\KeY.
+
+%\emph{Please note:} Support for Borland Together has been discontinued
+%with \KeY~1.4.
+% Nevertheless the code is still present and the basic
+% functionality should work with the stand-alone (non-eclipse) versions
+% of Together Solo or TogetherCC, but that is without guarantee. The
+% bytecode resp.\ sourcecode version is required for the Borland
+% Together plug-in.
+        
+% NOTE: The Eclipse plugin cant be used with latest Eclipse
+%
+% \subsubsection{The \KeY-plugin for Eclipse}
+% \label{install:eclipse}
+% 
+% In this section we will describe how to setup the \KeY-plugin
+% for Eclipse as well as the use of some of its core features.
+% We assume that Eclipse has already been installed on the
+% target computer. Start it and in the menu \emph{Help} select
+% \emph{Software Updates} and then \emph{Find and Install}.
+% In the new window activate \emph{Search for new features to
+% install} and click on \emph{Next}. Now add the \emph{New Remote
+% Site} \url{http://www.key-project.org/KeYDists/KeY_Feature/}
+% with a name of your choice. 
+% Click on \emph{Finish}. Now a new window should appear with
+% a list of installable features. Mark \KeY\ and continue.
+% After accepting the license agreement and selecting a usable location
+% you will be asked to verify the installation. Do so by clicking on
+% \emph{Install all} and restart Eclipse when asked to. This completes
+% the installation. It is possible to update the \KeY-plugin by selecting
+% \emph{Search for updates of the currently installed features} in the 
+% \emph{Software updates} menu.
+% You can now start the standalone version of the prover by either clicking
+% on the \KeY\ logo in the menu bar or from the \emph{Verification} menu.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "quicktour"
+%%% End: 
