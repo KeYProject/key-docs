@@ -2,6 +2,10 @@ site_name: KeY Developer Documentation
 
 plugins:
   - search
+  - bibtex:
+      bib_file: "refs.bib"
+      cite_style: "pandoc"
+#      csl_file: "springer-basic-author-date.csl"
   
 markdown_extensions:
   - abbr
@@ -44,6 +48,7 @@ markdown_extensions:
       format: svg
   - markdown_blockdiag:
       format: svg
+
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
   - 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'

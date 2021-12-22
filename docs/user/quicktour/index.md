@@ -4,6 +4,7 @@
 
     This article gives an introduction to the KeY system.
 
+
 ## Introduction {#sec:introduction}
 
 When we started writing this document, we aimed at providing a short
@@ -20,7 +21,7 @@ specification in a mathematically rigorous way. In order to fulfill
 this task, the specification needs to be given in a formal language
 with a precisely defined meaning. In the current version of the
 document, we focus on the popular *Java Modeling Language*
-(JML) [@JMLReferenceManual11; @Leavens-Baker-Ruby04] as specification
+(JML) [@JMLReferenceManual11][@Leavens-Baker-Ruby04] as specification
 language.
 
 In the next sections, we show how to verify a JML-annotated
@@ -121,7 +122,7 @@ the limit of the paycard.
 
 The intended semantics of some classes is specified with the help of
 invariants denoted in the Java Modeling Language
-(JML) [@JMLReferenceManual11; @Leavens-Baker-Ruby04]. Likewise, the
+(JML) [@JMLReferenceManual11][@Leavens-Baker-Ruby04]. Likewise, the
 behavior of most methods is described in form of pre- and postconditions
 in JML. We do not go into details on *how* JML specifications for Java
 classes are created. The tools downloadable from
@@ -303,27 +304,23 @@ additionally tabbed. Each pane is described below. The layout of the
 three panes can be changed by the user. Layouts can be saved and loaded
 in the [**View**] $|$ [**Layout**] menu.
 
-Upper left pane:
+* **Upper left pane:** Every problem you want to prove with the
+    KeY prover is loaded in a proof environment. In this pane, all
+    currently loaded problems respectively their proof environments
+    are listed.
 
-:   Every problem you want to prove with the KeY prover is loaded
-    in a proof environment. In this pane, all currently loaded problems
-    respectively their proof environments are listed.
+* **Lower left pane:** This pane contains the following five tabs.
 
-Lower left pane:
-
-:   This pane contains the following five tabs.
-
-    Proof:
-
-    :   This pane (see
+    * **Proof:** This pane (see
         Fig. [\[fig:prover:tab:proof\]](#fig:prover:tab:proof){reference-type="ref"
-        reference="fig:prover:tab:proof"}) contains the whole proof tree
-        which represents the current proof. The nodes of the tree
-        correspond to sequents (goals) at different proof stages. Click
-        on a node to see the corresponding sequent and the rule that was
-        applied on it in the following proof step (except if the node is
-        a leaf). Leaf nodes of an open proof branch are colored red
-        whereas leaves of closed branches are colored green.
+        reference="fig:prover:tab:proof"}) contains the whole proof
+        tree which represents the current proof. The nodes of the tree
+        correspond to sequents (goals) at different proof stages.
+        Click on a node to see the corresponding sequent and the rule
+        that was applied on it in the following proof step (except if
+        the node is a leaf). Leaf nodes of an open proof branch are
+        colored red whereas leaves of closed branches are colored
+        green.
 
         Pressing the right mouse button on a node of the proof tree will
         open a pop-up context menu. If you choose *Prune Proof*, the
@@ -336,40 +333,37 @@ Lower left pane:
         closed subtrees, to hide inner nodes, to collapse, or to expand
         the tree. The commands help you to keep track of a large proof.
 
-    Goals:
-
-    :   In this pane, the open goals of a certain proof (corresponding
+    * **Goals:**
+        In this pane, the open goals of a certain proof (corresponding
         to one entry in the upper left pane) are listed. To work on a
         certain goal just click on it and the selected sequent will be
         shown in the right pane.
 
-    Info:
-
-    :   In this pane
+    * **Info:** In this pane
         (Fig. [\[fig:prover:tab:rules\]](#fig:prover:tab:rules){reference-type="ref"
-        reference="fig:prover:tab:rules"}), all the rules, term labels,
-        and function symbols available in the system are indicated.
+        reference="fig:prover:tab:rules"}), all the rules, term
+        labels, and function symbols available in the system are
+        indicated.
 
-        For the rules, KeY distinguishes between *axiomatic
-        taclets* (rules that are always true in the given logic),
-        *lemmas* (that are derived from and thus provable by axiomatic
-        taclets) and *built-in rules* (for example how certain
-        expressions can be simplified).
+        For the rules, KeY distinguishes between *axiomatic taclets*
+        (rules that are always true in the given logic), *lemmas*
+        (that are derived from and thus provable by axiomatic taclets)
+        and *built-in rules* (for example how certain expressions can
+        be simplified).
 
-        By clicking on a rule of the list, the description of that rule
-        is shown in the box below the rule list.
+        By clicking on a rule of the list, the description of that
+        rule is shown in the box below the rule list.
 
-        Term labels are additional information that can be attached to a
-        term. They do not change a term's semantics, but are used to
-        guide the poof search or to carry non-logical information about
-        a term, like its corresponding line number in the source code.
+        Term labels are additional information that can be attached to
+        a term. They do not change a term's semantics, but are used to
+        guide the poof search or to carry non-logical information
+        about a term, like its corresponding line number in the source
+        code.
 
         The function symbols folder lists all interpreted function and
         predicate symbols in the dynamic logic.
 
-    Proof Search Strategy:
-
-    :   This tab (see
+    * **Proof Search Strategy:** This tab (see
         Fig. [\[fig:prover:tab:strategy\]](#fig:prover:tab:strategy){reference-type="ref"
         reference="fig:prover:tab:strategy"}) allows you to define the
         active strategy from a set of available strategies. There are
@@ -378,159 +372,129 @@ Lower left pane:
         in [7](#app:strategy){reference-type="ref"
         reference="app:strategy"}:
 
-        Max. Rule Applications
+        * **Max. Rule Applications:** You can set the number $N_{aut}$
+           of automatic rule applications using the slider. Even if
+           the automatic strategy can still apply rules after
+           $N_{aut}$ applications, automatic proving stops.
 
-        :   You can set the number $N_{aut}$ of automatic rule
-            applications using the slider. Even if the automatic
-            strategy can still apply rules after $N_{aut}$ applications,
-            automatic proving stops.
+        * **Stop At:** Choose when strategy execution shall stop.
+            Possible values are `Default`: strategy stops when no
+            rules are applicable or the maximal number of steps is
+            reached and `Unclosable`: strategy stops in all situations
+            when `Default` stops but also already when the first goal
+            is encountered on which no further rule is (automatically)
+            applicable.
 
-        Stop At
+        * **Proof splitting:** Influences usage of rules branching
+            a proof tree. Only rules working on formulas not on
+            programs fall under the chosen policy, i.e., program rules
+            causing splits are still applied even if splitting is
+            switched off. The values are `free` (withour
+            restrictions), `Delayed` (allows still splitting but
+            prefers other rules) and `Off` (no splitting).
 
-        :   Choose when strategy execution shall stop. Possible values
-            are `Default`: strategy stops when no rules are applicable
-            or the maximal number of steps is reached and `Unclosable`:
-            strategy stops in all situations when `Default` stops but
-            also already when the first goal is encountered on which no
-            further rule is (automatically) applicable.
+        * **Loop treatment:** This setting determines how while-loops
+            are treated. They can be left untouched (`None`), handled
+            using stated invariant contracts, or repeatedly unrolled
+            (`Expand`). If handled using invariants, you can either
+            choose the new `Loop Scope` rule (recommended), or the
+            legacy `Transformation`-based rule.
 
-        Proof splitting
+        * **Method treatment:** Methods can also be left untouched
+            (`None`), have their method contracts applied
+            (`Contracts`), or be inlined, i.e. have the method body
+            expanded in place (`Expand`).
 
-        :   Influences usage of rules branching a proof tree. Only rules
-            working on formulas not on programs fall under the chosen
-            policy, i.e., program rules causing splits are still applied
-            even if splitting is switched off. The values are `free`
-            (withour restrictions), `Delayed` (allows still splitting
-            but prefers other rules) and `Off` (no splitting).
+        * **Dependency contract:** For the simplification of heap
+          terms, setting this option to `On` the information in JML's
+          `accessible` clause is used.
 
-        Loop treatment
+        * **Arithmetic treatment** The KeY prover has several options
+            for the treatment of arithmetic expressions:
 
-        :   This setting determines how while-loops are treated. They
-            can be left untouched (`None`), handled using stated
-            invariant contracts, or repeatedly unrolled (`Expand`). If
-            handled using invariants, you can either choose the new
-            `Loop Scope` rule (recommended), or the legacy
-            `Transformation`-based rule.
+            * *Basic:* Using this option, polynomial expressions are
+                simplified. In the antecedent Gröbner Bases are
+                computed polynomials. Linear inequations are handled
+                using (partial) Omega procedures.
 
-        Method treatment
+            * *DefOps:* Using the option [DefOps], mathematical symbols
+                such as: `/`, `%`, `jdiv`, `jmod`, range predicates,
+                such as `int_RANGE`, `short_MIN` and symbols for
+                mathematical operations on integers with a certain
+                semantic such as `addJint` or `mulJshort`, are
+                expanded. This means for example constants, such as
+                `short_MIN`, are replaced by their concrete values (in
+                this case -32768) and range predicates, such as
+                `inInt` are replaced by their ranges (in this case $i
+                \leq int_{MAX} \wedge int_{MIN} \leq i$).
 
-        :   Methods can also be left untouched (`None`), have their
-            method contracts applied (`Contracts`), or be inlined, i.e.
-            have the method body expanded in place (`Expand`).
-
-        Dependency contract
-
-        :   For the simplification of heap terms, setting this option to
-            `On` the information in JML's `accessible` clause is used.
-
-        Arithmetic treatment
-
-        :   The KeY prover has several options for the treatment
-            of arithmetic expressions:
-
-            Basic:
-
-            :   Using this option, polynomial expressions are
-                simplified. In the antecedent Gröbner Bases are computed
-                polynomials. Linear inequations are handled using
-                (partial) Omega procedures.
-
-            DefOps:
-
-            :   Using the option [DefOps], mathematical
-                symbols such as:\
-                `/`, `%`, `jdiv`, `jmod`, range predicates, such as
-                `int_RANGE`, `short_MIN` and symbols for mathematical
-                operations on integers with a certain semantic such as
-                `addJint` or `mulJshort`, are expanded. This means for
-                example constants, such as `short_MIN`, are replaced by
-                their concrete values (in this case -32768) and range
-                predicates, such as `inInt` are replaced by their ranges
-                (in this case $i \leq int_MAX \wedge int_MIN \leq i$).
-
-            Model Search:
-
-            :   Setting the [model search] option, the
+            * *Model Search:* Setting the [model search] option, the
                 KeY prover supports non-linear equations and model
-                search. Additionally multiplication of inequations with
-                each other and systematic case distinctions (cuts) can
-                be performed. This method is guaranteed to find
-                counterexamples for invalid goals that only contain
-                polynomial (in)equations. Such counterexamples turn up
-                as trivially unprovable goals. It is also able to prove
-                many more valid goals involving (in)equations, but will
-                in general not terminate on such goals.
+                search. Additionally multiplication of inequations
+                with each other and systematic case distinctions
+                (cuts) can be performed. This method is guaranteed to
+                find counterexamples for invalid goals that only
+                contain polynomial (in)equations. Such counterexamples
+                turn up as trivially unprovable goals. It is also able
+                to prove many more valid goals involving
+                (in)equations, but will in general not terminate on
+                such goals.
 
-        Quantifier treatment
+        * **Quantifier treatment:** Sometimes quantifiers within the
+           sequent have to be instantiated. This can be either done
+           manually (`None`) or automatically with different
+           alternatives:
 
-        :   Sometimes quantifiers within the sequent have to be
-            instantiated. This can be either done manually (`None`) or
-            automatically with different alternatives:
+            * **No Splits:** Instantiate a quantifier only if this
+               will not cause the proof to split.
 
-            No Splits
+            * **Unrestricted:** Instantiates a quantifier even when
+                causing splits. However the startegy tries to predict
+                the number of caused open branches and will prefer
+                those with no or only few splits.
 
-            :   Instantiate a quantifier only if this will not cause the
-                proof to split.
+            * **No Splits with Progs:** Chooses between the `No
+                Splits` and `Unrestricted` behaviour depending on
+                programs present in the sequent. If a program is still
+                present the `No splits` behaviour is used. Otherwise
+                quantifiers are instantiated unrestricted
 
-            Unrestricted
+* **Middle pane:** In this pane, you can either inspect inner, already
+  processed, nodes of the proof tree or you can continue the proof by
+  applying rules to the open goals, whichever you choose in the left
+  pane.
 
-            :   Instantiates a quantifier even when causing splits.
-                However the startegy tries to predict the number of
-                caused open branches and will prefer those with no or
-                only few splits.
+  Rules can be applied either interactively or non-interactively using
+  strategies:
 
-            No Splits with Progs
+  * **Interactive Proving:** By moving the mouse over the current goal
+    you will notice that a subterm of the goal is highlighted
+    (henceforth called the *focus term*). Pressing the left mouse
+    button displays a list of all proof rules currently applicable to
+    the focus term.
 
-            :   Chooses between the `No Splits` and `Unrestricted`
-                behaviour depending on programs present in the sequent.
-                If a program is still present the `No splits` behaviour
-                is used. Otherwise quantifiers are instantiated
-                unrestricted
+    A proof rule is applied to the focus term simply by selecting one
+    of the applicable rules and pressing the left mouse button. The
+    effect is that a new goal is generated. By pushing the button
+    *Goal Back* in the main window of the KeY prover it is possible to
+    undo one or several rule applications. Note, that it is currently
+    not possible to backtrack from an already closed goal.
 
-Middle pane:
+  * **Automatic Proving:** Automatic proof search is performed
+       applying so-called strategies which can be seen as a collection
+       of rules suited for a certain task. To determine which strategy
+       should be used select the tab item *Proof Search Strategy* in
+       the left pane as described above.
 
-:   In this pane, you can either inspect inner, already processed, nodes
-    of the proof tree or you can continue the proof by applying rules to
-    the open goals, whichever you choose in the left pane.
+       To start (respectively continue) the proof push the *run
+       strategy*-button on the toolbar labelled with the $\rhd$-symbol.
 
-    Rules can be applied either interactively or non-interactively using
-    strategies:
-
-    Interactive Proving:
-
-    :   By moving the mouse over the current goal you will notice that a
-        subterm of the goal is highlighted (henceforth called the *focus
-        term*). Pressing the left mouse button displays a list of all
-        proof rules currently applicable to the focus term.
-
-        A proof rule is applied to the focus term simply by selecting
-        one of the applicable rules and pressing the left mouse button.
-        The effect is that a new goal is generated. By pushing the
-        button *Goal Back* in the main window of the KeY prover it
-        is possible to undo one or several rule applications. Note, that
-        it is currently not possible to backtrack from an already closed
-        goal.
-
-    Automatic Proving:
-
-    :   Automatic proof search is performed applying so-called
-        strategies which can be seen as a collection of rules suited for
-        a certain task. To determine which strategy should be used
-        select the tab item *Proof Search Strategy* in the left pane as
-        described above.
-
-        To start (respectively continue) the proof push the *run
-        strategy*-button on the toolbar labelled with the $\rhd$ -
-        symbol.
-
-Right pane:
-
-:   In this pane, you can see the Java source files pertaining to the
-    currently selected proof. When mousing over a term in the middle
-    pane, the corresponding JML specification in the right pane is
-    highlighted in orange. As you advance in the proof, the source code
-    line corresponding to the current proof state is highlighted in
-    green.
+* **Right pane:** In this pane, you can see the Java source files
+    pertaining to the currently selected proof. When mousing over
+    a term in the middle pane, the corresponding JML specification in
+    the right pane is highlighted in orange. As you advance in the
+    proof, the source code line corresponding to the current proof
+    state is highlighted in green.
 
 #### Configure the KeY prover {#sec:configure}
 
@@ -545,27 +509,12 @@ into the KeY prover as described in
 Sect. [3.2](#sec:loading){reference-type="ref" reference="sec:loading"}.
 
 The menu bar consists of different pull-down menus:
-
-File
-
-:   menu for file related actions like loading and saving of problems
-    resp. proofs, or opening the Proof Management window
-
-View
-
-:   menu for changing the look of the KeY prover
-
-Proof
-
-:   menu for changing and viewing proof specific options
-
-Options
-
-:   menu for configuring general options affecting any proof
-
-About
-
-:   menu (as the name says)
+* File: menu for file related actions like loading and saving of
+    problems resp. proofs, or opening the Proof Management window
+* View: menu for changing the look of the KeY prover
+* Proof: menu for changing and viewing proof specific options
+* Options: menu for configuring general options affecting any proof
+* About: menu (as the name says)
 
 KeY provides a complete calculus for the Java Card 2.2.x version
 including additional features like transactions. Further, it provides
@@ -587,23 +536,20 @@ for each option, the value as given in parentheses directly after the
 option name is selected. In case you have to change one or more values,
 you will have to reload the tutorial example in order to activate them.
 
-JavaCard:
-
-:   ([off]) There are two values for this option:
+* JavaCard:   ([off]) There are two values for this option:
     [on] and [off]. Switches all taclets
     axiomatising JavaCard specific features like transaction on or off.
 
-initialisation:
+* initialisation:
 
 :   ([disableStaticInitialisation]) Specifies whether
     static initialization should be considered.
 
 intRules:
 
-:   [\[sec:integersem\]]{#sec:integersem label="sec:integersem"}
-    ([arithmeticSemanticsIgnoringOF]) Here you can choose
-    between different semantics for Java integer arithmetic (for details
-    see [@Schlager02; @SchlagerPhD2007; @KeYBook2007]). Three choices
+    ([arithmeticSemanticsIgnoringOF]) Here you can choose between
+    different semantics for Java integer arithmetic (for details
+    see [@Schlager02][@SchlagerPhD2007][@KeYBook2007]). Three choices
     are offered:
 
     [javaSemantics]
@@ -759,7 +705,13 @@ Let $i,j$ denote program variables. Some formulas in JavaCardDL:
 
 -   A typical kind of formula you will encounter is one with an update
     in front like
-    $$\{ {i := a} || {j := b} \};{\langle tmp = i; i = j; j = tmp; \rangle i \doteq b \wedge j \doteq a$$
+    
+    \[
+    \{ {i := a} ~~||~~ {j := b} \}
+    ~\langle tmp = i; i = j; j = tmp; \rangle 
+    ~i \doteq b \wedge j \doteq a
+    \]
+    
     Intuitively, an update can be seen as an assignment, the two
     vertical strokes indicate that the two assignments $a$ to $i$ and
     $b$ to $j$ are performed in parallel (simultaneously). The formula
@@ -771,7 +723,7 @@ Let $i,j$ denote program variables. Some formulas in JavaCardDL:
 ### Sequents {#sec:sequents}
 
 Deduction with the KeY prover is based on a sequent calculus for a
-dynamic logic for JavaCard (JavaDL) [@KeYBook2007; @Beckert01].
+dynamic logic for JavaCard (JavaDL) [@KeYBook2007][@Beckert01].
 
 A sequent has the form
 $\phi_1, \ldots,\phi_m\;\vdash\;\psi_1,\ldots,\psi_n\;
@@ -789,29 +741,24 @@ When we refer to a proof obligation, we usually mean the designated
 formula occurring in the root sequent of the proof. A method contract
 for a method $m$ of a class $C$ consists in general of a
 
-precondition $pre$
+* **precondition $pre$** describing the method-specific[^6] conditions
+    which a caller of the method has to fulfill before calling the
+    method in order to be guaranteed that the
 
-:   describing the method-specific[^6] conditions which a caller of the
-    method has to fulfill before calling the method in order to be
-    guaranteed that the
+* **postcondition $post$** holds after executing the method and that
+  the
 
-postcondition $post$
+* **assignable/modifies clause $mod$** is respected. This means that
+    at most the locations described by $mod$ are modified in the final
+    state. In addition, we have a
 
-:   holds after executing the method and that the
-
-assignable/modifies clause $mod$
-
-:   is respected. This means that at most the locations described by
-    $mod$ are modified in the final state. In addition, we have a
-
-termination marker
-
-:   indicating if termination of the method is required. Termination
-    required (total correctness) has the termination marker `diamond`,
-    i.e. the method must terminate when the called in a state where the
-    precondition is fulfilled. The marker `box` does not require
-    termination (partial correctness), i.e., the contract must only be
-    fulfilled if the method terminates.
+* **termination marker** indicating if termination of the method is
+    required. Termination required (total correctness) has the
+    termination marker `diamond`, i.e. the method must terminate when
+    the called in a state where the precondition is fulfilled. The
+    marker `box` does not require termination (partial correctness),
+    i.e., the contract must only be fulfilled if the method
+    terminates.
 
 In addition, each object $O$ has a possibly empty set of invariants
 $inv_{O}$ assigned to them.
@@ -1197,7 +1144,7 @@ menu of the KeY prover.
         * intRules -- ([arithmeticSemanticIgnoringOF]) Here you can
             choose between different semantics for Java integer
             arithmetic (for details
-            see [@Schlager02; @SchlagerPhD2007; @KeYBook2007]). Three
+            see [@Schlager02][@Sledged2007][@KeYBook2007]). Three
             choices are offered:
 
             * javaSemantics -- (Java semantics): Corresponds exactly to the semantics
@@ -1551,3 +1498,8 @@ For documentation on how to set up your own classpath, see
 
 [^9]: The computation of this limit is done with sophisticated methods
     for loop detection and would go beyond the scope of this quicktour
+
+
+## Bibliography
+
+\full_bibliography
