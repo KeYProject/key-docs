@@ -5,11 +5,21 @@
 ### Core
 
 * **BREAK:** Minimum required Java version is 11. (!380)
-* IMP: Removal of the Eclipse Plugins. Eclipse support is now shipped in [keyclipse repository](https://git.key-project.org/key/keyclipse)
+* IMP: Removal of the Eclipse Plugins. Eclipse support is now shipped in [keyclipse repository](https://git.key-project.org/key/keyclipse) (!390)
 * IMP: Removal of `System.out/err` in favor for logging with SLF4J (!240)
 * IMP: Translation of the last DL contracts to JML contracts. (!375)
 * ?? IMP: Logical Infrastructure for final values independent from the heap
 * ?? IMP: Subscripts in SequentView
+* Bring INVISMT to KeY; Refactors SolverTypes (!406)
+* Performance: Switching sequents (!482)
+* No dependencies as local jar files (!484)
+* change SwitchToIf to create a if-else cascade (!444)
+* More proof script commands: hide and unhide. (!486)
+* Enables JavaDL data types in ghost and model fields (!469)
+* insert jml assume and assert statements in the right order (!476)
+* Fix comment attachment in recoder (!399)
+* Restore RECODER-0.84 (!424)
+* Update dependencies (!467)
 
 ## 2.10.0 (2021-12-23)
 
