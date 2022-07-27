@@ -131,6 +131,7 @@ nav:
       - "Start": devel/index.md
       - devel/Architecture.md
       - devel/CodeingConventions.md
+      - devel/SpotlessAutomaticFormatting.md
       - devel/ExternalProject.md
       - devel/Gradle.md
       - devel/GUIExtensions.md
