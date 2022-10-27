@@ -17,9 +17,6 @@ It is also possible via `spotlessApply` to just apply the changes and write them
 
 Note that there are separate tasks of the form `spotless<format>Check/Apply` for every defined format, e.g. `spotlessJavaCheck`.
 
-## License headers
-Running `spotlessApply` will also add short license headers to the files (or replace existing headers). The header to be used can be found in the repo in the file `gradle/header`.
-
 ## Java formatting
 
 Spotless supports several formatters, for Java files we currently use the Eclipse formatter, since it provides the most options of the available formatters and thus allows us to configure the automatic formatting in a way that it conforms to the KeY code style (https://git.key-project.org/key/key/-/wikis/Code%20Conventions).
@@ -69,10 +66,12 @@ The Gitlab Job `format` checks the formatting for every commit that is pushed to
 To prevent the large commit that just applies the reformatting from cluttering the result of `git blame`, you can do the following (in the main KeY directory):
 
 ```bash
-# commit with automatic reformatting
-echo 5a906f9d58b36bb348118ccaf964afe232d9bec4 > blame-ignore-refs.txt
+# commit with automatic reformatting for Java files
+echo d1be82c163b48fcc87991afc33f50c1380bf4949 > blame-ignore-refs.txt
+# commit with automatic reformatting for .key files
+echo f8441bba87de6fdc63ea3078a9fa0c79139b8b0a >> blame-ignore-refs.txt
 # commit with manual formatting corrections
-echo a80f6fd1937b52d2a893a1db19567e15c67d52b2 >> blame-ignore-refs.txt
-git config blame.ignoreRevsFile <absolute/path/to/project/directory>/blame-ignore-refs.txt
+echo e405e67cb69ac9621efaa6098e87d03fb39a3efa >> blame-ignore-refs.txt
+git config blame.ignoreRevsFile <optional/path/to/>blame-ignore-refs.txt
 ```
-Note: It is important to set the **absolute path** to the file, using e.g. `./blame-ignore-refs.txt` does not work.
+Note: The (optional) path has to be relative to the root directory of the repository, not to the directory you are in when running the command.
