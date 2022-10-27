@@ -1,6 +1,16 @@
-# Add new SMT solver types as .props files
+# Adding a new SMT Solver
 
-This is an examplary solver properties file. To add a solver, specify a properties (*.props*) file following this example or the existing properties files and put it in a *...\resources\de\uka\ilkd\key\smt\solvertypes* directory in one of the subprojects of KeY. For the solver to be usable, add the file's name to a *solvers.txt* which also should be located in the same directory as the .props file.
+Solver properties files allow developers to
+
+- Add support for an SMT solver currently not used by KeY (as long as it accepts SMT-LIB as input). In this case, it will likely be necessary to also implement a new de.uka.ilkd.key.smt.communication.SolverSocket.MessageHandler to handle the solver output, if no existing MessageHandler suffices.
+- Add a new variant of an SMT solver, for example "Z3, but only with quantifier-free formulas" or "CVC5, but ignoring all formulas with casts".
+- Add a new variant of an SMT solver with specific options / a specific preamble (e.g., Z3 with "(set-option :produce-proofs true)").
+
+This can all be done without writing a lot of own code (except for the MessageHandler).
+
+
+To add a solver, specify a properties (*.props*) file following the examples below or the already existing properties files in the project.
+Afterwards, put the properties file in a *...\resources\de\uka\ilkd\key\smt\solvertypes* directory in one of the subprojects of KeY. For the solver to be usable, add the file's name to a *solvers.txt* which also should be located in the same directory as the .props file.
 
 If you choose to add the properties file to the specific directory *key.core\src\main\resources\de\uka\ilkd\key\smt\solvertypes*, it will be included in an automatically (via gradle task) created *solvers.txt* file in that same directory.
 
@@ -18,8 +28,7 @@ Arbitrary information about the specified solver.
 info=Some text.
 ```
 
-The cmd command used to start the solver process. Empty String by default, if the property is not specified.
-Can later be changed by the user in the settings.
+The default cmd command used to start the solver process. Empty String by default, if the property is not specified.
 The current command can later be changed by the user in the settings.
 ```properties
 command=startSolver
@@ -57,7 +66,7 @@ The current timeout can later be changed by the user in the settings.
 timeout=60
 ```
 
-The fully specified class name of the SolverSocket class used by the solver at hand.
+The fully qualified class name of the SolverSocket class used by the solver at hand.
 SolverSockets are responsible for the interpretation of messages sent by the solver process, so you may need to implement a new one if the added solver so requires.
 See the *key.core\src\main\java\\de\uka\ilkd\key\smt\communication* package for currently available SolverSockets and adding new ones.
 Currently possible values for SOCKET_CLASS
@@ -65,7 +74,7 @@ Currently possible values for SOCKET_CLASS
 socketClass=de.uka.ilkd.key.smt.communication.Z3Socket
 ```
 
-The fully specified class name of the SMTTranslator class used by the solver at hand.
+The fully qualified class name of the SMTTranslator class used by the solver at hand.
 Currently possible values for TRANSLATOR_CLASS (see the *key.core\src\main\java\\de\uka\ilkd\key\smt* package):
 SmtLib2Translator (legacy solvers), ModularSMTLib2Translator
 ```properties
@@ -75,7 +84,7 @@ translatorClass=de.uka.ilkd.key.smt.TRANSLATOR_CLASS
 The SMTHandlers used by this solver. 
 If the property is not specified, it is an empty list by default which leads to all handlers being used.
 Note that this property currently only takes effect if the ModularSMTLib2Translator class is used.
-The handlers' names are expected to be fully specified. Currently possible values of HANDLER_CLASS are for example: 
+The handlers' names are expected to be fully qualified. Currently possible values of HANDLER_CLASS are for example: 
 BooleanConnectiveHandler, CastHandler, CastingFunctionsHandler, DefinedSymbolsHandler, FieldConstantHandler, InstanceOfHandler, ...
 ```properties
 handlers=de.uka.ilkd.key.smt.newsmt2.HANDLER_CLASS,\
