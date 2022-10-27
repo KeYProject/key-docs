@@ -130,13 +130,14 @@ nav:
   - Development:
       - "Start": devel/index.md
       - devel/Architecture.md
-      - devel/CodeingConventions.md
+      - devel/CodingConventions.md
       - devel/ExternalProject.md
       - devel/Gradle.md
       - devel/GUIExtensions.md
       - devel/How2ExtRecoder.md
       - devel/howtodoc.md
       - devel/HowtoTaclet.md
+      - devel/AddingSMTSolvers.md
       - devel/SMTTranslation.md
       - Testing:
           - devel/Testing/index.md
