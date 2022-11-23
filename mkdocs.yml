@@ -79,6 +79,7 @@ theme: # material theme
     - navigation.expand
     - navigation.indexes
     - navigation.top
+    - content.code.annotate
 
   icon:
     repo: fontawesome/brands/gitlab
