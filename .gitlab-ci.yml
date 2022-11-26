@@ -1,43 +1,14 @@
 image: wadoon/key-test-docker:docs
 
-
-before_script:
-  ##
-  ## Run ssh-agent (inside the build environment)
-  ##
-  - eval $(ssh-agent -s)
-
-  ##
-  ## Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
-  ## We're using tr to fix line endings which makes ed25519 keys work
-  ## without extra base64 encoding.
-  ## https://gitlab.com/gitlab-examples/ssh-private-key/issues/1#note_48526556
-  ##
-  - echo "$SECRET_KEY" | ssh-add -
-  
-  ##
-  ## Create the SSH directory and give it the right permissions
-  ##
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-
-  ##
-  ## Use ssh-keyscan to scan the keys of your private server. Replace gitlab.com
-  ## with your own domain name. You can copy and repeat that command if you have
-  ## more than one server to connect to.
-  ##
-  - ssh-keyscan $HOST >> ~/.ssh/known_hosts
-  - chmod 644 ~/.ssh/known_hosts
-
 pages:
-  tags: 
-    - tud  
   script:
-    - mkdocs build
-    #- rsync --chmod=ugo=rX --delete --perms -vr site/ ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
-    - scp -pr site/* ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
-  only:
-    - master
+    - mkdocs build  
+    - mv site public 
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
 
 
 linkcheck:docs:
