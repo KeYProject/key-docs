@@ -4,20 +4,10 @@ pages:
   script:
     - mkdocs build  
     - mv site public 
+    - linkchecker -F html -t 5 --no-robots public/index.html || true
+    - mv linkchecker-out.html public
   artifacts:
     paths:
       - public
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-
-
-linkcheck:docs:
-  tags: 
-    - tud
-#  rules:
-    # only execute if triggered by cronjob, to not trigger on pushes
-#    - if: $CI_PIPELINE_SOURCE == "schedule"
-  script:
-    - linkchecker -F html -t 5 --no-robots https://key-project.org/docs/ || true
-    - ls *html
-    - scp -pr linkchecker-out.html ${SECRET_USER}@${HOST}:${REMOTE_FOLDER}
