@@ -137,7 +137,6 @@ nav:
       - devel/Gradle.md
       - devel/GUIExtensions.md
       - devel/How2ExtRecoder.md
-      - devel/howtodoc.md
       - devel/HowtoTaclet.md
       - devel/AddingSMTSolvers.md
       - devel/SMTTranslation.md
