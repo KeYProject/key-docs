@@ -103,6 +103,7 @@ nav:
       - UI Features:
           - user/Exploration.md
           - user/NodeDiff.md
+          - user/ProofSlicing.md
       - Languages:
           - user/HowToTaclet.md
           - user/JMLGrammar.md
