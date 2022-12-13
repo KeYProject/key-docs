@@ -25,6 +25,13 @@ docker run --rm -it --volume $(pwd):/mnt -p 8000:8000 \
     wadoon/key-test-docker:docs bash -c 'cd /mnt && mkdocs serve -a 0.0.0.0:8000'
 ```
 
+The docs will be available at http://127.0.0.1:8000. If the above does not work for you, try running the container in host network mode:
+
+```
+docker run --rm -it --volume $(pwd):/mnt --network host \
+    wadoon/key-test-docker:docs bash -c 'cd /mnt && mkdocs serve'
+```
+
 ### Using system libraries
 
 Install the necessary libraries locally: 
