@@ -36,7 +36,10 @@ Installation instructions are available [at graphviz.org](https://www.graphviz.o
 
 You may also export the dependency graph in DOT format ("Export as DOT" button) and visualize it using any other tool of your choice.
 
-![Dependency graph example](./ProofSlicingDependencyGraph.png)
+<figure markdown>
+  ![Dependency graph example](./ProofSlicingDependencyGraph.png)
+  <figcaption>Dependency Graph of a simple proof (top node: proof obligation)</figcaption>
+</figure>
 
 !!! attention
 
@@ -50,9 +53,17 @@ If none of the sequent formulas introduced by a proof step are used in further s
 may be omitted.
 The second algorithm ("De-duplicate rule applications") identifies identical proof steps in different proof branches which can be performed earlier in the proof.
 
+After running the analysis algorithms, you may also inspect which proof steps will be removed.
+They are marked with an 'X' in the proof tree panel (see last figure on this page).
+
 !!! info
 
     Both algorithms may be combined.
+
+<figure markdown>
+  ![Dependency graph example](./ProofSlicingDependencyGraphAnalyzed.png)
+  <figcaption>Dependency Graph: edges highlighted in red will be omitted in the proof slice</figcaption>
+</figure>
 
 ## Proof Slicing
 
@@ -60,3 +71,8 @@ The last section of the sidebar allows you to slice the proof.
 The "Slice proof" button runs the analysis algorithms (if not already done), constructs a proof slice, and loads the resulting proof.
 It may be possible to slice the proof again to remove more proof steps.
 The "Slice proof to fixed point" button repeatedly executes the analysis and slicing algorithms until no more size reductions are possible.
+
+<figure markdown>
+  ![Proof slicing applied](./ProofSlicingNewProof.png)
+  <figcaption>Running the proof slicer creates a new proof</figcaption>
+</figure>
