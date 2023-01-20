@@ -56,3 +56,16 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+
+
+  spelling:
+    name: Spellcheck
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master    
+    - uses: rojopolis/spellcheck-github-actions@0.29.0
+      name: Spellcheck
+      with:
+        source_files: README.md CHANGELOG.md notes/Notes.md
+        task_name: Markdown
+        output_file: spellcheck-output.txt
