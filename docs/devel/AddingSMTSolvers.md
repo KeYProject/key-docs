@@ -2,17 +2,21 @@
 
 Solver properties files allow developers to
 
-- Add support for an SMT solver currently not used by KeY (as long as it accepts SMT-LIB as input). In this case, it will likely be necessary to also implement a new de.uka.ilkd.key.smt.communication.SolverSocket.MessageHandler to handle the solver output, if no existing MessageHandler suffices.
+- Add support for an SMT solver currently not used by KeY (as long as it accepts SMT-LIB as input). In this case, 
+it will likely be necessary to also implement a new subclass of de.uka.ilkd.key.smt.communication.AbstractSolverSocket 
+to handle the solver output unless an existing solver socket suffices.
 - Add a new variant of an SMT solver, for example "Z3, but only with quantifier-free formulas" or "CVC5, but ignoring all formulas with casts".
 - Add a new variant of an SMT solver with specific options / a specific preamble (e.g., Z3 with "(set-option :produce-proofs true)").
 
-This can all be done without writing a lot of own code (except for the MessageHandler).
+This can all be done without writing a lot of own code (except for the solver socket).
 
 
-To add a solver, specify a properties (*.props*) file following the examples below or the already existing properties files in the project.
-Afterwards, put the properties file in a *...\resources\de\uka\ilkd\key\smt\solvertypes* directory in one of the subprojects of KeY. For the solver to be usable, add the file's name to a *solvers.txt* which also should be located in the same directory as the .props file.
+To add a solver, specify a properties (*.props*) file following the example below or the already existing properties files in the project.
+Afterwards, put the properties file in a *...\resources\de\uka\ilkd\key\smt\solvertypes* directory in one of the subprojects of KeY. 
+For the solver to be usable, add the file's name to a *solvers.txt* which also should be located in the same directory as the .props file.
 
-If you choose to add the properties file to the specific directory *key.core\src\main\resources\de\uka\ilkd\key\smt\solvertypes*, it will be included in an automatically (via gradle task) created *solvers.txt* file in that same directory.
+If you choose to add the properties file to the specific directory *key.core\src\main\resources\de\uka\ilkd\key\smt\solvertypes*, 
+it will be included in an automatically (via gradle task) created *solvers.txt* file in that same directory.
 
 ## Specifiable properties
 
