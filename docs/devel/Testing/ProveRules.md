@@ -30,19 +30,14 @@ necessary:
       `File -> Prove -> KeY's Taclets`.
    (Better to select one at a time).
 
-3. Save a proof of the taclet in the folder
+3. Save a proof of the taclet in the folder `key/key.core/tacletProofs`
+or an arbitrary subfolder. It is recommended to use the name of the
+key-file in which the taclet has been defined as name of the
+subdirectory. The name of the proof file has to match the pattern:
+`Taclet_$TACLETNAME.proof`.
 
-      `key/key.core.test/tacletProofs`
-
-   or an arbitrary subfolder. It is recommended to use the name of the
-   key-file in which the taclet has been defined as name of the
-   subdirectory. The name of the proof file has to match the pattern:
-
-      `Taclet_$TACLETNAME.proof`
-
-   For example, the proof of the taclet bsum_empty can be found under
-
-      `key/key.core.test/tacletProofs/bsum/Taclet_bsum_empty.proof`
+For example, the proof of the taclet bsum_empty can be found in
+`key/key.core/tacletProofs/bsum/Taclet_bsum_empty.proof`.
 
 The JUnit test case will fail
 
@@ -51,11 +46,7 @@ The JUnit test case will fail
 2. if there is no proof for a taclet which is annotated lemma.
 3. if there is a proof, but that cannot be replayed in KeY.
 
-
 See class `de.uka.ilkd.key.proof.proverules.ProveRulesTest` for implementation
 details.
 
-In order to run taclet proofs manually, the following two options are available:
-
-1. Use ProveRules command line interface, which is located at: `key/scripts/proveRules`
-2. Execute ant task `proveRules` in component `key.core.test`.
+In order to run taclet proofs manually, execute the gradle task `testProveRules` in component `key.core`.
