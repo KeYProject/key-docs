@@ -141,7 +141,6 @@ nav:
       - devel/HowtoTaclet.md
       - devel/AddingSMTSolvers.md
       - devel/SMTTranslation.md
-      - devel/CounterExampleGeneration.md
       - Testing:
           - devel/Testing/index.md
           - devel/Testing/ProveRules.md
