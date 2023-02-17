@@ -103,6 +103,7 @@ nav:
       - UI Features:
           - user/Exploration.md
           - user/NodeDiff.md
+          - user/ProofSlicing.md
       - Languages:
           - user/HowToTaclet.md
           - user/JMLGrammar.md
@@ -137,13 +138,11 @@ nav:
       - devel/Gradle.md
       - devel/GUIExtensions.md
       - devel/How2ExtRecoder.md
-      - devel/howtodoc.md
       - devel/HowtoTaclet.md
       - devel/AddingSMTSolvers.md
       - devel/SMTTranslation.md
       - Testing:
           - devel/Testing/index.md
-          - devel/ProveRules.md
           - devel/Testing/ProveRules.md
           - devel/Testing/RunAllProves.md
           - devel/Testing/deterministicTestOrder.md

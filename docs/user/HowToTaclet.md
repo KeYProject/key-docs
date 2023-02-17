@@ -159,7 +159,7 @@ from a current proof situation (i.e., a sequent). In that case, the rule has to
 be completed before it is applied. A good example is the rule "cut"
 (`resources/de/uka/ilkd/key/proof/rules/propRule.key`) defined as follows:
 
-```
+```key
 \schemaVariables {
   \formula cutFormula;
 }

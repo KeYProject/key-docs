@@ -37,7 +37,7 @@ are not supported here at the moment.
 
 Example: A .key-file might begin with
 
-```
+```key
 \bootclasspath "../systemDir/";
 \classpath "/tmp/classes.jar";
 \classpath "../classDir/";

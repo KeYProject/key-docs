@@ -70,7 +70,7 @@ shows such an error message which occurred when a proof for method
 
 ![Problem Occurred](ErrorConsiderUsingClasspath.png "Problem Occurred")
 
-```java
+```jml
 public class Main {
 	/*@ normal_behavior
 	  @ requires System.\inv;
@@ -108,7 +108,7 @@ API.
 used API members automatically.
 
 
-```java
+```jml
 package java.lang;
 
 import java.io.PrintStream;
@@ -120,7 +120,7 @@ public class System {
 }
 ```
 
-```java
+```jml
 package java.io;
 
 public class PrintStream {
