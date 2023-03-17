@@ -139,6 +139,7 @@ nav:
       - devel/GUIExtensions.md
       - devel/How2ExtRecoder.md
       - devel/HowtoTaclet.md
+      - devel/Logging.md
       - devel/AddingSMTSolvers.md
       - devel/SMTTranslation.md
       - Testing:
