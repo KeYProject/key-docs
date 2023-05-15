@@ -104,6 +104,7 @@ nav:
           - user/Exploration.md
           - user/NodeDiff.md
           - user/ProofSlicing.md
+          - user/ProofCaching.md
       - Languages:
           - user/HowToTaclet.md
           - user/JMLGrammar.md
@@ -142,6 +143,8 @@ nav:
       - devel/Logging.md
       - devel/AddingSMTSolvers.md
       - devel/SMTTranslation.md
+      - devel/CounterExampleGeneration.md
+      - devel/ProofLoadSave.md
       - Testing:
           - devel/Testing/index.md
           - devel/Testing/ProveRules.md
