@@ -12,8 +12,12 @@
 
 The *Proof Caching* functionality allows reusing previous proofs when creating a new proof.
 More precisely, it allows you to close a branch of the proof by "reference" to an already closed branch in another proof.
-This is only allowed if the branch in the new proof contains all of the formulas present in the old proof.
-Additionally, the choice settings (handling of integer overflows etc.) of the two proofs have to be equal.
+These conditions have to be met:
+
+- equal choice settings (handling of integer overflows etc.)
+- sequent in new proof needs to contain at least all formulas present in the old proof
+- no state merging
+- no query terms
 
 ![tree with cached goals](./ProofCachingTree.png)
 
