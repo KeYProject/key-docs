@@ -20,11 +20,11 @@ These conditions have to be met:
 
 To close a branch with sequent S in proof P using another branch with sequent S' in proof P', the following conditions have to bet:
 
-1. Choice settings (handling of integer overflows etc.) of P and P' need to be equal
+1. Taclet options (handling of integer overflows etc.) of P and P' need to be equal
 2. Antecedent(S') ⊆ Antecedent(S) and Succedent(S') ⊆ Succedent(S)
 3. Neither branch uses state merging
 4. S' may not contain query terms
-5. S' may not contain symbolic execution terms
+5. S' may not contain modalities
 
 Condition 4 and 5 are required because the definition of method frames depends on the Java source code currently loaded,
 which is not checked when searching.
