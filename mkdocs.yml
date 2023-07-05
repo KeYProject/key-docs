@@ -138,6 +138,7 @@ nav:
       - devel/SpotlessAutomaticFormatting.md
       - devel/ExternalProject.md
       - devel/Gradle.md
+      - devel/Listeners.md
       - devel/GUIExtensions.md
       - devel/How2ExtRecoder.md
       - devel/HowtoTaclet.md

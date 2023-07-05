@@ -52,6 +52,10 @@ Brings `Lookup` a successor for a flexible mediator replacement based on
 a service architecture, incl. Dependency Injection
  
 
+## `KeYGuiExtension.Startup`
+Entry point for KeY startup.
+For hooking into the shutdown handler, register a GUIListener at the KeYMediator.
+
 ## `KeYGuiExtension.MainMenu`
 ## `KeYGuiExtension.ContextMenu`
 
