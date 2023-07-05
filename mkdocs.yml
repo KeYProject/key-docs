@@ -133,7 +133,6 @@ nav:
 
   - Development:
       - "Start": devel/index.md
-      - devel/Architecture.md
       - devel/CodingConventions.md
       - devel/SpotlessAutomaticFormatting.md
       - devel/ExternalProject.md
