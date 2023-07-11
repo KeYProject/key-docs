@@ -1,3 +1,5 @@
+# GUI extensions
+
 **weigl, 2019**
 
 GUI Extensions defines a couple of extension points for the KeY User Interface.

@@ -65,15 +65,6 @@ The referenced proof steps will also be copied automatically when saving the pro
 
 ![dialog](./ProofCachingDialog.png)
 
-### Toolbar buttons
-
-Two new buttons are added to the toolbar.
-
-![buttons](./ProofCachingToolbar.png)
-
-The first button copies all referenced steps into the current proof.
-The second button jumps to the referenced proof step, if the currently selected node is a cached goal.
-
 ## Saving the full proof
 
 When saving a proof that references other proofs, those proof steps are first copied into the new proof.

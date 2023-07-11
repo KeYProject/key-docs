@@ -146,7 +146,7 @@ nav:
           - devel/Gradle.md
           - devel/Logging.md
       - Important topics:
-        - "GUI extensions": devel/GUIExtensions.md
+        - devel/GUIExtensions.md
         - devel/Listeners.md
         - devel/HowtoTaclet.md
         - devel/ProofLoadSave.md

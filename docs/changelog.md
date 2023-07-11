@@ -1,4 +1,4 @@
-# Change log
+# Changelog
 
 ## Upcoming: 2.12.0 (2023-08-02)
 
