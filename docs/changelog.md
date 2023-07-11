@@ -1,10 +1,12 @@
 # Change log
 
-## Upcoming: 2.12.0 (2022-XX-XX)
+## Upcoming: 2.12.0 (2023-08-02)
 
 ### Core
 
 * **BREAK:** Minimum required Java version is 11. (!380)
+* NEW: [Proof Slicing](user/ProofSlicing.md) system
+* NEW: [Proof Caching](user/ProofCaching.md) system
 * IMP: Removal of the Eclipse Plugins. Eclipse support is now shipped in [keyclipse repository](https://git.key-project.org/key/keyclipse) (!390)
 * IMP: Removal of `System.out/err` in favor for logging with SLF4J (!240)
 * IMP: Translation of the last DL contracts to JML contracts. (!375)
@@ -20,6 +22,9 @@
 * Fix comment attachment in recoder (!399)
 * Restore RECODER-0.84 (!424)
 * Update dependencies (!467)
+
+### UI
+* IMP: More functionality in statistics dialog
 
 ## 2.10.0 (2021-12-23)
 

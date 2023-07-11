@@ -1,20 +1,13 @@
 ## Installation {#sec:install}
 
 You can choose between different methods to install and use KeY. For
-this tutorial, we recommend the Java Web Start variant described in
-Sect. [1.2.1](#install:javaws).
+this tutorial, we recommend the Single Click Jar variant described in
+Sect. [1.2.1](#install:jar).
 
-#### The KeY prover by Java Web Start {#install:javaws}
+#### The KeY prover as Single Click Jar {#install:jar}
 
-Java Web Start is a Java Technology which allows you to start
-applications directly from a website. No installation is needed. You can
-visit our homepage
-
-<http://www.key-project.org/download>
-
-which contains a link to Java Web Start the KeY prover. Please
-note that you need the Java Web Start facility (which should come along
-with your Java distribution).
+Download the jar from our [website](http://www.key-project.org/download).
+You will also need to have Java 11 (or later) installed.
 
 #### Byte Code and Source Code Installation {#install:byteandsourcecode}
 

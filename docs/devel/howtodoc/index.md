@@ -20,9 +20,8 @@ via the Python package manager (`pip`). For a non-root user install
 use either `make prepare` or execute the following line:
 
 ``` {.sh linenums="1"}
-$ pip install --user  mkdocs  mkdocs-material \
-                      pymdown-extensions pygments markdown-blockdiag \
-                      markdown-aafigure==v201904.0004
+$ pip install --user mkdocs  mkdocs-material  pymdown-extensions \
+                     pygments markdown-blockdiag markdown-aafigure==v201904.0004 'Pillow<9'
 ```
 
 This install all needed packages for this webpage inside

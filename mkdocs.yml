@@ -93,6 +93,7 @@ nav:
   - Home: index.md
   - User Guide:
       - user/index.md
+      - changelog.md
       - user/FAQ.md
       - user/ADTs.md
       - user/Classpath.md
@@ -100,6 +101,12 @@ nav:
       - user/JavaDLinJML.md
       - user/RemoveGenerics.md
       - user/Polarity.md
+      - Quicktour:
+          - user/quicktour/index.md
+          - user/quicktour/install.md
+          - user/quicktour/loading.md
+          - user/quicktour/proving.md
+          - user/quicktour/appendix.md
       - UI Features:
           - user/Exploration.md
           - user/NodeDiff.md
@@ -119,17 +126,16 @@ nav:
           - workbench/Proof Scripts/variables.md
 
   - KeYclipse:
-      - "Overview": eclipse
-      - "KeY basics": eclipse/CrossProject/
-      - "SED": eclipse/SED
-      - "Stubby": eclipse/Stubby
-    #  - eclipse/General
-      - "KeY IDE": eclipse/KeYIDE
-      - "MonKeY": eclipse/MonKeY
-      - "Starter": eclipse/Starter
-      - "VisualDBC": eclipse/VisualDbC
-      - "JML Editing": eclipse/JMLEditing
-      - "Resources" : eclipse/KeYResources
+      - "Overview": eclipse/index.md
+      - "KeY basics": eclipse/CrossProject/index.md
+      - "SED": eclipse/SED/index.md
+      - "Stubby": eclipse/Stubby/index.md
+      - "KeY IDE": eclipse/KeYIDE/index.md
+      - "MonKeY": eclipse/MonKeY/index.md
+      - "Starter": eclipse/Starter/index.md
+      - "VisualDBC": eclipse/VisualDbC/index.md
+      - "JML Editing": eclipse/JMLEditing/index.md
+      - "Resources" : eclipse/KeYResources/index.md
 
   - Development:
       - "Start": devel/index.md
@@ -155,7 +161,7 @@ nav:
           - devel/Testing/RunAllProves.md
           - devel/Testing/deterministicTestOrder.md
           - devel/Testing/parserMessageTest.md
-      - Write Documentation: "devel/howtodoc"
+      - Write Documentation: "devel/howtodoc/index.md"
 
 
   
