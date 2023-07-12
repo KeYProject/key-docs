@@ -101,6 +101,7 @@ nav:
       - user/JavaDLinJML.md
       - user/RemoveGenerics.md
       - user/Polarity.md
+      - user/JavaGrammar.md
       - Quicktour:
           - user/quicktour/index.md
           - user/quicktour/install.md
