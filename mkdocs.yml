@@ -1,4 +1,5 @@
 site_name: KeY Developer Documentation
+site_url: https://keyproject.github.io/key-docs/
 
 plugins:
   - search
@@ -82,7 +83,7 @@ theme: # material theme
     - content.code.annotate
 
   icon:
-    repo: fontawesome/brands/gitlab
+    repo: fontawesome/brands/github
 
 #  palette:
 #    primary: 'blue grey'
@@ -170,7 +171,7 @@ nav:
 #  logo: 'https://git.key-project.org/uploads/-/system/appearance/logo/1/key-color.png'
   #feature:
   #  tabs: true
-repo_type: gitlab
+repo_type: github
 repo_name: key-docs
-repo_url: https://git.key-project.org/key/key-docs/
+repo_url: https://github.com/KeYProject/key-docs/
 edit_uri: edit/master/docs/
