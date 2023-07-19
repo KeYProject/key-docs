@@ -5,7 +5,6 @@ plugins:
   - search
   - bibtex:
       bib_file: "refs.bib"
-      cite_style: "pandoc"
 #      csl_file: "springer-basic-author-date.csl"
   
 markdown_extensions:
@@ -171,7 +170,6 @@ nav:
 #  logo: 'https://git.key-project.org/uploads/-/system/appearance/logo/1/key-color.png'
   #feature:
   #  tabs: true
-repo_type: github
 repo_name: key-docs
 repo_url: https://github.com/KeYProject/key-docs/
 edit_uri: edit/master/docs/

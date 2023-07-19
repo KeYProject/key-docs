@@ -1,6 +1,6 @@
 # Proof Reordering
 
--- *Author: Arne Keller*, June 2023 valid for KeY-2.12.0
+-- *Author: Arne Keller*, June 2023 valid for KeY-2.14.0
 
 -- WIP
 

@@ -7,7 +7,7 @@ convenient as writing Java source code.
 
 The following screenshot shows for instance the extended syntax
 highlighting of the Java Editor:\
-![JML Editing](images/JMLEditing.png "JML Editing")
+![JML Editing](JMLEditing.png "JML Editing")
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ JML Editing is compatible with [Eclipse](http://www.eclipse.org) Luna
 (4.4) or newer.
 
 Required update-sites and installation instructions are available in the
-[download](../../download/index.html#eclipsePreview) area.
+[download](https://www.key-project.org/download/) area.
 
 ## Current Functionality
 

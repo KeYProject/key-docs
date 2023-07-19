@@ -15,7 +15,7 @@ KeY 4 Eclipse Starter is compatible with
 [Eclipse](http://www.eclipse.org) Indigo (3.7) or newer.
 
 Required update-sites and installation instructions are available in the
-[download](../../download/index.html#eclipse) area.
+[download](https://www.key-project.org/download/) area.
 
 ## Open KeY
 
@@ -92,12 +92,9 @@ starting the auto mode.
 
 ## KeY basics in Eclipse and troubleshooting
 
--   [KeY basics in Eclipse (Cross-project
-    Functionality)](../CrossProject/index.html)
-    -   [Create an example project](../CrossProject/index.html#example)
-    -   [Change taclet options](../CrossProject/index.html#taclet)
-    -   [Define class path used by
-        KeY](../CrossProject/index.html#KeYsClassPath)
--   [Troubleshooting](../CrossProject/index.html#troubleshooting)
-    -   [Unresolved classtype (support for API
-        classes)](../CrossProject/index.html#API)
+- [KeY basics in Eclipse (Cross-project Functionality)](../CrossProject/)
+  - [Create an example project](../CrossProject/#create-an-example-project)
+  - [Change taclet options](../CrossProject/#change-taclet-options)
+  - [Define class path used by KeY](../CrossProject/#define-class-path-used-by-key)
+- [Troubleshooting](../CrossProject/#troubleshooting)
+  - [Unresolved classtype (support for API classes)](../CrossProject/#unresolved-classtype-support-for-api-classes)
