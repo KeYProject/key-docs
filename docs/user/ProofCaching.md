@@ -70,6 +70,8 @@ The referenced proof steps will also be copied automatically when saving the pro
 When saving a proof that references other proofs, those proof steps are first copied into the new proof.
 This ensures that the proof is reloadable and self-contained.
 When a referenced proof is closed, the proof steps required in other proofs are first copied over.
+This behaviour is configurable in the settings.
+Instead of copying the closed proof, the new proof can also be reopened.
 
 ## Possible future extensions
 
@@ -85,3 +87,4 @@ The database would need to contain:
 
 - the proof and associated Java files
 - for each closed branch: sequents in text form
+- and more...
