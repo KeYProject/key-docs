@@ -68,7 +68,7 @@ theme: # material theme
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)" 
       scheme: slate
-      primary: 'dark'
+      primary: 'teal'
       accent: 'orange'
       toggle:
         icon: material/toggle-switch

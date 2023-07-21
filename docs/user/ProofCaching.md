@@ -12,7 +12,6 @@
 
 The *Proof Caching* functionality allows reusing previous proofs when creating a new proof.
 More precisely, it allows you to close a branch of the proof by "reference" to an already closed branch in another proof.
-These conditions have to be met:
 
 ![tree with cached goals](./ProofCachingTree.png)
 
