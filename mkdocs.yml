@@ -110,7 +110,6 @@ nav:
           - user/NodeDiff.md
           - user/ProofSlicing.md
           - user/ProofCaching.md
-          - user/ProofReordering.md
       - Languages:
           - user/HowToTaclet.md
           - user/JMLGrammar.md
