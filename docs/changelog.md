@@ -5,26 +5,44 @@
 ### Core
 
 * **BREAK:** Minimum required Java version is 11. (!380)
+* NEW: Floating point number support ([!403])
 * NEW: [Proof Slicing](user/ProofSlicing.md) system
 * NEW: [Proof Caching](user/ProofCaching.md) system
+* NEW: Java source validity is checked using javac ([!581])
 * IMP: Removal of the Eclipse Plugins. Eclipse support is now shipped in [keyclipse repository](https://git.key-project.org/key/keyclipse) (!390)
 * IMP: Removal of `System.out/err` in favor for logging with SLF4J (!240)
 * IMP: Translation of the last DL contracts to JML contracts. (!375)
-* ?? IMP: Logical Infrastructure for final values independent from the heap
-* ?? IMP: Subscripts in SequentView
+* IMP: jdiv and jmod support in SMT translation via definitions
+* IMP: support \old() in jml asserts ([!533])
+* FIX: Z3 counterexample generation works again ([!623])
+* FIX: Check for correct polarity when applying taclets ([!616])
 * Bring INVISMT to KeY; Refactors SolverTypes (!406)
 * Performance: Switching sequents (!482)
-* No dependencies as local jar files (!484)
 * change SwitchToIf to create a if-else cascade (!444)
 * More proof script commands: hide and unhide. (!486)
 * Enables JavaDL data types in ghost and model fields (!469)
 * insert jml assume and assert statements in the right order (!476)
+* Performance: Autopilot ([!508])
+* Performance: Several memory leaks fixed ([!573])
+
+### UI
+* More functionality in statistics dialog
+* Configurable look and feel ([!635])
+* Proof loading shows a progress bar ([!560])
+
+### Development
+
+* New SMT solver configuration system ([!514], ...)
+* Code style fixes ([!618], [!619])
+* Preparations for Gradle 8 ([!620])
+* Checkstyle updated to latest version ([!631])
+* Apply Spotless to code base (automatic formatting) ([!584])
+* JUnit 5 ([!489])
+* Externalization of Interaction Logging ([!500])
 * Fix comment attachment in recoder (!399)
 * Restore RECODER-0.84 (!424)
 * Update dependencies (!467)
-
-### UI
-* IMP: More functionality in statistics dialog
+* No dependencies as local jar files (!484)
 
 ## 2.10.0 (2021-12-23)
 
@@ -404,3 +422,7 @@ Herda, Peter Schmitt, Richard Bubel, Sarah Grebing, Wolfram Pfeifer
 * support of loop invariants
 * lots of new stuff
   
+[!616]: https://git.key-project.org/key/key/-/merge_requests/616
+[!618]: https://git.key-project.org/key/key/-/merge_requests/618
+[!619]: https://git.key-project.org/key/key/-/merge_requests/619
+[!623]: https://git.key-project.org/key/key/-/merge_requests/623
