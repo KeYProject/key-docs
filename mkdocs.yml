@@ -58,6 +58,8 @@ extra_javascript:
 
 theme: # material theme
   name: material
+  logo: key.png
+  favicon: key.png
   palette:
     - media: "(prefers-color-scheme: light)" 
       scheme: default
