@@ -24,6 +24,7 @@ To close a branch with sequent S in proof P using another branch with sequent S'
 3. Neither branch uses state merging
 4. S' may not contain query terms
 5. S' may not contain modalities
+6. All proof rules used in the branch starting at S' must be available in proof P at sequent S (or derived in the same way)
 
 Condition 4 and 5 are required because the definition of method frames depends on the Java source code currently loaded,
 which is not checked when searching.
