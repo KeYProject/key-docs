@@ -1,3 +1,5 @@
+# GUI extensions
+
 **weigl, 2019**
 
 GUI Extensions defines a couple of extension points for the KeY User Interface.
@@ -51,6 +53,10 @@ a properties file.
 Brings `Lookup` a successor for a flexible mediator replacement based on
 a service architecture, incl. Dependency Injection
  
+
+## `KeYGuiExtension.Startup`
+Entry point for KeY startup.
+For hooking into the shutdown handler, register a GUIListener at the KeYMediator.
 
 ## `KeYGuiExtension.MainMenu`
 ## `KeYGuiExtension.ContextMenu`

@@ -108,7 +108,7 @@ API.
 3.  Populate the folder with files "System.java" and
     "PrintStream.java" with content from the listings below.
 
-**Hint:** [Stubby](../Stubby/index.html) can generate stub files for
+**Hint:** [Stubby](../Stubby/) can generate stub files for
 used API members automatically.
 
 

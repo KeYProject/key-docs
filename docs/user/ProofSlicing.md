@@ -27,6 +27,7 @@ Proof steps are represented by a hyperedge starting at the new sequent formulas 
 If the step required some formulas to be present beforehand, the hyperedge points to these nodes.
 (For technical reasons, this hyperedge is stored as a collection of regular edges from each input to each output.)
 Proof steps that close a proof branch start at a special kind of node: a "closed goal" node.
+See the last section below for all types of graph nodes.
 
 The extension automatically constructs the dependency graph when loading or constructing a proof.
 The number of nodes and edges is displayed in the sidebar.
@@ -76,3 +77,31 @@ The "Slice proof to fixed point" button repeatedly executes the analysis and sli
   ![Proof slicing applied](./ProofSlicingNewProof.png)
   <figcaption>Running the proof slicer creates a new proof</figcaption>
 </figure>
+
+## Dependency graph node types
+
+All nodes store the branch location of the proof step that created them.
+In case of splitting proof steps, the branch of the new node is stored.
+
+### Tracked Formula
+
+Simply a formula on the sequent. If the same formula is created by two different steps, it is represented by different graph nodes.
+
+### Closed Goal
+
+Indicates a finished branch.
+
+### Pseudo Input / Output
+
+Used if a proof step has no inputs / outputs to ensure that the outputs / inputs of the proof step are connected to an edge.
+
+### Variable
+
+Specified as an output if the proof step creates a new skolem constant.
+Specified as an input if the proof steps uses the variable to instantiate a schema variable.
+
+### Taclet
+
+Dynamically added rule.
+Specified as output if the proof step defines the rule.
+Specified as an input if the proof step uses this rule.

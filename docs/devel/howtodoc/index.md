@@ -4,7 +4,7 @@ This webpage uses [mkdocs](https://mkdocs.org). Mkdocs generates from a bunch of
 markdown files, and a specified template this beautiful web page.
 
 As an author, you can just edit and create new markdown files in the `docs/` of
-the corresponding repository: https://git.key-project.org/key/key-docs. On each
+the corresponding repository: https://github.com/KeYProject/key-docs. On each
 commit the generation is automatically started and pushed to this URL.
 Therefore, *you do not need to install mkdocs on your computer.*
 
@@ -20,9 +20,9 @@ via the Python package manager (`pip`). For a non-root user install
 use either `make prepare` or execute the following line:
 
 ``` {.sh linenums="1"}
-$ pip install --user  mkdocs  mkdocs-material \
-                      pymdown-extensions pygments markdown-blockdiag \
-                      markdown-aafigure==v201904.0004
+$ pip install --user mkdocs mkdocs-material pymdown-extensions pygments \
+                     markdown-blockdiag mkdocs-bibtex markdown-aafigure==v201904.0004 \
+                     mkdocs-build-plantuml-plugin 'Pillow<10'
 ```
 
 This install all needed packages for this webpage inside

@@ -15,7 +15,7 @@ Stubby is compatible with [Eclipse](http://www.eclipse.org) Luna (4.4)
 or newer.
 
 Required update-sites and installation instructions are available in
-the [download](../../download/index.html#eclipsePreview) area.
+the [download](https://www.key-project.org/download/) area.
 
 ## Generate Stubs
 

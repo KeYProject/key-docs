@@ -1,10 +1,10 @@
 site_name: KeY Developer Documentation
+site_url: https://keyproject.github.io/key-docs/
 
 plugins:
   - search
   - bibtex:
       bib_file: "refs.bib"
-      cite_style: "pandoc"
 #      csl_file: "springer-basic-author-date.csl"
   
 markdown_extensions:
@@ -56,8 +56,10 @@ extra_javascript:
 
 #copyright: Copyright &copy; 2016 - 2020 Martin Donath
 
-theme: # material theme
+theme:
   name: material
+  logo: key.png
+  favicon: key.png
   palette:
     - media: "(prefers-color-scheme: light)" 
       scheme: default
@@ -68,7 +70,7 @@ theme: # material theme
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)" 
       scheme: slate
-      primary: 'dark'
+      primary: 'teal'
       accent: 'orange'
       toggle:
         icon: material/toggle-switch
@@ -82,17 +84,13 @@ theme: # material theme
     - content.code.annotate
 
   icon:
-    repo: fontawesome/brands/gitlab
-
-#  palette:
-#    primary: 'blue grey'
-#    accent: 'teal'
-    
+    repo: fontawesome/brands/github
 
 nav:
   - Home: index.md
   - User Guide:
       - user/index.md
+      - changelog.md
       - user/FAQ.md
       - user/ADTs.md
       - user/Classpath.md
@@ -100,10 +98,18 @@ nav:
       - user/JavaDLinJML.md
       - user/RemoveGenerics.md
       - user/Polarity.md
+      - user/JavaGrammar.md
+      - Quicktour:
+          - user/quicktour/index.md
+          - user/quicktour/install.md
+          - user/quicktour/loading.md
+          - user/quicktour/proving.md
+          - user/quicktour/appendix.md
       - UI Features:
           - user/Exploration.md
           - user/NodeDiff.md
           - user/ProofSlicing.md
+          - user/ProofCaching.md
       - Languages:
           - user/HowToTaclet.md
           - user/JMLGrammar.md
@@ -117,46 +123,43 @@ nav:
           - workbench/Proof Scripts/variables.md
 
   - KeYclipse:
-      - "Overview": eclipse
-      - "KeY basics": eclipse/CrossProject/
-      - "SED": eclipse/SED
-      - "Stubby": eclipse/Stubby
-    #  - eclipse/General
-      - "KeY IDE": eclipse/KeYIDE
-      - "MonKeY": eclipse/MonKeY
-      - "Starter": eclipse/Starter
-      - "VisualDBC": eclipse/VisualDbC
-      - "JML Editing": eclipse/JMLEditing
-      - "Resources" : eclipse/KeYResources
+      - "Overview": eclipse/index.md
+      - "KeY basics": eclipse/CrossProject/index.md
+      - "SED": eclipse/SED/index.md
+      - "Stubby": eclipse/Stubby/index.md
+      - "KeY IDE": eclipse/KeYIDE/index.md
+      - "MonKeY": eclipse/MonKeY/index.md
+      - "Starter": eclipse/Starter/index.md
+      - "VisualDBC": eclipse/VisualDbC/index.md
+      - "JML Editing": eclipse/JMLEditing/index.md
+      - "Resources" : eclipse/KeYResources/index.md
 
   - Development:
       - "Start": devel/index.md
-      - devel/Architecture.md
-      - devel/CodingConventions.md
-      - devel/SpotlessAutomaticFormatting.md
-      - devel/ExternalProject.md
-      - devel/Gradle.md
-      - devel/GUIExtensions.md
+      - Basics:
+          - devel/CodingConventions.md
+          - devel/SpotlessAutomaticFormatting.md
+          - devel/ExternalProject.md
+          - devel/Gradle.md
+          - devel/Logging.md
+      - Important topics:
+        - devel/GUIExtensions.md
+        - devel/Listeners.md
+        - devel/HowtoTaclet.md
+        - devel/ProofLoadSave.md
+      - SMT:
+          - devel/AddingSMTSolvers.md
+          - devel/SMTTranslation.md
+          - devel/CounterExampleGeneration.md
       - devel/How2ExtRecoder.md
-      - devel/HowtoTaclet.md
-      - devel/Logging.md
-      - devel/AddingSMTSolvers.md
-      - devel/SMTTranslation.md
       - Testing:
           - devel/Testing/index.md
           - devel/Testing/ProveRules.md
           - devel/Testing/RunAllProves.md
           - devel/Testing/deterministicTestOrder.md
           - devel/Testing/parserMessageTest.md
-      - Write Documentation: "devel/howtodoc"
+      - Write Documentation: "devel/howtodoc/index.md"
 
-
-  
-#  nav_style: dark
-#  logo: 'https://git.key-project.org/uploads/-/system/appearance/logo/1/key-color.png'
-  #feature:
-  #  tabs: true
-repo_type: gitlab
 repo_name: key-docs
-repo_url: https://git.key-project.org/key/key-docs/
+repo_url: https://github.com/KeYProject/key-docs/
 edit_uri: edit/master/docs/
