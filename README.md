@@ -5,7 +5,7 @@
 ## Getting Started to Write
 
 An overview about some markdown (extension) is avaiable in `docs/howtodoc.md` or 
-http://key-project.org/docs/howtodoc/
+https://keyproject.github.io/key-docs/devel/howtodoc/
 
 Webpages are determined by folder structure under `docs/`. Just create or change
 files within this folder. The top-level header is the title of this page in the

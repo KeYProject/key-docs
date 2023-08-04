@@ -4,7 +4,7 @@ To persist interactions performed during proof contsruction in KeY and to replay
 interactions, KeY allows users to use proof scripts.
 
 In this documentation the scripts that allow for branching statements are eplained. (see [Explanation
-of linear scripts](https://key-project.org/docs/Proof%20Scripts/linearScripts) for the other version of scripts in KeY)
+of linear scripts](./linearScripts.md) for the other version of scripts in KeY)
 
 The three main building blocks of the scripting language are mutators, control-flow
 structures, and selectors for proof goals. We describe the general concepts in the
