@@ -478,10 +478,9 @@ Setting Up Own Projects {#app:configuringProjects}
 If not specified otherwise via a classpath directive, KeY includes
 a restricted set of signatures of classes and methods from the default
 standard library. The current set of classes can be found
-at <https://git.key-project.org/key-public/key/-/tree/stable/key/key.core/src/main/resources/de/uka/ilkd/key/java/JavaRedux>.
+at <https://github.com/KeYProject/key/tree/main/key.core/src/main/resources/de/uka/ilkd/key/java/JavaRedux>.
 
-For documentation on how to set up your own classpath, see
-<https://www.key-project.org/docs/Using%20KeY/Classpath/>.
+For documentation on how to set up your own classpath, see [Using the classpath directives in KeY](../Classpath.md).
 
 [^1]: Potential warnings can be safely ignored here.
 
