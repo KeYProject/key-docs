@@ -1,48 +1,179 @@
 # Changelog
 
-## Upcoming: 2.12.0 (2023-08-02)
+## [2.12.0](https://github.com/KeYProject/key/releases/tag/KeY-2.12.0) (2023-08-18)
 
-### Core
+### Breaking changes
+* [The minimum required JDK version is set to 11.](https://git.key-project.org/key/key/-/merge_requests/380)
+- This release contains breaking changes for the reloading of older proofs:
+    - Integers in specifications are now considered as unbounded (i.e. `\bigint`, math mode specifiers can be used to deviate from the default).
+    - The list of rule sets used by the One-Step-Simplifier has changed.
+    - JML assertions are handled as a standalone construct and not as a block contract anymore.
 
-* **BREAK:** Minimum required Java version is 11. (!380)
-* NEW: Floating point number support ([!403])
-* NEW: [Proof Slicing](user/ProofSlicing.md) system
-* NEW: [Proof Caching](user/ProofCaching.md) system
-* NEW: Java source validity is checked using javac ([!581])
-* IMP: Removal of the Eclipse Plugins. Eclipse support is now shipped in [keyclipse repository](https://git.key-project.org/key/keyclipse) (!390)
-* IMP: Removal of `System.out/err` in favor for logging with SLF4J (!240)
-* IMP: Translation of the last DL contracts to JML contracts. (!375)
-* IMP: jdiv and jmod support in SMT translation via definitions
-* IMP: support \old() in jml asserts ([!533])
-* FIX: Z3 counterexample generation works again ([!623])
-* FIX: Check for correct polarity when applying taclets ([!616])
-* Bring INVISMT to KeY; Refactors SolverTypes (!406)
-* Performance: Switching sequents (!482)
-* change SwitchToIf to create a if-else cascade (!444)
-* More proof script commands: hide and unhide. (!486)
-* Enables JavaDL data types in ghost and model fields (!469)
-* insert jml assume and assert statements in the right order (!476)
-* Performance: Autopilot ([!508])
-* Performance: Several memory leaks fixed ([!573])
+### Highlights
 
-### UI
-* More functionality in statistics dialog
-* Configurable look and feel ([!635])
-* Proof loading shows a progress bar ([!560])
+* [Support for floating points](https://git.key-project.org/key/key/-/merge_requests/403)
+* [Support for JML asserts/assumes as standalone construct (instead of transforming into blockcontracts)](https://git.key-project.org/key/key/-/merge_requests/494), [Support of \old() in JML asserts](https://git.key-project.org/key/key/-/merge_requests/533)
+* [Support for JML math mode specifiers (and changed default semantics to spec_bigint_math)](https://github.com/KeYProject/key/pull/3014)
+* [Proof Slicing](user/ProofSlicing.md) system ([#3026](https://github.com/KeYProject/key/pull/3026))
+* [Proof Caching](user/ProofCaching.md) system
+* [Run the Javac compiler when loading Java code](https://git.key-project.org/key/key/-/merge_requests/581)
+* Migration to GitHub
+    * [Files for Github Actions](https://git.key-project.org/key/key/-/merge_requests/634)
+    * [Add `merge_group` event to checks](https://github.com/KeYProject/key/pull/3060)
+    * Artiweb: [#3047](https://github.com/KeYProject/key/pull/3047), [#3097](https://github.com/KeYProject/key/pull/3097), [#3098](https://github.com/KeYProject/key/pull/3098), [#3101](https://github.com/KeYProject/key/pull/3101), [#3102](https://github.com/KeYProject/key/pull/3102), [#3103](https://github.com/KeYProject/key/pull/3103)
+    * [Upload HTML test report](https://github.com/KeYProject/key/pull/3010)
+    * [Dependabot](https://github.com/KeYProject/key/pull/3002)
 
-### Development
+### Features
 
-* New SMT solver configuration system ([!514], ...)
-* Code style fixes ([!618], [!619])
-* Preparations for Gradle 8 ([!620])
-* Checkstyle updated to latest version ([!631])
-* Apply Spotless to code base (automatic formatting) ([!584])
-* JUnit 5 ([!489])
-* Externalization of Interaction Logging ([!500])
-* Fix comment attachment in recoder (!399)
-* Restore RECODER-0.84 (!424)
-* Update dependencies (!467)
-* No dependencies as local jar files (!484)
+* [Enable JavaDL data types in ghost and model fields](https://git.key-project.org/key/key/-/merge_requests/469)
+* [Change SwitchToIf to create a if-else cascade](https://git.key-project.org/key/key/-/merge_requests/444)
+* [More proof script commands: hide and unhide](https://git.key-project.org/key/key/-/merge_requests/486)
+* [Logging via slf4j](https://git.key-project.org/key/key/-/merge_requests/240) 
+* [Suggested automation for seqPerm](https://git.key-project.org/key/key/-/merge_requests/531)
+* [More descriptive names for result variables](https://git.key-project.org/key/key/-/merge_requests/542) 
+* [Implement some features of the jml assert wishlist](https://git.key-project.org/key/key/-/merge_requests/532)
+* [ChoiceExpr: En-/Disabling taclets/goal templates using boolean expression](https://git.key-project.org/key/key/-/merge_requests/574) 
+* [New rules from the sorting case study](https://git.key-project.org/key/key/-/merge_requests/567)
+* [Overflow checking](https://github.com/KeYProject/key/pull/3027)
+* [Bring INVISMT to KeY; Refactors SolverTypes](https://git.key-project.org/key/key/-/merge_requests/406)
+* [Redux additions](https://git.key-project.org/key/key/-/merge_requests/588) 
+
+### UI/UX Improvements
+* [Selection history (back + forward button)](https://github.com/KeYProject/key/pull/3006)
+* [Generic undo button for user actions](https://github.com/KeYProject/key/pull/3009)
+* [Expand oss nodes](https://github.com/KeYProject/key/pull/3061)
+* [Allow user to select any installed LaF](https://github.com/KeYProject/key/pull/3038)
+* [Un-clutter the context menus in the proof tree view](https://git.key-project.org/key/key/-/merge_requests/611) 
+* [Close more dialogs on escape press](https://git.key-project.org/key/key/-/merge_requests/571) 
+* [Replay progress display](https://git.key-project.org/key/key/-/merge_requests/560) 
+* [Improved taclet error reporting](https://git.key-project.org/key/key/-/merge_requests/603) 
+* [Immediately resize proof tree font](https://git.key-project.org/key/key/-/merge_requests/624)
+* [Tooltip for the exloration status label](https://git.key-project.org/key/key/-/merge_requests/592)
+* [Update log button, use Desktop.open instead of edit, fix an exception and log format on windows](https://git.key-project.org/key/key/-/merge_requests/610)
+* [Report location on error in constant evaluation](https://github.com/KeYProject/key/pull/3025)
+* [Report better error for missing model method]( https://github.com/KeYProject/key/pull/3041)
+* [Proof tree view: Multiple small changes for readability](https://github.com/KeYProject/key/pull/3012)
+* [Disable exploration tree updates when disabled](https://git.key-project.org/key/key/-/merge_requests/569)
+* [Focus first cell in the taclet instantiation dialog on open](https://git.key-project.org/key/key/-/merge_requests/572)
+* [Clipboard: Replace nbsp from html document selection with normal spaces](https://git.key-project.org/key/key/-/merge_requests/480)
+* [Improve naming in recently used files dropdown](https://git.key-project.org/key/key/-/merge_requests/622)
+### 🛠 Maintenance/Internal Changes
+
+* Logging 
+    * [Logging cleanup](https://github.com/KeYProject/key/pull/3093)
+    * [Housekeeping: Logging](https://git.key-project.org/key/key/-/merge_requests/540)
+
+* Code formatting with spotless 
+    * [Check formatting  with Spotless](https://git.key-project.org/key/key/-/merge_requests/497)
+    * [Formatted rules](https://git.key-project.org/key/key/-/merge_requests/597)
+    * [Set an import order for Java code](https://github.com/KeYProject/key/pull/3094)
+    * [Apply Spotless to code base: Source code reformatting (no license headers)](https://git.key-project.org/key/key/-/merge_requests/584)
+    * [Spotless: Don't join manually split lines](https://git.key-project.org/key/key/-/merge_requests/586)
+
+* Code-Clean-Ups and Refactoring:
+    * [Replace the hardcoded SolverType classes by .props files](https://git.key-project.org/key/key/-/merge_requests/514)
+    * [Position information overhaul](https://github.com/KeYProject/key/pull/3049)
+    * [Remove ServiceLoaderUtil](https://git.key-project.org/key/key/-/merge_requests/470)
+    * [Remove last Eclipse files](https://git.key-project.org/key/key/-/merge_requests/471)
+    * [Code cleanup](https://github.com/KeYProject/key/pull/3064)
+    * [Miscellaneous cleanups (unused classes removed etc.)](https://github.com/KeYProject/key/pull/3044)
+    * [Removal of the Eclipse Plugins](https://git.key-project.org/key/key/-/merge_requests/390) 
+    * [Remove sonarqube from readme](https://github.com/KeYProject/key/pull/3077)
+    * [Cleanup: Remove extension of CreatingASTVisitor by MergeRuleUtils.CollectLocationVariablesVisitor](https://git.key-project.org/key/key/-/merge_requests/529) 
+    * [Some code cleanup](https://git.key-project.org/key/key/-/merge_requests/619) 
+    * [Refactor Java formatter used in the sequent view](https://github.com/KeYProject/key/pull/3034)
+    * [Overhaul of the Configuration](https://github.com/KeYProject/key/pull/3031)
+    * [Add possibility to check for unsupported properties keys to SettingsConverter and clean up the class](https://git.key-project.org/key/key/-/merge_requests/638) 
+    * [Removal of the Proof Collection Parser](https://github.com/KeYProject/key/pull/3030)
+
+* Dependencies
+    * [Recoder became part of this repo (Version 0.84 incl. KeY extensions)](https://git.key-project.org/key/key/-/merge_requests/424)
+    * [Update dependencies](https://git.key-project.org/key/key/-/merge_requests/467) 
+    * [No dependencies as local jar files](https://git.key-project.org/key/key/-/merge_requests/484)
+    * [JUnit 5](https://git.key-project.org/key/key/-/merge_requests/489) 
+    * [Update Checkstyle configuration to latest Checkstyle version](https://git.key-project.org/key/key/-/merge_requests/631) 
+    * [Externalization of Interaction Logging](https://git.key-project.org/key/key/-/merge_requests/500) 
+    * [Prepare build.gradle scripts for Gradle 8.0](https://git.key-project.org/key/key/-/merge_requests/620)
+
+* Performance
+    * [Performance when switching nodes](https://git.key-project.org/key/key/-/merge_requests/482)
+    * [Autopilot Performance: hasModality](https://git.key-project.org/key/key/-/merge_requests/508)
+    * [Performance: pause tree updates while executing "Set All Goals Below to XX"](https://git.key-project.org/key/key/-/merge_requests/528)
+    * [Avoid creating proof obligations in ProofManagementDialog](https://git.key-project.org/key/key/-/merge_requests/554)
+
+* Tests
+    * [JUnit XML files for optional-tests](https://github.com/KeYProject/key/pull/3096)
+    * [Add documentation for TestTacletEquality and update oracle](https://git.key-project.org/key/key/-/merge_requests/473)
+    * [Restore Information FlowTests](https://git.key-project.org/key/key/-/merge_requests/553) 
+    * [Split `testRunAllProofs` into two tasks](https://git.key-project.org/key/key/-/merge_requests/559)
+    * [Disable proof_references + symbolic_execution](https://git.key-project.org/key/key/-/merge_requests/589) 
+
+* Misc
+    * [Small tweaks to proof script engine](https://github.com/KeYProject/key/pull/3020)
+    * [Reducing the binary filesize by only including the necessary example files](https://git.key-project.org/key/key/-/merge_requests/626) 
+    * [Improve smt solver checking on windows](https://git.key-project.org/key/key/-/merge_requests/609)
+    * [Translating DL contracts to JML](https://git.key-project.org/key/key/-/merge_requests/375) 
+    * [Read `\profile` and `\settings` once](https://github.com/KeYProject/key/pull/3007)
+    * [Stop the message about java_profile.jfr](https://git.key-project.org/key/key/-/merge_requests/590)
+    * [Suppress logback message before configuration](https://git.key-project.org/key/key/-/merge_requests/591)
+    * [Support for jdiv and jmod in SMT translation via definitions](https://git.key-project.org/key/key/-/merge_requests/547)
+    * [Add gen folder to gitignore](https://git.key-project.org/key/key/-/merge_requests/598)
+    * [Add Task runWithProfiler to execute key.ui with the  Java Flight Recoder](https://git.key-project.org/key/key/-/merge_requests/504)
+    * [Load some (old) proofs with wrong/missing instantiations of \assumes in taclet app](https://git.key-project.org/key/key/-/merge_requests/516) 
+    * [Specialized version of RuleContext::getText in TextualJMLAssertStatement::getClauseText](https://git.key-project.org/key/key/-/merge_requests/479)
+    * [Multiplication for rule costs](https://git.key-project.org/key/key/-/merge_requests/541)
+
+### 🐛 Bug Fixes
+
+* [Bug fixes from the IdentityHashMap case study](https://git.key-project.org/key/key/-/merge_requests/499)
+* [Remove highlighting artifacts in SequentView with Unicode symbols enabled](https://git.key-project.org/key/key/-/merge_requests/595)
+* [Avoid tooltip NPE for incomplete proof nodes](https://github.com/KeYProject/key/pull/3037)
+* [Always load correct example on double click](https://git.key-project.org/key/key/-/merge_requests/632) 
+* [TokenMgrErr in issue dialogs](https://git.key-project.org/key/key/-/merge_requests/633)
+* [Fix exception when parsing unknown source name in BuildingException](https://git.key-project.org/key/key/-/merge_requests/570)
+* [Solve missing plugin in shadowJar by adding `mergeServiceFiles()`](https://git.key-project.org/key/key/-/merge_requests/545)
+* [Fix Z3 counterexample generation](https://git.key-project.org/key/key/-/merge_requests/623)
+* [Fix three memory leaks](https://git.key-project.org/key/key/-/merge_requests/573)
+* [Keep original PositionInfo in ForToWhileTransformation](https://git.key-project.org/key/key/-/merge_requests/628)
+* [Check for correct polarity when applying taclets](https://git.key-project.org/key/key/-/merge_requests/616)
+* [Add triggers to textual representations of taclets](https://git.key-project.org/key/key/-/merge_requests/600)
+* [Allow declaration of function symbols in custom key file and to use them in JML via \dl](https://git.key-project.org/key/key/-/merge_requests/602)
+* [Fix leftover files that are not formatted properly](https://git.key-project.org/key/key/-/merge_requests/604)
+* [Fix loop in strategy](https://git.key-project.org/key/key/-/merge_requests/129)
+* [Fix PosInProgram](https://git.key-project.org/key/key/-/merge_requests/621)
+* [Fix file filter for .proof.gz files](https://git.key-project.org/key/key/-/merge_requests/536)
+* [Fixed rule "wellFormedStoreObjectEQ"](https://git.key-project.org/key/key/-/merge_requests/526)
+* [Resolve "Taclet leaves a broken tree after failing to apply"](https://git.key-project.org/key/key/-/merge_requests/492)
+* [Fix potential stack overflow in ExplorationStepsList](https://git.key-project.org/key/key/-/merge_requests/510)
+* [Show message of the chained cause of the exception in IssueDialog](https://git.key-project.org/key/key/-/merge_requests/515)
+* [Ensure that the condition of a JML assert statement is always a formula](https://git.key-project.org/key/key/-/merge_requests/530)
+* [Fix widening casts and boxing of extension primitive types like bigint](https://git.key-project.org/key/key/-/merge_requests/583)
+* [Fix construction of Javac issue dialog](https://github.com/KeYProject/key/pull/3008)
+* [Fix handling of multiline log messages]( https://github.com/KeYProject/key/pull/3033)
+* [Fix javacc deprecation warning]( https://github.com/KeYProject/key/pull/3016)
+* [Fix ProofTreeView NPE](https://github.com/KeYProject/key/pull/3070)
+* [Fix program element printing in proof saver](https://github.com/KeYProject/key/pull/3073)
+* [Fix some positions being offset](https://github.com/KeYProject/key/pull/3084)
+* [Fix type of `Long.MIN_VALUE` and `Long.MAX_VALUE`](https://github.com/KeYProject/key/pull/3100)
+* [Activate Z3 if no other SMT solver is configured](https://github.com/KeYProject/key/pull/3048)
+* [Register modifier when parsing JML spec](https://github.com/KeYProject/key/pull/3040)
+* [Fix set statements (allow expressions on lhs, e.g. for array and field access)](https://git.key-project.org/key/key/-/merge_requests/566)
+* [Fix IllegalArgumentException being thrown from IssueDialog](https://git.key-project.org/key/key/-/merge_requests/485)
+* [Insert JML assume and assert statements in the right order](https://git.key-project.org/key/key/-/merge_requests/476) 
+* [Make AbbrevMap::getTerm fulfill its contract and prevent a NPE](https://git.key-project.org/key/key/-/merge_requests/481)
+* [A collection for some (straight forward) of the SonarQube reliability bugs](https://git.key-project.org/key/key/-/merge_requests/618)
+* [Remove space from taclet proof save file name](https://git.key-project.org/key/key/-/merge_requests/568)
+* [Resolve "Parsing exception: undeclared variable in an assignable declaration"](https://git.key-project.org/key/key/-/merge_requests/506) 
+* [Fix for heap/permissions/threads example](https://git.key-project.org/key/key/-/merge_requests/527) 
+* [Repairing JML interpretation of equality on floats and doubles.](https://git.key-project.org/key/key/-/merge_requests/524) 
+
+* Further bug fixes: [#1664](https://git.key-project.org/key/key/-/merge_requests/474), [#1658](https://git.key-project.org/key/key/-/merge_requests/491), [#1652](https://git.key-project.org/key/key/-/merge_requests/495), [#1679](https://git.key-project.org/key/key/-/merge_requests/503), [#1681, #1682](https://git.key-project.org/key/key/-/merge_requests/507), [#1678](https://git.key-project.org/key/key/-/merge_requests/521), [#1685](https://git.key-project.org/key/key/-/merge_requests/512), [#1690](https://git.key-project.org/key/key/-/merge_requests/517), [#1706](https://git.key-project.org/key/key/-/merge_requests/538), [#1709](https://git.key-project.org/key/key/-/merge_requests/539), [#1684](https://git.key-project.org/key/key/-/merge_requests/511), [#1711](https://git.key-project.org/key/key/-/merge_requests/549), [#1707](https://git.key-project.org/key/key/-/merge_requests/601), [#1723](https://git.key-project.org/key/key/-/merge_requests/587), [#1598](https://git.key-project.org/key/key/-/merge_requests/513), [#3035](https://github.com/KeYProject/key/pull/3045) 
+
+--- 
+We like to thank our contributors for this release, namely: 
+
+Alicia Appelhagen, Richard Bubel, Lukas Grätz, Christian Hein, Arne Keller, Michael Kirsten, Florian Lanzinger, Wolfram Pfeifer, Mike Schwörer, Benjamin Takacs, Samuel Teuber, Mattias Ulbrich, Alexander Weigl, Julian Wiesler
 
 ## 2.10.0 (2021-12-23)
 
