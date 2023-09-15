@@ -1,5 +1,7 @@
 # key-docs
 
+Documentation to the [KeY Theorem Prover](https://github.com/keyproject/key).
+
 *Author: Alexander Weigl <weigl@kit.edu>*
 
 ## Getting Started to Write
