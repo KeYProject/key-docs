@@ -46,8 +46,8 @@ markdown_extensions:
       permalink: true
   - markdown_aafigure:
       format: svg
-  - markdown_blockdiag:
-      format: svg
+#  - markdown_blockdiag:
+#      format: svg
 
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
@@ -88,6 +88,12 @@ theme:
 
 nav:
   - Home: index.md
+  - Quicktour:
+      - quicktour/index.md
+      - quicktour/install.md
+      - quicktour/loading.md
+      - quicktour/proving.md
+      - quicktour/appendix.md
   - User Guide:
       - user/index.md
       - changelog.md
@@ -99,17 +105,11 @@ nav:
       - user/RemoveGenerics.md
       - user/Polarity.md
       - user/JavaGrammar.md
-      - Quicktour:
-          - user/quicktour/index.md
-          - user/quicktour/install.md
-          - user/quicktour/loading.md
-          - user/quicktour/proving.md
-          - user/quicktour/appendix.md
       - UI Features:
           - user/Exploration.md
           - user/NodeDiff.md
-          - user/ProofSlicing.md
-          - user/ProofCaching.md
+          - user/ProofSlicing/index.md
+          - user/ProofCaching/index.md
       - Languages:
           - user/HowToTaclet.md
           - user/JMLGrammar.md
