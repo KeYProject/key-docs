@@ -95,7 +95,6 @@ nav:
       - quicktour/proving.md
       - quicktour/appendix.md
   - User Guide:
-      - user/index.md
       - changelog.md
       - user/FAQ.md
       - user/ADTs.md
@@ -106,6 +105,7 @@ nav:
       - user/Polarity.md
       - user/JavaGrammar.md
       - UI Features:
+          - user/UiFeatures/index.md
           - user/Exploration.md
           - user/NodeDiff.md
           - user/ProofSlicing/index.md

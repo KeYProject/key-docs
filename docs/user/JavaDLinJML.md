@@ -1,7 +1,11 @@
 # Embedding JavaDL expressions and functions into JML expressions
 
 *Mattias Ulbrich, 2011-08-31*
-                  
+
+:   !!! danger
+
+        This page is only accurate for KeY 1.x.
+
               
 Currently, JML is the standard specification for KeY (JML&starf; more
 precisely). Though it is still possible to specify JavaDL-contracts in `.key`

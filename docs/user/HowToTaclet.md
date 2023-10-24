@@ -39,6 +39,10 @@ heuristics. Default rule sets are defined in the file
 
 ## How to extend the taclet language
 
+!!! danger
+
+    This section does not reflect recent KeY developments.
+
 Sometimes, especially when one wants to introduce new symbolic execution
 concepts, the existing taclet language is not expressive enough and has to be
 extended. There are four things one might have to extend to support new taclet

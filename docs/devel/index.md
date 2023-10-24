@@ -7,6 +7,7 @@
 - [Formatting Conventions](SpotlessAutomaticFormatting/)
 - [Gradle](Gradle/)
 - [Logging](Logging/)
+- [Documentation](howtodoc/)
 
 ### Dependencies
 
