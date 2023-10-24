@@ -41,7 +41,7 @@ heuristics. Default rule sets are defined in the file
 
 !!! danger
 
-    This section does not reflect recent KeY developments.
+    This section does not reflect recent KeY developments. [The parser was recently rewritten](../../devel/NewKeyParser/).
 
 Sometimes, especially when one wants to introduce new symbolic execution
 concepts, the existing taclet language is not expressive enough and has to be

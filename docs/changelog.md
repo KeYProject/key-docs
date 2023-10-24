@@ -32,8 +32,8 @@
 * [Support for floating points](https://git.key-project.org/key/key/-/merge_requests/403)
 * [Support for JML asserts/assumes as standalone construct (instead of transforming into blockcontracts)](https://git.key-project.org/key/key/-/merge_requests/494), [Support of \old() in JML asserts](https://git.key-project.org/key/key/-/merge_requests/533)
 * [Support for JML math mode specifiers (and changed default semantics to spec_bigint_math)](https://github.com/KeYProject/key/pull/3014)
-* [Proof Slicing](../user/ProofSlicing.md) system ([#3026](https://github.com/KeYProject/key/pull/3026))
-* [Proof Caching](user/ProofCaching.md) system
+* [Proof Slicing](../user/ProofSlicing/) system ([#3026](https://github.com/KeYProject/key/pull/3026))
+* [Proof Caching](../user/ProofCaching/) system
 * [Run the Javac compiler when loading Java code](https://git.key-project.org/key/key/-/merge_requests/581)
 * Migration to GitHub
     * [Files for Github Actions](https://git.key-project.org/key/key/-/merge_requests/634)

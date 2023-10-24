@@ -146,6 +146,7 @@ nav:
         - devel/GUIExtensions.md
         - devel/Listeners.md
         - devel/ProofLoadSave.md
+        - devel/NewKeyParser.md
       - SMT:
           - devel/AddingSMTSolvers.md
           - devel/SMTTranslation.md

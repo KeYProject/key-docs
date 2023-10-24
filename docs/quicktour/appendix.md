@@ -480,7 +480,7 @@ a restricted set of signatures of classes and methods from the default
 standard library. The current set of classes can be found
 at <https://github.com/KeYProject/key/tree/main/key.core/src/main/resources/de/uka/ilkd/key/java/JavaRedux>.
 
-For documentation on how to set up your own classpath, see [Using the classpath directives in KeY](../Classpath.md).
+For documentation on how to set up your own classpath, see [Using the classpath directives in KeY](../../user/Classpath/).
 
 [^1]: Potential warnings can be safely ignored here.
 
