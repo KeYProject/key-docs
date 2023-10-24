@@ -145,7 +145,6 @@ nav:
       - Important topics:
         - devel/GUIExtensions.md
         - devel/Listeners.md
-        - devel/HowtoTaclet.md
         - devel/ProofLoadSave.md
       - SMT:
           - devel/AddingSMTSolvers.md

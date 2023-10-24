@@ -16,7 +16,6 @@ If you wish to inspect the source code of DF classes in your IDE, you need to do
 ### Important topics
 - [GUI extensions](GUIExtensions/)
 - [Event listeners](Listeners/)
-- [Writing Taclets](HowtoTaclet/)
 - [Proof loading / saving](ProofLoadSave/)
 
 ### SMT solver integration
