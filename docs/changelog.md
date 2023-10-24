@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.12.1](https://github.com/KeYProject/key/releases/tag/KEY-2.12.1) (2023-10-13)
+
+### Bug fixes
+
+- SMT solvers are properly terminated on timeout
+- Proof Macro statistics are kept visible and only count the newly applied rules
+- Stop button is disabled after use, re-enabled after stop completes (this is to avoid double activation)
+- Fully disable origin tracking if it is disabled
+- Proof slicing works even if a cut introduced no new formulas in any branch
+- When marking goal(s) as interactive/automatic, proof tree no longer loses expansion state
+- Fix proof tree behaviour when toggling goals
+- Fix branch selection in caching
+- Fix gradle detection of git branch
+- Fix unit test
+- Fix environments not disposed in tests, keep strategy info visible after applying
+- Proof macro: record statistics correctly
+- Fix: KeY files with errors cannot be edited
+
 ## [2.12.0](https://github.com/KeYProject/key/releases/tag/KeY-2.12.0) (2023-08-18)
 
 ### Breaking changes
