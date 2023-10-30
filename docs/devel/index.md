@@ -12,7 +12,6 @@
 ### Dependencies
 
 KeY uses the [Docking Frames](https://docking-frames.org/download.html) library to organize its UI.
-If you wish to inspect the source code of DF classes in your IDE, you need to download and add the source code manually.
 
 ### Important topics
 - [GUI extensions](GUIExtensions/)
