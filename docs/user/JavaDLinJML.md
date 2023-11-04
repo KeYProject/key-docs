@@ -1,11 +1,6 @@
 # Embedding JavaDL expressions and functions into JML expressions
 
 *Mattias Ulbrich, 2011-08-31*
-
-:   !!! danger
-
-        This page is only accurate for KeY 1.x.
-
               
 Currently, JML is the standard specification for KeY (JML&starf; more
 precisely). Though it is still possible to specify JavaDL-contracts in `.key`
@@ -17,30 +12,6 @@ However, often we want to quickly assess a new axiomatisation and want to use it
 in the code directly.
 
 An extension of the parser provides us with this possibility now.
-
-## DL expressions in JML
-
-In JML declarative specifications (i.e., anywhere but in set statements), we can
-write JavaDL expressions if they are embedded into `"(* *)"`. This notation is
-JML-speak for a natural-language-constraint. We use it for JavaDL expressions.
-
-This is helpful if syntactical concepts like binding function symbols,
-new sorts, ... need to be mentioned in specifications.
-
-Example:
-```
-
-class A {
-  int a;
-  int b;
-  /*@ invariant (* a = javaAddInt(b, 1) *); */
-  /*@ invariant a == (* javaAddInt(b, 1) *); */
-  /*@ invariant a == b + 1; */
-}
-```
-
-All three invariants have identical meaning.
-
 
 ## Escaping JavaDL function symbol names
 
