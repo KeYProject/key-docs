@@ -1,6 +1,6 @@
 # Proof Slicing
 
--- *Author: Arne Keller*, December 2022 valid for KeY-2.12.0
+-- *Author: Arne Keller*, December 2022 valid for KeY-2.12.0 (last updated: November 2023)
 
 !!! abstract
 
@@ -46,6 +46,18 @@ You may also export the dependency graph in DOT format ("Export as DOT" button) 
 
     It is not advisable to render the dependency graph of large proofs: the render process may consume excessive amounts of memory and/or CPU time.
 
+### Chain Shortening
+
+When inspecting the dependency graph, you might want to see only the "big picture" of the proof.
+If you don't care about the hundreds of intermediate steps it takes to normalize a polynomial (for example),
+you may enable the "Shorten long chains" option before rendering the graph.
+When enabled, all nodes with input and output degree equal to one are collapsed into the output edge.
+
+<figure markdown>
+  ![Side-by-side comparison of chain shortening](./ProofSlicingShortenedChains.png)
+  <figcaption>Left graph: default settings. Right graph: chain shortening enabled.</figcaption>
+</figure>
+
 ## Proof Analysis
 
 The extension offers two analysis algorithms.
@@ -78,7 +90,7 @@ The "Slice proof to fixed point" button repeatedly executes the analysis and sli
   <figcaption>Running the proof slicer creates a new proof</figcaption>
 </figure>
 
-## Dependency graph node types
+## Dependency Graph node types
 
 All nodes store the branch location of the proof step that created them.
 In case of splitting proof steps, the branch of the new node is stored.
@@ -99,6 +111,7 @@ Used if a proof step has no inputs / outputs to ensure that the outputs / inputs
 
 Specified as an output if the proof step creates a new skolem constant.
 Specified as an input if the proof steps uses the variable to instantiate a schema variable.
+(Not implemented yet.)
 
 ### Taclet
 
