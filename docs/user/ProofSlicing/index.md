@@ -48,15 +48,19 @@ You may also export the dependency graph in DOT format ("Export as DOT" button) 
 
 ### Chain Shortening
 
-When inspecting the dependency graph, you might want to see only the "big picture" of the proof.
-If you don't care about the hundreds of intermediate steps it takes to normalize a polynomial (for example),
-you may enable the "Shorten long chains" option before rendering the graph.
-When enabled, all nodes with input and output degree equal to one are collapsed into the output edge.
+=== "Description"
 
-<figure markdown>
-  ![Side-by-side comparison of chain shortening](./ProofSlicingShortenedChains.png)
-  <figcaption>Left graph: default settings. Right graph: chain shortening enabled.</figcaption>
-</figure>
+    When inspecting the dependency graph, you might want to see only the "big picture" of the proof.
+    If you don't care about the hundreds of intermediate steps it takes to normalize a polynomial (for example),
+    you may enable the "Shorten long chains" option before rendering the graph.
+    When enabled, all nodes with input and output degree equal to one are collapsed into the output edge.
+
+=== "Example"
+
+    <figure markdown>
+      ![Side-by-side comparison of chain shortening](./ProofSlicingShortenedChains.png){ loading=lazy }
+      <figcaption>Left graph: default settings. Right graph: chain shortening enabled.</figcaption>
+    </figure>
 
 ## Proof Analysis
 

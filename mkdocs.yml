@@ -82,6 +82,7 @@ theme:
     - navigation.indexes
     - navigation.top
     - content.code.annotate
+    - content.tabs.link
 
   icon:
     repo: fontawesome/brands/github
