@@ -47,7 +47,7 @@ When in "auto mode", the KeY interface (except for the stop button) will not res
 
 ### InteractionListener
 
-Listener for interactions done by the user: settings changed, macro started, rule applied, ...
+Listener for interactions done by the user: settings changed, macro started, rule applied, proof pruned, ...
 
 ## Proof
 
