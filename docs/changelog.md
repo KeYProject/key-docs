@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.12.2](https://github.com/KeYProject/key/releases/tag/KeY-2.12.2) (2023-11-10)
+This release contains bug fixes and performance enhancements.
+
+### Performance: 
+  - Z3 is now configurable to use the QF (quantifier-free) theory for problems without quantifiers.
+
+### Bug Fixes:
+  - The pretty printer no longer throws a ClassCastException when printing taclets using schema variables of an array type.
+  - Nullable and non-null modifiers attached to model methods are no longer lost.
+  - Term rule indices are now always up-to-date, preventing potential prover crashes.
+  - The counter-example dialog no longer freezes the GUI, if the example generation fails.
+  - The actual proof status and proof status icon in the task overview are now  consistent after pruning without requiring a manual refresh.
+
 ## [2.12.1](https://github.com/KeYProject/key/releases/tag/KEY-2.12.1) (2023-10-13)
 
 ### Bug fixes
