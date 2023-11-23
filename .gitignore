@@ -1,4 +1,5 @@
 site/
+/public
 
 .DS_Store
 *.out

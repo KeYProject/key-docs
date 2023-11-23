@@ -1,5 +1,36 @@
 # Changelog
 
+## [2.12.2](https://github.com/KeYProject/key/releases/tag/KeY-2.12.2) (2023-11-10)
+This release contains bug fixes and performance enhancements.
+
+### Performance: 
+  - Z3 is now configurable to use the QF (quantifier-free) theory for problems without quantifiers.
+
+### Bug Fixes:
+  - The pretty printer no longer throws a ClassCastException when printing taclets using schema variables of an array type.
+  - Nullable and non-null modifiers attached to model methods are no longer lost.
+  - Term rule indices are now always up-to-date, preventing potential prover crashes.
+  - The counter-example dialog no longer freezes the GUI, if the example generation fails.
+  - The actual proof status and proof status icon in the task overview are now  consistent after pruning without requiring a manual refresh.
+
+## [2.12.1](https://github.com/KeYProject/key/releases/tag/KEY-2.12.1) (2023-10-13)
+
+### Bug fixes
+
+- SMT solvers are properly terminated on timeout
+- Proof Macro statistics are kept visible and only count the newly applied rules
+- Stop button is disabled after use, re-enabled after stop completes (this is to avoid double activation)
+- Fully disable origin tracking if it is disabled
+- Proof slicing works even if a cut introduced no new formulas in any branch
+- When marking goal(s) as interactive/automatic, proof tree no longer loses expansion state
+- Fix proof tree behaviour when toggling goals
+- Fix branch selection in caching
+- Fix gradle detection of git branch
+- Fix unit test
+- Fix environments not disposed in tests, keep strategy info visible after applying
+- Proof macro: record statistics correctly
+- Fix: KeY files with errors cannot be edited
+
 ## [2.12.0](https://github.com/KeYProject/key/releases/tag/KeY-2.12.0) (2023-08-18)
 
 ### Breaking changes
@@ -14,8 +45,8 @@
 * [Support for floating points](https://git.key-project.org/key/key/-/merge_requests/403)
 * [Support for JML asserts/assumes as standalone construct (instead of transforming into blockcontracts)](https://git.key-project.org/key/key/-/merge_requests/494), [Support of \old() in JML asserts](https://git.key-project.org/key/key/-/merge_requests/533)
 * [Support for JML math mode specifiers (and changed default semantics to spec_bigint_math)](https://github.com/KeYProject/key/pull/3014)
-* [Proof Slicing](user/ProofSlicing.md) system ([#3026](https://github.com/KeYProject/key/pull/3026))
-* [Proof Caching](user/ProofCaching.md) system
+* [Proof Slicing](../user/ProofSlicing/) system ([#3026](https://github.com/KeYProject/key/pull/3026))
+* [Proof Caching](../user/ProofCaching/) system
 * [Run the Javac compiler when loading Java code](https://git.key-project.org/key/key/-/merge_requests/581)
 * Migration to GitHub
     * [Files for Github Actions](https://git.key-project.org/key/key/-/merge_requests/634)

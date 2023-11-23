@@ -21,8 +21,8 @@ use either `make prepare` or execute the following line:
 
 ``` {.sh linenums="1"}
 $ pip install --user mkdocs mkdocs-material pymdown-extensions pygments \
-                     markdown-blockdiag mkdocs-bibtex markdown-aafigure==v201904.0004 \
-                     mkdocs-build-plantuml-plugin 'Pillow<10' 'Markdown<3.4'
+                     markdown-blockdiag mkdocs-bibtex markdown-aafigure==v202104.1011 \
+                     mkdocs-build-plantuml-plugin Pillow Markdown
 ```
 
 This install all needed packages for this webpage inside

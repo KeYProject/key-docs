@@ -7,17 +7,17 @@
 - [Formatting Conventions](SpotlessAutomaticFormatting/)
 - [Gradle](Gradle/)
 - [Logging](Logging/)
+- [Documentation](howtodoc/)
 
 ### Dependencies
 
 KeY uses the [Docking Frames](https://docking-frames.org/download.html) library to organize its UI.
-If you wish to inspect the source code of DF classes in your IDE, you need to download and add the source code manually.
 
 ### Important topics
 - [GUI extensions](GUIExtensions/)
 - [Event listeners](Listeners/)
-- [Writing Taclets](HowtoTaclet/)
 - [Proof loading / saving](ProofLoadSave/)
+- [How to write new taclets](HowToTaclet/)
 
 ### SMT solver integration
 - [Adding an SMT solver](AddingSMTSolvers/)

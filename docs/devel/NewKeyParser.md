@@ -10,7 +10,7 @@
 
 ## Background
 
-With the MR !278, a new lexer and parser for the KeY language is introduced. The KeY language is used to parse the `*.key` and `*.proof`, and is also used as the input language for entering terms in the user interface. 
+With the MR [!278](https://git.key-project.org/key/key/-/merge_requests/278), a new lexer and parser for the KeY language is introduced. The KeY language is used to parse the `*.key` and `*.proof`, and is also used as the input language for entering terms in the user interface. 
 
 In general, this parser was hard to maintain and extend over the years.
 The old parser was a traditional ANTLR3 parser, where the grammar and the source code are mixed up. It also some lookahead were required.  KeY files are interpreted on different levels: The first level are the basic notions (e.g. sorts and choice options), second level are the functions, predicates and transformers, and the third level are the axioms, contracts and rules. These parsing level are required due to the dependencies between these logical entities, e.g. a rule requires certain functions and sorts during its interpretation. In the old KeY-Parser, each file is parsed (and read) on a specific level. Hence, to interpret a KeY file, multiple parse passes are required. 
