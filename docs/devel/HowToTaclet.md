@@ -1,4 +1,4 @@
-# How to write a Taclet
+# How to write new taclets
 
 New prover rules in KeY can be added in form of built-in rules[^1] written in plain
 Java code and as so-called "taclets" ("schematic theory-specific rules").
@@ -8,15 +8,14 @@ schematic parts are displayed to the user, making the rule application more
 transparent. Almost all rules implemented for KeY are defined as taclets (with
 the exception of special rules like method contract application, loop invariant
 application (so far) and one-step-simplification). For information about
-taclets, please consult the [book chapter "Proof Search with
-Taclets"](https://link.springer.com/chapter/10.1007/978-3-319-49812-6_4) of the
+taclets, please consult the [book chapter "Proof Search with Taclets"](https://link.springer.com/chapter/10.1007/978-3-319-49812-6_4) of the
 2nd KeY book.
 
 This article covers the necessary basics for adding new taclets to the KeY
 system. In particular, the following topics are discussed:
 
 
-##  How to add new taclets
+##  How to add a taclet
 
 The standard location for `.key` files containing taclets is in the `key.core`
 project, location `resources/de/uka/ilkd/key/proof/rules` (*note*: unless stated
