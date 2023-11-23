@@ -112,7 +112,6 @@ nav:
           - user/ProofSlicing/index.md
           - user/ProofCaching/index.md
       - Languages:
-          - user/HowToTaclet.md
           - user/JMLGrammar.md
           - user/KeyGrammar.md
       - Proof Scripts:
@@ -148,6 +147,7 @@ nav:
         - devel/Listeners.md
         - devel/ProofLoadSave.md
         - devel/NewKeyParser.md
+        - devel/HowToTaclet.md
       - SMT:
           - devel/AddingSMTSolvers.md
           - devel/SMTTranslation.md

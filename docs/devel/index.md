@@ -17,6 +17,7 @@ KeY uses the [Docking Frames](https://docking-frames.org/download.html) library 
 - [GUI extensions](GUIExtensions/)
 - [Event listeners](Listeners/)
 - [Proof loading / saving](ProofLoadSave/)
+- [How to write new taclets](HowToTaclet/)
 
 ### SMT solver integration
 - [Adding an SMT solver](AddingSMTSolvers/)
