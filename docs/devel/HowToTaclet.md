@@ -19,8 +19,8 @@ system. In particular, the following topics are discussed:
 
 The standard location for `.key` files containing taclets is in the `key.core`
 project, location `resources/de/uka/ilkd/key/proof/rules` (*note*: unless stated
-otherwise, all locations in this article are relative to `key.core`). The file
-`standardRules.key` lists all the taclet files that are are loaded as defaults
+otherwise, all locations in this article are relative to the main source root of `key.core`).
+The file `standardRules.key` lists all the taclet files that are are loaded as defaults
 when starting KeY with the Java profile. New taclets can be added to either of
 the existing files listed there (if they fit into the scope), or can be added to
 a new file which is then referred to in `standardRules.key`.
@@ -35,6 +35,54 @@ rules collection of an appropriate profile.
 Taclets can be added to "rule sets" which are used, e.g., by strategy
 heuristics. Default rule sets are defined in the file
 `resources/de/uka/ilkd/key/proof/rules/ruleSetDeclarations.key`.
+
+### Quick example
+
+Consider the definition of `cut_direct` below (part of `propRule.key`).
+
+```
+\schemaVariables {
+  \formula cutFormula;
+}
+
+\rules {
+  cut_direct {
+    \find(cutFormula)
+    \sameUpdateLevel
+    "CUT: #cutFormula TRUE" [main]:
+        \replacewith(true) \add(cutFormula ==>);
+    "CUT: #cutFormula FALSE":
+        \replacewith(false) \add( ==> cutFormula)
+    \heuristics(cut_direct)
+  };
+}
+```
+
+First, we need to define the variables we want to use in the taclet.
+This is the `\schemaVariables` block at the start of the `.key` file.
+We only require a single `\formula` type schema variable called `cutFormula`.
+
+Then, we define the actual taclets in this file by creating a `\rules` block.
+For the purposes of this example, we limit ourselves to the cut_direct taclet.
+`propRule.key` contains many more taclets.
+The `\rules` block contains the taclet definitions, each of which begins with the name of the taclet
+("cut_direct"), creating a new block defined by curly brackets and a semicolon at the end.
+
+Since the `\find(...)` part of the taclet definition does not contain a `==>`, the `cut_direct` taclet finds (matches) a sub-term anywhere in a sequent formula.
+The `\sameUpdateLevel` essentially ensures it doesn't match under an update application.
+
+The taclet creates two new branches, which are defined directly afterwards.
+The first branch is labeled "CUT: #cutFormula TRUE".
+In this branch, the found sub-term is replaced with true (`\replacewith(true)`), and the found sub-term is added as a new sequent formula to the antecedent: `\add(cutFormula ==>)`.
+
+A particular branch of the taclet can be tagged by enclosing the tag in brackets.
+The first branch in this example is tagged with "main".
+This tag must be written after the label.
+
+The second branch of the taclet is labeled "CUT: #cutFormula FALSE".
+In this branch, the found sub-term is replaced with false (`\replacewith(false)`), and the found sub-term is added as a new sequent formula to the succedent: `\add( ==> cutFormula)`.
+
+Finally, the taclet is added to the `cut_direct` heuristics group.
 
 ## How to extend the taclet language
 
