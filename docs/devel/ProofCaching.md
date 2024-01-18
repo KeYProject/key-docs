@@ -56,7 +56,15 @@ Schema: ([schema playground](https://dashjoin.github.io/#/schema))
           "cachedSequents": {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "stepIndex": {
+                  "type": "number"
+                },
+                "sequent": {
+                  "type": "string"
+                }
+              }
             }
           },
           "cachedGraph": {
@@ -136,7 +144,10 @@ Example:
         "java123456.java"
       ],
       "cachedSequents": [
-        "a==>b"
+        {
+          "stepIndex": 15,
+          "sequent": "a==>b"
+        }
       ],
       "cachedGraph": {
         "nodes": [
