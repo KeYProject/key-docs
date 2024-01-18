@@ -164,6 +164,7 @@ nav:
           - devel/Testing/deterministicTestOrder.md
           - devel/Testing/parserMessageTest.md
       - Write Documentation: "devel/howtodoc/index.md"
+      - devel/ProofCaching.md
 
 
   
