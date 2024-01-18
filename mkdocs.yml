@@ -160,6 +160,7 @@ nav:
           - devel/Testing/deterministicTestOrder.md
           - devel/Testing/parserMessageTest.md
       - Write Documentation: "devel/howtodoc/index.md"
+      - devel/ProofCaching.md
 
 repo_name: key-docs
 repo_url: https://github.com/KeYProject/key-docs/
