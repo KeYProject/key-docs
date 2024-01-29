@@ -76,8 +76,9 @@ The first branch is labeled "CUT: #cutFormula TRUE".
 In this branch, the found sub-term is replaced with true (`\replacewith(true)`), and the found sub-term is added as a new sequent formula to the antecedent: `\add(cutFormula ==>)`.
 
 A particular branch of the taclet can be tagged by enclosing the tag in brackets.
+This tag must be written after the branch label.
 The first branch in this example is tagged with "main".
-This tag must be written after the label.
+This particular value causes the branch to be visually continued on the parent branch if [the linearized Proof Tree mode](../../user/ProofTreeLinearMode/) is active.
 
 The second branch of the taclet is labeled "CUT: #cutFormula FALSE".
 In this branch, the found sub-term is replaced with false (`\replacewith(false)`), and the found sub-term is added as a new sequent formula to the succedent: `\add( ==> cutFormula)`.

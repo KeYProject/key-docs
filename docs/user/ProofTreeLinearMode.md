@@ -1,4 +1,4 @@
-# Proof Tree: linearized symbolic execution
+# Proof Tree: linearized mode
 
 In the proof tree settings, you can enable the "Linearize Proof Tree" option.
 

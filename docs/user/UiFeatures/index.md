@@ -2,4 +2,4 @@
 - [Node Differences](../NodeDiff)
 - [Proof Slicing](../ProofSlicing)
 - [Proof Caching](../ProofCaching)
-- [Proof Tree: linearized symbolic execution](../ProofTreeLinearMode)
+- [Proof Tree: linearized mode](../ProofTreeLinearMode)
