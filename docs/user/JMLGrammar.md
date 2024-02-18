@@ -54,6 +54,42 @@ you should keep strict policy:
 
 In the following, we go through each JML detail.
 
+## Entity names
+
+In a recent update of the JMLref, JML entities can carry a name. KeY
+currently supports names upon following entities:
+
+* class invariants, axioms, intitially
+* loop invariants, decreasing
+* clauses: ensures, requires, maesured_by, captures, diverges, duration, when, signals, breaks, continues, returns, signals\_only, readable\_if, writeable\_if, monitors\_for, history\_contraint, 
+* statement: set, assume and assert
+* contracts 
+* On JML terms via `\lbl(*name*, term)` function
+
+These labels do not carry semantics. These are just names which can be
+exploited.
+
+!!! note 
+    
+	You can use the feature flag `JML_ENTITY_NAMES_AS_TERMLABEL` to activate the transfer of the JML entity names into KeY's term label (label `named(X)` for entity name "X"). This can be used for further analysis.
+
+For example: 
+
+```java
+class Test {
+    //@ public invariant MY_SUPER_INVARIANT: CONST == 42;
+    public final int CONST = 42;
+	
+    /*@ requires Z: this != null;
+      @ ensures A: \result == 42;
+      @ ensures B: \result >= 0;
+      @ ensures C: \result != 0; */
+    public int foo() {return CONST;}
+}
+```
+
+
+
 ## JML Method Contracts
 
 ```
@@ -64,6 +100,7 @@ jmlContract     : [JML_START](#JML_START)
 methodContracts : ALSO? methodContract ( ALSO methodContract )*
 ;
 ```
+
 
 
 ```

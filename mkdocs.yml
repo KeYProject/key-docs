@@ -5,6 +5,7 @@ plugins:
   - search
   - bibtex:
       bib_file: "refs.bib"
+#      cite_style: "pandoc"
 #      csl_file: "springer-basic-author-date.csl"
   
 markdown_extensions:
@@ -21,8 +22,8 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.magiclink
@@ -46,8 +47,8 @@ markdown_extensions:
       permalink: true
   - markdown_aafigure:
       format: svg
-#  - markdown_blockdiag:
-#      format: svg
+  # - markdown_blockdiag:
+  #     format: svg
 
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
@@ -56,7 +57,7 @@ extra_javascript:
 
 #copyright: Copyright &copy; 2016 - 2020 Martin Donath
 
-theme:
+theme: # material theme
   name: material
   logo: key.png
   favicon: key.png
@@ -70,7 +71,7 @@ theme:
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)" 
       scheme: slate
-      primary: 'teal'
+      primary: 'dark'
       accent: 'orange'
       toggle:
         icon: material/toggle-switch
@@ -89,12 +90,12 @@ theme:
 
 nav:
   - Home: index.md
-  - Quicktour:
-      - quicktour/index.md
-      - quicktour/install.md
-      - quicktour/loading.md
-      - quicktour/proving.md
-      - quicktour/appendix.md
+#  - Quicktour:
+#      - quicktour/index.md
+#      - quicktour/install.md
+#      - quicktour/loading.md
+#      - quicktour/proving.md
+#      - quicktour/appendix.md
   - User Guide:
       - changelog.md
       - user/FAQ.md
@@ -112,6 +113,7 @@ nav:
           - user/ProofSlicing/index.md
           - user/ProofCaching/index.md
       - Languages:
+          - user/HowToTaclet.md
           - user/JMLGrammar.md
           - user/KeyGrammar.md
       - Proof Scripts:
@@ -137,11 +139,11 @@ nav:
   - Development:
       - "Start": devel/index.md
       - Basics:
-          - devel/CodingConventions.md
-          - devel/SpotlessAutomaticFormatting.md
-          - devel/ExternalProject.md
-          - devel/Gradle.md
-          - devel/Logging.md
+        - devel/CodingConventions.md
+        - devel/SpotlessAutomaticFormatting.md
+        - devel/ExternalProject.md
+        - devel/Gradle.md
+        - devel/Logging.md
       - Important topics:
         - devel/GUIExtensions.md
         - devel/Listeners.md
@@ -149,18 +151,25 @@ nav:
         - devel/NewKeyParser.md
         - devel/HowToTaclet.md
       - SMT:
-          - devel/AddingSMTSolvers.md
-          - devel/SMTTranslation.md
-          - devel/CounterExampleGeneration.md
-      - devel/How2ExtRecoder.md
+        - devel/AddingSMTSolvers.md
+        - devel/SMTTranslation.md
+        - devel/CounterExampleGeneration.md
+        - devel/How2ExtRecoder.md
       - Testing:
           - devel/Testing/index.md
+          - devel/ProveRules.md
           - devel/Testing/ProveRules.md
           - devel/Testing/RunAllProves.md
           - devel/Testing/deterministicTestOrder.md
           - devel/Testing/parserMessageTest.md
       - Write Documentation: "devel/howtodoc/index.md"
 
+
+  
+#  nav_style: dark
+#  logo: 'https://git.key-project.org/uploads/-/system/appearance/logo/1/key-color.png'
+  #feature:
+  #  tabs: true
 repo_name: key-docs
 repo_url: https://github.com/KeYProject/key-docs/
 edit_uri: edit/master/docs/

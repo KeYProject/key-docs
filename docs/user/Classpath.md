@@ -16,7 +16,7 @@ contain a model of any contained code.
 
 * Mar 6, 19, **Wolfram Pfeifer**, corrected wrong example, updated list of
   internal classes
-* Sep 4, 09, ** mulbrich**, dropping `\noDefaultClasses`, adding
+* Sep 4, 09, **mulbrich**, dropping `\noDefaultClasses`, adding
   `\bootclasspath`
 
 # Syntax
@@ -84,7 +84,7 @@ files with the file name extension ".class". The class files are used to
 construct java stubs containing the information stored in the class files.
 
 Inner classes are mapped as expected. Since there are no method bodies,
-anonymous classes cannot be included the usual way. Instead a normal class with
+anonymous classes cannot be included the usual way. Instead, a normal class with
 an arbitrary name is created.
 
 ## Combining (TODO)
@@ -165,5 +165,5 @@ for a comprehensive and uptodate list of the classes currently comprised
 in the bootclasspath in KeY.
 
 If you intend to override the bootclasspath, not all classes of these classes
-are required in your bootclasspath. However, ommiting essential classes may
+are required in your bootclasspath. However, omitting essential classes may
 result in strange exceptions at runtime.
