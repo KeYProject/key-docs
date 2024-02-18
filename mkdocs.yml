@@ -111,6 +111,7 @@ nav:
           - user/NodeDiff.md
           - user/ProofSlicing/index.md
           - user/ProofCaching/index.md
+          - user/ProofTreeLinearMode.md
       - Languages:
           - user/JMLGrammar.md
           - user/KeyGrammar.md
