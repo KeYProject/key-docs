@@ -39,6 +39,12 @@ Without condition 1, the replay may fail.
 In KeY's settings dialog, enable the Proof Caching extension.
 You can toggle the automatic search for references in the "Proof Caching" section (on by default).
 
+### Enabling/disabling the functionality
+
+In the toolbar, a new Proof Caching toggle button is added.
+In the options menu, a Proof Caching checkbox is synchronized to the same state.
+When these are not activated, the automated reference search is disabled.
+
 ## Automated reference search
 
 When running the auto pilot or a strategy macro, KeY will automatically search for references
@@ -52,6 +58,11 @@ See above for the checked conditions.
 Right-click on an open goal in the proof tree and select "close by reference".
 If a matching branch is found, the goal will be closed.
 Otherwise, a dialog with an error message will open.
+
+## Re-opening cached proof branches
+
+It is possible to re-open proof goals closed by the cache.
+To do so, just activate the "Re-open cached goal" context menu entry on the goal you wish to re-open.
 
 ## Copying referenced proof steps
 
