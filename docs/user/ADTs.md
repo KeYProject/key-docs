@@ -3,24 +3,181 @@ date: 2023-09-24
 title: ADTs
 ---
 
-# User-defined abstract data types
+# User-defined Abstract Data Types
 
 !!! abstract
     
-    KeY allows you to define abstract data types and use them inside the logic and JML specifications. 
-
+    KeY supports the definition of abstract data types that can be employed both in logic formulas and in JML specifications. 
 
 ## Introduction 
 
-Abstract data types comes in many favours. Often we think on ADTs as the typical *algebraic* data type defined by the its constructor, e.g., a simple list is defined by 
+Abstract data types manifest in various forms. Typically, one associates abstract data types with *algebraic* data types characterised by their constructors. For instance, a linear list of elements of type `'a` can be represented in OCaml as follows:
 
 ```ocaml
-type 'a List = Nil | Cons(a, List)
+type 'a List = Nil | Cons('a, List)
 ```
 
-in Ocaml. But Abstract Data Types are wider category, it also contains co-inductive or non-generated data types. Let us model a set inside of KeY. Of course, a set can be modelled using a list and an uniqueness constraint on the list elements, but this model would not be able to reflect infinite sets such as natural numbers or all possible objects. Such data types are defined co-inductive, which comes in an opaque sort, and obeserver functions upon them. 
+However, abstract data types encompass a broader spectrum of structures, including co-inductive or non-generated data types. For example, let us consider the modelling of a set within KeY. While a finite set may be represented using a list along with a uniqueness constraint on the list elements, such a model would encounter limitations in reflecting infinite sets, such as the set of natural numbers or the set of all conceivable objects. Streams (which can understand as the infinite equivalent of lists) are another example which cannot easily be described as an algebraic type. Such infite data structures are defined co-inductively, resulting in an opaque sort with observer functions on them. 
 
-KeY supports both. 
+KeY provides support both for algebraic and co-algebraic data types.
+
+!!! bug
+     Below you say that co-adts are not supporte in KeY ... ?!
+
+## Algebraic Data Types (since KeY-2.14.0)
+
+!!! info
+
+    Since version 2.14.0, the KeY grammar supports abstract datatypes with special syntax.
+    See below for introducing data types manually in earlier versions of KeY.
+
+The grammar for algebraic data types (ADTs) adheres to the typical "syntax style" employed in KeY and incorporates elements familiar from other theorem provers and functional programming languages. ADTs are defined within a `\datatypes { ... }` block, and give rise to new syntactical elements in the logic and calculus: sorts, function symbols, and taclets. The grammar is as follows:
+
+!!! bug
+
+    Where in the .key file is this expected? Anywhere?
+
+```key
+\datatypes {
+   <name> = <constructor> | ... | <constructor>;
+   ...
+ }
+```
+where `<constructor>` is a function declaration of the form `<cname>(<sort> <argName>, ..., <sort> <argName>)` with 0 or more named arguments.
+For instance, the linear list is defined in KeY as  `\datatypes { List = Nil  | Cons(any element, List tail); }`. From this definition, the following logical entities are added to the signature and calculus of KeY:
+
+!!! bug
+    According to the description it must read "Nil()". Can () be omitted for 0 arguments? Should be made clear.
+
+!!! bug
+    Are there not also destructor function symbols? like "element(list)" and "tail(list)"?
+    What about axioms like "tail(Cons(x,y)) = y" ?
+
+1.  A new sort corresponding to the ADT name, in this case, `List`.
+2.  A new function symbol for each constructor, with the arguments as specified in  the constructor definition and the ADT sort as the resulting sort. In our example, this translates to `\functions{ List Nil();  List Cons(any, List); }`     
+3.  Three taclets to reason about the ADT:
+
+    1.  A rule that introduces the induction principle as an axiom on the sequence.
+    2.  Induction taclets for proving a sentence for all ADTs. (Like the induction rule above.) 
+    3.  A case distinction taclet, which allows you to split a proof attempt along the possible different values of an ADT. 
+
+Let us look at these taclets in further detail. Consider an ADT $A$ with the definition $A = c_1(\bar x_1) \mid \ldots \mid c_n(\bar x_n)$ that has been introduced. There are $n$ constructors ($c_i$) that each take arguments ($\bar x_i$ referring to variables of the respective sorts).
+
+The base induction axiom is then
+\begin{equation}
+(\forall \bar x_1. \phi[a/c_1(\bar x_1)]) \wedge \ldots \wedge (\forall \bar x_n. \phi[a/c_n(\bar x_n)] \to (\forall a \in A.~ \phi)
+\end{equation}
+which, rendered as a KeY taclet, allows the introduction of this formula to the antecedent. This is correct since we assume that ADTs are *generated* by their constructors.
+
+!!! bug
+    "Induction taclets for proving a sentence for all ADTs. (Like the induction rule above.)"
+    Why is this about all ADTs? It is only about a single type, right?
+
+When represented as a splitting rule, we obtain a variant that retains expressiveness equivalent to the original axiom, provided the cut rule is available:
+
+\[
+\begin{aligned}
+   % \forall a \in A.\ \phi \Longrightarrow \\
+   \Longrightarrow ~& \forall \bar x_1.\ \phi[a/c_1(\bar x_1)]  \\
+   \Longrightarrow ~& \ldots      \\
+   \Longrightarrow ~& \forall \bar x_n.\ \phi[a/c_n(\bar x_n)]  \\
+   \hline
+   \qquad \Longrightarrow ~& \forall a \in A.~ \phi[a] \qquad
+\end{aligned}
+\]
+
+This taclet directly follows from the induction formula.
+
+Furthermore, a case distinction taclet facilitates the differentiation of the different constructor cases without necessitating an induction proof. It splits a proof goal into the different possible constructor cases. Let $e:A$ be an expression without free variables of the ADT sort $A$ introduced above:
+  
+\[
+\begin{aligned}
+   \exists x_1.\ e = c_1(\bar x_1) & \Longrightarrow \\
+   & \ldots \\
+   \exists x_n.\ e = c_n(\bar x_n) & \Longrightarrow \\
+   \hline
+   & \Longrightarrow
+\end{aligned}
+\]
+
+This follows directly from the disjunction $x = c_1 \vee\ldots\vee x = c_n$ resulting from the construction principles underlying ADTs. This is valid for *generated* ADTs where the values can only be constructed using the constructors. This allows us to make a case distinction about the various constructors. 
+
+
+
+!!! bug
+
+    Not yet looked at.
+
+Following our example, we obtain the following taclets:
+
+```key
+List_Axiom {
+    \schemaVar \formula phi;
+    \schemaVar \variables List x;
+    
+    \find(\forall x; phi)
+    \varcond(\notFreeIn(x, phi))
+    \add(
+            \forall x; phi
+         <->   {\subst x;Nil}phi
+             & \forall List tail; \forall any head; ({\subst x;tail}phi -> {\subst x;Cons(head, tail)}phi)
+        ==>
+      )
+    \displayname "Axiom for List"
+  }
+
+List_Ind {
+       \schemaVar \formula phi;
+       
+       "Nil": \add(==> {\subst x;Nil}phi);
+       "Cons(anyhead,Listtail)":
+           \add(
+               ==>
+                \forall tail; \forall head; ({\subst x;tail}phi -> {\subst x;Cons(head, tail)}phi)
+             );
+       "Use case of List":
+           \add(\forall x; phi ==>)
+       \displayname "Induction for List"
+}
+
+List_ctor_split {
+          \schemaVar \term MyList var;
+          \schemaVar \skolemTerm any head;
+          \schemaVar \skolemTerm MyList tail;
+          
+          \find(var)
+          \sameUpdateLevel
+          "#var = Nil":  \add(var = Nil ==>);
+          "#var = Cons": \add(var = Cons(head, tail) ==>)
+          \displayname "case distinction of List"
+}
+```
+
+## Co-inductive Data Types
+
+Co-inductive types are also possible in KeY. For example, the built-in sorts `Heap` and `LocSet` are co-inductive. There is no direct syntactical support for these data types. 
+
+
+## Using a Data Type in JML 
+
+You can use any sort of the logical signature in JML. For this, you need the prefix the sort name with the `\dl_` to access the JavaDL scope. Some sorts are also direct built-in into JML, like `\map`, and are direct reachable. 
+
+A typical pattern is to have a ghost variable, that represents the current state of a class by using logical datatype and uninterpreted functions. 
+
+```java
+public class MyMap {
+  //@ public ghost \map logical_dt;
+
+  public void put(Object k, Object v) {
+    //@ set logical_dt = \dl_map_put(logical_dt, k, v);
+    ...    
+  }
+}
+```
+
+Instead of `\map` you can also use `\dl_map` which points to the same sort. 
+
+
 
 ## Algebraic Data Types (before KeY-2.14.0)
 
@@ -69,133 +226,3 @@ $$
 $$
 
 [A complete example can be found in the KeY repo, in `standard_key/adt/list.key`](https://github.com/KeYProject/key/blob/main/key.ui/examples/standard_key/adt/list.key)
-
-## Algebraic Data Types (with KeY-2.14.0 and beyond)
-
-Since version 2.14.0, the KeY grammar supports the direct notation of algebraic data types. The grammar for ADTs follows the typical syntax in KeY combined with functional language. ADTs are defined within a `\datatypes { ... }` block, and are translated onto the existing infrastructure (Sorts, Functions, Taclets). The grammar is as follows:
-
-```key
-\datatypes {
-   <name> = <constructor> | ... | <constructor>;
-   ...
- }
-```
-where constructor is a function definition `<cname>( <sort> <argName>, ...)` with named arguments. From a datatype definition, we derive the following logical entities for the signature, on the example of a list `\datatypes { List = Nil  | Cons(any element, List tail); }`:
-
-1. a sort named after the ADT name, e.g., here it would be `List`. 
-2. a function for each constructor which takes arguments of the constructor and evaluates to the ADT.
-   Here, we would have: 
-    ```key
-    \functions{ List Nil();  List Cons(any,List); }
-    ```     
-3. Three taclets for the use in reasoning on the ADT structure. 
-  1. Axiom taclets that adds the induction principle as an axiom on the sequence. 
-$$
-\frac{
-(\forall a \in ADT.~ \phi) \leftrightarrow  \phi[a/c_1] \wedge \ldots \wedge \phi[a/c_n] 
-\Longrightarrow
-}{
-\forall a \in ADT.~ \phi[a]
-}
-$$
-
-  2. Induction taclets for proving a sentence for all ADTs. (Like the induction rule above.) 
-$$
-\frac{
-\begin{matrix}
-   \forall a \in ADT; \phi \Longrightarrow \\
-   \Longrightarrow \phi[a/c_1]  \\
-   \Longrightarrow \ldots      \\
-   \Longrightarrow phi[a/c_n]
-\end{matrix}
-}{
-\Longrightarrow \forall a \in ADT.~ \phi[a]
-}
-$$
-
-   This taclet is a direct consequence of the induction formula.
-
-  3. A case distinction taclet, which allows you to split a proof attempt along the possible different values of an ADT. 
-  
-     This is a direct consequence of the disjunction $x = c_1 \vee\ldots\vee x = c_n$ resulting from the construction principles of ADTs. This is valid for *generated* ADTs where the values can only be constructed using the constructors. This allows us to make a case distinction about the various constructors. 
-
-\[
-\frac{
-\begin{matrix}
-   x = c_1      \Longrightarrow \\
-   \ldots    \Longrightarrow    \\
-   x = c_n   \Longrightarrow 
-\end{matrix}
-}{
-     x : ADT ~ \text{(anywhere)}
-}
-\]
-
-Following our example we obtain the following taclets:
-
-```key
-List_Axiom {
-    \schemaVar \formula phi;
-    \schemaVar \variables List x;
-    
-    \find(\forall x; phi)
-    \varcond(\notFreeIn(x, phi))
-    \add(
-            \forall x; phi
-         <->   {\subst x;Nil}phi
-             & \forall List tail; \forall any head; ({\subst x;tail}phi -> {\subst x;Cons(head, tail)}phi)
-        ==>
-      )
-    \displayname "Axiom for List"
-  }
-
-List_Ind {
-       \schemaVar \formula phi;
-       
-       "Nil": \add(==> {\subst x;Nil}phi);
-       "Cons(anyhead,Listtail)":
-           \add(
-               ==>
-                \forall tail; \forall head; ({\subst x;tail}phi -> {\subst x;Cons(head, tail)}phi)
-             );
-       "Use case of List":
-           \add(\forall x; phi ==>)
-       \displayname "Induction for List"
-}
-
-List_ctor_split {
-          \schemaVar \term MyList var;
-          \schemaVar \skolemTerm any head;
-          \schemaVar \skolemTerm MyList tail;
-          
-          \find(var)
-          \sameUpdateLevel
-          "#var = Nil":  \add(var = Nil ==>);
-          "#var = Cons": \add(var = Cons(head, tail) ==>)
-          \displayname "case distinction of List"
-}
-```
-
-## Co-inductive Data Types
-
-Co-inductive types are also possible in KeY. For example, the built-in sorts `Heap` and `LocSet` are co-inductive. There is no direct syntactical support for these datatypes. 
-
-
-## Using a Data Type in JML 
-
-You can use any sort of the logical signature in JML. For this, you need the prefix the sort name with the `\dl_` to access the JavaDL scope. Some sorts are also direct built-in into JML, like `\map`, and are direct reachable. 
-
-A typical pattern is to have a ghost variable, that represents the current state of a class by using logical datatype and uninterpreted functions. 
-
-```java
-public class MyMap {
-  //@ public ghost \map logical_dt;
-
-  public void put(Object k, Object v) {
-    //@ set logical_dt = \dl_map_put(logical_dt, k, v);
-    ...    
-  }
-}
-```
-
-Instead of `\map` you can also use `\dl_map` which points to the same sort. 
