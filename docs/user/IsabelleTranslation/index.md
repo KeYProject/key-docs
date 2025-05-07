@@ -9,8 +9,8 @@
 
 ## Overview
 
-The Isabelle Translation plugin provides automated translation of KeY sequents to Isabelle/HOL. It also allows for automated proof search using Isabelle on these translations. 
-The Isabelle translation can be used on any update-free sequent. Further details on the intricacies of the translation can be found under [https://doi.org/10.5445/IR/1000176239](https://doi.org/10.5445/IR/1000176239).
+The Isabelle Translation plugin provides automated translation of KeY sequents to Isabelle/HOL. It also allows for automated proof search using Isabelle on these translations.
+The Isabelle translation can be used on any update-free sequent.
 Thus it is necessary to first remove these from the sequent. This can be done automatically via the SMT Preparation macro in most cases.
 The translation is accessible through the context menu of the whole sequent, which can be opened by right-clicking the sequent arrow. There are two options in this menu. 
 
@@ -36,7 +36,8 @@ From this interface the proof search can be aborted using the Stop button. After
 </figure>
 
 ## Setup
-The Isabelle Translation can be enabled like all other KeY plugins.
+
+The Isabelle Translation can be enabled under Options>Settings>Extensions.
 To use the automatic proof search parts of the Isabelle Translation, an Isabelle installation is required. In the plugin settings the path to the Isabelle directory can be configured. The path set here should point to the folder containing the Isabelle executable.
 
 ## Settings
@@ -53,3 +54,11 @@ Currently the Isabelle Translation provides two settings. These are found under 
    >This setting sets the timeout for proof searches in seconds.
 
 There is an additional button to check if a given version of Isabelle is supported. Currently the supported versions are Isabelle2023 and Isabelle2024-RC1.
+
+
+## Translation Structure
+The translation is structured into a preamble file containing the definitions of the JFOL types and their axioms and the main translation file. The translation file contains the definitions of the specific Java class types present on the sequent and their associated functions. The translation file also contains a locale, which contains the antecedents of the sequent and a theorem holding the succedents. The file ends after the theorem declaration.
+Further details on the intricacies of the translation can be found under [https://doi.org/10.5445/IR/1000176239](https://doi.org/10.5445/IR/1000176239).
+
+### Interactive Proving Warning
+When opening the translation files for interactive proving in Isabelle, Isabelle must be instructed to include the translation directory as a session directory. This can be done using the "-d" command argument when opening Isabelle. If this is not done, Isabelle will fail to recognize the KeYTranslations session and thus not find the preamble theory. This can also be circumvented by removing the session prefix "KeYTranslations." from the preamble theory import. This will make Isabelle search the local directory for the theory.
