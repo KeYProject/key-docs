@@ -54,6 +54,38 @@ you should keep strict policy:
 
 In the following, we go through each JML detail.
 
+## Model methods
+
+In JML, you can declare and define methods in JML annotation comments
+which can then (only) be used in specifications. They are treated
+specially as declarations and definitions of logical functions. This
+has two consequences:
+1. The syntax supported in model methods is restricted (since it must
+   be translatable directly to a logical formula.
+2. All model methods must always terminate.
+
+Termination is not optional, as non-termination compromises soundness
+of the approach. Unfortunately, termination proofs are not fully
+implemented yet.
+
+Regarding the restricted syntax in model methods, their bodies can be
+be nested `if` statements around `return` statements. Local variable
+declarations (using `var`) are allowed. More concretely, the
+(simplified) part of the JML syntax for model method bodies is
+
+```
+method_declaration : typespec IDENT param_list (method_body=mbody_block | ';')
+
+mbody_block : '{' mbody_var* mbody_statement '}'
+
+mbody_statement :
+    'return' expression ';'
+  | 'if' '(' expression ')' (mbody_statement | mbody_block) 'else' (mbody_statement | mbody_block)
+
+mbody_var : 'var' IDENT '=' expression ';'
+```
+
+
 ## Entity names
 
 In a recent update of the JMLref, JML entities can carry a name. KeY
