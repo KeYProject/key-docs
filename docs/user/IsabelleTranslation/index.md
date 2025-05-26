@@ -4,8 +4,8 @@
 
 !!! abstract
 
-   This note describes the new *Isabelle Translation* extension in KeY 2.12.3
-   When enabled it can be used to translate sequents to Isabelle and automatically search for proofs using Isabelle
+    This note describes the new *Isabelle Translation* extension in KeY 2.12.4
+    When enabled it can be used to translate sequents to Isabelle and automatically search for proofs using Isabelle
 
 ## Overview
 
@@ -42,7 +42,7 @@ To use the automatic proof search parts of the Isabelle Translation, an Isabelle
 
 ## Settings
 
-Currently the Isabelle Translation provides two settings. These are found under Options>Settings>Isabelle Translation.
+Currently the Isabelle Translation provides three settings. These are found under Options>Settings>Isabelle Translation.
 
 `Location for translation files`
    >This setting determines where the translation files should be stored. This includes the session files as well as the Isabelle theories for the preamble and the sequent translation.
@@ -53,7 +53,7 @@ Currently the Isabelle Translation provides two settings. These are found under 
 `Timeout`
    >This setting sets the timeout for proof searches in seconds.
 
-There is an additional button to check if a given version of Isabelle is supported. Currently the supported versions are Isabelle2023 and Isabelle2024-RC1.
+There is an additional button to check if a given version of Isabelle is supported. The currently supported versions are Isabelle2023, Isabelle2024, Isabelle2025.
 
 
 ## Translation Structure
