@@ -3,9 +3,7 @@ name = "key-docs"
 description = "Documentation for the KeY prover system"
 readme = "README.md"
 requires-python = ">=3.7"
-classifiers = [
-    "Operating System :: OS Independent",
-]
+classifiers = ["Operating System :: OS Independent"]
 dynamic = ["version"]
 dependencies = [
     "mkdocs",
@@ -14,10 +12,11 @@ dependencies = [
     "pygments",
     "markdown-blockdiag",
     "mkdocs-bibtex",
-    "markdown-aafigure==v202104.1011",
+    "markdown-aafigure",
     "mkdocs-build-plantuml-plugin",
     "Pillow",
-    "Markdown"
+    "Markdown",
+    "mkdocs-mermaid2-plugin",
 ]
 
 [tool.setuptools]

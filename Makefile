@@ -1,5 +1,5 @@
 prepare:
-	pip install --user mkdocs mkdocs-material pymdown-extensions pygments markdown-blockdiag mkdocs-bibtex markdown-aafigure==v202104.1011 mkdocs-build-plantuml-plugin Pillow Markdown
+	pip install --user -r requirements.txt 
 
 serve:
 	mkdocs serve

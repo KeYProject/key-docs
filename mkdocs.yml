@@ -3,6 +3,7 @@ site_url: https://keyproject.github.io/key-docs/
 
 plugins:
   - search
+  - mermaid2
   - bibtex:
       bib_file: "refs.bib"
 #      cite_style: "pandoc"
@@ -45,17 +46,9 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
-  - markdown_aafigure:
-      format: svg
-  # - markdown_blockdiag:
-  #     format: svg
 
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
-  - 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'
-#   - "js/javajml.js"
-
-#copyright: Copyright &copy; 2016 - 2020 Martin Donath
 
 theme: # material theme
   name: material
