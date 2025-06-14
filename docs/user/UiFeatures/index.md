@@ -3,3 +3,4 @@
 - [Proof Slicing](../ProofSlicing)
 - [Proof Caching](../ProofCaching)
 - [Proof Tree: linearized mode](../ProofTreeLinearMode)
+- [Isabelle Translation](../IsabelleTranslation)
