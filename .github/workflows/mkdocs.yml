@@ -33,7 +33,7 @@ jobs:
         with:
           python-version: 3.x
       - name: Prepare system
-        run: pip install --user mkdocs mkdocs-material pymdown-extensions pygments markdown-blockdiag mkdocs-bibtex markdown-aafigure mkdocs-build-plantuml-plugin 'Pillow' 'Markdown'
+        run: pip install --user -r requirements.txt
       - name: Checkout
         uses: actions/checkout@v5
       - name: Setup Pages
