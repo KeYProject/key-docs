@@ -29,13 +29,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
       - name: Prepare system
         run: pip install --user -r requirements.txt
-      - name: Checkout
-        uses: actions/checkout@v5
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
