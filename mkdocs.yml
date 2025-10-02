@@ -112,11 +112,13 @@ nav:
           - user/KeyGrammar.md
       - Proof Scripts:
           - workbench/Proof Scripts/index.md
-          - workbench/Proof Scripts/commands.md
-          - workbench/Proof Scripts/language.md
           - workbench/Proof Scripts/linearScripts.md
+          - workbench/Proof Scripts/jml.md
+          - workbench/Proof Scripts/commands.md
+          # - workbench/Proof Scripts/language.md
+          - workbench/Proof Scripts/original.md
           - workbench/Proof Scripts/macros.md
-          - workbench/Proof Scripts/variables.md
+          # - workbench/Proof Scripts/variables.md
 
   - KeYclipse:
       - "Overview": eclipse/index.md
