@@ -3,6 +3,7 @@
 *Mattias Ulbrich <ulbrich@kit.edu>, 2015*
 
 !!! note
+    This is the original announcement and probably a bit outdated.
     Experimental feature: Proof scripts are currently only visible in the GUI if KeY
     is launched with the `--experimental` option. Concrete syntax is subject to
     change.

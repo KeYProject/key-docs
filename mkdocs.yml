@@ -107,7 +107,7 @@ nav:
           - user/ProofCaching/index.md
           - user/ProofTreeLinearMode.md
       - Languages:
-          - user/HowToTaclet.md
+          # - user/HowToTaclet.md # seemed to have been moved to devel below
           - user/JMLGrammar.md
           - user/KeyGrammar.md
       - Proof Scripts:
