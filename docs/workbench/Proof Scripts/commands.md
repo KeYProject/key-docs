@@ -9,10 +9,10 @@ in the general documentation files on proof scripts.
 
 Field | Value
 ----- | -----
-Generated on: | Fri Oct 03 00:02:48 CEST 2025
+Generated on: | Fri Oct 03 19:00:08 CEST 2025
 Branch: | jmlScripts
 Version: | 2.12.4-dev
-Commit: | 6b49d282bd210b1e51e205da59f21531f6cb6cd5
+Commit: | 382f4ce88f33ee3eb90e34b05e23451863271d4c
 
 The commands are organised into categories. Each command may have multiple aliases
 under which it can be invoked. The first alias listed is the primary name of the command.
@@ -24,7 +24,8 @@ Optional arguments are enclosed in square brackets.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `activate`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/ActivateCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `activate`</span>
+
 
 Reactivates the first open (not necessarily enabled) goal.
 This can be useful after a 'leave' command to continue
@@ -36,7 +37,8 @@ wants to finish the proof.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `assertOpenGoals`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/AssertOpenGoalsCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `assertOpenGoals`</span>
+
 
 The assert command checks if the number of open and enabled goals is equal to the given number.
 If not, the script is halted with an error message.
@@ -54,7 +56,8 @@ Note: This command was called "assert" originally.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `assume`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/AssumeCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `assume`</span>
+
 
 The assume command is an **unsound** taclet rule and adds a formula to the antecedent of the current goal
 Can be used for debug and proof exploration purposes.
@@ -70,7 +73,8 @@ Can be used for debug and proof exploration purposes.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `axiom`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/AxiomCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `axiom`</span>
+
 
 **Caution! This proof script command is deprecated, and may be removed soon!**
 
@@ -92,7 +96,8 @@ Can be used for debug and proof exploration purposes.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `echo`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/EchoCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `echo`</span>
+
 
 A simple "print" command for giving progress feedback to the
 human verfier during lengthy executions.
@@ -108,7 +113,8 @@ human verfier during lengthy executions.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `exit`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/ExitCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `exit`</span>
+
 
 Exits the currently running script context unconditionally.
 (In the future, there may try-catch blocks to react to this).
@@ -118,7 +124,8 @@ Exits the currently running script context unconditionally.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `failonclosed`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/SetFailOnClosedCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `failonclosed`</span>
+
 
 **Caution! This proof script command is deprecated, and may be removed soon!**
 
@@ -134,7 +141,8 @@ Exits the currently running script context unconditionally.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `hide`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/HideCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `hide`</span>
+
 
 The hide command hides all formulas of the current proof goal that are in the given sequent.
 The formulas in the given sequent are hidden using the taclets hide_left and hide_right.
@@ -150,13 +158,15 @@ The formulas in the given sequent are hidden using the taclets hide_left and hid
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `leave`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/LeaveCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `leave`</span>
+
 
 Marks the current goal to be ignored by the macros.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `onAll`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/AllCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `onAll`</span>
+
 
 Executes a given block of script commands on all open goals.
 The current goal is set to each open goal in turn while executing the block.
@@ -171,7 +181,8 @@ It expects exactly one positional argument, which is the block to be executed on
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `script`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/ScriptCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `script`</span>
+
 
 Includes and runs another script file.
 
@@ -185,7 +196,8 @@ Includes and runs another script file.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `select`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/SelectCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `select`</span>
+
 
 The select command selects a goal in the current proof.
 Exactly one of the parameters must be given.
@@ -211,7 +223,8 @@ The next command will then continue on the selected goal.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `skip`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/SkipCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `skip`</span>
+
 
 Does exactly nothing.
 
@@ -219,7 +232,8 @@ Does exactly nothing.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `unhide`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/UnhideCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `unhide`</span>
+
 
 The unhide command re-inserts formulas that have been hidden earlier in the proof using the hide command.
 It takes a sequent as parameter and re-inserts all formulas in this sequent that have been hidden earlier.
@@ -238,7 +252,14 @@ It takes a sequent as parameter and re-inserts all formulas in this sequent that
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `auto`</span>
+### <span style="color: var(--md-primary-fg-color);"> Command `assert`</span>
+
+Alias for command [→ `cut`](#command-cut)
+
+<hr>
+
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/AutoCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `auto`</span>
+
 
 The AutoCommand invokes the automatic strategy "Auto" of KeY (which is also launched by
 when clicking the "Auto" button in the GUI).
@@ -250,7 +271,7 @@ Use the command with "close" to make sure the command succeeds for fails without
 changes.
 
 #### Usage: 
-`auto [all] [classAxioms] [dependencies] [expandQueries] [modelsearch] [breakpoint:⟨String⟩] [matches:⟨String⟩] [steps:⟨int⟩]`
+`auto [all] [classAxioms] [dependencies] [expandQueries] [modelsearch] [add:⟨String⟩] [breakpoint:⟨String⟩] [matches:⟨String⟩] [steps:⟨int⟩]`
 
 #### Parameters:
 
@@ -267,6 +288,11 @@ may be a showstopper (if expansion increases the complexity on the sequent too m
 
 * `modelsearch` *(flag)*:<br>Enable model search. Better for some (types of) arithmetic problems. Sometimes a lot worse.
 
+* `add` *(optional named option, type String)*:<br>Additional rules to be used by the auto strategy. The rules have to be given as a
+comma-separated list of rule names and rule set names. Each entry can be assigned to a priority
+(high, low, medium or a natural number) using an equals sign.
+
+
 * `breakpoint` *(optional named option, type String)*:<br>When doing symbolic execution by auto, this option can be used to set a Java statement at which symbolic execution has to stop.
 
 * `matches` *(optional named option, type String)*:<br>Run on the formula matching the given regex.
@@ -275,7 +301,8 @@ may be a showstopper (if expansion increases the complexity on the sequent too m
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `cut`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/CutCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `cut`</span>
+
 
 The cut command makes a case distinction (a cut) on a formula on the current proof goal.
 From within JML scripts, the alias 'assert' is more common than using 'cut'.
@@ -296,7 +323,8 @@ cut, assert
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `dependency`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/DependencyContractCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `dependency`</span>
+
 
 The dependency command applies a dependency contract to a specified term in the current goal.
 Dependency contracts allow you to do modular reasoning. If for a heap-dependent function symbol,
@@ -316,7 +344,8 @@ This can be applied to model methods, model fields or invariants.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `focus`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/FocusCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `focus`</span>
+
 
 The command "focus" allows you to select formulas from the current sequent
 to focus verification on. This means that all other formulas are discarded
@@ -343,7 +372,8 @@ believed "unsat core" of the sequent.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `instantiate`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/InstantiateCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `instantiate`</span>
+
 
 Instantiate a universally quantified formula (in the antecedent;
 or an existentially quantified formula in succedent) by a term.
@@ -376,7 +406,8 @@ If `formula` is given, that quantified formula is used directly.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `macro`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/MacroCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `macro`</span>
+
 
 The MacroCommand invokes one of KeY's macros. The macro must be registered to KeY's services.
 
@@ -406,7 +437,8 @@ The macro is applied to the first open automatic goal in the proof.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `oss`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/OneStepSimplifierCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `oss`</span>
+
 
 The oss command applies the *one step simplifier* on the current proof goal.
 This simplifier applies a set of built-in simplification rules to the formulas in the sequent.
@@ -426,7 +458,8 @@ By default, it is applied on both sides of the sequent.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `rule`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/RuleCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `rule`</span>
+
 
 This command can be used to apply a calculus rule to the currently active open goal.
 
@@ -458,7 +491,8 @@ This command can be used to apply a calculus rule to the currently active open g
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `smt`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/SMTCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `smt`</span>
+
 
 The smt command invokes an SMT solver on the current goal(s).
 By default, it uses the Z3 solver on the first open automatic goal.
@@ -485,7 +519,8 @@ The available solvers depend on your system: KeY supports at least z3, cvc5.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `@echo`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/SetEchoCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `@echo`</span>
+
 
 **Caution! This proof script command is deprecated, and may be removed soon!**
 
@@ -502,7 +537,8 @@ An internal command to switch on/off echoing of executed commands.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `cheat`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/CheatCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `cheat`</span>
+
 
 Use this to close a goal unconditionally. This is unsound and should only
 be used for testing and proof debugging purposes. It is similar to 'sorry'
@@ -513,7 +549,8 @@ in Isabelle or 'admit' in Rocq.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `javascript`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/JavascriptCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `javascript`</span>
+
 
 This command allows to execute arbitrary JavaScript code. The code is executed in a context where
 the current selected goal is available as `goal` and a function `setVar(v,t)` is
@@ -542,13 +579,15 @@ used incorrectly.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `saveInst`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/SaveInstCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `saveInst`</span>
+
 
 
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `saveNewName`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/SaveNewNameCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `saveNewName`</span>
+
 
 Special "Let" usually to be applied immediately after a manual rule application. Saves a new name
 introduced by the last rule which matches certain criteria into an abbreviation for
@@ -570,7 +609,8 @@ argument (all names used for remembering instantiations are "final").
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `schemaVar`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/SchemaVarCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `schemaVar`</span>
+
 
 **Caution! This proof script command is deprecated, and may be removed soon!**
 
@@ -592,7 +632,8 @@ Defines a schema variable that can be used in subsequent commands.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `__obtain`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/ObtainCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `__obtain`</span>
+
 
 Command that introduces a fresh variable with a given name and sort.
 Exactly one of `such_that`, `equals`, or `from_goal` must be given.
@@ -620,7 +661,8 @@ the JML script support within KeY.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `branches`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/BranchesCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `branches`</span>
+
 
 #### Usage: 
 `branches ⟨String (mode)⟩ [branch:⟨String⟩] [child:⟨Integer⟩]`
@@ -636,10 +678,11 @@ the JML script support within KeY.
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `expand`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/ExpandDefCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `expand`</span>
+
 
 #### Usage: 
-`expand [formula:⟨JTerm⟩] [occ:⟨Integer⟩] [on:⟨Term⟩]`
+`expand [formula:⟨JTerm⟩] [occ:⟨Integer⟩] [on:⟨JTerm⟩]`
 
 #### Parameters:
 
@@ -648,11 +691,12 @@ the JML script support within KeY.
 
 * `occ` *(optional named option, type Integer)*:<br>
 
-* `on` *(optional named option, type Term)*:<br>
+* `on` *(optional named option, type JTerm)*:<br>
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `let`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/LetCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `let`</span>
+
 
 
 
@@ -661,7 +705,14 @@ let, letf
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `rewrite`</span>
+### <span style="color: var(--md-primary-fg-color);"> Command `letf`</span>
+
+Alias for command [→ `let`](#command-let)
+
+<hr>
+
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/RewriteCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `rewrite`</span>
+
 
 #### Usage: 
 `rewrite find:⟨JTerm⟩ replace:⟨JTerm⟩ [formula:⟨JTerm⟩]`
@@ -677,7 +728,8 @@ let, letf
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `set`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/SetCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `set`</span>
+
 
 #### Usage: 
 `set settings... [oss:⟨Boolean⟩] [stack:⟨String⟩] [steps:⟨Integer⟩] [userData:⟨String⟩]`
@@ -697,7 +749,8 @@ let, letf
 
 <hr>
 
-### <span style="color: var(--md-primary-fg-color);"> Command `tryclose`</span>
+### <span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/TryCloseCommand.java)</span><span style="color: var(--md-primary-fg-color);"> Command `tryclose`</span>
+
 
 #### Usage: 
 `tryclose [⟨String (branch)⟩] [assertClosed] [steps:⟨Integer⟩]`
