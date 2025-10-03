@@ -145,3 +145,7 @@ Here are some examples of proof scripts in JML:
     auto;
 } @*/
 ```
+
+### Proof of Boyer-More using JML proof scripts
+
+see https://github.com/KeYProject/key/blob/96a6a98328bb9dbaadfb5b54e11b29230e77dfe9/key.ui/examples/heap/BoyerMoore/src/BoyerMoore.java
