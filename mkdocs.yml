@@ -90,15 +90,17 @@ nav:
 #      - quicktour/proving.md
 #      - quicktour/appendix.md
   - User Guide:
+      - user/index.md
       - changelog.md
       - user/FAQ.md
-      - user/ADTs.md
-      - user/Classpath.md
-      - user/Interactive.md
-      - user/JavaDLinJML.md
-      - user/RemoveGenerics.md
-      - user/Polarity.md
-      - user/JavaGrammar.md
+      - Topics:
+          - user/ADTs.md
+          - user/Classpath.md
+          - user/Interactive.md
+          - user/JavaDLinJML.md
+          - user/RemoveGenerics.md
+          - user/Polarity.md
+          - user/JavaGrammar.md
       - UI Features:
           - user/UiFeatures/index.md
           - user/Exploration.md
@@ -160,6 +162,8 @@ nav:
           - devel/Testing/parserMessageTest.md
       - Write Documentation: "devel/howtodoc/index.md"
 
+extra_css:
+  - extra.css
 
   
 #  nav_style: dark

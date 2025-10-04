@@ -1,4 +1,4 @@
-# Linear Proof Scripts
+# Linear Proof Scripts[^1]
 
 !!! note
     This covers linear scripts. Scripts can also be attached to [JML assertions with scripts](../jml).
@@ -122,3 +122,4 @@ in the KeY repository:
 * https://github.com/KeYProject/key/blob/main/key.ui/examples/heap/quicksort/sort.key
 * https://github.com/KeYProject/key/blob/main/key.ui/examples/heap/quicksort/sort.script
 
+[^1]: "Linear Scripts" is a working title name – might be subject to change.

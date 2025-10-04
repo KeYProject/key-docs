@@ -1,4 +1,4 @@
-# Proof Scripts in JML
+# Proof Scripts in JML 
 
 !!! note
     This describes proof scripts from JML as opposed to [linear scripts](../linearScripts)
@@ -149,3 +149,7 @@ Here are some examples of proof scripts in JML:
 ### Proof of Boyer-More using JML proof scripts
 
 see https://github.com/KeYProject/key/blob/96a6a98328bb9dbaadfb5b54e11b29230e77dfe9/key.ui/examples/heap/BoyerMoore/src/BoyerMoore.java
+
+### Proof of the [IPS4O sorting algorithm](https://doi.org/10.1007/978-3-031-57246-3_15) (partially) using scripts
+
+see https://github.com/KeYProject/ips4o-verify/blob/pfeifer/STTT/src/main/java/de/wiesler/Sorter.java

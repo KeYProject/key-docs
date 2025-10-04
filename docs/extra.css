@@ -1,0 +1,3 @@
+.md-nav__item--section > .md-nav__link[for] {
+    color: var(--md-typeset-color) !important;
+}
