@@ -1,5 +1,8 @@
 # Macros
 
+!!! warning
+    This page was automatically created. There seems to have been issues with the export format apparently.
+
 Generated on: ${new Date()} by `gendoc.groovy`.
 
 Covering the macros of [KeY](http://key-project.org).
