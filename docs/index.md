@@ -10,7 +10,7 @@ The documentation is split into two major parts:
 
 * End user: 
     * [How to use the KeY tool for *end user*](user/)
-    * [How to write Proof Scripts for resilient, persistent and reapplicable proofs*](workbench/Proof Scripts/)
+    * [How to write Proof Scripts for resilient, persistent and reapplicable proofs*](user/ProofScripts/)
 * Developer:
     * [How to use KeY as a library or add a new feature](devel/)
     * [How we test KeY](devel/Testing/)
