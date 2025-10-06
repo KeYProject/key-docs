@@ -9,7 +9,7 @@ in the general documentation files on proof scripts.
 
 Field | Value
 ----- | -----
-Generated on: | Fri Oct 03 22:50:46 CEST 2025
+Generated on: | Mon Oct 06 15:01:02 CEST 2025
 Branch: | jmlScripts
 Version: | 2.12.4-dev
 Commit: | 382f4ce88f33ee3eb90e34b05e23451863271d4c
@@ -301,7 +301,7 @@ Use the command with "close" to make sure the command succeeds for fails without
 changes.
 
 #### Usage: 
-`auto [all] [classAxioms] [dependencies] [expandQueries] [modelsearch] [add:⟨String⟩] [breakpoint:⟨String⟩] [matches:⟨String⟩] [steps:⟨int⟩]`
+`auto [all] [classAxioms] [dependencies] [expandQueries] [modelsearch] [add:⟨String⟩] [breakpoint:⟨String⟩] [matches:⟨String⟩] [only:⟨String⟩] [steps:⟨int⟩]`
 
 #### Parameters:
 
@@ -321,11 +321,19 @@ may be a showstopper (if expansion increases the complexity on the sequent too m
 * `add` *(optional named option, type String)*:<br>Additional rules to be used by the auto strategy. The rules have to be given as a
 comma-separated list of rule names and rule set names. Each entry can be assigned to a priority
 (high, low, medium or a natural number) using an equals sign.
+Cannot be combined with the 'only' parameter.
 
 
 * `breakpoint` *(optional named option, type String)*:<br>When doing symbolic execution by auto, this option can be used to set a Java statement at which symbolic execution has to stop.
 
 * `matches` *(optional named option, type String)*:<br>Run on the formula matching the given regex.
+
+* `only` *(optional named option, type String)*:<br>Limit the rules to be used by the auto strategy. The rules have to be given as a
+comma-separated list of rule names and rule set names. Each entry can be assigned to a priority
+(high, low, medium or a natural number) using an equals sign.
+All rules application which do not match the given names will be disabled.
+Cannot be combined with the 'add' parameter.
+
 
 * `steps` *(optional named option, type int)*:<br>The maximum number of proof steps to be performed.
 
@@ -561,6 +569,36 @@ The available solvers depend on your system: KeY supports at least z3, cvc5.
 * `solver` *(named option, type String)*:<br>
 
 * `timeout` *(named option, type int)*:<br>
+
+<hr>
+
+### <span style="color: var(--md-primary-fg-color);"> Command `witness`</span>
+
+
+<span style="float:right;">[Source](https://github.com/KeYProject/key/blob/382f4ce88f33ee3eb90e34b05e23451863271d4c/key.core/src/main/java/de/uka/ilkd/key/scripts/WitnessCommand.java)</span>
+
+Provides a witness symbol for an existential or universal quantifier.
+The given formula must be present on the sequent. Placeholders are allowed.
+The command fails if the formula cannot be uniquely matched on the sequent.
+The witness symbol `as` must be a valid identifier and not already used as function, predicate, or
+program variable name. The new function symbol is created as a Skolem constant.
+
+#### Example:
+
+If the sequent contains the formula `\exists int x; x > 0` in the antecedent then the command
+`witness "\exists int x; x > 0" as="x_12"` will introduce the witness symbol `x_12` for which "x_12 > 0`
+holds and is added to the antecedent.
+
+
+#### Usage: 
+`witness ⟨JTerm (formula)⟩ as:⟨String⟩`
+
+#### Parameters:
+
+
+* `formula` *(1st positional argument, type JTerm)*:<br>The formula containing the quantifier for which a witness should be provided. Placeholders are allowed.
+
+* `as` *(named option, type String)*:<br>The name of the witness symbol to be created.
 
 
 ## Category *Internal*
