@@ -154,6 +154,10 @@ see https://github.com/KeYProject/key/blob/96a6a98328bb9dbaadfb5b54e11b29230e77d
 
 see https://github.com/KeYProject/key/blob/4579ddf083e76927db5c2ffb40268962482aa9e3/key.ui/examples/heap/quicksort/Quicksort.java
 
+### Proof of Red-Black-Trees using JML proof scripts
+
+see https://github.com/KeYProject/rbtree-verification/blob/main/src/Tree.java
+
 ### Proof of the [IPS4O sorting algorithm](https://doi.org/10.1007/978-3-031-57246-3_15) (partially) using scripts
 
 see https://github.com/KeYProject/ips4o-verify/blob/pfeifer/STTT/src/main/java/de/wiesler/Sorter.java
