@@ -38,7 +38,7 @@ jobs:
         run: pip install --user -r requirements.txt
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - run: mkdocs build -c -d public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
