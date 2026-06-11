@@ -67,7 +67,7 @@ These classes are read in verbatim: All contracts and all method bodies are
 taken into consideration and are available during the verification.
 
 
-## Library giben as Java sources
+## Library given as Java sources
 
 After loading the default classes, all classpath locations are iterated to
 recursivly read in all files ending in `.java` from within the directories and
@@ -90,10 +90,7 @@ an arbitrary name is created.
 ## Combining class files and stubs
 
 It is possible to use both file types: class files and Java stubs. There may
-only be either a class file or a source specification for one class. (Current
-versions of KeY also read external `.jml` files placed next to the sources --
-see `JavaService` in `key.core`, which collects both `.java` and `.jml`
-files.)
+only be either a class file or a source specification for one class. 
 
 You can use the "stubmaker" tool available in the key-tools repository to create
 a set of skeleton java source files for your libraries and which can be fed to

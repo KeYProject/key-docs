@@ -1,6 +1,6 @@
 # Polarity Triggers for Rewrite Taclets
 
-*Introduced October 2012 by Christoph Scheben (originally a mailing list post; lightly edited).*
+*Introduced October 2012 by Christoph Scheben*
 
 ## The feature and its motivation
 
