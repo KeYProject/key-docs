@@ -1,25 +1,28 @@
+---
+approved: wp,dd,rb,rh 2026-06-11
+---
+
 # Overview
 
 This web page contains information for users and developers of the KeY
 Deductive Verification System.
 
-If you are new to the KeY System, you should start with the excerpt [Using the Prover](user/quicktour/) from the KeY Book.
-
-
 The documentation is split into two major parts:
 
-* End user: 
-    * [How to use the KeY tool for *end user*](user/)
-    * [How to write Proof Scripts for resilient, persistent and reapplicable proofs*](user/ProofScripts/)
-* Developer:
-    * [How to use KeY as a library or add a new feature](devel/)
+* **User Guide** — for people who *use* KeY to verify Java programs:
+    * [Getting started with the Quicktour](quicktour/)
+    * [Core concepts, languages, and UI features](user/)
+    * [Proof scripts for resilient, persistent and reapplicable proofs](user/ProofScripts/)
+    * [Frequently asked questions](user/FAQ/)
+* **Developer Guide** — for people who *build on or contribute to* KeY:
+    * [Getting started with the code base](devel/)
+    * [Architecture overview](devel/Architecture/)
+    * [How to extend KeY](devel/ExtendingKeY/) (taclets, GUI extensions,
+      script commands, SMT solvers)
     * [How we test KeY](devel/Testing/)
-  
 
-If you want to contribute to this documentation, please refer to [*How to write documentation*](devel/howtodoc/).
-
-
+If you want to contribute to this documentation, please refer to
+[*How to write documentation*](devel/howtodoc/).
 
 ![KeY Logo](https://git.key-project.org/uploads/-/system/appearance/logo/1/key-color.png)
 The KeY Team.
-

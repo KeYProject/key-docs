@@ -5,9 +5,9 @@ KeY loads the definition of SMT solvers from JSON files with the KeY dialect. Us
 Here given in order of precedence. 
 
 1. The current working directory: `./smt-solvers.json`
-2. Path from system property : `-P key.smt_solvers=<path>`
+2. Path from system property: `-Dkey.smt_solvers=<path>`
 3. The KeY user configuration folder: `~/.key/smt-solvers.json`
-4. All resources with the name `de/uka/ilkd/key/smt/solvertypes/solvers.key.json` in the classpath.
+4. All resources with the name `de/uka/ilkd/key/smt/solvertypes/smt-solvers.json` in the classpath.
 
 All files are loaded but the lowest number adds / overwrites the solvers defined by the higher numbers. Hence, 
 local configuration overwrites user configuration overwrites classpath configuration. 
@@ -26,12 +26,15 @@ to handle the solver output unless an existing solver socket suffices.
 
 This can all be done without writing a lot of own code (except for the solver socket).
 
-To add a solver, specify a properties (*.props*) file following the example below or the already existing properties files in the project.
-Afterwards, put the properties file in a `*...\resources\de\uka\ilkd\key\smt\solvertypes*` directory in one of the subprojects of KeY. 
-For the solver to be usable, add the file's name to a *solvers.txt* which also should be located in the same directory as the .props file.
+To add a solver, specify it in a JSON file following the example below (or
+the definitions shipped with KeY in
+`key.core/src/main/resources/de/uka/ilkd/key/smt/solvertypes/smt-solvers.json`)
+and place the file in one of the locations listed above, e.g.
+`~/.key/smt-solvers.json`.
 
-If you choose to add the properties file to the specific directory *key.core\src\main\resources\de\uka\ilkd\key\smt\solvertypes*, 
-it will be included in an automatically (via gradle task) created *solvers.txt* file in that same directory.
+!!! note
+    A formal JSON schema and more details for developers are available in
+    the [developer documentation](../../../devel/AddingSMTSolvers/).
 
 
 ```json

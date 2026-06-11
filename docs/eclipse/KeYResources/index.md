@@ -1,5 +1,12 @@
 # KeY Resources
 
+!!! warning "Unsupported historical content"
+    This Eclipse integration is **no longer supported or maintained**. It
+    targeted old Eclipse releases (Indigo/Luna era) and old versions of
+    KeY; the update sites may no longer exist. This page is kept for
+    historical reference.
+
+
 KeY Resources provides the "KeY project" with automatic background
 proofs. Such projects extends the functionality of a Java project by
 maintaining automatically proofs in background. This means that the

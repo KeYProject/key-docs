@@ -1,5 +1,12 @@
 # KeY basics in Eclipse (Cross-project Functionality)
 
+!!! warning "Unsupported historical content"
+    This Eclipse integration is **no longer supported or maintained**. It
+    targeted old Eclipse releases (Indigo/Luna era) and old versions of
+    KeY; the update sites may no longer exist. This page is kept for
+    historical reference.
+
+
 The following functionality is independent from a specific KeY-based Eclipse project.
 
 The following sections illustrate features independent from a specific

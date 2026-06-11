@@ -3,6 +3,13 @@
 
 # Symbolic Execution Debugger
 
+!!! warning "Unsupported historical content"
+    This Eclipse integration is **no longer supported or maintained**. It
+    targeted old Eclipse releases (Indigo/Luna era) and old versions of
+    KeY; the update sites may no longer exist. This page is kept for
+    historical reference.
+
+
 The Symbolic Execution Debugger (SED) is a platform for symbolic
 execution in general and allows to interactively debug programs based
 on symbolic execution. Symbolic execution discovers all possible
@@ -30,10 +37,10 @@ The Symbolic Execution Debugger is compatible with
 [Eclipse](http://www.eclipse.org) Indigo (3.7) or newer.
 
 Required update-sites and installation instructions are available in
-the [download](../../download/#eclipse) area.
+the [download](https://www.key-project.org/download/#eclipse) area.
 
 As getting started guide for new users we recommend the
-[tutorial](tutorial.html) using the [SED examples](#example). In
+[tutorial](#example) using the SED examples. In
 addition, participation in the [evaluations](#evaluations) allows you
 to try out the SED in a guided way by hand of different examples.
 
@@ -306,8 +313,8 @@ still recommended as starting point for new users.** Each evaluation
 explains the use of the SED and allows you to try it out on different
 examples.
 
--   [Reviewing Code Evaluation](ReviewingCode.html)
--   [Understanding Proof Attempts Evaluation](UnderstandingProofAttempts.html)
+-   Reviewing Code Evaluation *(no longer available online)*
+-   Understanding Proof Attempts Evaluation *(no longer available online)*
 
 ### Architecture {: #architecture}
 

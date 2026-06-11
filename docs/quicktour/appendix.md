@@ -1,4 +1,4 @@
-## Appendix
+# Appendix
 
 The KeY tool is continually developed, meaning that parts of this
 tutorial may be outdated when you read it. Moreover, the JML semantics

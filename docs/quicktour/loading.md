@@ -1,4 +1,4 @@
-## Loading JML Contracts {#sec:tutorial}
+# Loading JML Contracts {#sec:tutorial}
 
 In this chapter, we first explain how to load a Java program into KeY,
 and then introduce you to KeY's logic using the program you just loaded.

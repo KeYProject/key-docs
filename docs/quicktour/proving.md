@@ -1,4 +1,4 @@
-## Proving JML Contracts {#sec:application}
+# Proving JML Contracts {#sec:application}
 
 Now we apply the described proof obligations to the tutorial example.
 First we demonstrate the generation of proof obligations, then we show

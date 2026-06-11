@@ -1,5 +1,12 @@
 # Visual DbC
 
+!!! warning "Unsupported historical content"
+    This Eclipse integration is **no longer supported or maintained**. It
+    targeted old Eclipse releases (Indigo/Luna era) and old versions of
+    KeY; the update sites may no longer exist. This page is kept for
+    historical reference.
+
+
 Visual DbC is a proof management and visualization tool. It allows to
 visualize code members (e.g. types, attributes, methods) together with
 specifications (e.g. method contracts, invariants) and proofs in a DbC

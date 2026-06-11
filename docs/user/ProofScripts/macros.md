@@ -1,88 +1,92 @@
 # Macros
 
-!!! warning
-    This page was automatically created. There seems to have been issues with the export format apparently.
+Proof macros bundle strategy invocations and rule applications into
+higher-level proof steps. They can be applied from the GUI (context menu
+*Strategy macros* or toolbar) and from proof scripts via the `macro`
+command, e.g. `macro autopilot;`.
 
-Generated on: ${new Date()} by `gendoc.groovy`.
+The list below covers the macros shipped with KeY (defined in package
+`de.uka.ilkd.key.macros` of `key.core`).
 
-Covering the macros of [KeY](http://key-project.org).
+## Auto pilot
 
-## Full Auto Pilot (`autopilot`) 
+### Full Auto Pilot (`autopilot`)
 
-Auto Pilot
+1. Finish symbolic execution
+2. Separate proof obligations
+3. Expand invariant definitions
+4. Try to close all proof obligations
 
-<html><ol><li>Finish symbolic execution<li>Separate proof obligations<li>Expand invariant definitions<li>Try to close all proof obligations</ol>
+### Auto pilot, preparation only (`autopilot-prep`)
 
+1. Finish symbolic execution
+2. Separate proof obligations
+3. Expand invariant definitions
 
+### Finish symbolic execution (`symbex`)
 
-## Auto pilot (preparation only) (`autopilot-prep`) 
+Continue automatic strategy application until no more modality is on the
+sequent.
 
-Auto Pilot
+### Flexible automation (`auto-macro`)
 
-<html><ol><li>Finish symbolic execution<li>Separate proof obligations<li>Expand invariant definitions</ol>
+Macro with multiple options for flexible automation. With default options it
+behaves like `symbex`.
 
+### Close provable goals below (`tryclose`)
 
+Closes closable goals, leaves the rest untouched (see setting *AutoPrune*).
+Applies only to goals beneath the selected node.
 
-## Full Information Flow Auto Pilot (`infflow-autopilot`) 
+## Propositional
 
-Information Flow
+### Propositional expansion with splits (`split-prop`)
 
-<html><ol><li>Search exhaustively for applicable position, then<li>Start auxiliary computation<li>Finish symbolic execution<li>Try to close as many goals as possible<li>Apply macro recursively<li>Finish auxiliary computation<li>Use information flow contracts<li>Try to close as many goals as possible</ol>
+Apply rules to decompose propositional toplevel formulas; splits the goal if
+necessary.
 
+### Propositional expansion without splits (`nosplit-prop`)
 
+Apply rules to decompose propositional toplevel formulas; does not split the
+goal.
 
-## Propositional expansion (w/o splits) (`nosplit-prop`) 
+## Simplification
 
-Propositional
+### One single proof step (`onestep`)
 
-Apply rules to decompose propositional toplevel formulas; does not split the goal.
+One single proof step is applied.
 
+### Heap simplification (`simp-heap`)
 
+Performs simplification of heap and location-set (`LocSet`) terms. It applies
+simplification rules (including the "unoptimized" select rules), One Step
+Simplification, alpha, and delta rules.
 
-## One Single Proof Step (`onestep`) 
+### Integer simplification (`simp-int`)
 
-Simplification
+Performs simplification of integers and terms with integers. Applies only
+non-splitting simplification rules.
 
-One single proof step is applied
+### Update simplification only (`simp-upd`)
 
+Applies only update simplification rules.
 
+## Other
 
-## Heap Simplification (`simp-heap`) 
+### Full Information Flow Auto Pilot (`infflow-autopilot`)
 
-Simplification
+For information-flow proofs (module `key.core.infflow`):
 
-This macro performs simplification of Heap and LocSet terms.
-It applies simplification rules (including the "unoptimized" select rules), One Step Simplification, alpha, and delta rules.
+1. Search exhaustively for an applicable position, then
+2. start auxiliary computation,
+3. finish symbolic execution,
+4. try to close as many goals as possible,
+5. apply the macro recursively,
+6. finish the auxiliary computation,
+7. use information flow contracts, and
+8. try to close as many goals as possible.
 
+### Transcendental floats (`transcendental`)
 
-
-## Update Simplification Only (`simp-upd`) 
-
-Simplification
-
-Applies only update simplification rules
-
-
-
-## Propositional expansion (w/ splits) (`split-prop`) 
-
-Propositional
-
-Apply rules to decompose propositional toplevel formulas; splits the goal if necessary
-
-
-
-## Finish symbolic execution (`symbex`) 
-
-Auto Pilot
-
-Continue automatic strategy application until no more modality is on the sequent.
-
-
-
-## Close provable goals below (`tryclose`) 
-
-null
-
-Closes closable goals, leave rest untouched (see settings AutoPrune). Applies only to goals beneath the selected node.
-
+Axiomatizes transcendental float functions (such as `sin`) for SMT
+translation.

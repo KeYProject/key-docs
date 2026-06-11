@@ -1,5 +1,13 @@
 # KeYClipse
 
+!!! warning "Unsupported historical content"
+    The Eclipse integrations described in this section are **no longer
+    supported or maintained**. They targeted old Eclipse releases
+    (Indigo/Luna era) and old versions of KeY, and the update sites may no
+    longer exist. The documentation is kept for historical reference; for
+    current tooling use the standalone KeY application (see the
+    [User Guide](../user/)).
+
 ## Symbolic Execution Debugger (SED)
 
 The Symbolic Execution Debugger (SED) is a debugger based on symbolic
