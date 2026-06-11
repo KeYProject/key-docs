@@ -78,7 +78,7 @@ circumstances the method is expected to terminate abruptly by throwing
 an exception.
 
 Use the Proof Management (either by clicking onto the button
-![image](figures/proofManagementButton.png){height="2ex"} or
+:fontawesome-solid-list-check: or
 [**File**] $|$ [**Proof Management**]).
 Continue as before, but this time, select the method
 `PayCard::charge(int amount)`. In contrast to the previous example, the
