@@ -453,22 +453,22 @@ their actions are listed here as well.
 
 Action/Command                  | Shortcut     |                        Button in Toolbar
 --------------------------------|--------------|-----------------------------------------------------------
-Load                            | Ctrl+O     |              ![image](figures/open.png){.toolbar-icon}
-Reload                          | Ctrl+R    |          ![image](figures/openMostRecent.png){.toolbar-icon}
-Save                            | Ctrl+S   |              ![image](figures/saveFile.png){.toolbar-icon}
-Proof Management                | Ctrl+M  |        ![image](figures/proofManagementButton.png){.toolbar-icon}
+Load                            | Ctrl+O     |              :fontawesome-solid-folder-open:
+Reload                          | Ctrl+R    |          :fontawesome-solid-rotate-right:
+Save                            | Ctrl+S   |              :fontawesome-solid-floppy-disk:
+Proof Management                | Ctrl+M  |        :fontawesome-solid-list-check:
 Exit                            | Ctrl+Q |                                      
-Edit last opened file           | -  |                   ![image](figures/editFile.png){.toolbar-icon}
+Edit last opened file           | -  |                   :fontawesome-solid-pen-to-square:
 Use pretty syntax               | Ctrl+P      |                                
 Font size: smaller              | Ctrl+Up      |                               
 Font size: larger               | Ctrl+Down     |                              
-Start automatic strategy        | Ctrl+S         |     ![image](figures/autoModeStart.png){.toolbar-icon}
+Start automatic strategy        | Ctrl+S         |     :fontawesome-solid-circle-play:{ style="color: green" }
 Abandon task                    | Ctrl+W           |                           
-Undo last rule application      | Ctrl+Z          |       ![image](figures/goalBack.png){.toolbar-icon}
+Undo last rule application      | Ctrl+Z          |       :fontawesome-solid-delete-left:
 Search in proof tree            | Ctrl+F                                       
 Search in sequent view          | F3                                           
-Prune tree below selected node  | -                 |   ![image](figures/pruneProof.png){.toolbar-icon}
-SMT Solver                      | -                 |   ![image](figures/SMTButton.png){.toolbar-icon}
+Prune tree below selected node  | -                 |   :fontawesome-solid-scissors:
+SMT Solver                      | -                 |   text button ("Run Z3, …", solver selection drop-down)
 Taclet options                  | Ctrl+T           |                           
 Toggle one Step Simplifier      | Ctrl+Shift+S     | ![image](figures/oneStepSimplifier.png){.toolbar-icon}
 
