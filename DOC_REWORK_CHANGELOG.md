@@ -438,6 +438,32 @@ intentionally parked LLM stub and `disabled/`).
   unnecessary and were removed; the badges now follow palette changes in
   `mkdocs.yml` automatically.
 
+### M16 — Orange "not yet verified" badge; squidfunk links localized
+
+- `docs/extra.css`: the "not yet verified" badge is now orange (dark
+  orange in light mode, lighter orange in dark mode for contrast); the
+  verified footer note keeps the site accent color.
+- `devel/howtodoc/index.md`: removed all 12 `squidfunk.github.io` content
+  links (introduced earlier when fixing the page's dead relative links):
+  - icons/emoji/admonition references now point to the **local sections
+    of the same page** (`#icons-emojis`, `#admonitions`; anchors verified
+    in the built HTML);
+  - markdown-extension references (Emoji, Attribute Lists, Markdown in
+    HTML) now point to the canonical extension documentation
+    (pymdown-extensions / python-markdown) instead of Material's mirror;
+  - "primary/accent color", "additional JavaScript", and "additional
+    style sheet" references were de-linked and now name the local
+    configuration directly (`mkdocs.yml` palette, `extra_javascript`,
+    `docs/extra.css`).
+  - Follow-up: the five remaining `github.com/squidfunk` /
+    `raw.githubusercontent.com` links were removed as well — the Material
+    release-notes badge link was de-linked, the `.icons` reference now
+    names the directory inside the installed `mkdocs-material` package,
+    and the three example-icon links became plain code paths (the
+    rendered shortcodes next to them already display the icons).
+    The only remaining mention is the theme-generated footer credit
+    ("Made with Material for MkDocs").
+
 ## Known issues / suggestions for follow-up
 
 - `key-src` `README.md` states "Java 17 or newer" while the build sets
