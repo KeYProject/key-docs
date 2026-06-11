@@ -383,6 +383,26 @@ intentionally parked LLM stub and `disabled/`).
   visually in a browser preview (badge position/colors, no layout
   breakage with title, ToC, and Mermaid diagram).
 
+### M13b — Verified badge moves to the footer, with date
+
+- `hooks/approval.py` reworked: **approved pages** now render the badge as
+  a full-width green note at the **end of the page** ("✓ This page was
+  checked by ⟨initials⟩ on ⟨date⟩."), keeping the prominent amber top
+  badge only for unverified pages (call to action).
+- The verification date comes from the front matter: either a separate
+  `approved-on: 2026-06-11` field or the shorthand
+  `approved: rb 2026-06-11`; without a date only the initials are shown.
+  (YAML date values and plain-meta string values both handled.)
+- New `.approval--footer` style in `docs/extra.css` (left-bordered note
+  instead of a floating pill).
+- `devel/Architecture.md` (signed off by rb) got `approved-on: 2026-06-11`
+  added to the fresh sign-off.
+- Convention documentation in *How to write documentation* updated.
+- Verified by building (footer badge with date on Architecture, top badge
+  on unverified pages, generated pages still suppressed) and by checking
+  the computed styles in the browser (block at end of content, green
+  left-border note).
+
 ## Known issues / suggestions for follow-up
 
 - `key-src` `README.md` states "Java 17 or newer" while the build sets

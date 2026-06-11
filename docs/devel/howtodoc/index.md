@@ -37,23 +37,25 @@ build:
 
 ## Review status of pages
 
-Every page shows a review badge in its top-right corner: amber
-*"not yet verified"* by default, green *"checked by &lt;initials&gt;"* once a
-reviewer has signed the page off. To sign a page off, add an `approved`
-field with your initials to its front matter:
+Unreviewed pages show an amber *"not yet verified"* badge in their top-right
+corner. Once a reviewer signs a page off, the badge moves to the page
+*footer* as a green note stating who checked the page and when. To sign a
+page off, add your initials and the date to the front matter:
 
 ``` markdown
 ---
 approved: rb
+approved-on: 2026-06-11
 ---
 
 # Page Title
 ...
 ```
 
-(For generated pages, `approved: none` suppresses the badge.) The badge is
-injected by the MkDocs hook `hooks/approval.py`; the styling lives in
-`docs/extra.css`.
+The shorthand `approved: rb 2026-06-11` works too; without a date, only the
+initials are shown. For generated pages, `approved: none` suppresses the
+badge entirely. The badge is injected by the MkDocs hook
+`hooks/approval.py`; the styling lives in `docs/extra.css`.
 
 ## Commands
 

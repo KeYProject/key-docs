@@ -34,3 +34,17 @@
 }
 [data-md-color-scheme="slate"] .approval--ok { color: #a5d6a7; }
 [data-md-color-scheme="slate"] .approval--missing { color: #ffd54f; }
+
+/* Footer variant of the review badge: full-width line at the end of the
+   page content instead of a floating pill. */
+.approval--footer {
+  float: none;
+  display: block;
+  margin: 2.5rem 0 0 0;
+  padding: .4rem .8rem;
+  border-radius: .2rem;
+  font-weight: 400;
+  font-size: .64rem;
+  border-width: 0 0 0 .2rem;
+  border-style: solid;
+}
