@@ -9,3 +9,28 @@
 .md-nav--primary nav[data-md-level="1"] > .md-nav__list > .md-nav__item > .md-nav__link {
   font-weight: 700;
 }
+
+/* Review status badge (see hooks/approval.py). Pages carry an `approved:`
+   front matter field with reviewer initials; without it, an amber
+   "not yet verified" badge is shown. */
+.approval {
+  float: right;
+  margin: 0 0 .4rem .8rem;
+  padding: .1rem .55rem;
+  border-radius: 1rem;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.approval--ok {
+  color: #1b5e20;
+  background: #a5d6a733;
+  border: 1px solid #66bb6a;
+}
+.approval--missing {
+  color: #7f5200;
+  background: #ffe08233;
+  border: 1px solid #ffb300;
+}
+[data-md-color-scheme="slate"] .approval--ok { color: #a5d6a7; }
+[data-md-color-scheme="slate"] .approval--missing { color: #ffd54f; }

@@ -1,3 +1,7 @@
+---
+approved: none
+---
+
 # Changelog
 
 ## [2.12.3](https://github.com/KeYProject/key/releases/tag/KEY-2.12.3) (2024-09-08)

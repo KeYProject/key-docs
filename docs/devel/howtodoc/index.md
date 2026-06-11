@@ -35,6 +35,26 @@ serve:
 build:
 	mkdocs build
 
+## Review status of pages
+
+Every page shows a review badge in its top-right corner: amber
+*"not yet verified"* by default, green *"checked by &lt;initials&gt;"* once a
+reviewer has signed the page off. To sign a page off, add an `approved`
+field with your initials to its front matter:
+
+``` markdown
+---
+approved: rb
+---
+
+# Page Title
+...
+```
+
+(For generated pages, `approved: none` suppresses the badge.) The badge is
+injected by the MkDocs hook `hooks/approval.py`; the styling lives in
+`docs/extra.css`.
+
 ## Commands
 
 * `mkdocs new [dir-name]` - Create a new project.

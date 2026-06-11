@@ -1,6 +1,9 @@
 site_name: KeY Documentation
 site_url: https://keyproject.github.io/key-docs/
 
+hooks:
+  - hooks/approval.py
+
 plugins:
   - search
   - mermaid2

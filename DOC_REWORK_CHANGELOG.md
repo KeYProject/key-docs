@@ -364,6 +364,25 @@ intentionally parked LLM stub and `disabled/`).
   modules stacked vertically — fixed with invisible `~~~` links that force
   the horizontal row.
 
+### M13 — Per-page review status ("approved" field)
+
+- New MkDocs hook `hooks/approval.py` (wired via `hooks:` in
+  `mkdocs.yml`): every page can carry an `approved:` front matter field
+  with the reviewer's initials.
+  - `approved: <initials>` → green badge "✓ checked by <initials>"
+  - field missing → amber badge "⚠ not yet verified"
+  - `approved: none` → no badge (for generated pages)
+- Badge styling (top-right pill, light/dark variants) in
+  `docs/extra.css`.
+- `approved: none` set on the two generated pages (`changelog.md`,
+  `user/ProofScripts/commands.md`); all other pages currently show
+  "not yet verified" until someone signs them off.
+- Convention documented in *How to write documentation* (new section
+  "Review status of pages").
+- Verified by building and inspecting the HTML for all three states, and
+  visually in a browser preview (badge position/colors, no layout
+  breakage with title, ToC, and Mermaid diagram).
+
 ## Known issues / suggestions for follow-up
 
 - `key-src` `README.md` states "Java 17 or newer" while the build sets
