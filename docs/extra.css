@@ -1,3 +1,11 @@
 .md-nav__item--section > .md-nav__link[for] {
     color: var(--md-typeset-color) !important;
 }
+
+/* Sidebar table of contents: render all chapter-level entries bold.
+   Sections (entries with subsections) are bold by default; this rule also
+   bolds plain pages at the same level (e.g. "1. Architecture", "8. FAQ"),
+   so the chapter list looks uniform. */
+.md-nav--primary nav[data-md-level="1"] > .md-nav__list > .md-nav__item > .md-nav__link {
+  font-weight: 700;
+}

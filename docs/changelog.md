@@ -1,5 +1,31 @@
 # Changelog
 
+## [2.12.3](https://github.com/KeYProject/key/releases/tag/KEY-2.12.3) (2024-09-08)
+
+Highlights of this release (see the
+[GitHub release notes](https://github.com/KeYProject/key/releases/tag/KEY-2.12.3)
+for the complete list of changes):
+
+### Language and calculus
+  - Support for user-defined algebraic data types (ADTs) in `.key` files, including destructors.
+  - New function symbol `seqUpd` for sequence updates.
+  - JML: immutable and valid `set` statements, support for `\TYPE`, configurable enabled keys for JML condition evaluation (with a status line indicator).
+  - Problem statements in `.key` files can also be given as a (semi-)sequent.
+
+### User interface
+  - Heap/memory indicator in the status bar.
+  - Help buttons for extension settings; extension actions in context submenus are sorted consistently.
+  - Improved error reporting and nicer parse error messages.
+  - The coarse "experimental" flag was replaced by fine-grained feature flags.
+
+### Performance and SMT
+  - Proof caching uses a dependency graph to increase the hit rate; dependency tracking for proof slicing is optional.
+  - New Z3_QF solver variant; fixes to the SMT translation (bound variables, dependency issues) and to solver paths on Windows.
+
+### Infrastructure
+  - Java 21 runtime used for testing; JSR305 annotations replaced by JSpecify; nullness checking activated for `key.ncore`.
+  - Various bug fixes (proof tree updates, node selection between proofs, taclet pretty printing, startup crash with missing `~/.key/colors.json`, …).
+
 ## [2.12.2](https://github.com/KeYProject/key/releases/tag/KeY-2.12.2) (2023-11-10)
 This release contains bug fixes and performance enhancements.
 

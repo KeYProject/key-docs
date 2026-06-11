@@ -1,4 +1,12 @@
-# Infracture of Continous Integration
+# Infrastructure of Continuous Integration
+
+!!! warning
+    Parts of this page are historical: the primary CI nowadays runs as
+    GitHub Actions workflows in the KeY repository
+    (`.github/workflows/tests.yml` et al.), complemented by a GitLab CI
+    configuration. The Docker images and the Jenkins/GitLab runner setup
+    described below stem from the earlier infrastructure (note the old
+    Java versions mentioned).
 
 ## Docker images for testing
 
@@ -36,9 +44,9 @@ Gitlab-CI. We assume that you have terminal access to the machine.
    ``` 
    $ sudo gitlab-runner register
    ``` 
-   Use the information provided from the [admin page](/admin/runners).  
+   Use the information provided on the admin page of your GitLab instance.  
    After this step, the gitlab-ci should work on your computer. Your
-   node should be visible at the [admin page](/admin/runners).
+   node should be visible on that admin page.
 
 5. Create access for Jenkins: 
 

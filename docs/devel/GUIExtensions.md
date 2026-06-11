@@ -1,6 +1,7 @@
 # GUI extensions
 
-**weigl, 2019**
+**weigl, 2019** *(revised 2026: list of extension points checked against
+`de.uka.ilkd.key.gui.extension.api.KeYGuiExtension` in `key.ui`)*
 
 GUI Extensions defines a couple of extension points for the KeY User Interface.
 It allows to add new functionality into the gui, without digging through the old
@@ -55,10 +56,18 @@ a service architecture, incl. Dependency Injection
  
 
 ## `KeYGuiExtension.Startup`
-Entry point for KeY startup.
-For hooking into the shutdown handler, register a GUIListener at the KeYMediator.
+Entry point for KeY startup. `preInit(window, mediator)` is called before the
+layout of the main window, `init(window, mediator)` after its initialization
+(e.g. for registering key bindings).
+For hooking into the shutdown handler, register a `GUIListener` at the `KeYMediator`.
 
 ## `KeYGuiExtension.MainMenu`
+
+Provides a list of `Action`s added to the *Extensions* menu of the main
+window (`getMainMenuActions(MainWindow)`). Use the `KeyAction.PATH` and
+`KeyAction.PRIORITY` properties to control the position of an action within
+the menu.
+
 ## `KeYGuiExtension.ContextMenu`
 
 Use this extension point to add items to context menus.
@@ -104,10 +113,29 @@ Changes to settings: It is now possible to hook into the
 
 ## `KeYGuiExtension.StatusLine`
 
+Contributes components (`getStatusLineComponents()`) to the right side of
+the status line of the main window.
+
+## `KeYGuiExtension.Tooltip`
+
+Extends the tooltip displayed when hovering over a term in the sequent view
+(`getTooltipStrings(MainWindow, PosInSequent)`).
+
 ## `KeYGuiExtension.TermInfo`
 
-This interface allows you to extend the tooltip displayed when hovering on a term in the sequent view.
-
+Extends the term info string shown in the status line for the term under the
+mouse cursor (`getTermInfoStrings(MainWindow, PosInSequent)`).
 
 ## `KeYGuiExtension.KeyboardShortcuts`
 
+Defines keyboard shortcuts for various components
+(`getShortcuts(KeYMediator, String componentId, JComponent)`). Constants for
+the component ids (sequent view, goal list, proof tree, main window, info
+view, strategy selection, source view) are defined in the interface.
+
+## Existing extensions as examples
+
+The `keyext.*` Gradle modules are implemented as GUI extensions and serve as
+good templates: `keyext.exploration` (proof exploration),
+`keyext.slicing` (proof slicing), `keyext.caching` (proof caching),
+`keyext.proofmanagement`, and `keyext.isabelletranslation`.

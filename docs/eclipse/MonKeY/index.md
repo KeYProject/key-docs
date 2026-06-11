@@ -1,5 +1,12 @@
 # MonKeY
 
+!!! warning "Unsupported historical content"
+    This Eclipse integration is **no longer supported or maintained**. It
+    targeted old Eclipse releases (Indigo/Luna era) and old versions of
+    KeY; the update sites may no longer exist. This page is kept for
+    historical reference.
+
+
 MonKeY provides a batch verification of all proof obligations. This
 means that the tool lists all proof obligations provided by the source
 code and allows to prove them in a batch. Statistics such as the used
@@ -16,7 +23,7 @@ MonKeY is compatible with [Eclipse](http://www.eclipse.org) Indigo (3.7)
 or newer.
 
 Required update-sites and installation instructions are available in the
-[download](../../download/#eclipse) area.
+[download](https://www.key-project.org/download/#eclipse) area.
 
 ## Verify all proof obligations of a project
 

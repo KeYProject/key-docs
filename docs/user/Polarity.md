@@ -1,8 +1,8 @@
-# Polarity triggers for rewrite taclets
+# Polarity Triggers for Rewrite Taclets
 
-*introduced oct 2012 by Christoph Scheben* 
+*Introduced October 2012 by Christoph Scheben (originally a mailing list post; lightly edited).*
 
-## THE NEW FEATURE AND ITS MOTIVATION
+## The feature and its motivation
 
 Triggered by a soundness bug that I introduced last week (fixed again the day
 afterwards), I introduced the ability to annotate rewrite-taclets with
@@ -98,7 +98,7 @@ polarity in C(F) . The polarity of F in C(F) ==> is succedent
 (positive) polarity in C(F) .
 
 
-## SOUNDNESS OF THE NEW TACLETS AND POSSIBLE APPLICATIONS
+## Soundness of the new taclets and possible applications
 
 It is sound to replace any simple rewrite-taclet (without an add and
 without creating or closing branches) which matches on a top-level
@@ -132,7 +132,7 @@ skolemization would be possible even if the quantifiers are not
 top-level. I think this could helpful at least for the automatic proof
 search strategy.
 
-## PROVING CORRECTNESS
+## Proving correctness
 
 The new feature has been given a formal semantics in terms of a
 meaning formula as in the paper "Ensuring the Correctness of

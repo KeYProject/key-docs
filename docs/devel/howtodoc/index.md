@@ -128,7 +128,7 @@ for i in range(10):
 ```
 
 References by `[text](link)`: For example [a website](http://foo.bar) or
-a [local doc](local-doc.html).
+a [local doc](../index.md).
 
 
 size  material      color
@@ -537,8 +537,8 @@ _Result_:
 
 [Subscribe to our newsletter][Demo]{ .md-button }
 
-  [primary color]: ../setup/changing-the-colors.md#primary-color
-  [accent color]: ../setup/changing-the-colors.md#accent-color 
+  [primary color]: https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#primary-color
+  [accent color]: https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#accent-color 
   [Demo]: javascript:alert$.next("Demo")
 
 #### Adding primary buttons
@@ -574,8 +574,8 @@ _Result_:
 
 [Send :fontawesome-solid-paper-plane:][Demo]{ .md-button .md-button--primary }
 
-  [icon syntax]: icons-emojis.md#using-icons
-  [icon search]: icons-emojis.md#search
+  [icon syntax]: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#using-icons
+  [icon search]: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
 
 
 ### Code Blocks
@@ -946,7 +946,7 @@ _Result_:
         2. Donec vitae suscipit est
         3. Nulla tempor lobortis orci
 
-  [admonitions]: admonitions.md
+  [admonitions]: https://squidfunk.github.io/mkdocs-material/reference/admonitions/
 
 
 ### Data tables
@@ -957,7 +957,7 @@ like [sortable tables] can be achieved with a third-party library and some
 [additional JavaScript].
 
   [sortable tables]: #sortable-tables
-  [additional JavaScript]: ../customization.md#additional-javascript 
+  [additional JavaScript]: https://squidfunk.github.io/mkdocs-material/customization/#additional-javascript 
 
 #### Using data tables
 
@@ -983,7 +983,7 @@ _Result_:
 | `PUT`       | :material-check-all: Update resource |
 | `DELETE`    | :material-close:     Delete resource |
 
-  [icons and emojis]: icons-emojis.md
+  [icons and emojis]: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
 
 #### Column alignment
 
@@ -1128,46 +1128,12 @@ _Example_:
 
 ### Block diagrams
 
-```
-blockdiag {
-    A -> B -> C -> D;
-    A -> E -> F -> G;
-}
-```
-
-blockdiag {
-    A -> B -> C -> D;
-    A -> E -> F -> G;
-}
-
-
-```
-seqdiag {
-    // edge label
-    A -> B [label = "call"];
-    A <- B [label = "return"];
-    // diagonal edge
-    A -> B [diagonal, label = "diagonal edge"];
-    A <- B [diagonal, label = "return diagonal edge"];
-    // color of edge
-    A -> B [label = "colored label", color = red];
-    // failed edge
-    A -> B [label = "failed edge", failed];
-}
-```
-
-seqdiag {
-    // edge label
-    A -> B [label = "call"];
-    A <- B [label = "return"];
-    // diagonal edge
-    A -> B [diagonal, label = "diagonal edge"];
-    A <- B [diagonal, label = "return diagonal edge"];
-    // color of edge
-    A -> B [label = "colored label", color = red];
-    // failed edge
-    A -> B [label = "failed edge", failed];
-}
+!!! warning
+    `blockdiag`/`seqdiag` are **no longer supported** — the
+    `markdown-blockdiag` extension is not enabled in `mkdocs.yml` anymore,
+    so such blocks render as plain text. Use
+    [Mermaid diagrams](#mermaid-diagrams) instead (e.g.
+    `sequenceDiagram` replaces `seqdiag`, `graph` replaces `blockdiag`).
 
 
 ### Mermaid Diagrams
@@ -1599,8 +1565,8 @@ The following icon sets are bundled with Material for MkDocs:
   [Material Design]: https://materialdesignicons.com/
   [FontAwesome]: https://fontawesome.com/icons?d=gallery&m=free
   [Octicons]: https://octicons.github.com/
-  [Emoji]: ../setup/extensions/python-markdown-extensions.md#emoji
-  [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#custom-icons
+  [Emoji]: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#emoji
+  [Emoji with custom icons]: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#custom-icons
 
 Emojis can be integrated in Markdown by putting the shortcode of the emoji
 between two colons. If you're using [Twemoji] (recommended), you can look up
@@ -1698,9 +1664,9 @@ _Result_:
 - :fontawesome-brands-twitter:{ .twitter } – Twitter
 - :fontawesome-brands-facebook:{ .facebook } – Facebook
 
-  [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
+  [Attribute Lists]: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#attribute-lists
   [inline styles]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
-  [additional style sheet]: ../customization.md#additional-css
+  [additional style sheet]: https://squidfunk.github.io/mkdocs-material/customization/#additional-css
 
 #### with animations
 
@@ -1836,7 +1802,7 @@ _Result_:
 </figure>
 
   [Dummy image]: https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–
-  [Markdown in HTML]: ../setup/extensions/python-markdown.md#markdown-in-html
+  [Markdown in HTML]: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#markdown-in-html
 
 #### Image lazy-loading
 

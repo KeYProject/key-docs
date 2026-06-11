@@ -1,4 +1,4 @@
-## Excluding goals from automatic rule application
+# Excluding Goals from Automation
 
 Often enough one deals with proofs in KeY with a considerable number of open
 goals which can be divided into two categories: interesting and uninteresting

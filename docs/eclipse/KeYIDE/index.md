@@ -1,5 +1,12 @@
 # KeYIDE
 
+!!! warning "Unsupported historical content"
+    This Eclipse integration is **no longer supported or maintained**. It
+    targeted old Eclipse releases (Indigo/Luna era) and old versions of
+    KeY; the update sites may no longer exist. This page is kept for
+    historical reference.
+
+
 KeYIDE is an alternative user interface for KeY directly integrated into
 Eclipse. The goal of this project is to provide the same functionality
 as the original user interface of KeY. Up to now only the basics (proof

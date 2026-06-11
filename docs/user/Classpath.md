@@ -87,11 +87,13 @@ Inner classes are mapped as expected. Since there are no method bodies,
 anonymous classes cannot be included the usual way. Instead, a normal class with
 an arbitrary name is created.
 
-## Combining (TODO)
+## Combining class files and stubs
 
-It is possible to use both file types: Class files and java stubs. Since KeY
-does not YET support external .jml files, however, there may only be either
-a class file or a source specification for one class. This should change later.
+It is possible to use both file types: class files and Java stubs. There may
+only be either a class file or a source specification for one class. (Current
+versions of KeY also read external `.jml` files placed next to the sources --
+see `JavaService` in `key.core`, which collects both `.java` and `.jml`
+files.)
 
 You can use the "stubmaker" tool available in the key-tools repository to create
 a set of skeleton java source files for your libraries and which can be fed to

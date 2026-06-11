@@ -8,25 +8,26 @@ date: 2025-12-01
 
 # Adding a new SMT Solver
 
-With [pull request 3597](https://github.com/keyproject/key/pull/3597), we switched to a JSON-based configuration format. The previously format was `properties`-based.
+With [pull request 3597](https://github.com/keyproject/key/pull/3597), we switched to a JSON-based configuration format. The previous format was `properties`-based.
 
-KeY allows you to add SMT (configuration) using a JSON-like files. This interface enables you to 
-- add support for an SMT solver, with of SMT-LIB as input. 
-- add a new variant of an SMT solver, for example *Z3, but only with quantifier-free formulas* or *CVC5, but ignoring all formulas with casts*.
+KeY allows you to add SMT solver configurations using JSON files. This interface enables you to
+
+- add support for an SMT solver that accepts SMT-LIB as input,
+- add a new variant of an SMT solver, for example *Z3, but only with quantifier-free formulas* or *CVC5, but ignoring all formulas with casts*,
 - add a new variant of an SMT solver with specific options or a specific preamble (e.g., Z3 with `(set-option :produce-proofs true)`).
 
 This can all be done without writing a lot of own code (except for the solver socket).
 
 
 !!! note
-    If the SMT solver drops out of the traditional communication scheme (SMT-LIB on stdin and stdou), an integration requires an implementation via the interface of [`AbstractSolverSocket`](https://javadoc.io/doc/org.key-project/key.core/latest/de/uka/ilkd/key/smt/communication/AbstractSolverSocket.html). 
+    If the SMT solver drops out of the traditional communication scheme (SMT-LIB on stdin and stdout), an integration requires an implementation via the interface of [`AbstractSolverSocket`](https://javadoc.io/doc/org.key-project/key.core/latest/de/uka/ilkd/key/smt/communication/AbstractSolverSocket.html). 
 
-To add a solver, you specify its properties in a JSON file, following the [schema](smt-solvers.schema.json). The SMT solver definitions are loaded from various places (in order of loading):
+To add a solver, you specify its properties in a JSON file, following the [schema](smt-solvers.schema.json). The SMT solver definitions are loaded from various places, in order of loading (definitions in later files *overwrite* those from earlier files):
 
 1. All resources in the classpath under the name `de/uka/ilkd/key/smt/solvertypes/smt-solvers.json`.
-3. The KeY user configuration folder: `~/.key/smt-solvers.json`
-2. Path given by a system property : `-P key.smt_solvers=<path>`
-1. The current working directory: `./smt-solvers.json`
+2. The KeY user configuration folder: `~/.key/smt-solvers.json`
+3. Path given by a system property: `-Dkey.smt_solvers=<path>`
+4. The current working directory: `./smt-solvers.json`
 
 Each file can add or substitute previous entry with the same name. Removal is currently not possible, but the substituation with an empty definition. 
 

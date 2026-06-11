@@ -4,7 +4,13 @@
 
 !!! danger
 
-    Recoder is planned to be removed. See [PR #3120](https://github.com/KeYProject/key/pull/3120).
+    **Obsolete.** Recoder has been removed from KeY
+    (see [PR #3120](https://github.com/KeYProject/key/pull/3120)); Java
+    source code is now processed with
+    [JavaParser](https://javaparser.org/) (see `JavaService` and
+    `KeYJPMapping` in `key.core`, package `de.uka.ilkd.key.java`).
+    This page is kept for historical reference only; the JML parser
+    extension part may still be partially instructive.
 
 These notes explain the changes to the existing code of the KeY system that are
 necessary to add a new data type to JML. If the new data type is only used in

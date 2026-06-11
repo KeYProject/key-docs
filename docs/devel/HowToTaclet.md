@@ -34,7 +34,10 @@ rules collection of an appropriate profile.
 
 Taclets can be added to "rule sets" which are used, e.g., by strategy
 heuristics. Default rule sets are defined in the file
-`resources/de/uka/ilkd/key/proof/rules/ruleSetDeclarations.key`.
+`resources/de/uka/ilkd/key/proof/rules/ruleSetsDeclarations.key`.
+How taclets are matched against sequents and selected for automatic
+application is described in
+[The Rule Application Pipeline](../RuleApplicationPipeline/).
 
 ### Quick example
 
