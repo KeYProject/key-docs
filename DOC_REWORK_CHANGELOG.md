@@ -426,6 +426,18 @@ intentionally parked LLM stub and `disabled/`).
     surrounding concerns in `matchFind` (update-prefix stripping into the
     update context, `checkConditions` for `\varcond`/`\notFreeIn`).
 
+### M15 — Badge colors from the site palette
+
+- `docs/extra.css`: the review badges no longer use hard-coded
+  Material-Design hex colors (greens/ambers); they now use the theme's
+  local CSS variables — verified badge in the site's accent color
+  (`--md-accent-fg-color`: teal in light mode, orange in dark mode),
+  "not yet verified" in the neutral foreground tones
+  (`--md-default-fg-color--light/--lighter`), both on
+  `--md-code-bg-color`. The explicit dark-mode overrides became
+  unnecessary and were removed; the badges now follow palette changes in
+  `mkdocs.yml` automatically.
+
 ## Known issues / suggestions for follow-up
 
 - `key-src` `README.md` states "Java 17 or newer" while the build sets

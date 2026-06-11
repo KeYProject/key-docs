@@ -23,17 +23,19 @@
   letter-spacing: .02em;
 }
 .approval--ok {
-  color: #1b5e20;
-  background: #a5d6a733;
-  border: 1px solid #66bb6a;
+  color: var(--md-accent-fg-color);
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-accent-fg-color);
 }
 .approval--missing {
-  color: #7f5200;
-  background: #ffe08233;
-  border: 1px solid #ffb300;
+  color: #e65100;
+  background: var(--md-code-bg-color);
+  border: 1px solid #ef6c00;
 }
-[data-md-color-scheme="slate"] .approval--ok { color: #a5d6a7; }
-[data-md-color-scheme="slate"] .approval--missing { color: #ffd54f; }
+[data-md-color-scheme="slate"] .approval--missing {
+  color: #ffb74d;
+  border-color: #ff9800;
+}
 
 /* Footer variant of the review badge: full-width line at the end of the
    page content instead of a floating pill. */

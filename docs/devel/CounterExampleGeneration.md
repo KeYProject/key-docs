@@ -4,16 +4,7 @@
 sources.*
 
 KeY can search for counterexamples to an (unprovable) goal by translating
-the sequent to SMT and asking Z3 for a model. The functionality is spread
-over several modules:
-
-- `keyext.ui.testgen` — the GUI action (`CounterExampleAction`)
-- `key.core.testgen` — the generator logic
-  (`de.uka.ilkd.key.testgen.smt.counterexample.AbstractCounterExampleGenerator`)
-  and the `SemanticsBlastingMacro`
-- `key.core` — the SMT infrastructure (`de.uka.ilkd.key.smt`:
-  `SolverLauncher`, `communication.Z3CESocket`, `ModelExtractor`)
-- `key.ui` — the result display (`de.uka.ilkd.key.gui.smt.InformationWindow`)
+the sequent to SMT and asking Z3 for a model. 
 
 ## High-level flow
 
