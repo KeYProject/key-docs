@@ -484,6 +484,12 @@ intentionally parked LLM stub and `disabled/`).
   one in `docs/quicktour/figures/`.
 - Verified in the built HTML: all shortcodes render as inline SVGs, no
   literal `:fontawesome-…:` text remains, green styling applied.
+- Pruned `docs/quicktour/figures/`: deleted 24 unreferenced files (the
+  replaced icon PNGs, old LaTeX-era `.eps` figures, and stale
+  screenshots), after also replacing the last inline use of the old
+  proof-management icon in `quicktour/proving.md` with the current
+  glyph. Remaining: `errorDialogUnknownType.png`,
+  `oneStepSimplifier.png`, `proverWithLoadedPO.png` — all referenced.
 
 ## Known issues / suggestions for follow-up
 
