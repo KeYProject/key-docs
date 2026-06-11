@@ -464,6 +464,27 @@ intentionally parked LLM stub and `disabled/`).
     The only remaining mention is the theme-generated footer credit
     ("Made with Material for MkDocs").
 
+### M17 — Quicktour appendix: actual toolbar icons
+
+- The shortcut/toolbar table in `quicktour/appendix.md` showed outdated
+  PNG screenshots of the old KeY icons. The current GUI draws its toolbar
+  icons from FontAwesome via `IconFactory`
+  (`de.uka.ilkd.key.gui.fonticons`); the table now renders exactly those
+  glyphs via the theme's bundled FontAwesome shortcodes, mapped from the
+  `IconFactory` constants: Load = `FOLDER_OPEN`, Reload = `REDO_ALT`
+  (FA6: rotate-right), Save = `SAVE` (floppy-disk), Proof Management =
+  `TASKS` (list-check), Edit = `EDIT` (pen-to-square), Start strategy =
+  `PLAY_CIRCLE` in green, Undo = `BACKSPACE` (delete-left), Prune = `CUT`
+  (scissors).
+- The SMT entry is a text drop-down button in the current GUI (solver
+  selection), not an icon — described as such.
+- The one-step simplifier icon is still a PNG in the sources; the actual
+  file was copied from
+  `key.ui/.../gui/images/toolbar/oneStepSimplifier.png` over the outdated
+  one in `docs/quicktour/figures/`.
+- Verified in the built HTML: all shortcodes render as inline SVGs, no
+  literal `:fontawesome-…:` text remains, green styling applied.
+
 ## Known issues / suggestions for follow-up
 
 - `key-src` `README.md` states "Java 17 or newer" while the build sets
