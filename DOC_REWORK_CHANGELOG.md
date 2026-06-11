@@ -348,6 +348,22 @@ intentionally parked LLM stub and `disabled/`).
   0 broken links (caught and fixed four missing `../` prefixes in the new
   page before shipping).
 
+### M12 — Architecture diagram redesign
+
+- `devel/Architecture.md`: replaced the simple six-node dependency graph
+  with a **layered stack diagram** (flowchart with four subgraph layers):
+  User interface (`key.ui` + `keyext.*` with a "plug into" edge) →
+  Specialized APIs (symbolic execution, testgen, infflow, wd,
+  proof_references) → Core prover (`key.core` with its responsibilities) →
+  Language-independent foundations (`key.ncore.calculus` → `key.ncore` →
+  `key.util`). Arrows read "builds on"; a caption notes the
+  simplifications.
+- Rendering verified with the site's exact Mermaid version (10.4.0) via a
+  live browser preview. This caught a real layout bug: Mermaid ignores a
+  subgraph's `direction` when layers are connected, so the five API
+  modules stacked vertically — fixed with invisible `~~~` links that force
+  the horizontal row.
+
 ## Known issues / suggestions for follow-up
 
 - `key-src` `README.md` states "Java 17 or newer" while the build sets

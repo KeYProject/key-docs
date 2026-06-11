@@ -6,14 +6,50 @@ KeY is organized as a multi-module Gradle build. The modules fall into four
 groups: foundations, the core prover, the user interface, and optional
 extensions (`keyext.*`).
 
+The modules form a layered stack — each layer builds only on the layers
+below it:
+
 ```mermaid
-graph BT
-    util["key.util"] --> ncore["key.ncore"] --> calculus["key.ncore.calculus"]
-    calculus --> core["key.core"]
-    core --> ui["key.ui"]
-    core --> keyext["keyext.* extensions"]
-    keyext --> ui
+flowchart TB
+    subgraph L1["User interface"]
+        direction LR
+        ui["key.ui<br>Swing GUI, CLI"]
+        keyext["keyext.*<br>GUI extensions<br>(exploration, slicing, caching, …)"]
+        keyext -. plug into .-> ui
+    end
+
+    subgraph L2["Specialized APIs"]
+        direction LR
+        symbex["key.core.<br>symbolic_execution"]
+        testgen["key.core.<br>testgen"]
+        infflow["key.core.<br>infflow"]
+        wd["key.core.<br>wd"]
+        prefs["key.core.<br>proof_references"]
+        symbex ~~~ testgen ~~~ infflow ~~~ wd ~~~ prefs
+    end
+
+    subgraph L3["Core prover"]
+        core["key.core<br>JavaDL terms · taclets & built-in rules · strategy ·
+              parsers (Java/JML/KeY) · proof obligations · proof scripts · SMT"]
+    end
+
+    subgraph L4["Language-independent foundations"]
+        direction LR
+        calculus["key.ncore.calculus<br>generic calculus"]
+        ncore["key.ncore<br>generic terms & formulas"]
+        util["key.util<br>utilities"]
+        calculus --> ncore --> util
+    end
+
+    L1 ==> L2 ==> L3 ==> L4
+
+    classDef layer fill:none,stroke-width:1px;
+    class L1,L2,L3,L4 layer;
 ```
+
+(Arrows read as "builds on". `key.ui` and the `keyext.*` modules also use
+`key.core` directly; the specialized APIs are optional — the core works
+without them.)
 
 ## Foundations
 
