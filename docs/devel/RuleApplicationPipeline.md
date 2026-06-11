@@ -48,6 +48,87 @@ position (`PosInOccurrence`) plus partial schema-variable instantiations.
 At this point `\assumes` clauses are not yet matched and some schema
 variables may still be uninstantiated.
 
+### Inside `VMTacletMatcher`: the matching VM
+
+The matcher trades a generic recursive pattern-match for a two-phase
+design: **compile once, execute often**.
+
+**Compilation.** When the matcher for a taclet is created
+(`VMTacletMatcher` constructor),
+`SyntaxElementMatchProgramGenerator.createProgram(pattern)` walks the
+`\find` pattern once in depth-first pre-order and emits a flat array of
+`VMInstruction`s — one little program per taclet (plus one per `\assumes`
+formula). The emitted instructions per pattern node are:
+
+- a **schema variable** emits `Match…SVInstruction` (records the candidate
+  subterm as the variable's instantiation) followed by `GotoNextSibling`
+  (the matched subtree is consumed as a whole — no descent);
+- a **concrete operator** emits `CheckNodeKind(JTerm)` + `GotoNext`,
+  then `MatchIdentity(op)` + `GotoNext`, then recursively the programs for
+  the subterms (special cases exist for modalities — whose program block
+  is matched by `MatchProgramInstruction` — elementary updates, and
+  parametric functions/generic sorts);
+- patterns that **bind variables** (quantifiers) are bracketed by
+  `BindVariables`/`UnbindVariables` instructions, and term labels emit a
+  `MatchTermLabel` instruction.
+
+**Execution.** `VMProgramInterpreter.match(toMatch, mc, services)` walks
+the *candidate* term with a pooled depth-first cursor
+(`PoolSyntaxElementCursor`; a term's children in this traversal are its
+operator followed by its subterms). The interpreter simply steps an
+instruction pointer through the program: check instructions inspect the
+node under the cursor and extend the running `MatchConditions`
+(schema-variable instantiations, update context, generic-sort
+constraints), `GotoNext`/`GotoNextSibling` only move the cursor. The
+first instruction that fails aborts the run with `null` — no
+backtracking is needed because pattern and candidate are traversed in
+lockstep.
+
+**Example.** Take the taclet `eqSymm`
+(`classicalLogic/firstOrderRules.key`) with pattern
+`\find(commEqLeft = commEqRight)`; the two schema variables are
+abbreviated as `t1`, `t2` below. Compilation yields:
+
+| # | Instruction | Effect |
+|---|---|---|
+| 0 | `CheckNodeKind(JTerm)` | current node must be a term |
+| 1 | `GotoNext` | descend to the operator node |
+| 2 | `MatchIdentity(=)` | operator must be `equals` |
+| 3 | `GotoNext` | move to the first subterm |
+| 4 | `MatchSV(t1)` | instantiate `t1` with the subterm |
+| 5 | `GotoNextSibling` | skip over `t1`'s subtree |
+| 6 | `MatchSV(t2)` | instantiate `t2` with the subterm |
+| 7 | `GotoNextSibling` | done |
+
+Running this program against the candidate term `f(c) = g(d)`:
+
+```text
+#0  cursor at  f(c) = g(d)   is a JTerm                 ✓
+#1  cursor →   operator '='
+#2             '=' ≡ '='                                ✓
+#3  cursor →   f(c)
+#4             t1 := f(c)    recorded in MatchConditions
+#5  cursor →   g(d)          (subtree of f(c) skipped)
+#6             t2 := g(d)    recorded in MatchConditions
+#7  done →     MatchConditions { t1 ↦ f(c), t2 ↦ g(d) }
+```
+
+Against `p & q` the same program fails at instruction 2 (`&` is not `=`)
+and returns `null`. If a schema variable occurs twice in a pattern (as in
+`\find(b & b)`), the second `MatchSV` does not overwrite but *checks* the
+existing instantiation (equality modulo renaming) — `b` only matches if
+both occurrences are instantiated identically.
+
+**Around the program run**, `VMTacletMatcher.matchFind` adds the
+taclet-level concerns: if the taclet may ignore update prefixes
+(`ignoreTopLevelUpdates`), leading updates of the candidate are stripped
+first and stored as *update context* in the `MatchConditions` (an
+`\assumes` formula must later sit under the same update context — checked
+in `matchAssumes`); after a successful program run, `checkConditions`
+validates every instantiation against the taclet's variable conditions
+(`\varcond`, `\notFreeIn`, bound-variable constraints) and rejects the
+match if any fails.
+
 ## 2. Strategy evaluation: which application next?
 
 **Feeding the queue.** Each goal has a `RuleApplicationManager`; the

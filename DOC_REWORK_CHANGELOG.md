@@ -403,6 +403,29 @@ intentionally parked LLM stub and `disabled/`).
   the computed styles in the browser (block at end of content, green
   left-border note).
 
+### M14 — Detailed section on the taclet matching VM
+
+- `devel/RuleApplicationPipeline.md`: new subsection
+  "Inside `VMTacletMatcher`: the matching VM", based on a close reading of
+  `VMTacletMatcher`, `SyntaxElementMatchProgramGenerator`,
+  `VMProgramInterpreter`, and the instruction classes:
+  - compile-once/execute-often design: per-taclet instruction array from a
+    pre-order walk of the `\find` pattern (plus one program per `\assumes`
+    formula); instruction kinds (SV match + skip-subtree, node-kind check,
+    operator identity, bind/unbind for quantifiers, modality/update
+    special cases);
+  - execution model: pooled depth-first cursor over the candidate term
+    (operator node first, then subterms), lockstep traversal, no
+    backtracking, first failing instruction aborts with `null`;
+  - **worked example**: the compiled 8-instruction program for the real
+    `eqSymm` taclet (`\find(commEqLeft = commEqRight)`,
+    `classicalLogic/firstOrderRules.key`) with a step-by-step execution
+    trace against `f(c) = g(d)` (success, resulting `MatchConditions`)
+    and `p & q` (failure at the operator-identity instruction);
+  - repeated schema variables check consistency instead of overwriting;
+    surrounding concerns in `matchFind` (update-prefix stripping into the
+    update context, `checkConditions` for `\varcond`/`\notFreeIn`).
+
 ## Known issues / suggestions for follow-up
 
 - `key-src` `README.md` states "Java 17 or newer" while the build sets

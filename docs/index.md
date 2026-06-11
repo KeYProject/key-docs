@@ -1,10 +1,11 @@
+---
+approved: wp,dd,rb,rh 2026-06-11
+---
+
 # Overview
 
 This web page contains information for users and developers of the KeY
 Deductive Verification System.
-
-If you are new to the KeY system, start with the
-[Quicktour](quicktour/), a hands-on introduction based on the KeY Book.
 
 The documentation is split into two major parts:
 
