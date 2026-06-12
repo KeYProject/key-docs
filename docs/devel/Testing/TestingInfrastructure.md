@@ -22,7 +22,7 @@ Our docker images contains a specified version of Java (currently, 8,
 version details refer to the repository.
 
 
-## Setup a CI slave
+## Setup a CI Runner
 
 In this guide, we explain how to setup a CI runner for Jenkins and
 Gitlab-CI. We assume that you have terminal access to the machine.
@@ -55,7 +55,7 @@ Gitlab-CI. We assume that you have terminal access to the machine.
      $ sudo usermod -aG docker jenkins
      ``` 
    
-     The Jenkins controller logins via SSH at the slaves. There are
+     The Jenkins controller logins via SSH at the runners. There are
      two options for authentication, password or public/private-key. On
      bwcloud, the password authentication is disabled in
      `/etc/sshd/sshd_config`.
@@ -63,7 +63,7 @@ Gitlab-CI. We assume that you have terminal access to the machine.
      For simplicity I choose password authentication with very long
      password.
 
-6. Add your slave to
+6. Add your runner to
    [Jenkins](http://hudson.se.informatik.tu-darmstadt.de/computer/new)
    using the credentials and IP address of the server.
 
