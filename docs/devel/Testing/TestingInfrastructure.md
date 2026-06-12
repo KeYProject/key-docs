@@ -66,7 +66,3 @@ Gitlab-CI. We assume that you have terminal access to the machine.
 6. Add your runner to
    [Jenkins](http://hudson.se.informatik.tu-darmstadt.de/computer/new)
    using the credentials and IP address of the server.
-
-
-
-   
