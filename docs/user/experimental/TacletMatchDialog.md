@@ -14,26 +14,40 @@ rule with an `\assumes` clause — it opens this dialog so you can supply the
 missing pieces. It shows how the rule matched your sequent and what applying it
 would do, all in one place.
 
-## How the rule matched
+## How the rule matched, and what it does
 
-The top-left **match overview** answers the first question you usually have:
-*how did this rule match here?*
+The top-left **match overview** answers the first question you usually have —
+*how did this rule match here?* — and the **result preview** on the right shows
+what applying it would produce.
 
 ![The match overview and the live result preview](overview.png)
 
 * **Find** is the rule's schematic pattern; **Matched** is the actual term it
   landed on, set off in a faint band so the concrete instance stands out.
 * Each schema variable the match has already fixed appears as a coloured chip
-  next to the term it stands for (here `b ↦ P`, `c ↦ Q`). A variable keeps its
-  colour everywhere in the dialog, so it is easy to follow.
+  next to the term it stands for (here `b ↦ P`, `c ↦ Q`). The same colour tints
+  the sub-term the variable matched, right inside **Matched** above, so you can
+  read each binding straight off the term.
 * The full rule body is one click away under **Rule body**, and otherwise stays
   out of the way.
 
-On the right, the **result preview** shows what you would get if you applied the
-rule right now — removed formulas in red (`−`), added ones in green (`+`),
-grouped per resulting goal. It refreshes by itself a moment after you change
-something, and it is only ever a preview: your proof stays untouched until you
-press **Apply**.
+On the right, the **result preview** shows the sequent(s) the application would
+produce — removed formulas in red (`−`), added ones in green (`+`), grouped per
+resulting goal. It refreshes by itself a moment after you change something, and
+it is only ever a preview: your proof stays untouched until you press **Apply**.
+
+## Colour-coded match
+
+When the find pattern has several schema variables, each one's match is tinted in
+its own colour — both on its chip and inside the matched term — so even a busy
+match stays easy to read.
+
+![A four-variable match, each part in its own colour](colour-match.png)
+
+Here the pattern `a & b | c & d` matched `P & Q | R & S`: `a ↦ P`, `b ↦ Q`,
+`c ↦ R`, `d ↦ S` — each variable, its chip and its sub-term share one colour. So
+you can trace any variable from its binding straight to the spot it occupies in
+the term, however nested the match.
 
 ## Filling in schema variables
 
@@ -67,10 +81,6 @@ and you can choose how to fill it in.
 
     ![Typing the whole assumes sequent](assumes-manual.png)
 
-    What you type is read as you go and checked for shape, formula count and
-    compatibility with the match. A syntax slip is reported in plain words and
-    **pointed at right where it happens**, so you are never left hunting.
-
 ## Mistakes caught early
 
 Whatever you enter is checked as you go, so a problem shows up while you are
@@ -79,7 +89,10 @@ still typing — not after you press **Apply**.
 ![A syntax error in the typed assumes sequent, with the spot highlighted](error.png)
 
 * A typed `\assumes` sequent is parsed as you type; a slip is reported in plain
-  words and the **offending spot is highlighted** (here the stray `@`).
+  words and the **offending spot is highlighted** (here the stray `@`). Each
+  field holds only one side of the sequent, so the messages stay about what you
+  typed — a stray token reads as *unexpected '@'*, an unfinished one as
+  *incomplete formula*.
 * The status line tracks the whole instantiation — it reads *Instantiation is OK*
   only when everything fits, and otherwise tells you what is still missing or why
   the rule does not apply, before you commit.
@@ -101,7 +114,7 @@ Drag the divider to balance the inputs against the preview. Below a threshold
 width the two sides fold into **Instantiate** and **Result preview** tabs. The
 window remembers its size and place for next time.
 
----
-
-*Coming next: highlighting each schema variable in its own colour inside the
-matched term, so you can see at a glance which part is which.*
+!!! note "Prefer the previous dialog?"
+    For a migration period the previous dialog is still available. Enable **Use
+    classic taclet instantiation dialog** under *Options → Settings → Appearance
+    & Behaviour → Interaction*; the redesigned dialog is the default.
