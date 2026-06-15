@@ -3,6 +3,9 @@
 This chapter covers KeY's user interface features for day-to-day
 interactive proving:
 
+- **[The Taclet Match Dialog](../TacletMatchDialog/)** — complete and apply a
+  taclet interactively: see how it matched the sequent, instantiate the
+  remaining schema variables, and preview the result before you apply.
 - **[Excluding Goals from Automation](../Interactive/)** — mark open goals
   as *interactive* so the automated strategy leaves them alone while you
   work on the interesting ones.

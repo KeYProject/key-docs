@@ -1,11 +1,6 @@
 site_name: KeY Documentation
 site_url: https://keyproject.github.io/key-docs/
 
-# Pages that are built and reachable by URL but deliberately kept out of the
-# navigation (e.g. documentation for features still under review).
-not_in_nav: |
-  /user/experimental/*
-
 hooks:
   - hooks/approval.py
 
@@ -101,6 +96,7 @@ nav:
           - "Appendix: Tips and Background": quicktour/appendix.md
       - "2. Working with the Prover":
           - "Overview": user/UiFeatures/index.md
+          - "The Taclet Match Dialog": user/TacletMatchDialog/index.md
           - "Excluding Goals from Automation": user/Interactive.md
           - "Proof Exploration": user/Exploration.md
           - "Comparing Proof Nodes": user/NodeDiff.md

@@ -1,13 +1,4 @@
----
-approved: none
----
-
 # The Taclet Match Dialog
-
-!!! warning "Unreleased / experimental page"
-    This page documents a redesigned dialog proposed in an open pull request and
-    **not yet part of a KeY release**. It is kept out of the site navigation
-    until the change is accepted; details and screenshots may still change.
 
 When KeY needs your help to apply a rule — a quantifier instantiation, a cut, a
 rule with an `\assumes` clause — it opens this dialog so you can supply the
