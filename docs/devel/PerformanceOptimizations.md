@@ -18,22 +18,24 @@ graph LR
 
 | Stage | Optimization | Status | PR |
 |---|---|---|---|
-| Matching | Compiled taclet matcher | experimental (opt-in) | [#3831](https://github.com/KeYProject/key/pull/3831) |
+| Matching | Compiled taclet matcher | default (interpreter opt-out) | [#3831](https://github.com/KeYProject/key/pull/3831) |
 | Strategy evaluation | Rule-app cost reuse + age as cost term | default | [#3837](https://github.com/KeYProject/key/pull/3837) |
 | Strategy evaluation | Operator-indexed parking of assumes-incomplete bases | default | [#3838](https://github.com/KeYProject/key/pull/3838) |
 | Application | Skip the prefix walk when no transformer is present | default | [#3836](https://github.com/KeYProject/key/pull/3836) |
 | Cross-cutting | Reduce proof-search allocations | default | [#3835](https://github.com/KeYProject/key/pull/3835) |
 
-Except for the compiled matcher (which is opt-in while it is evaluated), all of
-these are **active by default** — a checkout needs no configuration.
+All of these are **active by default** — a checkout needs no configuration. For
+the compiled matcher the legacy interpreter remains available as an opt-out
+(feature flag / `-Dkey.matcher.interpreter`).
 
 The combined effect on a set of six real-world proofs is a **1.66× automode
 speedup** (see [Combined effect](#combined-effect)).
 
 ## Matching: the compiled taclet matcher
 
-*Experimental — selectable in the settings under "experimental" (reload
-required). [#3831](https://github.com/KeYProject/key/pull/3831).*
+*Default — the legacy interpreter is an opt-out (Settings → Feature Flags
+*MATCHER_INTERPRETER*, or `-Dkey.matcher.interpreter`; reload to apply).
+[#3831](https://github.com/KeYProject/key/pull/3831).*
 
 **Previous design.** Every taclet's `\find` pattern is matched by an
 interpreter (`VMTacletMatcher`): the pattern is compiled into a flat array of
@@ -229,5 +231,6 @@ median of three runs, all four default-on optimizations vs. `main`:
 Per-PR contribution on the same six problems (each alone vs. `main`): memory
 1.12×, checkPrefix 1.01× (deep terms ~2.7×), cost reuse + age 1.07×, parking
 1.44×. The compiled matcher ([#3831](https://github.com/KeYProject/key/pull/3831))
-is not included in this number — it is opt-in and is the foundation for further
-work rather than an end-to-end speedup by itself.
+is not included in this number — it is a separate change (not part of the combined
+four-PR measurement) and is the foundation for further work rather than an
+end-to-end speedup by itself.
