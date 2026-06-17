@@ -498,7 +498,7 @@ intentionally parked LLM stub and `disabled/`).
   assumes-parking ([#3838](https://github.com/KeYProject/key/pull/3838)),
   prefix-walk skip ([#3836](https://github.com/KeYProject/key/pull/3836)) and
   allocation reductions ([#3835](https://github.com/KeYProject/key/pull/3835)),
-  with a combined 1.66× automode result ([#3839](https://github.com/KeYProject/key/pull/3839)).
+  with a combined 1.74× automode result ([#3839](https://github.com/KeYProject/key/pull/3839)).
   Each section follows previous-design / problem / chosen-solution with a
   mermaid diagram; added to the nav.
 
