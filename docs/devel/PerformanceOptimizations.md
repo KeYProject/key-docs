@@ -28,8 +28,8 @@ All of these are **active by default** — a checkout needs no configuration. Fo
 the compiled matcher the legacy interpreter remains available as an opt-out
 (feature flag / `-Dkey.matcher.interpreter`).
 
-The combined effect on a set of six real-world proofs is a **1.74× automode
-speedup** (see [Combined effect](#combined-effect)).
+The combined effect of all five PRs on a set of six real-world proofs is a **1.82×
+automode speedup** (see [Combined effect](#combined-effect)).
 
 ## Matching: the compiled taclet matcher
 
@@ -216,21 +216,22 @@ term tree on every call even when nothing changed.
 *Umbrella: [#3839](https://github.com/KeYProject/key/pull/3839).*
 
 Measured on six real-world problems (the `perfTest` group of `runAllProofs`),
-median of three runs, all four default-on optimizations vs. `main`:
+median of three runs, all five PRs (matcher + the four default-on optimizations) vs. `main`:
 
-| Problem | main (ms) | all four (ms) | speedup |
+| Problem | main (ms) | all five (ms) | speedup |
 |---|--:|--:|--:|
-| symmArray | 23346 | 12682 | 1.84× |
-| gemplusDecimal/add | 12113 | 8661 | 1.40× |
-| ArrayList.remove.1 | 3907 | 2625 | 1.49× |
-| SimplifiedLinkedList.remove | 31367 | 18157 | 1.73× |
-| Saddleback_search | 25710 | 13941 | 1.84× |
-| coincidence_count/project | 5330 | 2396 | 2.22× |
-| **Total** | **101773** | **58462** | **1.74×** |
+| symmArray | 23346 | 12105 | 1.93× |
+| gemplusDecimal/add | 12113 | 8148 | 1.49× |
+| ArrayList.remove.1 | 3907 | 2627 | 1.49× |
+| SimplifiedLinkedList.remove | 31367 | 17490 | 1.79× |
+| Saddleback_search | 25710 | 13327 | 1.93× |
+| coincidence_count/project | 5330 | 2200 | 2.42× |
+| **Total** | **101773** | **55897** | **1.82×** |
 
 Per-PR contribution on the same six problems (each alone vs. `main`): memory
 1.12×, checkPrefix 1.01× (deep terms ~2.7×), cost reuse + age 1.07×, parking
 1.44×. The compiled matcher ([#3831](https://github.com/KeYProject/key/pull/3831))
-is not included in this number — it is a separate change (not part of the combined
-four-PR measurement) and is the foundation for further work rather than an
-end-to-end speedup by itself.
+is a foundation that contributes the remainder on top: it does not speed up
+end-to-end proving much by itself (matching is largely cached during proof
+search, though the isolated find-matcher is ~6.5–8.3× faster), but it is the
+substrate the other PRs build on and is included in the combined figure above.
