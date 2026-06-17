@@ -490,6 +490,17 @@ intentionally parked LLM stub and `disabled/`).
   proof-management icon in `quicktour/proving.md` with the current
   glyph. Remaining: `errorDialogUnknownType.png`,
   `oneStepSimplifier.png`, `proverWithLoadedPO.png` — all referenced.
+- Added `devel/PerformanceOptimizations.md` (Developer Guide → 6. Internals,
+  after the Rule Application Pipeline): a conceptual overview of the 3.1
+  performance series — the compiled taclet matcher (experimental,
+  [#3831](https://github.com/KeYProject/key/pull/3831)) plus the default-on
+  cost reuse + age ([#3837](https://github.com/KeYProject/key/pull/3837)),
+  assumes-parking ([#3838](https://github.com/KeYProject/key/pull/3838)),
+  prefix-walk skip ([#3836](https://github.com/KeYProject/key/pull/3836)) and
+  allocation reductions ([#3835](https://github.com/KeYProject/key/pull/3835)),
+  with a combined 1.66× automode result ([#3839](https://github.com/KeYProject/key/pull/3839)).
+  Each section follows previous-design / problem / chosen-solution with a
+  mermaid diagram; added to the nav.
 
 ## Known issues / suggestions for follow-up
 

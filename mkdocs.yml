@@ -158,6 +158,7 @@ nav:
           - "JSON-RPC Interface": devel/rpc/index.md
       - "6. Internals":
           - "The Rule Application Pipeline": devel/RuleApplicationPipeline.md
+          - "Performance Optimizations (3.1)": devel/PerformanceOptimizations.md
           - "Proof Loading and Saving": devel/ProofLoadSave.md
           - "The KeY Parser": devel/NewKeyParser.md
           - "SMT Translation": devel/SMTTranslation.md
