@@ -28,7 +28,7 @@ All of these are **active by default** — a checkout needs no configuration. Fo
 the compiled matcher the legacy interpreter remains available as an opt-out
 (feature flag / `-Dkey.matcher.interpreter`).
 
-The combined effect on a set of six real-world proofs is a **1.66× automode
+The combined effect on a set of six real-world proofs is a **1.74× automode
 speedup** (see [Combined effect](#combined-effect)).
 
 ## Matching: the compiled taclet matcher
@@ -220,13 +220,13 @@ median of three runs, all four default-on optimizations vs. `main`:
 
 | Problem | main (ms) | all four (ms) | speedup |
 |---|--:|--:|--:|
-| symmArray | 21396 | 12249 | 1.75× |
-| gemplusDecimal/add | 11474 | 8501 | 1.35× |
-| ArrayList.remove.1 | 3629 | 2596 | 1.40× |
-| SimplifiedLinkedList.remove | 28903 | 17659 | 1.64× |
-| Saddleback_search | 23510 | 13453 | 1.75× |
-| coincidence_count/project | 4935 | 2224 | 2.22× |
-| **Total** | **93847** | **56682** | **1.66×** |
+| symmArray | 23346 | 12682 | 1.84× |
+| gemplusDecimal/add | 12113 | 8661 | 1.40× |
+| ArrayList.remove.1 | 3907 | 2625 | 1.49× |
+| SimplifiedLinkedList.remove | 31367 | 18157 | 1.73× |
+| Saddleback_search | 25710 | 13941 | 1.84× |
+| coincidence_count/project | 5330 | 2396 | 2.22× |
+| **Total** | **101773** | **58462** | **1.74×** |
 
 Per-PR contribution on the same six problems (each alone vs. `main`): memory
 1.12×, checkPrefix 1.01× (deep terms ~2.7×), cost reuse + age 1.07×, parking
