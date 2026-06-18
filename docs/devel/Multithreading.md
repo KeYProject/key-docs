@@ -262,6 +262,15 @@ wide proofs and even lifts the narrow worst case (Saddleback regresses to 0.69×
 eight multithreading-only workers, but the combined branch holds 1.45× there and
 3.55× at four).
 
+Per-proof speedup vs single-threaded `main`, multithreading only:
+
+![Multi-core speedup vs main](img/mt-speedup.svg)
+
+And with the performance series underneath (the combined branch), where even the
+narrow Saddleback proof no longer regresses at eight workers:
+
+![Multi-core × performance speedup vs main](img/mt-perf-speedup.svg)
+
 The realistic ceiling per proof is set by its widest concurrency, not the worker
 count: wide, splitting proofs scale well to 4–8 workers; narrow proofs (one long
 branch) stay near 1×. The synthetic best/worst-case benchmark makes this explicit.
