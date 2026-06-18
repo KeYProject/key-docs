@@ -50,8 +50,8 @@ behaviour is deterministic and every feature of KeY is built against it.
 !!! warning "Status: open pull request"
     The multi-core prover described below is **not yet merged** — it is currently
     an open pull request. This page documents the proposed feature; details may
-    still change during review. *(Link to the pull request: to be added once it is
-    live.)*
+    still change during review.
+    *([pull request #3842](https://github.com/KeYProject/key/pull/3842))*
 
 ## The multi-core prover
 
