@@ -54,7 +54,7 @@
 /* Author metadata displayed below page title, right-aligned */
 .page-author {
   float: right;
-  margin: -1rem 0 1rem 1rem;
+  margin: -2rem 0 1rem 1rem;
   padding: .2rem .6rem;
   border-radius: .2rem;
   font-size: .75rem;
@@ -62,6 +62,19 @@
   color: var(--md-default-fg-color--light);
   background: var(--md-code-bg-color);
   border-left: 2px solid var(--md-primary-fg-color);
+  clear: right;
+}
+[data-md-color-scheme="slate"] .page-author {
+  color: var(--md-default-fg-color--lighter);
+}
+
+/* Ensure content after author box clears the float */
+.md-typeset h1 + .page-author + * {
+  clear: both;
+}
+.md-typeset h1 + .page-author + p,
+.md-typeset h1 + .page-author + div {
+  margin-top: 0;
 }
 [data-md-color-scheme="slate"] .page-author {
   color: var(--md-default-fg-color--lighter);
