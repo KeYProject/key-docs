@@ -2,14 +2,15 @@
 author: "Arne Keller"
 date: "December 2022"
 valid_for: "KeY-2.12.0"
-updated: "November 2023"
+updated: "June 2026"
+approved: wp 2026-06-19
 ---
 
 # Proof Slicing
 
 !!! abstract
 
-    This note describes the new *Proof Slicing* extension in KeY 2.12.
+    This note describes the *Proof Slicing* extension available since KeY 2.12.0.
     It allows reducing the size of finished proofs by
     removing proof steps that are not necessary to close the proof.
 
@@ -47,7 +48,7 @@ You may also export the dependency graph in DOT format ("Export as DOT" button) 
   <figcaption>Dependency Graph of a simple proof (top node: proof obligation)</figcaption>
 </figure>
 
-!!! attention
+!!! warning
 
     It is not advisable to render the dependency graph of large proofs: the render process may consume excessive amounts of memory and/or CPU time.
 
@@ -60,7 +61,7 @@ You may also export the dependency graph in DOT format ("Export as DOT" button) 
     you may enable the "Shorten long chains" option before rendering the graph.
     When enabled, all nodes with input and output degree equal to one are collapsed into the output edge.
 
-=== "Example"
+=== "Example (Big Graph)"
 
     <figure markdown>
       ![Side-by-side comparison of chain shortening](./ProofSlicingShortenedChains.png){ loading=lazy }
