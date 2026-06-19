@@ -1,6 +1,10 @@
-# Isabelle Translation
+---
+author: "Nils Buchholz"
+date: "February 2025"
+valid_for: "a future release of KeY based on KeY 2.12.3"
+---
 
--- *Author: Nils Buchholz*, February 2025 valid for a future release of KeY based on KeY 2.12.3
+# Isabelle Translation
 
 !!! abstract
 

@@ -1,6 +1,10 @@
-# Proof Caching
+---
+author: "Arne Keller"
+date: "June 2023"
+valid_for: "KeY-2.12.0"
+---
 
--- *Author: Arne Keller*, June 2023 valid for KeY-2.12.0
+# Proof Caching
 
 !!! abstract
 

@@ -1,3 +1,6 @@
+---
+approved: mu 2026-06-19
+---
 # How to write documentation
 
 This webpage uses [mkdocs](https://mkdocs.org). Mkdocs generates from a bunch of
@@ -20,29 +23,43 @@ via the Python package manager (`pip`). For a non-root user install
 use either `make prepare` or execute the following line:
 
 ``` {.sh linenums="1"}
-$ pip install --user mkdocs mkdocs-material pymdown-extensions pygments \
-                     markdown-blockdiag mkdocs-bibtex markdown-aafigure==v202104.1011 \
-                     mkdocs-build-plantuml-plugin Pillow Markdown
+$ pip install --user -r requirements.txt
 ```
 
 This install all needed packages for this webpage inside
 `$HOME/.local` and after installation the mkdocs executable should be
 under `$HOME/.local/bin/mkdocs`.
 
-serve:
-	mkdocs serve
+Alternatively, you can create a virtual environment and install
+dependencies in a local directory. See ext. documentation on
+`virtualenv` and drop the `--user` above.
 
-build:
-	mkdocs build
+In order to open a server:
+	`mkdocs serve`
 
-## Review status of pages
+In order to build the pages:
+	`mkdocs build`
+
+## Page reviews
+
+The original pages were written by the KeY community. In June 2026,
+the structure and content of this documentation has been revised 
+using support from generative AI (Claude to be precise).
+
+From that date on, all pages carry a badge. Pages that carry the badge
+&quot;not yet verified&quot; on the top need (re-)approval by a KeY
+core team member after this renovation. Approved pages carry a line at
+the bottom with the person who signed off and a date.
+
+
+### Status of pages
 
 Unreviewed pages show an amber *"not yet verified"* badge in their top-right
 corner. Once a reviewer signs a page off, the badge moves to the page
 *footer* as a green note stating who checked the page and when. To sign a
 page off, add your initials and the date to the front matter:
 
-``` markdown
+```
 ---
 approved: rb
 approved-on: 2026-06-11

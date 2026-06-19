@@ -1,6 +1,11 @@
-# Proof Slicing
+---
+author: "Arne Keller"
+date: "December 2022"
+valid_for: "KeY-2.12.0"
+updated: "November 2023"
+---
 
--- *Author: Arne Keller*, December 2022 valid for KeY-2.12.0 (last updated: November 2023)
+# Proof Slicing
 
 !!! abstract
 

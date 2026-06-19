@@ -1,6 +1,9 @@
-# Node Differences
+---
+author: "Alexander Weigl"
+date: "24.07.2019"
+---
 
--- *Author: Alexander Weigl, 24.07.2019*
+# Node Differences
 
 In the context menu of the Proof Tree, you can the action *Diff with parent*,
 which triggers a view for visualising the differences between Proof Nodes.

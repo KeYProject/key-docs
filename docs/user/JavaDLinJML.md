@@ -1,8 +1,14 @@
+---
+approved: mu 2026-06-19
+author: Mattias Ulbrich
+date: August 2011
+valid_for: KeY since 2011
+updated: KeY 2.12
+---
+
 # Embedding JavaDL expressions and functions into JML expressions
 
-*Mattias Ulbrich, 2011-08-31*
-              
-Currently, JML is the standard specification for KeY (JML&starf; more
+JML is the standard specification language for KeY (JML&starf; more
 precisely). Though it is still possible to specify JavaDL-contracts in `.key`
 files, the formalism with model fields, ghost state etc. is really centered on
 JML.
@@ -27,10 +33,10 @@ For instance, consider
 ```
 
 we can now refer to the term foo(5) from within JML using `\dl_foo(5)`. The term
-`bar` must, however, for technical reasons be succeeded by (), i.e., `\dl_bar()`
+`bar` must, however, for technical reasons be succeeded by (), i.e., `\dl_bar()`.
 This works for predicate symbols, too.
 
-If the first argument of the symbol is of type Heap and the number of actual
+If the first argument of the symbol is of type `Heap` and the number of actual
 parameters is smaller than number of formal parameters, the program variable
 "heap" (the current heap) is implicitly added as first parameter. Example:
 
@@ -41,12 +47,12 @@ In KeY:
 
 In JML (e.g.):
 ```
-//@ ensures arr2seq(arrayObject) == \emptySeq;
+//@ ensures \dl_arr2seq(arrayObject) == \emptySeq;
 ```
 equivalent to
 
 ```
-//@ ensures arr2seq(\dl_heap(), arrayObject) == \emptySeq;
+//@ ensures \dl_arr2seq(\dl_heap(), arrayObject) == \emptySeq;
 ```
 
 
@@ -54,7 +60,7 @@ equivalent to
 
 * There is no sensible error message if a ill-typed term is used in a
 set statement.
-* The types supported in JML seems to be hardcoded, and cannot be
+* The types supported in JML seem to be hardcoded, and cannot be
 easily extended.
 * Error messages might mislead and could potentially not point to the
 right spot in the sources.

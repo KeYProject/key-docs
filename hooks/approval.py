@@ -45,8 +45,11 @@ def on_page_markdown(markdown, page, config, files):
     if not approved:
         badge = (
             '<div class="approval approval--missing" '
-            'title="No reviewer initials in the \'approved\' front matter '
-            'field yet.">&#9888; not yet verified</div>\n\n'
+            'title="The original pages were written by the KeY community. '
+            'In June 2026, the structure and content of this documentation has been revised '
+            'using support from generative AI. '
+            'Pages that carry the badge &quot;not yet verified&quot; need (re-)approval by a KeY core team member after this renovation.">'
+            '&#9888; not yet verified</div>\n\n'
         )
         return badge + markdown
 

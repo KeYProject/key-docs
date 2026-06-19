@@ -3,6 +3,7 @@ site_url: https://keyproject.github.io/key-docs/
 
 hooks:
   - hooks/approval.py
+  - hooks/author.py
 
 plugins:
   - search

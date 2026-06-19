@@ -50,3 +50,19 @@
   border-width: 0 0 0 .2rem;
   border-style: solid;
 }
+
+/* Author metadata displayed below page title, right-aligned */
+.page-author {
+  float: right;
+  margin: -1rem 0 1rem 1rem;
+  padding: .2rem .6rem;
+  border-radius: .2rem;
+  font-size: .75rem;
+  font-style: italic;
+  color: var(--md-default-fg-color--light);
+  background: var(--md-code-bg-color);
+  border-left: 2px solid var(--md-primary-fg-color);
+}
+[data-md-color-scheme="slate"] .page-author {
+  color: var(--md-default-fg-color--lighter);
+}

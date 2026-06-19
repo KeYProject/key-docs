@@ -1,14 +1,22 @@
+---
+approved: mu 2026-06-19
+---
 # Excluding Goals from Automation
 
 Often enough one deals with proofs in KeY with a considerable number of open
 goals which can be divided into two categories: interesting and uninteresting
 ones.
 
+*Scenario 1:*
 We assume the unteresting ones to be closed soon by automatic rule application,
 and want to concentrate on the interesting ones. They should be left untouched
 by automatic rule application.
 
-This is what we can tell KeY to do, now.
+*Scenario 2:* 
+We have many branches and want to deal with them separately and want
+to focus on one after the other.
+
+This is what we can tell KeY to do in the UI:
 
 ## Interactive vs. Automatic
 
@@ -18,7 +26,6 @@ goals as
 * automatic ("OPEN GOAL", green, key icon) 
   or
 * interactiv ("INTERACTIVE GOAL", orange, key icon with hand)
-
 
 Pressing the Start/Stop Button on top will trigger rule application
 only on automatic goals.  The "Apply Strategy" Menu Item from the

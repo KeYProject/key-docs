@@ -1,3 +1,6 @@
+---
+approved: mu 2026-06-19
+---
 # Proof Tree: linearized mode
 
 In the proof tree settings, you can enable the "Linearize Proof Tree" option.
