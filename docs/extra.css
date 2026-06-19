@@ -66,3 +66,8 @@
 [data-md-color-scheme="slate"] .page-author {
   color: var(--md-default-fg-color--lighter);
 }
+
+.md-typeset .admonition,
+.md-typeset details { /* ensure that the text in "abstract" etc notes (so called "admonitions") is not too small */
+  font-size: 100%;
+}
