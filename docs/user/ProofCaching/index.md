@@ -2,6 +2,7 @@
 author: "Arne Keller"
 date: "June 2023"
 valid_for: "KeY-2.12.0"
+approved: mu 2026-06-19
 ---
 
 # Proof Caching

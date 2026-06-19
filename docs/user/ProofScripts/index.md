@@ -1,3 +1,7 @@
+---
+approved: mu 2026-06-19
+author: Mattias Ulbrich, Sarah Grebing
+---
 # Scripting Interactive Proofs
 
 

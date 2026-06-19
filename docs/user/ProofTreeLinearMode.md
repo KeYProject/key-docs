@@ -1,5 +1,7 @@
 ---
 approved: mu 2026-06-19
+author: "Arne Keller"
+date: "2024"
 ---
 # Proof Tree: linearized mode
 

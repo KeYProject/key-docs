@@ -1,6 +1,10 @@
-# Making interactive persistent using proof scripts
+---
+approved: mu 2026-06-19
+author: Mattias Ulbrich
+date: "2015"
+---
 
-*Mattias Ulbrich <ulbrich@kit.edu>, 2015*
+# Making interactive persistent using proof scripts
 
 !!! warning 
     This is the original announcement and probably a bit outdated.
