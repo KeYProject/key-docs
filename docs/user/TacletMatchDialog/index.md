@@ -14,7 +14,9 @@ what applying it would produce.
 ![The match overview and the live result preview](overview.png)
 
 * **Find** is the rule's schematic pattern; **Matched** is the actual term it
-  landed on, set off in a faint band so the concrete instance stands out.
+  landed on, set off in a faint band so the concrete instance stands out. A
+  matched term taller than two lines is collapsed to a single line with a toggle,
+  so a big term does not dominate the panel.
 * Each schema variable the match has already fixed appears as a coloured chip
   next to the term it stands for (here `b ↦ P`, `c ↦ Q`). The same colour tints
   the sub-term the variable matched, right inside **Matched** above, so you can
@@ -50,7 +52,8 @@ already settled stay read-only in the overview above.
 * Type a term, or **drag one straight from the sequent** and drop it on the
   field — it lands where your cursor is.
 * A long or multi-line value expands on a small toggle instead of stretching the
-  window.
+  window. For a really big instantiation, the **edit icon** next to the toggle
+  opens a larger, resizable editor window.
 * With several variables the fields tidy themselves into two columns.
 
 ## Supplying the assumptions
