@@ -248,19 +248,19 @@ per proof; the `4×` column is the practical sweet spot):
 
 | Proof | main | 4× (MT) | 4× (MT × perf) |
 |---|---|---|---|
-| SimplifiedLinkedList.remove | 29.8s | 2.96× | 4.49× |
-| gemplusDecimal/add | 12.6s | 2.14× | 3.40× |
-| symmArray | 22.1s | 1.86× | 3.83× |
-| ArrayList_concatenate | 13.5s | 2.82× | 4.64× |
-| arith/median | 5.0s | 2.18× | 4.12× |
-| Saddleback_search (narrow) | 24.6s | 1.29× | 3.55× |
+| SimplifiedLinkedList.remove | 27.9s | 2.82× | 4.36× |
+| gemplusDecimal/add | 10.8s | 2.32× | 3.74× |
+| symmArray | 20.3s | 1.83× | 4.31× |
+| ArrayList_concatenate | 13.0s | 3.34× | 3.85× |
+| arith/median | 4.4s | 2.22× | 4.47× |
+| Saddleback_search (narrow) | 22.5s | 1.29× | 3.72× |
 
 The performance series and the multi-core prover compose: cheaper single-threaded
 matching/allocation shrinks the cost of each rule application *and* of the parallel
 prover's off-critical-path speculation, so the combined branch reaches ~4–5× on
-wide proofs and even lifts the narrow worst case (Saddleback regresses to 0.69× at
-eight multithreading-only workers, but the combined branch holds 1.45× there and
-3.55× at four).
+wide proofs and even lifts the narrow worst case (Saddleback regresses to 0.70× at
+eight multithreading-only workers, but the combined branch holds 2.36× there and
+3.72× at four).
 
 Per-proof speedup vs single-threaded `main`, multithreading only:
 

@@ -2,76 +2,82 @@
 <text x="500.0" y="26" text-anchor="middle" font-size="18" font-weight="bold">Multi-core speedup vs main (PR1)</text>
 <line x1="60" y1="310.0" x2="980" y2="310.0" stroke="#e0e0e0"/>
 <text x="52" y="314.0" text-anchor="end" font-size="11">0×</text>
-<line x1="60" y1="230.1" x2="980" y2="230.1" stroke="#e0e0e0"/>
-<text x="52" y="234.1" text-anchor="end" font-size="11">1×</text>
-<line x1="60" y1="150.3" x2="980" y2="150.3" stroke="#e0e0e0"/>
-<text x="52" y="154.3" text-anchor="end" font-size="11">2×</text>
-<line x1="60" y1="70.4" x2="980" y2="70.4" stroke="#e0e0e0"/>
-<text x="52" y="74.4" text-anchor="end" font-size="11">3×</text>
-<line x1="60" y1="230.1" x2="980" y2="230.1" stroke="#b00" stroke-dasharray="4"/>
-<rect x="72.8" y="183.0" width="23.0" height="127.0" fill="#7aa6c2"/>
-<text x="84.3" y="180.0" text-anchor="middle" font-size="9">1.59</text>
-<rect x="98.3" y="73.6" width="23.0" height="236.4" fill="#4a7fa5"/>
-<text x="109.8" y="70.6" text-anchor="middle" font-size="9">2.96</text>
-<rect x="123.9" y="102.4" width="23.0" height="207.6" fill="#2e5a7a"/>
-<text x="135.4" y="99.4" text-anchor="middle" font-size="9">2.60</text>
+<line x1="60" y1="270.0" x2="980" y2="270.0" stroke="#e0e0e0"/>
+<text x="52" y="274.0" text-anchor="end" font-size="11">1×</text>
+<line x1="60" y1="230.0" x2="980" y2="230.0" stroke="#e0e0e0"/>
+<text x="52" y="234.0" text-anchor="end" font-size="11">2×</text>
+<line x1="60" y1="190.0" x2="980" y2="190.0" stroke="#e0e0e0"/>
+<text x="52" y="194.0" text-anchor="end" font-size="11">3×</text>
+<line x1="60" y1="150.0" x2="980" y2="150.0" stroke="#e0e0e0"/>
+<text x="52" y="154.0" text-anchor="end" font-size="11">4×</text>
+<line x1="60" y1="110.0" x2="980" y2="110.0" stroke="#e0e0e0"/>
+<text x="52" y="114.0" text-anchor="end" font-size="11">5×</text>
+<line x1="60" y1="70.0" x2="980" y2="70.0" stroke="#e0e0e0"/>
+<text x="52" y="74.0" text-anchor="end" font-size="11">6×</text>
+<line x1="60" y1="270.0" x2="980" y2="270.0" stroke="#b00" stroke-dasharray="4"/>
+<rect x="72.8" y="207.4" width="23.0" height="102.6" fill="#7aa6c2"/>
+<text x="84.3" y="204.4" text-anchor="middle" font-size="9">2.56</text>
+<rect x="98.3" y="197.3" width="23.0" height="112.7" fill="#4a7fa5"/>
+<text x="109.8" y="194.3" text-anchor="middle" font-size="9">2.82</text>
+<rect x="123.9" y="221.2" width="23.0" height="88.8" fill="#2e5a7a"/>
+<text x="135.4" y="218.2" text-anchor="middle" font-size="9">2.22</text>
 <text x="111.1" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 111.1 322.0)">SimplifiedLinkedList.remove</text>
-<rect x="175.0" y="179.8" width="23.0" height="130.2" fill="#7aa6c2"/>
-<text x="186.5" y="176.8" text-anchor="middle" font-size="9">1.63</text>
-<rect x="200.6" y="139.1" width="23.0" height="170.9" fill="#4a7fa5"/>
-<text x="212.1" y="136.1" text-anchor="middle" font-size="9">2.14</text>
-<rect x="226.1" y="155.9" width="23.0" height="154.1" fill="#2e5a7a"/>
-<text x="237.6" y="152.9" text-anchor="middle" font-size="9">1.93</text>
+<rect x="175.0" y="248.3" width="23.0" height="61.7" fill="#7aa6c2"/>
+<text x="186.5" y="245.3" text-anchor="middle" font-size="9">1.54</text>
+<rect x="200.6" y="217.0" width="23.0" height="93.0" fill="#4a7fa5"/>
+<text x="212.1" y="214.0" text-anchor="middle" font-size="9">2.32</text>
+<rect x="226.1" y="204.0" width="23.0" height="106.0" fill="#2e5a7a"/>
+<text x="237.6" y="201.0" text-anchor="middle" font-size="9">2.65</text>
 <text x="213.3" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 213.3 322.0)">add</text>
-<rect x="277.2" y="203.8" width="23.0" height="106.2" fill="#7aa6c2"/>
-<text x="288.7" y="200.8" text-anchor="middle" font-size="9">1.33</text>
-<rect x="302.8" y="207.0" width="23.0" height="103.0" fill="#4a7fa5"/>
-<text x="314.3" y="204.0" text-anchor="middle" font-size="9">1.29</text>
-<rect x="328.3" y="254.9" width="23.0" height="55.1" fill="#2e5a7a"/>
-<text x="339.8" y="251.9" text-anchor="middle" font-size="9">0.69</text>
-<text x="315.6" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 315.6 322.0)">Saddleback_search</text>
-<rect x="379.4" y="193.4" width="23.0" height="116.6" fill="#7aa6c2"/>
-<text x="390.9" y="190.4" text-anchor="middle" font-size="9">1.46</text>
-<rect x="405.0" y="161.5" width="23.0" height="148.5" fill="#4a7fa5"/>
-<text x="416.5" y="158.5" text-anchor="middle" font-size="9">1.86</text>
-<rect x="430.6" y="158.3" width="23.0" height="151.7" fill="#2e5a7a"/>
-<text x="442.1" y="155.3" text-anchor="middle" font-size="9">1.90</text>
-<text x="417.8" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 417.8 322.0)">symmArray</text>
-<rect x="481.7" y="193.4" width="23.0" height="116.6" fill="#7aa6c2"/>
-<text x="493.2" y="190.4" text-anchor="middle" font-size="9">1.46</text>
-<rect x="507.2" y="186.2" width="23.0" height="123.8" fill="#4a7fa5"/>
-<text x="518.7" y="183.2" text-anchor="middle" font-size="9">1.55</text>
-<rect x="532.8" y="219.8" width="23.0" height="90.2" fill="#2e5a7a"/>
-<text x="544.3" y="216.8" text-anchor="middle" font-size="9">1.13</text>
-<text x="520.0" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 520.0 322.0)">project</text>
-<rect x="583.9" y="189.4" width="23.0" height="120.6" fill="#7aa6c2"/>
-<text x="595.4" y="186.4" text-anchor="middle" font-size="9">1.51</text>
-<rect x="609.4" y="183.8" width="23.0" height="126.2" fill="#4a7fa5"/>
-<text x="620.9" y="180.8" text-anchor="middle" font-size="9">1.58</text>
-<rect x="635.0" y="191.0" width="23.0" height="119.0" fill="#2e5a7a"/>
-<text x="646.5" y="188.0" text-anchor="middle" font-size="9">1.49</text>
-<text x="622.2" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 622.2 322.0)">ArrayList.remove.1</text>
-<rect x="686.1" y="153.5" width="23.0" height="156.5" fill="#7aa6c2"/>
-<text x="697.6" y="150.5" text-anchor="middle" font-size="9">1.96</text>
-<rect x="711.7" y="84.8" width="23.0" height="225.2" fill="#4a7fa5"/>
-<text x="723.2" y="81.8" text-anchor="middle" font-size="9">2.82</text>
-<rect x="737.2" y="108.0" width="23.0" height="202.0" fill="#2e5a7a"/>
-<text x="748.7" y="105.0" text-anchor="middle" font-size="9">2.53</text>
-<text x="724.4" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 724.4 322.0)">ArrayList_concatenate</text>
-<rect x="788.3" y="184.6" width="23.0" height="125.4" fill="#7aa6c2"/>
-<text x="799.8" y="181.6" text-anchor="middle" font-size="9">1.57</text>
-<rect x="813.9" y="135.9" width="23.0" height="174.1" fill="#4a7fa5"/>
-<text x="825.4" y="132.9" text-anchor="middle" font-size="9">2.18</text>
-<rect x="839.4" y="140.7" width="23.0" height="169.3" fill="#2e5a7a"/>
-<text x="850.9" y="137.7" text-anchor="middle" font-size="9">2.12</text>
-<text x="826.7" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 826.7 322.0)">median</text>
-<rect x="890.6" y="218.2" width="23.0" height="91.8" fill="#7aa6c2"/>
-<text x="902.1" y="215.2" text-anchor="middle" font-size="9">1.15</text>
-<rect x="916.1" y="199.0" width="23.0" height="111.0" fill="#4a7fa5"/>
-<text x="927.6" y="196.0" text-anchor="middle" font-size="9">1.39</text>
-<rect x="941.7" y="203.8" width="23.0" height="106.2" fill="#2e5a7a"/>
-<text x="953.2" y="200.8" text-anchor="middle" font-size="9">1.33</text>
-<text x="928.9" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 928.9 322.0)">remFirst</text>
+<rect x="277.2" y="252.6" width="23.0" height="57.4" fill="#7aa6c2"/>
+<text x="288.7" y="249.6" text-anchor="middle" font-size="9">1.44</text>
+<rect x="302.8" y="258.3" width="23.0" height="51.7" fill="#4a7fa5"/>
+<text x="314.2" y="255.3" text-anchor="middle" font-size="9">1.29</text>
+<rect x="328.3" y="282.1" width="23.0" height="27.9" fill="#2e5a7a"/>
+<text x="339.8" y="279.1" text-anchor="middle" font-size="9">0.70</text>
+<text x="315.5" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 315.5 322.0)">Saddleback_search</text>
+<rect x="379.4" y="254.0" width="23.0" height="56.0" fill="#7aa6c2"/>
+<text x="390.9" y="251.0" text-anchor="middle" font-size="9">1.40</text>
+<rect x="405.0" y="236.8" width="23.0" height="73.2" fill="#4a7fa5"/>
+<text x="416.5" y="233.8" text-anchor="middle" font-size="9">1.83</text>
+<rect x="430.5" y="236.8" width="23.0" height="73.2" fill="#2e5a7a"/>
+<text x="442.0" y="233.8" text-anchor="middle" font-size="9">1.83</text>
+<text x="417.7" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 417.7 322.0)">symmArray</text>
+<rect x="481.6" y="254.2" width="23.0" height="55.8" fill="#7aa6c2"/>
+<text x="493.1" y="251.2" text-anchor="middle" font-size="9">1.39</text>
+<rect x="507.2" y="256.8" width="23.0" height="53.2" fill="#4a7fa5"/>
+<text x="518.7" y="253.8" text-anchor="middle" font-size="9">1.33</text>
+<rect x="532.7" y="266.1" width="23.0" height="43.9" fill="#2e5a7a"/>
+<text x="544.2" y="263.1" text-anchor="middle" font-size="9">1.10</text>
+<text x="519.9" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 519.9 322.0)">project</text>
+<rect x="583.8" y="252.6" width="23.0" height="57.4" fill="#7aa6c2"/>
+<text x="595.3" y="249.6" text-anchor="middle" font-size="9">1.43</text>
+<rect x="609.3" y="244.8" width="23.0" height="65.2" fill="#4a7fa5"/>
+<text x="620.8" y="241.8" text-anchor="middle" font-size="9">1.63</text>
+<rect x="634.9" y="245.0" width="23.0" height="65.0" fill="#2e5a7a"/>
+<text x="646.4" y="242.0" text-anchor="middle" font-size="9">1.63</text>
+<text x="622.1" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 622.1 322.0)">ArrayList.remove.1</text>
+<rect x="686.0" y="238.9" width="23.0" height="71.1" fill="#7aa6c2"/>
+<text x="697.5" y="235.9" text-anchor="middle" font-size="9">1.78</text>
+<rect x="711.5" y="176.3" width="23.0" height="133.7" fill="#4a7fa5"/>
+<text x="723.0" y="173.3" text-anchor="middle" font-size="9">3.34</text>
+<rect x="737.1" y="147.2" width="23.0" height="162.8" fill="#2e5a7a"/>
+<text x="748.6" y="144.2" text-anchor="middle" font-size="9">4.07</text>
+<text x="724.3" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 724.3 322.0)">ArrayList_concatenate</text>
+<rect x="788.2" y="242.2" width="23.0" height="67.8" fill="#7aa6c2"/>
+<text x="799.7" y="239.2" text-anchor="middle" font-size="9">1.70</text>
+<rect x="813.7" y="221.2" width="23.0" height="88.8" fill="#4a7fa5"/>
+<text x="825.2" y="218.2" text-anchor="middle" font-size="9">2.22</text>
+<rect x="839.3" y="208.7" width="23.0" height="101.3" fill="#2e5a7a"/>
+<text x="850.8" y="205.7" text-anchor="middle" font-size="9">2.53</text>
+<text x="826.5" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 826.5 322.0)">median</text>
+<rect x="890.4" y="261.7" width="23.0" height="48.3" fill="#7aa6c2"/>
+<text x="901.9" y="258.7" text-anchor="middle" font-size="9">1.21</text>
+<rect x="915.9" y="248.7" width="23.0" height="61.3" fill="#4a7fa5"/>
+<text x="927.4" y="245.7" text-anchor="middle" font-size="9">1.53</text>
+<rect x="941.5" y="253.9" width="23.0" height="56.1" fill="#2e5a7a"/>
+<text x="953.0" y="250.9" text-anchor="middle" font-size="9">1.40</text>
+<text x="928.7" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 928.7 322.0)">remFirst</text>
 <rect x="60" y="438" width="12" height="12" fill="#7aa6c2"/>
 <text x="76" y="448" font-size="11">2× workers</text>
 <rect x="150" y="438" width="12" height="12" fill="#4a7fa5"/>
