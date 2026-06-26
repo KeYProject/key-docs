@@ -5,15 +5,16 @@
 This page documents the multi-core (parallel) prover, a port and modernisation
 of the 2018 *HacKeYthon* multithreading prototype. It is described here at the
 conceptual and design level (not the implementation); the code lives in the
-linked pull requests. Two PRs cover the work:
+linked pull request. The [3.1 performance series](PerformanceOptimizations.md) has
+since been merged into `main`, so the parallel prover now applies on top of a
+`main` that already includes it:
 
 | PR | What | Default |
 |---|---|---|
-| [Multithreading (standalone)](#) — *PR1* | The parallel prover on its own, applicable to `main` | multi-core (4 threads) in the PR build; single-core once merged |
-| [Multithreading × perf series](#) — *PR2* | PR1 integrated with the [3.1 performance series](PerformanceOptimizations.md) | preview branch |
+| [Multithreading](#) | The goal-level parallel prover, on top of (perf-inclusive) `main` | multi-core (4 threads) in the PR build; single-core once merged |
 
-Both fall back safely to the legacy single-threaded prover, which stays the
-default on `main`.
+It falls back safely to the legacy single-threaded prover, which stays the default
+on `main`.
 
 ## The prover loop
 
@@ -238,39 +239,33 @@ every worker has stopped, so pruning sees a quiescent proof.
   cannot leak between them. Wired into the CI integration-test matrix.
 
 > *8-worker stress evidence (16-core): `MtStressTest` 2/2, `MtMacroStressTest` 1/1,
-> `MtScriptStressTest` 2/2 — all green on both the multithreading branch and the
-> combined multithreading × performance branch.*
+> `MtScriptStressTest` 2/2 — all green on the multithreading branch (rebased on the
+> perf-inclusive `main`).*
 
-## Combined effect
+## Measured speedup
 
-Automode wall-clock speedup vs single-threaded `main` (16-core, one isolated run
-per proof; the `4×` column is the practical sweet spot):
+With the performance series now in `main`, this measures the parallelism the
+multi-core prover adds *on top of it*. Automode wall-clock speedup vs the
+single-threaded prover (16-core, one isolated run per proof; the deterministic
+candidate ordering keeps the per-run figures stable). The `4×` column is the
+practical sweet spot:
 
-| Proof | main | 4× (MT) | 4× (MT × perf) |
-|---|---|---|---|
-| SimplifiedLinkedList.remove | 27.9s | 2.82× | 4.36× |
-| gemplusDecimal/add | 10.8s | 2.32× | 3.74× |
-| symmArray | 20.3s | 1.83× | 4.31× |
-| ArrayList_concatenate | 13.0s | 3.34× | 3.85× |
-| arith/median | 4.4s | 2.22× | 4.47× |
-| Saddleback_search (narrow) | 22.5s | 1.29× | 3.72× |
-
-The performance series and the multi-core prover compose: cheaper single-threaded
-matching/allocation shrinks the cost of each rule application *and* of the parallel
-prover's off-critical-path speculation, so the combined branch reaches ~4–5× on
-wide proofs and even lifts the narrow worst case (Saddleback regresses to 0.70× at
-eight multithreading-only workers, but the combined branch holds 2.36× there and
-3.72× at four).
-
-Per-proof speedup vs single-threaded `main`, multithreading only:
+| Proof | seq (s) | 2× | 4× | 8× |
+|---|---|---|---|---|
+| SimplifiedLinkedList.remove | 17.0 | 1.59× | 2.15× | 2.08× |
+| gemplusDecimal/add | 8.9 | 1.73× | 2.70× | 3.55× |
+| Saddleback_search (narrow) | 11.6 | 1.64× | 1.82× | 1.16× |
+| symmArray | 14.9 | 1.72× | 2.44× | 2.74× |
+| ArrayList.remove.1 | 2.4 | 1.52× | 1.85× | 1.89× |
+| ArrayList_concatenate | 8.8 | 2.37× | 3.25× | 3.67× |
+| median | 3.0 | 1.79× | 2.26× | 3.25× |
+| ArrayList.remFirst | 0.6 | 1.14× | 1.34× | 1.40× |
 
 ![Multi-core speedup vs main](img/mt-speedup.svg)
 
-And with the performance series underneath (the combined branch), where even the
-narrow Saddleback proof no longer regresses at eight workers:
-
-![Multi-core × performance speedup vs main](img/mt-perf-speedup.svg)
-
-The realistic ceiling per proof is set by its widest concurrency, not the worker
-count: wide, splitting proofs scale well to 4–8 workers; narrow proofs (one long
-branch) stay near 1×. The synthetic best/worst-case benchmark makes this explicit.
+Wide, splitting proofs scale to ~3–3.7× at four to eight workers. The narrow
+Saddleback proof peaks around four workers (1.82×) and regresses at eight (1.16×):
+more workers there only add off-critical-path speculation that is thrown away. The
+realistic ceiling per proof is set by its widest concurrency, not the worker count;
+narrow proofs (one long branch) stay near 1×. The synthetic best/worst-case
+benchmark makes this explicit.
