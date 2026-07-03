@@ -113,8 +113,12 @@ Consequences to be aware of when writing code:
 Rules rebuild terms; something must decide which labels the rebuilt
 terms carry. That is `TermLabelManager` (in `key.core`,
 `de.uka.ilkd.key.logic.label`), invoked from the rule-application
-machinery. Per label, a profile registers a `TermLabelConfiguration`
-bundling up to five collaborators:
+machinery. The `Policy`/`Update`/`Refactoring` hooks all receive the
+current rule application bundled in a `TermLabelContext` (rule, rule
+application, goal, application and modality terms, hint, …) plus their
+own payload (the term being built/refactored, the label set). Per label,
+a profile registers a `TermLabelConfiguration` bundling up to five
+collaborators:
 
 | Hook | Contract | Runs |
 |---|---|---|
