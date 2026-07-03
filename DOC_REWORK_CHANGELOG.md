@@ -502,6 +502,28 @@ intentionally parked LLM stub and `disabled/`).
   Each section follows previous-design / problem / chosen-solution with a
   mermaid diagram; added to the nav.
 
+### M18 — Term labels: internals page and how-to
+
+- New Internals page `devel/TermLabels.md`: why term labels exist
+  (non-soundness-relevant per-occurrence annotations that must travel
+  with the term), the shipped label inventory with attachers, and the
+  design after the 2026 term-label rework — labels directly on
+  `TermImpl` (no `LabeledTermImpl` subclass anymore), the three equality
+  modes (plain `equals` ignores **all** labels;
+  `IRRELEVANT_TERM_LABELS_PROPERTY` keeps proof-relevant ones;
+  `equalsIncludingLabels`/`labeledHashCode` strict for interning),
+  label-sensitive interning via `StrictTermKey`, and the
+  `TermLabelManager` hook taxonomy (Factory / Policy / Update /
+  Refactoring / Merger) including the fixed execution order and why the
+  Policy/Update split is intentional.
+- New verified how-to `devel/howto/AddTermLabel.md`: decision guidance,
+  label + factory definition, profile registration, attachment from
+  taclets (`<<demo>>`) and from `TermBuilder`, a maintenance-hook
+  ladder ordered by runtime cost, and testing pointers.
+- Both added to the nav (Internals; How-Tos) and to the how-to overview.
+- **Note:** these pages document the state of the `termlabel-cleanup`
+  branch (label-agnostic equality); merge together with that PR.
+
 ## Known issues / suggestions for follow-up
 
 - `key-src` `README.md` states "Java 17 or newer" while the build sets

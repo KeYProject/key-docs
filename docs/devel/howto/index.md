@@ -17,6 +17,9 @@ taclet example, executed) against the current code base in June 2026.
   into one proof step, usable from the GUI and from scripts.
 - **[How to add a proof script command](AddScriptCommand/)** — extend the
   proof script language with a new command.
+- **[How to add a term label](AddTermLabel/)** — annotate term
+  occurrences with non-soundness-relevant bookkeeping information and
+  keep the annotation alive across rule applications.
 
 For the conceptual overview of all extension mechanisms (script commands,
 macros, built-in rules, SMT solvers, …), see

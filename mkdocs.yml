@@ -148,6 +148,7 @@ nav:
               - "Add Taclets": devel/howto/AddTaclets.md
               - "Add a Proof Macro": devel/howto/AddProofMacro.md
               - "Add a Script Command": devel/howto/AddScriptCommand.md
+              - "Add a Term Label": devel/howto/AddTermLabel.md
           - "Writing Taclets": devel/HowToTaclet.md
           - "Polarity Triggers for Rewrite Taclets": user/Polarity.md
           - "GUI Extension Points": devel/GUIExtensions.md
@@ -159,6 +160,7 @@ nav:
           - "JSON-RPC Interface": devel/rpc/index.md
       - "6. Internals":
           - "The Rule Application Pipeline": devel/RuleApplicationPipeline.md
+          - "Term Labels": devel/TermLabels.md
           - "Performance Optimizations (3.1)": devel/PerformanceOptimizations.md
           - "Multi-Core Proving": devel/Multithreading.md
           - "Proof Loading and Saving": devel/ProofLoadSave.md
