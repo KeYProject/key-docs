@@ -1,9 +1,11 @@
 # Term Labels
 
-*2026 — written against the term-label rework branch (`termlabel-cleanup`);
-describes the system after the label-agnostic-equality change. If you are
-reading this before that branch is merged, the equality semantics in
-section "Equality" may not match your checkout.*
+!!! warning "Status: open pull request"
+    The term-label rework described on this page is **not yet merged** — it is
+    an open pull request. This page documents the proposed design (in particular
+    the label-agnostic term equality); details may still change during review of
+    the pull request, so this page will be updated accordingly.
+    *([pull request #3884](https://github.com/KeYProject/key/pull/3884))*
 
 Term labels are annotations attached to terms: `heap<<anonHeapFunction>>`,
 `x + 1<<origin(...)>>`. They carry bookkeeping information *about* a term

@@ -1,5 +1,12 @@
 # How to add a term label
 
+!!! warning "Status: open pull request"
+    The term-label rework this recipe assumes is **not yet merged** — it is an
+    open pull request. The steps below document the proposed framework; details
+    may still change during review of the pull request, so this page will be
+    updated accordingly.
+    *([pull request #3884](https://github.com/KeYProject/key/pull/3884))*
+
 *2026 — the code below was compiled against the term-label rework branch;
 the registration/attachment pattern is the one exercised by
 `TestTermLabelManager` and the shipped labels.*
