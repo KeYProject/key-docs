@@ -112,37 +112,93 @@ Consequences to be aware of when writing code:
 
 ### Maintenance during proof: `TermLabelManager` and its hooks
 
-Rules rebuild terms; something must decide which labels the rebuilt
-terms carry. That is `TermLabelManager` (in `key.core`,
-`de.uka.ilkd.key.logic.label`), invoked from the rule-application
-machinery. The `Policy`/`Update`/`Refactoring` hooks all receive the
-current rule application bundled in a `TermLabelContext` (rule, rule
-application, goal, application and modality terms, hint, …) plus their
-own payload (the term being built/refactored, the label set). Per label,
-a profile registers a `TermLabelConfiguration` bundling up to five
-collaborators:
+Placing a label is easy; the real work is keeping it in the right place
+as the proof runs. Rules do **not** edit terms in place — when a rule
+fires it *builds new terms* to replace the old ones. So the label a user
+sees on `x + 1<<l>>` before a step sits on an object the step discards;
+unless something re-attaches `l`, it is simply gone. Deciding the labels
+of the freshly built terms is the job of `TermLabelManager`
+(`de.uka.ilkd.key.logic.label`), which the rule engine calls at every
+rewrite.
 
-| Hook | Contract | Runs |
+A little vocabulary first, because the hooks are phrased in it:
+
+- The rule is applied at one position of the sequent; the subterm there
+  is the **application term** (the redex the rule rewrites), and the rule
+  produces the **new term** that replaces it.
+- For rules that drive a program the label of interest often sits not on
+  the application term but *inside* it. A symbolic-execution formula
+  looks like `{u1 || u2 || …} ⟨p⟩ φ` — a block of *updates* wrapped
+  around a *modality* `⟨p⟩ φ` — and a step that advances the program
+  rewrites the updates while the modality carries the label. So the
+  manager also computes the **modality term**, the modality reached by
+  skipping the leading updates (`TermBuilder.goBelowUpdates`), and lets a
+  label look at *its* labels too.
+
+All hooks receive this information bundled in a `TermLabelContext` (the
+rule, rule application, goal, application term, modality term, …) and add
+their own payload (the term being built or refactored, the label set).
+
+The five hook kinds are five answers to the question *"how does my label
+end up on the new term — or survive elsewhere?"*, from the cheapest and
+most common case to the rarest:
+
+- **Nothing at all.** If the taclet writes the label itself —
+  `\replacewith (f(x)<<l>>)` in the rule file — the engine copies it onto
+  the new term automatically; and a label on a term that rules never
+  rewrite just rides along. *Almost every label lives here.*
+- **`TermLabelPolicy` — "the new term should keep a label the old term
+  had."** The policy is asked, per label of the application term (or of
+  the modality term), whether to re-attach it to the new term, and may
+  return a modified label. Example: `StayOnOperatorTermLabelPolicy`
+  keeps a label as long as the top operator is unchanged. Policies are
+  declarative — registered under the label's name, consulted only for it.
+- **`TermLabelUpdate` — "I need to compute the label set
+  programmatically."** An update receives the whole *mutable* set of
+  labels destined for the new term and may add, drop or rewrite entries,
+  optionally only for specific rules. This is the escape hatch when
+  "keep an existing label" is not enough — e.g. the symbolic-execution
+  updates mint a fresh node id and attach a new `SE` label here.
+- **`TermLabelRefactoring` — "I need to fix up labels on *other* terms,
+  after the fact."** The hooks above only shape the one new term; a
+  refactoring runs *after* the step and may rewrite labels on surrounding
+  terms. How far it reaches is its **scope**: only the modality below the
+  updates, the subtree under the application term (optionally including
+  its parent chain up to the formula), or — the sledgehammer — every
+  formula in the sequent. Wider scope means more terms rebuilt on every
+  application of that rule, so choose the narrowest that works. Example:
+  origin labels are recomputed over the application subtree so a parent's
+  recorded origin stays consistent with its children's.
+- **`TermLabelMerger` — "my formula was dropped as a duplicate; save its
+  labels."** A sequent side is a set, and membership ignores labels (see
+  [Equality](#equality-three-modes)), so adding a formula that already
+  exists *modulo labels* is rejected. The merger is handed the rejected
+  copy and the surviving one and can carry labels across so they are not
+  lost.
+
+A profile bundles one label's hooks into a `TermLabelConfiguration`. The
+same content as a quick reference:
+
+| Hook | What it decides | When it runs |
 |---|---|---|
-| `TermLabelFactory` | parse the label from text (proof loading, taclet parsing) | at parse time |
-| `TermLabelPolicy` | per existing label: *keep* it on the new term (possibly transformed) or drop it — declarative, dispatched by label name; variants for the application term and for the modality term | first, when a new term is created |
-| `TermLabelUpdate` | imperative transformer of the whole label set: add/remove freely; can be restricted to specific rules | after the policies |
-| `TermLabelRefactoring` | rewrite labels of *other* terms than the created one; scope per application: below-updates, application subtree (± parents), or the whole sequent | after rule application |
-| `TermLabelMerger` | when a rewritten formula is rejected because an equal-modulo-labels formula already sits in the sequent: rescue labels from the rejected copy onto the surviving one | at sequent insertion |
+| `TermLabelFactory` | how to parse the label from text | proof loading / taclet parsing |
+| `TermLabelPolicy` | keep (possibly transform) or drop one existing label of the application/modality term | while building the new term |
+| `TermLabelUpdate` | free edit of the new term's whole label set | after the policies |
+| `TermLabelRefactoring` | relabel *other* terms, within a chosen scope | after the rule application |
+| `TermLabelMerger` | rescue labels of a formula rejected as a duplicate | at sequent insertion |
 
-The execution order within one term creation is fixed and part of the
-contract: taclet-provided labels → application-term policies →
-modality-term policies → rule-specific updates → all-rules updates. The
-`Policy`/`Update` split is intentional and load-bearing: policies
-resolve "which existing labels survive" *before* updates transform the
-set, and updates (e.g. the symbolic-execution ones) read the set the
-policies populated. Collapsing the two into one hook kind was evaluated
-during the 2026 rework and rejected for exactly this reason.
+**The order is fixed and part of the contract.** Building one term runs:
+taclet-provided labels → application-term policies → modality-term
+policies → rule-specific updates → rule-independent updates. Policies run
+*before* updates deliberately: a policy decides which existing labels
+survive, and an update then sees and transforms that set (the SE updates
+depend on this). That coupling is why the two remain separate hook kinds
+rather than being merged into one.
 
-Most labels need almost none of this. In the standard `JavaProfile`,
-ten of the eleven registered labels are factory-only — they are placed
-by taclets (`t<<selectSK>>` in a rule file) and simply travel or die
-with their term. Only `origin` registers a policy and a refactoring.
+In practice most labels touch none of this. In the standard `JavaProfile`
+ten of the eleven labels are factory-only — placed by taclets
+(`t<<selectSK>>` in a rule file), travelling or dying with their term —
+and only `origin` registers a policy and a refactoring.
 
 ### Registration and visibility
 
