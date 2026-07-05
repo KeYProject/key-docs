@@ -190,6 +190,10 @@ nav:
           - "JML Editing": eclipse/JMLEditing/index.md
           - "Resources" : eclipse/KeYResources/index.md
 
+  - KeY Enhancement Proposals:
+      - "About KEPs": keps/index.md
+      - "KEP-1: Taclet-Generating Transformers": keps/kep-0001-taclet-generating-transformers/index.md
+
 extra_css:
   - extra.css
 
