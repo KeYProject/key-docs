@@ -1,6 +1,4 @@
----
-approved: none
----
+
 
 # KEP-1: Taclet-Generating Transformers
 
