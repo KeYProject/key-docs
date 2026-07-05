@@ -11,7 +11,7 @@ approved: none
     out, but details may still change, and the feature may be reshaped before
     (or instead of) being merged.
 
-    - **Pull request:** _to be linked_ (`KeYProject/key` — "RFC: Taclet-generating transformers")
+    - **Pull request:** [KeYProject/key#3893](https://github.com/KeYProject/key/pull/3893) — "RFC / KEP-1: Taclet-generating transformers"
     - **Scope of this page:** the concept, how to use it from the GUI and the
       command line, and where the idea goes beyond the One Step Simplifier.
 
