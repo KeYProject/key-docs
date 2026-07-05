@@ -20,7 +20,7 @@ Several parts of KeY perform *many* calculus steps at once in Java code:
 integer sum during rule application) and **built-in rules** — the
 **One Step Simplifier** (OSS) above all, which aggregates a whole fixpoint of
 rewrite steps into a single proof node. While OSS shows you a protocol as certificate
-what it has done, the protocol cannot be easily used to derive an OSS free proof. This means,
+what it has done, due to technical reasons, translating the protocol into a sequence of taclets to obtain an OSS free proof is hard (see [KeYProject/key#3707](https://github.com/KeYProject/key/pull/3707)). This means,
 you have to trust a second rewrite engine to be correct. Meta constructs, program transformers and
 other built-in rules do not provide any transparency and one has to trust the implemented Java code.
 The big advanatage of these constructs is speed and the ability to express complex transformations.
