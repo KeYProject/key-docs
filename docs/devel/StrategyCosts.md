@@ -108,13 +108,15 @@ Decide top-down: first the layer, then the exact value.
 Within a band, fine ordering is a small delta on the tier:
 
 ```java
-CostBand.NORMALIZE.cost()      // the band's value, -5000
+CostBand.NORMALIZE.cost()      // the band's cost (-5000)
 CostBand.PREFER.at(300)        // band + delta = -200: same tier, ordered
                                // against its in-band neighbours
 ```
 
-A delta keeps the rule in the same tier; a larger step belongs in a different
-band, not in a delta. Theory-local holders need no `at(..)`: a holder is a
+Both return the cost as a constant strategy feature, ready to use in
+`bindRuleSet` and inside feature terms; the raw number is available as
+`value()`. A delta keeps the rule in the same tier; a larger step belongs in a
+different band, not in a delta. Theory-local holders need no `at(..)`: a holder is a
 plain list of constants, so a finer step is simply one more named constant (or
 arithmetic on a sibling, as above).
 

@@ -550,6 +550,9 @@ intentionally parked LLM stub and `disabled/`).
   rule-application pipeline.
 - **Note:** documents the state of the `bubel/strategy-cost-cleanup`
   branch (CostBand vocabulary); merge together with that PR.
+- Follow-up: `cost()`/`at(delta)` return the cost as a constant strategy
+  feature (call sites lose the `longConst(...)` wrapper); raw number via
+  `value()`. Snippet updated accordingly.
 
 ## Known issues / suggestions for follow-up
 
