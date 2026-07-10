@@ -524,6 +524,18 @@ intentionally parked LLM stub and `disabled/`).
 - **Note:** these pages document the state of the `termlabel-cleanup`
   branch (label-agnostic equality); merge together with that PR.
 
+### M11 — Internals restructuring (port from the queue branch)
+
+- "6. Internals" regrouped into subsections: Proof search / Terms and
+  parsing / Proofs and external solvers / Legacy (ported from the
+  `queue-docs` branch).
+- Removed `devel/PerformanceOptimizations.md` (+ nav entry + reference in
+  `Multithreading.md`): the documented "3.1" performance series is merged
+  into `main`.
+- **Not** ported (stays on `queue-docs` until the eager queue lands): the
+  `EagerRuleApplicationQueue.md` appendix, the lazy/eager manager section
+  in `RuleApplicationPipeline.md`, and the "9. Appendices" nav group.
+
 ## Known issues / suggestions for follow-up
 
 - `key-src` `README.md` states "Java 17 or newer" while the build sets

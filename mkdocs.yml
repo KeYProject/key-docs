@@ -159,15 +159,18 @@ nav:
           - "KeY in External Projects": devel/ExternalProject.md
           - "JSON-RPC Interface": devel/rpc/index.md
       - "6. Internals":
-          - "The Rule Application Pipeline": devel/RuleApplicationPipeline.md
-          - "Term Labels": devel/TermLabels.md
-          - "Performance Optimizations (3.1)": devel/PerformanceOptimizations.md
-          - "Multi-Core Proving": devel/Multithreading.md
-          - "Proof Loading and Saving": devel/ProofLoadSave.md
-          - "The KeY Parser": devel/NewKeyParser.md
-          - "SMT Translation": devel/SMTTranslation.md
-          - "Counterexample Generation": devel/CounterExampleGeneration.md
-          - "Extending Recoder (obsolete)": devel/How2ExtRecoder.md
+          - "Proof search":
+              - "The Rule Application Pipeline": devel/RuleApplicationPipeline.md
+              - "Multi-Core Proving": devel/Multithreading.md
+          - "Terms and parsing":
+              - "The KeY Parser": devel/NewKeyParser.md
+              - "Term Labels": devel/TermLabels.md
+          - "Proofs and external solvers":
+              - "Proof Loading and Saving": devel/ProofLoadSave.md
+              - "SMT Translation": devel/SMTTranslation.md
+              - "Counterexample Generation": devel/CounterExampleGeneration.md
+          - "Legacy":
+              - "Extending Recoder (obsolete)": devel/How2ExtRecoder.md
       - "7. Testing":
           - "Overview": devel/Testing/index.md
           - "Proved Rules": devel/Testing/ProveRules.md

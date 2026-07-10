@@ -4,10 +4,7 @@
 
 This page documents the multi-core (parallel) prover, a port and modernisation
 of the 2018 *HacKeYthon* multithreading prototype. It is described here at the
-conceptual and design level (not the implementation); the code lives in the
-linked pull request. The [3.1 performance series](PerformanceOptimizations.md) has
-since been merged into `main`, so the parallel prover now applies on top of a
-`main` that already includes it:
+conceptual and design level; the code lives in the linked pull request.
 
 | PR | What | Default |
 |---|---|---|
