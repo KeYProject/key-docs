@@ -536,6 +536,21 @@ intentionally parked LLM stub and `disabled/`).
   `EagerRuleApplicationQueue.md` appendix, the lazy/eager manager section
   in `RuleApplicationPipeline.md`, and the "9. Appendices" nav group.
 
+### M12 — Strategy costs
+
+- New page `devel/StrategyCosts.md` — "Strategy Costs and the Cost-Band
+  Ladder": how-to for extending/modifying the automated strategies. The
+  three cost layers (`CostBand` ladder / `CombinationCost` / theory-local
+  holders), the band table with semantics (`DEFAULT`, `DEFER`,
+  `BLOCK_CONTRACT` ordering constraint), choosing a cost top-down (layer,
+  then fine placement), why theory-local constants are deliberately not
+  anchored to bands, the two situations that make a cost combination-shared,
+  and the verification required per layer.
+- Added to the nav under Internals → Proof search, next to the
+  rule-application pipeline.
+- **Note:** documents the state of the `bubel/strategy-cost-cleanup`
+  branch (CostBand vocabulary); merge together with that PR.
+
 ## Known issues / suggestions for follow-up
 
 - `key-src` `README.md` states "Java 17 or newer" while the build sets
