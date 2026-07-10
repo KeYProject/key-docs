@@ -180,6 +180,8 @@ nav:
           - "Parser Message Tests": devel/Testing/parserMessageTest.md
           - "CI Infrastructure": devel/Testing/TestingInfrastructure.md
       - "8. Writing Documentation": devel/howtodoc/index.md
+      - "9. Appendices":
+          - "Strategy Cost Tables": devel/StrategyCostTables.md
 
   - Historical:
       - Eclipse plugins (unsupported):

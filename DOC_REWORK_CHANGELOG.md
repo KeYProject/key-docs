@@ -553,6 +553,12 @@ intentionally parked LLM stub and `disabled/`).
 - Follow-up: `cost()`/`at(delta)` return the cost as a constant strategy
   feature (call sites lose the `longConst(...)` wrapper); raw number via
   `value()`. Snippet updated accordingly.
+- New appendix page `devel/StrategyCostTables.md` ("9. Appendices" →
+  "Strategy Cost Tables"): reference tables for every cost constant — the cost
+  bands (shared with the main page via a `--8<--` snippet include,
+  `includes/costband-table.md`, so they stay consistent), the combination
+  costs, and the theory-local costs grouped by component strategy. Linked from
+  the main page; all 96 values cross-checked against the sources.
 
 ## Known issues / suggestions for follow-up
 
