@@ -30,7 +30,9 @@ The chapters are arranged so that they can be read front to back:
 7. **Language Reference** — the grammars of [JML](JMLGrammar/), the
    [KeY input language](KeyGrammar/), and KeY's
    [Java extensions](JavaGrammar/).
-8. **[FAQ](FAQ/)** — answers to common problems.
+8. **Supported Language Features** — which Java features KeY can verify:
+   the [Java coverage table](SupportedFeatures/JavaCoverage/).
+9. **[FAQ](FAQ/)** — answers to common problems.
 
 The **[Release Notes](../changelog/)** list what changed in each KeY
 release.

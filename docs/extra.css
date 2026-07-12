@@ -84,3 +84,46 @@
 .md-typeset details { /* ensure that the text in "abstract" etc notes (so called "admonitions") is not too small */
   font-size: 100%;
 }
+
+/* Java-coverage feature table (docs/user/SupportedFeatures/JavaCoverage.md).
+   Wrapped in <div class="j-coverage">; keep it readable and scrollable on
+   narrow screens, and centre the KeY-support column. */
+.j-coverage {
+  overflow-x: auto;
+}
+/* Material wraps tables in an inline-block scroll wrapper; make it block so the
+   fixed layout + percentage widths below are honoured. */
+.j-coverage .md-typeset__table {
+  display: block;
+  width: 100%;
+}
+.j-coverage table {
+  font-size: .78rem;
+  table-layout: fixed;      /* honour the per-column widths below */
+  width: 100%;
+  min-width: 44rem;         /* below this, scroll instead of crushing columns
+                               (Material's rem is 20px, so this is ~880px) */
+}
+/* Wrap long code tokens (e.g. LocalClassDeclarationStmt) instead of overflowing,
+   and drop the theme's 5rem per-cell minimum so the widths below actually apply. */
+.j-coverage table th,
+.j-coverage table td {
+  overflow-wrap: break-word;
+  min-width: 0 !important;
+}
+/* Keep the version/JEP columns compact so the Comments column gets more room. */
+.j-coverage table th:nth-child(1) { width: 18%; }  /* Feature */
+.j-coverage table th:nth-child(2) { width: 9%; }   /* Introduced */
+.j-coverage table th:nth-child(3) { width: 22%; }  /* Later changes */
+.j-coverage table th:nth-child(4) { width: 4%; }   /* KeY */
+.j-coverage table th:nth-child(5) { width: 47%; }  /* Comments */
+.j-coverage table td:nth-child(4),
+.j-coverage table th:nth-child(4) {
+  text-align: center;
+  white-space: nowrap;
+}
+/* Slightly larger support glyphs for scanability. */
+.j-coverage table td:nth-child(4) .twemoji svg {
+  height: 1.15em;
+  width: 1.15em;
+}

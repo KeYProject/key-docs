@@ -127,7 +127,9 @@ nav:
           - "JML Grammar": user/JMLGrammar.md
           - "The KeY Language": user/KeyGrammar.md
           - "KeY's Java Extensions": user/JavaGrammar.md
-      - "8. FAQ": user/FAQ.md
+      - "8. Supported Language Features":
+          - "Java Coverage": user/SupportedFeatures/JavaCoverage.md
+      - "9. FAQ": user/FAQ.md
       - "Release Notes": changelog.md
 
   - Developer Guide:
