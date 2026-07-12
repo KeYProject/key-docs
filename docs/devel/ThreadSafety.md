@@ -9,7 +9,7 @@
 
 KeY can run its automatic proof search on several *worker threads* at once (the
 multi-core prover). This page explains what that means for everyone who writes
-prover code — rules, strategy features, anything in `key.core` that runs during
+prover code: rules, strategy features, anything in `key.core` that runs during
 proof search. You do not need any prior experience with multithreading to follow
 it; every needed term is introduced on the way.
 
@@ -37,13 +37,13 @@ Two kinds of objects exist in this picture:
 
 The danger with shared objects is the *data race*: two threads read and write
 the same memory without coordination. Java gives almost no guarantees in that
-situation — a `HashMap` written by two threads at once can lose entries, return
+situation: a `HashMap` written by two threads at once can lose entries, return
 wrong values, or make a reader loop forever. Races are nasty to debug because
 they depend on timing: the same code can pass a hundred runs and fail the
 hundred-and-first.
 
 There is a second, subtler failure class that this page also covers:
-**indeterminism**. Proof search in KeY is meant to be *reproducible* — same
+**indeterminism**. Proof search in KeY is meant to be *reproducible*: same
 problem, same settings, same proof, every time. Reproducibility is what makes
 saved proofs reloadable and test failures debuggable. Some mistakes (like
 letting a `HashMap`'s iteration order influence which rule is tried first) break
@@ -52,7 +52,7 @@ mistakes make every run differ visibly.
 
 ## 2. The four rules
 
-### Rule 1 — no plain mutable static state on the proving path
+### Rule 1: no plain mutable static state on the proving path
 
 A `static` field exists once for the whole program. During multi-core proving,
 every worker reads and writes that one field. A plain `HashMap`, `ArrayList` or
@@ -71,7 +71,7 @@ The interesting question is the cache row split. Ask about your cache: *"if this
 entry were thrown away and computed again later, could the new value be
 different?"*
 
-**Worked example, "no" case — the modality cache.** The macro
+**Worked example, "no" case (the modality cache).** The macro
 `SymbolicExecutionOnlyMacro` needs to know, over and over, whether a formula
 contains a modality (a `\<...\>` or `\[...\]` program block). Whether a term
 contains a modality is a property of the term alone: compute it today or next
@@ -80,17 +80,17 @@ function of the key*, evicting it early is harmless, and the fast
 `StripedLruCache` is the right choice. This is exactly what
 `ModalityCache` in `key.core` does.
 
-**Worked example, "yes" case — the introduction-time cache.** KeY's strategy
+**Worked example, "yes" case (the introduction-time cache).** KeY's strategy
 prefers older formulas over newer ones, so it caches *at which proof step a
 formula was first seen*. Suppose that cache evicted entries in a
 thread-timing-dependent order. Then on one run the entry for formula `F`
 survives and says "step 120"; on another run it is evicted and later recomputed
 as "step 470". The strategy cost of every rule touching `F` now differs between
-the runs, a different rule wins, and the whole proof unfolds differently — the
+the runs, a different rule wins, and the whole proof unfolds differently. The
 proof tree is no longer reproducible. Because the *value depends on when it was
 stored*, eviction must follow one exact, deterministic order: `ConcurrentLruCache`.
 
-### Rule 2 — shared singletons must not remember anything between calls
+### Rule 2: shared singletons must not remember anything between calls
 
 Rules, strategy features and match instructions in KeY are usually single
 objects (a `static final INSTANCE`) used for *every* goal by *every* worker. Any
@@ -117,7 +117,7 @@ private static final ThreadLocal<Instantiation> lastInstantiation =
 
 The block and loop contract rules use design 1. Its price: worker threads live
 in a pool, so whatever the `ThreadLocal` holds stays reachable until that thread
-proves something else — large cached objects can linger.
+proves something else, so large cached objects can linger.
 
 ```java
 // Design 2: one volatile snapshot holding BOTH pieces immutably.
@@ -127,19 +127,19 @@ private static volatile Snapshot lastInstantiation;
 
 `UseOperationContractRule` uses design 2. `volatile` tells Java that reads and
 writes of this field are ordered between threads. A reader takes the snapshot
-*once* and then only looks inside its own copy — so it can never pair one
+*once* and then only looks inside its own copy, so it can never pair one
 worker's question with another's answer. The worst case is a snapshot for the
 "wrong" goal, which fails the focus comparison and is simply recomputed.
 Use design 2 when the memo is one small immutable pair; use design 1 when it is
 larger or has no natural single-object form.
 
-### Rule 3 — iteration order must never reach rule selection
+### Rule 3: iteration order must never reach rule selection
 
 `HashMap` and `HashSet` make **no promise** about the order in which iteration
 returns elements; in practice the order depends on object hash codes, which
 change from one JVM run to the next. If that order influences anything the
-strategy sees — the order of candidate rule applications, the order costs are
-computed in, the order formulas land in an index — then the same problem proves
+strategy sees (the order of candidate rule applications, the order costs are
+computed in, the order formulas land in an index), then the same problem proves
 differently on every run. Nothing "crashes"; the proofs are just never the same
 twice, saved proofs stop replaying, and multi-core runs diverge wildly.
 
@@ -155,7 +155,7 @@ for (Term t : candidates) {     // HashSet: order differs per JVM run!
 
 On Monday the JVM lays objects out one way, `candidates` iterates `{t2, t1}`,
 and `t2`'s rule application is tried first. On Tuesday it iterates `{t1, t2}`.
-Both proofs may close — but they are *different proofs*, and the saved Monday
+Both proofs may close, but they are *different proofs*, and the saved Monday
 proof will not replay on Tuesday. The fix costs one word:
 
 ```java
@@ -165,22 +165,22 @@ Set<Term> candidates = new LinkedHashSet<>();   // iterates in insertion order
 `LinkedHashSet`/`LinkedHashMap` remember insertion order; alternatively sort the
 collection by a stable key before iterating, or use KeY's immutable lists. The
 same rule forbids comparators built on `Object.hashCode()` or
-`System.identityHashCode()` — those are memory addresses in disguise.
+`System.identityHashCode()`: those are memory addresses in disguise.
 
-### Rule 4 — fresh names come from the goal, not from a global counter
+### Rule 4: fresh names come from the goal, not from a global counter
 
 When a rule introduces a new symbol (a skolem constant `x_1`, an anonymizing
 heap `heapAfter_m`, ...), the fresh name must be derived from the *goal-local*
 namespaces: "find the smallest index not used *on this branch*". It must **not**
 come from a counter shared by the whole proof. With a shared counter, the name a
-goal receives depends on how many names *other* goals grabbed first — under the
+goal receives depends on how many names *other* goals grabbed first. Under the
 multi-core prover that is a race, and even single-core it makes proof replay
 fragile: reloading applies the rules in a different global order, the counter
 hands out different numbers, and the saved proof refers to names that no longer
 exist ("Could not find program variable x_2").
 
 Sibling branches reusing the same name (both branches introduce their own `x_1`)
-is fine and intended — names only need to be unique along one branch.
+is fine and intended: names only need to be unique along one branch.
 
 ## 3. The CI tests that enforce these rules
 
@@ -192,8 +192,8 @@ advice below.
 the compiled classes of the proving-path packages for Rule-1 violations: any
 non-`final` static field, and any `final` static field holding a plain mutable
 collection. If your new field is reported, pick a replacement from the Rule-1
-table. If the field is genuinely safe — for example a settings flag written only
-before proving starts — add it to `shared-state-allowlist.txt` (next to the
+table. If the field is genuinely safe (for example a settings flag written only
+before proving starts), add it to `shared-state-allowlist.txt` (next to the
 test) with a one-line justification. Do not allowlist by default: most findings
 are better fixed.
 
@@ -205,26 +205,26 @@ violation (with a Rule-1 "wrong cache flavour" as the runner-up). Reproduce with
 `./gradlew :key.core:testMt2w --tests '*ScDeterminism*'`.
 
 **`RunSmallProofsMt2wTest` / `RunSmallProofsMt4wTest`** (CI jobs `testMt2w`,
-`testMt4w`) prove a corpus stratified over the prover's subsystems —
-quantifiers, arithmetic, heap, loops, contracts, sequences and strings, wide
-splitting, rewriting — with 2 and 4 workers and assert every proof closes and
+`testMt4w`) prove a corpus stratified over the prover's subsystems
+(quantifiers, arithmetic, heap, loops, contracts, sequences and strings, wide
+splitting, rewriting) with 2 and 4 workers and assert every proof closes and
 reloads. The 4-worker job runs the widest-splitting proofs three times each,
 because races are timing-dependent and every extra run is another chance to hit
-one. A failure that vanishes when you rerun is still a real finding — treat the
+one. A failure that vanishes when you rerun is still a real finding: treat the
 first failure as the signal, not as flakiness. Typical causes are Rule 2 (a
 singleton memo), Rule 1 (an unsafe cache) and Rule 4 (a global counter).
 
 One honest caveat about multi-core testing: proofs found with different worker
 counts may legitimately *differ* (goal scheduling changes which of two equally
 cheap rules is applied first), so these tests check "closes, reloads, size in a
-sane band" — not tree equality. Tree equality is only required between two
+sane band", not tree equality. Tree equality is only required between two
 single-core runs, which is exactly what `ScDeterminismTest` does.
 
 ## 4. Opting out: restricting a feature to the single-core prover
 
 The four rules assume you *want* your feature to run multi-core. Sometimes you do
 not: the feature inherently couples several goals (like the merge rule), or making
-it thread-safe is more work than it is worth right now. Both are legitimate — a
+it thread-safe is more work than it is worth right now. Both are legitimate. A
 feature that is only correct single-core must simply *say so*, and it will keep
 working exactly as before. What is not legitimate is staying silent and racing.
 
@@ -237,12 +237,12 @@ A *profile* bundles a calculus and strategy (the standard one is `JavaProfile`).
 Whether automode for a profile may run multi-core is a capability of the profile:
 
 ```java
-// Profile (interface) — the default is the safe answer:
+// Profile (interface): the default is the safe answer:
 default boolean supportsParallelAutomode() {
     return false;
 }
 
-// JavaProfile — the standard profile has been vetted and opts in:
+// JavaProfile: the standard profile has been vetted and opts in:
 @Override
 public boolean supportsParallelAutomode() {
     return true;
@@ -251,20 +251,20 @@ public boolean supportsParallelAutomode() {
 
 The default is deliberately `false`: **a new profile is single-core until someone
 verifies its rules and strategy and opts in**. If you build a specialised profile,
-you have to do precisely nothing — even a user who enabled the multi-core prover
+you have to do precisely nothing: even a user who enabled the multi-core prover
 gets correct single-core proving for your profile. This is the strongest and
 cheapest opt-out.
 
 ### 4.2 Macro level: `allowParallel()`
 
 A *proof macro* drives automode with its own strategy. Some macro strategies keep
-state that spans **all** goals — a "stop after 1000 steps in total" counter, or a
+state that spans **all** goals: a "stop after 1000 steps in total" counter, or a
 "one goal hit the breakpoint, everyone stop" flag. Per-goal workers would update
 that state concurrently and the macro's meaning would change. Such a macro
 declares itself single-core with one override:
 
 ```java
-// OneStepProofMacro — counts steps across all goals, so goals must
+// OneStepProofMacro: counts steps across all goals, so goals must
 // be processed one after the other:
 @Override
 protected boolean allowParallel() {
@@ -272,31 +272,38 @@ protected boolean allowParallel() {
 }
 ```
 
-`StrategyProofMacro` routes every macro through a selection seam
+`StrategyProofMacro` routes every macro through one central selection point
 (`AutoProvers.create(...)`) that picks the multi-core prover only when the prover
-is enabled, the profile supports it (4.1), **and** the macro allows it. Current
+is enabled, the profile supports it (4.1), **and** the macro allows it. In the
+testing literature such a point is called a *seam*, a term coined by
+Feathers[^1][^2]: a place where you can alter behavior without editing the code
+in that place. You will meet the word in KeY's source comments. Current
 single-core macros: `OneStepProofMacro`, `AutoMacro` (breakpoint flag),
 `FinishSymbolicExecutionUntilMergePointMacro` (shared merge-point bookkeeping).
 
 ### 4.3 Rule level: refuse applicability during a multi-core run
 
 A built-in rule that reaches beyond its own goal cannot run concurrently. The
-merge rule is the archetype — it *links several open goals into one*, so it would
+merge rule is the archetype: it *links several open goals into one*, so it would
 have to lock goals that other workers own. It disables itself while a multi-core
 run is active:
 
 ```java
-// MergeRule.isApplicable — merging links several goals and would need
+// MergeRule.isApplicable: merging links several goals and would need
 // to lock all of them; not safe under goal-level concurrency:
-if (ParallelProver.isMultiThreadedRunActive()) {
+if (ParallelProver.isMultiThreadedRunActive(goal.proof())) {
     return false;
 }
 ```
 
-`ParallelProver.isMultiThreadedRunActive()` answers "is a multi-worker proof run
-happening right now?" — it is the runtime query behind the fine-grained opt-outs.
-Single-core proving (and any single-core macro from 4.2) is unaffected: the query
-answers `false` there.
+`ParallelProver.isMultiThreadedRunActive(proof)` answers "is a multi-worker run
+happening on *this proof* right now?". It is the runtime query behind the
+fine-grained opt-outs. The marker is scoped per proof: several proofs may be
+processed in parallel in one JVM, and only the proof the multi-worker run works
+on is marked. Single-core proving is unaffected: a proof proved single-core
+while another proof runs multi-core keeps its full rule set, and so does a
+single-core side proof spawned by one of the run's own workers (it is its own
+proof object).
 
 ### 4.4 Strategy level: keep the search from waiting for a disabled rule
 
@@ -311,24 +318,24 @@ strategy silently treats them like "skip", so symbolic execution passes the merg
 point instead of queueing a merge that can never happen:
 
 ```java
-return ParallelProver.isMultiThreadedRunActive()
+return ParallelProver.isMultiThreadedRunActive(goal.proof())
         ? NumberRuleAppCost.create(-5000)                       // pass the merge point
         : DeleteMergePointRuleFeature.INSTANCE.computeCost(...); // normal single-core cost
 ```
 
-A note of caution on 4.3/4.4: every `isMultiThreadedRunActive()` call is a fork in
-behaviour — the code now does two different things, and tests must cover both.
+A note of caution on 4.3/4.4: every `isMultiThreadedRunActive(proof)` call is a fork in
+behaviour; the code now does two different things, and tests must cover both.
 Prefer the declarative switches (4.1, 4.2) whenever they fit; reach for the
 runtime query only when a single rule or cost function is the problem. (KeY's own
-history backs this up: two such case distinctions — in `Goal` and in `Services` —
+history backs this up: two such case distinctions, in `Goal` and in `Services`,
 were later removed again by making the shared path work for both provers.)
 
 Side proofs need no opt-out at all: they always run single-core by design.
 
 ### 4.5 Adding an exception to `SharedStateLintTest`
 
-If your single-core-only feature keeps a static field that the linter flags — or
-any field the linter flags is genuinely safe — allowlist it instead of
+If your single-core-only feature keeps a static field that the linter flags, or
+any field the linter flags is genuinely safe, allowlist it instead of
 restructuring:
 
 1. Run the linter locally:
@@ -347,7 +354,7 @@ restructuring:
    For a feature opted out via 4.2/4.3 the honest justification names the guard,
    e.g. `# only written by MyMacro, which overrides allowParallel() to false`.
 3. Re-run the test. Note it also fails on *stale* entries, so the line must be
-   removed again when the field disappears — the allowlist cannot silently rot.
+   removed again when the field disappears; the allowlist cannot silently rot.
 
 The justification is a review contract, not a formality: "it compiles" is not a
 reason; "written only during single-threaded problem loading" is. When in doubt,
@@ -355,7 +362,7 @@ fix the field with the Rule-1 table instead of allowlisting it.
 
 ## 5. Checklist before opening a prover pull request
 
-* No new `static` mutable field on the proving path — or it is one of the four
+* No new `static` mutable field on the proving path, or it is one of the four
   sanctioned patterns from the Rule-1 table.
 * No mutable instance field on a rule/feature/instruction singleton; per-call
   state lives in parameters, locals, or a `ThreadLocal`.
@@ -363,3 +370,9 @@ fix the field with the Rule-1 table instead of allowlisting it.
   result can reach rule selection.
 * Fresh names derived from goal-local namespaces.
 * `./gradlew :key.core:testMt2w` is green locally.
+
+[^1]: Martin Fowler: [Legacy Seam](https://martinfowler.com/bliki/LegacySeam.html)
+    (bliki note on the term and its origin).
+[^2]: Michael C. Feathers:
+    [*Working Effectively with Legacy Code*](https://www.informit.com/store/working-effectively-with-legacy-code-9780131177055),
+    Prentice Hall, 2004. Chapter 4, "The Seam Model".
