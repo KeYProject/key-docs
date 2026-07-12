@@ -140,6 +140,7 @@ nav:
           - "Coding Conventions": devel/CodingConventions.md
           - "Formatting with Spotless": devel/SpotlessAutomaticFormatting.md
           - "Logging": devel/Logging.md
+          - "Thread Safety and Determinism": devel/ThreadSafety.md
       - "4. Extending KeY":
           - "Overview": devel/ExtendingKeY.md
           - "How-Tos (verified recipes)":

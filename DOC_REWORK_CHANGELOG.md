@@ -3,6 +3,22 @@
 Work log for the reorganization and completion of the KeY documentation
 (`key-docs`), checked against the implementation in `key-src`.
 
+## 2026-07-12 — Thread Safety and Determinism page
+
+- NEW `devel/ThreadSafety.md` (Developer Guide → Working on the Code): bachelor-level
+  guide to writing prover code that stays correct under the multi-core prover.
+  Mental model (per-goal vs shared objects), four rules with worked examples from
+  real KeY code (ModalityCache vs introduction-time cache; ThreadLocal vs
+  volatile-snapshot memo designs; LinkedHashSet iteration-order fix; goal-local
+  fresh names), and a guide to the CI detectors (SharedStateLintTest,
+  ScDeterminismTest, RunSmallProofsMt2w/4w) with the allowlist etiquette.
+  Companion to the in-repo `key.core/.../prover/README.md` (concise version the
+  CI failure messages link to). Extended same day with an opt-out section: the
+  four mechanisms for restricting a feature to the single-core prover (profile
+  capability, macro allowParallel(), rule applicability guard, strategy
+  companion cost) with the real code examples, plus the linter-allowlist
+  walkthrough.
+
 ## Milestone plan
 
 - **M1 — Reorganization**: restructure the mkdocs navigation, keep the
