@@ -4,9 +4,10 @@ approved: none
 
 ## [3.0.0-rc](https://github.com/KeYProject/key/releases/tag/KEY-3.0.0-rc) (2026-07-14)
 
-**
+>  6427 files changed, 262885 insertions(+), 433672 deletions(-)
 
-**Full Changelog**: https://github.com/KeYProject/key/compare/KEY-2.12.3...KEY-3.0.0-rc
+[**Release:**](https://github.com/KeYProject/key/releases/tag/KEY-3.0.0-rc) 
+[**Full Changelog**](https://github.com/KeYProject/key/compare/KEY-2.12.3...KEY-3.0.0-rc)
 
 
 
