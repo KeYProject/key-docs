@@ -1,76 +1,78 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" font-family="sans-serif">
-<text x="500.0" y="26" text-anchor="middle" font-size="18" font-weight="bold">Multi-core speedup vs single-threaded main</text>
+<text x="500.0" y="26" text-anchor="middle" font-size="18" font-weight="bold">Multi-core speedup vs the single-core prover</text>
 <line x1="60" y1="310.0" x2="980" y2="310.0" stroke="#e0e0e0"/>
-<text x="52" y="314.0" text-anchor="end" font-size="11">0×</text>
-<line x1="60" y1="270.0" x2="980" y2="270.0" stroke="#e0e0e0"/>
-<text x="52" y="274.0" text-anchor="end" font-size="11">1×</text>
-<line x1="60" y1="230.0" x2="980" y2="230.0" stroke="#e0e0e0"/>
-<text x="52" y="234.0" text-anchor="end" font-size="11">2×</text>
-<line x1="60" y1="190.0" x2="980" y2="190.0" stroke="#e0e0e0"/>
-<text x="52" y="194.0" text-anchor="end" font-size="11">3×</text>
-<line x1="60" y1="150.0" x2="980" y2="150.0" stroke="#e0e0e0"/>
-<text x="52" y="154.0" text-anchor="end" font-size="11">4×</text>
-<line x1="60" y1="270.0" x2="980" y2="270.0" stroke="#b00" stroke-dasharray="4"/>
-<rect x="80.5" y="246.4" width="23.0" height="63.6" fill="#7aa6c2"/>
-<text x="92.0" y="243.4" text-anchor="middle" font-size="9">1.59</text>
-<rect x="106.0" y="224.0" width="23.0" height="86.0" fill="#4a7fa5"/>
-<text x="117.5" y="221.0" text-anchor="middle" font-size="9">2.15</text>
-<rect x="131.5" y="226.8" width="23.0" height="83.2" fill="#2e5a7a"/>
-<text x="143.0" y="223.8" text-anchor="middle" font-size="9">2.08</text>
+<text x="52" y="314.0" text-anchor="end" font-size="11">0x</text>
+<line x1="60" y1="262.0" x2="980" y2="262.0" stroke="#e0e0e0"/>
+<text x="52" y="266.0" text-anchor="end" font-size="11">1x</text>
+<line x1="60" y1="214.0" x2="980" y2="214.0" stroke="#e0e0e0"/>
+<text x="52" y="218.0" text-anchor="end" font-size="11">2x</text>
+<line x1="60" y1="166.0" x2="980" y2="166.0" stroke="#e0e0e0"/>
+<text x="52" y="170.0" text-anchor="end" font-size="11">3x</text>
+<line x1="60" y1="118.0" x2="980" y2="118.0" stroke="#e0e0e0"/>
+<text x="52" y="122.0" text-anchor="end" font-size="11">4x</text>
+<line x1="60" y1="70.0" x2="980" y2="70.0" stroke="#e0e0e0"/>
+<text x="52" y="74.0" text-anchor="end" font-size="11">5x</text>
+<line x1="60" y1="262.0" x2="980" y2="262.0" stroke="#b00" stroke-dasharray="4"/>
+<rect x="80.5" y="229.8" width="23.0" height="80.2" fill="#7aa6c2"/>
+<text x="92.0" y="226.8" text-anchor="middle" font-size="9">1.67</text>
+<rect x="106.0" y="176.1" width="23.0" height="133.9" fill="#4a7fa5"/>
+<text x="117.5" y="173.1" text-anchor="middle" font-size="9">2.79</text>
+<rect x="131.5" y="138.6" width="23.0" height="171.4" fill="#2e5a7a"/>
+<text x="143.0" y="135.6" text-anchor="middle" font-size="9">3.57</text>
 <text x="129.5" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 129.5 322.0)">SimplifiedLinkedList.remove</text>
-<rect x="195.5" y="240.8" width="23.0" height="69.2" fill="#7aa6c2"/>
-<text x="207.0" y="237.8" text-anchor="middle" font-size="9">1.73</text>
-<rect x="221.0" y="202.0" width="23.0" height="108.0" fill="#4a7fa5"/>
-<text x="232.5" y="199.0" text-anchor="middle" font-size="9">2.70</text>
-<rect x="246.5" y="168.0" width="23.0" height="142.0" fill="#2e5a7a"/>
-<text x="258.0" y="165.0" text-anchor="middle" font-size="9">3.55</text>
+<rect x="195.5" y="223.6" width="23.0" height="86.4" fill="#7aa6c2"/>
+<text x="207.0" y="220.6" text-anchor="middle" font-size="9">1.80</text>
+<rect x="221.0" y="172.2" width="23.0" height="137.8" fill="#4a7fa5"/>
+<text x="232.5" y="169.2" text-anchor="middle" font-size="9">2.87</text>
+<rect x="246.5" y="132.4" width="23.0" height="177.6" fill="#2e5a7a"/>
+<text x="258.0" y="129.4" text-anchor="middle" font-size="9">3.70</text>
 <text x="244.5" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 244.5 322.0)">add</text>
-<rect x="310.5" y="244.4" width="23.0" height="65.6" fill="#7aa6c2"/>
-<text x="322.0" y="241.4" text-anchor="middle" font-size="9">1.64</text>
-<rect x="336.0" y="237.2" width="23.0" height="72.8" fill="#4a7fa5"/>
-<text x="347.5" y="234.2" text-anchor="middle" font-size="9">1.82</text>
-<rect x="361.5" y="263.6" width="23.0" height="46.4" fill="#2e5a7a"/>
-<text x="373.0" y="260.6" text-anchor="middle" font-size="9">1.16</text>
+<rect x="310.5" y="224.1" width="23.0" height="85.9" fill="#7aa6c2"/>
+<text x="322.0" y="221.1" text-anchor="middle" font-size="9">1.79</text>
+<rect x="336.0" y="184.7" width="23.0" height="125.3" fill="#4a7fa5"/>
+<text x="347.5" y="181.7" text-anchor="middle" font-size="9">2.61</text>
+<rect x="361.5" y="203.4" width="23.0" height="106.6" fill="#2e5a7a"/>
+<text x="373.0" y="200.4" text-anchor="middle" font-size="9">2.22</text>
 <text x="359.5" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 359.5 322.0)">Saddleback_search</text>
-<rect x="425.5" y="241.2" width="23.0" height="68.8" fill="#7aa6c2"/>
-<text x="437.0" y="238.2" text-anchor="middle" font-size="9">1.72</text>
-<rect x="451.0" y="212.4" width="23.0" height="97.6" fill="#4a7fa5"/>
-<text x="462.5" y="209.4" text-anchor="middle" font-size="9">2.44</text>
-<rect x="476.5" y="200.4" width="23.0" height="109.6" fill="#2e5a7a"/>
-<text x="488.0" y="197.4" text-anchor="middle" font-size="9">2.74</text>
+<rect x="425.5" y="233.7" width="23.0" height="76.3" fill="#7aa6c2"/>
+<text x="437.0" y="230.7" text-anchor="middle" font-size="9">1.59</text>
+<rect x="451.0" y="208.2" width="23.0" height="101.8" fill="#4a7fa5"/>
+<text x="462.5" y="205.2" text-anchor="middle" font-size="9">2.12</text>
+<rect x="476.5" y="200.6" width="23.0" height="109.4" fill="#2e5a7a"/>
+<text x="488.0" y="197.6" text-anchor="middle" font-size="9">2.28</text>
 <text x="474.5" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 474.5 322.0)">symmArray</text>
-<rect x="540.5" y="249.2" width="23.0" height="60.8" fill="#7aa6c2"/>
-<text x="552.0" y="246.2" text-anchor="middle" font-size="9">1.52</text>
-<rect x="566.0" y="236.0" width="23.0" height="74.0" fill="#4a7fa5"/>
-<text x="577.5" y="233.0" text-anchor="middle" font-size="9">1.85</text>
-<rect x="591.5" y="234.4" width="23.0" height="75.6" fill="#2e5a7a"/>
-<text x="603.0" y="231.4" text-anchor="middle" font-size="9">1.89</text>
+<rect x="540.5" y="236.1" width="23.0" height="73.9" fill="#7aa6c2"/>
+<text x="552.0" y="233.1" text-anchor="middle" font-size="9">1.54</text>
+<rect x="566.0" y="224.6" width="23.0" height="85.4" fill="#4a7fa5"/>
+<text x="577.5" y="221.6" text-anchor="middle" font-size="9">1.78</text>
+<rect x="591.5" y="221.2" width="23.0" height="88.8" fill="#2e5a7a"/>
+<text x="603.0" y="218.2" text-anchor="middle" font-size="9">1.85</text>
 <text x="589.5" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 589.5 322.0)">ArrayList.remove.1</text>
-<rect x="655.5" y="215.2" width="23.0" height="94.8" fill="#7aa6c2"/>
-<text x="667.0" y="212.2" text-anchor="middle" font-size="9">2.37</text>
-<rect x="681.0" y="180.0" width="23.0" height="130.0" fill="#4a7fa5"/>
-<text x="692.5" y="177.0" text-anchor="middle" font-size="9">3.25</text>
-<rect x="706.5" y="163.2" width="23.0" height="146.8" fill="#2e5a7a"/>
-<text x="718.0" y="160.2" text-anchor="middle" font-size="9">3.67</text>
+<rect x="655.5" y="196.7" width="23.0" height="113.3" fill="#7aa6c2"/>
+<text x="667.0" y="193.7" text-anchor="middle" font-size="9">2.36</text>
+<rect x="681.0" y="153.0" width="23.0" height="157.0" fill="#4a7fa5"/>
+<text x="692.5" y="150.0" text-anchor="middle" font-size="9">3.27</text>
+<rect x="706.5" y="100.7" width="23.0" height="209.3" fill="#2e5a7a"/>
+<text x="718.0" y="97.7" text-anchor="middle" font-size="9">4.36</text>
 <text x="704.5" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 704.5 322.0)">ArrayList_concatenate</text>
-<rect x="770.5" y="238.4" width="23.0" height="71.6" fill="#7aa6c2"/>
-<text x="782.0" y="235.4" text-anchor="middle" font-size="9">1.79</text>
-<rect x="796.0" y="219.6" width="23.0" height="90.4" fill="#4a7fa5"/>
-<text x="807.5" y="216.6" text-anchor="middle" font-size="9">2.26</text>
-<rect x="821.5" y="180.0" width="23.0" height="130.0" fill="#2e5a7a"/>
-<text x="833.0" y="177.0" text-anchor="middle" font-size="9">3.25</text>
+<rect x="770.5" y="225.5" width="23.0" height="84.5" fill="#7aa6c2"/>
+<text x="782.0" y="222.5" text-anchor="middle" font-size="9">1.76</text>
+<rect x="796.0" y="193.8" width="23.0" height="116.2" fill="#4a7fa5"/>
+<text x="807.5" y="190.8" text-anchor="middle" font-size="9">2.42</text>
+<rect x="821.5" y="147.8" width="23.0" height="162.2" fill="#2e5a7a"/>
+<text x="833.0" y="144.8" text-anchor="middle" font-size="9">3.38</text>
 <text x="819.5" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 819.5 322.0)">median</text>
-<rect x="885.5" y="264.4" width="23.0" height="45.6" fill="#7aa6c2"/>
-<text x="897.0" y="261.4" text-anchor="middle" font-size="9">1.14</text>
-<rect x="911.0" y="256.4" width="23.0" height="53.6" fill="#4a7fa5"/>
-<text x="922.5" y="253.4" text-anchor="middle" font-size="9">1.34</text>
-<rect x="936.5" y="254.0" width="23.0" height="56.0" fill="#2e5a7a"/>
-<text x="948.0" y="251.0" text-anchor="middle" font-size="9">1.40</text>
+<rect x="885.5" y="250.5" width="23.0" height="59.5" fill="#7aa6c2"/>
+<text x="897.0" y="247.5" text-anchor="middle" font-size="9">1.24</text>
+<rect x="911.0" y="237.0" width="23.0" height="73.0" fill="#4a7fa5"/>
+<text x="922.5" y="234.0" text-anchor="middle" font-size="9">1.52</text>
+<rect x="936.5" y="239.0" width="23.0" height="71.0" fill="#2e5a7a"/>
+<text x="948.0" y="236.0" text-anchor="middle" font-size="9">1.48</text>
 <text x="934.5" y="322.0" text-anchor="end" font-size="10" transform="rotate(-40 934.5 322.0)">remFirst</text>
 <rect x="60" y="438" width="12" height="12" fill="#7aa6c2"/>
-<text x="76" y="448" font-size="11">2× workers</text>
+<text x="76" y="448" font-size="11">2 workers</text>
 <rect x="150" y="438" width="12" height="12" fill="#4a7fa5"/>
-<text x="166" y="448" font-size="11">4× workers</text>
+<text x="166" y="448" font-size="11">4 workers</text>
 <rect x="240" y="438" width="12" height="12" fill="#2e5a7a"/>
-<text x="256" y="448" font-size="11">8× workers</text>
+<text x="256" y="448" font-size="11">8 workers</text>
 </svg>

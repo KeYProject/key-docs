@@ -1,12 +1,5 @@
 # Thread Safety and Determinism
 
-!!! note "Not yet on main"
-    The multi-core prover and the CI tests described here are part of the
-    multithreading pull request
-    [KeYProject/key#3842](https://github.com/KeYProject/key/pull/3842), which is
-    not merged yet. Until it lands, the described classes, tests and rules exist
-    on that branch only; this page describes the state the PR introduces.
-
 KeY can run its automatic proof search on several *worker threads* at once (the
 multi-core prover). This page explains what that means for everyone who writes
 prover code: rules, strategy features, anything in `key.core` that runs during
@@ -44,8 +37,8 @@ hundred-and-first.
 
 There is a second, subtler failure class that this page also covers:
 **indeterminism**. Proof search in KeY is meant to be *reproducible*: same
-problem, same settings, same proof, every time. Reproducibility is what makes
-saved proofs reloadable and test failures debuggable. Some mistakes (like
+problem, same settings, same proof, every time. Reproducibility is what makes a
+failing run debuggable. Some mistakes (like
 letting a `HashMap`'s iteration order influence which rule is tried first) break
 reproducibility even with a single thread; under the multi-core prover the same
 mistakes make every run differ visibly.
