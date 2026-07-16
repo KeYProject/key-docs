@@ -32,6 +32,8 @@ of* it. (If you want to *use* KeY to verify programs, see the
 6. **Internals** — background on selected subsystems: the
    [rule application pipeline](RuleApplicationPipeline/) (taclet matching →
    strategy evaluation → application),
+   [taclet matching](TacletMatching/) (the match-plan framework and its
+   two back-ends),
    [proof loading/saving](ProofLoadSave/), [the KeY parser](NewKeyParser/),
    [SMT translation](SMTTranslation/), and
    [counterexample generation](CounterExampleGeneration/).
