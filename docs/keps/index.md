@@ -20,3 +20,6 @@ feature is and where to follow the discussion.
 - [KEP-1: Taclet-Generating Transformers](kep-0001-taclet-generating-transformers/index.md)
   — capture aggregated proof steps (starting with the One Step Simplifier) as
   generated, separately provable taclets instead of opaque built-in steps.
+- [KEP-2: Unique Java Package Names for KeY Gradle Modules](kep-0002-convention-for-packages/index.md)
+  — propose a consistent package-name scheme for 
+  Gradle sub-project to eliminate split-package issues and improve findabilitys.
