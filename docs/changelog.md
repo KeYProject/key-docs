@@ -68,6 +68,7 @@ These four pull requests modernize KeY's type system and Java parsing infrastruc
 #### Development
 * Removal of `key.core.symbolic_execution` and `key.core.proof_references`.
 
+  XXX
 
 * [Using semantic version (SemVer) scheme for KeY](https://github.com/KeYProject/key/pull/3523)
 
@@ -103,6 +104,8 @@ These four pull requests modernize KeY's type system and Java parsing infrastruc
 
 * [Renovation of the TestCase generation](https://github.com/KeYProject/key/pull/3388)
 * [Options Panel in Load Dialog. Options in Recent Files](https://github.com/KeYProject/key/pull/3788)
+
+  XXX
 
 #### Configuration 
 
