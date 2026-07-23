@@ -1,5 +1,5 @@
 ---
-approved: none
+approved: aw
 ---
 
 ## [3.0.0-rc](https://github.com/KeYProject/key/releases/tag/KEY-3.0.0-rc) (2026-07-14)
@@ -66,6 +66,9 @@ These four pull requests modernize KeY's type system and Java parsing infrastruc
 
 
 #### Development
+* Removal of `key.core.symbolic_execution` and `key.core.proof_references`.
+
+
 * [Using semantic version (SemVer) scheme for KeY](https://github.com/KeYProject/key/pull/3523)
 
   > KeY uses a semantic versioning scheme now with `major.minor.patch`. Development version has the addition `-dev`.
