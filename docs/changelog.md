@@ -58,9 +58,11 @@ KeY's modularization advanced.: [PR #3578](https://github.com/KeYProject/key/pul
 * [Add Polymorphic Sorts and Functions](https://github.com/KeYProject/key/pull/3652)
 * [Purge sort depending functions in favor of parametric functions](https://github.com/KeYProject/key/pull/3773)
 * [Add sort aliases](https://github.com/KeYProject/key/pull/3778)
+* [Support co- and contravariant sorts](https://github.com/KeYProject/key/pull/3841)
 
 These four pull requests modernize KeY's type system and Java parsing infrastructure. **PR #3652** ([Add Polymorphic Sorts and Functions](https://github.com/KeYProject/key/pull/3652)) introduced polymorphic sorts and functions using verbose syntax like `PSeq<[E]>` and `select<[int]>`, along with matching logic and support for polymorphic datatypes [1]. **PR #3773** ([Purge sort depending functions in favor of parametric functions](https://github.com/KeYProject/key/pull/3773)) replaced all sort-dependent functions (e.g., `int::select`) with parametric function syntax (`select<[int]>`), removing the `SortDependingFunction` class entirely [2]. **PR #3120** ([The Removal of Recoder](https://github.com/KeYProject/key/pull/3120)) replaced the Recoder Java parser with JavaParser (via key-javaparser), supporting ProofJava, SchemaJava, and Java 17+ in a unified grammar—requiring complete infrastructure overhaul [3]. **PR #3778** ([Add sort aliases](https://github.com/KeYProject/key/pull/3778)) added sort alias declarations (e.g., `\alias IntSet = Set<[int]>;`) to reduce verbosity when working with polymorphic types [4]. Together, these changes establish a cleaner, more expressive type system while modernizing KeY's Java parsing foundation.
 
+XXX 3841
 
 ### Not exciting but chanages with impact 
 
@@ -74,6 +76,8 @@ These four pull requests modernize KeY's type system and Java parsing infrastruc
 * Removal of `key.core.symbolic_execution` and `key.core.proof_references`.
 
   XXX
+
+  
 
 * [Using semantic version (SemVer) scheme for KeY](https://github.com/KeYProject/key/pull/3523)
 
@@ -254,7 +258,6 @@ These four pull requests modernize KeY's type system and Java parsing infrastruc
 * [Optimize NonDuplicateEqApp-features](https://github.com/KeYProject/key/pull/3829)
 * [Modularize KeY Grammar](https://github.com/KeYProject/key/pull/3822)
 * [Make semicolon after rule optional](https://github.com/KeYProject/key/pull/3832)
-* [Support co- and contravariant sorts](https://github.com/KeYProject/key/pull/3841)
 * [Fix gradle task dependencies](https://github.com/KeYProject/key/pull/3853)
 * [Remaining Changes for the KeY JSON-RPC API](https://github.com/KeYProject/key/pull/3849)
 * [Revert "Create temporary PR body file"](https://github.com/KeYProject/key/pull/3852)
