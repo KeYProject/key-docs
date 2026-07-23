@@ -64,7 +64,7 @@ These four pull requests modernize KeY's type system and Java parsing infrastruc
 
 XXX 3841
 
-### Not exciting but chanages with impact 
+### Not exciting but changes with impact 
 
 ### Changed defaults
 
@@ -85,7 +85,6 @@ XXX 3841
   > The old scheme: odd versions are development, and even version are releases, are dropped. 
   > `3.0.0` is the current version, `3.1.0-dev` the current development, and this branch will become `3.1.0` on release.
   
-
 * [Set the Java Release Version to 21](https://github.com/KeYProject/key/pull/3522)
 
   > KeY is built and tested w.r.t. to Java 21
@@ -519,7 +518,7 @@ This release contains bug fixes and performance enhancements.
 
 * Further bug fixes: [#1664](https://git.key-project.org/key/key/-/merge_requests/474), [#1658](https://git.key-project.org/key/key/-/merge_requests/491), [#1652](https://git.key-project.org/key/key/-/merge_requests/495), [#1679](https://git.key-project.org/key/key/-/merge_requests/503), [#1681, #1682](https://git.key-project.org/key/key/-/merge_requests/507), [#1678](https://git.key-project.org/key/key/-/merge_requests/521), [#1685](https://git.key-project.org/key/key/-/merge_requests/512), [#1690](https://git.key-project.org/key/key/-/merge_requests/517), [#1706](https://git.key-project.org/key/key/-/merge_requests/538), [#1709](https://git.key-project.org/key/key/-/merge_requests/539), [#1684](https://git.key-project.org/key/key/-/merge_requests/511), [#1711](https://git.key-project.org/key/key/-/merge_requests/549), [#1707](https://git.key-project.org/key/key/-/merge_requests/601), [#1723](https://git.key-project.org/key/key/-/merge_requests/587), [#1598](https://git.key-project.org/key/key/-/merge_requests/513), [#3035](https://github.com/KeYProject/key/pull/3045) 
 
---- 
+---
 We like to thank our contributors for this release, namely: 
 
 Alicia Appelhagen, Richard Bubel, Lukas Grätz, Christian Hein, Arne Keller, Michael Kirsten, Florian Lanzinger, Wolfram Pfeifer, Mike Schwörer, Benjamin Takacs, Samuel Teuber, Mattias Ulbrich, Alexander Weigl, Julian Wiesler
@@ -571,7 +570,7 @@ Alicia Appelhagen, Richard Bubel, Lukas Grätz, Christian Hein, Arne Keller, Mic
 * NEW: Documentation support for proof scripts (!15)
 * NEW: KeY Proof Scripts are ported from the Key Proof Script Debugger 
         (https://formal.iti.kit.edu/psdbg)
--->
+    -->
 
 *We like to thank all the contributor to this release:*
 
@@ -648,7 +647,7 @@ Wolfram Pfeifer
  * FIX: Cluttering with the status line (!244)
  * NEW: Allow macro application via keyboard shortcut from tree (!268)
  * NEW: Open Java files without considering a classpath (!243)
- 
+
 ### Scripts 
   * NEW: Rewrite command (!51)
   * FIX: Several fixes and breaking changes: (!153, !146, !145)
@@ -754,16 +753,16 @@ Herda, Peter Schmitt, Richard Bubel, Sarah Grebing, Wolfram Pfeifer
 * Windows 8 compatibility
 * Fix a soundness issue with types and heap access
 * Various bug fixes
- 
+
 ##  2.0.1 (2013-06-19)
- 
+
 * Bug fixes
   * Incompleteness with Java integer arithmetics
   * Command line mode fixes
   * various other
 
 ##  2.0.0 (2013-04-18)
- 
+
 * New explicit heap modeling
   * Data types for location sets and heaps
   * The heap is now a special (local) variable
