@@ -2,7 +2,7 @@
 approved: aw
 ---
 
-## [3.0.0](https://github.com/KeYProject/key/releases/tag/KEY-3.0.0) (2026-07-28)
+## [3.0.0](https://github.com/KeYProject/key/releases/tag/KEY-3.0.0) (2026-07-23)
 
 Here, we are only describing the top of the patch iceberg which this release brings. All in all 
 
@@ -58,6 +58,7 @@ Finally, [JML scripts have landed](https://github.com/KeYProject/key/pull/3657) 
 * [Modularity for Proof Strategies](https://github.com/KeYProject/key/pull/3650)
 
   
+
 Our efforts of a modular KeY reshaped internal sturctures: Proof objects, like sequents, proof objects, goals, rules, and the prover main loop—into are now in new modules [`*.ncore.*`](https://github.com/KeYProject/key/pull/3578). The calucli for [InfFlow and WD are push into separate modules](https://github.com/KeYProject/key/pull/3640)) witnessing the modularization capabailities of `key.core` and `key.ncore`. As these calculi are not weaved into the Core, users must now activate these calculus by selected the profiles (i.e., `java-infflow`, `java-wd`). The loading dialog received an option panel for the profile selection.
 
 
