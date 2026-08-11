@@ -4,7 +4,7 @@
 
 You can run "all tests" with:
 
-```
+```sh
 $ gradle test
 ```
 
@@ -13,7 +13,7 @@ considered for `testProveRules` and `testRunAllProves`. There is `testFast`,
 which only considers test that are reasonable quick to use for a developer
 during development. Use
 
-```
+```sh
 $ gradle testFast
 ```
 
@@ -23,7 +23,7 @@ answered below.
 
 The subproject `:key.core` defines two additional test tasks: `testProveRules`
 and `testRunAllProves`. The first one tests whether the stored taclet proofs are
-still replayable, the second try to proof all examples (`key.example`).
+still re-playable, the second try to proof all examples (`key.example`).
 
 ## How to create test cases.
 
@@ -36,7 +36,7 @@ sub-modules you can even switch to [Version
 Here are some helpful tips for comprehensible unit tests:
 
 1. Declare your test resources early in the method.
-1. Use JUnit's `Assume.assumeXXX` and `Assert.assertXXX` to validate if your
+1. Use JUnit's `Assume.assumeXXX` and `Assert.assertXXX` to validate in your
    test whether the test resources are missing.
 1. Use meaningful messages in the assertions.
 
@@ -50,8 +50,9 @@ defined and points to a valid folder (i.e. this is done in `build.gradle`).
 Otherwise `findFolder` tries every given alternative path until it finds an
 existing folder. `Null` is returned if no given alternative exists.
 `FindResources` already offers methods for common test resources folders
-(`src/test/resources`), testcase folder (`src/test/resources/test) and *global*
-resource folders `tacletProofs`, examples dir `key.ui/examples`.
+(`src/test/resources`), testcase folder (`src/test/resources/test`), and
+*global* resource folders `tacletProofs` and examples directory
+`key.ui/examples`.
 
 ## Usage of `@Ignore`
 
@@ -74,7 +75,7 @@ following categories:
   (excluded at target `test` and `testFast`)
   
 Just annotate your classes or methods with `@Category` annotation, for example:
-```
+```Java
 @Category(Slow.class)
 public MyUnitTest {
    ...
@@ -83,14 +84,9 @@ public MyUnitTest {
 
 When is a test case considered as slow? We try to keep `testFast`of all
 subprojects below 5 minutes. Our suggestion: A test case is slow if it consumes
-more than 20 seconds. Additionally you sould mark test cases as slow, if they
-does not impact the coverage.
+more than 20 seconds. Additionally, you should mark test cases as slow, if they
+do not impact the coverage.
 
-You can create new junit test categories. See `build.gradle` and
+You can create new JUnit test categories. See `build.gradle` and
 `key.util/../testcategories/Slow.java`.
-
-
-
-
-
 

@@ -1,6 +1,10 @@
-# Proof Exploration
+---
+author: "Alexander Weigl"
+date: "August 2021"
+valid_for: "KeY-2.10.0"
+---
 
--- *Author: Alexander Weigl*, August 2021 valid for KeY-2.10.0
+# Proof Exploration
 
 !!! abstract
 

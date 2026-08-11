@@ -1,4 +1,12 @@
-# Infracture of Continous Integration
+# Infrastructure of Continuous Integration
+
+!!! warning
+    Parts of this page are historical: the primary CI nowadays runs as
+    GitHub Actions workflows in the KeY repository
+    (`.github/workflows/tests.yml` et al.), complemented by a GitLab CI
+    configuration. The Docker images and the Jenkins/GitLab runner setup
+    described below stem from the earlier infrastructure (note the old
+    Java versions mentioned).
 
 ## Docker images for testing
 
@@ -14,7 +22,7 @@ Our docker images contains a specified version of Java (currently, 8,
 version details refer to the repository.
 
 
-## Setup a CI slave
+## Setup a CI Runner
 
 In this guide, we explain how to setup a CI runner for Jenkins and
 Gitlab-CI. We assume that you have terminal access to the machine.
@@ -36,9 +44,9 @@ Gitlab-CI. We assume that you have terminal access to the machine.
    ``` 
    $ sudo gitlab-runner register
    ``` 
-   Use the information provided from the [admin page](/admin/runners).  
+   Use the information provided on the admin page of your GitLab instance.  
    After this step, the gitlab-ci should work on your computer. Your
-   node should be visible at the [admin page](/admin/runners).
+   node should be visible on that admin page.
 
 5. Create access for Jenkins: 
 
@@ -47,7 +55,7 @@ Gitlab-CI. We assume that you have terminal access to the machine.
      $ sudo usermod -aG docker jenkins
      ``` 
    
-     The Jenkins controller logins via SSH at the slaves. There are
+     The Jenkins controller logins via SSH at the runners. There are
      two options for authentication, password or public/private-key. On
      bwcloud, the password authentication is disabled in
      `/etc/sshd/sshd_config`.
@@ -55,10 +63,6 @@ Gitlab-CI. We assume that you have terminal access to the machine.
      For simplicity I choose password authentication with very long
      password.
 
-6. Add your slave to
+6. Add your runner to
    [Jenkins](http://hudson.se.informatik.tu-darmstadt.de/computer/new)
    using the credentials and IP address of the server.
-
-
-
-   

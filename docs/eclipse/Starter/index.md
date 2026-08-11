@@ -1,5 +1,12 @@
 # KeY 4 Eclipse Starter
 
+!!! warning "Unsupported historical content"
+    This Eclipse integration is **no longer supported or maintained**. It
+    targeted old Eclipse releases (Indigo/Luna era) and old versions of
+    KeY; the update sites may no longer exist. This page is kept for
+    historical reference.
+
+
 KeY 4 Eclipse Starter is a basic Eclipse extension to start KeY from
 within Eclipse.
 

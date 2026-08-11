@@ -1,5 +1,12 @@
 # JML Editing
 
+!!! warning "Unsupported historical content"
+    This Eclipse integration is **no longer supported or maintained**. It
+    targeted old Eclipse releases (Indigo/Luna era) and old versions of
+    KeY; the update sites may no longer exist. This page is kept for
+    historical reference.
+
+
 JML Editing extends the [Java development tools
 (JDT)](https://eclipse.org/jdt/) with support for
 [JML](http://www.jmlspecs.org) to make writing JML specifications as

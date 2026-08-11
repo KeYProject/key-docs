@@ -29,19 +29,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v4
+      - name: Checkout
+        uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: 3.x
       - name: Prepare system
-        run: pip install --user mkdocs mkdocs-material pymdown-extensions pygments markdown-blockdiag mkdocs-bibtex markdown-aafigure==v201904.0004 mkdocs-build-plantuml-plugin 'Pillow<10' 'Markdown<3.4'
-      - name: Checkout
-        uses: actions/checkout@v3
+        run: pip install --user -r requirements.txt
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v6
       - run: mkdocs build -c -d public
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./public
 
@@ -55,4 +55,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v5

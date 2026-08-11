@@ -1,0 +1,11 @@
+mkdocs 
+mkdocs-material 
+pymdown-extensions 
+pygments 
+markdown-blockdiag 
+mkdocs-bibtex 
+markdown-aafigure 
+mkdocs-build-plantuml-plugin 
+Pillow 
+Markdown
+mkdocs-mermaid2-plugin

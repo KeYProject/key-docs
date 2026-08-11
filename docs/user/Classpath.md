@@ -16,7 +16,7 @@ contain a model of any contained code.
 
 * Mar 6, 19, **Wolfram Pfeifer**, corrected wrong example, updated list of
   internal classes
-* Sep 4, 09, ** mulbrich**, dropping `\noDefaultClasses`, adding
+* Sep 4, 09, **mulbrich**, dropping `\noDefaultClasses`, adding
   `\bootclasspath`
 
 # Syntax
@@ -67,7 +67,7 @@ These classes are read in verbatim: All contracts and all method bodies are
 taken into consideration and are available during the verification.
 
 
-## Library giben as Java sources
+## Library given as Java sources
 
 After loading the default classes, all classpath locations are iterated to
 recursivly read in all files ending in `.java` from within the directories and
@@ -84,14 +84,13 @@ files with the file name extension ".class". The class files are used to
 construct java stubs containing the information stored in the class files.
 
 Inner classes are mapped as expected. Since there are no method bodies,
-anonymous classes cannot be included the usual way. Instead a normal class with
+anonymous classes cannot be included the usual way. Instead, a normal class with
 an arbitrary name is created.
 
-## Combining (TODO)
+## Combining class files and stubs
 
-It is possible to use both file types: Class files and java stubs. Since KeY
-does not YET support external .jml files, however, there may only be either
-a class file or a source specification for one class. This should change later.
+It is possible to use both file types: class files and Java stubs. There may
+only be either a class file or a source specification for one class. 
 
 You can use the "stubmaker" tool available in the key-tools repository to create
 a set of skeleton java source files for your libraries and which can be fed to
@@ -165,5 +164,5 @@ for a comprehensive and uptodate list of the classes currently comprised
 in the bootclasspath in KeY.
 
 If you intend to override the bootclasspath, not all classes of these classes
-are required in your bootclasspath. However, ommiting essential classes may
+are required in your bootclasspath. However, omitting essential classes may
 result in strange exceptions at runtime.

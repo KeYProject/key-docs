@@ -1,3 +1,6 @@
+---
+approved: mu 2026-06-19
+---
 # How to write documentation
 
 This webpage uses [mkdocs](https://mkdocs.org). Mkdocs generates from a bunch of
@@ -20,20 +23,56 @@ via the Python package manager (`pip`). For a non-root user install
 use either `make prepare` or execute the following line:
 
 ``` {.sh linenums="1"}
-$ pip install --user mkdocs mkdocs-material pymdown-extensions pygments \
-                     markdown-blockdiag mkdocs-bibtex markdown-aafigure==v201904.0004 \
-                     mkdocs-build-plantuml-plugin 'Pillow<10' 'Markdown<3.4'
+$ pip install --user -r requirements.txt
 ```
 
 This install all needed packages for this webpage inside
 `$HOME/.local` and after installation the mkdocs executable should be
 under `$HOME/.local/bin/mkdocs`.
 
-serve:
-	mkdocs serve
+Alternatively, you can create a virtual environment and install
+dependencies in a local directory. See ext. documentation on
+`virtualenv` and drop the `--user` above.
 
-build:
-	mkdocs build
+In order to open a server:
+	`mkdocs serve`
+
+In order to build the pages:
+	`mkdocs build`
+
+## Page reviews
+
+The original pages were written by the KeY community. In June 2026,
+the structure and content of this documentation has been revised 
+using support from generative AI (Claude to be precise).
+
+From that date on, all pages carry a badge. Pages that carry the badge
+&quot;not yet verified&quot; on the top need (re-)approval by a KeY
+core team member after this renovation. Approved pages carry a line at
+the bottom with the person who signed off and a date.
+
+
+### Status of pages
+
+Unreviewed pages show an amber *"not yet verified"* badge in their top-right
+corner. Once a reviewer signs a page off, the badge moves to the page
+*footer* as a green note stating who checked the page and when. To sign a
+page off, add your initials and the date to the front matter:
+
+```
+---
+approved: rb
+approved-on: 2026-06-11
+---
+
+# Page Title
+...
+```
+
+The shorthand `approved: rb 2026-06-11` works too; without a date, only the
+initials are shown. For generated pages, `approved: none` suppresses the
+badge entirely. The badge is injected by the MkDocs hook
+`hooks/approval.py`; the styling lives in `docs/extra.css`.
 
 ## Commands
 
@@ -128,7 +167,7 @@ for i in range(10):
 ```
 
 References by `[text](link)`: For example [a website](http://foo.bar) or
-a [local doc](local-doc.html).
+a [local doc](../index.md).
 
 
 size  material      color
@@ -349,7 +388,7 @@ _Result_:
 
 #### Inline blocks
 
-[:octicons-tag-24: 7.0.0][Inline support] ·
+:octicons-tag-24: 7.0.0 ·
 :octicons-beaker-24: Experimental
 
 Admonitions can also be rendered as inline blocks (i.e. for sidebars), placing
@@ -405,7 +444,6 @@ prior to the content block you want to place them beside. If there's
 insufficient space to render the admonition next to the block, the admonition
 will stretch to the full width of the viewport, e.g. on mobile viewports.
 
-  [Inline support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
 
 #### Supported types
 
@@ -525,7 +563,7 @@ useful for documents or landing pages with dedicated _call-to-actions_.
 
 In order to render a link as a button, suffix it with curly braces and add the
 `.md-button` class selector to it. The button will receive the selected
-[primary color] and [accent color] if active.
+the primary and accent color of the site palette (set in `mkdocs.yml`) if active.
 
 _Example_:
 
@@ -537,8 +575,6 @@ _Result_:
 
 [Subscribe to our newsletter][Demo]{ .md-button }
 
-  [primary color]: ../setup/changing-the-colors.md#primary-color
-  [accent color]: ../setup/changing-the-colors.md#accent-color 
   [Demo]: javascript:alert$.next("Demo")
 
 #### Adding primary buttons
@@ -574,8 +610,8 @@ _Result_:
 
 [Send :fontawesome-solid-paper-plane:][Demo]{ .md-button .md-button--primary }
 
-  [icon syntax]: icons-emojis.md#using-icons
-  [icon search]: icons-emojis.md#search
+  [icon syntax]: #icons-emojis
+  [icon search]: #icons-emojis
 
 
 ### Code Blocks
@@ -946,7 +982,7 @@ _Result_:
         2. Donec vitae suscipit est
         3. Nulla tempor lobortis orci
 
-  [admonitions]: admonitions.md
+  [admonitions]: #admonitions
 
 
 ### Data tables
@@ -954,10 +990,9 @@ _Result_:
 Material for MkDocs defines default styles for data tables – an excellent way
 of rendering tabular data in project documentation. Furthermore, customizations
 like [sortable tables] can be achieved with a third-party library and some
-[additional JavaScript].
+additional JavaScript (registered via `extra_javascript` in `mkdocs.yml`).
 
   [sortable tables]: #sortable-tables
-  [additional JavaScript]: ../customization.md#additional-javascript 
 
 #### Using data tables
 
@@ -983,7 +1018,7 @@ _Result_:
 | `PUT`       | :material-check-all: Update resource |
 | `DELETE`    | :material-close:     Delete resource |
 
-  [icons and emojis]: icons-emojis.md
+  [icons and emojis]: #icons-emojis
 
 #### Column alignment
 
@@ -1128,46 +1163,12 @@ _Example_:
 
 ### Block diagrams
 
-```
-blockdiag {
-    A -> B -> C -> D;
-    A -> E -> F -> G;
-}
-```
-
-blockdiag {
-    A -> B -> C -> D;
-    A -> E -> F -> G;
-}
-
-
-```
-seqdiag {
-    // edge label
-    A -> B [label = "call"];
-    A <- B [label = "return"];
-    // diagonal edge
-    A -> B [diagonal, label = "diagonal edge"];
-    A <- B [diagonal, label = "return diagonal edge"];
-    // color of edge
-    A -> B [label = "colored label", color = red];
-    // failed edge
-    A -> B [label = "failed edge", failed];
-}
-```
-
-seqdiag {
-    // edge label
-    A -> B [label = "call"];
-    A <- B [label = "return"];
-    // diagonal edge
-    A -> B [diagonal, label = "diagonal edge"];
-    A <- B [diagonal, label = "return diagonal edge"];
-    // color of edge
-    A -> B [label = "colored label", color = red];
-    // failed edge
-    A -> B [label = "failed edge", failed];
-}
+!!! warning
+    `blockdiag`/`seqdiag` are **no longer supported** — the
+    `markdown-blockdiag` extension is not enabled in `mkdocs.yml` anymore,
+    so such blocks render as plain text. Use
+    [Mermaid diagrams](#mermaid-diagrams) instead (e.g.
+    `sequenceDiagram` replaces `seqdiag`, `graph` replaces `blockdiag`).
 
 
 ### Mermaid Diagrams
@@ -1599,8 +1600,8 @@ The following icon sets are bundled with Material for MkDocs:
   [Material Design]: https://materialdesignicons.com/
   [FontAwesome]: https://fontawesome.com/icons?d=gallery&m=free
   [Octicons]: https://octicons.github.com/
-  [Emoji]: ../setup/extensions/python-markdown-extensions.md#emoji
-  [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#custom-icons
+  [Emoji]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
+  [Emoji with custom icons]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
 
 Emojis can be integrated in Markdown by putting the shortcode of the emoji
 between two colons. If you're using [Twemoji] (recommended), you can look up
@@ -1621,7 +1622,7 @@ _Result_:
 
 When [Emoji] is enabled, icons can be used similar to emojis, by referencing
 a valid path to any icon bundled with the theme, which are located in the
-[`.icons`][custom icons] directory, and replacing `/` with `-`:
+`.icons` directory of the installed `mkdocs-material` package, and replacing `/` with `-`:
 
 _Example_:
 
@@ -1633,20 +1634,16 @@ _Example_:
 
 _Result_:
 
-- :material-account-circle: – [`material/account-circle.svg`][icon Material]
-- :fontawesome-regular-laugh-wink: – [`fontawesome/regular/laugh-wink.svg`][icon FontAwesome]
-- :octicons-repo-push-16: – [`octicons/repo-push-16.svg`][icon Octicons]
+- :material-account-circle: – `material/account-circle.svg`
+- :fontawesome-regular-laugh-wink: – `fontawesome/regular/laugh-wink.svg`
+- :octicons-repo-push-16: – `octicons/repo-push-16.svg`
 
-  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
-  [icon Material]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/material/account-circle.svg
-  [icon FontAwesome]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/fontawesome/regular/laugh-wink.svg
-  [icon Octicons]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/repo-push-16.svg
 
 ##### with colors
 
 When [Attribute Lists] is enabled, custom CSS classes can be added to icons by
 suffixing the icon with a special syntax. While HTML allows to use
-[inline styles], it's always recommended to add an [additional style sheet] and
+[inline styles], it's always recommended to add the rule to our style sheet `docs/extra.css` and
 move declarations into dedicated CSS classes.
 
 <style>
@@ -1698,14 +1695,13 @@ _Result_:
 - :fontawesome-brands-twitter:{ .twitter } – Twitter
 - :fontawesome-brands-facebook:{ .facebook } – Facebook
 
-  [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
+  [Attribute Lists]: https://python-markdown.github.io/extensions/attr_list/
   [inline styles]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
-  [additional style sheet]: ../customization.md#additional-css
 
 #### with animations
 
 Similar to adding [colors], it's just as easy to add [animations] to icons by
-using an [additional style sheet], defining a `@keyframes` rule and adding a
+using our style sheet `docs/extra.css`, defining a `@keyframes` rule and adding a
 dedicated CSS class to the icon.
 
 _Example_:
@@ -1836,7 +1832,7 @@ _Result_:
 </figure>
 
   [Dummy image]: https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–
-  [Markdown in HTML]: ../setup/extensions/python-markdown.md#markdown-in-html
+  [Markdown in HTML]: https://python-markdown.github.io/extensions/md_in_html/
 
 #### Image lazy-loading
 

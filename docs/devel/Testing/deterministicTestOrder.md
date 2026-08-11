@@ -1,5 +1,9 @@
 # Deterministic Order of Test Cases in KeY
 
+!!! danger
+
+    This section does not reflect recent KeY developments. In particular it no longer applies since the upgrade to JUnit 5.
+
 In KeY, some test cases rely on a specific execution order. One reason for this may be for example that it is too expensive to always initialize a new ProofEnvironment and therefore the environment is shared between multiple test cases.
 To get rid of test cases failing due to wrong order, we implemented a solution to make the execution order of JUnit tests deterministic: A custom JUnit test runner called AutoSuite.
 

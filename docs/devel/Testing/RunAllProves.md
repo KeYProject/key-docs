@@ -56,6 +56,10 @@ test runs.
 
 ### Syntax of the Proof Collection/Index File
 
+!!! danger
+
+    This section does not reflect recent KeY developments. In particular, this list is now defined in code.
+
 There is an proof collection (or index) file containing the
 declaration the sets of .key files that will be tested during
 RunAllProofs test run. This file is currently located in KeY

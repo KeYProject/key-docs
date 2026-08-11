@@ -1,4 +1,4 @@
-## Installation {#sec:install}
+# Installation {#sec:install}
 
 You can choose between different methods to install and use KeY. For
 this tutorial, we recommend the Single Click Jar variant described in

@@ -1,4 +1,5 @@
 site/
+/public
 
 .DS_Store
 *.out
@@ -17,3 +18,4 @@ site/
 *.toc
 *.rel
 
+*.pyc

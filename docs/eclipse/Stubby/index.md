@@ -1,5 +1,12 @@
 # Stubby - The Stub Generator
 
+!!! warning "Unsupported historical content"
+    This Eclipse integration is **no longer supported or maintained**. It
+    targeted old Eclipse releases (Indigo/Luna era) and old versions of
+    KeY; the update sites may no longer exist. This page is kept for
+    historical reference.
+
+
 Stubby allows to generate stubs annotated with default JML
 specifications for used API members.
 

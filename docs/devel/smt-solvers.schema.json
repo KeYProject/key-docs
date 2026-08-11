@@ -1,0 +1,117 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://keyproject.github.io/key-docs/devel/smt-solvers.schema.json",
+    "title": "SMT Solvers",
+    "description": "Schema for SMT solvers configuration used by the KeY project.",
+    "type": "object",
+    "additionalProperties": false,
+    "patternProperties": {
+        "^[ a-zA-Z0-9._-]+$": {
+            "$ref": "#/definitions/solver"
+        }
+    },
+    "$defs": {
+        "solver": {
+            "type": "object",
+            "description": "Configuration for a single SMT solver.",
+            "properties": {
+                "experimental": {
+                    "type": "boolean",
+                    "description": "Marks solver as experimental."
+                },
+                "params": {
+                    "type": "string",
+                    "description": "Command-line parameters passed to the solver."
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "Timeout in seconds; -1 means no timeout."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Should be unique amongst all used solvers, otherwise it is given a unique name throughout the solver loading process. If no name is given, the solver will be called "SMT Solver" or a unique version of that (depending on the other solvers' names)."
+                },
+                "info": {
+                    "type": "string",
+                    "description": "Additional information or description for the solver."
+                },
+                "command": {
+                    "type": "string",
+                    "description": "Executable name or path for the solver."
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Argument passed to the solver to obtain its version string."
+                },
+                "minVersion": {
+                    "type": "string",
+                    "description": "Minimum acceptable version string or date for the solver."
+                },
+                "socketClass": {
+                    "type": "string",
+                    "description": "Fully-qualified Java class name for the socket implementation."
+                },
+                "translatorClass": {
+                    "type": "string",
+                    "description": "Fully-qualified Java class name for the translator implementation."
+                },
+                "handlerOptions": {
+                    "type": "array",
+                    "description": "Options controlling handler behaviour.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "minItems": 0
+                },
+                "delimiters": {
+                    "type": "array",
+                    "description": "List of line delimiters used to parse solver output.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                },
+                "handlers": {
+                    "type": "array",
+                    "description": "Ordered list of fully-qualified Java handler class names used to translate or postprocess SMT terms.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": false
+                },
+                "preamble": {
+                    "type": "string",
+                    "description": "Resource path, file path, or URL of the SMT preamble to be used with the solver."
+                }
+
+            },
+            "required": [
+                "name",
+                "command"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "examples": [
+        {
+            "Z3": {
+                "params": "-in -smt2",
+                "timeout": -1,
+                "name": "Z3",
+                "info": "Z3 solver by Microsoft.",
+                "command": "z3",
+                "version": "--version",
+                "handlers": [
+                    "de.uka.ilkd.key.smt.newsmt2.BooleanConnectiveHandler",
+                    "de.uka.ilkd.key.smt.newsmt2.PolymorphicHandler"
+                ],
+                "handlerOptions": [
+                    "getUnsatCore"
+                ]
+            }
+        }
+    ]
+}

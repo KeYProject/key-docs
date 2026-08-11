@@ -1,0 +1,129 @@
+.md-nav__item--section > .md-nav__link[for] {
+    color: var(--md-typeset-color) !important;
+}
+
+/* Sidebar table of contents: render all chapter-level entries bold.
+   Sections (entries with subsections) are bold by default; this rule also
+   bolds plain pages at the same level (e.g. "1. Architecture", "8. FAQ"),
+   so the chapter list looks uniform. */
+.md-nav--primary nav[data-md-level="1"] > .md-nav__list > .md-nav__item > .md-nav__link {
+  font-weight: 700;
+}
+
+/* Review status badge (see hooks/approval.py). Pages carry an `approved:`
+   front matter field with reviewer initials; without it, an amber
+   "not yet verified" badge is shown. */
+.approval {
+  float: right;
+  margin: 0 0 .4rem .8rem;
+  padding: .1rem .55rem;
+  border-radius: 1rem;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.approval--ok {
+  color: var(--md-accent-fg-color);
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-accent-fg-color);
+}
+.approval--missing {
+  color: #e65100;
+  background: var(--md-code-bg-color);
+  border: 1px solid #ef6c00;
+}
+[data-md-color-scheme="slate"] .approval--missing {
+  color: #ffb74d;
+  border-color: #ff9800;
+}
+
+/* Footer variant of the review badge: full-width line at the end of the
+   page content instead of a floating pill. */
+.approval--footer {
+  float: none;
+  display: block;
+  margin: 2.5rem 0 0 0;
+  padding: .4rem .8rem;
+  border-radius: .2rem;
+  font-weight: 400;
+  font-size: .64rem;
+  border-width: 0 0 0 .2rem;
+  border-style: solid;
+}
+
+/* Author metadata displayed below page title, right-aligned */
+.page-author {
+  float: right;
+  margin: -2rem 0 1rem 1rem;
+  padding: .2rem .6rem;
+  border-radius: .2rem;
+  font-size: .75rem;
+  font-style: italic;
+  color: var(--md-default-fg-color--light);
+  background: var(--md-code-bg-color);
+  border-left: 2px solid var(--md-primary-fg-color);
+  clear: right;
+}
+[data-md-color-scheme="slate"] .page-author {
+  color: var(--md-default-fg-color--lighter);
+}
+
+/* Ensure content after author box clears the float */
+.md-typeset h1 + .page-author + * {
+  clear: both;
+}
+.md-typeset h1 + .page-author + p,
+.md-typeset h1 + .page-author + div {
+  margin-top: 0;
+}
+[data-md-color-scheme="slate"] .page-author {
+  color: var(--md-default-fg-color--lighter);
+}
+
+.md-typeset .admonition,
+.md-typeset details { /* ensure that the text in "abstract" etc notes (so called "admonitions") is not too small */
+  font-size: 100%;
+}
+
+/* Java-coverage feature table (docs/user/SupportedFeatures/JavaCoverage.md).
+   Wrapped in <div class="j-coverage">; keep it readable and scrollable on
+   narrow screens, and centre the KeY-support column. */
+.j-coverage {
+  overflow-x: auto;
+}
+/* Material wraps tables in an inline-block scroll wrapper; make it block so the
+   fixed layout + percentage widths below are honoured. */
+.j-coverage .md-typeset__table {
+  display: block;
+  width: 100%;
+}
+.j-coverage table {
+  font-size: .78rem;
+  table-layout: fixed;      /* honour the per-column widths below */
+  width: 100%;
+  min-width: 44rem;         /* below this, scroll instead of crushing columns
+                               (Material's rem is 20px, so this is ~880px) */
+}
+/* Wrap long code tokens (e.g. LocalClassDeclarationStmt) instead of overflowing,
+   and drop the theme's 5rem per-cell minimum so the widths below actually apply. */
+.j-coverage table th,
+.j-coverage table td {
+  overflow-wrap: break-word;
+  min-width: 0 !important;
+}
+/* Keep the version/JEP columns compact so the Comments column gets more room. */
+.j-coverage table th:nth-child(1) { width: 18%; }  /* Feature */
+.j-coverage table th:nth-child(2) { width: 9%; }   /* Introduced */
+.j-coverage table th:nth-child(3) { width: 22%; }  /* Later changes */
+.j-coverage table th:nth-child(4) { width: 4%; }   /* KeY */
+.j-coverage table th:nth-child(5) { width: 47%; }  /* Comments */
+.j-coverage table td:nth-child(4),
+.j-coverage table th:nth-child(4) {
+  text-align: center;
+  white-space: nowrap;
+}
+/* Slightly larger support glyphs for scanability. */
+.j-coverage table td:nth-child(4) .twemoji svg {
+  height: 1.15em;
+  width: 1.15em;
+}

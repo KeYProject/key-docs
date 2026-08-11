@@ -14,17 +14,21 @@ translation and delegates it to a handler that reports it can handle terms of th
 term contains subterms, the `MasterHandler` is called again recursively to translate these. The
 result of the translation is an SMTLIB S-Expression.
 
-seqdiag {
-    ModularSMTLib2Translator -> MasterHandler [label = "Term"]
-    MasterHandler -> SMTHandler [label = "canHandle(Term)"];
-    MasterHandler <-- SMTHandler [label = "Capability"];
-    MasterHandler -> SMTHandler [label = "handle(MasterHandler, Term)"];
-    MasterHandler <- SMTHandler [label = "translate(Term)"];
-    MasterHandler -> MasterHandler [label = "recursion"]
-    MasterHandler --> SMTHandler [label = "handle(MasterHandler, Term)"];
-    MasterHandler <-- SMTHandler [label = "SExpr"];
-    ModularSMTLib2Translator <- MasterHandler [label = "SExpr"]
-}
+```mermaid
+sequenceDiagram
+    participant T as ModularSMTLib2Translator
+    participant M as MasterHandler
+    participant H as SMTHandler
+    T->>M: Term
+    M->>H: canHandle(Term)
+    H-->>M: Capability
+    M->>H: handle(MasterHandler, Term)
+    Note over M,H: handler translates the term
+    M->>M: recursion for subterms
+    M->>H: handle(MasterHandler, Term)
+    H-->>M: SExpr
+    M-->>T: SExpr
+```
 
 ## Adding a new Handler
 
