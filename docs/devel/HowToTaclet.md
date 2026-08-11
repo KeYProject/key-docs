@@ -75,7 +75,7 @@ The `\rules` block contains the taclet definitions, each of which begins with th
 ("cut_direct"), creating a new block defined by curly brackets and a semicolon at the end.
 
 Since the `\find(...)` part of the taclet definition does not contain a `==>`, the `cut_direct` taclet finds (matches) a sub-term anywhere in a sequent formula.
-The `\sameUpdateLevel` ensures that the `\find(...)` and `\add(...)` parts are
+The application restriction flag `\sameUpdateLevel` ensures that the `\find(...)` and `\add(...)` parts are
 under the same update application (or none). 
 
 !!! info
