@@ -1,6 +1,6 @@
-----
-approved: DD 2026-08-11
-----
+---
+approved: dd 2026-08-11
+---
 # How to write new taclets
 
 New prover rules in KeY can be added in form of built-in rules[^1] written in plain
