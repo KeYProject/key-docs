@@ -41,18 +41,23 @@ There are two flavours of proof script languages. One more low-level
 for the interaction on the level of JavaDL and one for more high-level
 interaction on the level of JML annotated to Java code.
 
-### Linear Proof Scripts[^1]
+### Linear Proof Scripts
 
 [Documentation of Linear Proof Scripts](linearScripts)
 
-Linear scripts are added to entire JavaDL proof obligations. They can
-be loaded interactively or stored in `.key` files.
+Linear scripts opperate on the level of JavaDL proofs directly. They
+are added to individual proof obligations (regardless of their
+origin). They can be loaded interactively or annotated as in `.key`
+files together with the proof obligation. They have full control over
+the proof, but do not allow access source-level specification elements
+and interaction.
 
 ### JML Proof Scripts
 
 [Documentation of JML Proof Scripts](jml)
 
-JML scripts are added to individual assertions of a Java method. They
-are annotated as JML comments in `.java` files.
+JML scripts are added to individual assertions within a Java method. They are annotated as JML comments in `.java` files directly and allow the use of Java and JML expressions in proof scripts.
 
-[^1]: That is a working title name – might be subject to change.
+### Examples
+
+[Examples](Examples) of proof scripts in KeY with verbatim snippets and links to the sources (Quicksort, Boyer–Moore, VerifyThis 2026 h-index).
