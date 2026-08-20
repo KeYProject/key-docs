@@ -306,183 +306,117 @@ a call like `services.getSpecificationRepository().getLoopSpec(loop)`. If the
 specification repository already contains the means to store that specification,
 this should be quite straightforward to accomplish.
 
-# Variable Conditions
 
-## \alwaysAbnormallyTerminates
+---
 
-**Signatures**
+## Variable Conditions
 
-* \alwaysAbnormallyTerminates(VARIABLE)
-* \not\alwaysAbnormallyTerminates(VARIABLE)
+### `\alwaysAbnormallyTerminates`
 
-
-
-
-## \applyUpdateOnRigid
+This is a variable condition, that checks if a given variable binds new variables.
 
 **Signatures**
 
-* \applyUpdateOnRigid(VARIABLE, VARIABLE, VARIABLE)
+* `\alwaysAbnormallyTerminates(VARIABLE)`
+* `\not\alwaysAbnormallyTerminates(VARIABLE)`
+
+
+
+
+### `\applyUpdateOnRigid`
+
 This variable condition can be used to check whether an update can be performed on a formula or
 term.
 That is the case if the top-level operator is rigid and of arity greater than 0.
 
-@author Benjamin Weiss
-@author Tobias Reinhold
-/
-public final class ApplyUpdateOnRigidCondition implements VariableCondition {
-
-/**
-The schema variable matched against an update
-/
-private final UpdateSV u;
-
-/**
-The schema variable matched against a formula or term
-/
-private final SchemaVariable phi;
-
-/**
-The schema variable containing the result of applying the update <code>u</code> on the
-formula or term <code>phi</code>
-/
-private final SchemaVariable result;
-
-/**
-Creates an instance of the variable condition.
-
-@param u the schema variable matched against an update
-@param phi the schema variable matched against a formula or term
-@param result the schema variable containing the result of applying <code>u</code> on
-<code>phi</code>
-This variable condition can be used to check whether an update can be performed on a formula or
-term.
-That is the case if the top-level operator is rigid and of arity greater than 0.
-
-@author Benjamin Weiss
-@author Tobias Reinhold
-
-
-## \containsAssignment
-
 **Signatures**
 
-* \containsAssignment(VARIABLE)
-* \not\containsAssignment(VARIABLE)
+* `\applyUpdateOnRigid(VARIABLE, VARIABLE, VARIABLE)`
+
+
+
+
+### `\containsAssignment`
+
 This variable condition can be used to check whether an assignment expression occurs as a
 subexpression of a schemavariable instantiation,
 
-@author Dominic Scheurer
+**Signatures**
 
-/
-public class ContainsAssignmentCondition extends VariableConditionAdapter {
-
-/* the schemavariable matched agains an expression */
-private final SchemaVariable expression;
-
-/*
-indicates whether the variable condition is used in its negated form, i.e., to check for the
-absence of an assignment expression.
-/
-private final boolean negated;
+* `\containsAssignment(VARIABLE)`
+* `\not\containsAssignment(VARIABLE)`
 
 
-/**
-creates an instance of the variable condition
-
-@param x the schemavariable whose instantiation is to be checked
-@param negated true iff the check should ensure the absence of an assignment statement
-@throws IllegalArgumentException if the given schemavariable is not a {@link ProgramSV}
-This variable condition can be used to check whether an assignment expression occurs as a
-subexpression of a schemavariable instantiation,
-
-@author Dominic Scheurer
 
 
-## \different
+### `\different`
+
+
 
 **Signatures**
 
-* \different(VARIABLE, VARIABLE)
+* `\different(VARIABLE, VARIABLE)`
 
 
 
 
-## \differentFields
-
-**Signatures**
-
-* \differentFields(VARIABLE, VARIABLE)
+### `\differentFields`
 
 This variable condition checks if given two terms s, t both terms have a different unique symbol
 as top level operator
 
-
-## \disjointModuloNull
-
 **Signatures**
 
-* \disjointModuloNull(TYPE_RESOLVER, TYPE_RESOLVER)
-General varcond for checking relationships between types of schema variables.
-/
-public final class TypeComparisonCondition extends VariableConditionAdapter {
-
-public enum Mode {
-NOT_SAME, /* checks if sorts are not same */
-SAME, /* checks if sorts are same */
-IS_SUBTYPE, /* checks subtype relationship */
-NOT_IS_SUBTYPE, /* checks subtype relationship */
-STRICT_SUBTYPE, /* checks for strict subtype */
-DISJOINTMODULONULL
-} /* checks if sorts are disjoint */
-
-private final Mode mode;
-private final TypeResolver fst;
-private final TypeResolver snd;
+* `\differentFields(VARIABLE, VARIABLE)`
 
 
-/**
-creates a condition that checks if the declaration types of the schemavariable's
-instantiations are unequal
 
-@param fst one of the SchemaVariable whose type is checked
-@param snd one of the SchemaVariable whose type is checked
-@param mode an int encoding if testing of not same or not compatible
+
+### `\disjointModuloNull`
+
 General varcond for checking relationships between types of schema variables.
 
+**Signatures**
 
-## \dropEffectlessElementaries
+* `\disjointModuloNull(TYPE_RESOLVER, TYPE_RESOLVER)`
+
+
+
+
+### `\dropEffectlessElementaries`
+
+
 
 **Signatures**
 
-* \dropEffectlessElementaries(VARIABLE, VARIABLE, VARIABLE)
+* `\dropEffectlessElementaries(VARIABLE, VARIABLE, VARIABLE)`
 
 
 
 
-## \dropEffectlessStores
+### `\dropEffectlessStores`
+
+
 
 **Signatures**
 
-* \dropEffectlessStores(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)
+* `\dropEffectlessStores(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)`
 
 
 
 
-## \equalUnique
+### `\equalUnique`
+
+
 
 **Signatures**
 
-* \equalUnique(VARIABLE, VARIABLE, VARIABLE)
+* `\equalUnique(VARIABLE, VARIABLE, VARIABLE)`
 
 
 
 
-## \fieldType
-
-**Signatures**
-
-* \fieldType(VARIABLE, SORT)
+### `\fieldType`
 
 Variable condition that enforces a given generic sort to be instantiated with the type of a field
 constant.
@@ -490,283 +424,263 @@ constant.
 The condition can only be fulfilled if the given field term is constant of which the referred
 type is known.
 
-
-## \final
-
 **Signatures**
 
-* \final(VARIABLE)
-* \not\final(VARIABLE)
-ensures that the given instantiation for the schema variable denotes a final field
-/
-public final class FinalReferenceCondition extends VariableConditionAdapter {
+* `\fieldType(VARIABLE, SORT)`
 
-private final SchemaVariable reference;
-private final boolean negation;
 
-/**
-the static reference condition checks if a suggested instantiation for a schema variable
-denotes a static reference. The flag negation allows to reuse this condition for ensuring non
-static references.
+
+
+### `\final`
+
 ensures that the given instantiation for the schema variable denotes a final field
 
+**Signatures**
 
-## \freeLabelIn
+* `\final(VARIABLE)`
+* `\not\final(VARIABLE)`
+
+
+
+
+### `\freeLabelIn`
+
+
 
 **Signatures**
 
-* \freeLabelIn(VARIABLE, VARIABLE)
-* \not\freeLabelIn(VARIABLE, VARIABLE)
+* `\freeLabelIn(VARIABLE, VARIABLE)`
+* `\not\freeLabelIn(VARIABLE, VARIABLE)`
 
 
 
 
-## \getFreeInvariant
-
-**Signatures**
-
-* \getFreeInvariant(VARIABLE, VARIABLE, VARIABLE)
+### `\getFreeInvariant`
 
 Extracts the free loop invariants for the given loop term. Free invariants are only assumed, but
 not proven (like an axiom).
 
-@author Dominic Steinhoefel
-
-
-## \getInvariant
-
 **Signatures**
 
-* \getInvariant(VARIABLE, VARIABLE, VARIABLE)
+* `\getFreeInvariant(VARIABLE, VARIABLE, VARIABLE)`
+
+
+
+
+### `\getInvariant`
 
 Extracts the loop invariants for a loop term (for all applicable heap contexts).
 
-@author Dominic Steinhoefel
-
-
-## \getVariant
-
 **Signatures**
 
-* \getVariant(VARIABLE, VARIABLE)
+* `\getInvariant(VARIABLE, VARIABLE, VARIABLE)`
+
+
+
+
+### `\getVariant`
 
 Extracts the variant for a loop term.
 
-@author Dominic Steinhoefel
-
-
-## \hasElementarySort
-
 **Signatures**
 
-* \hasElementarySort(VARIABLE, SORT)
+* `\getVariant(VARIABLE, VARIABLE)`
+
+
+
+
+### `\hasElementarySort`
 
 Variable condition that enforces a given generic sort to be instantiated with the sort of a
 program expression a schema variable is instantiated with
 
-
-## \hasInvariant
-
 **Signatures**
 
-* \hasInvariant(VARIABLE, VARIABLE)
+* `\hasElementarySort(VARIABLE, SORT)`
+
+
+
+
+### `\hasInvariant`
 
 Checks whether a loop has an invariant (either normal or "free").
 
-@author Dominic Steinhoefel
-
-
-## \hasLabel
-
 **Signatures**
 
-* \hasLabel(VARIABLE, STRING)
-* \not\hasLabel(VARIABLE, STRING)
+* `\hasInvariant(VARIABLE, VARIABLE)`
+
+
+
+
+### `\hasLabel`
 
 This variable condition checks if an instantiation for term labels contains a specific term
 label.
 
-@author Michael Kirsten
-
-
-## \hasSort
-
 **Signatures**
 
-* \hasSort(VARIABLE, SORT)
+* `\hasLabel(VARIABLE, STRING)`
+* `\not\hasLabel(VARIABLE, STRING)`
+
+
+
+
+### `\hasSort`
 
 Variable condition that enforces a given generic sort to be instantiated with the sort of a
 program expression a schema variable is instantiated with
 
-
-## \hasSubFormulas
-
 **Signatures**
 
-* \hasSubFormulas(VARIABLE)
-* \not\hasSubFormulas(VARIABLE)
+* `\hasSort(VARIABLE, SORT)`
+
+
+
+
+### `\hasSubFormulas`
 
 This variable condition checks if an instantiation for a formula has sub formulas which are
 formulas. It returns false for an arity equal to zero or no sub formulas. This is needed to
 simplify distinguishing between different well-definedness operators in taclets, since the
 difference exists only for formulas.
 
-@author Michael Kirsten
-
-
-## \isAbstractOrInterface
-
 **Signatures**
 
-* \isAbstractOrInterface(TYPE_RESOLVER)
-* \not\isAbstractOrInterface(TYPE_RESOLVER)
+* `\hasSubFormulas(VARIABLE)`
+* `\not\hasSubFormulas(VARIABLE)`
+
+
+
+
+### `\isAbstractOrInterface`
 
 This variable condition checks if a given type denotes an abstract class or interface type.
 
-
-## \isArray
-
 **Signatures**
 
-* \isArray(VARIABLE)
-* \not\isArray(VARIABLE)
+* `\isAbstractOrInterface(tr: TYPE_RESOLVER)`
+* `\not\isAbstractOrInterface(tr: TYPE_RESOLVER)`
+
+
+
+
+### `\isArray`
+
 This variable condition checks if an instantiation is an array.
 
-@author mulbrich
-@since 2006-12-03
-/
-public final class ArrayTypeCondition extends VariableConditionAdapter {
+**Signatures**
 
-private final SchemaVariable var;
-private final boolean negated;
-
-/**
-creates an instance of this condition checking if an instantiation of a schema variable is an
-array or not
-
-@param var the SchemaVariable to be checked
-@param negated if the result is to be negated upon finding
-This variable condition checks if an instantiation is an array.
-
-@author mulbrich
-@since 2006-12-03
+* `\isArray(VARIABLE)`
+* `\not\isArray(VARIABLE)`
 
 
-## \isArrayLength
+
+
+### `\isArrayLength`
+
+
 
 **Signatures**
 
-* \isArrayLength(VARIABLE)
-* \not\isArrayLength(VARIABLE)
+* `\isArrayLength(VARIABLE)`
+* `\not\isArrayLength(VARIABLE)`
 
 
 
 
-## \isBindingExpr
+### `\isBindingExpr`
 
-**Signatures**
-
-* \isBindingExpr(VARIABLE, VARIABLE, VARIABLE)
-* \not\isBindingExpr(VARIABLE, VARIABLE, VARIABLE)
-
-* \isBindingExpr(VARIABLE)
-* \not\isBindingExpr(VARIABLE)
-
-
-
-
-## \isConstant
+This is a variable condition, that checks if a given variable binds new variables.
 
 **Signatures**
 
-* \isConstant(VARIABLE)
-* \not\isConstant(VARIABLE)
+* `\isBindingExpr(VARIABLE, VARIABLE, VARIABLE)`
+* `\not\isBindingExpr(VARIABLE, VARIABLE, VARIABLE)`
+
+
+* `\isBindingExpr(VARIABLE)`
+* `\not\isBindingExpr(VARIABLE)`
+
+
+
+
+### `\isConstant`
 
 This variable condition checks if an instantiation is a constant formula or term, i.e. its arity
 is equal to zero.
 
-@author Michael Kirsten
+**Signatures**
+
+* `\isConstant(VARIABLE)`
+* `\not\isConstant(VARIABLE)`
 
 
-## \isEnumConst
+
+
+### `\isEnumConst`
+
+ensures that the given instantiation for the schemavariable denotes a constant of an enum type.
 
 **Signatures**
 
-* \isEnumConst(VARIABLE)
-ensures that the given instantiation for the schemavariable denotes a constant of an enum type.
-
-@author mulbrich
-@since 2006-12-04
-@version 2006-12-11
-/
-public final class EnumConstantCondition extends VariableConditionAdapter {
-
-private final SchemaVariable reference;
-
-/**
-the static reference condition checks if a suggested instantiation for a schema variable
-denotes a reference to an enum constant.
-ensures that the given instantiation for the schemavariable denotes a constant of an enum type.
-
-@author mulbrich
-@since 2006-12-04
-@version 2006-12-11
+* `\isEnumConst(VARIABLE)`
 
 
-## \isFinal
 
-**Signatures**
 
-* \isFinal(TYPE_RESOLVER)
-* \not\isFinal(TYPE_RESOLVER)
+### `\isFinal`
 
 This variable condition checks if a given type denotes a final type.
 
 Final types are either primitive types or classes that are declared final or arrays of final
 types.
 
-@author Mattias Ulbrich
-
-
-## \isInStrictFp
-
 **Signatures**
 
-* \isInStrictFp()
-* \not\isInStrictFp()
+* `\isFinal(tr: TYPE_RESOLVER)`
+* `\not\isFinal(tr: TYPE_RESOLVER)`
+
+
+
+
+### `\isInStrictFp`
 
 This variable condition checks if a context is affected by the strictfp modifier
 
-
-## \isLabeled
-
 **Signatures**
 
-* \isLabeled(VARIABLE)
-* \not\isLabeled(VARIABLE)
+* `\isInStrictFp()`
+* `\not\isInStrictFp()`
+
+
+
+
+### `\isLabeled`
 
 Checks whether the given statement is labeled, i.e., actual a LabeledStatement. This information
 is obtained from the program prefix.
 
-@author Dominic Steinhoefel
-
-
-## \isLocalVariable
-
 **Signatures**
 
-* \isLocalVariable(VARIABLE)
-* \not\isLocalVariable(VARIABLE)
+* `\isLabeled(VARIABLE)`
+* `\not\isLabeled(VARIABLE)`
+
+
+
+
+### `\isLocalVariable`
 
 Ensures the given ProgramElement denotes a local variable
 
-
-## \isModelField
-
 **Signatures**
 
-* \isModelField(VARIABLE)
-* \not\isModelField(VARIABLE)
+* `\isLocalVariable(VARIABLE)`
+* `\not\isLocalVariable(VARIABLE)`
+
+
+
+
+### `\isModelField`
 
 This variable condition checks if the instantiation of a schemavariable (of
 type Field) refers to a Java field declared as "model".
@@ -774,688 +688,367 @@ type Field) refers to a Java field declared as "model".
 The negated condition is true if the instantiation refers to an instance
 or static or ghost field.
 
-@author Mattias Ulbrich
+**Signatures**
 
-@see StaticReferenceCondition
+* `\isModelField(VARIABLE)`
+* `\not\isModelField(VARIABLE)`
 
 
-## \isObserver
+
+
+### `\isObserver`
+
+
 
 **Signatures**
 
-* \isObserver(VARIABLE, VARIABLE)
+* `\isObserver(VARIABLE, VARIABLE)`
 
 
 
 
-## \isReference
+### `\isReference`
 
-**Signatures**
-
-* \isReference(TYPE_RESOLVER)
-* \not\isReference(TYPE_RESOLVER)
-This variable condition checks if a schemavariable is instantiated with a reference or primitive
-type
-/
-public final class TypeCondition extends VariableConditionAdapter {
-
-private final TypeResolver resolver;
-private final boolean nonNull;
-private final boolean isReference;
-
-
-/**
-create a type condition
-
-@param tr the TypeResolver for the type to be checked
-@param isReference check for reference or primitive type (weigl: This parameter is used as
-negation)
-@param nonNull if Sort null should be allowed (only important when isReference is set to
-true)
 This variable condition checks if a schemavariable is instantiated with a reference or primitive
 type
 
+**Signatures**
 
-## \isReferenceArray
+* `\isReference(TYPE_RESOLVER)`
+* `\not\isReference(TYPE_RESOLVER)`
+
+
+
+
+### `\isReferenceArray`
+
+This variable condition checks if an array component is of reference type
 
 **Signatures**
 
-* \isReferenceArray(VARIABLE)
-* \not\isReferenceArray(VARIABLE)
-This variable condition checks if an array component is of reference type
-/
-public final class ArrayComponentTypeCondition extends VariableConditionAdapter {
-
-private final SchemaVariable var;
-private final boolean checkReferenceType;
+* `\isReferenceArray(VARIABLE)`
+* `\not\isReferenceArray(VARIABLE)`
 
 
 
-/**
-creates an instance of this condition checking if array var has reference or primitive
-component type depending on the value of <code>checkReferenceType</code>
 
-@param var the SchemaVariable to be checked
-@param checkReferenceType the boolean flag which when is set (<tt>true</tt>) FIXME weigl:
-this is not true! checkReferenceType is just the negated flag. checks for reference
-otherwise for primitive type
-This variable condition checks if an array component is of reference type
-
-
-## \isStaticField
-
-**Signatures**
-
-* \isStaticField(VARIABLE)
-* \not\isStaticField(VARIABLE)
+### `\isStaticField`
 
 This variable condition checks if the instantiation of a schemavariable (of type Field) refers to
 a Java field declared as "static".
 
 The negated condition is true if the instantiation refers to an instance (non-static) field.
 
-Inspired by {@link FieldTypeToSortCondition}.
-
-@author Michael Kirsten
-
-
-## \isThisReference
+Inspired by ` FieldTypeToSortCondition`.
 
 **Signatures**
 
-* \isThisReference(VARIABLE)
-* \not\isThisReference(VARIABLE)
+* `\isStaticField(VARIABLE)`
+* `\not\isStaticField(VARIABLE)`
+
+
+
+
+### `\isThisReference`
 
 This variable condition checks if a given type denotes an abstract class or interface type.
 
-
-## \mayExpandMethod
-
 **Signatures**
 
-* \mayExpandMethod(VARIABLE, VARIABLE, VARIABLE)
-* \not\mayExpandMethod(VARIABLE, VARIABLE, VARIABLE)
+* `\isThisReference(var: VARIABLE)`
+* `\not\isThisReference(var: VARIABLE)`
+
+
+
+
+### `\mayExpandMethod`
+
 ensures that the given instantiation for the schemavariable denotes a method whose body may be
 expanded. For determining the method the callee and the arguments of the method are needed as
 arguments.
-<p>
+
+
 A method may be inlinded if:
-<ul>
-<li>the method is private, or
-<li>the method is static, or
-<li>the method is final, or
-<li>the receiver class is final, or
-<li>the corresponding taclet option is set to relaxed inlining.
-</ul>
 
-@author Mattias Ulbrich, 2019
-/
-public final class MayExpandMethodCondition extends VariableConditionAdapter {
-
-/**
-The name of this this variable condition
-/
-public final static String NAME = "\\mayExpandMethod";
-
-/**
-Name of the taclet option. Index to the choice settings
-/
-private final static String TACLET_OPTION_KEY = "methodExpansion";
-
-/**
-Value of the unrestricted case. Expansion allowed unconditionally.
-/
-private final static String RELAXED_VALUE = "methodExpansion:noRestriction";
-
-/**
-To indicate if this condition instance has been prefixed with "\not"
-/
-private final boolean negation;
-
-/**
-Schema variable used as first argument: The receiver of the call may be null (if class local)
-/
-private final SchemaVariable receiver;
-
-/**
-Schema variable used as 2nd argument: The method name
-/
-private final SchemaVariable methname;
-
-/**
-Schema variable used as 3rd argument: The arguments of the call
-/
-private final SchemaVariable args;
-
-/**
-Instantiate a new variable condition.
-
-@param receiver program schema var for the receiver, may be null for class-local calls
-@param methname non-null program schema var for the methodname
-@param args non-null program schema var for the arguments of the call
-@param negation {@code true} iff the condition is to be negated
-* \mayExpandMethod(VARIABLE, VARIABLE)
-* \not\mayExpandMethod(VARIABLE, VARIABLE)
-ensures that the given instantiation for the schemavariable denotes a method whose body may be
-expanded. For determining the method the callee and the arguments of the method are needed as
-arguments.
-<p>
-A method may be inlinded if:
-<ul>
-<li>the method is private, or
-<li>the method is static, or
-<li>the method is final, or
-<li>the receiver class is final, or
-<li>the corresponding taclet option is set to relaxed inlining.
-</ul>
-
-@author Mattias Ulbrich, 2019
-/
-public final class MayExpandMethodCondition extends VariableConditionAdapter {
-
-/**
-The name of this this variable condition
-/
-public final static String NAME = "\\mayExpandMethod";
-
-/**
-Name of the taclet option. Index to the choice settings
-/
-private final static String TACLET_OPTION_KEY = "methodExpansion";
-
-/**
-Value of the unrestricted case. Expansion allowed unconditionally.
-/
-private final static String RELAXED_VALUE = "methodExpansion:noRestriction";
-
-/**
-To indicate if this condition instance has been prefixed with "\not"
-/
-private final boolean negation;
-
-/**
-Schema variable used as first argument: The receiver of the call may be null (if class local)
-/
-private final SchemaVariable receiver;
-
-/**
-Schema variable used as 2nd argument: The method name
-/
-private final SchemaVariable methname;
-
-/**
-Schema variable used as 3rd argument: The arguments of the call
-/
-private final SchemaVariable args;
-
-/**
-Instantiate a new variable condition.
-
-@param receiver program schema var for the receiver, may be null for class-local calls
-@param methname non-null program schema var for the methodname
-@param args non-null program schema var for the arguments of the call
-@param negation {@code true} iff the condition is to be negated
-ensures that the given instantiation for the schemavariable denotes a method whose body may be
-expanded. For determining the method the callee and the arguments of the method are needed as
-arguments.
-<p>
-A method may be inlinded if:
-<ul>
-<li>the method is private, or
-<li>the method is static, or
-<li>the method is final, or
-<li>the receiver class is final, or
-<li>the corresponding taclet option is set to relaxed inlining.
-</ul>
-
-@author Mattias Ulbrich, 2019
+* the method is private, or
+* the method is static, or
+* the method is final, or
+* the receiver class is final, or
+* the corresponding taclet option is set to relaxed inlining.
 
 
-## \metaDisjoint
 
 **Signatures**
 
-* \metaDisjoint(VARIABLE, VARIABLE)
+* `\mayExpandMethod(VARIABLE, VARIABLE, VARIABLE)`
+* `\not\mayExpandMethod(VARIABLE, VARIABLE, VARIABLE)`
+
+
+* `\mayExpandMethod(VARIABLE, VARIABLE)`
+* `\not\mayExpandMethod(VARIABLE, VARIABLE)`
 
 
 
+### `\metaDisjoint`
 
-## \new
+
 
 **Signatures**
 
-* \new(VARIABLE, JAVA_TYPE)
-variable condition used if a new variable is introduced
-/
-public class NewVarcond implements org.key_project.prover.rules.conditions.NewVarcond {
+* `\metaDisjoint(VARIABLE, VARIABLE)`
 
-private final SchemaVariable sv;
-private final SchemaVariable peerSV;
-private final KeYJavaType type;
 
-/*
-@param sv the SchemaVariable representing a new variable.
 
-@param peerSV a SchemaVariable defining the type of the new variable.
-* \new(VARIABLE, SORT)
-variable condition used if a new variable is introduced
-/
-public class NewVarcond implements org.key_project.prover.rules.conditions.NewVarcond {
 
-private final SchemaVariable sv;
-private final SchemaVariable peerSV;
-private final KeYJavaType type;
+### `\new`
 
-/*
-@param sv the SchemaVariable representing a new variable.
-
-@param peerSV a SchemaVariable defining the type of the new variable.
 variable condition used if a new variable is introduced
 
+**Signatures**
 
-## \newDependingOn
+* `\new(VARIABLE, JAVA_TYPE)`
+
+
+* `\new(VARIABLE, SORT)`
+
+
+
+
+### `\newDependingOn`
+
+
 
 **Signatures**
 
-* \newDependingOn(VARIABLE, VARIABLE)
+* `\newDependingOn(VARIABLE, VARIABLE)`
 
 
 
 
-## \newLabel
-
-**Signatures**
-
-* \newLabel(VARIABLE)
+### `\newLabel`
 
 This variable condition ensures that no other label of the same name exists in the context
 program or one of the schemavariable instantiations.
 
-
-## \newLocalVars
-
 **Signatures**
 
-* \newLocalVars(VARIABLE, VARIABLE, VARIABLE, VARIABLE)
+* `\newLabel(VARIABLE)`
+
+
+### `\newLocalVars`
 
 For the loop scope rule, if a local program variable that may be altered by the loop body appears
 in the frame condition,
-it is necessary to use the value <i>before</i> the loop first executes in the frame condition.
-<br>
-To achieve this, this condition generates (1) the "before" version of each variable that may be
-written to by the loop
-{@link MiscTools#getLocalOuts(ProgramElement, Services)}; (2) an update storing the value of each
-such PV in its "before" version,
-i.e., {@code {...||i_before := i||...}}; (3) the reverse of the update, to be applied to the
-frame condition, i.e.,
-{@code {...||i := i_before||...}}.
+it is necessary to use the value *before* the loop first executes in the frame condition.
 
 
-## \newTypeOf
+To achieve this, this condition generates 
+
+1. the "before" version of each variable that may be written to by the loop `
+MiscTools#getLocalOuts(ProgramElement, Services)`;
+
+2. an update storing the value of each such PV in its "before" version,i.e.,
+`{...||i_before := i||...}`;
+
+3. the reverse of the update, to be applied to the frame condition, i.e.,
+`{...||i := i_before||...}`.
 
 **Signatures**
 
-* \newTypeOf(VARIABLE, VARIABLE)
-variable condition used if a new variable is introduced
-/
-public class NewVarcond implements org.key_project.prover.rules.conditions.NewVarcond {
+* `\newLocalVars(VARIABLE, VARIABLE, VARIABLE, VARIABLE)`
 
-private final SchemaVariable sv;
-private final SchemaVariable peerSV;
-private final KeYJavaType type;
 
-/*
-@param sv the SchemaVariable representing a new variable.
 
-@param peerSV a SchemaVariable defining the type of the new variable.
+
+### `\newTypeOf`
+
 variable condition used if a new variable is introduced
 
+**Signatures**
 
-## \notFreeIn
+* `\newTypeOf(VARIABLE, VARIABLE)`
+
+
+
+
+### `\notFreeIn`
+
+
 
 **Signatures**
 
-* \notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)
-* \not\notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)
-
-* \notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)
-* \not\notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)
-
-* \notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE)
-* \not\notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE)
-
-* \notFreeIn(VARIABLE, VARIABLE, VARIABLE)
-* \not\notFreeIn(VARIABLE, VARIABLE, VARIABLE)
-
-* \notFreeIn(VARIABLE, VARIABLE)
-* \not\notFreeIn(VARIABLE, VARIABLE)
+* `\notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)`
+* `\not\notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)`
 
 
+* `\notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)`
+* `\not\notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)`
 
 
-## \reference
+* `\notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE)`
+* `\not\notFreeIn(VARIABLE, VARIABLE, VARIABLE, VARIABLE)`
 
-**Signatures**
 
-* \reference(VARIABLE, VARIABLE, VARIABLE)
-* \not\reference(VARIABLE, VARIABLE, VARIABLE)
+* `\notFreeIn(VARIABLE, VARIABLE, VARIABLE)`
+* `\not\notFreeIn(VARIABLE, VARIABLE, VARIABLE)`
+
+
+* `\notFreeIn(VARIABLE, VARIABLE)`
+* `\not\notFreeIn(VARIABLE, VARIABLE)`
+
+
+
+
+### `\reference`
+
 This variable condition checks if a type is an enum type.
 
-@author mulbrich
-@since 2006-12-14
-/
-public final class EnumTypeCondition extends VariableConditionAdapter {
-private static final Logger LOGGER = LoggerFactory.getLogger(EnumTypeCondition.class);
+**Signatures**
 
-private final TypeResolver resolver;
-private final boolean negated;
-
-/**
-creates a condition that checks if a type is a EnumDeclaration
-
-@param resolver the type resolver to be checked
-@param negated should the result be negated
-This variable condition checks if a type is an enum type.
-
-@author mulbrich
-@since 2006-12-14
+* `\reference(VARIABLE, VARIABLE, VARIABLE)`
+* `\not\reference(VARIABLE, VARIABLE, VARIABLE)`
 
 
-## \same
+
+
+### `\same`
+
+General varcond for checking relationships between types of schema variables.
 
 **Signatures**
 
-* \same(TYPE_RESOLVER, TYPE_RESOLVER)
-* \not\same(TYPE_RESOLVER, TYPE_RESOLVER)
-General varcond for checking relationships between types of schema variables.
-/
-public final class TypeComparisonCondition extends VariableConditionAdapter {
-
-public enum Mode {
-NOT_SAME, /* checks if sorts are not same */
-SAME, /* checks if sorts are same */
-IS_SUBTYPE, /* checks subtype relationship */
-NOT_IS_SUBTYPE, /* checks subtype relationship */
-STRICT_SUBTYPE, /* checks for strict subtype */
-DISJOINTMODULONULL
-} /* checks if sorts are disjoint */
-
-private final Mode mode;
-private final TypeResolver fst;
-private final TypeResolver snd;
+* `\same(TYPE_RESOLVER, TYPE_RESOLVER)`
+* `\not\same(TYPE_RESOLVER, TYPE_RESOLVER)`
 
 
-/**
-creates a condition that checks if the declaration types of the schemavariable's
-instantiations are unequal
-
-@param fst one of the SchemaVariable whose type is checked
-@param snd one of the SchemaVariable whose type is checked
-@param mode an int encoding if testing of not same or not compatible
-General varcond for checking relationships between types of schema variables.
 
 
-## \sameObserver
+### `\sameObserver`
 
-**Signatures**
-
-* \sameObserver(VARIABLE, VARIABLE)
 A variable condition that is satisfied if the two arguments are
-<ul>
-<li>schema variables,</li>
-<li>their instantiations are terms of observer functions,</li>
-<li>with the same function,</li>
-<li>which as exactly one heap argument</li>
-<li>and has got a dependency contract</li>
-</ul>
-,
-
-<h3>Limitations</h3>
-
-Currently, this and {@link de.uka.ilkd.key.rule.metaconstruct.ObserverEqualityMetaConstruct} only
-support observers with a single heap argument, that should be generalised.
-
-@author Mattias Ulbrich, 2019
-@see de.uka.ilkd.key.rule.metaconstruct.ObserverEqualityMetaConstruct
-/
-public final class SameObserverCondition implements VariableCondition {
-
-/**
-The first argument provided to the condition in the rule.
-/
-private final SchemaVariable schema1;
-
-/**
-The second argument provided to the condition in the rule.
-/
-private final SchemaVariable schema2;
-
-/**
-Create a new condition
-
-@param schema1 first argument, must be schema variable
-@param schema2 2nd argument, must be schema variable
-@throws IllegalArgumentException if the args are not schema variables.
-* \sameObserver(VARIABLE, VARIABLE)
-A variable condition that is satisfied if the two arguments are
-<ul>
-<li>schema variables,</li>
-<li>their instantiations are terms of observer functions,</li>
-<li>with the same function,</li>
-<li>which as exactly one heap argument</li>
-<li>and has got a dependency contract</li>
-</ul>
-,
-
-<h3>Limitations</h3>
-
-Currently, this and {@link de.uka.ilkd.key.rule.metaconstruct.ObserverEqualityMetaConstruct} only
-support observers with a single heap argument, that should be generalised.
-
-@author Mattias Ulbrich, 2019
-@see de.uka.ilkd.key.rule.metaconstruct.ObserverEqualityMetaConstruct
-/
-public final class SameObserverCondition implements VariableCondition {
-
-/**
-The first argument provided to the condition in the rule.
-/
-private final SchemaVariable schema1;
-
-/**
-The second argument provided to the condition in the rule.
-/
-private final SchemaVariable schema2;
-
-/**
-Create a new condition
-
-@param schema1 first argument, must be schema variable
-@param schema2 2nd argument, must be schema variable
-@throws IllegalArgumentException if the args are not schema variables.
-A variable condition that is satisfied if the two arguments are
-<ul>
-<li>schema variables,</li>
-<li>their instantiations are terms of observer functions,</li>
-<li>with the same function,</li>
-<li>which as exactly one heap argument</li>
-<li>and has got a dependency contract</li>
-</ul>
-,
-
-<h3>Limitations</h3>
-
-Currently, this and {@link de.uka.ilkd.key.rule.metaconstruct.ObserverEqualityMetaConstruct} only
-support observers with a single heap argument, that should be generalised.
-
-@author Mattias Ulbrich, 2019
-@see de.uka.ilkd.key.rule.metaconstruct.ObserverEqualityMetaConstruct
 
 
-## \scrictSub
+* schema variables,
+* their instantiations are terms of observer functions,
+* with the same function,
+* which as exactly one heap argument
+* and has got a dependency contract
+
+#### Limitations
+
+Currently, this and
+`de.uka.ilkd.key.rule.metaconstruct.ObserverEqualityMetaConstruct` only support
+observers with a single heap argument, that should be generalised.
 
 **Signatures**
 
-* \scrictSub(TYPE_RESOLVER, TYPE_RESOLVER)
-General varcond for checking relationships between types of schema variables.
-/
-public final class TypeComparisonCondition extends VariableConditionAdapter {
+* `\sameObserver(schema1: VARIABLE, schema2: VARIABLE)`
 
-public enum Mode {
-NOT_SAME, /* checks if sorts are not same */
-SAME, /* checks if sorts are same */
-IS_SUBTYPE, /* checks subtype relationship */
-NOT_IS_SUBTYPE, /* checks subtype relationship */
-STRICT_SUBTYPE, /* checks for strict subtype */
-DISJOINTMODULONULL
-} /* checks if sorts are disjoint */
+   Create a new condition
+   * `schema1` @param schema1 first argument, must be schema variable
+   * `schema2` @param schema2 2nd argument, must be schema variable
+   
+### `\scrictSub`
 
-private final Mode mode;
-private final TypeResolver fst;
-private final TypeResolver snd;
-
-
-/**
-creates a condition that checks if the declaration types of the schemavariable's
-instantiations are unequal
-
-@param fst one of the SchemaVariable whose type is checked
-@param snd one of the SchemaVariable whose type is checked
-@param mode an int encoding if testing of not same or not compatible
 General varcond for checking relationships between types of schema variables.
 
+**Signatures**
 
-## \simplifyIfThenElseUpdate
+* `\scrictSub(TYPE_RESOLVER, TYPE_RESOLVER)`
+
+
+
+
+### `\simplifyIfThenElseUpdate`
+
+
 
 **Signatures**
 
-* \simplifyIfThenElseUpdate(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)
-
-* \simplifyIfThenElseUpdate(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)
-
+* `\simplifyIfThenElseUpdate(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)`
+* `\simplifyIfThenElseUpdate(VARIABLE, VARIABLE, VARIABLE, VARIABLE, VARIABLE)`
 
 
 
-## \static
 
-**Signatures**
+### `\static`
 
-* \static(VARIABLE)
-* \not\static(VARIABLE)
-ensures that the given instantiation for the schemavariable denotes a static field
-/
-public final class StaticReferenceCondition extends VariableConditionAdapter {
-
-private final SchemaVariable reference;
-private final boolean negation;
-
-/**
-the static reference condition checks if a suggested instantiation for a schema variable
-denotes a static reference. The flag negation allows to reuse this condition for ensuring non
-static references.
 ensures that the given instantiation for the schemavariable denotes a static field
 
-
-## \staticMethodReference
-
 **Signatures**
 
-* \staticMethodReference(VARIABLE, VARIABLE, VARIABLE)
-* \not\staticMethodReference(VARIABLE, VARIABLE, VARIABLE)
-ensures that the given instantiation for the schemavariable denotes a static method. For
-determining the method the callee and the arguments of the method are needed as arguments.
-/
-public final class StaticMethodCondition extends VariableConditionAdapter {
+* `\static(VARIABLE)`
+* `\not\static(VARIABLE)`
 
-private final boolean negation;
-private final SchemaVariable caller;
-private final SchemaVariable methname;
-private final SchemaVariable args;
 
-/**
-the static reference condition checks if a suggested instantiation for a schema variable
-denotes a static method call. The flag negation allows to reuse this condition for ensuring
-non static references.
+
+
+### `\staticMethodReference`
+
 ensures that the given instantiation for the schemavariable denotes a static method. For
 determining the method the callee and the arguments of the method are needed as arguments.
 
+**Signatures**
 
-## \storeStmtIn
+* `\staticMethodReference(VARIABLE, VARIABLE, VARIABLE)`
+* `\not\staticMethodReference(VARIABLE, VARIABLE, VARIABLE)`
+
+
+
+
+### `\storeStmtIn`
+
+Stores the given ` Statement`, after substitution of ` SchemaVariable`s, into
+the given ` ProgramSV` for later use in other conditions and transformers. The
+arguments are a ` ProgramSV` and a ` JTerm`, where the ` JTerm` must contain a `
+JavaBlock` with a ` StatementBlock` containing *a single statement* (that works,
+e.g., when passing an expression like `\modality{#allmodal`{ while (#e) #body
+`\endmodality(post)`); this statement is then stored (in the example the while
+statement).
 
 **Signatures**
 
-* \storeStmtIn(VARIABLE, TERM)
-
-Stores the given {@link Statement}, after substitution of {@link SchemaVariable}s, into the given
-{@link ProgramSV} for later use in other conditions and transformers. The arguments are a
-{@link ProgramSV} and a {@link JTerm}, where the {@link JTerm} must contain a {@link JavaBlock}
-with a {@link StatementBlock} containing <emph>a single statement</emph> (that works, e.g., when
-passing an expression like
-<code>\modality{#allmodal}{ while (#e) #body }\endmodality(post)</code>); this statement is then
-stored (in the example the while statement).
-
-@author Dominic Steinhoefel
+* `\storeStmtIn(VARIABLE, TERM)`
 
 
-## \storeTermIn
+
+
+### `\storeTermIn`
+
+Stores the given ` JTerm`, after substitution of ` SchemaVariable`s, into the given
+` SchemaVariable` for later use in other conditions and transformers.
 
 **Signatures**
 
-* \storeTermIn(VARIABLE, TERM)
-
-Stores the given {@link JTerm}, after substitution of {@link SchemaVariable}s, into the given
-{@link SchemaVariable} for later use in other conditions and transformers.
-
-@author Dominic Steinhoefel
+* `\storeTermIn(VARIABLE, TERM)`
 
 
-## \sub
-
-**Signatures**
-
-* \sub(TYPE_RESOLVER, TYPE_RESOLVER)
-* \not\sub(TYPE_RESOLVER, TYPE_RESOLVER)
-General varcond for checking relationships between types of schema variables.
-/
-public final class TypeComparisonCondition extends VariableConditionAdapter {
-
-public enum Mode {
-NOT_SAME, /* checks if sorts are not same */
-SAME, /* checks if sorts are same */
-IS_SUBTYPE, /* checks subtype relationship */
-NOT_IS_SUBTYPE, /* checks subtype relationship */
-STRICT_SUBTYPE, /* checks for strict subtype */
-DISJOINTMODULONULL
-} /* checks if sorts are disjoint */
-
-private final Mode mode;
-private final TypeResolver fst;
-private final TypeResolver snd;
 
 
-/**
-creates a condition that checks if the declaration types of the schemavariable's
-instantiations are unequal
+### `\sub`
 
-@param fst one of the SchemaVariable whose type is checked
-@param snd one of the SchemaVariable whose type is checked
-@param mode an int encoding if testing of not same or not compatible
 General varcond for checking relationships between types of schema variables.
 
-
-## \subFormulas
-
 **Signatures**
 
-* \subFormulas(VARIABLE)
-* \not\subFormulas(VARIABLE)
+* `\sub(TYPE_RESOLVER, TYPE_RESOLVER)`
+* `\not\sub(TYPE_RESOLVER, TYPE_RESOLVER)`
+
+
+
+
+### `\subFormulas`
 
 This variable condition checks if an instantiation for a formula has sub formulas which are
 formulas. It returns false for an arity equal to zero or no sub formulas. This is needed to
 simplify distinguishing between different well-definedness operators in taclets, since the
 difference exists only for formulas.
 
-@author Michael Kirsten
+**Signatures**
+
+* `\subFormulas(VARIABLE)`
+* `\not\subFormulas(VARIABLE)`
+
 
 
 ---
@@ -1464,6 +1057,6 @@ difference exists only for formulas.
 implement the interface `BuiltInRule`. This simple interface defines three
 methods only; however, when implementing built-in rules, there are quite some
 things to consider, which are not in the scope of this article. New BuiltInRules
-have to be registered in the <code>Profile</code> they belong to, see
+have to be registered in the `Profile` they belong to, see
 `src/de/uka/ilkd/key/proof/init/JavaProfile.java`, method `initBuiltInRules()`
 for the place where BuiltInRules are registered in the default Java profile.
