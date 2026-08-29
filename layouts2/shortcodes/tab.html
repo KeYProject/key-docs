@@ -1,0 +1,9 @@
+{{/* Individual tab within a tabbed set - replaces pymdownx.tabbed */}}
+{{- $groupId := .Parent.Get "id" | default (printf "tab-%d" .Parent.Ordinal) -}}
+{{- $label := .Get 0 | default "Tab" -}}
+<div class="tabbed-labels" data-group="{{ $groupId }}">
+  <label>{{ $label }}</label>
+</div>
+<div class="tabbed-content">
+  {{ .Inner | markdownify }}
+</div>

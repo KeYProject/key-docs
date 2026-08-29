@@ -1,0 +1,11 @@
+{{- /* Custom opengraph partial - simplified version without facebook_admin requirement */ -}}
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} – {{ .Site.Title }}{{ end }}" />
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+{{- with .Site.Params.images }}
+<meta property="og:image" content="{{ index . 0 | absURL }}" />
+{{- end }}
+{{- with .Site.Params.social.twitter }}
+<meta name="twitter:site" content="@{{ . }}" />
+{{- end }}

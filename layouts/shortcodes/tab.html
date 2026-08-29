@@ -1,0 +1,13 @@
+{{/* Tab shortcode - provides backward compatibility with MkDocs-style tabbed content */}}
+{{/* Usage: {{% tab header="Tab Name" %}}content{{% /tab %}} */}}
+{{- $name := .Get "header" | default (printf "Tab %d" .Ordinal) -}}
+{{- $selected := cond (eq .Ordinal 0) true false -}}
+{{- $tabs := .Parent.Store.Get "tabs" | default slice -}}
+{{ .Parent.Store.Set "tabs" ($tabs | append (dict
+    "id" .Ordinal
+    "name" $name
+    "icon" ""
+    "content" .Inner
+    "selected" $selected
+  ))
+-}}

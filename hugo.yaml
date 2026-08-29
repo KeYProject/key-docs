@@ -1,0 +1,109 @@
+# Hugo configuration file
+
+baseURL: 'https://keyproject.github.io/key-docs/'
+title: 'KeY Documentation'
+locale: 'en-us'
+defaultContentLanguage: 'en'
+enableRobotsTXT: true
+enableGitInfo: true
+enableEmoji: true
+
+# import hextra as module
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+# =============================================================================
+# MARKUP CONFIGURATION
+# =============================================================================
+markup:
+  defaultMarkdownHandler: 'goldmark'
+  
+  goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      strikethrough: true
+      table: true
+      taskList: true
+      typographer: true
+      
+      passthrough:
+        enable: true
+        delimiters:
+          block: [['\[', '\]'], ['$$', '$$']]
+          inline: [['\(', '\)'], ['$', '$']]
+    
+    parser:
+      attribute:
+        block: true
+        title: true
+    
+    renderer:
+      hardWraps: false
+      unsafe: true
+      
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    lineNoStart: 1
+    lineNos: false
+    lineNumbersInTable: true
+    noClasses: true
+    style: 'monokai'
+    tabWidth: 4
+  
+  tableOfContents:
+    endLevel: 3
+    ordered: false
+    startLevel: 2
+
+# =============================================================================
+# THEME PARAMETERS
+# =============================================================================
+
+params:
+  math:
+    engine: mathjax
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+
+  footer:
+    displayCopyright: false
+    displayPoweredBy: false
+
+  editURL:
+    enable: true
+    base: "https://github.com/keyproject/key-docs/edit/main/content"
+
+# =============================================================================
+# MENU CONFIGURATION
+# =============================================================================
+menu:
+  main:
+    - name: 'Home'
+      pageRef: '/'
+      weight: 10
+    - name: 'User Guide'
+      pageRef: '/user/'
+      weight: 20
+    - name: 'Developer Guide'
+      pageRef: '/devel/'
+      weight: 30
+    # - name: 'Historical'
+    #   pageRef: '/eclipse/'
+    #   weight: 40
+    - name: 'KEPs'
+      pageRef: '/keps/'
+      weight: 50
+    - name: 'GitHub'
+      url: 'https://github.com/KeYProject/key'
+      weight: 90
+      pre: 'github'
+    - name: 'KeY Project'
+      url: 'https://key-project.org'
+      weight: 100
+      post: 'external'

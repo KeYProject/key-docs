@@ -1,0 +1,36 @@
+{{/* Custom head-end hooks for KeY Documentation */}}
+
+{{/* MathJax configuration - replaces MkDocs extra_javascript MathJax */}}
+{{- if .Site.Params.math.mathjax.enable -}}
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+           extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+{{- end -}}
+
+{{/* Mermaid.js for diagram rendering */}}
+{{- if .Site.Params.mermaid.enable -}}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'dark' : 'default',
+    securityLevel: 'loose',
+  });
+</script>
+{{- end -}}
+
+{{/* Custom CSS for KeY documentation */}}
+<link rel="stylesheet" href="{{ "css/extra.css" | relURL }}">

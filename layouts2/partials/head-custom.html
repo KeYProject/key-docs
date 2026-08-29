@@ -1,0 +1,44 @@
+{{/* Custom head hooks for KeY Documentation - MathJax and additional resources */}}
+
+{{/* MathJax configuration - replaces MkDocs extra_javascript MathJax */}}
+{{- if .Site.Params.math.mathjax.enable -}}
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { 
+        equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] 
+      }
+    },
+    messageStyle: "none",
+    showProcessingMessages: false,
+    "HTML-CSS": {
+      scale: 100,
+      linebreaks: { automatic: true }
+    },
+    SVG: {
+      linebreaks: { automatic: true }
+    }
+  });
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+{{- end -}}
+
+{{/* Mermaid.js for diagram rendering - loaded in head for early availability */}}
+{{- if .Site.Params.mermaid.enable -}}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+{{- end -}}
+
+{{/* Custom CSS for KeY documentation - loaded after theme CSS */}}
+<link rel="stylesheet" href="{{ "/css/extra.css" | relURL }}">
+
+{{/* Favicon configuration */}}
+<link rel="icon" type="image/png" href="{{ "/img/key.png" | relURL }}">
+<link rel="shortcut icon" type="image/png" href="{{ "/img/key.png" | relURL }}">

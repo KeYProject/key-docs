@@ -1,0 +1,21 @@
+{{/* Alert/Admonition shortcode - replaces MkDocs admonitions */}}
+{{- $type := .Get 0 | default "note" -}}
+{{- $title := .Get 1 | default (title $type) -}}
+{{- $icon := dict 
+    "note" "information-circle"
+    "info" "information-circle"
+    "tip" "light-bulb"
+    "success" "check-circle"
+    "warning" "exclamation-triangle"
+    "caution" "exclamation-circle"
+    "danger" "x-circle"
+    -}}
+{{- $iconName := index $icon $type | default "information-circle" -}}
+
+{{- if not (in (slice "note" "tip" "important" "warning" "caution") $type) -}}
+  {{- warnf "Alert type %s is not supported" .AlertType -}}
+{{- end -}}
+
+{{- partial "components/github-style-alert.html"
+   (dict "content" (.Inner | markdownify) "alertType" $type "alertTitle" $title "alertSign" "check-circle") -}}
+

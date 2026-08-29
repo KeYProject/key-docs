@@ -1,0 +1,31 @@
+{{/* Shortcode for bibliographic citations - replaces MkDocs bibtex plugin */}}
+{{- $key := .Get 0 -}}
+{{- $bibFile := .Site.Params.bibliography.bibFile | default "refs.bib" -}}
+{{- $bibData := index .Site.Data (replace $bibFile ".bib" "") -}}
+
+{{- if $bibData -}}
+  {{- $entry := index $bibData $key -}}
+  {{- if $entry -}}
+    <span class="citation">
+      {{- with $entry.author -}}
+        {{- $authors := split . " and " -}}
+        {{- range $i, $author := $authors -}}
+          {{- if gt $i 0 }} and {{ end -}}
+          {{- $author = trim $author " " -}}
+          {{- $hasComma := findRE "," $author -}}
+          {{- if $hasComma -}}
+            {{- $parts := split $author "," -}}
+            {{- trim (index $parts 1) " " }} {{- trim (index $parts 0) " " -}}
+          {{- else -}}
+            {{- $author -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- with $entry.year }}, {{ . }}{{ end -}}
+    </span>
+  {{- else -}}
+    <span class="citation-error">Citation key '{{$key}}' not found</span>
+  {{- end -}}
+{{- else -}}
+  <span class="citation">[{{$key}}]</span>
+{{- end -}}

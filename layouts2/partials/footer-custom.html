@@ -1,0 +1,74 @@
+{{/* Custom footer hooks for KeY Documentation */}}
+
+{{/* Mermaid.js initialization - ensures diagrams render after DOM is ready */}}
+{{- if .Site.Params.mermaid.enable -}}
+<script>
+  // Re-initialize mermaid on theme change for dark mode support
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof mermaid !== 'undefined') {
+      const isDark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: isDark ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: { curve: 'basis' },
+        sequence: { diagramMarginX: 50, diagramMarginY: 10 },
+        gantt: { titleTopMargin: 25 }
+      });
+      
+      // Listen for theme changes
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.attributeName === 'data-bs-theme') {
+            const newTheme = document.documentElement.getAttribute('data-bs-theme');
+            mermaid.initialize({ theme: newTheme === 'dark' ? 'dark' : 'default' });
+            // Re-render all mermaid diagrams
+            document.querySelectorAll('.mermaid').forEach(function(el) {
+              if (el.getAttribute('data-processed') === 'true') {
+                el.removeAttribute('data-processed');
+                el.removeAttribute('data-diagram-id');
+              }
+            });
+            mermaid.init();
+          }
+        });
+      });
+      observer.observe(document.documentElement, { attributes: true });
+    }
+  });
+</script>
+{{- end -}}
+
+{{/* Tabbed content JavaScript */}}
+<script>
+(function() {
+  document.querySelectorAll('.tabbed-set').forEach(function(tabSet) {
+    const groupId = tabSet.getAttribute('data-group');
+    const labels = tabSet.querySelectorAll('.tabbed-labels label');
+    const contents = tabSet.querySelectorAll('.tabbed-content');
+    
+    labels.forEach((label, i) => {
+      label.addEventListener('click', () => {
+        labels.forEach((l, j) => l.classList.toggle('active', j === i));
+        contents.forEach((c, j) => c.classList.toggle('active', j === i));
+      });
+      // Activate first tab by default if none active
+      if (i === 0 && !label.classList.contains('active')) {
+        label.classList.add('active');
+        if (contents[i]) contents[i].classList.add('active');
+      }
+    });
+  });
+})();
+</script>
+
+{{/* Citation tooltip enhancement */}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.citation').forEach(function(citation) {
+    citation.addEventListener('mouseenter', function() {
+      this.style.cursor = 'help';
+    });
+  });
+});
+</script>

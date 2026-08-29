@@ -1,0 +1,44 @@
+{{/* Alert/Admonition shortcode - replaces MkDocs admonition extension */}}
+{{- $type := .Get 0 | default "note" -}}
+{{- $title := .Get 1 | default "" -}}
+{{- $iconMap := dict 
+  "note" "📝" 
+  "info" "ℹ️" 
+  "tip" "💡" 
+  "warning" "⚠️" 
+  "error" "❌"
+  "abstract" "📋"
+  "success" "✅"
+  "question" "❓"
+  "failure" "❌"
+  "danger" "☠️"
+  "bug" "🐛"
+  "example" "📖"
+  "quote" "💬"
+-}}
+{{- $titleMap := dict 
+  "note" "Note" 
+  "info" "Information" 
+  "tip" "Tip" 
+  "warning" "Warning" 
+  "error" "Error"
+  "abstract" "Abstract"
+  "success" "Success"
+  "question" "Question"
+  "failure" "Failure"
+  "danger" "Danger"
+  "bug" "Bug"
+  "example" "Example"
+  "quote" "Quote"
+-}}
+{{- $icon := index $iconMap $type | default "📝" -}}
+{{- $defaultTitle := index $titleMap $type | default "Note" -}}
+{{- $displayTitle := cond (ne $title "") $title $defaultTitle -}}
+<div class="admonition {{ $type }}">
+  <div class="admonition-title">
+    {{ $icon }} {{ $displayTitle }}
+  </div>
+  <div class="admonition-content">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

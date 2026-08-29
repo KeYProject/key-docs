@@ -1,0 +1,24 @@
+{{/* Admonition shortcode - replaces MkDocs admonition extension */}}
+{{- $type := .Get 0 | default "note" -}}
+{{- $titleMap := dict 
+  "note" "Note" 
+  "info" "Information" 
+  "tip" "Tip" 
+  "warning" "Warning" 
+  "error" "Error"
+-}}
+{{- $iconMap := dict 
+  "note" "📝" 
+  "info" "ℹ️" 
+  "tip" "💡" 
+  "warning" "⚠️" 
+  "error" "❌"
+-}}
+<div class="admonition {{ $type }}">
+  <div class="admonition-title">
+    {{ index $iconMap $type }} {{ index $titleMap $type }}
+  </div>
+  <div class="admonition-content">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

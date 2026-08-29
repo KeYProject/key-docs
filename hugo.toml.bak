@@ -1,0 +1,251 @@
+# Hugo Configuration for KeY Documentation
+# Migrated from MkDocs Material Theme
+# Using Hextra Theme - Modern, clean design similar to MkDocs Material
+
+baseURL = 'https://keyproject.github.io/key-docs/'
+title = 'KeY Documentation'
+locale = 'en-us'
+defaultContentLanguage = 'en'
+enableRobotsTXT = true
+enableGitInfo = true
+enableEmoji = true
+
+# Theme: Hextra - Modern documentation theme with built-in features
+# Features: FlexSearch, dark mode, Mermaid, LaTeX/KaTeX, callouts, tabs
+theme = 'hextra'
+
+# Permalinks configuration - maintain clean URLs for SEO preservation
+[permalinks]
+  page = '/:sections/:slug/'
+
+# Taxonomies configuration
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+
+# =============================================================================
+# MARKUP CONFIGURATION
+# Equivalent to MkDocs markdown_extensions
+# =============================================================================
+[markup]
+  defaultMarkdownHandler = 'goldmark'
+  
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+      
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)'], ['$', '$']]
+    
+    [markup.goldmark.parser]
+      attribute = { block = true, title = true }
+    
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+  
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = 'monokai'
+    tabWidth = 4
+  
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+# =============================================================================
+# THEME CONFIGURATION
+# Hextra theme installed in themes/hextra directory
+# =============================================================================
+theme = 'hextra'
+
+# =============================================================================
+# OUTPUT CONFIGURATION
+# Search functionality - Hextra uses built-in FlexSearch
+# =============================================================================
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+  section = ['HTML', 'RSS']
+
+[outputFormats]
+  [outputFormats.SearchIndex]
+    mediaType = 'application/json'
+    baseName = 'search-index'
+    isPlainText = true
+    notAlternative = true
+
+# =============================================================================
+# THEME PARAMETERS
+# Hextra configuration matching MkDocs Material features
+# =============================================================================
+[params]
+  # Site Settings
+  description = 'Documentation for the KeY Deductive Verification System'
+  keywords = ['formal verification', 'KeY', 'Java', 'theorem proving', 'deductive verification']
+  
+  # Copyright and Footer
+  copyright = 'The KeY Team'
+  
+  # GitHub integration (edit this page, repo links)
+  [params.editURL]
+    enable = true
+    base = 'https://github.com/KeYProject/key-docs/edit/main/content'
+    append = true
+  
+  # Navigation Settings
+  navbarDisplayLogo = true
+  navbarDisplayTitle = true
+  
+  # Search Configuration - FlexSearch is built into Hextra
+  flexSearch = true
+  flexSearchIndex = 'content'
+  
+  # Dark Mode Configuration (enabled by default in Hextra)
+  defaultTheme = 'system'  # Options: "light", "dark", "system"
+  
+  # Table of Contents
+  [params.toc]
+    enable = true
+    displayTags = false
+  
+  # Sidebar Settings
+  sidebar = true
+  sidebarDisplayLevel = 2  # Show 2 levels in sidebar by default
+  
+  # Time formats
+  timeFormatBlog = 'Monday, January 02, 2006'
+  timeFormatDefault = 'January 2, 2006'
+  
+  # Social links (displayed in footer/header)
+  [[params.social]]
+    name = 'github'
+    url = 'https://github.com/KeYProject'
+  
+  [[params.social]]
+    name = 'website'
+    url = 'https://key-project.org'
+  
+  # Mermaid diagrams support (built-in to Hextra)
+  [params.mermaid]
+    enable = true
+    theme = 'default'  # Options: "default", "forest", "dark", "neutral"
+  
+  # LaTeX/Math support using KaTeX (Hextra default)
+  [params.katex]
+    enable = true
+  
+  # Custom CSS and JS files (optional)
+  customCSS = []
+  customJS = []
+  
+  # Callouts/Banners (Hextra feature similar to MkDocs admonitions)
+  [params.callouts]
+    enable = true
+
+# =============================================================================
+# LANGUAGE CONFIGURATION
+# =============================================================================
+[languages]
+  [languages.en]
+    label = 'English'
+    weight = 1
+    title = 'KeY Documentation'
+    [languages.en.params]
+      description = 'Documentation for the KeY Deductive Verification System'
+
+# =============================================================================
+# MENU CONFIGURATION
+# Hextra Navigation: Main navbar + Sidebar (defined in section _index.md files)
+# Direct mapping from mkdocs.yml nav structure
+# =============================================================================
+
+# Main navigation (top navbar)
+[[menu.main]]
+  name = 'Home'
+  pageRef = '/'
+  weight = 10
+
+[[menu.main]]
+  name = 'User Guide'
+  pageRef = '/user/'
+  weight = 20
+
+[[menu.main]]
+  name = 'Developer Guide'
+  pageRef = '/devel/'
+  weight = 30
+
+[[menu.main]]
+  name = 'Historical'
+  pageRef = '/eclipse/'
+  weight = 40
+  # Note: Use badge parameter in Hextra for labels like "deprecated"
+
+[[menu.main]]
+  name = 'KEPs'
+  pageRef = '/keps/'
+  weight = 50
+
+# External links in navbar (GitHub, etc.)
+[[menu.main]]
+  name = 'GitHub'
+  url = 'https://github.com/KeYProject/key'
+  weight = 90
+  pre = 'github'  # Icon name
+
+[[menu.main]]
+  name = 'KeY Project'
+  url = 'https://key-project.org'
+  weight = 100
+  post = 'external'
+
+# =============================================================================
+# RELATED CONTENT CONFIGURATION
+# =============================================================================
+[related]
+  includeNewer = true
+  threshold = 60
+  toLower = false
+  [[related.indices]]
+    name = 'keywords'
+    weight = 100
+  [[related.indices]]
+    name = 'date'
+    weight = 10
+  [[related.indices]]
+    applyFilter = false
+    name = 'fragmentrefs'
+    type = 'fragments'
+    weight = 10
+
+# =============================================================================
+# SECURITY POLICY
+# =============================================================================
+[security]
+enableInlineShortcodes = false
+
+[security.exec]
+allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^rtlcss$', '^git$']
+
+[security.funcs]
+getenv = ['^HUGO_', '^CI$', '^REPOSITORY$', '^GITHUB_']
+
+[security.http]
+methods = ['(?i)GET|POST']
+urls = ['.*']

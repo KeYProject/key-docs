@@ -1,0 +1,25 @@
+{{/* Tabbed content wrapper shortcode - replaces pymdownx.tabbed */}}
+{{- $groupId := .Get "id" | default (printf "tab-%d" .Ordinal) -}}
+{{- $activeTab := .Get "active" | default 0 -}}
+<div class="tabbed-set" data-group="{{ $groupId }}">
+  {{ .Inner }}
+</div>
+<script>
+(function() {
+  const groupId = '{{ $groupId }}';
+  const activeTab = {{ $activeTab }};
+  const labels = document.querySelectorAll(`[data-group="${groupId}"] .tabbed-labels label`);
+  const contents = document.querySelectorAll(`[data-group="${groupId}"] .tabbed-content`);
+  
+  labels.forEach((label, i) => {
+    label.addEventListener('click', () => {
+      labels.forEach((l, j) => l.classList.toggle('active', j === i));
+      contents.forEach((c, j) => c.classList.toggle('active', j === i));
+    });
+    if (i === activeTab) {
+      label.classList.add('active');
+      if (contents[i]) contents[i].classList.add('active');
+    }
+  });
+})();
+</script>

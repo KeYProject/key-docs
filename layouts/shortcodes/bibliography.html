@@ -1,0 +1,21 @@
+{{/* Bibliography shortcode - renders bibliography entries from refs.bib */}}
+{{- $bibFile := .Site.Params.bibliography.bibFile | default "refs.bib" -}}
+{{- $bibData := index .Site.Data (replace $bibFile ".bib" "") -}}
+
+{{- if $bibData -}}
+  <div class="bibliography">
+    <h3>References</h3>
+    <ul>
+      {{- range $key, $entry := $bibData -}}
+        <li id="{{ $key }}">
+          {{- with $entry.author }}{{ . }}{{ end -}}
+          {{- with $entry.title }}: <em>{{ . }}</em>{{ end -}}
+          {{- with $entry.year }}, {{ . }}{{ end -}}
+          {{- with $entry.publisher }}, {{ . }}{{ end -}}
+        </li>
+      {{- end -}}
+    </ul>
+  </div>
+{{- else -}}
+  <div class="bibliography-error">No bibliography data found. Make sure refs.bib exists in the data directory.</div>
+{{- end -}}

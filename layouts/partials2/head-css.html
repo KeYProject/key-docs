@@ -1,0 +1,9 @@
+{{- /* CSS partial stub */ -}}
+{{- $sassOptions := dict "targetPath" "main.css" "outputStyle" "compressed" -}}
+{{- with resources.Get "styles/main.scss" -}}
+  {{- with . | css.Sass $sassOptions -}}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" />
+  {{- end -}}
+{{- else -}}
+  <link rel="stylesheet" href="/main.css" />
+{{- end -}}
