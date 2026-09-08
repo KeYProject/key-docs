@@ -1,6 +1,4 @@
 ---
-menu: main
-section: quicktour
 title: "Installation"
 weight: 4
 ---

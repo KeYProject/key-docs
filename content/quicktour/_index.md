@@ -3,8 +3,6 @@ title: "The Quicktour"
 weight: 3
 ---
 
-# Quicktour 
-
 >[!NOTE]
 > This article gives an introduction to the KeY system.
 

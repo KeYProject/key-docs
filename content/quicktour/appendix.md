@@ -1,6 +1,4 @@
 ---
-menu: "main"
-section: "quicktour"
 title: "Appendix: Tips and Background"
 weight: 7
 ---

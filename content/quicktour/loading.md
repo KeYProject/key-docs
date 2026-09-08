@@ -1,6 +1,4 @@
 ---
-menu: main
-section: quicktour
 title: "Loading JML Contracts"
 weight: 5
 ---

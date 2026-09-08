@@ -6,13 +6,7 @@ cascade:
   type: docs
 ---
 
-# Developer Guide
-
 This section contains documentation for developers working on the KeY system itself.
-
-## Table of Contents
-
-{{< toc >}}
 
 ## Overview
 

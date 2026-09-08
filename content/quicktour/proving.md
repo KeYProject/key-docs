@@ -1,6 +1,4 @@
 ---
-menu: main
-section: quicktour
 title: "Proving JML Contracts"
 weight: 6
 ---
