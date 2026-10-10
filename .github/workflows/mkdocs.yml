@@ -33,9 +33,49 @@ jobs:
         uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: 3.x
+          python-version: 3.x          
       - name: Prepare system
         run: pip install --user -r requirements.txt
+        
+        # Download the generated documentation for variable conditions and proof
+        # script commands from the latest successful nightly build of KeYProject/key.
+        # All steps are fault-tolerant: if the artifact is unavailable, the site
+        # is still built (without the generated reference pages).
+      - name: Find latest nightly build run
+        id: nightly
+        continue-on-error: true
+        run: |
+          run_id=$(gh run list --repo KeYProject/key \
+                          --workflow nightlydeploy.yml \
+                          --status success --limit 1 \
+                          --json databaseId --jq '.[0].databaseId')
+          if [ -n "$run_id" ]; then
+            echo "run-id=$run_id" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Download varcond/script documentation artifact
+        continue-on-error: true
+        if: steps.nightly.outputs.run-id != ''
+        uses: actions/download-artifact@v7
+        with:
+          name: varcond-script-docs
+          path: download/keydocs
+          repository: KeYProject/key
+          run-id: ${{ steps.nightly.outputs.run-id }}
+          github-token: ${{ github.token }}
+
+      - name: Unpack documentation into docs/user
+        continue-on-error: true
+        run: |
+          mkdir -p docs/user/ProofScripts
+          if [ -f download/keydocs/key-varcond-script-docs.zip ]; then
+            unzip -o -q download/keydocs/key-varcond-script-docs.zip -d docs/user/ProofScripts
+          else
+            echo "::warning::Generated key documentation not available; skipping."
+          fi
+        
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
