@@ -58,7 +58,7 @@ jobs:
       - name: Download varcond/script documentation artifact
         continue-on-error: true
         if: steps.nightly.outputs.run-id != ''
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: varcond-script-docs
           path: download/keydocs
