@@ -23,7 +23,8 @@ The chapters are arranged so that they can be read front to back:
    proving: [excluding goals from automation](Interactive/),
    [proof exploration](Exploration/), [node diffs](NodeDiff/), the
    [linearized proof tree](ProofTreeLinearMode/),
-   [proof caching](ProofCaching/), and [proof slicing](ProofSlicing/).
+   [proof caching](ProofCaching/), [proof slicing](ProofSlicing/), and
+   the [LLM assistant](Proving/LLM/).
 3. **Structuring Verification Projects** — the
    [classpath directive](Classpath/), dealing with
    [generics](RemoveGenerics/), [user-defined data types](ADTs/), and

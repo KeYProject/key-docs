@@ -122,7 +122,7 @@ nav:
           - "Adding SMT Solvers": user/SMT/AddingSMTSolvers.md
       - "6. Bridges to Other Tools":
           - "Isabelle Translation": user/IsabelleTranslation/index.md
-          # - "LLM Support": user/LLM/index.md  # empty skeleton page, re-add when written
+          - "LLM Support": user/LLM/index.md
       - "7. Language Reference":
           - "JML Grammar": user/JMLGrammar.md
           - "The KeY Language": user/KeyGrammar.md

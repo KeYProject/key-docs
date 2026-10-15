@@ -25,6 +25,9 @@ interactive proving:
   reusing previously completed proofs.
 - **[Proof Slicing](../ProofSlicing/)** — analyze which proof steps were
   actually necessary and derive a smaller proof.
+- **[LLM Support](../Proving/LLM/)** — the KeY-Agent chat panel: ask
+  questions about your proof, let the agent run proof tools with your
+  approval.
 
 Most of these features are implemented as *GUI extensions*; developers can
 add their own — see [GUI extensions](../../devel/GUIExtensions/) in the

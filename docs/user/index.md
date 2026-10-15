@@ -26,7 +26,8 @@ The chapters are arranged so that they can be read front to back:
 5. **SMT Solvers** — how to
    [add and configure SMT solvers](SMT/AddingSMTSolvers/).
 6. **Bridges to Other Tools** — exporting proof obligations to
-   [Isabelle](IsabelleTranslation/).
+   [Isabelle](IsabelleTranslation/), and the integrated
+   [LLM assistant](LLM/) (KeY-Agent).
 7. **Language Reference** — the grammars of [JML](JMLGrammar/), the
    [KeY input language](KeyGrammar/), and KeY's
    [Java extensions](JavaGrammar/).
