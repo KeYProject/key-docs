@@ -1050,6 +1050,40 @@ difference exists only for formulas.
 * `\not\subFormulas(VARIABLE)`
 
 
+### `\hasAnnotation`
+
+It checks that the type (`TypeReference`) of `variable` has an annotation whose 
+fully qualified name matches `annot`. `variable` can be a `Variable`, a `LocalVariable`
+a `SimpleInstanceCreation` or a `Field`.
+
+**Signatures**
+
+* `\hasAnnotation(variable: VARIABLE, annot: STRING)`
+
+### `addAnnotation`
+
+It creates a copy of `read` and stores in `store` except that the last annotation
+of the type of `store` has a fully qualified name that corresponds to `annot`. If 
+the given string `annot` does not match an annotation, the variable condition fails. 
+`store` and `read` can only be a `Variable`, a `LocalVariable` or a `SimpleInstanceCreation`
+and have to be equivalent. This means that one being a `Variable` or `LocalVariable` and 
+the other being a `SimpleInstanceCreation` is excluded.
+
+
+**Signatures**
+
+* `\addAnnotation(store: VARIABLE, read: VARIABLE, annot: STRING)`
+
+### `\removeAnnotation`
+
+It creates a copy of `read` where all annotations of the type of `read` 
+with the fully qualified name matching `annot` are removed and stores it in `store`. 
+This variable condition always matches and only supports `SimpleInstanceCreation`s
+for `store` and `read`.
+
+**Signatures**
+
+* `\removeAnnotation(store: VARIABLE, read: VARIABLE, annot: STRING)`
 
 ---
 
