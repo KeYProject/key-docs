@@ -32,6 +32,9 @@ the LLM service operated by KIT (`https://ki-toolbox.scc.kit.edu/v1`).
   asks for your permission first, and you can disable tools entirely.
 - **Proof automation** — `tryclose` attempts to close the current goal or branch
   automatically, `auto` runs KeY's automatic strategy for a bounded number of steps.
+- **Taclet management** — list the available taclets and taclet options of any open proof,
+  export them as parseable rule text, and add or remove taclets (changes require your
+  approval).
 - **Code access** — tick files in the *Files* tab or reference them directly in the prompt;
   file contents are embedded into the request (no extra round trip).
 - **Reusable prompts and skills** — save your own prompt templates and background
