@@ -39,6 +39,9 @@ disclose, and prefer a service operated by your institution for confidential cod
   file contents are embedded into the request (no extra round trip).
 - **Reusable prompts and skills** — save your own prompt templates and background
   knowledge, and activate them per turn.
+- **Sub-agents** — hand off isolated tasks (closing goals, inspecting files) to bounded
+  child agents with their own tool whitelist; several tasks can run in parallel, and the
+  sub-agent activity is recorded in a log the agent can consult.
 - **Input assistance** — autocompletion for context tokens, files and commands; press
   Ctrl+Space to expand a token inline.
 
@@ -111,8 +114,21 @@ create, edit and import prompt templates; `/prompt:name` inserts a template into
 **Skills** are bundles of instructions and allowed tools that act as background knowledge;
 `/skill:name` activates one for the current turn (the setting **Agent may use skills** must
 be enabled). Both libraries are edited in the settings under *LLM Settings → Prompts* /
-*Skills* and are stored as JSON files in the KeY configuration directory
-(`~/.key/<version>/llm/…`).
+*Skills*. Each entry is stored as one Markdown file with YAML front matter — under
+`~/.key/<version>/llm/prompts/` and `~/.key/<version>/llm/skills/` respectively; JSON
+files from older versions are migrated automatically on first access, and
+*Import/Export* exchanges a ZIP archive of these Markdown files.
+
+### Sub-agents
+
+Bounded child agents with a dedicated role (`goal-solver`, `file-explorer`,
+`rule-designer`): each runs its own tool-calling loop under a separate message thread and
+is restricted to the tools of its role's whitelist. To use them, enable *Agent may spawn
+sub-agents* in the LLM settings; a delegation asks for your approval and then runs
+autonomously (children never pause for approvals). A single task runs in `sequential`
+mode, an array of independent tasks can run concurrently in `parallel` mode. The runs are
+recorded in a per-session log that the agent itself can read back (`get_subagent_logs`),
+and the chat panel shows the sub-agent tasks indented under the activity summary.
 
 ## Troubleshooting
 
