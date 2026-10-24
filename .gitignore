@@ -19,3 +19,5 @@ site/
 *.rel
 
 *.pyc
+# Local Hugo theme clone (fetched at build time, not part of the repo)
+themes/
