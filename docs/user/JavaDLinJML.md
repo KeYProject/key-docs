@@ -55,6 +55,44 @@ equivalent to
 //@ ensures \dl_arr2seq(\dl_heap(), arrayObject) == \emptySeq;
 ```
 
+## The weakest-precondition escape `\dl_wp_apply`
+
+A predefined escape for the specification *inference* of lambda
+expressions is `\dl_wp_apply`. It translates to the JavaDL predicate
+`wp_apply(heap, f, a1, ..., an)` with the meaning
+
+> *calling the functional method of the lambda bound to `f` with the
+> arguments `a1`, ..., `an` neither throws an exception nor diverges.*
+
+It is intended for functional interfaces whose `preCondition`/`postCondition`
+model methods give a default specification: the interface can provide
+
+```
+/*@ requires \dl_wp_apply(this, arg);
+  @ ensures \result == apply(arg);
+  @ accessible \everything; */
+int /*@ pure @*/ apply(int arg);
+```
+
+so that a lambda converted into this interface inherits a weakest-
+precondition contract. During verification, KeY infers the actual
+precondition piece by piece from the body of the lambda. See Sec. 6.2.5
+of Csiky's thesis ("Specification Inference") for details.
+
+Like every `\dl_` escape, the first parameter of the underlying predicate
+must be the implicitly added heap (`wp_apply(Heap, any, any)` has a heap
+as its first formal parameter, so `\dl_wp_apply(this, x)` in JML becomes
+`wp_apply(heap, this, x)` in JavaDL).
+
+The predicate is created lazily on its first use, so no `\functions`
+declaration is needed to write `\dl_wp_apply` in JML. The taclet rules
+that give `wp_apply` its semantics (stability of the weakest precondition
+under heap change, and the unfolding for the concrete `IntFunction`
+interface of the thesis) are collected in `weiglLambda/keyForLambda.key`.
+This file is *not* part of the default rule base: load it as additional
+rules of the proof obligation, and make sure it is parsed *before* the
+JML contracts of the project are translated (the `\predicates` declaration
+must precede the on-demand registration of `wp_apply`).
 
 ## Limitations
 

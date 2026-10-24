@@ -85,6 +85,132 @@ mbody_statement :
 mbody_var : 'var' IDENT '=' expression ';'
 ```
 
+## Specifying lambda expressions
+
+KeY supports JML specifications of lambda expressions, following the
+transformation-based approach of Alexander Csiky's bachelor thesis
+("Specification and deductive verification of Java programs with lambda
+expressions"): the lambda is desugared into a class implementing its
+functional interface, and the specification is turned into *model methods*
+(see above) on that generated class.
+
+### Syntax
+
+The specification is written as a JML comment that forms the *leading
+statement(s)* of the block body of the lambda. All contract clauses of
+methods are available:
+
+```
+i -> {
+    //@ requires i >= 0;
+    //@ ensures \result <= cap;
+    //@ invariant \result >= 0;
+    //@ assignable \nothing;
+    //@ accessible cap;
+    return i < cap ? i : cap;
+}
+```
+
+* `/\*@ ... @\*` and `//@` comments are both possible; inside a block,
+  `//@` is the natural choice.
+* Free variables of the clauses (here `cap`, the enclosing field) may
+  refer to the enclosing scope; they are resolved to the fields of the
+  desugared class like any other captured value.
+
+### Semantics: conversion to model methods
+
+The functional interface of the lambda must declare the model methods (or
+model fields) the clauses are converted into (Csiky Def. 7, Table 6.1):
+
+| clause       | model method        | alternative model field |
+|--------------|---------------------|-------------------------|
+| `requires`   | `preCondition(...)` | —                       |
+| `ensures`    | `postCondition(...)`| —                       |
+| `invariant`  | `invariantMethod(...)`| —                     |
+| `assignable` | `frameCondition(...)`| `footprint`             |
+| `accessible` | `accessibleMethod(...)`| `accessibleFields`    |
+
+For example, with these declarations on the functional interface
+
+```
+interface IntFunction {
+    //@ model boolean preCondition(int i);
+    //@ model two_state boolean postCondition(int i, int __result);
+    //@ model \locset frameCondition(int i);
+    //@ model \locset accessibleMethod(int i);
+    int apply(int i);
+}
+```
+
+the lambda
+
+```
+IntFunction f = i -> {
+    //@ requires i >= 0;
+    //@ ensures \result <= 7;
+    //@ assignable \nothing;
+    //@ accessible cap;
+    return i < 7 ? i : 7;
+};
+```
+
+is converted into the following members of the generated class:
+
+```
+//@ model boolean preCondition(int i) { return i >= 0; }
+//@ model two_state boolean postCondition(int i, int __result) { return __result <= 7; }
+//@ model \locset frameCondition(int i) { return \locset(\nothing); }
+//@ model \locset accessibleMethod(int i) { return \locset(outer_this.cap); }
+```
+
+`outer_this.cap` in the last model method shows the rewrite of the
+enclosing instance field `cap` (`cb` below).
+
+Details of the conversion:
+
+* The **return type** and the **`two_state` modifier** are taken from the
+  declaration on the functional interface; the model method must exist
+  there, otherwise the conversion fails.
+* `postCondition` and `invariantMethod` receive the result of the
+  functional method as an additional parameter `__result` (Type
+  `R __result`, where `R` is the return type of the functional method).
+  Occurrences of `\result` in `ensures`/`invariant` clauses are rewritten
+  to `__result`.
+* The parameters of the model methods are the parameters of the functional
+  method.
+* Clause bodies are rewritten (`cb` of Def. 8): `this`/`super` of the
+  enclosing scope become `outer_this`/`outer_super`, captured locals become
+  the `_outer_final_*` fields of the generated class, and fields of the
+  enclosing instance become `outer_this.<field>`. A clause referring to a
+  variable that is none of these is reported as an error.
+* For `assignable` and `accessible`, the frame may alternatively be
+  declared as a model *field* (`footprint`/`accessibleFields`) on the
+  functional interface. The model field route produces a `model` field and
+  a `represents` clause on the generated class and requires that the frame
+  expression does not depend on the arguments of the functional method.
+  If both the model method and the model field are declared, the model
+  method is chosen.
+
+Side-effectful lambdas (which modify locations) are specified with an
+`invariant` clause and a frame via `footprint`/`accessibleFields` or
+`frameCondition`; see Sec. 6.4 of the thesis for the recommended pattern.
+
+### Method references
+
+The JML contract of the target of a method reference is copied onto the
+synthetic lambda and converted like an explicitly written contract. The
+parameter names of the target method are renamed to the parameters of the
+synthetic lambda:
+
+* bound/static reference `expr::m` or `T::m` — clauses refer to the
+  receiver as `this` (which becomes the enclosing instance);
+* unbound instance reference `T::m` — `this` of the target method's
+  contract becomes the first parameter of the synthetic lambda (the
+  receiver);
+* constructor reference `T::new` — `this` of the constructor contract (the
+  object under construction) becomes the result of the synthetic lambda,
+  i.e. the `__result` parameter of `postCondition`.
+
 
 ## Entity names
 
