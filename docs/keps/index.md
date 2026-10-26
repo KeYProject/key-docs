@@ -23,3 +23,4 @@ feature is and where to follow the discussion.
 - [KEP-2: Unique Java Package Names for KeY Gradle Modules](kep-0002-convention-for-packages/index.md)
   — propose a consistent package-name scheme for 
   Gradle sub-project to eliminate split-package issues and improve findabilitys.
+- [KEP-3: `\refines` operator](kep-0003-refines)
