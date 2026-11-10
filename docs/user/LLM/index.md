@@ -37,6 +37,9 @@ uses the LLM service operated by KIT (`https://ki-toolbox.scc.kit.edu`).
 - **Taclet management** — list the available taclets and taclet options of any open proof,
   export them as parseable rule text, and add or remove taclets (changes require your
   approval).
+- **Compact tool set** — the everyday tools (files, shell, questions, skills) are always
+  offered; the KeY-specific Proof and Taclet tools are loaded on demand, so the model only
+  sees what it needs. The agent tells you when it does this (`list_tools`).
 - **Code access** — reference files with `@src/MyClass.java` to embed them into the message,
   or let the agent use the `list_files`, `read_file`, `edit_file` and `file_info` tools.
 - **Reusable prompts and skills** — save your own prompt templates and background
@@ -84,8 +87,10 @@ follow the tool's own requirement, **With approval**, **Without approval (always
 *Disabled* if the agent should never touch a shell, or give `tryclose` *Without approval*
 if the agent may prove freely. The **may run in background** checkbox allows long-running
 calls to continue in the background while you keep chatting, and **export to MCP** decides
-whether the tool is offered on the KeY MCP server (by default the auto-approved tools are
-exported).
+whether the tool is offered on the KeY MCP server. Only the KeY-specific tools (Proof and
+Taclets) can be exported — the export checkbox of the standard tools (files, shell, …) is
+disabled, because those are private to the chat panel. By default the auto-approved
+KeY-specific tools are exported, everything that asks before running stays off.
 
 ## How to use
 
@@ -136,7 +141,10 @@ be enabled). Both libraries are edited in the settings under *LLM Settings → P
 *Skills*. Each entry is stored as one Markdown file with YAML front matter — under
 `~/.key/<version>/llm/prompts/` and `~/.key/<version>/llm/skills/` respectively; JSON
 files from older versions are migrated automatically on first access, and
-*Import/Export* exchanges a ZIP archive of these Markdown files.
+*Import/Export* exchanges a ZIP archive of these Markdown files. A skill that wants to use
+Proof or Taclet tools must whitelist `list_tools` as well — the agent loads those tools on
+demand via `list_tools` (this keeps the offered tool list compact) — and the shipped skills
+do exactly that.
 
 ### The KeY MCP server
 
@@ -148,8 +156,10 @@ ephemeral port, so it is only reachable from your own machine; the host, port an
 optional bearer token can be changed under *LLM Settings → MCP server*. While the server
 runs, hovering over the indicator shows the endpoint URL (click it to copy it to the
 clipboard); point your MCP client (for example Claude Desktop) at that URL to use KeY's
-proof tools from outside. Which tools are offered is controlled per tool by the **export
-to MCP** permission. Tool calls from external clients are serialized with the GUI
+proof tools from outside. The server exposes the **KeY-specific proof and taclet tools**;
+which of them are offered is controlled per tool by the **export to MCP** permission (the
+standard tools are private to the chat panel and never exported). Tool calls from external
+clients are serialized with the GUI
 agent's own tool calls, so both sides observe one consistent proof state.
 
 ### Tool console
