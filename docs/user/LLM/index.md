@@ -47,7 +47,9 @@ uses the LLM service operated by KIT (`https://ki-toolbox.scc.kit.edu`).
   offered; the KeY-specific Proof and Taclet tools are loaded on demand, so the model only
   sees what it needs. The agent tells you when it does this (`list_tools`).
 - **Code access** — reference files with `@src/MyClass.java` to embed them into the message,
-  or let the agent use the `list_files`, `read_file`, `edit_file` and `file_info` tools.
+  or let the agent use the `glob`, `read`, `grep`, `edit` and `write` tools. It can also
+  fetch web pages (`webfetch`) and search the web (`websearch`), and evaluate short Java
+  snippets against its own tools (`execute` — every call asks for your approval).
 - **Reusable prompts and skills** — save your own prompt templates and background
   knowledge, and activate them per turn.
 - **Input assistance** — autocompletion for context tokens (`$`), files (`@`) and commands
@@ -74,7 +76,7 @@ optional; the defaults work out of the box once a valid token is set.
    list and fills **Available Models**; you can also type entries manually. The model used
    for a proof can be switched at any time from the panel's title menu (*Models* submenu).
 4. **Agent behavior** — the agent's system prompt, whether it may ask you questions
-   (*ask_user*, on), use skills (*use_skill*, off) or consult the LLM about its own
+   (*question*, on), use skills (*skill*, off) or consult the LLM about its own
    reasoning (*ask_llm*, on), and the per-turn budget of tool-calling rounds (8).
 5. Everything else (context and history budgets, file handling, shell policy, MCP server,
    user interface) has sensible defaults; the full reference is linked at the bottom of this
@@ -89,7 +91,7 @@ shared with external MCP clients:
 
 Every tool row offers four permission modes: **Default (ask)** or **Default (auto)** —
 follow the tool's own requirement, **With approval**, **Without approval (always)**, and
-**Disabled** — the tool is not even offered to the model. For example, set `run_command` to
+**Disabled** — the tool is not even offered to the model. For example, set `shell` to
 *Disabled* if the agent should never touch a shell, or give `tryclose` *Without approval*
 if the agent may prove freely. The **may run in background** checkbox allows long-running
 calls to continue in the background while you keep chatting, and **export to MCP** decides
@@ -135,7 +137,7 @@ conversation; the **Prompts** menu inserts a saved prompt template.
 When the agent wants to execute a sensitive tool, an **approval box** appears with
 *Allow once*, *Always allow*, and *Deny* — "always" is remembered for the rest of the
 session and can be revoked in the Tools settings. The agent may also ask you a direct
-question (*ask_user*); answer it in the chat and the turn continues.
+question (*question*); answer it in the chat and the turn continues.
 
 ### Reusable prompts and skills
 
@@ -181,7 +183,7 @@ prompt even for auto-approved tools.
 Bounded child agents with a dedicated role (`goal-solver`, `file-explorer`,
 `rule-designer`): each runs its own tool-calling loop under a separate message thread and
 is restricted to the tools of its role's whitelist. The agent delegates via the
-`spawn_subagent` tool, which asks for your approval and then runs autonomously (children
+`subagent` tool, which asks for your approval and then runs autonomously (children
 never pause for approvals). A single task runs in `sequential` mode, an array of
 independent tasks can run concurrently in `parallel` mode. The runs are recorded in a
 per-session log that the agent itself can read back (`get_subagent_logs`), and the chat
@@ -195,7 +197,7 @@ development version this feature is disabled by default.
 | Connection failed / HTTP 401 | Check **API Base URL** and **Auth Token**; corporate proxies may need exceptions. |
 | The model list stays empty | *Fetch Models* needs a valid token and a reachable endpoint. |
 | The agent cannot read a file | Files must live in the Java model directory; large files are skipped (size caps in the settings). |
-| The agent runs shell commands | Disable `run_command` in the Tools settings, or adjust the blocklist patterns. |
+| The agent runs shell commands | Disable `shell` in the Tools settings, or adjust the blocklist patterns. |
 | MCP client cannot connect | The server binds to loopback only by default; check host and port in the MCP server settings, and the token if one is set. |
 | History is gone | Conversations are kept per proof in memory only; they do not survive a restart. |
 
