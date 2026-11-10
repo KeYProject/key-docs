@@ -32,6 +32,8 @@ uses the LLM service operated by KIT (`https://ki-toolbox.scc.kit.edu`).
   blocks and tables are formatted, and links open in the system browser. Rendering is strictly
   offline: external images or stylesheets are never fetched, and raw HTML in an answer is shown
   as plain text rather than interpreted.
+
+![A Markdown-rendered answer with a list, a code block and a table](llm-markdown.png){ width="500" }
 - **Tool calls with approval** — the agent can execute proof tools; every sensitive action
   asks for your permission first, and you can disable tools entirely.
 - **Proof automation** — `tryclose` attempts to close the current goal or branch
