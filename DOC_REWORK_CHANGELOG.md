@@ -3,6 +3,49 @@
 Work log for the reorganization and completion of the KeY documentation
 (`key-docs`), checked against the implementation in `key-src`.
 
+## 2026-11-14 — Lambda specification documentation (KeY PR #3759)
+
+- Reworked `user/JMLGrammar.md`, section *Specifying lambda expressions*
+  (part of KeY PR #3759, "Lambda support by transformation", implementing
+  Carsten Csiky's bachelor thesis *Specification and Deductive Verification
+  of Java Programs with Lambda Expressions*, KIT 2019):
+  - fixed the thesis author's name (was "Alexander Csiky")
+  - added *What the clauses mean*: per-clause semantics for a lambda
+    (`requires`/`ensures`/`invariant`/`assignable`/`accessible`), incl.
+    `\result` and `\old` in the two-state clauses
+  - added *How the specification is realized*: the pipeline steps
+    (desugaring to a local class, hoisting to a `private static final`
+    nested class with `_outer_final_*`/`outer_this` capture fields,
+    contract conversion into model methods, `__result` parameter, `cb`
+    rewrite) with a before/after example
+  - added *Specifying against a functional interface*: the functional
+    interface declares the model methods and specifies its functional
+    method against them (the pattern clients rely on)
+  - added a note on side-effectful lambdas (the `invariant` clause, Csiky
+    Sec. 6.4) incl. the current-KeY restriction that `two_state` model
+    methods are only referenceable from post-state contexts
+  - documented the method-reference contract copying (bound/unbound/static/
+    constructor) and the `modifies` alias for `assignable`
+  - added *Limitations* (field initializers, anonymous classes, method
+    references in conditionals, leading-statement syntax, strict errors)
+  - added a note explaining the `//@ //@ ...` "nested JML comment" display
+    artifact in pipeline snapshots (re-serialized JML comments keep their
+    original line marker; not a specification construct)
+  - linked the bundled `Java/Lambdas` example (Examples dialog, verifiable
+    without interaction)
+- Reworked `user/JavaDLinJML.md`, section *The weakest-precondition escape
+  `\dl_wp_apply`*: precise meaning (completes normally: receiver not null,
+  no exception, terminates; Csiky Ch. 5), the `wp_def`/`wp_dep_contract`
+  taclets, the on-demand registration (first use fixes the signature; one
+  functional interface sort per model), the loading-order pitfall
+  ("Predicate 'wp_apply' is already defined!"), and the current
+  `IntFunction` name assumption of the `wp_def` rule; cross-linked both
+  lambda sections.
+- Updated `user/SupportedFeatures/JavaCoverage.md`: lambda expressions and
+  method references are no longer listed as "Not supported" — both are
+  desugared and supported (yellow check, with the caveats above), linking
+  to the new JMLGrammar section.
+
 ## 2026-07-12 — Thread Safety and Determinism page
 
 - NEW `devel/ThreadSafety.md` (Developer Guide → Working on the Code): bachelor-level
