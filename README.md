@@ -25,6 +25,9 @@ make prepare   # hugo mod tidy: resolve/download the pinned theme module
 make serve     # live preview on http://localhost:1313
 make build     # production build into public/
 make check     # build into /tmp/keydocs-check and check internal links
+make ci        # build + check
+make update    # update the Hextra module and tidy go.mod/go.sum
+make version   # compare the local Hugo with the CI-pinned version
 ```
 
 The underlying commands are `hugo mod tidy`,

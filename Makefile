@@ -1,8 +1,20 @@
 HUGO ?= hugo
+HUGO_VERSION ?= 0.170.0
 CHECK_DIR ?= /tmp/keydocs-check
 
 .DEFAULT_GOAL := build
-.PHONY: prepare serve build check clean
+.PHONY: help prepare serve build check ci update version clean
+
+help:
+	@echo "Targets:"
+	@echo "  prepare   resolve/download the Hugo modules pinned in go.mod"
+	@echo "  serve     live preview on http://localhost:1313"
+	@echo "  build     production build into public/ (default)"
+	@echo "  check     scratch build + internal link check (needs lychee)"
+	@echo "  ci        build + check"
+	@echo "  update    update the Hextra module and tidy go.mod/go.sum"
+	@echo "  version   print the installed and expected Hugo versions"
+	@echo "  clean     remove public/, resources/ and the scratch build"
 
 # Resolve and download the Hugo modules pinned in go.mod/go.sum (Hextra).
 prepare:
@@ -30,6 +42,20 @@ check:
 	$(HUGO) --gc --minify --cleanDestinationDir --baseURL "/" --destination $(CHECK_DIR)
 	find $(CHECK_DIR) -type f -name '*.html' -print0 \
 		| xargs -0 lychee --offline --no-progress --root-dir $(CHECK_DIR)
+
+ci: build check
+
+# Update Hextra to its latest release and refresh go.mod/go.sum.
+update:
+	$(HUGO) mod get -u github.com/imfing/hextra
+	$(HUGO) mod tidy
+
+# CI pins Hugo $(HUGO_VERSION); warn when the local binary differs.
+version:
+	@$(HUGO) version
+	@printf 'expected: %s (HUGO_VERSION)\n' "$(HUGO_VERSION)"
+	@$(HUGO) version | grep -q "v$(HUGO_VERSION)" \
+		|| echo "WARNING: local Hugo does not match $(HUGO_VERSION); CI builds with $(HUGO_VERSION)."
 
 clean:
 	rm -rf public resources $(CHECK_DIR)

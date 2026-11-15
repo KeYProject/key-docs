@@ -45,6 +45,9 @@ make prepare   # hugo mod tidy
 make serve     # http://localhost:1313, debug, no fast render
 make build     # production build into public/
 make check     # scratch build + lychee link check
+make ci        # build + check
+make update    # update the Hextra module and tidy go.mod/go.sum
+make version   # compare local Hugo with HUGO_VERSION (CI pin)
 make clean     # remove public/, resources/, /tmp/keydocs-check
 ```
 
