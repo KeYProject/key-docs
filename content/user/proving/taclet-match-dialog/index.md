@@ -1,4 +1,7 @@
-# The Taclet Match Dialog
+---
+title: "The Taclet Match Dialog"
+weight: 10
+---
 
 When KeY needs your help to apply a rule — a quantifier instantiation, a cut, a
 rule with an `\assumes` clause — it opens this dialog so you can supply the

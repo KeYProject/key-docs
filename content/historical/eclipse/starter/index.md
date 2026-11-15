@@ -1,4 +1,7 @@
-# KeY 4 Eclipse Starter
+---
+title: "Starter"
+weight: 60
+---
 
 !!! warning "Unsupported historical content"
     This Eclipse integration is **no longer supported or maintained**. It
@@ -29,7 +32,7 @@ Required update-sites and installation instructions are available in the
 1. Open KeY via main menu item "KeY, Open Application".
 
     ![](open01thumb.png "Open KeY")
-    
+
 2. Select Application "KeY".
 
     ![](open02thumb.png "Open KeY")
@@ -44,11 +47,11 @@ Required update-sites and installation instructions are available in the
 1. Select the method to verify.
 
     ![](verifyMethod01thumb.png "Verify a method contract")
-    
+
 2. Start proof via main menu item "KeY, Start Proof".
 
     ![](verifyMethod02thumb.png "Verify a method contract")
-    
+
 3. Select Application "KeY".
 
     ![](verifyMethod03thumb.png "Verify a method contract")

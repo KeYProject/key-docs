@@ -1,4 +1,9 @@
-# Installation {#sec:install}
+---
+title: "Installation"
+weight: 20
+---
+
+<span id="sec:install"></span>
 
 You can choose between different methods to install and use KeY. For
 this tutorial, we recommend the Single Click Jar variant described in
@@ -13,4 +18,3 @@ You will also need to have Java 11 (or later) installed.
 
 The download site offers also the binary and source-code versions of
 KeY.
-

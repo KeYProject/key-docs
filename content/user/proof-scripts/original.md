@@ -1,12 +1,12 @@
 ---
+title: "Historical Notes (2015)"
+weight: 70
 approved: mu 2026-06-19
 author: Mattias Ulbrich
-date: "2015"
+date_label: "2015"
 ---
 
-# Making interactive persistent using proof scripts
-
-!!! warning 
+!!! warning
     This is the original announcement and probably a bit outdated.
 
 !!! note
@@ -107,7 +107,7 @@ list here. The list is sorted alphabetically.
   cut "value1 = value2";
   ```
 
-* exit 
+* exit
 
   Terminate the script prematurely at that point. Used mainly for debug purposes.
 
@@ -137,7 +137,7 @@ list here. The list is sorted alphabetically.
      ```
      instantiate formula="\exists int x; f(x) = 42" with="23"
      ```
-     Instantiate x and hide the quantified formula: 
+     Instantiate x and hide the quantified formula:
      ```
      instantiate hide var=x value="x_0"
      ```
@@ -150,7 +150,7 @@ debugging unfinished proof scripts.
 * `macro`
 
     Invoke a macro on the current goal. The names of available macros include:
-    
+
     * `autopilot`      -- full autopilot
     * `autopilot-prep` -- preparation only autopilot
     * `split-prop`     -- propositional expansion w/ splits
@@ -158,12 +158,12 @@ debugging unfinished proof scripts.
     * `simp-upd`       -- update simplification
     * `simp-heap`      -- heap simplification
 
-   
+
     ```
     macro autopilot-prep;
     ```
 
-    !!! note 
+    !!! note
         Future version may drop the macro keyword and allow macro
         invocations directly.
 
@@ -180,9 +180,9 @@ debugging unfinished proof scripts.
      (the latter works also for conflict cases like `inst_occ="..."`).
 
      If there is only one matching spot on the sequent
-     ``` 
+     ```
      rule andRight;
-     ``` 
+     ```
      Changes sequent `a=b ==> c=d` to `b=a ==> c=d`.
      `rule eqSymm;` alone would have been ambiguous.
      ```
@@ -193,19 +193,19 @@ debugging unfinished proof scripts.
      ```
      rule eqSymm formula="a=b->c=d" occ=2;
      ```
-     
+
      changes sequent "a=b->c=d ==>" to "a=b->d=c ==>".
-     same as above, but using the option to specify a 
+     same as above, but using the option to specify a
      subterm instead of an occurrence number.
      ```
      rule eqSymm formula="a=b->c=d" on="c=d";
      ```
-     
+
      Almost the same as `cut "x>y"`:
      ```
      rule cut cutFormula="x > y";
      ```
-     
+
 * `script`
 
     Invoke another script which resides in an external file.
@@ -220,34 +220,34 @@ debugging unfinished proof scripts.
      a formula. The goal is chosen such that the formula appears (toplevel) on the
      sequent (antecedent or succedent). You can limit the search to antecedent or
      succedent.
-     
+
      Search for the formula anywhere
      ```
      select formula="{ x:=1 }y < x";
      ```
-     
-     Search only the succedent for the formula: 
+
+     Search only the succedent for the formula:
      ```
      select succedent formula="wellFormed(someHeap)";
      ```
-     
+
 * `smt`
 
     Invoke an external SMT solver. That solver must be adequately
     configured outside the script mechanism. By default, Z3 is invoked,
     but that can be chosen.
-    
+
     Invoke Z3
 
     ```
     smt;
     ```
-    
+
     A comma separated list of solvers can be specified.
     ```
     smt solver="Z3,yices";
     ```
-    
+
 * `tryclose`
 
     Unlike other commands this command operates on ALL open goals and
@@ -257,12 +257,12 @@ debugging unfinished proof scripts.
     ```
     tryclose;
     ```
-    
+
     Spend 2000 steps on each open goal
     ```
     tryclose steps=2000;
     ```
-    
+
 
 
 ## Write your on proof script commands

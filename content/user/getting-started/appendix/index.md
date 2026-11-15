@@ -1,4 +1,7 @@
-# Appendix
+---
+title: "Appendix: Tips and Background"
+weight: 50
+---
 
 The KeY tool is continually developed, meaning that parts of this
 tutorial may be outdated when you read it. Moreover, the JML semantics
@@ -42,7 +45,7 @@ menu of the KeY prover.
      * **User-Defined Taclets** -- Loads user-defined taclets and
        generates the corresponding proof obligation.
      * **KeY's Taclets** -- Creates proof obligations for some selected taclets.
-     * **Taclets using the batch mode** 
+     * **Taclets using the batch mode**
 * **Recent Files** -- List the last few loaded files (if they are
   still present).
 * **Exit** -- Quits the KeY prover (be warned: the current proof is
@@ -101,7 +104,7 @@ menu of the KeY prover.
    * **Search in sequent view** -- Opens a window with a textfield in
        the lower-left corner of the current goal pane, which allows to
        search for a string in the sequent view.
-   * **Show used contracts** 
+   * **Show used contracts**
    * **Show Active Taclet Options** -- Shows the taclet options chosen
      for the current proof.
    * **Show All Active Settings** -- Opens a window displaying all
@@ -231,7 +234,7 @@ menu of the KeY prover.
         able to find instantiations by itself, the user is not asked
         to provide them.
 
-    * [**Right Click for Macros**] -- 
+    * [**Right Click for Macros**] --
 
     * [**One Step Simplification**] -- In the KeY prover one step
         simplification is a mechanism to automatically apply several
@@ -296,7 +299,7 @@ menu of the KeY prover.
     restrictions), `Delayed` (allows still splitting but prefers other
     rules) and `Off` (no splitting).
 
-* Loop treatment 
+* Loop treatment
 
     This setting determines how while-loops are treated. They can be
     left untouched (`None`), handled using stated invariant contracts,
@@ -304,7 +307,7 @@ menu of the KeY prover.
     you can either choose the new `Loop Scope` rule (recommended), or
     the legacy `Transformation`-based rule.
 
-* Block treatment 
+* Block treatment
 
     It is possible to specify Java blocks with contracts. This option
     allows to set how KeY treats such contracts.
@@ -380,7 +383,7 @@ menu of the KeY prover.
 
     This setting is indepedent of the query treatment setting.
 
-* Arithmetic treatment 
+* Arithmetic treatment
 
     The KeY prover has several options for the treatment of
     arithmetic expressions:
@@ -423,8 +426,8 @@ menu of the KeY prover.
         still present, the `No splits` behavior is used. Otherwise,
         quantifiers are instantiated without restrictions.
 
-* Class axiom rule 
-    
+* Class axiom rule
+
     This setting determines how class axioms and invariants are dealt
     with.
 
@@ -457,19 +460,19 @@ Load                            | Ctrl+O     |              :fontawesome-solid-f
 Reload                          | Ctrl+R    |          :fontawesome-solid-rotate-right:
 Save                            | Ctrl+S   |              :fontawesome-solid-floppy-disk:
 Proof Management                | Ctrl+M  |        :fontawesome-solid-list-check:
-Exit                            | Ctrl+Q |                                      
+Exit                            | Ctrl+Q |
 Edit last opened file           | -  |                   :fontawesome-solid-pen-to-square:
-Use pretty syntax               | Ctrl+P      |                                
-Font size: smaller              | Ctrl+Up      |                               
-Font size: larger               | Ctrl+Down     |                              
+Use pretty syntax               | Ctrl+P      |
+Font size: smaller              | Ctrl+Up      |
+Font size: larger               | Ctrl+Down     |
 Start automatic strategy        | Ctrl+S         |     :fontawesome-solid-circle-play:{ style="color: green" }
-Abandon task                    | Ctrl+W           |                           
+Abandon task                    | Ctrl+W           |
 Undo last rule application      | Ctrl+Z          |       :fontawesome-solid-delete-left:
-Search in proof tree            | Ctrl+F                                       
-Search in sequent view          | F3                                           
+Search in proof tree            | Ctrl+F
+Search in sequent view          | F3
 Prune tree below selected node  | -                 |   :fontawesome-solid-scissors:
 SMT Solver                      | -                 |   text button ("Run Z3, …", solver selection drop-down)
-Taclet options                  | Ctrl+T           |                           
+Taclet options                  | Ctrl+T           |
 Toggle one Step Simplifier      | Ctrl+Shift+S     | ![image](figures/oneStepSimplifier.png){.toolbar-icon}
 
 Setting Up Own Projects {#app:configuringProjects}
@@ -509,4 +512,3 @@ For documentation on how to set up your own classpath, see [Using the classpath 
 
 [^9]: The computation of this limit is done with sophisticated methods
     for loop detection and would go beyond the scope of this quicktour
-

@@ -1,4 +1,7 @@
-# Extending KeY
+---
+title: "4. Extending KeY"
+weight: 50
+---
 
 *2026*
 

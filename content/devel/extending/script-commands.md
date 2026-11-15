@@ -1,4 +1,7 @@
-# Adding a Proof Script Command
+---
+title: "Script Commands in Depth"
+weight: 50
+---
 
 *2026 — checked against `de.uka.ilkd.key.scripts` in `key.core`.*
 

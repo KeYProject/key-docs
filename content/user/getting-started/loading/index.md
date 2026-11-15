@@ -1,4 +1,9 @@
-# Loading JML Contracts {#sec:tutorial}
+---
+title: "Loading JML Contracts"
+weight: 30
+---
+
+<span id="sec:tutorial"></span>
 
 In this chapter, we first explain how to load a Java program into KeY,
 and then introduce you to KeY's logic using the program you just loaded.
@@ -85,7 +90,7 @@ search for the method `isValid`. You should see something like
             /*@
               @ public normal_behavior
               @ requires true;
-              @ ensures \result == (unsuccessfulOperations<=3); 
+              @ ensures \result == (unsuccessfulOperations<=3);
               @ assignable \nothing;
               @*/
             public /*@pure@*/ boolean isValid() {
@@ -94,7 +99,7 @@ search for the method `isValid`. You should see something like
                } else {
                   return false;
                }
-            } 
+            }
 
 JML specifications are annotated as special marked comments in Java
 files. Comments containing JML annotations have an "at" sign directly
@@ -635,7 +640,7 @@ Let $i,j$ denote program variables. Some formulas in JavaCardDL:
     terminate normally, i.e., no infinite loops and recursions and no
     uncaught exceptions occur.
 
-    Replacing the diamond in the formula above by a box 
+    Replacing the diamond in the formula above by a box
     $i \doteq 0 \rightarrow [i = i + 1;] i > 0$ changes the termination aspect
     and does not require that the program terminates, i.e., this
     formula is already satisfied if in each state where the value of
@@ -644,13 +649,13 @@ Let $i,j$ denote program variables. Some formulas in JavaCardDL:
 
 -   A typical kind of formula you will encounter is one with an update
     in front like
-    
+
     \[
     \{ {i := a} ~~||~~ {j := b} \}
-    ~\langle tmp = i; i = j; j = tmp; \rangle 
+    ~\langle tmp = i; i = j; j = tmp; \rangle
     ~i \doteq b \wedge j \doteq a
     \]
-    
+
     Intuitively, an update can be seen as an assignment, the two
     vertical strokes indicate that the two assignments $a$ to $i$ and
     $b$ to $j$ are performed in parallel (simultaneously). The formula
@@ -707,4 +712,3 @@ Mapping of JML specifications to this general contract notion is
 slightly indicated in Sect. [4.3](#sec:application){reference-type="ref"
 reference="sec:application"}. More details can be found
 in [@KeYBook2016].
-

@@ -1,4 +1,7 @@
-# How to add an extension
+---
+title: "Add an Extension Module"
+weight: 10
+---
 
 *2026 — every step below was carried out against the current KeY sources;
 the resulting module compiles (`./gradlew :keyext.demo:compileJava`) and the

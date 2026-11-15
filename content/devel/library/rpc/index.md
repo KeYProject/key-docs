@@ -1,12 +1,11 @@
 ---
-title: JSON RPC 
+title: "JSON-RPC Interface"
+weight: 20
 ---
 
-# JSON RPC 
+work in progress and automatically generated.
 
-work in progress and automatically generated. 
-
-## General Notes 
+## General Notes
 
 
 
@@ -436,290 +435,289 @@ type TreeNodeId {
 ```
 [@author Alexander Weigl, @version 1 (13.10.23)][]
 ## Endpoints
-### client/logTrace (`server ~~> client`) 
+### client/logTrace (`server ~~> client`)
 
 ```
 Client.client/logTrace( params : LogTraceParams ) **async**
 ```
 [][]
 
-### client/sayHello (`server ~~> client`) 
+### client/sayHello (`server ~~> client`)
 
 ```
 Client.client/sayHello( e : STRING ) **async**
 ```
 [][]
 
-### client/showDocument (`server -> client`) 
+### client/showDocument (`server -> client`)
 
 ```
 Client.client/showDocument( params : ShowDocumentParams ) -> ShowDocumentResult
 ```
 [][]
 
-### client/sm (`server ~~> client`) 
+### client/sm (`server ~~> client`)
 
 ```
 Client.client/sm( params : ShowMessageParams ) **async**
 ```
 [][]
 
-### client/taskFinished (`server ~~> client`) 
+### client/taskFinished (`server ~~> client`)
 
 ```
 Client.client/taskFinished( info : TaskFinishedInfo ) **async**
 ```
 [][]
 
-### client/taskProgress (`server ~~> client`) 
+### client/taskProgress (`server ~~> client`)
 
 ```
 Client.client/taskProgress( position : INT ) **async**
 ```
 [][]
 
-### client/taskStarted (`server ~~> client`) 
+### client/taskStarted (`server ~~> client`)
 
 ```
 Client.client/taskStarted( info : TaskStartedInfo ) **async**
 ```
 [][]
 
-### client/userResponse (`server -> client`) 
+### client/userResponse (`server -> client`)
 
 ```
 Client.client/userResponse( params : ShowMessageRequestParams ) -> MessageActionItem
 ```
 [][]
 
-### env/contracts (`client -> server`) 
+### env/contracts (`client -> server`)
 
 ```
 Server.env/contracts( env : EnvironmentId ) -> ContractDesc[]
 ```
 [][]
 
-### env/dispose (`client -> server`) 
+### env/dispose (`client -> server`)
 
 ```
 Server.env/dispose( env : EnvironmentId ) -> BOOL
 ```
 [][]
 
-### env/functions (`client -> server`) 
+### env/functions (`client -> server`)
 
 ```
 Server.env/functions( env : EnvironmentId ) -> FunctionDesc[]
 ```
 [][]
 
-### env/openContract (`client -> server`) 
+### env/openContract (`client -> server`)
 
 ```
 Server.env/openContract( contractId : ContractId ) -> ProofId
 ```
 [][]
 
-### env/sorts (`client -> server`) 
+### env/sorts (`client -> server`)
 
 ```
 Server.env/sorts( env : EnvironmentId ) -> SortDesc[]
 ```
 [][]
 
-### examples/list (`client -> server`) 
+### examples/list (`client -> server`)
 
 ```
 Server.examples/list(  ) -> ExampleDesc[]
 ```
 [][]
 
-### goal/actions (`client -> server`) 
+### goal/actions (`client -> server`)
 
 ```
 Server.goal/actions( id : NodeTextId, pos : INT ) -> TermActionDesc[]
 ```
 [][]
 
-### goal/apply_action (`client -> server`) 
+### goal/apply_action (`client -> server`)
 
 ```
 Server.goal/apply_action( id : TermActionId ) -> TermActionDesc[]
 ```
 [][]
 
-### goal/free (`client ~~> server`) 
+### goal/free (`client ~~> server`)
 
 ```
 Server.goal/free( id : NodeTextId ) **async**
 ```
 [][]
 
-### goal/print (`client -> server`) 
+### goal/print (`client -> server`)
 
 ```
 Server.goal/print( id : NodeId, options : PrintOptions ) -> NodeTextDesc
 ```
 [][]
 
-### loading/load (`client -> server`) 
+### loading/load (`client -> server`)
 
 ```
 Server.loading/load( params : LoadParams ) -> either<a,b>
 ```
 [params parameters for loading][com.github.therapi.runtimejavadoc.ThrowsJavadoc@3c9d0b9d]
 
-### loading/loadExample (`client -> server`) 
+### loading/loadExample (`client -> server`)
 
 ```
 Server.loading/loadExample( id : STRING ) -> ProofId
 ```
 [id ][]
 
-### loading/loadKey (`client -> server`) 
+### loading/loadKey (`client -> server`)
 
 ```
 Server.loading/loadKey( content : STRING ) -> ProofId
 ```
 [][]
 
-### loading/loadProblem (`client -> server`) 
+### loading/loadProblem (`client -> server`)
 
 ```
 Server.loading/loadProblem( problem : ProblemDefinition ) -> ProofId
 ```
 [][]
 
-### loading/loadTerm (`client -> server`) 
+### loading/loadTerm (`client -> server`)
 
 ```
 Server.loading/loadTerm( term : STRING ) -> ProofId
 ```
 [][]
 
-### meta/available_macros (`client -> server`) 
+### meta/available_macros (`client -> server`)
 
 ```
 Server.meta/available_macros(  ) -> ProofMacroDesc[]
 ```
 [][]
 
-### meta/available_script_commands (`client -> server`) 
+### meta/available_script_commands (`client -> server`)
 
 ```
 Server.meta/available_script_commands(  ) -> ProofScriptCommandDesc[]
 ```
 [][]
 
-### meta/version (`client -> server`) 
+### meta/version (`client -> server`)
 
 ```
 Server.meta/version(  ) -> STRING
 ```
 [][]
 
-### proof/auto (`client -> server`) 
+### proof/auto (`client -> server`)
 
 ```
 Server.proof/auto( proof : ProofId, options : StrategyOptions ) -> ProofStatus
 ```
 [][]
 
-### proof/children (`client -> server`) 
+### proof/children (`client -> server`)
 
 ```
 Server.proof/children( nodeId : NodeId ) -> NodeDesc[]
 ```
 [][]
 
-### proof/dispose (`client -> server`) 
+### proof/dispose (`client -> server`)
 
 ```
 Server.proof/dispose( proof : ProofId ) -> BOOL
 ```
 [][]
 
-### proof/goals (`client -> server`) 
+### proof/goals (`client -> server`)
 
 ```
 Server.proof/goals( proof : ProofId, onlyOpened : BOOL, onlyEnabled : BOOL ) -> NodeDesc[]
 ```
 [][]
 
-### proof/macro (`client -> server`) 
+### proof/macro (`client -> server`)
 
 ```
 Server.proof/macro( proof : ProofId, macroName : STRING, options : StrategyOptions ) -> MacroStatistic
 ```
 [][]
 
-### proof/pruneTo (`client -> server`) 
+### proof/pruneTo (`client -> server`)
 
 ```
 Server.proof/pruneTo( nodeId : NodeId ) -> NodeDesc[]
 ```
 [][]
 
-### proof/root (`client -> server`) 
+### proof/root (`client -> server`)
 
 ```
 Server.proof/root( proof : ProofId ) -> NodeDesc
 ```
 [][]
 
-### proof/script (`client -> server`) 
+### proof/script (`client -> server`)
 
 ```
 Server.proof/script( proof : ProofId, scriptLine : STRING, options : StrategyOptions ) -> MacroStatistic
 ```
 [][]
 
-### proof/tree (`client -> server`) 
+### proof/tree (`client -> server`)
 
 ```
 Server.proof/tree( proof : ProofId ) -> NodeDesc
 ```
 [][]
 
-### proofTree/children (`client -> server`) 
+### proofTree/children (`client -> server`)
 
 ```
 Server.proofTree/children( proof : ProofId, nodeId : TreeNodeId ) -> TreeNodeDesc[]
 ```
 [][]
 
-### proofTree/root (`client -> server`) 
+### proofTree/root (`client -> server`)
 
 ```
 Server.proofTree/root( id : ProofId ) -> TreeNodeDesc
 ```
 [][]
 
-### proofTree/subtree (`client -> server`) 
+### proofTree/subtree (`client -> server`)
 
 ```
 Server.proofTree/subtree( proof : ProofId, nodeId : TreeNodeId ) -> TreeNodeDesc[]
 ```
 [][]
 
-### server/exit (`client ~~> server`) 
+### server/exit (`client ~~> server`)
 
 ```
 Server.server/exit(  ) **async**
 ```
 [][]
 
-### server/setTrace (`client ~~> server`) 
+### server/setTrace (`client ~~> server`)
 
 ```
 Server.server/setTrace( params : SetTraceParams ) **async**
 ```
 [][]
 
-### server/shutdown (`client -> server`) 
+### server/shutdown (`client -> server`)
 
 ```
 Server.server/shutdown(  ) -> BOOL
 ```
 [][]
-

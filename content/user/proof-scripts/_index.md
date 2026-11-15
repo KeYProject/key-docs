@@ -1,9 +1,9 @@
 ---
+title: "4. Proof Scripts"
+weight: 40
 approved: mu 2026-06-19
 author: Mattias Ulbrich, Sarah Grebing
 ---
-# Scripting Interactive Proofs
-
 
 ### Motivation for Proof Scripts in KeY
 

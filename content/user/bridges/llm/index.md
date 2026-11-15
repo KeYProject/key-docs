@@ -1,9 +1,9 @@
 ---
+title: "LLM Support"
+weight: 20
 author: "Alexander Weigl"
-date: "November 2026"
+date_label: "November 2026"
 ---
-
-# LLM Support (KeY-Agent)
 
 KeY comes with an integrated AI assistant, the **KeY-Agent**: a chat panel docked at the
 right side of the main window that answers questions about your current proof, can inspect

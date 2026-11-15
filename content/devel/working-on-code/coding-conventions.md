@@ -1,4 +1,7 @@
-# Java Code Conventions
+---
+title: "Coding Conventions"
+weight: 10
+---
 
 Please adhere as far as possible to [Sun's Code
 Conventions](http://www.oracle.com/technetwork/java/codeconventions-150003.pdf).
@@ -96,7 +99,7 @@ The if-else class of statements should have the following form:
      } else {
          statements;
      }
-      
+
 Note: if statements always use braces {}. Avoid the following
 error-prone form:
 
@@ -169,7 +172,7 @@ should be mnemonic, that is, designed to indicate to the casual observer the
 intent of its use. One-character variable names should be avoided except for
 temporary "throwaway" variables. Common names for temporary variables are i, j,
 k, m, and n for integers; c, d, and e for characters.
-	
+
 Examples:
 * int             i;
 * char            c;

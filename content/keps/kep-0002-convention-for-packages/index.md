@@ -1,8 +1,8 @@
 ---
+title: "KEP-2: Unique Java Package Names"
+weight: 20
 approved: weigl
 ---
-
-# KEP-2: Unique Java Package Names for KeY Gradle Modules
 
 This KEP proposes a Java package-name scheme for Gradle sub-project in the KeY repository. The goal is to eliminate
 split-package problems on the module path, Javadoc, and to make the origin of any class immediately obvious from its fully-qualified name.

@@ -1,4 +1,7 @@
-# Build Tool: Gradle
+---
+title: "2. Building KeY"
+weight: 20
+---
 
 ##### Abstract
 
@@ -51,10 +54,10 @@ dependencies {
     # The production code dependent (compile- and run-time) on key.core
     implementation project(':key.core')
 
-    # The src/test/java depends on junit, which is given 
+    # The src/test/java depends on junit, which is given
     # by an Maven identifier ('group:artefact:version')
     testImplementation 'org.junit:junit:4.12'
-    
+
     # Use interactionlog if the production code is executed.
     # Do not use for compilation.
     runtimeOnly project(':keyext.interactionlog')
@@ -64,7 +67,7 @@ dependencies {
 Detailed information for [Building Java
 Projects](https://docs.gradle.org/current/userguide/building_java_projects.html)
 are in the Gradle docs. The plugin `application` adds a task `run` to execute
-the Java project and `java-library` 
+the Java project and `java-library`
 
 
 
@@ -105,7 +108,7 @@ For compiling the production sources just call:
 $ gradle classes
 ```
 
-The tests are compiled with: 
+The tests are compiled with:
 
 ```
 $ gradle testClasses
@@ -124,8 +127,8 @@ you can run the grammar generation (`javacc` or `antlr3`) explicitly.
 
 Testing is as easy as compiling. With
 
-``` 
-$ gradle test 
+```
+$ gradle test
 ```
 
 you run the JUnit tests. The correct *test suites* are configured in the
@@ -172,7 +175,7 @@ manual](https://docs.gradle.org/current/userguide/java_testing.html)
    chain: `touch keyext.$name/build.gradle`
 5. Declare `runtimeOnly project('keyext.$name')` dependency in project `key.ui`.
    So your extension is deployed within the KeY deployment.
-   
+
 ## Working with IDEs
 
 The import guides assume that you have already checked out a KeY branch with
@@ -187,11 +190,11 @@ gradle as build tool.
      the project.
 2. A dialog for Gradle settings should come up.
    - Configuration after your preferences.
-   - My configuration is: 
+   - My configuration is:
      - *Use auto-import* activated. (Deactivate when you are heavily working on
        the build scripts.)
-     - *Create directories for empty content roots automatically* 
-     - *Group modules: using qualify names* 
+     - *Create directories for empty content roots automatically*
+     - *Group modules: using qualify names*
      - *Create separate modules per source sets*
      - An own local gradle distribution if you work with gradle on multiple
        projects. Otherwise stick *Use default gradle wrapper (recommended)*.
@@ -206,15 +209,15 @@ gradle as build tool.
 
   IDEA finds a project configuration in the folder and loads it. You need to
   delete the IDEA project files:
-  
+
   ```
   rm -rf .idea key.iml */*.iml
   ```
-  
+
   A backup is recommended if you have special project-based configuration.
-  
-  
-  
+
+
+
 ### Importing into Eclipse
 
 Since Eclipse Neon (22 June 2016) Eclipse is shipped with a plugin for Gradle:
@@ -228,7 +231,7 @@ little bit out-dated) is
    *Next*.
 3. You can decide whether you make special settings for this project, or the
    workspace defaults should be taken. *I have no recommendations* and selected
-   the default configuration.   
+   the default configuration.
 4. Eclipse shows a preview of what would be imported. In the current version,
    you should see a tree with `key` as root and `key.core`, `key.util`, etc as
    children. Click *Finish*.
@@ -243,23 +246,23 @@ little bit out-dated) is
 
 * **Compile error: Cyclic dependencies**
 
-  Eclipse does not distinguish between compile and runtime dependencies, 
+  Eclipse does not distinguish between compile and runtime dependencies,
   so there exists a cyclic dependency between `key.ui` and the extension packages.
-  
+
   Luckily, Eclipse is able to compile if you just re-declare this check as
   a warning.
-  
+
   Go to *Window -> Preferences -> Java>Compiler>Building" and set *Circular
   Dependencies* to *Warning*.
-  
-  
+
+
 * **Eclipse complains about the Java file in the resources folder**
 
   Eclipse does not distinguish between java sources and resources folder. It
   tries to compile everything that is in a resource folder.
-  
-  This problem is solved by a modification of the exclude filter in `.classpath`. 
-  
+
+  This problem is solved by a modification of the exclude filter in `.classpath`.
+
   For more information see gradle's [eclipse plugin](#) and the `build.gradle`
   file.
 

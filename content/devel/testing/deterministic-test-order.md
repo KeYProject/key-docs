@@ -1,4 +1,7 @@
-# Deterministic Order of Test Cases in KeY
+---
+title: "Deterministic Test Order (outdated)"
+weight: 30
+---
 
 !!! danger
 
@@ -53,4 +56,3 @@ Debug output of AutoSuite can be enabled by setting the system property `key.tes
 $ gradle test -Dkey.test.autosuite.debug=true -i
 ```
 The option `-i` is used here to get output of tests on command line.
-

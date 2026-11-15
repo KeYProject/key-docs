@@ -1,4 +1,7 @@
-# Event listeners
+---
+title: "Event Listeners"
+weight: 70
+---
 
 To monitor different parts of the KeY system, you may register specific event listeners.
 This list gives an overview grouped by the object you need to register the listener at.

@@ -1,4 +1,7 @@
-# Macros
+---
+title: "Macros"
+weight: 40
+---
 
 Proof macros bundle strategy invocations and rule applications into
 higher-level proof steps. They can be applied from the GUI (context menu

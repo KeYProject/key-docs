@@ -1,4 +1,7 @@
-# Architecture Overview
+---
+title: "1. Architecture"
+weight: 10
+---
 
 *2026 — module list checked against `settings.gradle` of the KeY repository.*
 

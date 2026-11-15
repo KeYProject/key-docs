@@ -1,4 +1,7 @@
-# How to add a main menu entry
+---
+title: "Add a Menu Entry"
+weight: 20
+---
 
 *2026 — code compiled against the current KeY sources.*
 

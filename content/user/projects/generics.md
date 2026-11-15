@@ -1,4 +1,7 @@
-# Applying KeY to programs with generics
+---
+title: "Programs with Generics"
+weight: 20
+---
 
 ## Support
 

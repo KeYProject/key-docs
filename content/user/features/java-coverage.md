@@ -1,10 +1,10 @@
 ---
+title: "Java Coverage"
+weight: 10
 hide:
   - toc
-approved: RB  
+approved: RB
 ---
-
-# Java Coverage
 
 !!! warning "Under construction"
 

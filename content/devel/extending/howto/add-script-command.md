@@ -1,4 +1,7 @@
-# How to add a proof script command
+---
+title: "Add a Script Command"
+weight: 60
+---
 
 *2026 — the code below was compiled against the current KeY sources and
 executed: a problem file whose embedded proof script calls the command

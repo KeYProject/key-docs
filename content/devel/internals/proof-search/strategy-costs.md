@@ -1,4 +1,7 @@
-# Strategy Costs and the Cost-Band Ladder
+---
+title: "Strategy Costs and the Cost-Band Ladder"
+weight: 30
+---
 
 *2026 — class names and values checked against the current sources
 (`key.core` and `key.ncore.calculus`).*

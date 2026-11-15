@@ -1,4 +1,7 @@
-# Working with the Prover
+---
+title: "2. Working with the Prover"
+weight: 20
+---
 
 This chapter covers KeY's user interface features for day-to-day
 interactive proving:

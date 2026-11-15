@@ -1,4 +1,7 @@
-# The Rule Application Pipeline
+---
+title: "The Rule Application Pipeline"
+weight: 10
+---
 
 *2026: class names and the described control flow checked against the
 current sources (`key.core`, `key.ncore.matcher`, `key.ncore.calculus`).*

@@ -1,10 +1,13 @@
-# Counterexample generation
+---
+title: "Counterexample Generation"
+weight: 30
+---
 
 *Expanded 2026; class names and module locations checked against the
 sources.*
 
 KeY can search for counterexamples to an (unprovable) goal by translating
-the sequent to SMT and asking Z3 for a model. 
+the sequent to SMT and asking Z3 for a model.
 
 ## High-level flow
 

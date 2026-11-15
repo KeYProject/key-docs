@@ -1,4 +1,7 @@
-# Infrastructure of Continuous Integration
+---
+title: "CI Infrastructure"
+weight: 50
+---
 
 !!! warning
     Parts of this page are historical: the primary CI nowadays runs as
@@ -41,20 +44,20 @@ Gitlab-CI. We assume that you have terminal access to the machine.
    $ sudo dpki -i gitlab-runner_amd64.deb
    ```
 4. Register the `gitlab-runner`
-   ``` 
+   ```
    $ sudo gitlab-runner register
-   ``` 
-   Use the information provided on the admin page of your GitLab instance.  
+   ```
+   Use the information provided on the admin page of your GitLab instance.
    After this step, the gitlab-ci should work on your computer. Your
    node should be visible on that admin page.
 
-5. Create access for Jenkins: 
+5. Create access for Jenkins:
 
-     ``` 
+     ```
      $ sudo adduser jenkins
      $ sudo usermod -aG docker jenkins
-     ``` 
-   
+     ```
+
      The Jenkins controller logins via SSH at the runners. There are
      two options for authentication, password or public/private-key. On
      bwcloud, the password authentication is disabled in

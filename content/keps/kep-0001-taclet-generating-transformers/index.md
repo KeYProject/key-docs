@@ -1,6 +1,7 @@
-
-
-# KEP-1: Taclet-Generating Transformers
+---
+title: "KEP-1: Taclet-Generating Transformers"
+weight: 10
+---
 
 !!! note "Status: proposal / proof-of-concept"
 
@@ -8,7 +9,7 @@
     branch and in an open pull request. The design is settled enough to try
     out, but details may still change, and the feature may be reshaped before
     (or instead of) being merged.
-    
+
     - **Realises a discussion from 2019**: [Taclet-Generation-Language](https://git.key-project.org/key/key/-/wikis/Taclet-Generation-Language)
     - **Pull request:** [KeYProject/key#3893](https://github.com/KeYProject/key/pull/3893) — "RFC / KEP-1: Taclet-generating transformers"
     - **Scope of this page:** the concept, how to use it from the GUI and the
@@ -101,12 +102,12 @@ in a goal to a taclet, subject to three contract requirements:
   taclet, in particular the identical name.
 
 The first generator is `OssLemmaGenerator`, which turns an aggregated
-one-step-simplification `F ↝ F'` into a taclet. 
-Not all OSS steps are supported (yet) as all generated taclets should be provable using 
+one-step-simplification `F ↝ F'` into a taclet.
+Not all OSS steps are supported (yet) as all generated taclets should be provable using
 KeYs Taclet PO generator.
 
 A generated lemma's soundness obligation is created **lazily** (proof search
-never pays for it) and proved with the One Step Simplifier switched **off**. 
+never pays for it) and proved with the One Step Simplifier switched **off**.
 This ensures that rules are proven correct with the taclet proof engine. Otherwise,
 one would rpoof OSS with itself as it used behing the scenes by the OSS lemma generator
 to produce the replacewith formula of the taclet.
@@ -232,4 +233,3 @@ framework is not tied to it.
 - The soundness-obligation *fragment* for taclets is what bounds applicability: modality-free
   find formula (including update-laden ones) are lemma-eligible; find formulas containing
   program modalities are not.
-  

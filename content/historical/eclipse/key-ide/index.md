@@ -1,4 +1,7 @@
-# KeYIDE
+---
+title: "KeY IDE"
+weight: 40
+---
 
 !!! warning "Unsupported historical content"
     This Eclipse integration is **no longer supported or maintained**. It

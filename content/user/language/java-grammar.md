@@ -1,18 +1,21 @@
-# KeY's Extension to Java
+---
+title: "KeY's Java Extensions"
+weight: 30
+---
 
-*weigl, 2021* 
+*weigl, 2021*
 
 ## Proof Java
 
 The first extension is *Proof Java* (PJava) which brings new proof-
-and JML-related construct into Java. 
+and JML-related construct into Java.
 
 New constructs:
 
 * JML-support:
   * escaped identifiers `\map`, `\set`
   * new modifiers: `ghost` and `model`
-  * New top-level 
+  * New top-level
   * simplified function calls
 * KeY-support:
   * New statements: `method-frame`, `loop-frame`, `merge_point`,
@@ -33,14 +36,14 @@ An escape expression is a variable access or function application with an escape
 * `<escapedId>( <expr>,<expr>, ... )`
 
 
-### Implicit Identifiers 
+### Implicit Identifiers
 
 KeY uses a third identifier kind, the implicit identifiers. These are
 Java identifiers enclosed by angular brackets `<...>`.
 
 
 !!! note weigl
-   
+
    We should change this into something unambigous. Normally,
    synthetic fields or classes uses the dollar sign `$`.
 
@@ -105,7 +108,7 @@ patterns. SJava has new construct, which are translated into
 placeholder AST, also known as Schemavariables (SV). Beside of these
 placeholder, where are some meta-construct for the term rewriting.
 
-In particular, the extension has following 
+In particular, the extension has following
 
 
 ### Schema Variables

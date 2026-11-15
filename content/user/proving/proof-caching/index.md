@@ -1,17 +1,17 @@
 ---
+title: "Proof Caching"
+weight: 60
 author: "Arne Keller"
-date: "June 2023"
+date_label: "June 2023"
 valid_for: "KeY-2.12.0"
 approved: mu 2026-06-19
 ---
-
-# Proof Caching
 
 !!! abstract
 
     This note describes the new *Proof Caching* functionality in KeY 2.12.
     It allows reusing parts of earlier proofs when performing another proof.
-   
+
 
 ## Overview
 

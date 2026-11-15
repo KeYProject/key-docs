@@ -1,10 +1,10 @@
 ---
+title: "Isabelle Translation"
+weight: 10
 author: "Nils Buchholz"
-date: "February 2025"
+date_label: "February 2025"
 valid_for: "a future release of KeY based on KeY 2.12.3"
 ---
-
-# Isabelle Translation
 
 !!! abstract
 
@@ -16,7 +16,7 @@ valid_for: "a future release of KeY based on KeY 2.12.3"
 The Isabelle Translation plugin provides automated translation of KeY sequents to Isabelle/HOL. It also allows for automated proof search using Isabelle on these translations.
 The Isabelle translation can be used on any update-free sequent.
 Thus it is necessary to first remove these from the sequent. This can be done automatically via the SMT Preparation macro in most cases.
-The translation is accessible through the context menu of the whole sequent, which can be opened by right-clicking the sequent arrow. There are two options in this menu. 
+The translation is accessible through the context menu of the whole sequent, which can be opened by right-clicking the sequent arrow. There are two options in this menu.
 
 `Translate to Isabelle`
 

@@ -1,9 +1,14 @@
-# Proving JML Contracts {#sec:application}
+---
+title: "Proving JML Contracts"
+weight: 40
+---
+
+<span id="sec:application"></span>
 
 Now we apply the described proof obligations to the tutorial example.
 First we demonstrate the generation of proof obligations, then we show
 how these can be handled by the KeY prover. Please make sure that
-the default settings of the KeY prover are selected (see Chapter 
+the default settings of the KeY prover are selected (see Chapter
 [3.3](#sec:prover){reference-type="ref" reference="sec:prover"}) and the
 maximum number of automatic rule applications is 5000. Be aware that the
 names of the proof rules and the structure of the proof obligations may
@@ -19,7 +24,7 @@ This method is specified by the JML annotation
 
        public normal_behavior
          requires true;
-         ensures result == (unsuccessfulOperations<=3); 
+         ensures result == (unsuccessfulOperations<=3);
          assignable \nothing;
 
 This JML method specification treats the `normal‘_behavior` case, i.e.,
@@ -112,8 +117,8 @@ closed automatically by the automatic strategy.
 
 The instance invariant of type `PayCard` is
 
-        public invariant log.\inv 
-                         && balance >= 0 && limit > 0 
+        public invariant log.\inv
+                         && balance >= 0 && limit > 0
                          && unsuccessfulOperations >= 0 && log != null;
 
 The invariant specifies that the `balance` of a paycard must be
@@ -150,7 +155,7 @@ depends have to be included. For example, the invariant of class
 
 and it is annotated with the accessible clause
 
-     accessible \inv: this.empty, this.balance, 
+     accessible \inv: this.empty, this.balance,
      transactionCounter, this.transactionId;
 
 This means the invariant of `LogRecord` depends at most on the fields or
@@ -184,9 +189,9 @@ position `i`:
   @ (\forall int x; 0 <= x && x < i; logArray[x] != null && \fresh(logArray[x]))
   @ && LogRecord.transactionCounter >= 0;
   @ assignable logArray[*], LogRecord.transactionCounter;
-  @ decreases logArray.length - i; 
-  @*/	   
-while(i<logArray.length){ 
+  @ decreases logArray.length - i;
+  @*/
+while(i<logArray.length){
   logArray[i++] = new LogRecord();
 }
 ```
@@ -214,4 +219,3 @@ those program variables and fields that are not changed by the loop.
 Of course one has to check that the given assignable clause is
 correct, this is done by the invariant rule. We refer
 to [@KeYBook2016] for further discussion and pointers on this topic.
-

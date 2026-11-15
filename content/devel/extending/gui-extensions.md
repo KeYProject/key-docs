@@ -1,4 +1,7 @@
-# GUI extensions
+---
+title: "GUI Extension Points"
+weight: 40
+---
 
 **weigl, 2019** *(revised 2026: list of extension points checked against
 `de.uka.ilkd.key.gui.extension.api.KeYGuiExtension` in `key.ui`)*
@@ -21,7 +24,7 @@ For example, the exploration extension specifies the fully qualified class name
 Every gui extension should be marked with `KeYGuiExtension` and is only loaded
 once. It does not matter on how many extension points it participate.
 
-Different GUI extension should not depend on each other, as 
+Different GUI extension should not depend on each other, as
 Gui Extension should loaded independent.
 
 
@@ -36,11 +39,11 @@ Annotation because of accessible via the class w/o instantiation.
 
 * Extension Points are now in `KeYGuiExtension`
 
-## General UI facilities 
+## General UI facilities
 
-### Icon Management 
+### Icon Management
 
-`KeYIconManagement` and `KeYIcon` introduces a way of icon management and configuration via `UIManager`.  
+`KeYIconManagement` and `KeYIcon` introduces a way of icon management and configuration via `UIManager`.
 
 ### Key-stroke Management
 
@@ -53,7 +56,7 @@ a properties file.
 
 Brings `Lookup` a successor for a flexible mediator replacement based on
 a service architecture, incl. Dependency Injection
- 
+
 
 ## `KeYGuiExtension.Startup`
 Entry point for KeY startup. `preInit(window, mediator)` is called before the
@@ -101,10 +104,10 @@ public JToolBar getToolbar(MainWindow mainWindow) {
 ## `KeYGuiExtension.Settings`
 
 * A common settings dialog should replace all existing setting dialogs.
-  - A component can register a `SettingsProvider` to the `SettingsManager.getInstance()` 
+  - A component can register a `SettingsProvider` to the `SettingsManager.getInstance()`
     to participate in the default instance.
-  - A `SettingsProvider` offers mainly a description, a panel, and a handler to save the settings. 
-  - A `SettingsProvider` can have children (`SettingsProvider`).  
+  - A `SettingsProvider` offers mainly a description, a panel, and a handler to save the settings.
+  - A `SettingsProvider` can have children (`SettingsProvider`).
   - An extension can announce a `SettingsProvider` by declaring to be `KeYGuiExtension.Settings`.
   - Existing settings were adopted.
 

@@ -1,7 +1,8 @@
 ---
+title: "8. Writing Documentation"
+weight: 90
 approved: mu 2026-06-19
 ---
-# How to write documentation
 
 This webpage uses [mkdocs](https://mkdocs.org). Mkdocs generates from a bunch of
 markdown files, and a specified template this beautiful web page.
@@ -43,7 +44,7 @@ In order to build the pages:
 ## Page reviews
 
 The original pages were written by the KeY community. In June 2026,
-the structure and content of this documentation has been revised 
+the structure and content of this documentation has been revised
 using support from generative AI (Claude to be precise).
 
 From that date on, all pages carry a badge. Pages that carry the badge
@@ -82,7 +83,7 @@ badge entirely. The badge is injected by the MkDocs hook
 * `mkdocs help` - Print this help message.
 
 
----- 
+----
 
 ### Headings
 
@@ -236,7 +237,7 @@ all abbreviations in a dedicated file[^1], and embedding it with the
 [`--8<--` notation][Snippets notation] at the end of each document.
 
 It's highly recommended to put the Markdown file containing the
-abbreviations outside of the `docs` folder (here, a folder with the name 
+abbreviations outside of the `docs` folder (here, a folder with the name
 `includes` is used), as MkDocs might otherwise complain about an
 unreferenced file.
 
@@ -407,7 +408,7 @@ only the `inline` modifier.
 
     ``` markdown
     !!! info inline end
-  
+
         Lorem ipsum dolor sit amet, consectetur
         adipiscing elit. Nulla et euismod nulla.
         Curabitur feugiat, tortor non consequat
@@ -719,7 +720,7 @@ at `1`, regardless of the starting line number specified as part of
 
     _Example_:
 
-    ```` markdown 
+    ```` markdown
     ``` python hl_lines="2 3"
     def bubble_sort(items):
         for i in range(len(items)):
@@ -1102,7 +1103,7 @@ _Markdown_:
           |     |   |
           +-----+   V
     ````
-    
+
 _Example_:
 
 ```aafigure
@@ -1214,7 +1215,7 @@ graph LR
 
 #### Using sequence diagrams
 
-[Sequence diagrams] describe a specific scenario as sequential interactions 
+[Sequence diagrams] describe a specific scenario as sequential interactions
 between multiple objects or actors, including the messages that are exchanged
 between those actors.
 
@@ -1336,7 +1337,7 @@ classDiagram
     +int postalCode
     +String country
     -validate()
-    +outputAsLabel()  
+    +outputAsLabel()
   }
 ```
 ````
@@ -1368,7 +1369,7 @@ classDiagram
     +int postalCode
     +String country
     -validate()
-    +outputAsLabel()  
+    +outputAsLabel()
   }
 ```
 
@@ -1473,8 +1474,8 @@ _Result_:
 
 ### Formatting
 
-Material for MkDocs provides support for several HTML elements that can be used 
-to highlight sections of a document or apply specific formatting. Additionally, 
+Material for MkDocs provides support for several HTML elements that can be used
+to highlight sections of a document or apply specific formatting. Additionally,
 [Critic Markup] is supported, adding the ability to display suggested changes
 for a document.
 
@@ -1482,7 +1483,7 @@ for a document.
 
 #### Highlighting changes
 
-When [Critic] is enabled, [Critic Markup] can be used, which adds the ability to 
+When [Critic] is enabled, [Critic Markup] can be used, which adds the ability to
 highlight suggested changes, as well as add inline comments to a document.
 
 _Example_:
@@ -1520,13 +1521,13 @@ Text can be <del class="critic">deleted</del> and replacement text
 
 #### Highlighting text
 
-When [Caret, Mark & Tilde] are enabled, text can be highlighted with a simple 
+When [Caret, Mark & Tilde] are enabled, text can be highlighted with a simple
 syntax, which is more convenient that directly using the corresponding
 [`mark`][mark], [`ins`][ins] and [`del`][del] HTML tags.
 
 _Example_:
 
-``` markdown 
+``` markdown
 - ==This was marked==
 - ^^This was inserted^^
 - ~~This was deleted~~
@@ -1544,13 +1545,13 @@ _Result_:
 
 #### Sub- and superscripts
 
-When [Caret & Tilde][Caret, Mark & Tilde] are enabled, text can be sub- and 
+When [Caret & Tilde][Caret, Mark & Tilde] are enabled, text can be sub- and
 superscripted with a simple syntax, which is more convenient that directly
 using the corresponding [`sub`][sub] and [`sup`][sup]  HTML tags:
 
 _Example_:
 
-``` markdown 
+``` markdown
 - H~2~0
 - A^T^A
 ```
@@ -1585,8 +1586,8 @@ _Result_:
 ### Icons + Emojis
 
 One of the best features of Material for MkDocs is the possibility to use [more
-than 8.000 icons][icon search] and thousands of emojis in your project 
-documentation with practically zero additional effort. Moreover, custom icons 
+than 8.000 icons][icon search] and thousands of emojis in your project
+documentation with practically zero additional effort. Moreover, custom icons
 can be added and used in `mkdocs.yml`, documents and templates.
 
   [icon search]: #search
@@ -1610,7 +1611,7 @@ the shortcodes at [Emojipedia].
 _Example_:
 
 ```
-:smile: 
+:smile:
 ```
 
 _Result_:
@@ -1744,8 +1745,8 @@ _Result_:
 
 ### Images
 
-While images are first-class citizens of Markdown and part of the core syntax, 
-it can be difficult to work with them. Material for MkDocs makes working with 
+While images are first-class citizens of Markdown and part of the core syntax,
+it can be difficult to work with them. Material for MkDocs makes working with
 images more comfortable, providing styles for image alignment and image
 captions.
 
@@ -1884,7 +1885,7 @@ _Result_:
 
 #### Using ordered lists
 
-Ordered lists must start with a number immediately followed by a dot. The 
+Ordered lists must start with a number immediately followed by a dot. The
 numbers do not need to be consecutive and can be all set to `1.`, as they will
 be re-numbered when rendered.
 
@@ -2026,16 +2027,13 @@ Inline blocks must be enclosed in `#!latex $...$` or `#!latex \(...\)`:
 _Example_:
 
 ``` latex
-The homomorphism $f$ is injective if and only if its kernel is only the 
-singleton set $e_G$, because otherwise $\exists a,b\in G$ with $a\neq b$ such 
+The homomorphism $f$ is injective if and only if its kernel is only the
+singleton set $e_G$, because otherwise $\exists a,b\in G$ with $a\neq b$ such
 that $f(a)=f(b)$.
 ```
 
 _Result_:
 
-The homomorphism $f$ is injective if and only if its kernel is only the 
-singleton set $e_G$, because otherwise $\exists a,b\in G$ with $a\neq b$ such 
+The homomorphism $f$ is injective if and only if its kernel is only the
+singleton set $e_G$, because otherwise $\exists a,b\in G$ with $a\neq b$ such
 that $f(a)=f(b)$.
-
-
-

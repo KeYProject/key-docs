@@ -1,4 +1,7 @@
-# Polarity Triggers for Rewrite Taclets
+---
+title: "Polarity Triggers for Rewrite Taclets"
+weight: 30
+---
 
 *Introduced October 2012 by Christoph Scheben*
 

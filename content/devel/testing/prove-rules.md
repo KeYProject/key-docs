@@ -1,6 +1,9 @@
-# Regression tests for proved rules
+---
+title: "Proved Rules"
+weight: 10
+---
 
-#### Changes 
+#### Changes
 
 * Jan 2014, Mattias Ulbrich
 * June 2015, Kai Wallisch
@@ -42,7 +45,7 @@ For example, the proof of the taclet bsum_empty can be found in
 The JUnit test case will fail
 
 1. if there is a proof for a taclet that is not marked `\lemma`.
-       (Just add the \lemma anntoation to the taclet) or 
+       (Just add the \lemma anntoation to the taclet) or
 2. if there is no proof for a taclet which is annotated lemma.
 3. if there is a proof, but that cannot be replayed in KeY.
 

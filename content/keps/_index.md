@@ -1,8 +1,8 @@
 ---
+title: "KeY Enhancement Proposals"
+weight: 40
 approved: none
 ---
-
-# KeY Enhancement Proposals (KEPs)
 
 A **KeY Enhancement Proposal** describes a larger, still-evolving change to KeY
 — a new mechanism, a shift in an established workflow, or an experiment whose
@@ -21,6 +21,6 @@ feature is and where to follow the discussion.
   — capture aggregated proof steps (starting with the One Step Simplifier) as
   generated, separately provable taclets instead of opaque built-in steps.
 - [KEP-2: Unique Java Package Names for KeY Gradle Modules](kep-0002-convention-for-packages/index.md)
-  — propose a consistent package-name scheme for 
+  — propose a consistent package-name scheme for
   Gradle sub-project to eliminate split-package issues and improve findabilitys.
 - [KEP-3: `\refines` operator](kep-0003-refines)

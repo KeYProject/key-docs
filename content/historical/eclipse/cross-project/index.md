@@ -1,4 +1,7 @@
-# KeY basics in Eclipse (Cross-project Functionality)
+---
+title: "KeY basics"
+weight: 10
+---
 
 !!! warning "Unsupported historical content"
     This Eclipse integration is **no longer supported or maintained**. It
@@ -19,16 +22,16 @@ screenshots may differ from the latest release.
 ## Create an example project
 
 1. Open example project wizard via Package Explorer context menu item "New, Example...".
-   
+
     [![Create an example project](example01thumb.png "Create an example project")](example01.png)
 
 2. Select "KeY, KeY Example"
 
-    [![Create an example project](example02thumb.png "Create an example project")](example02.png) 
+    [![Create an example project](example02thumb.png "Create an example project")](example02.png)
 
 3. Select one of the provided examples.
- 
-    [![Create an example project](example03thumb.png "Create an example project")](example03.png) 
+
+    [![Create an example project](example03thumb.png "Create an example project")](example03.png)
 
 4. Define a project name.
 
@@ -36,31 +39,31 @@ screenshots may differ from the latest release.
 
 5. Work with the created project. In the "Quicktour" example it is required to delete the package "gui".
 
-    [![Create an example project](example05thumb.png "Create an example project")](example05.png) 
+    [![Create an example project](example05thumb.png "Create an example project")](example05.png)
 
 ### Change taclet options
 
 1. Open preference dialog via main menu item "Window, Preferences".
 
-    [![Change taclet options](taclet01thumb.png "Change taclet options")](taclet01.png) 
+    [![Change taclet options](taclet01thumb.png "Change taclet options")](taclet01.png)
 
 2. Select preference page "KeY, Taclet Options" and change settings.
    The next instantiate proof will use them; current proofs are not
    influenced by changes.
 
-    [![Change taclet options](taclet02thumb.png "Change taclet options")](taclet02.png) 
+    [![Change taclet options](taclet02thumb.png "Change taclet options")](taclet02.png)
 
 ## Define class path used by KeY
 
 1. Open project properties of a Java/KeY project via context menu item "Properties".
 
-    [![Define class path used by KeY](classPath01thumb.png "Define class path used by KeY")](classPath01.png) 
+    [![Define class path used by KeY](classPath01thumb.png "Define class path used by KeY")](classPath01.png)
 
 
 2. Select properties page "KeY" and add additional source files. These
    files will be considered when the next proof is instantiated.
-    [![Define class path used by KeY](classPath02thumb.png "Define class path used by KeY")](classPath02.png) 
- 
+    [![Define class path used by KeY](classPath02thumb.png "Define class path used by KeY")](classPath02.png)
+
     * Boot class path: Replaces stubs and specifications provided by
      KeY, but also method implementations are considered.
     * Class path: Additional locations to the boot class path, only

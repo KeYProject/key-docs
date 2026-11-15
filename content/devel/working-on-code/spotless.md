@@ -1,4 +1,7 @@
-# Automatically formatting code with Spotless
+---
+title: "Formatting with Spotless"
+weight: 20
+---
 
 As a step towards a consistent code style in our code base, we automatically formatted our code with [spotless](https://github.com/diffplug/spotless/tree/main/plugin-gradle).
 

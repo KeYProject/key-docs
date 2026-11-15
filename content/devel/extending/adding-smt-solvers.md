@@ -1,12 +1,12 @@
 ---
-history: 
+title: "Adding SMT Solvers"
+weight: 60
+history:
   - Appelhagen
   - Pfeifer
   - Weigl (2025)
 date: 2025-12-01
 ---
-
-# Adding a new SMT Solver
 
 With [pull request 3597](https://github.com/keyproject/key/pull/3597), we switched to a JSON-based configuration format. The previous format was `properties`-based.
 
@@ -20,7 +20,7 @@ This can all be done without writing a lot of own code (except for the solver so
 
 
 !!! note
-    If the SMT solver drops out of the traditional communication scheme (SMT-LIB on stdin and stdout), an integration requires an implementation via the interface of [`AbstractSolverSocket`](https://javadoc.io/doc/org.key-project/key.core/latest/de/uka/ilkd/key/smt/communication/AbstractSolverSocket.html). 
+    If the SMT solver drops out of the traditional communication scheme (SMT-LIB on stdin and stdout), an integration requires an implementation via the interface of [`AbstractSolverSocket`](https://javadoc.io/doc/org.key-project/key.core/latest/de/uka/ilkd/key/smt/communication/AbstractSolverSocket.html).
 
 To add a solver, you specify its properties in a JSON file, following the [schema](smt-solvers.schema.json). The SMT solver definitions are loaded from various places, in order of loading (definitions in later files *overwrite* those from earlier files):
 
@@ -29,24 +29,24 @@ To add a solver, you specify its properties in a JSON file, following the [schem
 3. Path given by a system property: `-Dkey.smt_solvers=<path>`
 4. The current working directory: `./smt-solvers.json`
 
-Each file can add or substitute previous entry with the same name. Removal is currently not possible, but the substituation with an empty definition. 
+Each file can add or substitute previous entry with the same name. Removal is currently not possible, but the substituation with an empty definition.
 
-Use (4) to define SMT solvers for single project, more complex projects or scripting should rather use (3), and (2) is for user-specific but project-wide installation. 
+Use (4) to define SMT solvers for single project, more complex projects or scripting should rather use (3), and (2) is for user-specific but project-wide installation.
 
 ## The schema
 
-!!! info 
+!!! info
     A JSON schema file is available here: [smt-solvers.schema.json](smt-solvers.schema.json).
 
 * `string name = "Z3"`
-  
-    The solver's name. 
+
+    The solver's name.
 
     Should be unique amongst all used solvers, otherwise it is given a unique name throughout the solver loading process.
 
     If no name is given, the solver will be called "SMT Solver" or a unique version of that (depending on the other solvers' names).
 
-* `string info;` 
+* `string info;`
 
     Arbitrary information about the specified solver.
 
@@ -60,15 +60,15 @@ Use (4) to define SMT solvers for single project, more complex projects or scrip
     The cmd parameters appended to the command when starting the solver program, e.g. "-in" and "-smt2".
     If the property is not specified, the params are an empty String by default. They can later be changed by the user in the settings.
 
-* `string version = "";` 
+* `string version = "";`
 
     The version parameter appended to the command while starting the solver program in order to get its version.
 
     If the property is not specified, it is an empty String. Note that this cannot be changed later by the user.
-  
+
 * `string minVersion = "";`
 
-    The minimum supported version of this solver. By default, this is an empty String. 
+    The minimum supported version of this solver. By default, this is an empty String.
 
     Note that different versions are compared to this minimum version lexicographically - if that comparison is not possible, you may have to override the `SolverTypeImplementation` class.
 
@@ -78,9 +78,9 @@ Use (4) to define SMT solvers for single project, more complex projects or scrip
 
 * `int timeout = -1;`
 
-    The default solver process timeout (in seconds) as a integer value. 
+    The default solver process timeout (in seconds) as a integer value.
 
-    If the property is not set or non-positive, no timeout is forced. 
+    If the property is not set or non-positive, no timeout is forced.
 
     The current timeout can later be changed by the user in the settings.
 
@@ -98,7 +98,7 @@ Use (4) to define SMT solvers for single project, more complex projects or scrip
 
 * `array[string] handlers = [];`
 
-    The SMTHandlers used by this solver. 
+    The SMTHandlers used by this solver.
 
     If the property is not specified, it is an empty list by default which leads to all handlers being used.
 
@@ -107,18 +107,18 @@ Use (4) to define SMT solvers for single project, more complex projects or scrip
 
 * `array[string] handlerOptions = [];`
 
-    The handler options (a list of arbitrary strings) for the `SMTHandlers` used by the `SMTTranslator`. 
+    The handler options (a list of arbitrary strings) for the `SMTHandlers` used by the `SMTTranslator`.
 
     If the property is not specified, it is an empty list by default leading to default behavior of the SMTHandlers.
 
     All the used handlers handle the options on their own.
 
-    ??? warn 
+    ??? warn
         weigl: Completely unclear how to find such handlers. Or define new ones
 
 
 * `string preamble = "key.core\src\main\resources\de\uka\ilkd\key\smt\newsmt2\preamble.smt2"`
 
-    A string describing a resource. Traditional, the preamble is loaded from the   classpath, by default, resource is used `de/uka/ilkd/key/smt/newsmt2/preamble.smt2`. 
+    A string describing a resource. Traditional, the preamble is loaded from the   classpath, by default, resource is used `de/uka/ilkd/key/smt/newsmt2/preamble.smt2`.
 
-    If the string starts with either `file:` or `http:` (e.g., `file://mypreamble.smt2` or `http://example.com/preamble.smt2`), the resource is loaded from the file system or URL instead. 
+    If the string starts with either `file:` or `http:` (e.g., `file://mypreamble.smt2` or `http://example.com/preamble.smt2`), the resource is loaded from the file system or URL instead.

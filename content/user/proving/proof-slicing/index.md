@@ -1,12 +1,12 @@
 ---
+title: "Proof Slicing"
+weight: 70
 author: "Arne Keller"
-date: "December 2022"
+date_label: "December 2022"
 valid_for: "KeY-2.12.0"
 updated: "June 2026"
 approved: wp 2026-06-19
 ---
-
-# Proof Slicing
 
 !!! abstract
 
@@ -15,7 +15,7 @@ approved: wp 2026-06-19
     removing proof steps that are not necessary to close the proof.
 
     This feature is available if the extension is activated in the settings.
-   
+
 
 ## Overview
 

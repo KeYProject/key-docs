@@ -1,4 +1,7 @@
-# KeYClipse
+---
+title: "Eclipse plugins (unsupported)"
+weight: 10
+---
 
 !!! warning "Unsupported historical content"
     The Eclipse integrations described in this section are **no longer
@@ -106,7 +109,7 @@ available on the [VisualDbC](VisualDbC/) website.
 
 Stubby allows to generate stubs annotated with default JML
 specifications for used API members.
-    
+
 The following screenshot gives an impression of how generated stub
 files look like. More details including download instructions and
 a user guide are available on the [Stubby](Stubby/)

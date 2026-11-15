@@ -1,4 +1,7 @@
-# Stubby - The Stub Generator
+---
+title: "Stubby"
+weight: 30
+---
 
 !!! warning "Unsupported historical content"
     This Eclipse integration is **no longer supported or maintained**. It

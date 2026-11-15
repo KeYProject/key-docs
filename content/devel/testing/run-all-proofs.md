@@ -1,4 +1,7 @@
-# Testing of KeY 
+---
+title: "RunAllProofs"
+weight: 20
+---
 
 ## Usage of RunAllProofs JUnit implementation
 
@@ -32,7 +35,7 @@ RunAllProofs test run:
 
  - Execute ant task "runAllProofs" in component key.core.test, for
    instance from root of KeY git repository the following should work:
-   
+
    ```
    ant -buildfile key/key.core.test/build.xml runAllProofs
    ```
@@ -162,12 +165,12 @@ The following settings are currently supported:
                are terminated as soon as the timeout specified here has
                elapsed. No timeout occurs if not specified. Value is in
                seconds.
- 
+
 - forkMemory: If the fork mode is not set to noFork, the launched subprocesses
               get the specified amount of heap memory. The value is passed
               directly to the Java process using -Xmx (like 500m or 2G).
 
-!!! note 
+!!! note
     The available options are also listed in automaticJAVADL.txt.
     You should look there, too.
 
@@ -253,7 +256,7 @@ which is similar to the following explicit group declarations:
     provable ./standard_key/java_dl/methodCall.key
   }
   group min-unprovable1.key {
-    notprovable ./standard_key/java_dl/jml-min/min-unprovable1.key 
+    notprovable ./standard_key/java_dl/jml-min/min-unprovable1.key
   }
 ```
 

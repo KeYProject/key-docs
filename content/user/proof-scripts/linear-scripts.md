@@ -1,4 +1,7 @@
-# Linear Proof Scripts[^1]
+---
+title: "Linear Proof Scripts"
+weight: 50
+---
 
 !!! note
     This covers linear scripts. Scripts can also be attached to [JML assertions with scripts](../jml).

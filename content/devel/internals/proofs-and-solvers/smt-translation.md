@@ -1,4 +1,7 @@
-# SMT Translation
+---
+title: "SMT Translation"
+weight: 20
+---
 
 ##### Abstract
 > This document is aimed at Developers who wish to contribute to the KeY-SMT integration,
@@ -45,9 +48,9 @@ arithmetic, quantifiers, ...). Adding a new handler requires taking the followin
    same as the Java class, but the file extension should be `.preamble.xml`. Axioms and declarations
    are added as SMTLIB within XML `entry` tags. The axioms and declarations will be loaded on
    demand, if a term of the corresponding handler type is found on the sequent.
-   
+
    Example (from `BooleanConnectiveHandler.preamble.xml`):
-   
+
 ``` xml
 <entry key="bool.decls">
 (declare-fun u2b (U) Bool)

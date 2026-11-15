@@ -1,4 +1,7 @@
-# How to add a proof macro
+---
+title: "Add a Proof Macro"
+weight: 50
+---
 
 *2026 — the code below was compiled against the current KeY sources and
 executed: a problem file whose proof script invokes the macro closes with

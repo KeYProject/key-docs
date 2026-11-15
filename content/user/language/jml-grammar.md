@@ -1,26 +1,29 @@
-# JML Grammar
+---
+title: "JML Grammar"
+weight: 10
+---
 
 !!! abstract
-    
+
     Cheat sheet and definition for JML*, the JML-dialect of KeY.
-  
-    Currently under construction.   
+
+    Currently under construction.
 
 
-## Introduction 
+## Introduction
 
 Java Modelling Language (JML) is a specification for Java software and currently the only supported specification language in KeY.
-JML is itself an extension and also a restriction of Java, e.g., an Java expression is a valid JML expression and thus it can be used 
+JML is itself an extension and also a restriction of Java, e.g., an Java expression is a valid JML expression and thus it can be used
 inside ensures clauses, but for well-definedness reason this expression has to side-effect free.
 
-KeY supports a subset of JML, as defined in its [own reference manual](http://www.eecs.ucf.edu/~leavens/JML/jmlrefman/jmlrefman.html), 
+KeY supports a subset of JML, as defined in its [own reference manual](http://www.eecs.ucf.edu/~leavens/JML/jmlrefman/jmlrefman.html),
 and has also added extension to this subset. The KeY-supported dialect is called JML*.
 
 In this document, we give rather technical, reference like overview of the grammar and tweaks of JML*.
 
 ## JML* the top level view
 
-JML* specification are defined within Java comments, which starts with an `@` sign. 
+JML* specification are defined within Java comments, which starts with an `@` sign.
 Valid JML* comments are:
 
 ```
@@ -30,25 +33,25 @@ Valid JML* comments are:
  */
 ```
 
-In contrast to the JML reference, KeY currently *does not* support comment tags. Therefore `//+KeY@` 
+In contrast to the JML reference, KeY currently *does not* support comment tags. Therefore `//+KeY@`
 is currently not a legal.
 
 
 !!! note
-    
+
     A common beginners mistakes is a white space between  `//` and `@` sign, like `// @`.
-    These commons are not considers as JML comments. 
+    These commons are not considers as JML comments.
 
     This is also a nice trick to disable JML comments.
 
-JML comments can be placed in any valid position where also a Java comment can be placed. But in practise, 
+JML comments can be placed in any valid position where also a Java comment can be placed. But in practise,
 you should keep strict policy:
 
-* Comments with invariants, method and field declaration are part of the class, 
+* Comments with invariants, method and field declaration are part of the class,
   and should be placed where the member variables are declared.
-* There are also JML comments, which contains only additional modifier. 
+* There are also JML comments, which contains only additional modifier.
   These comments should be placed along the Java modifiers.
-* Method contracts should be place for a the associated method, like loop contracts should directly placed 
+* Method contracts should be place for a the associated method, like loop contracts should directly placed
   before a Java loop statement and block contracts for Java code blocks.
 * The last category are JML comments that are used as Java statements. These should be placed as Java statements.
 
@@ -373,25 +376,25 @@ currently supports names upon following entities:
 
 * class invariants, axioms, intitially
 * loop invariants, decreasing
-* clauses: ensures, requires, maesured_by, captures, diverges, duration, when, signals, breaks, continues, returns, signals\_only, readable\_if, writeable\_if, monitors\_for, history\_contraint, 
+* clauses: ensures, requires, maesured_by, captures, diverges, duration, when, signals, breaks, continues, returns, signals\_only, readable\_if, writeable\_if, monitors\_for, history\_contraint,
 * statement: set, assume and assert
-* contracts 
+* contracts
 * On JML terms via `\lbl(*name*, term)` function
 
 These labels do not carry semantics. These are just names which can be
 exploited.
 
-!!! note 
-    
+!!! note
+
 	You can use the feature flag `JML_ENTITY_NAMES_AS_TERMLABEL` to activate the transfer of the JML entity names into KeY's term label (label `named(X)` for entity name "X"). This can be used for further analysis.
 
-For example: 
+For example:
 
 ```java
 class Test {
     //@ public invariant MY_SUPER_INVARIANT: CONST == 42;
     public final int CONST = 42;
-	
+
     /*@ requires Z: this != null;
       @ ensures A: \result == 42;
       @ ensures B: \result >= 0;
@@ -406,7 +409,7 @@ class Test {
 
 ```
 jmlContract     : [JML_START](#JML_START)
-                  [methodContracts](#methodContracts) mod* 
+                  [methodContracts](#methodContracts) mod*
                   [JML_END](#JML_END) ;
 
 methodContracts : ALSO? methodContract ( ALSO methodContract )*
@@ -835,4 +838,4 @@ Types are just normal identifiers, e.g.
 */
 jmlTypeType:  (NULLABLE | NON_NULL)? typeType
             ;
-```            
+```

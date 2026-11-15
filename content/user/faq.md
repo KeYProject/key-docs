@@ -1,4 +1,7 @@
-# FAQ
+---
+title: "9. FAQ"
+weight: 90
+---
 
 ## I get parsing errors that have nothing to do with the Java file I tried to load in KeY.
 ### Explanation:

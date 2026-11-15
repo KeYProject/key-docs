@@ -1,4 +1,7 @@
-# Developer Guide
+---
+title: "Developer Guide"
+weight: 20
+---
 
 This guide is for developers who want to work *on* KeY or build *on top
 of* it. (If you want to *use* KeY to verify programs, see the

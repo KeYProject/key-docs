@@ -1,12 +1,12 @@
 ---
+title: "JavaDL Escapes in JML"
+weight: 40
 approved: mu 2026-06-19
 author: Mattias Ulbrich
-date: August 2011
+date_label: August 2011
 valid_for: KeY since 2011
 updated: KeY 2.12
 ---
-
-# Embedding JavaDL expressions and functions into JML expressions
 
 JML is the standard specification language for KeY (JML&starf; more
 precisely). Though it is still possible to specify JavaDL-contracts in `.key`

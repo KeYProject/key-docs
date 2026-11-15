@@ -1,4 +1,7 @@
-# How to add a toolbar
+---
+title: "Add a Toolbar"
+weight: 30
+---
 
 *2026 — code compiled against the current KeY sources.*
 

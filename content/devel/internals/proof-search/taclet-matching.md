@@ -1,4 +1,7 @@
-# Taclet Matching
+---
+title: "Taclet Matching"
+weight: 20
+---
 
 *2026: class names and the described design checked against the current
 sources (`key.ncore.matcher` and `de.uka.ilkd.key.rule.match.vm`).*

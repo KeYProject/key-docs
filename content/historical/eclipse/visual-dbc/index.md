@@ -1,4 +1,7 @@
-# Visual DbC
+---
+title: "VisualDBC"
+weight: 70
+---
 
 !!! warning "Unsupported historical content"
     This Eclipse integration is **no longer supported or maintained**. It

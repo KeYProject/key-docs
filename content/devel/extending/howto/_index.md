@@ -1,4 +1,7 @@
-# Developer How-Tos
+---
+title: "How-Tos (verified recipes)"
+weight: 10
+---
 
 Step-by-step recipes for common extension tasks. Each how-to was checked
 against the KeY sources, and the code shown was compiled (and, for the

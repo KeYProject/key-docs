@@ -1,7 +1,10 @@
-# Grammar
+---
+title: "The KeY Language"
+weight: 20
+---
 
 In KeY, there are multiple formal languages for reading specification and
-logical constructs. 
+logical constructs.
 
 On the specification we have `JML*` -- a dialect of the Java Modeling Language
 -- which comes within the Java files. JML specification are parsed and
@@ -23,7 +26,7 @@ application.
 This format is not intuitive for humans, hence we defined an syntax that also
 uses infix and postfix notions.
 
-## Expression Syntax 
+## Expression Syntax
 
 Precedence:
 
@@ -34,19 +37,19 @@ Precedence:
 3. Implication (`->`)
 4. Disunction (`|`)
 5. Conjunction (`&`)
-6. Equalities (`=`, `!=`), Negation (`! term`), Quantifier , Modality 
-7. Comparison (`<, <=, >=, >`) 
+6. Equalities (`=`, `!=`), Negation (`! term`), Quantifier , Modality
+7. Comparison (`<, <=, >=, >`)
 8. Arithmetik (`+,-`)
 9. Multiplicaiton (`*`)
 10. Division (`/` and Modulo (`%`)
 11. Unary minus (`- term`)
 12. Cast (`(sort) term`)
-13. Bracket suffixes, (`term[i]`, `term[1,5]`, `term[*]`, `term[a:=2]`) 
-14. Final primitives: 
+13. Bracket suffixes, (`term[i]`, `term[1,5]`, `term[*]`, `term[a:=2]`)
+14. Final primitives:
   * Parens (`( term )`)
   * Location set, Location term
   * Substitution `{\subst x; y} f(x)`
-  * If-then-else and Ifex-then-else (`\if (a) TRUE \else b`) 
+  * If-then-else and Ifex-then-else (`\if (a) TRUE \else b`)
   * Abbreviaton (`@name`)
   * Function names and application (`T.(U::a)`, `t.query()`, `a.b@heap2`)
   * Literals
@@ -54,7 +57,7 @@ Precedence:
 
 ## Declaration Syntax and Keywords
 
-## Reference 
+## Reference
 
 ### SORTS {: #Token-SORTS}
 
@@ -92,13 +95,13 @@ Precedence:
 
 ## General definition
 
-## Goals 
+## Goals
 ### CLOSEGOAL {: #Token-CLOSEGOAL}
 ## REPLACEWITH {: #Token-REPLACEWITH}
 ## ADDRULES {: #Token-ADDRULES}
 ## ADDPROGVARS {: #Token-ADDPROGVARS}
 
-## Attributes 
+## Attributes
 
 ### NONINTERACTIVE {: #Token-NONINTERACTIVE}
 ### DISPLAYNAME {: #Token-DISPLAYNAME}
@@ -121,11 +124,11 @@ with the help of the `\varcond(...)` construct. Consider the example:
 rules {
   xyz {
     \find(...)
-    
+
     \varcond(\new(#boolv, boolean))
-    
+
     \replacewidth(...)
-  
+
   }
 }
 ```
@@ -148,7 +151,7 @@ observers with a single heap argument, that should be generalised.
 
 ### `\applyUpdateOnRigid`
 
-### `\simplifyIfThenElseUpdate` 
+### `\simplifyIfThenElseUpdate`
 
 ### `\skolemFormula` SKOLEMFORMULA {: #Token-SKOLEMFORMULA}
 
@@ -256,7 +259,7 @@ observers with a single heap argument, that should be generalised.
 
 ### SUBST {: #Token-SUBST}
 
-# Term constructs 
+# Term constructs
 
 
 ## if-then-else {: #Token-IF} {: #Token-THEN} {: #Token-ELSE}
@@ -435,4 +438,3 @@ observers with a single heap argument, that should be generalised.
 ## MODALITYB_END {: #Token-MODALITYB_END}
 
 ## MODALITYBB_END {: #Token-MODALITYBB_END}
-

@@ -1,7 +1,8 @@
 ---
+title: "Writing Taclets"
+weight: 20
 approved: dd 2026-08-11
 ---
-# How to write new taclets
 
 New prover rules in KeY can be added in form of built-in rules[^1] written in plain
 Java code and as so-called "taclets" ("schematic theory-specific rules").
@@ -76,7 +77,7 @@ The `\rules` block contains the taclet definitions, each of which begins with th
 
 Since the `\find(...)` part of the taclet definition does not contain a `==>`, the `cut_direct` taclet finds (matches) a sub-term anywhere in a sequent formula.
 The application restriction flag `\sameUpdateLevel` ensures that the `\find(...)` and `\add(...)` parts are
-under the same update application (or none). 
+under the same update application (or none).
 
 !!! info
 
@@ -227,7 +228,7 @@ declare a new "program schema variable sort" in
 example) which calls the constructor of `ProgramSVSort` with the identifier by
 which it later should be referred to in taclet definitions.
 
-A language extension like the merge points has to be added to several parts in the system: 
+A language extension like the merge points has to be added to several parts in the system:
 
 1. A parser model extension is added in [JML ToolKit](https://github.com/jmltoolkit/jmltk)
 (see `MergePointStatement.java` for an example).
@@ -238,7 +239,7 @@ A language extension like the merge points has to be added to several parts in t
 `MergePointStatement`.
 4. Extension of Java visitor classes: Classes `Visitor.java`,
 `JavaASTVisitor.java`, `CreatingASTVisitor.java`, and `ProgVarReplaceVisitor.java`
-in directory `de/uka/ilkd/key/java/visitor/`. Note that not all of these might 
+in directory `de/uka/ilkd/key/java/visitor/`. Note that not all of these might
 apply to you, e.g. if your new statement does not contain program variables that
 might have to be substituted in a proof.
 5. Extension of the pretty printer to nicely render your extension in sequents:
@@ -261,7 +262,7 @@ transformers this to the system, follow these steps:
 1. Add a model class to the directory `src/de/uka/ilkd/key/rule/metaconstruct/`
 (see e.g. `ForToWhile.java`). The class should extend `ProgramTransformer` and
 pass the keyword to be used to the super class, here `#for-to-while`.
-2. Extend the `visit(MetaConstruct, Void)` method in `src/de/uka/ilkd/key/java/JP2KeYConverter` 
+2. Extend the `visit(MetaConstruct, Void)` method in `src/de/uka/ilkd/key/java/JP2KeYConverter`
 to return the new class when appropriate. See what's done for `#for-to-while`.
 3. Add the construct to [the parser](https://github.com/jmltoolkit/jmltk).
 
@@ -293,7 +294,7 @@ applications. To this end, custom completions implementing
 added and registered in
 `/key.ui/src/de/uka/ilkd/key/gui/WindowUserInterfaceControl.java`.
 
-!!! warning 
+!!! warning
     Obviously, interactive rule application completions are currently
     only designed to handle BuiltInRules. So for taclets, this will have to be
     adapted!
@@ -842,7 +843,7 @@ in the frame condition,
 it is necessary to use the value *before* the loop first executes in the frame condition.
 
 
-To achieve this, this condition generates 
+To achieve this, this condition generates
 
 1. the "before" version of each variable that may be written to by the loop `
 MiscTools#getLocalOuts(ProgramElement, Services)`;
@@ -947,7 +948,7 @@ observers with a single heap argument, that should be generalised.
    Create a new condition
    * `schema1` @param schema1 first argument, must be schema variable
    * `schema2` @param schema2 2nd argument, must be schema variable
-   
+
 ### `\scrictSub`
 
 General varcond for checking relationships between types of schema variables.

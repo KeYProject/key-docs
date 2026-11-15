@@ -1,4 +1,7 @@
-# How to add taclets
+---
+title: "Add Taclets"
+weight: 40
+---
 
 *2026 — the project-local example below was executed against the current
 KeY sources: the file loads, the custom rule applies, and the proof

@@ -1,4 +1,7 @@
-# MonKeY
+---
+title: "MonKeY"
+weight: 50
+---
 
 !!! warning "Unsupported historical content"
     This Eclipse integration is **no longer supported or maintained**. It

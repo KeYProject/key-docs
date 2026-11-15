@@ -1,10 +1,10 @@
 ---
+title: "Proof Exploration"
+weight: 30
 author: "Alexander Weigl"
-date: "August 2021"
+date_label: "August 2021"
 valid_for: "KeY-2.10.0"
 ---
-
-# Proof Exploration
 
 !!! abstract
 
@@ -12,8 +12,8 @@ valid_for: "KeY-2.10.0"
     Proof Exploration allows a flexible editing of sequents, and
     therefore brings "What-If"-Analyses into KeY.
 
-    This feature is currently only available with `--experimental` flag. 
-   
+    This feature is currently only available with `--experimental` flag.
+
 
 ## Overview
 
@@ -26,8 +26,8 @@ close. For this investigation, we offer following actions:
 * Edit a formulae (or subterm) on a sequent
 * Delete formulae from the sequent
 
-Proof Nodes, which are affected of exploration actions, are marked 
-in the Proof Tree, accordingly. 
+Proof Nodes, which are affected of exploration actions, are marked
+in the Proof Tree, accordingly.
 
 
 !!! attention

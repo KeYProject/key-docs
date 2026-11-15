@@ -1,4 +1,7 @@
-# Testing Infrastructure of KeY
+---
+title: "7. Testing"
+weight: 80
+---
 
 ## How to run tests
 
@@ -73,7 +76,7 @@ following categories:
   CI (excluded at target `testFast`)
 * Performance -- performance regression tests, only run on demand or on master
   (excluded at target `test` and `testFast`)
-  
+
 Just annotate your classes or methods with `@Category` annotation, for example:
 ```Java
 @Category(Slow.class)
@@ -89,4 +92,3 @@ do not impact the coverage.
 
 You can create new JUnit test categories. See `build.gradle` and
 `key.util/../testcategories/Slow.java`.
-

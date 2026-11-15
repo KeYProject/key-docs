@@ -1,4 +1,7 @@
-# How to add a term label
+---
+title: "Add a Term Label"
+weight: 70
+---
 
 !!! warning "Status: open pull request"
     The term-label rework this recipe assumes is **not yet merged** — it is an

@@ -1,9 +1,12 @@
-# Proof Scripts in JML 
+---
+title: "Proof Scripts in JML"
+weight: 60
+---
 
 !!! note
     This describes proof scripts from JML as opposed to [linear scripts](../linearScripts)
     that are written in KeY files in JavaDL.
-    
+
 The KeY verification system supports **proof scripts** to make interactive proofs **repeatable, robust, and easier to manage**.
 Instead of manually clicking through proof steps in the GUI for each verification run, users can persist important proof interactions directly in the source code via **JML assertions**.
 
@@ -78,7 +81,7 @@ A script consists of a list of commands. The most important ones include:
 * **`assert "formula" \by { ... }`**
   Creates a case split.
   The nested block can contain its own script.
-  
+
 The documentation also contains [a full list of all proof script commands](../commands).
 
 ## Matching and Disambiguation
@@ -133,7 +136,7 @@ rule "andRight" \by {
 
 * **`assume`**
   Add a formula as an assumption without proving it (for quick what-if analysis).
-  
+
 * **`cheat`**
   Closes a goal unconditionally (like `assume false`).
 

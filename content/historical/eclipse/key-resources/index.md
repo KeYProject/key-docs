@@ -1,4 +1,7 @@
-# KeY Resources
+---
+title: "Resources"
+weight: 90
+---
 
 !!! warning "Unsupported historical content"
     This Eclipse integration is **no longer supported or maintained**. It
@@ -106,13 +109,13 @@ proofs.
 
      ![](log01thumb.png "Customize build settings")
 
-2. Open view "Verification Log". 
+2. Open view "Verification Log".
 
      ![](log02thumb.png "Customize build settings")
 
 3. Table shows used settings and times of performed verification
    tasks.
-    
+
      ![](log03thumb.png "Customize build settings")
 
 
@@ -126,7 +129,7 @@ proofs.
 
 2. Select properties page "KeY, KeY Proof Management" and customize
 build settings, e.g. enable counter example and test case generation.
-    
+
     ![](custom02thumb.png "Customize build settings")
 
 

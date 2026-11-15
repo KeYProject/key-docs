@@ -1,9 +1,10 @@
 ---
+title: "Linearized Proof Tree"
+weight: 50
 approved: mu 2026-06-19
 author: "Arne Keller"
-date: "2024"
+date_label: "2024"
 ---
-# Proof Tree: linearized mode
 
 In the proof tree settings, you can enable the "Linearize Proof Tree" option.
 

@@ -1,11 +1,14 @@
-# Using the classpath directives in KeY
+---
+title: "The Classpath Directive"
+weight: 10
+---
 
 The `classpath` directive allows to include library code into a KeY
 project. These classes may be present either as
 
 - a collection of class files
 - a collection of normal java source files
-- a collection of java stub source files 
+- a collection of java stub source files
 
 or in a combination.
 
@@ -90,7 +93,7 @@ an arbitrary name is created.
 ## Combining class files and stubs
 
 It is possible to use both file types: class files and Java stubs. There may
-only be either a class file or a source specification for one class. 
+only be either a class file or a source specification for one class.
 
 You can use the "stubmaker" tool available in the key-tools repository to create
 a set of skeleton java source files for your libraries and which can be fed to
@@ -129,14 +132,14 @@ have to make sure that all classes in A that are *not* marked with a
 to look into the key sources[1] to compare the current implementation
 of the default classes.
 
-If you forget to include classes, it may to lead to unexpected and 
+If you forget to include classes, it may to lead to unexpected and
 mysterious errors at runtime of KeY.
 
 [1] `key.core/resources/de/uka/ilkd/key/java/JavaRedux`
 
 ## Known issues
 
-- Recoder does not recognise static inner classes. 
+- Recoder does not recognise static inner classes.
   (A patch is on the way)
 - Private inner classes are difficult to map.
 - If sources in class paths contain JML //@set statements, deletion of

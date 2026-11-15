@@ -1,4 +1,7 @@
-# Proof loading / saving
+---
+title: "Proof Loading and Saving"
+weight: 10
+---
 
 *Expanded 2026; class names checked against `key.core`
 (`de.uka.ilkd.key.proof.io`).*

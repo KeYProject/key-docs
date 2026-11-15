@@ -1,4 +1,7 @@
-# Logging 
+---
+title: "Logging"
+weight: 30
+---
 
 *weigl, November 2022*
 
@@ -23,20 +26,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class MyImportantThing {
-  public static final Logger LOGGER = 
+  public static final Logger LOGGER =
          LoggerFactory.getLogger(MyImportantThing.class); //(1)!
 
-  
+
   public void foo(int x) {
     LOGGER.debug("A debugging message");
     LOGGER.info("Param {}", x);
     LOGGER.warn("A warning");
-    LOGGER.error("An exception occured", new Exception());  
+    LOGGER.error("An exception occured", new Exception());
   }
 }
 ```
 
-1.  Using the class for logger category allows a filter based on the packages. For example, we can later surpress all logging messages given by the theorem prover core. 
+1.  Using the class for logger category allows a filter based on the packages. For example, we can later surpress all logging messages given by the theorem prover core.
 
 
 
@@ -47,7 +50,7 @@ warn and error. The use in KeY should be oriented as follows:
   regular program execution will terminate. `error` should not be used
   on expected, catched, and handled exceptions when the execution of
   the program continues.
-  
+
     `error` should always indicate an unexpected behavior of the
   program.
 
@@ -57,7 +60,7 @@ try { ... }
 catch(Exception e) {
  LOGGER.error("{}", e);
  throw new RuntimeException(e);
-} 
+}
 ```
   By re-throwing an exception the caller handles it. Either you
   re-throw, or you handle/log it.
@@ -70,10 +73,10 @@ catch(Exception e) {
 
 
 * `info` is for interresting things which might useful for some
-  developer. Normally this does not appear at the console. 
-  
+  developer. Normally this does not appear at the console.
+
 * `debug` is only for debugging purposes. It is messy.
-  
+
 
 ## How to use KeY as a library
 
@@ -93,5 +96,3 @@ is configured to log all messages (incl. debug) into the
 `$HOME/.key/logs` and all messages above and incl. `warn` at the
 console. You can manipulate the log level for the console via `-v`
 switch.
-
-

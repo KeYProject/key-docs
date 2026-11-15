@@ -1,4 +1,7 @@
-# Multi-Core Proving
+---
+title: "Multi-Core Proving"
+weight: 40
+---
 
 KeY can run its automatic proof search on several processor cores at once. This
 page explains what that means, what it gains, and how it is built. It stays at the
@@ -233,9 +236,9 @@ proof there, so the difference is in how the two pick their next goal, not in
 parallelism.
 
 The best cases reach 3.4 to 4.4 at eight workers. Narrow proofs do not.
-`Saddleback_search` is dominated by one long branch (relatively few branches): it peaks 
-at four workers and falls back at eight, where the extra workers only poll on an empty queue. 
-`ArrayList.remFirst` closes in under a second and has too little to share out. What a proof 
+`Saddleback_search` is dominated by one long branch (relatively few branches): it peaks
+at four workers and falls back at eight, where the extra workers only poll on an empty queue.
+`ArrayList.remFirst` closes in under a second and has too little to share out. What a proof
 can reach is set by its widest point, not by the number of cores.
 
 ## Future directions

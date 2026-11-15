@@ -1,25 +1,28 @@
-# Adding a new SMT Solver
+---
+title: "Adding SMT Solvers"
+weight: 10
+---
 
 KeY loads the definition of SMT solvers from JSON files with the KeY dialect. Users can add new solvers by creating a JSON file on various places.
 
-Here given in order of precedence. 
+Here given in order of precedence.
 
 1. The current working directory: `./smt-solvers.json`
 2. Path from system property: `-Dkey.smt_solvers=<path>`
 3. The KeY user configuration folder: `~/.key/smt-solvers.json`
 4. All resources with the name `de/uka/ilkd/key/smt/solvertypes/smt-solvers.json` in the classpath.
 
-All files are loaded but the lowest number adds / overwrites the solvers defined by the higher numbers. Hence, 
-local configuration overwrites user configuration overwrites classpath configuration. 
+All files are loaded but the lowest number adds / overwrites the solvers defined by the higher numbers. Hence,
+local configuration overwrites user configuration overwrites classpath configuration.
 
-But all settings can be finally overwritten using the proof independent settings or the KeY settings dialog. 
+But all settings can be finally overwritten using the proof independent settings or the KeY settings dialog.
 
 ## Configuration file format
 
 Solver properties files allow developers to
 
-- Add support for an SMT solver currently not used by KeY (as long as it accepts SMT-LIB as input). In this case, 
-it will likely be necessary to also implement a new subclass of `de.uka.ilkd.key.smt.communication.AbstractSolverSocket` 
+- Add support for an SMT solver currently not used by KeY (as long as it accepts SMT-LIB as input). In this case,
+it will likely be necessary to also implement a new subclass of `de.uka.ilkd.key.smt.communication.AbstractSolverSocket`
 to handle the solver output unless an existing solver socket suffices.
 - Add a new variant of an SMT solver, for example "Z3, but only with quantifier-free formulas" or "CVC5, but ignoring all formulas with casts".
 - Add a new variant of an SMT solver with specific options / a specific preamble (e.g., Z3 with "(set-option :produce-proofs true)").
@@ -40,10 +43,10 @@ and place the file in one of the locations listed above, e.g.
 ```json
 // Every JSON contains a single JSON map, where value are an solver type definition, and the key is a unique identifier for the solver.
 {
-  "SOLVER_KEY": 
+  "SOLVER_KEY":
     {
       // The solver's name. Should be unique amongst all used solvers, otherwise it is given a unique name throughout the solver loading process.
-      "name": "", 
+      "name": "",
 
       // Arbitrary information about the specified solver for the human.
       "info": "",
@@ -111,12 +114,12 @@ params=--params
 * `version` -- The version parameter appended to the command while starting the solver program in order to get its version.
 If the property is not specified, it is an empty String "". Note that this cannot be changed later by the user.
 
-* `minVersion` -- The minimum supported version of this solver. By default, this is an empty String. 
+* `minVersion` -- The minimum supported version of this solver. By default, this is an empty String.
 Note that different versions are compared to this minimum version lexicographically - if that comparison is not possible, you may have to override the SolverTypeImplementation class.
 
 * `delimiters` -- The delimiters used by the solver program in its stdout messages. Default value is the array {"\n", "\r"}.
 
-* `timeout` -- The default solver process timeout (in seconds) as a long value. 
+* `timeout` -- The default solver process timeout (in seconds) as a long value.
 If the property is not set or <= -1, it is -1 by default, meaning that the general SMT timeout is used.
 The current timeout can later be changed by the user in the settings.
 
@@ -129,17 +132,17 @@ Currently possible values for SOCKET_CLASS
 Currently possible values for TRANSLATOR_CLASS (see the *key.core\src\main\java\\de\uka\ilkd\key\smt* package):
 SmtLib2Translator (legacy solvers), ModularSMTLib2Translator
 
-* `handlers` -- The SMTHandlers used by this solver. 
+* `handlers` -- The SMTHandlers used by this solver.
   If the property is not specified, it is an empty list by default which leads to all handlers being used.
   Note that this property currently only takes effect if the ModularSMTLib2Translator class is used.
-  The handlers' names are expected to be fully qualified. Currently possible values of `HANDLER_CLASS` are for example: 
+  The handlers' names are expected to be fully qualified. Currently possible values of `HANDLER_CLASS` are for example:
   BooleanConnectiveHandler, CastHandler, CastingFunctionsHandler, DefinedSymbolsHandler, FieldConstantHandler, InstanceOfHandler, ...
 
-* `handlerOptions` -- The handler options (a list of arbitrary Strings) for the SMTHandlers used by the SMTTranslator. 
+* `handlerOptions` -- The handler options (a list of arbitrary Strings) for the SMTHandlers used by the SMTTranslator.
 If the property is not specified, it is an empty list by default leading to default behavior of the SMTHandlers.
 All the used handlers handle the options on their own.
 
-* `preamble` -- 		
+* `preamble` --
 The path of the preamble file. By default, the *key.core\src\main\resources\de\uka\ilkd\key\smt\newsmt2\preamble.smt2* file is used as a preamble.
 If you want to use another, more solver-specific preamble, the file should be put in the same directory as the .props file for the solver.
 

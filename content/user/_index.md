@@ -1,4 +1,7 @@
-# KeY User Guide
+---
+title: "User Guide"
+weight: 10
+---
 
 Welcome to the **KeY user documentation**. This guide covers everything you
 need to *use* KeY for the deductive verification of Java programs — from

@@ -1,4 +1,7 @@
-# Appendix: Strategy Cost Tables
+---
+title: "Strategy Cost Tables"
+weight: 10
+---
 
 *2026 — values checked against the current sources (`key.core` and
 `key.ncore.calculus`).*

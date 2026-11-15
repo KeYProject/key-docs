@@ -1,11 +1,12 @@
 ---
+title: "Command Reference"
+weight: 20
 approved: none
 ---
 
 <style>
   nav.md-nav--secondary li.md-nav__item li.md-nav__item li.md-nav__item { display: none; }
 </style>
-# Proof Script Commands
 
 This document lists all proof script commands available in the KeY system.
 The general ideas of scripts, their syntax, and control flow are described
@@ -54,7 +55,7 @@ If not, the script is halted with an error message.
 Note: This command was called "assert" originally.
 
 
-#### Usage: 
+#### Usage:
 `assertOpenGoals goals:⟨Integer⟩`
 
 #### Parameters:
@@ -74,7 +75,7 @@ Can be used for debug and proof exploration purposes. Proof files for proofs wit
 be reloaded.
 
 
-#### Usage: 
+#### Usage:
 `assume ⟨JTerm (formula)⟩`
 
 #### Parameters:
@@ -104,7 +105,7 @@ Can be used for debug and proof exploration purposes. Proof files for proofs wit
 be reloaded.
 
 
-#### Usage: 
+#### Usage:
 `axiom ⟨JTerm (formula)⟩`
 
 #### Parameters:
@@ -133,7 +134,7 @@ working through all cases of a case distinction.
 - `branches single` - Selects the single non-main goal (for rules with one main goal)
 
 
-#### Usage: 
+#### Usage:
 `branches ⟨String (mode)⟩ [branch:⟨String⟩] [child:⟨Integer⟩]`
 
 #### Parameters:
@@ -156,7 +157,7 @@ A simple "print" command for giving progress feedback to the
 human verfier during lengthy executions.
 
 
-#### Usage: 
+#### Usage:
 `echo ⟨String (message)⟩`
 
 #### Parameters:
@@ -198,7 +199,7 @@ Useful for generic scripts that may encounter proofs of varying complexity where
 closure is acceptable.
 
 
-#### Usage: 
+#### Usage:
 `failonclosed ⟨String (command)⟩`
 
 #### Parameters:
@@ -217,7 +218,7 @@ The hide command hides all formulas of the current proof goal that are in the gi
 The formulas in the given sequent are hidden using the taclets hide_left and hide_right.
 
 
-#### Usage: 
+#### Usage:
 `hide ⟨Sequent (sequent)⟩`
 
 #### Parameters:
@@ -261,7 +262,7 @@ It expects exactly one positional argument, which is the block to be executed on
 
 Includes and runs another script file.
 
-#### Usage: 
+#### Usage:
 `script ⟨String (filename)⟩`
 
 #### Parameters:
@@ -286,7 +287,7 @@ The next command will then continue on the selected goal.
 - `select branch: "Loop Invariant"`
 
 
-#### Usage: 
+#### Usage:
 `select [branch:⟨String⟩] [formula:⟨JTerm⟩] [number:⟨Integer⟩]`
 
 #### Parameters:
@@ -317,7 +318,7 @@ It can be used to:
 Settings changes persist for the remainder of the script execution unless popped from the stack.
 
 
-#### Usage: 
+#### Usage:
 `set settings... [oss:⟨Boolean⟩] [stack:⟨String⟩] [steps:⟨Integer⟩] [userData:⟨String⟩]`
 
 #### Parameters:
@@ -364,7 +365,7 @@ With the `assertClosed` flag, it will fail the script if closure is not achieved
 - `tryclose assertClosed` - Fails if the goal cannot be closed
 
 
-#### Usage: 
+#### Usage:
 `tryclose [⟨String (branch)⟩] [assertClosed] [steps:⟨Integer⟩]`
 
 #### Parameters:
@@ -387,7 +388,7 @@ The unhide command re-inserts formulas that have been hidden earlier in the proo
 It takes a sequent as parameter and re-inserts all formulas in this sequent that have been hidden earlier.
 
 
-#### Usage: 
+#### Usage:
 `unhide ⟨Sequent (sequent)⟩`
 
 #### Parameters:
@@ -420,7 +421,7 @@ with many open goals.
 Use the command with "close" to make sure the command succeeds for fails without
 changes.
 
-#### Usage: 
+#### Usage:
 `auto [all] [classAxioms] [dependencies] [expandQueries] [modelsearch] [add:⟨String⟩] [breakpoint:⟨String⟩] [matches:⟨String⟩] [only:⟨String⟩] [steps:⟨int⟩]`
 
 #### Parameters:
@@ -470,7 +471,7 @@ If followed by a `\by proof` suffix in JML, it refers the sequent where
 the cut formula is introduced to the succedent (i.e. where it is to be established).
 
 
-#### Usage: 
+#### Usage:
 `cut ⟨JTerm (formula)⟩`
 
 #### Parameters:
@@ -494,7 +495,7 @@ no changes occur inside the dependency set of this function, the result remains 
 This can be applied to model methods, model fields or invariants.
 
 
-#### Usage: 
+#### Usage:
 `dependency on:⟨JTerm⟩ [heap:⟨JTerm⟩]`
 
 #### Parameters:
@@ -522,7 +523,7 @@ This is useful for unfolding definitions during proof construction.
 - `expand formula="x > 0" occ=1` - Expands the first occurrence in the specified formula
 
 
-#### Usage: 
+#### Usage:
 `expand [formula:⟨TermWithHoles⟩] [occ:⟨Integer⟩] [on:⟨TermWithHoles⟩]`
 
 #### Parameters:
@@ -556,7 +557,7 @@ believed "unsat core" of the sequent.
   removing all other formulas that could distract the automation.
 
 
-#### Usage: 
+#### Usage:
 `focus ⟨SequentWithHoles (toKeep)⟩`
 
 #### Parameters:
@@ -584,7 +585,7 @@ If `formula` is given, that quantified formula is used directly.
 * `instantiate formula:"\forall int a; phi(a)" with="a_8"`
 
 
-#### Usage: 
+#### Usage:
 `instantiate [hide] with:⟨JTerm⟩ [formula:⟨JTerm⟩] [occ:⟨int⟩] [var:⟨String⟩]`
 
 #### Parameters:
@@ -637,7 +638,7 @@ The macro is applied to the first open automatic goal in the proof.
 * `macro "auto-pilot"`
 
 
-#### Usage: 
+#### Usage:
 `macro ⟨String (macroName)⟩ instantiations... [matches:⟨String⟩] [occ:⟨Integer⟩]`
 
 #### Parameters:
@@ -664,7 +665,7 @@ It can be configured to apply the one step simplifier only on the antecedent or 
 By default, it is applied on both sides of the sequent.
 
 
-#### Usage: 
+#### Usage:
 `oss [antecedent:⟨Boolean⟩] [recentOnly] [succedent:⟨Boolean⟩]`
 
 #### Parameters:
@@ -694,7 +695,7 @@ the replacement formula, ensuring the proof can continue.
 - `rewrite find=`y+x` replace=`y+x`;` //(psdbg)
 
 
-#### Usage: 
+#### Usage:
 `rewrite find:⟨JTerm⟩ replace:⟨JTerm⟩ [formula:⟨JTerm⟩]`
 
 #### Parameters:
@@ -723,7 +724,7 @@ This command can be used to apply a calculus rule to the currently active open g
     `f(x)` in a formula matching the regular expression.
 
 
-#### Usage: 
+#### Usage:
 `rule ⟨String (rulename)⟩ instantiations... [assumes:⟨SequentWithHoles⟩] [formula:⟨JTerm⟩] [matches:⟨String⟩] [occ:⟨Integer⟩] [on:⟨TermWithHoles⟩]`
 
 #### Parameters:
@@ -759,7 +760,7 @@ Multiple solvers can be specified by separating their names with commas.
 The available solvers depend on your system: KeY supports at least z3, cvc5.
 
 
-#### Usage: 
+#### Usage:
 `smt [all] solver:⟨String⟩ timeout:⟨int⟩`
 
 #### Parameters:
@@ -791,7 +792,7 @@ If the sequent contains the formula `\exists int x; x > 0` in the antecedent the
 holds and is added to the antecedent.
 
 
-#### Usage: 
+#### Usage:
 `witness ⟨TermWithHoles (formula)⟩ as:⟨String⟩`
 
 #### Parameters:
@@ -816,7 +817,7 @@ holds and is added to the antecedent.
 An internal command to switch on/off echoing of executed commands.
 
 
-#### Usage: 
+#### Usage:
 `@echo ⟨String (command)⟩`
 
 #### Parameters:
@@ -862,7 +863,7 @@ This command is powerful but should be used with care, as it can easily lead to 
 used incorrectly.
 
 
-#### Usage: 
+#### Usage:
 `javascript ⟨String (script)⟩`
 
 #### Parameters:
@@ -894,7 +895,7 @@ the let command, it is not allowed to call this command multiple times with the 
 argument (all names used for remembering instantiations are "final").
 
 
-#### Usage: 
+#### Usage:
 `saveNewName ⟨String (abbreviation)⟩ matches:⟨String⟩`
 
 #### Parameters:
@@ -916,7 +917,7 @@ argument (all names used for remembering instantiations are "final").
 Defines a schema variable that can be used in subsequent commands.
 
 
-#### Usage: 
+#### Usage:
 `schemaVar ⟨String (type)⟩ ⟨String (var)⟩`
 
 #### Parameters:
@@ -943,7 +944,7 @@ The command should not be called directly, but is used internally by
 the JML script support within KeY.
 
 
-#### Usage: 
+#### Usage:
 `__obtain var:⟨String⟩ [equals:⟨JTerm⟩] [from_goal:⟨boolean⟩] [such_that:⟨JTerm⟩]`
 
 #### Parameters:
@@ -956,4 +957,3 @@ the JML script support within KeY.
 * `from_goal` *(optional named option, type boolean)*:<br>Top-level formula in which the term appears.
 
 * `such_that` *(optional named option, type JTerm)*:<br>Condition that is to be established for the fresh variable.
-

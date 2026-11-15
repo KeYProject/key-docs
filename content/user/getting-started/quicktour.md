@@ -1,6 +1,9 @@
-# Quicktour 
+---
+title: "The Quicktour"
+weight: 10
+---
 
-!!! abstract 
+!!! abstract
 
     This article gives an introduction to the KeY system.
 
@@ -41,11 +44,11 @@ contact the KeYsupport team at
 !!! note "Version Information"
 
     This tutorial was tested for KeY version 2.10.
-    
+
 ## Contents
 
 1. [Installation](install.md): This chapter explains how to install and run the KeY system.
-2. [Loading JML Contracts](loading.md): This chapter explains how to load JML specifications into KeY and gives an introduction to the logical calculus behind KeY. 
+2. [Loading JML Contracts](loading.md): This chapter explains how to load JML specifications into KeY and gives an introduction to the logical calculus behind KeY.
 3. [ProvingJML Contracts](proving.md): This chapter explains how to apply your knowledge from the previous chapter, showing how KeY generates proof obligations and how to prove them.
 4. [Appendix](appendix.md)
 
@@ -53,4 +56,3 @@ contact the KeYsupport team at
 ## Bibliography
 
 \full_bibliography
-

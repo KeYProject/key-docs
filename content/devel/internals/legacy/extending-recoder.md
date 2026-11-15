@@ -1,4 +1,7 @@
-# How to extend recoder
+---
+title: "Extending Recoder (obsolete)"
+weight: 10
+---
 
 *Schmitt*
 
@@ -32,7 +35,7 @@ In the following we use `Basepath` as an abbreviation for the path\
 At the moment the following instructions do not cover the addition of new
 variable binder symbols.
 
-### Change file: `KeYJMLLexer.g` 
+### Change file: `KeYJMLLexer.g`
 
 Here are some existing entries:
 
@@ -52,7 +55,7 @@ grammar symbol.
 
 *Personal note:* I am suprised that `seqLen` does not occur here.
 
-### Change file: `KeYJMLParser.g` 
+### Change file: `KeYJMLParser.g`
 
 #### Change
 
@@ -74,10 +77,10 @@ like this:
        {
          result=new SLExpression(tb.seqEmpty());
         }
-     |  
+     |
      .
      .
-     .        
+     .
      |  (tk2=SEQCONCAT{tk=tk2;} | tk3=SEQGET{tk=tk3;} | tk4=INDEXOF{tk=tk4;})
           LPAREN e1=expression COMMA e2=expression RPAREN
       {
@@ -104,7 +107,7 @@ In the `jmlprimary` rule take the entry
        | SEQCONCAT
        | SEQGET
        | INDEXOF)
-             => result = sequence    
+             => result = sequence
 ```
 
 as a model. Of course you replace `sequence` in this example by the rule name
@@ -187,7 +190,7 @@ all three files you edit in the last three steps. You replace of course
 The files for literals go into the directory
 `Basepath/java/expression/literal` instead.
 
-### Change file: `PrettyPrinter.java` 
+### Change file: `PrettyPrinter.java`
 
 You need to add a method `printnewOp` for your operator `newOp` in the data type
 `newAdt`. tylke your leads e.g. from `printSeqConcat`. Of course you enter here
@@ -202,9 +205,9 @@ operation `SeqConcat`, but now for the literals declared in
 The following changes also parallel those for operators except that for
 literals `JavaASTVisitor.java` is not affected.
 
-### Change file: `Visitor.java` 
+### Change file: `Visitor.java`
 ### Change file: `JavaASTVisitor.java`
-### Change fil: `PrettyPrinter.java` 
+### Change fil: `PrettyPrinter.java`
 
 #### Create file
 
@@ -261,7 +264,7 @@ the Seq data type
 
       ret.put(SeqLDT.NAME, new SeqLDT(s));
 
-**Change file** 
+**Change file**
 
 `ProofJavaParser.jj` in `Basepath/parser/proofjava/`
 
@@ -415,8 +418,8 @@ Find the Error
 To find the possible error when KeY fails to load I have added the
 following piece of code
 
-     System.out.println("reached reportError with message "+message); 
-     System.out.println("throwable is "+ t); 
+     System.out.println("reached reportError with message "+message);
+     System.out.println("throwable is "+ t);
      java.io.StringWriter sw = new java.io.StringWriter();
      java.io.PrintWriter pw = new java.io.PrintWriter(sw);
      t.printStackTrace(pw);

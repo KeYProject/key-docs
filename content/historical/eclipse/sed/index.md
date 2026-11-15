@@ -1,7 +1,7 @@
 ---
+title: "SED"
+weight: 20
 ---
-
-# Symbolic Execution Debugger
 
 !!! warning "Unsupported historical content"
     This Eclipse integration is **no longer supported or maintained**. It
@@ -54,7 +54,7 @@ to try out the SED in a guided way by hand of different examples.
 debug.
 
     ![](launch01thumb.png "Debug any method or any statement(s) symbolically")
-    
+
 2. Launch selection via main menu item "Run, Debug As, Symbolic Execution Debugger".
 
     ![](launch02thumb.png "Debug any method or any statement(s) symbolically")
@@ -66,7 +66,7 @@ debug.
 4.  Perform symbolic execution interactively.
 
     ![x](launch04thumb.png "Debug any method or any statement(s) symbolically")
-    
+
 5. Inspect all possible execution paths.
 
     ![](launch05thumb.png "Debug any method or any statement(s) symbolically")
@@ -241,7 +241,7 @@ execution tree is red crossed out.
 ### Add comments to symbolic execution tree nodes {: #comments}
 
 1. Select symbolic execution tree node and switch to properties tab "Annotation Links". Click then on "New Comment".
-    
+
 
     ![](comments01thumb.png)
 1. 2. Enter comment.

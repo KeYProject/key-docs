@@ -1,7 +1,10 @@
-# Language Constructs
+---
+title: "Language Constructs"
+weight: 10
+---
 
 Proof scripts are textual representations of rule applications, settings changes
-and strategy invocations (in the case of KeY as underlying verification 
+and strategy invocations (in the case of KeY as underlying verification
 system also referred to as macros).
 
 

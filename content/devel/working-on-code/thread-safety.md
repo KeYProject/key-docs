@@ -1,4 +1,7 @@
-# Thread Safety and Determinism
+---
+title: "Thread Safety and Determinism"
+weight: 40
+---
 
 KeY can run its automatic proof search on several *worker threads* at once (the
 multi-core prover). This page explains what that means for everyone who writes

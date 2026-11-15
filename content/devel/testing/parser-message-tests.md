@@ -1,4 +1,7 @@
-# JUnit Test Suite for Parser Messages
+---
+title: "Parser Message Tests"
+weight: 40
+---
 
 The aim of this test suite is to ensure a that the messages provided to the user
 by KeY in case of errors in JML source files contains certain relevant
@@ -25,14 +28,13 @@ lines have the following syntax (they must be provided in correct order, as it
 is defined here):
 
      - regular expression that must match the given parser message:
-     
+
          `//MSG *regexp*`
-         
+
      - line, in which the error occurs
 
          `//LINE *number*`
-         
-     - column, in which the error occurs
-     
-         `//COL *number*`
 
+     - column, in which the error occurs
+
+         `//COL *number*`

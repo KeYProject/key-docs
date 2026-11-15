@@ -1,4 +1,7 @@
-# Term Labels
+---
+title: "Term Labels"
+weight: 20
+---
 
 !!! warning "Status: open pull request"
     The term-label rework described on this page is **not yet merged** — it is
