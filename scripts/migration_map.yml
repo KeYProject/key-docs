@@ -1,0 +1,717 @@
+# Migration map: MkDocs `docs/` tree -> Hugo `content/` tree.
+#
+# Authoritative source: .superpowers/sdd/target-tree.md
+#
+# Fields
+#   old     path relative to `docs/` (null for a new section landing page)
+#   new     path relative to `content/`
+#   label   navigation title (from the old `mkdocs.yml` nav / target tree)
+#   parent  new path of the parent section directory (null for top level)
+#   weight  sibling order inside `parent` (10, 20, 30, ... in row order)
+#   bundle  true  -> `new` is a leaf bundle directory ending in `/index.md`,
+#                    so the destination is a directory; `old` may be any `.md`
+#            false -> `new` is a regular page file, or a section page ending in
+#                    `/_index.md`
+#   action  optional; defaults to `move`
+#             move             rename/move `old` to `new`
+#             drop             delete `old` (intentionally not migrated)
+#             already-migrated `old` was already migrated by hand (root page);
+#                              delete `old`, leave the existing `new` untouched
+#
+# Old paths ending in `/index.md` are moved as a whole directory when `new` ends
+# in `/index.md` (bundle), which carries the bundle assets along. When `new` ends
+# in `/_index.md` only the file is moved and the sibling pages/assets are mapped
+# by their own entries.
+#
+# Section rows (`old: null`) are created by scripts/migrate/structure.py with
+# `title`, `weight`, `approved: none` and a one-sentence body placeholder.
+
+# --- User Guide -------------------------------------------------------------
+- old: user/index.md
+  new: user/_index.md
+  label: "User Guide"
+  parent: null
+  weight: 10
+  bundle: false
+
+- old: null
+  new: user/getting-started/_index.md
+  label: "1. Getting Started"
+  parent: user
+  weight: 10
+  bundle: false
+- old: quicktour/index.md
+  new: user/getting-started/quicktour.md
+  label: "The Quicktour"
+  parent: user/getting-started
+  weight: 10
+  bundle: false
+- old: quicktour/install.md
+  new: user/getting-started/install.md
+  label: "Installation"
+  parent: user/getting-started
+  weight: 20
+  bundle: false
+- old: quicktour/loading.md
+  new: user/getting-started/loading/index.md
+  label: "Loading JML Contracts"
+  parent: user/getting-started
+  weight: 30
+  bundle: true
+- old: quicktour/proving.md
+  new: user/getting-started/proving.md
+  label: "Proving JML Contracts"
+  parent: user/getting-started
+  weight: 40
+  bundle: false
+- old: quicktour/appendix.md
+  new: user/getting-started/appendix/index.md
+  label: "Appendix: Tips and Background"
+  parent: user/getting-started
+  weight: 50
+  bundle: true
+
+- old: user/UiFeatures/index.md
+  new: user/proving/_index.md
+  label: "2. Working with the Prover"
+  parent: user
+  weight: 20
+  bundle: false
+- old: user/TacletMatchDialog/index.md
+  new: user/proving/taclet-match-dialog/index.md
+  label: "The Taclet Match Dialog"
+  parent: user/proving
+  weight: 10
+  bundle: true
+- old: user/Interactive.md
+  new: user/proving/interactive.md
+  label: "Excluding Goals from Automation"
+  parent: user/proving
+  weight: 20
+  bundle: false
+- old: user/Exploration.md
+  new: user/proving/exploration.md
+  label: "Proof Exploration"
+  parent: user/proving
+  weight: 30
+  bundle: false
+- old: user/NodeDiff.md
+  new: user/proving/node-diff/index.md
+  label: "Comparing Proof Nodes"
+  parent: user/proving
+  weight: 40
+  bundle: true
+- old: user/ProofTreeLinearMode.md
+  new: user/proving/proof-tree-linear-mode/index.md
+  label: "Linearized Proof Tree"
+  parent: user/proving
+  weight: 50
+  bundle: true
+- old: user/ProofCaching/index.md
+  new: user/proving/proof-caching/index.md
+  label: "Proof Caching"
+  parent: user/proving
+  weight: 60
+  bundle: true
+- old: user/ProofSlicing/index.md
+  new: user/proving/proof-slicing/index.md
+  label: "Proof Slicing"
+  parent: user/proving
+  weight: 70
+  bundle: true
+
+- old: null
+  new: user/projects/_index.md
+  label: "3. Structuring Verification Projects"
+  parent: user
+  weight: 30
+  bundle: false
+- old: user/Classpath.md
+  new: user/projects/classpath.md
+  label: "The Classpath Directive"
+  parent: user/projects
+  weight: 10
+  bundle: false
+- old: user/RemoveGenerics.md
+  new: user/projects/generics.md
+  label: "Programs with Generics"
+  parent: user/projects
+  weight: 20
+  bundle: false
+- old: user/ADTs.md
+  new: user/projects/adts.md
+  label: "User-Defined Data Types"
+  parent: user/projects
+  weight: 30
+  bundle: false
+- old: user/JavaDLinJML.md
+  new: user/projects/javadi-in-jml.md
+  label: "JavaDL Escapes in JML"
+  parent: user/projects
+  weight: 40
+  bundle: false
+
+- old: user/ProofScripts/index.md
+  new: user/proof-scripts/_index.md
+  label: "4. Proof Scripts"
+  parent: user
+  weight: 40
+  bundle: false
+- old: user/ProofScripts/language.md
+  new: user/proof-scripts/language.md
+  label: "Language Constructs"
+  parent: user/proof-scripts
+  weight: 10
+  bundle: false
+- old: user/ProofScripts/commands.md
+  new: user/proof-scripts/commands.md
+  label: "Command Reference"
+  parent: user/proof-scripts
+  weight: 20
+  bundle: false
+- old: user/ProofScripts/variables.md
+  new: user/proof-scripts/variables.md
+  label: "Script Variables"
+  parent: user/proof-scripts
+  weight: 30
+  bundle: false
+- old: user/ProofScripts/macros.md
+  new: user/proof-scripts/macros.md
+  label: "Macros"
+  parent: user/proof-scripts
+  weight: 40
+  bundle: false
+- old: user/ProofScripts/linearScripts.md
+  new: user/proof-scripts/linear-scripts.md
+  label: "Linear Proof Scripts"
+  parent: user/proof-scripts
+  weight: 50
+  bundle: false
+- old: user/ProofScripts/jml.md
+  new: user/proof-scripts/jml.md
+  label: "Proof Scripts in JML"
+  parent: user/proof-scripts
+  weight: 60
+  bundle: false
+- old: user/ProofScripts/original.md
+  new: user/proof-scripts/original.md
+  label: "Historical Notes (2015)"
+  parent: user/proof-scripts
+  weight: 70
+  bundle: false
+
+- old: null
+  new: user/smt/_index.md
+  label: "5. SMT Solvers"
+  parent: user
+  weight: 50
+  bundle: false
+- old: user/SMT/AddingSMTSolvers.md
+  new: user/smt/adding-smt-solvers.md
+  label: "Adding SMT Solvers"
+  parent: user/smt
+  weight: 10
+  bundle: false
+
+- old: null
+  new: user/bridges/_index.md
+  label: "6. Bridges to Other Tools"
+  parent: user
+  weight: 60
+  bundle: false
+- old: user/IsabelleTranslation/index.md
+  new: user/bridges/isabelle/index.md
+  label: "Isabelle Translation"
+  parent: user/bridges
+  weight: 10
+  bundle: true
+- old: user/LLM/index.md
+  new: user/bridges/llm/index.md
+  label: "LLM Support"
+  parent: user/bridges
+  weight: 20
+  bundle: true
+
+- old: null
+  new: user/language/_index.md
+  label: "7. Language Reference"
+  parent: user
+  weight: 70
+  bundle: false
+- old: user/JMLGrammar.md
+  new: user/language/jml-grammar.md
+  label: "JML Grammar"
+  parent: user/language
+  weight: 10
+  bundle: false
+- old: user/KeyGrammar.md
+  new: user/language/key-grammar.md
+  label: "The KeY Language"
+  parent: user/language
+  weight: 20
+  bundle: false
+- old: user/JavaGrammar.md
+  new: user/language/java-grammar.md
+  label: "KeY's Java Extensions"
+  parent: user/language
+  weight: 30
+  bundle: false
+
+- old: null
+  new: user/features/_index.md
+  label: "8. Supported Language Features"
+  parent: user
+  weight: 80
+  bundle: false
+- old: user/SupportedFeatures/JavaCoverage.md
+  new: user/features/java-coverage.md
+  label: "Java Coverage"
+  parent: user/features
+  weight: 10
+  bundle: false
+
+- old: user/FAQ.md
+  new: user/faq.md
+  label: "9. FAQ"
+  parent: user
+  weight: 90
+  bundle: false
+- old: changelog.md
+  new: user/release-notes.md
+  label: "Release Notes"
+  parent: user
+  weight: 100
+  bundle: false
+
+# --- Developer Guide --------------------------------------------------------
+- old: devel/index.md
+  new: devel/_index.md
+  label: "Developer Guide"
+  parent: null
+  weight: 20
+  bundle: false
+
+- old: devel/Architecture.md
+  new: devel/architecture.md
+  label: "1. Architecture"
+  parent: devel
+  weight: 10
+  bundle: false
+- old: devel/Gradle.md
+  new: devel/building.md
+  label: "2. Building KeY"
+  parent: devel
+  weight: 20
+  bundle: false
+- old: devel/maintaining/releasing_central.md
+  new: devel/releasing-central.md
+  label: "Releasing to Maven Central"
+  parent: devel
+  weight: 30
+  bundle: false
+
+- old: null
+  new: devel/working-on-code/_index.md
+  label: "3. Working on the Code"
+  parent: devel
+  weight: 40
+  bundle: false
+- old: devel/CodingConventions.md
+  new: devel/working-on-code/coding-conventions.md
+  label: "Coding Conventions"
+  parent: devel/working-on-code
+  weight: 10
+  bundle: false
+- old: devel/SpotlessAutomaticFormatting.md
+  new: devel/working-on-code/spotless.md
+  label: "Formatting with Spotless"
+  parent: devel/working-on-code
+  weight: 20
+  bundle: false
+- old: devel/Logging.md
+  new: devel/working-on-code/logging.md
+  label: "Logging"
+  parent: devel/working-on-code
+  weight: 30
+  bundle: false
+- old: devel/ThreadSafety.md
+  new: devel/working-on-code/thread-safety.md
+  label: "Thread Safety and Determinism"
+  parent: devel/working-on-code
+  weight: 40
+  bundle: false
+
+- old: devel/ExtendingKeY.md
+  new: devel/extending/_index.md
+  label: "4. Extending KeY"
+  parent: devel
+  weight: 50
+  bundle: false
+- old: devel/howto/index.md
+  new: devel/extending/howto/_index.md
+  label: "How-Tos (verified recipes)"
+  parent: devel/extending
+  weight: 10
+  bundle: false
+- old: devel/howto/AddExtension.md
+  new: devel/extending/howto/add-extension.md
+  label: "Add an Extension Module"
+  parent: devel/extending/howto
+  weight: 10
+  bundle: false
+- old: devel/howto/AddMenuEntry.md
+  new: devel/extending/howto/add-menu-entry.md
+  label: "Add a Menu Entry"
+  parent: devel/extending/howto
+  weight: 20
+  bundle: false
+- old: devel/howto/AddToolbarAction.md
+  new: devel/extending/howto/add-toolbar.md
+  label: "Add a Toolbar"
+  parent: devel/extending/howto
+  weight: 30
+  bundle: false
+- old: devel/howto/AddTaclets.md
+  new: devel/extending/howto/add-taclets.md
+  label: "Add Taclets"
+  parent: devel/extending/howto
+  weight: 40
+  bundle: false
+- old: devel/howto/AddProofMacro.md
+  new: devel/extending/howto/add-proof-macro.md
+  label: "Add a Proof Macro"
+  parent: devel/extending/howto
+  weight: 50
+  bundle: false
+- old: devel/howto/AddScriptCommand.md
+  new: devel/extending/howto/add-script-command.md
+  label: "Add a Script Command"
+  parent: devel/extending/howto
+  weight: 60
+  bundle: false
+- old: devel/howto/AddTermLabel.md
+  new: devel/extending/howto/add-term-label.md
+  label: "Add a Term Label"
+  parent: devel/extending/howto
+  weight: 70
+  bundle: false
+- old: devel/HowToTaclet.md
+  new: devel/extending/how-to-write-taclets.md
+  label: "Writing Taclets"
+  parent: devel/extending
+  weight: 20
+  bundle: false
+- old: user/Polarity.md
+  new: devel/extending/polarity.md
+  label: "Polarity Triggers for Rewrite Taclets"
+  parent: devel/extending
+  weight: 30
+  bundle: false
+- old: devel/GUIExtensions.md
+  new: devel/extending/gui-extensions.md
+  label: "GUI Extension Points"
+  parent: devel/extending
+  weight: 40
+  bundle: false
+- old: devel/ScriptCommands.md
+  new: devel/extending/script-commands.md
+  label: "Script Commands in Depth"
+  parent: devel/extending
+  weight: 50
+  bundle: false
+- old: devel/AddingSMTSolvers.md
+  new: devel/extending/adding-smt-solvers.md
+  label: "Adding SMT Solvers"
+  parent: devel/extending
+  weight: 60
+  bundle: false
+- old: devel/Listeners.md
+  new: devel/extending/listeners.md
+  label: "Event Listeners"
+  parent: devel/extending
+  weight: 70
+  bundle: false
+
+- old: null
+  new: devel/library/_index.md
+  label: "5. Using KeY as a Library"
+  parent: devel
+  weight: 60
+  bundle: false
+- old: devel/ExternalProject.md
+  new: devel/library/external-project.md
+  label: "KeY in External Projects"
+  parent: devel/library
+  weight: 10
+  bundle: false
+- old: devel/rpc/index.md
+  new: devel/library/rpc/index.md
+  label: "JSON-RPC Interface"
+  parent: devel/library
+  weight: 20
+  bundle: true
+
+- old: null
+  new: devel/internals/_index.md
+  label: "6. Internals"
+  parent: devel
+  weight: 70
+  bundle: false
+
+- old: null
+  new: devel/internals/proof-search/_index.md
+  label: "Proof search"
+  parent: devel/internals
+  weight: 10
+  bundle: false
+- old: devel/RuleApplicationPipeline.md
+  new: devel/internals/proof-search/rule-application-pipeline.md
+  label: "The Rule Application Pipeline"
+  parent: devel/internals/proof-search
+  weight: 10
+  bundle: false
+- old: devel/TacletMatching.md
+  new: devel/internals/proof-search/taclet-matching.md
+  label: "Taclet Matching"
+  parent: devel/internals/proof-search
+  weight: 20
+  bundle: false
+- old: devel/StrategyCosts.md
+  new: devel/internals/proof-search/strategy-costs.md
+  label: "Strategy Costs and the Cost-Band Ladder"
+  parent: devel/internals/proof-search
+  weight: 30
+  bundle: false
+- old: devel/Multithreading.md
+  new: devel/internals/proof-search/multithreading/index.md
+  label: "Multi-Core Proving"
+  parent: devel/internals/proof-search
+  weight: 40
+  bundle: true
+
+- old: null
+  new: devel/internals/terms-and-parsing/_index.md
+  label: "Terms and parsing"
+  parent: devel/internals
+  weight: 20
+  bundle: false
+- old: devel/NewKeyParser.md
+  new: devel/internals/terms-and-parsing/new-key-parser.md
+  label: "The KeY Parser"
+  parent: devel/internals/terms-and-parsing
+  weight: 10
+  bundle: false
+- old: devel/TermLabels.md
+  new: devel/internals/terms-and-parsing/term-labels.md
+  label: "Term Labels"
+  parent: devel/internals/terms-and-parsing
+  weight: 20
+  bundle: false
+
+- old: null
+  new: devel/internals/proofs-and-solvers/_index.md
+  label: "Proofs and external solvers"
+  parent: devel/internals
+  weight: 30
+  bundle: false
+- old: devel/ProofLoadSave.md
+  new: devel/internals/proofs-and-solvers/proof-load-save.md
+  label: "Proof Loading and Saving"
+  parent: devel/internals/proofs-and-solvers
+  weight: 10
+  bundle: false
+- old: devel/SMTTranslation.md
+  new: devel/internals/proofs-and-solvers/smt-translation.md
+  label: "SMT Translation"
+  parent: devel/internals/proofs-and-solvers
+  weight: 20
+  bundle: false
+- old: devel/CounterExampleGeneration.md
+  new: devel/internals/proofs-and-solvers/counterexample-generation.md
+  label: "Counterexample Generation"
+  parent: devel/internals/proofs-and-solvers
+  weight: 30
+  bundle: false
+
+- old: null
+  new: devel/internals/legacy/_index.md
+  label: "Legacy"
+  parent: devel/internals
+  weight: 40
+  bundle: false
+- old: devel/How2ExtRecoder.md
+  new: devel/internals/legacy/extending-recoder.md
+  label: "Extending Recoder (obsolete)"
+  parent: devel/internals/legacy
+  weight: 10
+  bundle: false
+
+- old: devel/Testing/index.md
+  new: devel/testing/_index.md
+  label: "7. Testing"
+  parent: devel
+  weight: 80
+  bundle: false
+- old: devel/Testing/ProveRules.md
+  new: devel/testing/prove-rules.md
+  label: "Proved Rules"
+  parent: devel/testing
+  weight: 10
+  bundle: false
+- old: devel/Testing/RunAllProves.md
+  new: devel/testing/run-all-proofs.md
+  label: "RunAllProofs"
+  parent: devel/testing
+  weight: 20
+  bundle: false
+- old: devel/Testing/deterministicTestOrder.md
+  new: devel/testing/deterministic-test-order.md
+  label: "Deterministic Test Order (outdated)"
+  parent: devel/testing
+  weight: 30
+  bundle: false
+- old: devel/Testing/parserMessageTest.md
+  new: devel/testing/parser-message-tests.md
+  label: "Parser Message Tests"
+  parent: devel/testing
+  weight: 40
+  bundle: false
+- old: devel/Testing/TestingInfrastructure.md
+  new: devel/testing/ci-infrastructure.md
+  label: "CI Infrastructure"
+  parent: devel/testing
+  weight: 50
+  bundle: false
+
+- old: devel/howtodoc/index.md
+  new: devel/writing-documentation/index.md
+  label: "8. Writing Documentation"
+  parent: devel
+  weight: 90
+  bundle: true
+
+- old: null
+  new: devel/appendix/_index.md
+  label: "9. Appendices"
+  parent: devel
+  weight: 100
+  bundle: false
+- old: devel/StrategyCostTables.md
+  new: devel/appendix/strategy-cost-tables.md
+  label: "Strategy Cost Tables"
+  parent: devel/appendix
+  weight: 10
+  bundle: false
+
+# --- Historical -------------------------------------------------------------
+- old: null
+  new: historical/_index.md
+  label: "Historical"
+  parent: null
+  weight: 30
+  bundle: false
+
+- old: eclipse/index.md
+  new: historical/eclipse/_index.md
+  label: "Eclipse plugins (unsupported)"
+  parent: historical
+  weight: 10
+  bundle: false
+- old: eclipse/CrossProject/index.md
+  new: historical/eclipse/cross-project/index.md
+  label: "KeY basics"
+  parent: historical/eclipse
+  weight: 10
+  bundle: true
+- old: eclipse/JMLEditing/index.md
+  new: historical/eclipse/jml-editing/index.md
+  label: "JML Editing"
+  parent: historical/eclipse
+  weight: 20
+  bundle: true
+- old: eclipse/KeYIDE/index.md
+  new: historical/eclipse/key-ide/index.md
+  label: "KeY IDE"
+  parent: historical/eclipse
+  weight: 30
+  bundle: true
+- old: eclipse/KeYResources/index.md
+  new: historical/eclipse/key-resources/index.md
+  label: "Resources"
+  parent: historical/eclipse
+  weight: 40
+  bundle: true
+- old: eclipse/MonKeY/index.md
+  new: historical/eclipse/monkey/index.md
+  label: "MonKeY"
+  parent: historical/eclipse
+  weight: 50
+  bundle: true
+- old: eclipse/SED/index.md
+  new: historical/eclipse/sed/index.md
+  label: "SED"
+  parent: historical/eclipse
+  weight: 60
+  bundle: true
+- old: eclipse/Starter/index.md
+  new: historical/eclipse/starter/index.md
+  label: "Starter"
+  parent: historical/eclipse
+  weight: 70
+  bundle: true
+- old: eclipse/Stubby/index.md
+  new: historical/eclipse/stubby/index.md
+  label: "Stubby"
+  parent: historical/eclipse
+  weight: 80
+  bundle: true
+- old: eclipse/VisualDbC/index.md
+  new: historical/eclipse/visual-dbc/index.md
+  label: "VisualDBC"
+  parent: historical/eclipse
+  weight: 90
+  bundle: true
+
+# --- KeY Enhancement Proposals ---------------------------------------------
+- old: keps/index.md
+  new: keps/_index.md
+  label: "KeY Enhancement Proposals"
+  parent: null
+  weight: 40
+  bundle: false
+
+- old: keps/kep-0001-taclet-generating-transformers/index.md
+  new: keps/kep-0001-taclet-generating-transformers/index.md
+  label: "KEP-1: Taclet-Generating Transformers"
+  parent: keps
+  weight: 10
+  bundle: true
+- old: keps/kep-0002-convention-for-packages/index.md
+  new: keps/kep-0002-convention-for-packages/index.md
+  label: "KEP-2: Unique Java Package Names"
+  parent: keps
+  weight: 20
+  bundle: true
+- old: keps/kep-0003-refines/index.md
+  new: keps/kep-0003-refines/index.md
+  label: 'KEP-0003: `\refines`'
+  parent: keps
+  weight: 30
+  bundle: true
+
+# --- Root page (already migrated in the scaffold commit) --------------------
+- old: index.md
+  new: _index.md
+  label: "KeY Documentation"
+  parent: null
+  weight: 0
+  bundle: false
+  action: already-migrated
+
+# --- Explicitly dropped -----------------------------------------------------
+- old: quicktour/_index.md
+  new: null
+  action: drop
+- old: keps/kep-0001-taclet-generating-transformers/SCREENSHOTS-TODO.md
+  new: null
+  action: drop
