@@ -1,5 +1,7 @@
 site/
-/public
+public/
+resources/
+.hugo_build.lock
 
 .DS_Store
 *.out
@@ -21,3 +23,6 @@ site/
 *.pyc
 # Local Hugo theme clone (fetched at build time, not part of the repo)
 themes/
+
+# Agent/scratch workspace for the migration (not part of the repo)
+.superpowers/
