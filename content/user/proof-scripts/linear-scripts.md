@@ -9,7 +9,7 @@ weight: 50
 Every KeY user knows the pain of manually redoing an interactive proof
 over and over again even though only a tiny bit of the program or
 specification have changed. One can use proof scripts which will
-alleviate worries with repeating proofs.
+alleviate worries with repeating proofs.[^1]
 
 Proof scripts are textual representations of rule applications, settings changes
 and macro invocations. They are notated in linear order. The target of a script

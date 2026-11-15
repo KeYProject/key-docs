@@ -1116,7 +1116,7 @@ _Example_:
 
 _Example (foreground)_:
 
-```aafigure {"foreground": "#ff0000"}
+```text
           +-----+   ^
           |     |   |
       --->+     +---o--->
