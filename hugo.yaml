@@ -1,3 +1,5 @@
+# Hugo configuration for the KeY documentation site.
+# Hextra is consumed as a Hugo module; its version is pinned in go.mod.
 baseURL: 'https://keyproject.github.io/key-docs/'
 title: 'KeY Documentation'
 enableRobotsTXT: true
@@ -7,11 +9,13 @@ disableKinds: ['taxonomy', 'term']
 
 module:
   imports:
+    # version pinned via go.mod: require github.com/imfing/hextra v0.13.0
     - path: github.com/imfing/hextra
 
 markup:
   goldmark:
     renderer:
+      # content contains intentional HTML (tables, spans, figures)
       unsafe: true
     parser:
       attribute:
@@ -38,6 +42,8 @@ markup:
           enable: true
       passthrough:
         enable: true
+        # Only dollar delimiters: \(...\) and \[...\] occur literally in KeY
+        # program modalities and must not be consumed as math.
         delimiters:
           block: [['$$', '$$']]
           inline: [['$', '$']]
@@ -77,6 +83,9 @@ menu:
 params:
   math:
     engine: mathjax
+  search:
+    enable: true
+    type: flexsearch
   navbar:
     displayTitle: true
     displayLogo: true
