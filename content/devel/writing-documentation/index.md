@@ -213,22 +213,22 @@ Abbreviations can be defined by using a special syntax similar to URLs and
 [footnotes], starting with a `*` and immediately followed by the term or acronym
 to be associated in square brackets.
 
-=== "Example"
+{{< tabs >}}
+{{< tab name="Example" >}}
+``` markdown
+The HTML specification is maintained by the W3C.
 
-    ``` markdown
-    The HTML specification is maintained by the W3C.
+*[HTML]: Hyper Text Markup Language
+*[W3C]: World Wide Web Consortium
+```
+{{< /tab >}}
+{{< tab name="Result" >}}
+The HTML specification is maintained by the W3C.
 
-    *[HTML]: Hyper Text Markup Language
-    *[W3C]: World Wide Web Consortium
-    ```
-
-=== "Result"
-
-    The HTML specification is maintained by the W3C.
-
-    *[HTML]: Hyper Text Markup Language
-    *[W3C]: World Wide Web Consortium
-
+*[HTML]: Hyper Text Markup Language
+*[W3C]: World Wide Web Consortium
+{{< /tab >}}
+{{< /tabs >}}
 
 #### Adding a glossary
 
@@ -241,25 +241,26 @@ abbreviations outside of the `docs` folder (here, a folder with the name
 `includes` is used), as MkDocs might otherwise complain about an
 unreferenced file.
 
-=== "Snippet"
+{{< tabs >}}
+{{< tab name="Snippet" >}}
+```` markdown
+The HTML specification is maintained by the W3C.
 
-    ```` markdown
-    The HTML specification is maintained by the W3C.
+--8<-- "includes/abbreviations.md"
+````
+{{< /tab >}}
+{{< tab name="Abbreviations" >}}
+```` markdown
+*[HTML]: Hyper Text Markup Language
+*[W3C]: World Wide Web Consortium
+````
+{{< /tab >}}
+{{< tab name="Result" >}}
+The HTML specification is maintained by the W3C.
+{{< /tab >}}
+{{< /tabs >}}
 
-    --8<-- "includes/abbreviations.md"
-    ````
-
-=== "Abbreviations"
-
-    ```` markdown
-    *[HTML]: Hyper Text Markup Language
-    *[W3C]: World Wide Web Consortium
-    ````
-
-=== "Result"
-
-   The HTML specification is maintained by the W3C.
-   [Snippets notation]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#snippets-notation
+[Snippets notation]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#snippets-notation
 
 ### Admonitions
 
@@ -396,49 +397,50 @@ Admonitions can also be rendered as inline blocks (i.e. for sidebars), placing
 them to the right using the `inline` + `end` modifiers, or to the left using
 only the `inline` modifier.
 
-=== ":octicons-arrow-right-16: inline end"
+{{< tabs >}}
+{{< tab name=":octicons-arrow-right-16: inline end" >}}
+_Example_ / _Result_:
 
-    _Example_ / _Result_:
+!!! info inline end
 
-    !!! info inline end
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+    euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+    purus auctor massa, nec semper lorem quam in massa.
 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
-        euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
-        purus auctor massa, nec semper lorem quam in massa.
+``` markdown
+!!! info inline end
 
-    ``` markdown
-    !!! info inline end
+    Lorem ipsum dolor sit amet, consectetur
+    adipiscing elit. Nulla et euismod nulla.
+    Curabitur feugiat, tortor non consequat
+    finibus, justo purus auctor massa, nec
+    semper lorem quam in massa.
+```
 
-        Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Nulla et euismod nulla.
-        Curabitur feugiat, tortor non consequat
-        finibus, justo purus auctor massa, nec
-        semper lorem quam in massa.
-    ```
+Use `inline end` to align to the right (left for rtl languages).
+{{< /tab >}}
+{{< tab name=":octicons-arrow-left-16: inline" >}}
+_Example_ / _Result_:
 
-    Use `inline end` to align to the right (left for rtl languages).
+!!! info inline
 
-=== ":octicons-arrow-left-16: inline"
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+    euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+    purus auctor massa, nec semper lorem quam in massa.
 
-    _Example_ / _Result_:
+``` markdown
+!!! info inline
 
-    !!! info inline
+    Lorem ipsum dolor sit amet, consectetur
+    adipiscing elit. Nulla et euismod nulla.
+    Curabitur feugiat, tortor non consequat
+    finibus, justo purus auctor massa, nec
+    semper lorem quam in massa.
+```
 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
-        euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
-        purus auctor massa, nec semper lorem quam in massa.
-
-    ``` markdown
-    !!! info inline
-
-        Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Nulla et euismod nulla.
-        Curabitur feugiat, tortor non consequat
-        finibus, justo purus auctor massa, nec
-        semper lorem quam in massa.
-    ```
-
-    Use `inline` to align to the left (right for rtl languages).
+Use `inline` to align to the left (right for rtl languages).
+{{< /tab >}}
+{{< /tabs >}}
 
 __Important__: Admonitions that use the `inline` modifiers _must_ be declared
 prior to the content block you want to place them beside. If there's
@@ -716,53 +718,54 @@ argument placed right after the language shortcode. Note that line counts start
 at `1`, regardless of the starting line number specified as part of
 [`linenums`][Adding line numbers].
 
-=== "Line numbers"
+{{< tabs >}}
+{{< tab name="Line numbers" >}}
+_Example_:
 
-    _Example_:
+```` markdown
+``` python hl_lines="2 3"
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+````
 
-    ```` markdown
-    ``` python hl_lines="2 3"
-    def bubble_sort(items):
-        for i in range(len(items)):
-            for j in range(len(items) - 1 - i):
-                if items[j] > items[j + 1]:
-                    items[j], items[j + 1] = items[j + 1], items[j]
-    ```
-    ````
+_Result_:
 
-    _Result_:
+``` python linenums="1" hl_lines="2 3"
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+{{< /tab >}}
+{{< tab name="Line number ranges" >}}
+_Example_:
 
-    ``` python linenums="1" hl_lines="2 3"
-    def bubble_sort(items):
-        for i in range(len(items)):
-            for j in range(len(items) - 1 - i):
-                if items[j] > items[j + 1]:
-                    items[j], items[j + 1] = items[j + 1], items[j]
-    ```
+```` markdown
+``` python hl_lines="2-5"
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+````
 
-=== "Line number ranges"
+_Result_:
 
-    _Example_:
-
-    ```` markdown
-    ``` python hl_lines="2-5"
-    def bubble_sort(items):
-        for i in range(len(items)):
-            for j in range(len(items) - 1 - i):
-                if items[j] > items[j + 1]:
-                    items[j], items[j + 1] = items[j + 1], items[j]
-    ```
-    ````
-
-    _Result_:
-
-    ``` python linenums="1" hl_lines="2-5"
-    def bubble_sort(items):
-        for i in range(len(items)):
-            for j in range(len(items) - 1 - i):
-                if items[j] > items[j + 1]:
-                    items[j], items[j + 1] = items[j + 1], items[j]
-    ```
+``` python linenums="1" hl_lines="2-5"
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+{{< /tab >}}
+{{< /tabs >}}
 
   [Adding line numbers]: #adding-line-numbers
 
@@ -845,27 +848,28 @@ _Example_:
 
 _Result_:
 
-=== "C"
+{{< tabs >}}
+{{< tab name="C" >}}
+``` c
+#include <stdio.h>
 
-    ``` c
-    #include <stdio.h>
+int main(void) {
+  printf("Hello world!\n");
+  return 0;
+}
+```
+{{< /tab >}}
+{{< tab name="C++" >}}
+``` c++
+#include <iostream>
 
-    int main(void) {
-      printf("Hello world!\n");
-      return 0;
-    }
-    ```
-
-=== "C++"
-
-    ``` c++
-    #include <iostream>
-
-    int main(void) {
-      std::cout << "Hello world!" << std::endl;
-      return 0;
-    }
-    ```
+int main(void) {
+  std::cout << "Hello world!" << std::endl;
+  return 0;
+}
+```
+{{< /tab >}}
+{{< /tabs >}}
 
 #### Grouping other content
 
@@ -891,17 +895,18 @@ _Example_:
 
 _Result_:
 
-=== "Unordered list"
-
-    * Sed sagittis eleifend rutrum
-    * Donec vitae suscipit est
-    * Nulla tempor lobortis orci
-
-=== "Ordered list"
-
-    1. Sed sagittis eleifend rutrum
-    2. Donec vitae suscipit est
-    3. Nulla tempor lobortis orci
+{{< tabs >}}
+{{< tab name="Unordered list" >}}
+* Sed sagittis eleifend rutrum
+* Donec vitae suscipit est
+* Nulla tempor lobortis orci
+{{< /tab >}}
+{{< tab name="Ordered list" >}}
+1. Sed sagittis eleifend rutrum
+2. Donec vitae suscipit est
+3. Nulla tempor lobortis orci
+{{< /tab >}}
+{{< /tabs >}}
 
 #### Embedded content
 
@@ -1027,65 +1032,65 @@ If you want to align a specific column to the `left`, `center` or `right`, you
 can use the [regular Markdown syntax] placing `:` characters at the beginning
 and/or end of the divider.
 
-=== "Left"
+{{< tabs >}}
+{{< tab name="Left" >}}
+_Example_:
 
-    _Example_:
+``` markdown hl_lines="2"
+| Method      | Description                          |
+| :---------- | :----------------------------------- |
+| `GET`       | :material-check:     Fetch resource  |
+| `PUT`       | :material-check-all: Update resource |
+| `DELETE`    | :material-close:     Delete resource |
+```
 
-    ``` markdown hl_lines="2"
-    | Method      | Description                          |
-    | :---------- | :----------------------------------- |
-    | `GET`       | :material-check:     Fetch resource  |
-    | `PUT`       | :material-check-all: Update resource |
-    | `DELETE`    | :material-close:     Delete resource |
-    ```
+_Result_:
 
-    _Result_:
+| Method      | Description                          |
+| :---------- | :----------------------------------- |
+| `GET`       | :material-check:     Fetch resource  |
+| `PUT`       | :material-check-all: Update resource |
+| `DELETE`    | :material-close:     Delete resource |
+{{< /tab >}}
+{{< tab name="Center" >}}
+_Example_:
 
-    | Method      | Description                          |
-    | :---------- | :----------------------------------- |
-    | `GET`       | :material-check:     Fetch resource  |
-    | `PUT`       | :material-check-all: Update resource |
-    | `DELETE`    | :material-close:     Delete resource |
+``` markdown hl_lines="2"
+| Method      | Description                          |
+| :---------: | :----------------------------------: |
+| `GET`       | :material-check:     Fetch resource  |
+| `PUT`       | :material-check-all: Update resource |
+| `DELETE`    | :material-close:     Delete resource |
+```
 
-=== "Center"
+_Result_:
 
-    _Example_:
+| Method      | Description                          |
+| :---------: | :----------------------------------: |
+| `GET`       | :material-check:     Fetch resource  |
+| `PUT`       | :material-check-all: Update resource |
+| `DELETE`    | :material-close:     Delete resource |
+{{< /tab >}}
+{{< tab name="Right" >}}
+_Example_:
 
-    ``` markdown hl_lines="2"
-    | Method      | Description                          |
-    | :---------: | :----------------------------------: |
-    | `GET`       | :material-check:     Fetch resource  |
-    | `PUT`       | :material-check-all: Update resource |
-    | `DELETE`    | :material-close:     Delete resource |
-    ```
+``` markdown hl_lines="2"
+| Method      | Description                          |
+| ----------: | -----------------------------------: |
+| `GET`       | :material-check:     Fetch resource  |
+| `PUT`       | :material-check-all: Update resource |
+| `DELETE`    | :material-close:     Delete resource |
+```
 
-    _Result_:
+_Result_:
 
-    | Method      | Description                          |
-    | :---------: | :----------------------------------: |
-    | `GET`       | :material-check:     Fetch resource  |
-    | `PUT`       | :material-check-all: Update resource |
-    | `DELETE`    | :material-close:     Delete resource |
-
-=== "Right"
-
-    _Example_:
-
-    ``` markdown hl_lines="2"
-    | Method      | Description                          |
-    | ----------: | -----------------------------------: |
-    | `GET`       | :material-check:     Fetch resource  |
-    | `PUT`       | :material-check-all: Update resource |
-    | `DELETE`    | :material-close:     Delete resource |
-    ```
-
-    _Result_:
-
-    | Method      | Description                          |
-    | ----------: | -----------------------------------: |
-    | `GET`       | :material-check:     Fetch resource  |
-    | `PUT`       | :material-check-all: Update resource |
-    | `DELETE`    | :material-close:     Delete resource |
+| Method      | Description                          |
+| ----------: | -----------------------------------: |
+| `GET`       | :material-check:     Fetch resource  |
+| `PUT`       | :material-check-all: Update resource |
+| `DELETE`    | :material-close:     Delete resource |
+{{< /tab >}}
+{{< /tabs >}}
 
   [regular Markdown syntax]: https://www.markdownguide.org/extended-syntax/#tables
 
@@ -1662,34 +1667,34 @@ move declarations into dedicated CSS classes.
 
 _Example_:
 
-=== ":octicons-file-code-16: docs/example.md"
-
-    ``` markdown
-    - :fontawesome-brands-medium:{ .medium } – Medium
-    - :fontawesome-brands-twitter:{ .twitter } – Twitter
-    - :fontawesome-brands-facebook:{ .facebook } – Facebook
-    ```
-
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
-
-    ``` css
-    .medium {
-      color: #00AB6C;
-    }
-    .twitter {
-      color: #1DA1F2;
-    }
-    .facebook {
-      color: #4267B2;
-    }
-    ```
-
-=== ":octicons-file-code-16: mkdocs.yml"
-
-    ``` yaml
-    extra_css:
-      - stylesheets/extra.css
-    ```
+{{< tabs >}}
+{{< tab name=":octicons-file-code-16: docs/example.md" >}}
+``` markdown
+- :fontawesome-brands-medium:{ .medium } – Medium
+- :fontawesome-brands-twitter:{ .twitter } – Twitter
+- :fontawesome-brands-facebook:{ .facebook } – Facebook
+```
+{{< /tab >}}
+{{< tab name=":octicons-file-code-16: docs/stylesheets/extra.css" >}}
+``` css
+.medium {
+  color: #00AB6C;
+}
+.twitter {
+  color: #1DA1F2;
+}
+.facebook {
+  color: #4267B2;
+}
+```
+{{< /tab >}}
+{{< tab name=":octicons-file-code-16: mkdocs.yml" >}}
+``` yaml
+extra_css:
+  - stylesheets/extra.css
+```
+{{< /tab >}}
+{{< /tabs >}}
 
 _Result_:
 
@@ -1708,34 +1713,34 @@ dedicated CSS class to the icon.
 
 _Example_:
 
-=== ":octicons-file-code-16: docs/example.md"
-
-    ``` markdown
-    :octicons-heart-fill-24:{ .heart }
-    ```
-
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
-
-    ``` css
-    @keyframes heart {
-      0%, 40%, 80%, 100% {
-        transform: scale(1);
-      }
-      20%, 60% {
-        transform: scale(1.15);
-      }
-    }
-    .heart {
-      animation: heart 1000ms infinite;
-    }
-    ```
-
-=== ":octicons-file-code-16: mkdocs.yml"
-
-    ``` yaml
-    extra_css:
-      - stylesheets/extra.css
-    ```
+{{< tabs >}}
+{{< tab name=":octicons-file-code-16: docs/example.md" >}}
+``` markdown
+:octicons-heart-fill-24:{ .heart }
+```
+{{< /tab >}}
+{{< tab name=":octicons-file-code-16: docs/stylesheets/extra.css" >}}
+``` css
+@keyframes heart {
+  0%, 40%, 80%, 100% {
+    transform: scale(1);
+  }
+  20%, 60% {
+    transform: scale(1.15);
+  }
+}
+.heart {
+  animation: heart 1000ms infinite;
+}
+```
+{{< /tab >}}
+{{< tab name=":octicons-file-code-16: mkdocs.yml" >}}
+``` yaml
+extra_css:
+  - stylesheets/extra.css
+```
+{{< /tab >}}
+{{< /tabs >}}
 
 _Result_:
 
@@ -1757,37 +1762,38 @@ When [Attribute Lists] is enabled, images can be aligned by adding the
 respective alignment directions via the `align` attribute, i.e. `align=left` or
 `align=right`:
 
-=== "Left"
+{{< tabs >}}
+{{< tab name="Left" >}}
+_Example_:
 
-    _Example_:
+``` markdown
+![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=left }
+```
 
-    ``` markdown
-    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=left }
-    ```
+_Result_:
 
-    _Result_:
+![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=left width=300 }
 
-    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=left width=300 }
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+{{< /tab >}}
+{{< tab name="Right" >}}
+_Example_:
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+``` markdown
+![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=right }
+```
 
-=== "Right"
+_Result_:
 
-    _Example_:
+![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=right width=300 }
 
-    ``` markdown
-    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=right }
-    ```
-
-    _Result_:
-
-    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=right width=300 }
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+{{< /tab >}}
+{{< /tabs >}}
 
 If there's insufficient space to render the text next to the image, the image
 will stretch to the full width of the viewport, e.g. on mobile viewports.

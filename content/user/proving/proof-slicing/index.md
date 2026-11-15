@@ -54,19 +54,20 @@ It is not advisable to render the dependency graph of large proofs: the render p
 
 ### Chain Shortening
 
-=== "Description"
-
-    When inspecting the dependency graph, you might want to see only the "big picture" of the proof.
-    If you don't care about the hundreds of intermediate steps it takes to normalize a polynomial (for example),
-    you may enable the "Shorten long chains" option before rendering the graph.
-    When enabled, all nodes with input and output degree equal to one are collapsed into the output edge.
-
-=== "Example (Big Graph)"
-
-    <figure markdown>
-      ![Side-by-side comparison of chain shortening](./ProofSlicingShortenedChains.png){ loading=lazy }
-      <figcaption>Left graph: default settings. Right graph: chain shortening enabled.</figcaption>
-    </figure>
+{{< tabs >}}
+{{< tab name="Description" >}}
+When inspecting the dependency graph, you might want to see only the "big picture" of the proof.
+If you don't care about the hundreds of intermediate steps it takes to normalize a polynomial (for example),
+you may enable the "Shorten long chains" option before rendering the graph.
+When enabled, all nodes with input and output degree equal to one are collapsed into the output edge.
+{{< /tab >}}
+{{< tab name="Example (Big Graph)" >}}
+<figure markdown>
+  ![Side-by-side comparison of chain shortening](./ProofSlicingShortenedChains.png){ loading=lazy }
+  <figcaption>Left graph: default settings. Right graph: chain shortening enabled.</figcaption>
+</figure>
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Proof Analysis
 

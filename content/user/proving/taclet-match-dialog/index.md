@@ -64,19 +64,20 @@ already settled stay read-only in the overview above.
 When a taclet has an `\assumes` clause, its instantiation gets its own section,
 and you can choose how to fill it in.
 
-=== "Pick from the sequent"
+{{< tabs >}}
+{{< tab name="Pick from the sequent" >}}
+For each assumption, choose a matching formula from a short candidate list.
+Selecting one commits it straight away, and the preview follows.
 
-    For each assumption, choose a matching formula from a short candidate list.
-    Selecting one commits it straight away, and the preview follows.
+![Selecting an assumes formula from the sequent](assumes-select.png)
+{{< /tab >}}
+{{< tab name="Type it yourself" >}}
+Prefer to write it out? Type the whole `\assumes` sequent, with a schematic
+reminder of what is expected right above.
 
-    ![Selecting an assumes formula from the sequent](assumes-select.png)
-
-=== "Type it yourself"
-
-    Prefer to write it out? Type the whole `\assumes` sequent, with a schematic
-    reminder of what is expected right above.
-
-    ![Typing the whole assumes sequent](assumes-manual.png)
+![Typing the whole assumes sequent](assumes-manual.png)
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Mistakes caught early
 
