@@ -3,9 +3,10 @@ title: "Proof Scripts in JML"
 weight: 60
 ---
 
-!!! note
-    This describes proof scripts from JML as opposed to [linear scripts](../linearScripts)
-    that are written in KeY files in JavaDL.
+{{< callout type="info" >}}
+This describes proof scripts from JML as opposed to [linear scripts](../linearScripts)
+that are written in KeY files in JavaDL.
+{{< /callout >}}
 
 The KeY verification system supports **proof scripts** to make interactive proofs **repeatable, robust, and easier to manage**.
 Instead of manually clicking through proof steps in the GUI for each verification run, users can persist important proof interactions directly in the source code via **JML assertions**.
@@ -36,10 +37,10 @@ Two forms are supported:
   @} */
 ```
 
-??? note "`auto` required"
-
-    Currently,  every assertion **inside** a JML proof script needs to have a trailing `\by auto;` to be submitted to KeY's automation.
-    Toplevel JML assertions need not be thus annotated. A toplevel assertion without \by-clause will be subjected to `auto` automatically.
+{{< details title="`auto` required" >}}
+Currently,  every assertion **inside** a JML proof script needs to have a trailing `\by auto;` to be submitted to KeY's automation.
+Toplevel JML assertions need not be thus annotated. A toplevel assertion without \by-clause will be subjected to `auto` automatically.
+{{< /details >}}
 
 This proof of the JML assertion introduces intermediate assertions as stepstones towards the ultimate goal. The two arising goals can be verified using KeY's automation.
 
@@ -124,10 +125,10 @@ rule "andRight" \by {
 }
 ```
 
-!!! note "Cases are labels"
-
-    Cases select among the generated subgoals; they are not general conditionals on program state.
-    The labels that can be used depend on the applied command. Many rules merely produces labels like the "Case 1" and "Case 2" above. Other commands have more speaking names. Check the commands reference for more information.
+{{< callout type="info" title="Cases are labels" >}}
+Cases select among the generated subgoals; they are not general conditionals on program state.
+The labels that can be used depend on the applied command. Many rules merely produces labels like the "Case 1" and "Case 2" above. Other commands have more speaking names. Check the commands reference for more information.
+{{< /callout >}}
 
 ## Debugging and Special Commands
 

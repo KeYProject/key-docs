@@ -3,11 +3,12 @@ title: "MonKeY"
 weight: 50
 ---
 
-!!! warning "Unsupported historical content"
-    This Eclipse integration is **no longer supported or maintained**. It
-    targeted old Eclipse releases (Indigo/Luna era) and old versions of
-    KeY; the update sites may no longer exist. This page is kept for
-    historical reference.
+{{< callout type="warning" title="Unsupported historical content" >}}
+This Eclipse integration is **no longer supported or maintained**. It
+targeted old Eclipse releases (Indigo/Luna era) and old versions of
+KeY; the update sites may no longer exist. This page is kept for
+historical reference.
+{{< /callout >}}
 
 
 MonKeY provides a batch verification of all proof obligations. This

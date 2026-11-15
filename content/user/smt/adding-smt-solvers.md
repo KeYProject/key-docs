@@ -35,9 +35,10 @@ the definitions shipped with KeY in
 and place the file in one of the locations listed above, e.g.
 `~/.key/smt-solvers.json`.
 
-!!! note
-    A formal JSON schema and more details for developers are available in
-    the [developer documentation](../../../devel/AddingSMTSolvers/).
+{{< callout type="info" >}}
+A formal JSON schema and more details for developers are available in
+the [developer documentation](../../../devel/AddingSMTSolvers/).
+{{< /callout >}}
 
 
 ```json

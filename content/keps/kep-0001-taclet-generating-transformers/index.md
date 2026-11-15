@@ -3,17 +3,17 @@ title: "KEP-1: Taclet-Generating Transformers"
 weight: 10
 ---
 
-!!! note "Status: proposal / proof-of-concept"
+{{< callout type="info" title="Status: proposal / proof-of-concept" >}}
+This KEP describes an **experimental** feature that currently lives on a
+branch and in an open pull request. The design is settled enough to try
+out, but details may still change, and the feature may be reshaped before
+(or instead of) being merged.
 
-    This KEP describes an **experimental** feature that currently lives on a
-    branch and in an open pull request. The design is settled enough to try
-    out, but details may still change, and the feature may be reshaped before
-    (or instead of) being merged.
-
-    - **Realises a discussion from 2019**: [Taclet-Generation-Language](https://git.key-project.org/key/key/-/wikis/Taclet-Generation-Language)
-    - **Pull request:** [KeYProject/key#3893](https://github.com/KeYProject/key/pull/3893) — "RFC / KEP-1: Taclet-generating transformers"
-    - **Scope of this page:** the concept, how to use it from the GUI and the
-      command line, and where the idea goes beyond the One Step Simplifier.
+- **Realises a discussion from 2019**: [Taclet-Generation-Language](https://git.key-project.org/key/key/-/wikis/Taclet-Generation-Language)
+- **Pull request:** [KeYProject/key#3893](https://github.com/KeYProject/key/pull/3893) — "RFC / KEP-1: Taclet-generating transformers"
+- **Scope of this page:** the concept, how to use it from the GUI and the
+  command line, and where the idea goes beyond the One Step Simplifier.
+{{< /callout >}}
 
 ## The idea
 
@@ -170,11 +170,11 @@ many lemmas does not flood it); only obligations that remain open are surfaced
 for manual completion. Once all obligations are discharged, the proof's status
 turns from *closed but lemmas left* to **closed**.
 
-!!! tip "Cleaning up bulk-loaded side proofs"
-
-    If you load many lemmas as side proofs, you can drop them all at once:
-    right-click the **environment** node in the *Loaded Proofs* tree and choose
-    **Abandon All Proofs of Environment**.
+{{< callout type="default" title="Cleaning up bulk-loaded side proofs" >}}
+If you load many lemmas as side proofs, you can drop them all at once:
+right-click the **environment** node in the *Loaded Proofs* tree and choose
+**Abandon All Proofs of Environment**.
+{{< /callout >}}
 
 ## Saving a transparent proof
 

@@ -5,9 +5,9 @@ author: Alexander Weigl
 date: 2023-09-24
 ---
 
-!!! abstract
-
-    KeY allows you to define abstract data types and use them inside the logic and JML specifications.
+{{< callout type="info" >}}
+KeY allows you to define abstract data types and use them inside the logic and JML specifications.
+{{< /callout >}}
 
 
 ## Introduction

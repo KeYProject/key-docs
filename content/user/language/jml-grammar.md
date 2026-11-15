@@ -3,11 +3,11 @@ title: "JML Grammar"
 weight: 10
 ---
 
-!!! abstract
+{{< callout type="info" >}}
+Cheat sheet and definition for JML*, the JML-dialect of KeY.
 
-    Cheat sheet and definition for JML*, the JML-dialect of KeY.
-
-    Currently under construction.
+Currently under construction.
+{{< /callout >}}
 
 
 ## Introduction
@@ -37,12 +37,12 @@ In contrast to the JML reference, KeY currently *does not* support comment tags.
 is currently not a legal.
 
 
-!!! note
+{{< callout type="info" >}}
+A common beginners mistakes is a white space between  `//` and `@` sign, like `// @`.
+These commons are not considers as JML comments.
 
-    A common beginners mistakes is a white space between  `//` and `@` sign, like `// @`.
-    These commons are not considers as JML comments.
-
-    This is also a nice trick to disable JML comments.
+This is also a nice trick to disable JML comments.
+{{< /callout >}}
 
 JML comments can be placed in any valid position where also a Java comment can be placed. But in practise,
 you should keep strict policy:
@@ -308,19 +308,19 @@ provide default *implementations* of the model methods, e.g., a
 weakest-precondition default (see
 [the `\dl_wp_apply` escape](JavaDLinJML.md#the-weakest-precondition-escape-dl_wp_apply)).
 
-!!! note "Side-effectful lambdas"
-
-    A side-effectful lambda (one that modifies locations) is specified with
-    an `invariant` clause and a frame via `footprint`/`accessibleFields` or
-    `frameCondition` (Csiky, Sec. 6.4): the `invariant` is a property that
-    shall hold both before and after *every call* of the lambda. The
-    functional interface ties it in by making it both a precondition and a
-    postcondition of the functional method (`requires invariantMethod(...)`
-    and `ensures invariantMethod(x, \result)`). Note that a `two_state`
-    model method may only be referenced from post-state contexts (e.g.,
-    `ensures`); a precondition tie-in therefore requires a non-`two_state`
-    declaration of `invariantMethod`. The thesis' ghost field tracking the
-    sequence of calls is not part of the current implementation.
+{{< callout type="info" title="Side-effectful lambdas" >}}
+A side-effectful lambda (one that modifies locations) is specified with
+an `invariant` clause and a frame via `footprint`/`accessibleFields` or
+`frameCondition` (Csiky, Sec. 6.4): the `invariant` is a property that
+shall hold both before and after *every call* of the lambda. The
+functional interface ties it in by making it both a precondition and a
+postcondition of the functional method (`requires invariantMethod(...)`
+and `ensures invariantMethod(x, \result)`). Note that a `two_state`
+model method may only be referenced from post-state contexts (e.g.,
+`ensures`); a precondition tie-in therefore requires a non-`two_state`
+declaration of `invariantMethod`. The thesis' ghost field tracking the
+sequence of calls is not part of the current implementation.
+{{< /callout >}}
 
 ### Method references
 
@@ -384,9 +384,9 @@ currently supports names upon following entities:
 These labels do not carry semantics. These are just names which can be
 exploited.
 
-!!! note
-
-	You can use the feature flag `JML_ENTITY_NAMES_AS_TERMLABEL` to activate the transfer of the JML entity names into KeY's term label (label `named(X)` for entity name "X"). This can be used for further analysis.
+{{< callout type="info" >}}
+You can use the feature flag `JML_ENTITY_NAMES_AS_TERMLABEL` to activate the transfer of the JML entity names into KeY's term label (label `named(X)` for entity name "X"). This can be used for further analysis.
+{{< /callout >}}
 
 For example:
 

@@ -6,10 +6,11 @@ weight: 10
 *weigl, 2020*
 
 
-!!! abstract
-    In this article, we present a tutorial for the setup of external project.
-    The setup embedds KeY as a git submodule, allowing modification of KeY
-    or using a different branch.
+{{< callout type="info" >}}
+In this article, we present a tutorial for the setup of external project.
+The setup embedds KeY as a git submodule, allowing modification of KeY
+or using a different branch.
+{{< /callout >}}
 
 
 

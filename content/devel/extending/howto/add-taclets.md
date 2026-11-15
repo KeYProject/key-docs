@@ -52,11 +52,12 @@ For larger self-contained theories, follow the examples in
 `\sorts`, `\functions`, `\schemaVariables`, and `\rules`, and pull the
 theory into a problem file with `\include`.
 
-!!! warning "Soundness"
-    KeY does not check that your taclets are sound — a wrong rule lets you
-    "prove" wrong statements. Treat project-local taclets as axioms of
-    your verification project, and keep them few and reviewable. Derived
-    rules can be justified with taclet proofs (see Scenario B, step 4).
+{{< callout type="warning" title="Soundness" >}}
+KeY does not check that your taclets are sound — a wrong rule lets you
+"prove" wrong statements. Treat project-local taclets as axioms of
+your verification project, and keep them few and reviewable. Derived
+rules can be justified with taclet proofs (see Scenario B, step 4).
+{{< /callout >}}
 
 ## Scenario B: extending KeY's standard rule base
 

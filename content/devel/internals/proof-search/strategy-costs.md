@@ -6,11 +6,12 @@ weight: 30
 *2026 — class names and values checked against the current sources
 (`key.core` and `key.ncore.calculus`).*
 
-!!! warning "Status: open pull request"
-    The cost vocabulary described on this page (`CostBand`, `CombinationCost`,
-    the theory-local cost holders) is **not yet merged** — it is introduced by
-    an open pull request and this page is published together with it.
-    *([pull request #3904](https://github.com/KeYProject/key/pull/3904))*
+{{< callout type="warning" title="Status: open pull request" >}}
+The cost vocabulary described on this page (`CostBand`, `CombinationCost`,
+the theory-local cost holders) is **not yet merged** — it is introduced by
+an open pull request and this page is published together with it.
+*([pull request #3904](https://github.com/KeYProject/key/pull/3904))*
+{{< /callout >}}
 
 KeY's automated proof search is **cost-based**: for every applicable rule the
 strategy computes an integer cost, and the
@@ -156,12 +157,13 @@ coupled rule with it.
   single theory belongs in that theory. Changing a band's value, or its order
   relative to other bands, shifts the search of **all** proofs.
 
-!!! warning "Verifying a cost change"
-    Cost changes never affect soundness, but they change which proof is found
-    and how fast. Verify every change with a full
-    [runAllProofs](Testing/RunAllProves.md); after a `CostBand` or
-    `CombinationCost` change, additionally compare representative proofs node
-    for node against the previous costs. Respect the ordering constraints noted
-    on the bands — in particular `BLOCK_CONTRACT` must stay cheaper than
-    `REWRITE` and all symbolic-execution rules, otherwise a block starts
-    executing instead of being contracted.
+{{< callout type="warning" title="Verifying a cost change" >}}
+Cost changes never affect soundness, but they change which proof is found
+and how fast. Verify every change with a full
+[runAllProofs](Testing/RunAllProves.md); after a `CostBand` or
+`CombinationCost` change, additionally compare representative proofs node
+for node against the previous costs. Respect the ordering constraints noted
+on the bands — in particular `BLOCK_CONTRACT` must stay cheaper than
+`REWRITE` and all symbolic-execution rules, otherwise a block starts
+executing instead of being contracted.
+{{< /callout >}}

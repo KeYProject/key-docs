@@ -111,7 +111,8 @@ Drag the divider to balance the inputs against the preview. Below a threshold
 width the two sides fold into **Instantiate** and **Result preview** tabs. The
 window remembers its size and place for next time.
 
-!!! note "Prefer the previous dialog?"
-    For a migration period the previous dialog is still available. Enable **Use
-    classic taclet instantiation dialog** under *Options → Settings → Appearance
-    & Behaviour → Interaction*; the redesigned dialog is the default.
+{{< callout type="info" title="Prefer the previous dialog?" >}}
+For a migration period the previous dialog is still available. Enable **Use
+classic taclet instantiation dialog** under *Options → Settings → Appearance
+& Behaviour → Interaction*; the redesigned dialog is the default.
+{{< /callout >}}

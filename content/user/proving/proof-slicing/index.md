@@ -8,13 +8,13 @@ updated: "June 2026"
 approved: wp 2026-06-19
 ---
 
-!!! abstract
+{{< callout type="info" >}}
+This note describes the *Proof Slicing* extension available since KeY 2.12.0.
+It allows reducing the size of finished proofs by
+removing proof steps that are not necessary to close the proof.
 
-    This note describes the *Proof Slicing* extension available since KeY 2.12.0.
-    It allows reducing the size of finished proofs by
-    removing proof steps that are not necessary to close the proof.
-
-    This feature is available if the extension is activated in the settings.
+This feature is available if the extension is activated in the settings.
+{{< /callout >}}
 
 
 ## Overview
@@ -48,9 +48,9 @@ You may also export the dependency graph in DOT format ("Export as DOT" button) 
   <figcaption>Dependency Graph of a simple proof (top node: proof obligation)</figcaption>
 </figure>
 
-!!! warning
-
-    It is not advisable to render the dependency graph of large proofs: the render process may consume excessive amounts of memory and/or CPU time.
+{{< callout type="warning" >}}
+It is not advisable to render the dependency graph of large proofs: the render process may consume excessive amounts of memory and/or CPU time.
+{{< /callout >}}
 
 ### Chain Shortening
 
@@ -79,9 +79,9 @@ The second algorithm ("De-duplicate rule applications") identifies identical pro
 After running the analysis algorithms, you may also inspect which proof steps will be removed.
 They are marked with an 'X' in the proof tree panel (see last figure on this page).
 
-!!! info
-
-    Both algorithms may be combined.
+{{< callout type="info" >}}
+Both algorithms may be combined.
+{{< /callout >}}
 
 <figure markdown>
   ![Dependency graph example](./ProofSlicingDependencyGraphAnalyzed.png)

@@ -6,13 +6,15 @@ author: Mattias Ulbrich
 date_label: "2015"
 ---
 
-!!! warning
-    This is the original announcement and probably a bit outdated.
+{{< callout type="warning" >}}
+This is the original announcement and probably a bit outdated.
+{{< /callout >}}
 
-!!! note
-    Experimental feature: Proof scripts are currently only visible in the GUI if KeY
-    is launched with the `--experimental` option. Concrete syntax is subject to
-    change.
+{{< callout type="info" >}}
+Experimental feature: Proof scripts are currently only visible in the GUI if KeY
+is launched with the `--experimental` option. Concrete syntax is subject to
+change.
+{{< /callout >}}
 
 Every KeY user knows the pain of manually redoing an interactive proof over and
 over again even though only a tiny bit of the program or specification have
@@ -163,9 +165,10 @@ debugging unfinished proof scripts.
     macro autopilot-prep;
     ```
 
-    !!! note
-        Future version may drop the macro keyword and allow macro
-        invocations directly.
+    {{< callout type="info" >}}
+    Future version may drop the macro keyword and allow macro
+    invocations directly.
+    {{< /callout >}}
 
 * `rule`
 

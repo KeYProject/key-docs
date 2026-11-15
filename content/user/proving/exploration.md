@@ -6,13 +6,13 @@ date_label: "August 2021"
 valid_for: "KeY-2.10.0"
 ---
 
-!!! abstract
+{{< callout type="info" >}}
+This note describes the *Proof Exploration* features in KeY-2.10.
+Proof Exploration allows a flexible editing of sequents, and
+therefore brings "What-If"-Analyses into KeY.
 
-    This note describes the *Proof Exploration* features in KeY-2.10.
-    Proof Exploration allows a flexible editing of sequents, and
-    therefore brings "What-If"-Analyses into KeY.
-
-    This feature is currently only available with `--experimental` flag.
+This feature is currently only available with `--experimental` flag.
+{{< /callout >}}
 
 
 ## Overview
@@ -30,10 +30,10 @@ Proof Nodes, which are affected of exploration actions, are marked
 in the Proof Tree, accordingly.
 
 
-!!! attention
-
-    Proof Exploration actions are only available if you
-    activate the *Exploration Mode* in the toolbar.
+{{< callout type="warning" >}}
+Proof Exploration actions are only available if you
+activate the *Exploration Mode* in the toolbar.
+{{< /callout >}}
 
 ## Actions
 

@@ -13,16 +13,16 @@ uses the LLM service operated by KIT (`https://ki-toolbox.scc.kit.edu`).
 
 ![The KeY-Agent panel docked in the main window](llm-panel.png){ width="800" }
 
-!!! info "Availability"
+{{< callout type="info" title="Availability" >}}
+The KeY-Agent is currently part of the development version of KeY and is not contained
+in a released version yet.
+{{< /callout >}}
 
-    The KeY-Agent is currently part of the development version of KeY and is not contained
-    in a released version yet.
-
-!!! warning "Your data leaves your machine"
-
-    Prompts, the attached proof context and selected files are sent to the configured LLM
-    service and may be processed and stored there. Only share content that you are allowed
-    to disclose, and prefer a service operated by your institution for confidential code.
+{{< callout type="warning" title="Your data leaves your machine" >}}
+Prompts, the attached proof context and selected files are sent to the configured LLM
+service and may be processed and stored there. Only share content that you are allowed
+to disclose, and prefer a service operated by your institution for confidential code.
+{{< /callout >}}
 
 ## Features
 

@@ -6,9 +6,9 @@ hide:
 approved: RB
 ---
 
-!!! warning "Under construction"
-
-    This page is still under construction; its content may still change.
+{{< callout type="warning" title="Under construction" >}}
+This page is still under construction; its content may still change.
+{{< /callout >}}
 
 KeY verifies **sequential Java**. This page summarises which Java language
 features the prover currently understands, when each feature entered the Java
@@ -88,15 +88,15 @@ together with the relevant **JLS** section.
 
 </div>
 
-!!! info "How this table was checked"
-
-    Each row is backed by a minimal, `javac`-compiling example (one Java
-    construct each, generics in several variants) that is loaded into KeY to see
-    whether the front-end accepts or rejects it. These live in KeY's test suite as
-    `key.core/.../java/coverage/{supported,rejected}/` and are pinned by the test
-    `JavaFeatureCoverageTest`, which fails if a *supported* feature stops parsing
-    or a *rejected* one starts, a built-in reminder to update this table. A
-    :material-check-bold:{ style="color:#2e9e44" } means the construct loads; a
-    :material-minus:{ style="color:#9aa0a6" } means it is rejected at load time
-    (usually *"Unsupported element detected given by Java Parser"*) or, where
-    noted, loads but is not soundly modelled.
+{{< callout type="info" title="How this table was checked" >}}
+Each row is backed by a minimal, `javac`-compiling example (one Java
+construct each, generics in several variants) that is loaded into KeY to see
+whether the front-end accepts or rejects it. These live in KeY's test suite as
+`key.core/.../java/coverage/{supported,rejected}/` and are pinned by the test
+`JavaFeatureCoverageTest`, which fails if a *supported* feature stops parsing
+or a *rejected* one starts, a built-in reminder to update this table. A
+:material-check-bold:{ style="color:#2e9e44" } means the construct loads; a
+:material-minus:{ style="color:#9aa0a6" } means it is rejected at load time
+(usually *"Unsupported element detected given by Java Parser"*) or, where
+noted, loads but is not soundly modelled.
+{{< /callout >}}

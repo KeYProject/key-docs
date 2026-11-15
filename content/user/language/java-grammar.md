@@ -42,10 +42,10 @@ KeY uses a third identifier kind, the implicit identifiers. These are
 Java identifiers enclosed by angular brackets `<...>`.
 
 
-!!! note weigl
-
-   We should change this into something unambigous. Normally,
-   synthetic fields or classes uses the dollar sign `$`.
+{{< callout type="info" title="weigl" >}}
+We should change this into something unambigous. Normally,
+synthetic fields or classes uses the dollar sign `$`.
+{{< /callout >}}
 
 ### IndexRange
 

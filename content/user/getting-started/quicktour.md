@@ -3,9 +3,9 @@ title: "The Quicktour"
 weight: 10
 ---
 
-!!! abstract
-
-    This article gives an introduction to the KeY system.
+{{< callout type="info" >}}
+This article gives an introduction to the KeY system.
+{{< /callout >}}
 
 
 ## Introduction {#sec:introduction}
@@ -41,9 +41,9 @@ theoretical underpinnings of the KeY tool  please refer to
 contact the KeYsupport team at
 [*support@key-project.org*](mailto:support@key-project.org).
 
-!!! note "Version Information"
-
-    This tutorial was tested for KeY version 2.10.
+{{< callout type="info" title="Version Information" >}}
+This tutorial was tested for KeY version 2.10.
+{{< /callout >}}
 
 ## Contents
 

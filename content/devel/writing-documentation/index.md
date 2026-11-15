@@ -284,11 +284,11 @@ _Example_:
 
 _Result_:
 
-!!! note
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+{{< callout type="info" >}}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+{{< /callout >}}
 
   [type qualifier]: #supported-types
 
@@ -310,11 +310,11 @@ _Example_:
 
 _Result_:
 
-!!! note "Phasellus posuere in sem ut cursus"
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+{{< callout type="info" title="Phasellus posuere in sem ut cursus" >}}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+{{< /callout >}}
 
 #### Removing the title
 
@@ -334,11 +334,11 @@ _Example_:
 
 _Result_:
 
-!!! note ""
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+{{< callout type="info" >}}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+{{< /callout >}}
 
   [changing the title]: #changing-the-title
   [collapsible blocks]: #collapsible-blocks
@@ -361,11 +361,11 @@ _Example_:
 
 _Result_:
 
-??? note
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+{{< details title="Note" >}}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+{{< /details >}}
 
 Adding a `+` after the `???` token will render the block as open.
 
@@ -381,11 +381,11 @@ _Example_:
 
 _Result_:
 
-???+ note
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+{{< details title="Note" >}}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+{{< /details >}}
 
 #### Inline blocks
 
@@ -1164,12 +1164,13 @@ _Example_:
 
 ### Block diagrams
 
-!!! warning
-    `blockdiag`/`seqdiag` are **no longer supported** — the
-    `markdown-blockdiag` extension is not enabled in `mkdocs.yml` anymore,
-    so such blocks render as plain text. Use
-    [Mermaid diagrams](#mermaid-diagrams) instead (e.g.
-    `sequenceDiagram` replaces `seqdiag`, `graph` replaces `blockdiag`).
+{{< callout type="warning" >}}
+`blockdiag`/`seqdiag` are **no longer supported** — the
+`markdown-blockdiag` extension is not enabled in `mkdocs.yml` anymore,
+so such blocks render as plain text. Use
+[Mermaid diagrams](#mermaid-diagrams) instead (e.g.
+`sequenceDiagram` replaces `seqdiag`, `graph` replaces `blockdiag`).
+{{< /callout >}}
 
 
 ### Mermaid Diagrams
@@ -1791,11 +1792,11 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
 If there's insufficient space to render the text next to the image, the image
 will stretch to the full width of the viewport, e.g. on mobile viewports.
 
-??? question "Why is there no centered alignment?"
-
-    The [`align`][align] attribute doesn't allow for centered alignment, which
-    is why this option is not supported by Material for MkDocs.[^1] Instead,
-    the [image captions] syntax can be used, as captions are optional.
+{{< details title="Why is there no centered alignment?" >}}
+The [`align`][align] attribute doesn't allow for centered alignment, which
+is why this option is not supported by Material for MkDocs.[^1] Instead,
+the [image captions] syntax can be used, as captions are optional.
+{{< /details >}}
 
   [^1]:
     You might also realize that the [`align`][align] attribute has been

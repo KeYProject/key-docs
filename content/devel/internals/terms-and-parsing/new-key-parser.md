@@ -5,10 +5,10 @@ weight: 10
 
 *weigl, 2021-03-12*
 
-!!! abstract
-
-    This note explains the rewrite of the KeyParser and KeyLexer to ANTLR4. It explains the background, the architecture
-    and shows how to deal breaking changes.
+{{< callout type="info" >}}
+This note explains the rewrite of the KeyParser and KeyLexer to ANTLR4. It explains the background, the architecture
+and shows how to deal breaking changes.
+{{< /callout >}}
 
 
 ## Background

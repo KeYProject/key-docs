@@ -3,13 +3,14 @@ title: "CI Infrastructure"
 weight: 50
 ---
 
-!!! warning
-    Parts of this page are historical: the primary CI nowadays runs as
-    GitHub Actions workflows in the KeY repository
-    (`.github/workflows/tests.yml` et al.), complemented by a GitLab CI
-    configuration. The Docker images and the Jenkins/GitLab runner setup
-    described below stem from the earlier infrastructure (note the old
-    Java versions mentioned).
+{{< callout type="warning" >}}
+Parts of this page are historical: the primary CI nowadays runs as
+GitHub Actions workflows in the KeY repository
+(`.github/workflows/tests.yml` et al.), complemented by a GitLab CI
+configuration. The Docker images and the Jenkins/GitLab runner setup
+described below stem from the earlier infrastructure (note the old
+Java versions mentioned).
+{{< /callout >}}
 
 ## Docker images for testing
 

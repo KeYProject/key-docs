@@ -6,10 +6,10 @@ date_label: "February 2025"
 valid_for: "a future release of KeY based on KeY 2.12.3"
 ---
 
-!!! abstract
-
-   This note describes the new *Isabelle Translation* extension in KeY 2.12.3
-   When enabled it can be used to translate sequents to Isabelle and automatically search for proofs using Isabelle
+{{< callout type="info" >}}
+This note describes the new *Isabelle Translation* extension in KeY 2.12.3
+When enabled it can be used to translate sequents to Isabelle and automatically search for proofs using Isabelle
+{{< /callout >}}
 
 ## Overview
 

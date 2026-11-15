@@ -79,11 +79,11 @@ Since the `\find(...)` part of the taclet definition does not contain a `==>`, t
 The application restriction flag `\sameUpdateLevel` ensures that the `\find(...)` and `\add(...)` parts are
 under the same update application (or none).
 
-!!! info
-
-  Since KeY 3.0, `\sameUpdateLevel` is the default for all (relevant) taclets
-  and does not need to be added manually. Use `\ignoreUpdateLevel` to switch
-  it off.
+{{< callout type="info" >}}
+Since KeY 3.0, `\sameUpdateLevel` is the default for all (relevant) taclets
+and does not need to be added manually. Use `\ignoreUpdateLevel` to switch
+it off.
+{{< /callout >}}
 
 The taclet creates two new branches, which are defined directly afterwards.
 The first branch is labeled "CUT: #cutFormula TRUE".
@@ -157,9 +157,9 @@ At the moment, `\EQ` is the only supported generator.
 
 ## How to extend the taclet language
 
-!!! danger
-
-    This section does not reflect recent KeY developments. [The parser was recently rewritten](../../devel/NewKeyParser/).
+{{< callout type="error" >}}
+This section does not reflect recent KeY developments. [The parser was recently rewritten](../../devel/NewKeyParser/).
+{{< /callout >}}
 
 Sometimes, especially when one wants to introduce new symbolic execution
 concepts, the existing taclet language is not expressive enough and has to be
@@ -294,10 +294,11 @@ applications. To this end, custom completions implementing
 added and registered in
 `/key.ui/src/de/uka/ilkd/key/gui/WindowUserInterfaceControl.java`.
 
-!!! warning
-    Obviously, interactive rule application completions are currently
-    only designed to handle BuiltInRules. So for taclets, this will have to be
-    adapted!
+{{< callout type="warning" >}}
+Obviously, interactive rule application completions are currently
+only designed to handle BuiltInRules. So for taclets, this will have to be
+adapted!
+{{< /callout >}}
 
 Alternatively to the implementation of an interactive completion, additional
 information, like for instance a specification, could be retrieved by special

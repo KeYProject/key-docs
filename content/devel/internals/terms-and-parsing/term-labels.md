@@ -3,12 +3,13 @@ title: "Term Labels"
 weight: 20
 ---
 
-!!! warning "Status: open pull request"
-    The term-label rework described on this page is **not yet merged** — it is
-    an open pull request. This page documents the proposed design (in particular
-    the label-agnostic term equality); details may still change during review of
-    the pull request, so this page will be updated accordingly.
-    *([pull request #3884](https://github.com/KeYProject/key/pull/3884))*
+{{< callout type="warning" title="Status: open pull request" >}}
+The term-label rework described on this page is **not yet merged** — it is
+an open pull request. This page documents the proposed design (in particular
+the label-agnostic term equality); details may still change during review of
+the pull request, so this page will be updated accordingly.
+*([pull request #3884](https://github.com/KeYProject/key/pull/3884))*
+{{< /callout >}}
 
 Term labels are annotations attached to terms: `heap<<anonHeapFunction>>`,
 `x + 1<<origin(...)>>`. They carry bookkeeping information *about* a term

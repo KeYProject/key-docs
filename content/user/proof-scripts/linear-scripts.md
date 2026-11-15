@@ -3,8 +3,9 @@ title: "Linear Proof Scripts"
 weight: 50
 ---
 
-!!! note
-    This covers linear scripts. Scripts can also be attached to [JML assertions with scripts](../jml).
+{{< callout type="info" >}}
+This covers linear scripts. Scripts can also be attached to [JML assertions with scripts](../jml).
+{{< /callout >}}
 
 Every KeY user knows the pain of manually redoing an interactive proof
 over and over again even though only a tiny bit of the program or

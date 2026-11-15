@@ -3,11 +3,12 @@ title: "KeY IDE"
 weight: 40
 ---
 
-!!! warning "Unsupported historical content"
-    This Eclipse integration is **no longer supported or maintained**. It
-    targeted old Eclipse releases (Indigo/Luna era) and old versions of
-    KeY; the update sites may no longer exist. This page is kept for
-    historical reference.
+{{< callout type="warning" title="Unsupported historical content" >}}
+This Eclipse integration is **no longer supported or maintained**. It
+targeted old Eclipse releases (Indigo/Luna era) and old versions of
+KeY; the update sites may no longer exist. This page is kept for
+historical reference.
+{{< /callout >}}
 
 
 KeYIDE is an alternative user interface for KeY directly integrated into

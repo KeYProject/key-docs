@@ -3,11 +3,12 @@ title: "Starter"
 weight: 60
 ---
 
-!!! warning "Unsupported historical content"
-    This Eclipse integration is **no longer supported or maintained**. It
-    targeted old Eclipse releases (Indigo/Luna era) and old versions of
-    KeY; the update sites may no longer exist. This page is kept for
-    historical reference.
+{{< callout type="warning" title="Unsupported historical content" >}}
+This Eclipse integration is **no longer supported or maintained**. It
+targeted old Eclipse releases (Indigo/Luna era) and old versions of
+KeY; the update sites may no longer exist. This page is kept for
+historical reference.
+{{< /callout >}}
 
 
 KeY 4 Eclipse Starter is a basic Eclipse extension to start KeY from

@@ -10,13 +10,14 @@ KeY. It gives an overview of the available extension mechanisms and links to
 the detailed guides. For orientation in the code base, read the
 [Architecture Overview](../Architecture/) first.
 
-!!! tip "Step-by-step recipes"
-    Compiled, verified walkthroughs for the most common tasks are in the
-    [Developer How-Tos](../howto/): adding an
-    [extension module](../howto/AddExtension/), a
-    [menu entry](../howto/AddMenuEntry/), a
-    [toolbar](../howto/AddToolbarAction/), and
-    [taclets](../howto/AddTaclets/).
+{{< callout type="default" title="Step-by-step recipes" >}}
+Compiled, verified walkthroughs for the most common tasks are in the
+[Developer How-Tos](../howto/): adding an
+[extension module](../howto/AddExtension/), a
+[menu entry](../howto/AddMenuEntry/), a
+[toolbar](../howto/AddToolbarAction/), and
+[taclets](../howto/AddTaclets/).
+{{< /callout >}}
 
 ## Which mechanism do I need?
 

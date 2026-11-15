@@ -19,8 +19,9 @@ KeY allows you to add SMT solver configurations using JSON files. This interface
 This can all be done without writing a lot of own code (except for the solver socket).
 
 
-!!! note
-    If the SMT solver drops out of the traditional communication scheme (SMT-LIB on stdin and stdout), an integration requires an implementation via the interface of [`AbstractSolverSocket`](https://javadoc.io/doc/org.key-project/key.core/latest/de/uka/ilkd/key/smt/communication/AbstractSolverSocket.html).
+{{< callout type="info" >}}
+If the SMT solver drops out of the traditional communication scheme (SMT-LIB on stdin and stdout), an integration requires an implementation via the interface of [`AbstractSolverSocket`](https://javadoc.io/doc/org.key-project/key.core/latest/de/uka/ilkd/key/smt/communication/AbstractSolverSocket.html).
+{{< /callout >}}
 
 To add a solver, you specify its properties in a JSON file, following the [schema](smt-solvers.schema.json). The SMT solver definitions are loaded from various places, in order of loading (definitions in later files *overwrite* those from earlier files):
 
@@ -35,8 +36,9 @@ Use (4) to define SMT solvers for single project, more complex projects or scrip
 
 ## The schema
 
-!!! info
-    A JSON schema file is available here: [smt-solvers.schema.json](smt-solvers.schema.json).
+{{< callout type="info" >}}
+A JSON schema file is available here: [smt-solvers.schema.json](smt-solvers.schema.json).
+{{< /callout >}}
 
 * `string name = "Z3"`
 
@@ -113,8 +115,9 @@ Use (4) to define SMT solvers for single project, more complex projects or scrip
 
     All the used handlers handle the options on their own.
 
-    ??? warn
-        weigl: Completely unclear how to find such handlers. Or define new ones
+    {{< details title="Warn" >}}
+    weigl: Completely unclear how to find such handlers. Or define new ones
+    {{< /details >}}
 
 
 * `string preamble = "key.core\src\main\resources\de\uka\ilkd\key\smt\newsmt2\preamble.smt2"`

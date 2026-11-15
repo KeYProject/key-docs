@@ -59,9 +59,9 @@ test runs.
 
 ### Syntax of the Proof Collection/Index File
 
-!!! danger
-
-    This section does not reflect recent KeY developments. In particular, this list is now defined in code.
+{{< callout type="error" >}}
+This section does not reflect recent KeY developments. In particular, this list is now defined in code.
+{{< /callout >}}
 
 There is an proof collection (or index) file containing the
 declaration the sets of .key files that will be tested during
@@ -170,9 +170,10 @@ The following settings are currently supported:
               get the specified amount of heap memory. The value is passed
               directly to the Java process using -Xmx (like 500m or 2G).
 
-!!! note
-    The available options are also listed in automaticJAVADL.txt.
-    You should look there, too.
+{{< callout type="info" >}}
+The available options are also listed in automaticJAVADL.txt.
+You should look there, too.
+{{< /callout >}}
 
 Proof collection settings can be specified in the following ways:
 

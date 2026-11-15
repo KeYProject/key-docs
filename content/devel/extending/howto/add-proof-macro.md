@@ -115,10 +115,11 @@ Compile (`./gradlew :keyext.demo:compileJava`), then check both fronts:
   # ... ConsoleUserInterfaceControl Proved
   ```
 
-!!! note "Quote hyphenated names in scripts"
-    In the script language, a macro name containing `-` (like
-    `demo-close`) must be written as a string: `macro "demo-close";`.
-    A bare identifier works only for names without special characters.
+{{< callout type="info" title="Quote hyphenated names in scripts" >}}
+In the script language, a macro name containing `-` (like
+`demo-close`) must be written as a string: `macro "demo-close";`.
+A bare identifier works only for names without special characters.
+{{< /callout >}}
 
 ## Notes
 
