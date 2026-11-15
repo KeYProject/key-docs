@@ -21,6 +21,20 @@
   --hextra-max-content-width: 80rem;
 }
 
+/* Wider navigation columns. Hextra fixes both the left sidebar and the
+ * right-hand table of contents at 16rem (Tailwind w-64). */
+@media (min-width: 768px) {
+  .hextra-sidebar-container {
+    width: 18rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hextra-toc {
+    width: 18rem;
+  }
+}
+
 /* --------------------------------------------------------------------------
  * Review status badge (port of hooks/approval.py, now content-begin/end).
  * Pages carry an `approved:` front matter field with reviewer initials and
