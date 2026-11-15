@@ -81,12 +81,15 @@ menu:
       weight: 100
 
 params:
+  page:
+    width: wide
   math:
     engine: mathjax
   search:
     enable: true
     type: flexsearch
   navbar:
+    width: wide
     displayTitle: true
     displayLogo: true
     logo:
@@ -94,6 +97,7 @@ params:
       width: 28
       height: 28
   footer:
+    width: wide
     displayPoweredBy: false
   editURL:
     enable: true

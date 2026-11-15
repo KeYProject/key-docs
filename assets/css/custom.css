@@ -14,6 +14,13 @@
  * `layouts/_partials/custom/content-end.html` and the content pages.
  */
 
+/* Wider reading column. Hextra caps the article at 72rem by default; the
+ * page/navbar/footer containers are widened via params.*.width in hugo.yaml.
+ * Raise this to 100% together with params.page.width: full for edge-to-edge. */
+:root {
+  --hextra-max-content-width: 80rem;
+}
+
 /* --------------------------------------------------------------------------
  * Review status badge (port of hooks/approval.py, now content-begin/end).
  * Pages carry an `approved:` front matter field with reviewer initials and
