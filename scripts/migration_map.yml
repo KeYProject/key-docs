@@ -623,21 +623,21 @@
   parent: historical/eclipse
   weight: 10
   bundle: true
-- old: eclipse/JMLEditing/index.md
-  new: historical/eclipse/jml-editing/index.md
-  label: "JML Editing"
+- old: eclipse/SED/index.md
+  new: historical/eclipse/sed/index.md
+  label: "SED"
   parent: historical/eclipse
   weight: 20
+  bundle: true
+- old: eclipse/Stubby/index.md
+  new: historical/eclipse/stubby/index.md
+  label: "Stubby"
+  parent: historical/eclipse
+  weight: 30
   bundle: true
 - old: eclipse/KeYIDE/index.md
   new: historical/eclipse/key-ide/index.md
   label: "KeY IDE"
-  parent: historical/eclipse
-  weight: 30
-  bundle: true
-- old: eclipse/KeYResources/index.md
-  new: historical/eclipse/key-resources/index.md
-  label: "Resources"
   parent: historical/eclipse
   weight: 40
   bundle: true
@@ -647,27 +647,27 @@
   parent: historical/eclipse
   weight: 50
   bundle: true
-- old: eclipse/SED/index.md
-  new: historical/eclipse/sed/index.md
-  label: "SED"
-  parent: historical/eclipse
-  weight: 60
-  bundle: true
 - old: eclipse/Starter/index.md
   new: historical/eclipse/starter/index.md
   label: "Starter"
   parent: historical/eclipse
-  weight: 70
-  bundle: true
-- old: eclipse/Stubby/index.md
-  new: historical/eclipse/stubby/index.md
-  label: "Stubby"
-  parent: historical/eclipse
-  weight: 80
+  weight: 60
   bundle: true
 - old: eclipse/VisualDbC/index.md
   new: historical/eclipse/visual-dbc/index.md
   label: "VisualDBC"
+  parent: historical/eclipse
+  weight: 70
+  bundle: true
+- old: eclipse/JMLEditing/index.md
+  new: historical/eclipse/jml-editing/index.md
+  label: "JML Editing"
+  parent: historical/eclipse
+  weight: 80
+  bundle: true
+- old: eclipse/KeYResources/index.md
+  new: historical/eclipse/key-resources/index.md
+  label: "Resources"
   parent: historical/eclipse
   weight: 90
   bundle: true
