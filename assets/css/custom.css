@@ -21,17 +21,19 @@
   --hextra-max-content-width: 80rem;
 }
 
-/* Wider navigation columns. Hextra fixes both the left sidebar and the
- * right-hand table of contents at 16rem (Tailwind w-64). */
+/* Wider navigation columns for the full-width layout. Hextra fixes both the
+ * left sidebar and the right-hand table of contents at 16rem (Tailwind w-64);
+ * with the page container at 100% they can grow with the viewport while the
+ * article keeps its 80rem reading cap. */
 @media (min-width: 768px) {
   .hextra-sidebar-container {
-    width: 18rem;
+    width: clamp(20rem, 18vw, 26rem);
   }
 }
 
 @media (min-width: 1280px) {
   .hextra-toc {
-    width: 18rem;
+    width: clamp(20rem, 18vw, 26rem);
   }
 }
 
