@@ -1,7 +1,7 @@
 /* Custom styles for the KeY documentation site.
  *
- * Ported from the Material for MkDocs stylesheet (formerly `docs/extra.css`,
- * kept as `static/extra.css` for the legacy build).  Material CSS variables
+ * Ported from the Material for MkDocs stylesheet (`docs/extra.css`, removed
+ * after the migration). Material CSS variables
  * (`--md-*`) are replaced by concrete colours, with Hextra's `.dark` class for
  * the dark colour scheme, and every `.md-*` selector is dropped.
  *

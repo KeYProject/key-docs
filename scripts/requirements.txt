@@ -1,4 +1,4 @@
-# Python dependencies for the migration helpers in scripts/.
+# Python dependencies for the one-off migration helpers in scripts/migrate/.
 # The site itself is built by Hugo and does not need Python.
+# scripts/bib_to_json.py uses the standard library only.
 pyyaml
-pybtex

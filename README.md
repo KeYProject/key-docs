@@ -118,14 +118,15 @@ initials or copy an `approved` line from another page. Generated pages keep
 Cite with the BibTeX key; the bibliography renders every entry sorted by key.
 An unknown key renders as `[KEY]` and emits a build warning. `refs.bib` is the
 source for `data/refs.json`, which is regenerated with
-`scripts/bib_to_json.py` (see `scripts/requirements.txt`).
+`scripts/bib_to_json.py` (standard library only; `scripts/requirements.txt` is
+only needed for the one-off migration helpers).
 
 ## Code, math and diagrams
 
 Code fences are highlighted in the browser by Prism. Wired languages include
 `java`, `jml`, `key`, `python`, `bash`/`shell`, `yaml`, `json`, `markdown`,
-`text`, `c`, `cpp`, `css`, `html`/`xml`, `latex`, `groovy`, `ocaml` and
-`properties`. Unknown languages render uncoloured but do not fail the build.
+`c`, `cpp`, `css`, `html`/`xml`, `latex`, `groovy`, `ocaml` and `properties`.
+`text` and unknown languages render uncoloured but do not fail the build.
 
 Math is typeset by MathJax with exactly two delimiter pairs: `$…$` inline and
 `$$…$$` display. Do **not** use `\(…\)` or `\[…\]`: KeY program modalities are
@@ -148,15 +149,18 @@ assets live under `static/` and are linked with absolute paths, e.g.
   on a weekly schedule, and on manual dispatch;
 - checks out full history (`fetch-depth: 0`) for `enableGitInfo`;
 - installs Go 1.27.x and Hugo extended 0.170.0;
-- downloads the `varcond-script-docs` artifact from the latest successful
-  nightly build of `KeYProject/key` and unpacks it into
-  `content/user/proof-scripts/` (fault-tolerant: the checked-in copy is used
-  when the artifact is unavailable);
+- tries to download the `varcond-script-docs` artifact from the latest
+  successful nightly build of `KeYProject/key` and unpack it into
+  `content/user/proof-scripts/`. This is best-effort: the upstream nightly does
+  not currently publish that artifact, so the checked-in `commands.md` is the
+  effective source. Restoring the artifact also needs a token with read access
+  to `KeYProject/key`;
 - strips the generator's obsolete stylesheet from `commands.md` and keeps
   `approved: none`;
 - builds with `hugo --gc --minify --baseURL …` and uploads `./public`;
 - deploys to GitHub Pages only from `master`.
 
 Pushes to `master` publish automatically. Pull requests run the same build as a
-check, so a broken shortcode, unknown citation key or invalid front matter is
-caught before merging. Run `make check` locally before pushing.
+check; broken shortcodes, missing icons and unparsable front matter fail the
+build, while unknown citation keys only emit a warning. CI does not run the link
+checker, so run `make check` locally before pushing.

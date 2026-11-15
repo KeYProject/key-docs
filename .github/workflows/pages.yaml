@@ -12,8 +12,7 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  actions: read
 
 concurrency:
   group: "pages"
@@ -103,7 +102,8 @@ jobs:
 
           text = re.sub(r"<style>.*?</style>[ \t]*\n?", drop_material_style,
                         text, flags=re.DOTALL | re.IGNORECASE)
-          text = re.sub(r"\n{3,}", "\n\n", text)
+          # Inline Material colour variables are harmless but obsolete.
+          text = re.sub(r'\s+style="[^"]*--md-[^"]*"', "", text)
 
           if text.startswith("---\n"):
               end = text.find("\n---", 4)
@@ -119,7 +119,8 @@ jobs:
                       front_matter = front_matter.rstrip("\n") + "\napproved: none"
                   text = "---\n" + front_matter + text[end:]
           else:
-              print("warning: commands.md has no front matter; cannot set approved: none")
+              print("warning: commands.md has no front matter; adding approved: none")
+              text = "---\napproved: none\n---\n\n" + text
 
           path.write_text(text, encoding="utf-8")
           PY
@@ -127,7 +128,7 @@ jobs:
             echo "::error::Obsolete navigation stylesheet still present in commands.md"
             exit 1
           fi
-          grep -q '^approved: none' content/user/proof-scripts/commands.md \
+          grep -qE '^approved:[[:space:]]*none' content/user/proof-scripts/commands.md \
             || { echo "::error::commands.md is missing 'approved: none'"; exit 1; }
 
       - name: Setup Pages
@@ -161,6 +162,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/master'
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

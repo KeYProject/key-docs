@@ -178,8 +178,8 @@ expect highlighting.
 ## Citations
 
 - The bibliography is generated from `refs.bib` into `data/refs.json` by
-  `scripts/bib_to_json.py` (needs `pyyaml` and `pybtex`, see
-  `scripts/requirements.txt`).
+  `scripts/bib_to_json.py` (standard library only). `scripts/requirements.txt`
+  only covers the one-off migration helpers.
 - Cite by BibTeX key; unknown keys render `[KEY]` and produce a build warning.
   Fix the warning instead of ignoring it.
 - Keep the `{{< bibliography >}}` list on reference pages, not on every page.
@@ -187,8 +187,8 @@ expect highlighting.
 ## Generated And Semi-Generated Content
 
 `content/user/proof-scripts/commands.md` is generated from the KeY nightly
-build. CI downloads it, strips the obsolete generator stylesheet and forces
-`approved: none`. Signals that a page may be generated:
+build. CI tries to download it (best effort; currently the checked-in copy is
+used), strips the obsolete generator stylesheet and forces `approved: none`. Signals that a page may be generated:
 
 - `approved: none`
 - generated metadata or timestamps
@@ -235,7 +235,7 @@ Use caution for:
 For meaningful documentation or infrastructure changes:
 
 1. `hugo mod tidy` and confirm `git diff --exit-code go.mod go.sum` is clean
-2. `make build` — must exit 0 and report 170 pages
+2. `make build` — must exit 0 with no errors or warnings
 3. `make check` — scratch build plus internal link check must pass
 4. spot-check the rendered page in `make serve` if layout, shortcode or front
    matter changed
