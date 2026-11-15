@@ -34,8 +34,8 @@ Using the translation opens an interface. This interface will display the status
 The current status is shown in a bar at the top of the interface. This will at first show that the Isabelle is preparing to signify the starting of Isabelle and the creation of the preamble session files. When first starting Isabelle or changing the translation directory this may take up to a few minutes. Afterwards it will display the number of processed goals.
 From this interface the proof search can be aborted using the Stop button. After proof sarch completes for all goals the results can be discarded, which closes the interface or applied, which automatically closes the relevant goals with custom rules containing the result of the respective sledgehammer calls.
 
-<figure markdown>
-   ![IsabelleInterface](./IsabelleInterface.png)
+<figure>
+   <img src="./IsabelleInterface.png" alt="IsabelleInterface" loading="lazy">
    <figcaption>Isabelle Interface during proof search</figcaption>
 </figure>
 

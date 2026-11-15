@@ -66,7 +66,7 @@ without them.)
 
 | Module | Purpose |
 |---|---|
-| `key.core` | The heart of KeY: terms, sequents, taclets and built-in rules, the proof search strategy, parsers for Java/JML/KeY files, proof obligations, proof loading/saving, proof scripts, and the SMT translation. Java sources are parsed with [JavaParser](https://javaparser.org/) (`de.uka.ilkd.key.java.JavaService`); JML is parsed by the `njml` parser (`de.uka.ilkd.key.speclang.njml`), and `.key` files by the ANTLR4-based `nparser` (see [New KeY parser](../NewKeyParser/)). |
+| `key.core` | The heart of KeY: terms, sequents, taclets and built-in rules, the proof search strategy, parsers for Java/JML/KeY files, proof obligations, proof loading/saving, proof scripts, and the SMT translation. Java sources are parsed with [JavaParser](https://javaparser.org/) (`de.uka.ilkd.key.java.JavaService`); JML is parsed by the `njml` parser (`de.uka.ilkd.key.speclang.njml`), and `.key` files by the ANTLR4-based `nparser` (see [New KeY parser](../internals/terms-and-parsing/new-key-parser/)). |
 | `key.core.infflow` | Information-flow (non-interference) proofs. |
 | `key.core.wd` | Well-definedness checks for specifications. |
 | `key.core.symbolic_execution` | API for using KeY as a symbolic execution engine (basis of the Symbolic Execution Debugger). |
@@ -88,20 +88,20 @@ Important packages in `key.core` (`de.uka.ilkd.key.*`):
 
 | Module | Purpose |
 |---|---|
-| `key.ui` | The Swing GUI (`de.uka.ilkd.key.gui`), including the [GUI extension API](../GUIExtensions/) (`de.uka.ilkd.key.gui.extension.api.KeYGuiExtension`). The UI is organized with the [Docking Frames](https://docking-frames.org/) library. |
+| `key.ui` | The Swing GUI (`de.uka.ilkd.key.gui`), including the [GUI extension API](../extending/gui-extensions/) (`de.uka.ilkd.key.gui.extension.api.KeYGuiExtension`). The UI is organized with the [Docking Frames](https://docking-frames.org/) library. |
 
 ## Extensions (`keyext.*`)
 
 These modules plug into the UI via the GUI extension mechanism and are good
-templates for your own extensions (see [Extending KeY](../ExtendingKeY/)):
+templates for your own extensions (see [Extending KeY](../extending/)):
 
 | Module | Purpose |
 |---|---|
-| `keyext.exploration` | [Proof exploration](../../user/Exploration/) ("what if" edits to sequents). |
-| `keyext.slicing` | [Proof slicing](../../user/ProofSlicing/). |
-| `keyext.caching` | [Proof caching](../../user/ProofCaching/). |
+| `keyext.exploration` | [Proof exploration](../../user/proving/exploration/) ("what if" edits to sequents). |
+| `keyext.slicing` | [Proof slicing](../../user/proving/proof-slicing/). |
+| `keyext.caching` | [Proof caching](../../user/proving/proof-caching/). |
 | `keyext.proofmanagement` | Management of larger verification projects. |
-| `keyext.isabelletranslation` | [Translation of proof obligations to Isabelle](../../user/IsabelleTranslation/). |
+| `keyext.isabelletranslation` | [Translation of proof obligations to Isabelle](../../user/bridges/isabelle/). |
 | `keyext.ui.testgen` | UI for test case generation. |
 
 ## Extension mechanisms at a glance
@@ -117,4 +117,4 @@ interfaces:
 - `de.uka.ilkd.key.proof.init.loader.ProofObligationLoader` — loaders for proof obligations
 - `de.uka.ilkd.key.proof.init.DefaultProfileResolver` — profile resolution
 
-See [Extending KeY](../ExtendingKeY/) for a how-to.
+See [Extending KeY](../extending/) for a how-to.

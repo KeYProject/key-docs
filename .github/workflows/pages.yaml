@@ -1,0 +1,167 @@
+name: Deploy Hugo site to Pages
+
+on:
+  push:
+    branches: ["master", "main"]
+  pull_request:
+    branches: ["master", "main"]
+  schedule:
+    # Weekly rebuild: picks up the latest generated proof-script reference.
+    - cron: "0 2 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.170.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          # Full history for enableGitInfo and .Lastmod.
+          fetch-depth: 0
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.27.x'
+
+      # Download the generated documentation for variable conditions and proof
+      # script commands from the latest successful nightly build of
+      # KeYProject/key. All steps are fault-tolerant: if the artifact is
+      # unavailable, the site is still built with the checked-in copy.
+      - name: Find latest nightly build run
+        id: nightly
+        continue-on-error: true
+        run: |
+          run_id=$(gh run list --repo KeYProject/key \
+                          --workflow nightlydeploy.yml \
+                          --status success --limit 1 \
+                          --json databaseId --jq '.[0].databaseId')
+          if [ -n "$run_id" ]; then
+            echo "run-id=$run_id" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Download varcond/script documentation artifact
+        continue-on-error: true
+        if: steps.nightly.outputs.run-id != ''
+        uses: actions/download-artifact@v8
+        with:
+          name: varcond-script-docs
+          path: download/keydocs
+          repository: KeYProject/key
+          run-id: ${{ steps.nightly.outputs.run-id }}
+          github-token: ${{ github.token }}
+
+      - name: Unpack documentation into content/user/proof-scripts
+        continue-on-error: true
+        run: |
+          mkdir -p content/user/proof-scripts
+          if [ -f download/keydocs/key-varcond-script-docs.zip ]; then
+            unzip -o -q download/keydocs/key-varcond-script-docs.zip \
+              -d content/user/proof-scripts
+          else
+            echo "::warning::Generated proof-script documentation not available; using the checked-in copy."
+          fi
+
+      # The generator still emits a stylesheet from the retired documentation
+      # toolchain that hides deep sidebar levels. It has no effect in Hextra and
+      # should not ship; the page is generated, so it must also stay unapproved.
+      - name: Post-process generated command reference
+        run: |
+          if [ ! -f content/user/proof-scripts/commands.md ]; then
+            echo "::warning::content/user/proof-scripts/commands.md is missing; skipping post-processing."
+            exit 0
+          fi
+          python3 - content/user/proof-scripts/commands.md <<'PY'
+          import pathlib
+          import re
+          import sys
+
+          path = pathlib.Path(sys.argv[1])
+          text = path.read_text(encoding="utf-8")
+
+          def drop_material_style(match):
+              block = match.group(0)
+              return "" if "md-nav" in block or "md-header" in block else block
+
+          text = re.sub(r"<style>.*?</style>[ \t]*\n?", drop_material_style,
+                        text, flags=re.DOTALL | re.IGNORECASE)
+          text = re.sub(r"\n{3,}", "\n\n", text)
+
+          if text.startswith("---\n"):
+              end = text.find("\n---", 4)
+              if end != -1:
+                  front_matter = text[4:end]
+                  if re.search(r"^approved:\s*none\s*$", front_matter, re.MULTILINE):
+                      pass
+                  elif re.search(r"^approved:", front_matter, re.MULTILINE):
+                      front_matter = re.sub(r"^approved:.*$", "approved: none",
+                                            front_matter, flags=re.MULTILINE)
+                      print("warning: forced approved: none on the generated page")
+                  else:
+                      front_matter = front_matter.rstrip("\n") + "\napproved: none"
+                  text = "---\n" + front_matter + text[end:]
+          else:
+              print("warning: commands.md has no front matter; cannot set approved: none")
+
+          path.write_text(text, encoding="utf-8")
+          PY
+          if grep -q 'nav\.md-nav' content/user/proof-scripts/commands.md; then
+            echo "::error::Obsolete navigation stylesheet still present in commands.md"
+            exit 1
+          fi
+          grep -q '^approved: none' content/user/proof-scripts/commands.md \
+            || { echo "::error::commands.md is missing 'approved: none'"; exit 1; }
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v6
+
+      - name: Setup Hugo
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Build with Hugo
+        env:
+          # For maximum backward compatibility with Hugo modules
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --gc --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

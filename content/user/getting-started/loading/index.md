@@ -66,13 +66,13 @@ the limit of the paycard.
 
 The intended semantics of some classes is specified with the help of
 invariants denoted in the Java Modeling Language
-(JML) [@JMLReferenceManual11][@Leavens-Baker-Ruby04]. Likewise, the
+(JML) {{< cite "JMLReferenceManual11" >}}; {{< cite "Leavens-Baker-Ruby04" >}}. Likewise, the
 behavior of most methods is described in form of pre- and postconditions
 in JML. We do not go into details on *how* JML specifications for Java
 classes are created. The tools downloadable from
 `http://jmlspecs.org/download.shtml` may be helpful here. In particular,
 **we require and assume that all JML specifications are complying to the
-JML standards** [@JMLReferenceManual11]. KeY's JML front-end is no
+JML standards** {{< cite "JMLReferenceManual11" >}}. KeY's JML front-end is no
 substitute for the JML parser / type checker.
 
 ### A First Look on the JML Specification {#tutorialExample:firstLook}
@@ -81,7 +81,7 @@ Before we can verify that the program satisfies the property mentioned
 in the previous section, we need to express it in JML. The remaining
 section tries to give a short, intuitive impression on what such a
 specification looks like. In
-Sect. [3](#sec:analyze){reference-type="ref" reference="sec:analyze"},
+Sect. [3](#sec:analyze),
 JML specifications are explained in a bit more depth.
 
 Load the file `paycard/PayCard.java` in an editor of your choice and
@@ -109,8 +109,7 @@ comments---also as an end marker.
 The JML annotation in the above listing represents a JML method
 contract. A contract states that when the caller of a method ensures
 that certain conditions (precondition + certain invariants (see
-Sect. [4](#sec:provableProp){reference-type="ref"
-reference="sec:provableProp"})) then the method ensures that after the
+Sect. [4](#sec:provableProp))) then the method ensures that after the
 execution the postcondition holds[^2].
 
 The precondition is `true`. This means the precondition does not place
@@ -124,8 +123,7 @@ there have not been more than 3 unsuccessful operations. Otherwise,
 `false` is returned.
 
 For the other parts of the method specification, see
-Sect. [4](#sec:provableProp){reference-type="ref"
-reference="sec:provableProp"}.
+Sect. [4](#sec:provableProp).
 
 ### How to Verify JML Specifications with the KeY tool {#sec:analyze}
 
@@ -136,23 +134,19 @@ its specification. The KeY tool includes functionality to *verify*
 the correctness of an implementation with respect to its specification.
 
 In this section, we describe how to start
-(Sect. [3.1](#sec:starting){reference-type="ref"
-reference="sec:starting"}) the KeY prover and load the tutorial
-example (Sect. [3.2](#sec:loading){reference-type="ref"
-reference="sec:loading"}) as well as a short overview about the
+(Sect. [3.1](#sec:starting)) the KeY prover and load the tutorial
+example (Sect. [3.2](#sec:loading)) as well as a short overview about the
 graphical user interface and its options
-(Sect. [3.3](#sec:prover){reference-type="ref" reference="sec:prover"}).
+(Sect. [3.3](#sec:prover)).
 Last but not least, we explain how to configure the KeY prover to
 follow the tutorial example
-(Sect. [3.4](#sec:configure){reference-type="ref"
-reference="sec:configure"}).
+(Sect. [3.4](#sec:configure)).
 
 #### Starting the KeY prover {#sec:starting}
 
 In order to verify a program, you first need to start the
 KeY prover. This is done either by using the webstart mechanism
-(see Sect. [1.2.1](#install:javaws){reference-type="ref"
-reference="install:javaws"}) or by running the jar file from your
+(see the [installation instructions](../install/)) or by running the jar file from your
 KeY distribution[^3], e.g., by running
 
 `java -jar key.jar`
@@ -177,25 +171,19 @@ refer to the directory `jml` as top-level directory.
 
     KeY will then load the tutorial example and parse the JML
     annotations. If you get an error dialog similar to the one in
-    Fig. [1](#fig:error:unknownType){reference-type="ref"
-    reference="fig:error:unknownType"}, you have selected the `jml`
+    Fig. [1](#fig:error:unknownType), you have selected the `jml`
     directory instead of its subdirectory `paycard`.
 
-    ![Error dialog complaining about an unknown
-    type](figures/errorDialogUnknownType.png){#fig:error:unknownType
-    width="75%"}
+    <img src="figures/errorDialogUnknownType.png" alt="Error dialog complaining about an unknown type" id="fig:error:unknownType" width="75%" />
 
     If you have your own projects you want to verify, you can proceed
     similarly. Please note that KeY by default supports only a
     very limited selection of the standard library classes. How to
     extend them and how to configure more complex projects that use 3rd
     party libraries is described in brief in
-    App. [9](#app:configuringProjects){reference-type="ref"
-    reference="app:configuringProjects"}.
+    App. [9](../appendix/#app:configuringProjects).
 
-2.  Now the Proof Management window should appear as shown in
-    Fig. [\[fig:pob:startup\]](#fig:pob:startup){reference-type="ref"
-    reference="fig:pob:startup"}.
+2.  Now the Proof Management window should appear.
 
     In the left part of the window titled [**Contract
     Targets**], the Proof Management lists all packages,
@@ -203,47 +191,38 @@ refer to the directory `jml` as top-level directory.
     tree structure similar to standard file managers.
 
     The browser allows you to select the proof obligation you want to
-    verify. Selecting `PayCard::charge` gives you three contracts
-    (Fig. [\[fig:pob:expandedProofObligations\]](#fig:pob:expandedProofObligations){reference-type="ref"
-    reference="fig:pob:expandedProofObligations"}): one
+    verify. Selecting `PayCard::charge` gives you three contracts: one
     [**exceptional_behavior**] and two
     [**normal_behavior**] contracts. Select the first
     [**normal_behavior**] contract and confirm by pressing
     the button [**OK**]. More details about the contract
     configurator will be given in
-    Sect. [4](#sec:provableProp){reference-type="ref"
-    reference="sec:provableProp"}.
+    Sect. [4](#sec:provableProp).
 
 3.  You should now see the KeY prover window with the loaded proof
     obligation as in
-    Fig. [2](#fig:proverWithLoadedPO){reference-type="ref"
-    reference="fig:proverWithLoadedPO"}. The prover is able to handle
+    Fig. [2](#fig:proverWithLoadedPO). The prover is able to handle
     predicate logic as well as dynamic logic. The KeY prover was
     developed as a part of the KeYproject and is implemented in
-    [Java]{.smallcaps}. It features interactive application of proof
+    Java. It features interactive application of proof
     rules as well as automatic application controlled by strategies. In
     the near future more powerful strategies will be available.
 
-    In Sect. [4.3](#sec:application){reference-type="ref"
-    reference="sec:application"}, we show how to prove some of the proof
+    In Sect. [4.3](../proving/#sec:application), we show how to prove some of the proof
     obligations generated for the tutorial example.
 
-![The KeY prover with the contract for `charge`
-loaded.](figures/proverWithLoadedPO.png){#fig:proverWithLoadedPO
-width="\\textwidth"}
+<img src="figures/proverWithLoadedPO.png" alt="The KeY prover with the contract for charge loaded" id="fig:proverWithLoadedPO" />
 
 #### The KeY prover {#sec:prover}
 
 We assume that you have performed the steps described in the previous
 section and that you see now something similar to
-Fig. [2](#fig:proverWithLoadedPO){reference-type="ref"
-reference="fig:proverWithLoadedPO"}. In this section, we describe the
+Fig. [2](#fig:proverWithLoadedPO). In this section, we describe the
 GUI of the KeY tool and its different components. Most of the
 components in the GUI are also labeled with a tooltip.
 
 The KeY prover window consists of a menubar, a toolbar (all
-buttons explained in [8](#app:shortcuts){reference-type="ref"
-reference="app:shortcuts"}) and three panes where the lower left pane is
+buttons explained in [8](../appendix/#app:shortcuts)) and three panes where the lower left pane is
 additionally tabbed. Each pane is described below. The layout of the
 three panes can be changed by the user. Layouts can be saved and loaded
 in the [**View**] $|$ [**Layout**] menu.
@@ -255,9 +234,7 @@ in the [**View**] $|$ [**Layout**] menu.
 
 * **Lower left pane:** This pane contains the following five tabs.
 
-    * **Proof:** This pane (see
-        Fig. [\[fig:prover:tab:proof\]](#fig:prover:tab:proof){reference-type="ref"
-        reference="fig:prover:tab:proof"}) contains the whole proof
+    * **Proof:** This pane contains the whole proof
         tree which represents the current proof. The nodes of the tree
         correspond to sequents (goals) at different proof stages.
         Click on a node to see the corresponding sequent and the rule
@@ -283,9 +260,7 @@ in the [**View**] $|$ [**Layout**] menu.
         certain goal just click on it and the selected sequent will be
         shown in the right pane.
 
-    * **Info:** In this pane
-        (Fig. [\[fig:prover:tab:rules\]](#fig:prover:tab:rules){reference-type="ref"
-        reference="fig:prover:tab:rules"}), all the rules, term
+    * **Info:** In this pane, all the rules, term
         labels, and function symbols available in the system are
         indicated.
 
@@ -307,14 +282,11 @@ in the [**View**] $|$ [**Layout**] menu.
         The function symbols folder lists all interpreted function and
         predicate symbols in the dynamic logic.
 
-    * **Proof Search Strategy:** This tab (see
-        Fig. [\[fig:prover:tab:strategy\]](#fig:prover:tab:strategy){reference-type="ref"
-        reference="fig:prover:tab:strategy"}) allows you to define the
+    * **Proof Search Strategy:** This tab allows you to define the
         active strategy from a set of available strategies. There are
         several parameters and only the most important ones will be
         covered here, a complete list can be found
-        in [7](#app:strategy){reference-type="ref"
-        reference="app:strategy"}:
+        in [7](../appendix/#app:strategy):
 
         * **Max. Rule Applications:** You can set the number $N_{aut}$
            of automatic rule applications using the slider. Even if
@@ -446,11 +418,10 @@ In this section, we explain how to configure the KeY prover to
 follow the tutorial and give a few explanations about the implications
 of the chosen options. Most of the options are accessible via the
 KeY prover menu. An exhaustive list is available as part of
-Appendix [6](#app:menuOptions){reference-type="ref"
-reference="app:menuOptions"}. In order to verify or change some of the
+Appendix [6](../appendix/#app:menuOptions). In order to verify or change some of the
 necessary options, it is necessary to have a proof obligation loaded
 into the KeY prover as described in
-Sect. [3.2](#sec:loading){reference-type="ref" reference="sec:loading"}.
+Sect. [3.2](#sec:loading).
 
 The menu bar consists of different pull-down menus:
 * File: menu for file related actions like loading and saving of
@@ -493,7 +464,7 @@ intRules:
 
     ([arithmeticSemanticsIgnoringOF]) Here you can choose between
     different semantics for Java integer arithmetic (for details
-    see [@Schlager02][@SchlagerPhD2007][@KeYBook2007]). Three choices
+    see {{< cite "Schlager02" >}}; {{< cite "SchlagerPhD2007" >}}; {{< cite "KeYBook2007" >}}). Three choices
     are offered:
 
     [javaSemantics]
@@ -560,13 +531,12 @@ following setting:
 
 In the following, the ideas behind the various options for verification
 are described informally. A formal description of the generated proof
-obligations is contained in [@KeYBook2016]. For further details on the
+obligations is contained in {{< cite "KeYBook2016" >}}. For further details on the
 mapping between JML specifications and the formulas of the JavaDL logic
-used in KeY, please consult [@Engel05].
+used in KeY, please consult {{< cite "Engel05" >}}.
 
 Examples of usage within the context of the case study in this tutorial
-are described in Sect. [4.3](#sec:application){reference-type="ref"
-reference="sec:application"}.
+are described in Sect. [4.3](../proving/#sec:application).
 
 #### Informal Description of Proof Obligations
 
@@ -591,7 +561,7 @@ to use the stated properties of the invariant after such a method call.
 However, if the method calls also change location on the heap on which
 the invariant depends on, it is not possible to rely on those properties
 anymore and it has to be proven that the invariant still holds. For a
-more detailed description, see [@Weiss2011].
+more detailed description, see {{< cite "Weiss2011" >}}.
 
 #### The Logic in Use {#sec:logc}
 
@@ -650,11 +620,11 @@ Let $i,j$ denote program variables. Some formulas in JavaCardDL:
 -   A typical kind of formula you will encounter is one with an update
     in front like
 
-    \[
+    $$
     \{ {i := a} ~~||~~ {j := b} \}
     ~\langle tmp = i; i = j; j = tmp; \rangle
     ~i \doteq b \wedge j \doteq a
-    \]
+    $$
 
     Intuitively, an update can be seen as an assignment, the two
     vertical strokes indicate that the two assignments $a$ to $i$ and
@@ -667,7 +637,7 @@ Let $i,j$ denote program variables. Some formulas in JavaCardDL:
 ### Sequents {#sec:sequents}
 
 Deduction with the KeY prover is based on a sequent calculus for a
-dynamic logic for JavaCard (JavaDL) [@KeYBook2007][@Beckert01].
+dynamic logic for JavaCard (JavaDL) {{< cite "KeYBook2007" >}}; {{< cite "Beckert01" >}}.
 
 A sequent has the form
 $\phi_1, \ldots,\phi_m\;\vdash\;\psi_1,\ldots,\psi_n\;
@@ -709,6 +679,5 @@ $inv_{O}$ assigned to them.
 
 For the general description, we refer to this general kind of contract.
 Mapping of JML specifications to this general contract notion is
-slightly indicated in Sect. [4.3](#sec:application){reference-type="ref"
-reference="sec:application"}. More details can be found
-in [@KeYBook2016].
+slightly indicated in Sect. [4.3](../proving/#sec:application). More details can be found
+in {{< cite "KeYBook2016" >}}.

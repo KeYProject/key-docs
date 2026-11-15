@@ -15,7 +15,7 @@ an open pull request and this page is published together with it.
 
 KeY's automated proof search is **cost-based**: for every applicable rule the
 strategy computes an integer cost, and the
-[rule-application pipeline](RuleApplicationPipeline.md) applies the cheapest
+[rule-application pipeline](../rule-application-pipeline/) applies the cheapest
 one. **The smaller the cost, the earlier the rule is applied.** Costs are a
 search heuristic only; they never affect soundness.
 
@@ -31,7 +31,7 @@ every other theory.
 
 This page explains the vocabulary in which those numbers are written, how to
 choose a cost, and — only when necessary — how to extend the vocabulary. It is
-background for [implementing strategies and macros](ExtendingKeY.md).
+background for [implementing strategies and macros](../../../extending/).
 
 ## The three layers
 
@@ -54,9 +54,9 @@ taclets in that rule set.
 
 `CostBand` is an `enum` of named tiers, from most eager (smallest) to least.
 
---8<-- "includes/costband-table.md"
+{{< snippet "snippets/costband-table.md" >}}
 
-The [cost tables appendix](StrategyCostTables.md) repeats this table and lists
+The [cost tables appendix](../../../appendix/strategy-cost-tables/) repeats this table and lists
 every combination and theory-local cost constant for reference.
 
 Two entries deserve a closer look. **`DEFAULT` (0)** has the same effect as
@@ -148,7 +148,7 @@ coupled rule with it.
 
 - **Add a theory-local constant** — the common case, and cheap: a new named
   `static final long` in the theory's holder. No cross-theory impact; verifying
-  with [runAllProofs](Testing/RunAllProves.md) suffices.
+  with [runAllProofs](../../../testing/run-all-proofs/) suffices.
 - **Add or relate a `CombinationCost` constant** — only when a value is
   genuinely cross-theory in one of the two ways above. Keep both sides
   connected through the shared constant.
@@ -160,7 +160,7 @@ coupled rule with it.
 {{< callout type="warning" title="Verifying a cost change" >}}
 Cost changes never affect soundness, but they change which proof is found
 and how fast. Verify every change with a full
-[runAllProofs](Testing/RunAllProves.md); after a `CostBand` or
+[runAllProofs](../../../testing/run-all-proofs/); after a `CostBand` or
 `CombinationCost` change, additionally compare representative proofs node
 for node against the previous costs. Respect the ordering constraints noted
 on the bands — in particular `BLOCK_CONTRACT` must stay cheaper than

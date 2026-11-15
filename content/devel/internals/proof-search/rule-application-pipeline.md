@@ -11,8 +11,8 @@ been applied to a goal": **matching → strategy evaluation → application**.
 A taclet is KeY's format for proof rules; a goal is an open proof
 obligation, represented as a sequent of formulas.
 It is the conceptual background for
-[writing taclets](../HowToTaclet/) and for
-[implementing strategies/macros](../ExtendingKeY/).
+[writing taclets](../../../extending/how-to-write-taclets/) and for
+[implementing strategies/macros](../../../extending/).
 
 ```mermaid
 graph LR
@@ -64,7 +64,7 @@ independent reference and selected by the system property
 come from the same plan; a pattern the framework cannot describe is
 rejected at load time with a clear error. The framework, both back-ends
 and a worked example are described on the dedicated page
-[Taclet matching](TacletMatching/).
+[Taclet matching](../taclet-matching/).
 
 **Around the match**, `VMTacletMatcher.matchFind` adds the taclet-level
 concerns: if the taclet may ignore update prefixes
@@ -150,5 +150,5 @@ dialog, and the result goes through the same `Goal.apply(…)`.
 |---|---|
 | Change automation behavior | strategy features / a `Strategy` implementation, selectable via `StrategyFactory` (see `JavaCardDLStrategyFactory`) |
 | Keep a rule out of automation | give it cost `TopRuleAppCost` (e.g. no `\heuristics` rule set, or strategy settings) |
-| Observe rule applications | `RuleAppListener` on the `Proof` (see [Event listeners](../Listeners/)) |
-| Run the loop with different limits/conditions | `ApplyStrategy` with a custom `StopCondition` (this is what [proof macros](../howto/AddProofMacro/) do) |
+| Observe rule applications | `RuleAppListener` on the `Proof` (see [Event listeners](../../../extending/listeners/)) |
+| Run the loop with different limits/conditions | `ApplyStrategy` with a custom `StopCondition` (this is what [proof macros](../../../extending/howto/add-proof-macro/) do) |

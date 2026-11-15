@@ -104,7 +104,7 @@ currently assumes that the functional interface of the project is named
 `IntFunction`, as in the thesis; for a differently named interface, adapt
 the schema variable types and the `varcond` of the rule.
 
-See [Specifying lambda expressions](JMLGrammar.md#specifying-lambda-expressions)
+See [Specifying lambda expressions](../../language/jml-grammar/#specifying-lambda-expressions)
 for the explicit-specification counterpart.
 
 ## Limitations

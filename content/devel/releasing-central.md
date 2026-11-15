@@ -14,7 +14,7 @@ This text shortly described the necessary steps to deploy on this channel very m
 
 1. Ensure you have access on `org.key-project` namespace. Access can be requested by the senior team member.
 
-    ![alt text](image.png)
+    ![alt text](../image.png)
 
 2. [Ensure that you are familar with the rules on Maven Central](https://central.sonatype.org/pages/support/) and general process.
 
@@ -59,6 +59,6 @@ This text shortly described the necessary steps to deploy on this channel very m
 5. In the background, the validation process starts. Login into [central](https://central.sonatype.org), and check the status.
    You can publish, if there are no errors.
 
-   ![alt text](image-1.png)
+   ![alt text](../image-1.png)
 
 6. Publication and indexing can take upto 30 minutes easily.

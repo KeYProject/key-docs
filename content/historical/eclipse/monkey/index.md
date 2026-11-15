@@ -54,11 +54,11 @@ Required update-sites and installation instructions are available in the
 ## KeY basics in Eclipse and troubleshooting
 
 -   [KeY basics in Eclipse (Cross-project
-    Functionality)](../CrossProject/)
-    -   [Create an example project](../CrossProject/#example)
-    -   [Change taclet options](../CrossProject/#taclet)
+    Functionality)](../cross-project/)
+    -   [Create an example project](../cross-project/#create-an-example-project)
+    -   [Change taclet options](../cross-project/#change-taclet-options)
     -   [Define class path used by
-        KeY](../CrossProject/#KeYsClassPath)
--   [Troubleshooting](../CrossProject/#troubleshooting)
+        KeY](../cross-project/#KeYsClassPath)
+-   [Troubleshooting](../cross-project/#troubleshooting)
     -   [Unresolved classtype (support for API
-        classes)](../CrossProject/#API)
+        classes)](../cross-project/#unresolved-classtype-support-for-api-classes)

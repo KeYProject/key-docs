@@ -11,7 +11,7 @@ the Java model and the sequent, and can run proof commands such as `tryclose` an
 your behalf. It works with any OpenAI-compatible chat-completions service; by default KeY
 uses the LLM service operated by KIT (`https://ki-toolbox.scc.kit.edu`).
 
-![The KeY-Agent panel docked in the main window](llm-panel.png){ width="800" }
+<img src="llm-panel.png" alt="The KeY-Agent panel docked in the main window" width="800" />
 
 {{< callout type="info" title="Availability" >}}
 The KeY-Agent is currently part of the development version of KeY and is not contained
@@ -33,7 +33,7 @@ to disclose, and prefer a service operated by your institution for confidential 
   offline: external images or stylesheets are never fetched, and raw HTML in an answer is shown
   as plain text rather than interpreted.
 
-![A Markdown-rendered answer with a list, a code block and a table](llm-markdown.png){ width="500" }
+<img src="llm-markdown.png" alt="A Markdown-rendered answer with a list, a code block and a table" width="500" />
 - **Tool calls with approval** — the agent can execute proof tools; every sensitive action
   asks for your permission first, and you can disable tools entirely.
 - **Proof automation** — `tryclose` attempts to close the current goal or branch
@@ -66,7 +66,7 @@ to disclose, and prefer a service operated by your institution for confidential 
 Open *Options → Settings* and select **LLM Settings** in the left-hand tree. All values are
 optional; the defaults work out of the box once a valid token is set.
 
-![The LLM Settings page of the settings dialog](llm-settings.png){ width="800" }
+<img src="llm-settings.png" alt="The LLM Settings page of the settings dialog" width="800" />
 
 1. **API Base URL** — the OpenAI-compatible endpoint of your service. The default points to
    the KIT service; point it to your institution's endpoint or any other
@@ -87,7 +87,7 @@ optional; the defaults work out of the box once a valid token is set.
 The **Tools** sub-page decides what the agent may do, what needs your approval, and what is
 shared with external MCP clients:
 
-![Per-tool permission settings](llm-settings-tools.png){ width="800" }
+<img src="llm-settings-tools.png" alt="Per-tool permission settings" width="800" />
 
 Every tool row offers four permission modes: **Default (ask)** or **Default (auto)** —
 follow the tool's own requirement, **With approval**, **Without approval (always)**, and

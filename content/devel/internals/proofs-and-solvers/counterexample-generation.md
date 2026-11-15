@@ -28,9 +28,9 @@ the sequent to SMT and asking Z3 for a model.
 
 ## See also
 
-- [SMT translation](../SMTTranslation/) — how sequents are translated to
+- [SMT translation](../smt-translation/) — how sequents are translated to
   SMT-LIB.
-- [Adding SMT solvers](../AddingSMTSolvers/) — how solvers are configured
+- [Adding SMT solvers](../../../extending/adding-smt-solvers/) — how solvers are configured
   and launched.
 - Test case generation (`key.core.testgen`) reuses the same
   model-extraction machinery to derive test inputs.

@@ -8,29 +8,29 @@ weight: 50
 This page is the entry point for developers who want to add functionality to
 KeY. It gives an overview of the available extension mechanisms and links to
 the detailed guides. For orientation in the code base, read the
-[Architecture Overview](../Architecture/) first.
+[Architecture Overview](../architecture/) first.
 
 {{< callout type="default" title="Step-by-step recipes" >}}
 Compiled, verified walkthroughs for the most common tasks are in the
-[Developer How-Tos](../howto/): adding an
-[extension module](../howto/AddExtension/), a
-[menu entry](../howto/AddMenuEntry/), a
-[toolbar](../howto/AddToolbarAction/), and
-[taclets](../howto/AddTaclets/).
+[Developer How-Tos](howto/): adding an
+[extension module](howto/add-extension/), a
+[menu entry](howto/add-menu-entry/), a
+[toolbar](howto/add-toolbar/), and
+[taclets](howto/add-taclets/).
 {{< /callout >}}
 
 ## Which mechanism do I need?
 
 | You want to … | Mechanism | Detailed guide |
 |---|---|---|
-| Add a new prover rule expressible schematically | **Taclet** in a `.key` rule file | [How to add taclets](../howto/AddTaclets/), [How to write new taclets](../HowToTaclet/) |
+| Add a new prover rule expressible schematically | **Taclet** in a `.key` rule file | [How to add taclets](howto/add-taclets/), [How to write new taclets](how-to-write-taclets/) |
 | Add a prover rule that needs arbitrary Java code | **Built-in rule** | below |
-| Add panels, menu/toolbar entries, settings pages, tooltips, … to the GUI | **GUI extension** (`KeYGuiExtension`) | [How to add an extension](../howto/AddExtension/), [GUI extensions](../GUIExtensions/) |
-| Add a new proof script command | **`ProofScriptCommand`** service | [How to add a script command](../howto/AddScriptCommand/), [reference](../ScriptCommands/) |
-| Add a high-level proof step usable from GUI *and* scripts | **`ProofMacro`** service | [How to add a proof macro](../howto/AddProofMacro/) |
-| Connect another SMT solver | **Solver definition** (JSON) / `SolverType` | [Adding SMT solvers](../AddingSMTSolvers/) |
-| React to events (rule applications, selection, proof changes, …) | **Listeners** | [Event listeners](../Listeners/) |
-| Use KeY from your own application | **KeY as a library** | [External projects](../ExternalProject/) |
+| Add panels, menu/toolbar entries, settings pages, tooltips, … to the GUI | **GUI extension** (`KeYGuiExtension`) | [How to add an extension](howto/add-extension/), [GUI extensions](gui-extensions/) |
+| Add a new proof script command | **`ProofScriptCommand`** service | [How to add a script command](howto/add-script-command/), [reference](script-commands/) |
+| Add a high-level proof step usable from GUI *and* scripts | **`ProofMacro`** service | [How to add a proof macro](howto/add-proof-macro/) |
+| Connect another SMT solver | **Solver definition** (JSON) / `SolverType` | [Adding SMT solvers](adding-smt-solvers/) |
+| React to events (rule applications, selection, proof changes, …) | **Listeners** | [Event listeners](listeners/) |
+| Use KeY from your own application | **KeY as a library** | [External projects](../library/external-project/) |
 
 ## The `ServiceLoader` pattern
 
@@ -56,7 +56,7 @@ For a self-contained extension, create a new Gradle module `keyext.<name>`
 ## Adding a proof macro
 
 A *proof macro* bundles strategy invocations into one user-visible proof
-step (see the [user documentation of macros](../../user/ProofScripts/macros/)).
+step (see the [user documentation of macros](../../user/proof-scripts/macros/)).
 
 1. Implement `de.uka.ilkd.key.macros.ProofMacro`; usually you extend one of
    the abstract helpers in the same package, e.g.
@@ -91,7 +91,7 @@ rules*, implemented in Java:
 
 Prefer taclets whenever the rule is schematically expressible — they are
 declarative, easier to review, and their soundness can be
-[verified mechanically](../Testing/ProveRules/).
+[verified mechanically](../testing/prove-rules/).
 
 ## Adding a new proof obligation type
 
@@ -103,10 +103,10 @@ loaders in `de.uka.ilkd.key.proof.init.loader` for reference.
 
 ## Checklist before contributing
 
-- Follow the [coding conventions](../CodingConventions/) and run
-  [Spotless](../SpotlessAutomaticFormatting/) (`./gradlew spotlessApply`).
-- Add tests — see the [testing infrastructure](../Testing/).
+- Follow the [coding conventions](../working-on-code/coding-conventions/) and run
+  [Spotless](../working-on-code/spotless/) (`./gradlew spotlessApply`).
+- Add tests — see the [testing infrastructure](../testing/).
 - New taclets need soundness justification
-  ([proved rules](../Testing/ProveRules/)).
+  ([proved rules](../testing/prove-rules/)).
 - See `CONTRIBUTING.md` in the repository root for the pull-request
   workflow.

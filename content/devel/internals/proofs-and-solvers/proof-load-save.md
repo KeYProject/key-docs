@@ -15,7 +15,7 @@ Loading of problem files (`.key`, `.java`) and proof files (`.proof`,
 1. A `ProblemLoader` is created — by the GUI (e.g. *File → Load*, recent
    files, command line arguments) via the user interface control, or
    programmatically through `KeYEnvironment.load(...)` when KeY is
-   [used as a library](../ExternalProject/).
+   [used as a library](../../../library/external-project/).
 2. `AbstractProblemLoader#load()` sets up the environment: creating a
    directory for Java source files, unzipping proof bundles, parsing the
    input file, and reading taclet definitions. The result is an
@@ -52,7 +52,7 @@ Related classes:
 
 ## See also
 
-- [Proof caching](../../user/ProofCaching/) reuses saved/closed proofs to
+- [Proof caching](../../../../user/proving/proof-caching/) reuses saved/closed proofs to
   close new goals.
-- The [proof script](../../user/ProofScripts/) mechanism is an alternative,
+- The [proof script](../../../../user/proof-scripts/) mechanism is an alternative,
   more change-resilient way to persist interactive proof steps.

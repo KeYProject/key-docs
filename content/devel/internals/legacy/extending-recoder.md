@@ -21,7 +21,7 @@ JML specifications then only the changes described in Section
 [1](#extension-of-the-jml-parser) need to be done. If you want to use ghost
 variables or ghost fields, in particular assignments to ghost variables and
 fields of the new adt then in addition the changes described in Section
-[2](#recoder) need to be done.
+[2](#extension-of-the-recoder-to-key-translation) need to be done.
 
 These notes do not aim to provide an understanding of the existing code they
 just tell the user what to do by mimicking what is already there. We take the

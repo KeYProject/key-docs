@@ -1,7 +1,10 @@
-site/
+# Hugo build output
 public/
 resources/
 .hugo_build.lock
+
+# Legacy static-site build output (still ignored in case an old checkout has it)
+site/
 
 .DS_Store
 *.out
@@ -19,6 +22,10 @@ resources/
 #*#
 *.toc
 *.rel
+
+# PDFs that are part of the documentation and must stay tracked.
+!static/old/*.pdf
+!static/smt/*.pdf
 
 *.pyc
 # Local Hugo theme clone (fetched at build time, not part of the repo)

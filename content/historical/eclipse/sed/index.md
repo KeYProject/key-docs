@@ -85,7 +85,7 @@ debug.
     ![](launch08thumb.png "Debug any method or any statement(s) symbolically")
 
 
-### Collapse frames representing code blocks {: #grouping}
+### Collapse frames representing code blocks {#grouping}
 
 
 1. Select context menu item "Collapse" of a symbolic execution tree node which opens a
@@ -99,7 +99,7 @@ shown.
     ![](group02thumb.png)
 
 
-### Limit execution paths by customizing the debug configuration {: #customization}
+### Limit execution paths by customizing the debug configuration {#customization}
 
 
 1. Edit debug configuration via main menu item "Run, Debug
@@ -118,7 +118,7 @@ above.
     ![](custom03thumb.png "Limit execution paths by customizing the debug configuration")
 
 
-### Use loop invariants to guarantee finite symbolic execution trees in presence of loops {: #loopInvariants}
+### Use loop invariants to guarantee finite symbolic execution trees in presence of loops {#loopInvariants}
 
 
 1. Set loop treatment to
@@ -133,7 +133,7 @@ loop.
     ![](loop02thumb.png "Use loop invariants to guarantee finite symbolic execution trees in presence of loops")
 
 
-### Use method contracts if the implementation of a called method is not of interest {: #contracts}
+### Use method contracts if the implementation of a called method is not of interest {#contracts}
 
 
 1. Set method treatment to
@@ -149,7 +149,7 @@ possibilities.
     ![](method02thumb.png "Use method contracts if the implementation of a called method is not of interest")
 
 
-### Visualize all possible memory layouts of a node {: #layouts}
+### Visualize all possible memory layouts of a node {#layouts}
 
 1. Select "Visualize Memory
 Layouts".
@@ -166,7 +166,7 @@ aliasing.
 
     ![](configuration03thumb.png "Visualize all possible memory layouts of a node")
 
-### Use breakpoints to find executions resulting in a specified state {: #breakpoints}
+### Use breakpoints to find executions resulting in a specified state {#breakpoints}
 
 1. Define a Line, Method or Java Exception breakpoint, a Watchpoint or a KeY Watchpoint as
 usual.
@@ -189,7 +189,7 @@ desired.
     ![](breakpoints04thumb.png "Use Breakpoints to find executions resulting in a specified state")
 
 
-### Inspect any proof performed by KeY {: #proofAttempt}
+### Inspect any proof performed by KeY {#proofAttempt}
 
 1. Select the proof file to inspect and click on context menu item "Debug As, Symbolic Execution Debugger
 (SED)".
@@ -200,7 +200,7 @@ desired.
 
     ![](proof02thumb.png)
 
-### Verify a method contract {: #verifiyMethodContract}
+### Verify a method contract {#verifiyMethodContract}
 
 1. Select "Use existing contract" in the debug configuration, use the "Browse" button to select one and click on
 "Debug".
@@ -217,7 +217,7 @@ execution tree is red crossed out.
 
     ![](verification03thumb.png)
 
-### Trace truth values evaluated by KeY as part of a proof {: #traceTruthValues}
+### Trace truth values evaluated by KeY as part of a proof {#traceTruthValues}
 
 1. Enable "Truth Value Evaluation" in the debug configuration and launch it.
 
@@ -227,7 +227,7 @@ execution tree is red crossed out.
 
     ![](truthValueTracing02thumb.png)
 
-### Slice a symbolic execution tree {:#slicing}
+### Slice a symbolic execution tree {#slicing}
 
 1. Select context menu item "Slice Symbolic Execution Tree" of a variable in view Variables.
 
@@ -239,7 +239,7 @@ execution tree is red crossed out.
 
     ![](slicing03thumb.png)
 
-### Add comments to symbolic execution tree nodes {: #comments}
+### Add comments to symbolic execution tree nodes {#comments}
 
 1. Select symbolic execution tree node and switch to properties tab "Annotation Links". Click then on "New Comment".
 
@@ -252,7 +252,7 @@ execution tree is red crossed out.
 
     ![](comments03thumb.png)
 
-### Search text in the labels of symbolic execution tree nodes {: #search}
+### Search text in the labels of symbolic execution tree nodes {#search}
 
 1. Select debug target or launch in view Debug and switch to properties tab "Annotations". Click then on "Search".
 
@@ -275,7 +275,7 @@ nodes.
     ![](search04thumb.png)
 
 
-### Create Java project with examples for the Symbolic Execution Debugger (Tutorial) {: #example}
+### Create Java project with examples for the Symbolic Execution Debugger (Tutorial) {#example}
 
 
 1. Open example wizard via main menu item "File, New, Example\...".
@@ -295,18 +295,18 @@ nodes.
     ![](example04thumb.png "Create Java project with examples for the Symbolic Execution Debugger (Tutorial)")
 
 
-### Configuration of KeY's symbolic execution engine and troubleshooting {: #troubleshooting}
+### Configuration of KeY's symbolic execution engine and troubleshooting {#troubleshooting}
 
-- [KeY basics in Eclipse (Cross-project Functionality)](../CrossProject/)
-    - [Create an example project](../CrossProject/#example)
-    - [Change taclet options](../CrossProject/#taclet)
+- [KeY basics in Eclipse (Cross-project Functionality)](../cross-project/)
+    - [Create an example project](../cross-project/#create-an-example-project)
+    - [Change taclet options](../cross-project/#change-taclet-options)
     - [Define class path used by
-        KeY](../CrossProject/#KeYsClassPath)
-- [Troubleshooting](../CrossProject/#troubleshooting)
+        KeY](../cross-project/#KeYsClassPath)
+- [Troubleshooting](../cross-project/#troubleshooting)
     - [Unresolved classtype (support for API
-        classes)](../CrossProject/#API)
+        classes)](../cross-project/#unresolved-classtype-support-for-api-classes)
 
-### Experimental Evaluations {: #evaluations}
+### Experimental Evaluations {#evaluations}
 
 The following evaluations were performed to evaluate different use
 cases of the Symbolic Execution Debugger (SED). **Participation is
@@ -317,7 +317,7 @@ examples.
 -   Reviewing Code Evaluation *(no longer available online)*
 -   Understanding Proof Attempts Evaluation *(no longer available online)*
 
-### Architecture {: #architecture}
+### Architecture {#architecture}
 
 The Symbolic Execution Debugger (SED) extends
 [Eclipse](http://www.eclipse.org) and can be added to existing
@@ -390,7 +390,7 @@ example implementation showing how to integrate a symbolic execution
 engine into the Symbolic Execution Debugger, can be found
 [here](example.zip).
 
-### The extended debug model for symbolic execution {: #ExtendedDebugModel}
+### The extended debug model for symbolic execution {#ExtendedDebugModel}
 
 The Eclipse [Debug Platform](http://www.eclipse.org/eclipse/debug)
 provides language independent facilities for debugging. This is achieved
@@ -431,7 +431,7 @@ after an applied loop invariant end usually in an
 `ISEDLoopBodyTermination` node as long as the loop does not terminate
 abnormally.
 
-### KeY's Symbolic Execution Engine {: #SEE}
+### KeY's Symbolic Execution Engine {#SEE}
 
 A general purpose symbolic execution engine based on KeY is developed
 together with the Symbolic Execution Debugger. It uses only Java

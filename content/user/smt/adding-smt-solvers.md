@@ -37,7 +37,7 @@ and place the file in one of the locations listed above, e.g.
 
 {{< callout type="info" >}}
 A formal JSON schema and more details for developers are available in
-the [developer documentation](../../../devel/AddingSMTSolvers/).
+the [developer documentation](../../../devel/extending/adding-smt-solvers/).
 {{< /callout >}}
 
 

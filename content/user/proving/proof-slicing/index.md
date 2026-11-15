@@ -43,8 +43,8 @@ Installation instructions are available [at graphviz.org](https://www.graphviz.o
 
 You may also export the dependency graph in DOT format ("Export as DOT" button) and visualize it using any other tool of your choice.
 
-<figure markdown>
-  ![Dependency graph example](./ProofSlicingDependencyGraph.png)
+<figure>
+  <img src="./ProofSlicingDependencyGraph.png" alt="Dependency graph example" loading="lazy">
   <figcaption>Dependency Graph of a simple proof (top node: proof obligation)</figcaption>
 </figure>
 
@@ -62,8 +62,8 @@ you may enable the "Shorten long chains" option before rendering the graph.
 When enabled, all nodes with input and output degree equal to one are collapsed into the output edge.
 {{< /tab >}}
 {{< tab name="Example (Big Graph)" >}}
-<figure markdown>
-  ![Side-by-side comparison of chain shortening](./ProofSlicingShortenedChains.png){ loading=lazy }
+<figure>
+  <img src="./ProofSlicingShortenedChains.png" alt="Side-by-side comparison of chain shortening" loading="lazy">
   <figcaption>Left graph: default settings. Right graph: chain shortening enabled.</figcaption>
 </figure>
 {{< /tab >}}
@@ -84,8 +84,8 @@ They are marked with an 'X' in the proof tree panel (see last figure on this pag
 Both algorithms may be combined.
 {{< /callout >}}
 
-<figure markdown>
-  ![Dependency graph example](./ProofSlicingDependencyGraphAnalyzed.png)
+<figure>
+  <img src="./ProofSlicingDependencyGraphAnalyzed.png" alt="Dependency graph example" loading="lazy">
   <figcaption>Dependency Graph: edges highlighted in red will be omitted in the proof slice</figcaption>
 </figure>
 
@@ -96,8 +96,8 @@ The "Slice proof" button runs the analysis algorithms (if not already done), con
 It may be possible to slice the proof again to remove more proof steps.
 The "Slice proof to fixed point" button repeatedly executes the analysis and slicing algorithms until no more size reductions are possible.
 
-<figure markdown>
-  ![Proof slicing applied](./ProofSlicingNewProof.png)
+<figure>
+  <img src="./ProofSlicingNewProof.png" alt="Proof slicing applied" loading="lazy">
   <figcaption>Running the proof slicer creates a new proof</figcaption>
 </figure>
 

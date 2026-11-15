@@ -5,10 +5,10 @@ weight: 50
 
 *2026 — checked against `de.uka.ilkd.key.scripts` in `key.core`.*
 
-[Proof scripts](../../user/ProofScripts/) consist of commands such as
+[Proof scripts](../../../user/proof-scripts/) consist of commands such as
 `rule`, `auto`, or `macro`. This page explains how to add your own command.
 The complete, generated reference of existing commands is in the
-[user documentation](../../user/ProofScripts/commands/).
+[user documentation](../../../user/proof-scripts/commands/).
 
 ## Where commands live
 
@@ -43,7 +43,7 @@ public interface ProofScriptCommand {
   available in the `ScriptCommandAst` during `execute`, so a command may
   behave differently per alias (e.g. `let` vs. `letf`).
 - `getArguments()`/`getDocumentation()` — self-documentation; this is the
-  source of the generated [command reference](../../user/ProofScripts/commands/).
+  source of the generated [command reference](../../../user/proof-scripts/commands/).
 - `execute(...)` — performs the actual mutation of the proof. The
   `EngineState` gives access to the current proof, the selected goal, user
   abbreviations, and script variables.

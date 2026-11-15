@@ -16,7 +16,7 @@ variables; a failed match yields `null`. Matching runs for every rule
 application candidate during proof search, millions of times in a larger
 proof, which motivates the design below. Where matching sits in the
 overall proof search is described in the
-[rule application pipeline](RuleApplicationPipeline/).
+[rule application pipeline](../rule-application-pipeline/).
 
 ## One description: the match plan
 

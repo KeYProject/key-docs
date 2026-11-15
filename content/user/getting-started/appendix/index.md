@@ -60,7 +60,7 @@ menu of the KeY prover.
     * **Use Syntax Highlighting** -- Use syntax highlighting in the
       sequent.
     * **Term labels** -- Toggle the visibility of different kinds of
-        term labels. As explained in Sec. [3.3](#sec:prover), these do
+        term labels. As explained in Sec. [3.3](../loading/#sec:prover), these do
         not change the semantics of the sequent but carry additional
         information that helps guide the automatic proof search and/or
         user.
@@ -159,7 +159,7 @@ menu of the KeY prover.
         * intRules -- ([arithmeticSemanticIgnoringOF]) Here you can
             choose between different semantics for Java integer
             arithmetic (for details
-            see [@Schlager02][@SchlagerPhD2007][@KeYBook2007]). Three
+            see {{< cite "Schlager02" >}}; {{< cite "SchlagerPhD2007" >}}; {{< cite "KeYBook2007" >}}). Three
             choices are offered:
 
             * javaSemantics -- (Java semantics): Corresponds exactly to the semantics
@@ -185,7 +185,7 @@ menu of the KeY prover.
                 overflow occur. This corresponds to the
                 `code‘_safe‘_math` macro in JML.
 
-        * programRules -- ([Java]) Changes between different program
+        * programRules -- (Java) Changes between different program
             languages[^7].
 
         * model field -- The semantics of model fields is given by the `represents`
@@ -252,7 +252,7 @@ menu of the KeY prover.
         for each external solver seperately. There is a native interface
         to [Simplify]. A variety of other provers
         [CVC3], [Yices], and [Z3]
-        are directly supported via SMTLIB [@RanTin-SMTLIB]. In addition,
+        are directly supported via SMTLIB {{< cite "RanTin-SMTLIB" >}}. In addition,
         translations of taclets to the SMTLIB language can be written to
         a text file ([Taclet Translation]) to be loaded by
         any SMT prover. There are further options on the set of taclets
@@ -339,7 +339,7 @@ menu of the KeY prover.
     the merge-point statements are ignored; if it is set to `None`, the
     automatic proof search stops when encountering a merge-point
     statement. For more details on merge-point statements, see
-    [@Steinhoefel2019].
+    {{< cite "Steinhoefel2019" >}}.
 
 * Dependency contracts
 
@@ -456,24 +456,24 @@ their actions are listed here as well.
 
 Action/Command                  | Shortcut     |                        Button in Toolbar
 --------------------------------|--------------|-----------------------------------------------------------
-Load                            | Ctrl+O     |              :fontawesome-solid-folder-open:
-Reload                          | Ctrl+R    |          :fontawesome-solid-rotate-right:
-Save                            | Ctrl+S   |              :fontawesome-solid-floppy-disk:
-Proof Management                | Ctrl+M  |        :fontawesome-solid-list-check:
+Load                            | Ctrl+O     |              {{< icon "folder-open" >}}
+Reload                          | Ctrl+R    |          {{< icon "refresh" >}}
+Save                            | Ctrl+S   |              {{< icon "save" >}}
+Proof Management                | Ctrl+M  |        {{< icon "clipboard-list" >}}
 Exit                            | Ctrl+Q |
-Edit last opened file           | -  |                   :fontawesome-solid-pen-to-square:
+Edit last opened file           | -  |                   {{< icon "pencil" >}}
 Use pretty syntax               | Ctrl+P      |
 Font size: smaller              | Ctrl+Up      |
 Font size: larger               | Ctrl+Down     |
-Start automatic strategy        | Ctrl+S         |     :fontawesome-solid-circle-play:{ style="color: green" }
+Start automatic strategy        | Ctrl+S         |     {{< icon "play" >}}
 Abandon task                    | Ctrl+W           |
-Undo last rule application      | Ctrl+Z          |       :fontawesome-solid-delete-left:
+Undo last rule application      | Ctrl+Z          |       {{< icon "backspace" >}}
 Search in proof tree            | Ctrl+F
 Search in sequent view          | F3
-Prune tree below selected node  | -                 |   :fontawesome-solid-scissors:
+Prune tree below selected node  | -                 |   {{< icon "scissors" >}}
 SMT Solver                      | -                 |   text button ("Run Z3, …", solver selection drop-down)
 Taclet options                  | Ctrl+T           |
-Toggle one Step Simplifier      | Ctrl+Shift+S     | ![image](figures/oneStepSimplifier.png){.toolbar-icon}
+Toggle one Step Simplifier      | Ctrl+Shift+S     | ![image](figures/oneStepSimplifier.png)
 
 Setting Up Own Projects {#app:configuringProjects}
 =======================
@@ -483,25 +483,22 @@ a restricted set of signatures of classes and methods from the default
 standard library. The current set of classes can be found
 at <https://github.com/KeYProject/key/tree/main/key.core/src/main/resources/de/uka/ilkd/key/java/JavaRedux>.
 
-For documentation on how to set up your own classpath, see [Using the classpath directives in KeY](../../user/Classpath/).
+For documentation on how to set up your own classpath, see [Using the classpath directives in KeY](../../projects/classpath/).
 
 [^1]: Potential warnings can be safely ignored here.
 
 [^2]: The complete semantics is more complex; see
-    Sect. [4](#sec:provableProp){reference-type="ref"
-    reference="sec:provableProp"} and [@JMLReferenceManual11].
+    Sect. [4](../loading/#sec:provableProp) and {{< cite "JMLReferenceManual11" >}}.
 
 [^3]: In this case we assume that you have installed the
     KeY tool as described in
-    Sect. [1.2.2](#install:byteandsourcecode){reference-type="ref"
-    reference="install:byteandsourcecode"}.
+    Sect. [1.2.2](../install/#install:byteandsourcecode).
 
-[^4]: App. [6](#app:menuOptions){reference-type="ref"
-    reference="app:menuOptions"} contains a list of all available
+[^4]: App. [6](#app:menuOptions) contains a list of all available
     options.
 
 [^5]: For a detailed description of both kinds of contracts,
-    see [@Weiss2011].
+    see {{< cite "Weiss2011" >}}.
 
 [^6]: Additional conditions stem from invariants.
 

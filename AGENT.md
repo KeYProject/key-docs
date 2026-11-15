@@ -3,251 +3,259 @@
 ## Purpose
 
 This repository contains the documentation site for the KeY theorem prover.
-It is a MkDocs project that publishes:
+It is a **Hugo** site (theme: Hextra, consumed as a Go module) that publishes:
 
 - a User Guide
 - a Developer Guide
 - a Historical section for unsupported legacy material
+- KEPs (KeY Enhancement Proposals)
 
 This is a documentation repository, not the main KeY implementation repository.
 Keep guidance local to this repo.
 
 ## Core Files
 
-- `mkdocs.yml`: central site configuration, plugins, Markdown extensions, theme, and full navigation tree
-- `docs/`: primary authored documentation source
-- `README.md`: contributor-oriented local build instructions
-- `Makefile`: convenience targets for install/serve/build
-- `requirements.txt`, `pyproject.toml`: Python dependencies for building the docs
-- `hooks/approval.py`: MkDocs hook that injects per-page review badges
-- `docs/extra.css`: custom site styling, including review badge styling
-- `.github/workflows/mkdocs.yml`: active GitHub Actions build and Pages deployment workflow
-- `.gitlab-ci.yml`: older GitLab CI workflow, still present
-- `extractScriptDoc.pl`: helper script related to generated proof-script command docs
+- `hugo.yaml`: site configuration — base URL, menus, Markdown options, math,
+  search
+- `content/`: primary authored documentation source
+- `layouts/`: local overrides of the theme (callout, snippet, citation,
+  approval badges, Prism, MathJax)
+- `assets/`: files processed by Hugo (shared snippets, CSS, Prism grammars)
+- `static/`: files copied verbatim (images, PDFs, XML schemas, downloads)
+- `data/refs.json`: bibliography database generated from `refs.bib`
+- `go.mod`, `go.sum`: pinned Hextra version (v0.13.0)
+- `Makefile`: `prepare`, `serve`, `build`, `check`, `clean`
+- `.github/workflows/pages.yaml`: build and GitHub Pages deployment
+- `scripts/`: migration and bibliography helpers, not needed to build the site
+- `content/devel/writing-documentation/index.md`: the authoritative authoring
+  guide, with live examples
 
-## Repository Layout
+Intentionally kept but not part of the site build:
 
-### Main content
-
-- `docs/index.md`: site landing page
-- `docs/user/`: user-facing documentation
-- `docs/devel/`: developer-facing documentation
-- `docs/quicktour/`: tutorial / getting-started content
-- `docs/eclipse/`: unsupported historical Eclipse-plugin documentation
-- `docs/old/`: older archival material
-
-### Supporting / special-purpose areas
-
-- `hooks/`: MkDocs hook code
-- `disabled/`: intentionally parked or excluded content
-- `cinder/`: legacy theme assets; current site uses Material for MkDocs instead
-- `python/`: checked-in Python environment / support files; not primary authored content, but it is part of the local docs-build infrastructure footprint
-- `site/`: generated build output if `mkdocs build` is run locally
+- `refs.bib`: BibTeX source for `data/refs.json`
+- `springer-basic-author-date.csl`: reference CSL style
+- `share/quicktour/`: LaTeX/Java sources for the historical quick tour
+- `disabled/`: parked or excluded material, not published
+- `DOC_REWORK_CHANGELOG.md`: migration log
 
 ## Build And Preview
 
-Typical local commands:
+```bash
+make prepare   # hugo mod tidy
+make serve     # http://localhost:1313, debug, no fast render
+make build     # production build into public/
+make check     # scratch build + lychee link check
+make clean     # remove public/, resources/, /tmp/keydocs-check
+```
 
-- `make prepare`
-- `make serve`
-- `make build`
+Direct equivalents:
 
-Equivalent direct commands:
+```bash
+hugo mod tidy
+hugo server --logLevel debug --disableFastRender -p 1313
+hugo --gc --minify
+```
 
-- `mkdocs serve`
-- `mkdocs build`
+Requirements: Hugo **extended** 0.170.0, Go 1.27+, Git. `make check` also needs
+lychee; it reports a clear error when lychee is missing. Never edit `public/` or
+`resources/` — they are generated.
 
-Local output normally goes to `site/`.
+## Repository Layout
 
-## CI And Publishing
+### Content
 
-### GitHub Actions
+- `content/_index.md`: site landing page
+- `content/user/`: user-facing documentation (including `getting-started/`,
+  `proving/`, `proof-scripts/`, `language/`, `smt/`, `bridges/`)
+- `content/devel/`: developer-facing documentation
+- `content/historical/eclipse/`: unsupported Eclipse-plugin documentation
+- `content/keps/`: enhancement proposals
 
-Defined in `.github/workflows/mkdocs.yml`.
-
-Current behavior:
-
-- build on push to `master` and `main`
-- build on pull requests targeting `master` and `main`
-- scheduled weekly run
-- manual `workflow_dispatch`
-- deploy GitHub Pages only from `master`
-
-The build installs dependencies from `requirements.txt` and runs:
-
-- `mkdocs build -c -d public`
-
-### GitLab CI
-
-Defined in `.gitlab-ci.yml`.
-
-This appears to be an older pipeline, but it is still useful context:
-
-- runs `mkdocs build`
-- renames `site` to `public`
-- runs a link checker
-
-Do not assume GitLab CI is the primary deployment path unless the repo is updated to say so.
+URLs follow the path: `content/user/faq.md` → `/user/faq/`. Directory landing
+pages are `_index.md`. Pages with images or downloads are leaf bundles
+(`index.md` plus assets next to it).
 
 ## Navigation Model
 
-Navigation is manually curated in `mkdocs.yml` under `nav:`.
+There is no navigation file. The sidebar is generated from the content tree:
 
-Important consequence: adding a Markdown file under `docs/` is usually not enough.
-If you add, rename, move, or reorganize a page, also check whether `mkdocs.yml`
-must be updated so the page actually appears in the site navigation.
+- section order and page order come from `weight` in front matter, ascending
+- every page and every `_index.md` should have an explicit `weight`; a missing
+  weight is treated as 0 and silently sorts first
+- leave gaps (10, 20, 30, …) when inserting pages
+- the main menu (Home, User Guide, Developer Guide, Historical, KEPs) is
+  configured under `menu.main` in `hugo.yaml` — do not edit it per page
 
-Directory `index.md` files are used as section landing pages, and the Material
-theme features in `mkdocs.yml` rely on that pattern.
+Adding a Markdown file under `content/` is enough for it to appear; there is no
+separate list to update. Do not put an ordering prefix in the title.
 
-## Markdown And Site Features
+## Front Matter Conventions
 
-This repo actively uses rich MkDocs / Material features configured in `mkdocs.yml`:
+```yaml
+---
+title: "Proof Slicing"
+weight: 40
+author: "Arne Keller"
+date: 2026-06-11
+date_label: "June 2026"
+valid_for: "KeY-2.12.0"
+updated: "June 2026"
+approved: mu 2026-06-19
+---
+```
 
-- admonitions
-- tables
-- footnotes
-- attribute lists
-- snippets
-- tabbed content
-- Mermaid diagrams
-- MathJax
-- BibTeX references
-- Material navigation features such as tabs, sections, indexes, and top navigation
-
-When editing pages, preserve existing style unless there is a good reason to simplify it.
+- `title` is required and is rendered as the page `<h1>`. **Do not add a body
+  `#` heading**; start with `##`.
+- `weight` is required in practice (see above).
+- `date` must be ISO `YYYY-MM-DD`; use `date_label` for human-readable dates.
+- `author`, `valid_for`, `updated` feed the author metadata line.
+- `aliases` preserves old URLs after a rename.
 
 ## Review Badge Infrastructure
 
-This repository has a custom page-review system.
+The badge is derived from `approved` and rendered by
+`layouts/_partials/custom/content-begin.html` and `content-end.html`; styling
+lives in `assets/css/custom.css`.
 
-### Hook
+| Front matter | Result |
+| :----------- | :----- |
+| missing or empty | amber "not yet verified" pill at the top |
+| `approved: mu 2026-06-19` | green footer note naming reviewer and date |
+| `approved: mu` + `approved-on: 2026-06-19` | same note using `approved-on` |
+| `approved: none` | no badge (generated and index pages) |
 
-- `hooks/approval.py`
-
-This MkDocs hook inspects page front matter and injects review-status markup.
-
-Supported front-matter forms:
-
-```yaml
----
-approved: rb
-approved-on: 2026-06-11
----
-```
-
-or shorthand:
-
-```yaml
----
-approved: rb 2026-06-11
----
-```
-
-Special value:
-
-```yaml
-approved: none
-```
-
-### Behavior
-
-- missing `approved:`: amber/orange "not yet verified" badge at the top of the page
-- `approved: <initials>` or `approved: <initials> <date>`: green/accent review note at the footer
-- `approved: none`: suppress the badge entirely, used for generated pages
-
-### Styling
-
-- `docs/extra.css`
-
-This stylesheet defines `.approval` classes and related variants used by the hook.
-It also contains some other site-level customizations, such as stronger chapter
-weight in the sidebar.
-
-### Agent guidance
+Agent rules:
 
 - Do not invent reviewer initials or approval dates.
-- Do not add `approved:` casually; it changes visible site behavior.
-- If a page is generated, `approved: none` may be intentional and should usually stay.
+- Do not copy an `approved` line from another page.
+- Do not add or change `approved:` unless the task explicitly asks for it.
+- Generated pages keep `approved: none`.
+
+## Markdown And Site Features
+
+Enabled and in active use:
+
+- tables, footnotes, definition lists, task lists, strikethrough
+- raw HTML (`unsafe: true`); use sparingly
+- attribute lists and explicit heading anchors (`## Title {#anchor}`)
+- callouts with titles: `{{</* callout type="info" title="…" */>}}`
+- collapsible details: `{{%/* details title="…" */%}}`
+- tabs: `{{</* tabs */>}}` with `{{</* tab name="…" */>}}`
+- shared snippets from `assets/`: `{{</* snippet "snippets/…" */>}}`
+- citations: `{{</* cite "KEY" */>}}`, reference lists:
+  `{{</* bibliography */>}}`
+- icons: `{{</* icon "check-circle" */>}}`
+- Mermaid diagrams in ```` ```mermaid ```` fences
+- MathJax math via `$…$` and `$$…$$` only
+
+Preserve existing style and shortcode usage unless there is a good reason to
+simplify it.
+
+## Code Fencing
+
+Prism highlights in the browser. Use the correct fence language:
+
+| Fence | Use for |
+| :---- | :------ |
+| `java` | Java source |
+| `jml` | JML specifications |
+| `key` | KeY problem files and taclets |
+| `python`, `bash`, `yaml`, `json` | scripts and configuration |
+| `markdown` | Markdown examples |
+| `text` | plain text, ASCII art, output |
+
+Additional bundled grammars: `c`, `cpp`, `css`, `html`/`xml`, `latex`, `groovy`,
+`ocaml`, `properties`; `shell`/`sh` alias `bash`. Do not invent fence names and
+expect highlighting.
+
+## Math Rules
+
+- Inline: `$…$`; display: `$$…$$` on their own lines.
+- Never use `\(…\)` or `\[…\]`: KeY program modalities use that syntax and must
+  remain literal.
+- Inline code and fenced code are not math; do not escape dollar signs there.
+
+## Citations
+
+- The bibliography is generated from `refs.bib` into `data/refs.json` by
+  `scripts/bib_to_json.py` (needs `pyyaml` and `pybtex`, see
+  `scripts/requirements.txt`).
+- Cite by BibTeX key; unknown keys render `[KEY]` and produce a build warning.
+  Fix the warning instead of ignoring it.
+- Keep the `{{< bibliography >}}` list on reference pages, not on every page.
 
 ## Generated And Semi-Generated Content
 
-Some pages are generated or maintained by scripts rather than purely hand-authored.
-Known example:
-
-- `docs/user/ProofScripts/commands.md`
-
-Signals that a page may be generated:
+`content/user/proof-scripts/commands.md` is generated from the KeY nightly
+build. CI downloads it, strips the obsolete generator stylesheet and forces
+`approved: none`. Signals that a page may be generated:
 
 - `approved: none`
-- generated metadata or timestamps in the file
-- nearby helper scripts such as `extractScriptDoc.pl`
+- generated metadata or timestamps
+- `content/user/proof-scripts/*` files overwritten by CI
 
-Before rewriting such a page, check whether the source data or generation process
-should be changed instead.
+Before rewriting such a page, change the generator or the CI post-processing
+step instead. Do not hand-edit generated pages.
 
-## Historical And Legacy Content
+## CI And Publishing
 
-Some sections are intentionally historical.
+Defined in `.github/workflows/pages.yaml`:
 
-- `docs/eclipse/`: unsupported Eclipse-plugin documentation
-- `docs/old/`: archival documents
-- `disabled/`: intentionally excluded material
-- `cinder/`: old theme assets from a previous setup
+- triggers: push and pull request on `master`/`main`, weekly schedule,
+  `workflow_dispatch`
+- steps: full-history checkout → Go 1.27.x → fetch the nightly
+  `varcond-script-docs` artifact (best effort) → unpack into
+  `content/user/proof-scripts/` → post-process `commands.md` → Hugo extended
+  0.170.0 → `hugo --gc --minify --baseURL …` → upload `./public`
+- deploy job runs only from `master`
 
-Do not automatically modernize or repurpose these areas. Verify intent first.
+Pull requests get the same build as a check. The site is published at
+<https://keyproject.github.io/key-docs/>.
 
 ## Safe Editing Guidance
 
 Usually safe:
 
-- fix wording, typos, formatting, and broken local links in active docs
+- fix wording, typos, formatting and broken local links in active docs
 - improve structure inside an existing active page
-- add missing nav entries for active files
-- update docs that clearly belong to active user/developer sections
-- adjust CSS or hook logic when working on site presentation / badge behavior
+- add or adjust `weight` for active pages
+- update CSS, layouts or shortcodes when working on site presentation
+- update the CI workflow or `Makefile` for build/tooling changes
 
 Use caution for:
 
-- generated pages
-- historical sections
-- broad nav reorganizations
+- generated pages under `content/user/proof-scripts/`
+- historical sections (`content/historical/`)
+- `disabled/` and `share/` (not published; verify intent first)
 - any change that alters visible badge behavior across the whole site
-
-## Files To Read First For Orientation
-
-Before making non-trivial changes, read:
-
-- `README.md`
-- `mkdocs.yml`
-- `docs/index.md`
-- `docs/user/index.md`
-- `docs/devel/index.md`
-- `docs/devel/howtodoc/index.md`
-- `hooks/approval.py`
-- `docs/extra.css`
-
-These files explain the site structure, contributor workflow, and the custom
-review-badge infrastructure.
+- broad content reorganisations that break URLs without aliases
 
 ## Verification Checklist
 
-For meaningful documentation or infrastructure changes, prefer to verify with:
+For meaningful documentation or infrastructure changes:
 
-1. `mkdocs build`
-2. confirm the modified page is reachable from `mkdocs.yml` navigation if needed
-3. confirm there are no broken internal links or config errors
-4. if front matter or badge logic changed, check that the page renders the expected badge state
+1. `hugo mod tidy` and confirm `git diff --exit-code go.mod go.sum` is clean
+2. `make build` — must exit 0 and report 170 pages
+3. `make check` — scratch build plus internal link check must pass
+4. spot-check the rendered page in `make serve` if layout, shortcode or front
+   matter changed
+5. confirm the build docs and workflow contain no references to the retired
+   static-site generator that preceded Hugo
 
 ## Common Pitfalls
 
-- adding a page under `docs/` but forgetting `mkdocs.yml`
-- editing a generated page directly
+- adding a body `#` heading — the title already is the `<h1>`
+- forgetting `weight`, so the page silently jumps to the top of the sidebar
+- using `date: June 2023` instead of `date_label`
+- writing `\(…\)` or `\[…\]` as math delimiters
+- linking to `index.md` instead of the directory URL
+- putting bundle images in `static/` and referencing them relatively
+- editing `public/`, `resources/` or generated proof-script pages
+- inventing or copying `approved:` metadata
 - treating historical pages as current product documentation
-- changing `approved:` metadata without intending to affect visible badges
-- forgetting that site-level behavior can be implemented in Python hooks and CSS, not just Markdown
 
 ## Scope Reminder
 
 Keep guidance specific to this repository.
-Do not assume access to, or rely on, the main KeY code repository when editing this repo.
+Do not assume access to, or rely on, the main KeY code repository when editing
+this repo.

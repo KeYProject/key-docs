@@ -5,9 +5,9 @@ weight: 20
 
 *2026 — code compiled against the current KeY sources.*
 
-Menu entries are contributed by a [GUI extension](../AddExtension/) that
+Menu entries are contributed by a [GUI extension](../add-extension/) that
 implements `KeYGuiExtension.MainMenu`. If you do not have an extension
-module yet, follow [How to add an extension](../AddExtension/) first — it
+module yet, follow [How to add an extension](../add-extension/) first — it
 contains the build-file wiring (`settings.gradle`, `key.ui/build.gradle`)
 and the `META-INF/services` registration.
 

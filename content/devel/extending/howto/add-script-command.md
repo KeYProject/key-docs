@@ -7,19 +7,19 @@ weight: 60
 executed: a problem file whose embedded proof script calls the command
 runs through and the proof closes.*
 
-[Proof scripts](../../../user/ProofScripts/) are sequences of commands
+[Proof scripts](../../../../user/proof-scripts/) are sequences of commands
 (`rule`, `auto`, `macro`, …). This how-to adds a new command end to end.
 The background reference for the involved classes is
-[Adding a Proof Script Command](../../ScriptCommands/); the generated
+[Adding a Proof Script Command](../../script-commands/); the generated
 catalog of all existing commands is in the
-[user documentation](../../../user/ProofScripts/commands/).
+[user documentation](../../../../user/proof-scripts/commands/).
 
 ## 1. Where to put the code
 
 Commands live in any module on the classpath — either in `key.core`
 (package `de.uka.ilkd.key.scripts`, next to the built-in commands) or in
 your own `keyext.<name>` module (see
-[How to add an extension](../AddExtension/) for the module skeleton and
+[How to add an extension](../add-extension/) for the module skeleton and
 the build-file wiring in `settings.gradle` and `key.ui/build.gradle`; a
 command-only module just needs `implementation project(":key.core")`).
 
@@ -133,7 +133,7 @@ command executed.
 - React to `InterruptedException` in long-running commands so users can
   abort.
 - `getName()` must not clash with existing commands; check the
-  [command reference](../../../user/ProofScripts/commands/). Optional
+  [command reference](../../../../user/proof-scripts/commands/). Optional
   `getAliases()` adds alternative names (the invoked alias is visible in
   the `ScriptCommandAst`, so behavior may differ per alias — see
   `let`/`letf`).

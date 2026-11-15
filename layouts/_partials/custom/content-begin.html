@@ -1,0 +1,76 @@
+{{- /*
+  Top-of-page customisations: review status badge and author metadata.
+
+  Port of the MkDocs hooks `hooks/approval.py` and `hooks/author.py` to the
+  Hextra layout hook positions (`custom/content-begin.html`, rendered right
+  after the page title) and `custom/content-end.html` (rendered after the
+  page body, where the green "checked" note belongs).
+
+  Front matter read here:
+
+    approved:      "rb 2026-06-11" | "rb" | "none"   (see approval.py)
+    approved-on:   "2026-06-11"                       (date if not combined)
+    approved_on:   "2026-06-11"                       (same, alt spelling)
+    author:        "Nils Buchholz"                    (see author.py)
+    date_label:    "February 2025"                    (fallback: date)
+    date:          "February 2025" | 2025-02-01
+    valid_for:     "a future release of KeY based on KeY 2.12.3"
+    updated:       "November 2023"
+
+  Rendering, mirroring the original semantics exactly:
+
+    * `approved` missing/empty -> amber "not yet verified" pill at the top of
+      the page (a call to action),
+    * `approved: none`         -> no badge at all (generated pages),
+    * anything else            -> green note in the page footer, see
+                                  `content-end.html`.
+
+  The author line is rendered whenever `author` is set.  All front matter
+  values are interpolated as text and escaped by the template engine; nothing
+  here bypasses HTML escaping.
+*/ -}}
+{{- /* A list-valued `approved` (YAML block sequence) is joined with spaces,
+       like `hooks/approval.py::_normalize`. */ -}}
+{{- $rawApproved := .Params.approved | default "" -}}
+{{- $approved := "" -}}
+{{- if reflect.IsSlice $rawApproved -}}
+  {{- $parts := slice -}}
+  {{- range $rawApproved -}}
+    {{- $parts = $parts | append (printf "%v" .) -}}
+  {{- end -}}
+  {{- $approved = delimit $parts " " | strings.TrimSpace -}}
+{{- else -}}
+  {{- $approved = printf "%v" $rawApproved | strings.TrimSpace -}}
+{{- end -}}
+{{- if eq $approved "" -}}
+  {{- /* Not yet reviewed: prominent amber badge. The tooltip is the AI
+         disclosure of the original MkDocs hook, verbatim. */ -}}
+  <div class="approval approval--missing" title="The original pages were written by the KeY community. In June 2026, the structure and content of this documentation has been revised using support from generative AI. Pages that carry the badge &quot;not yet verified&quot; need (re-)approval by a KeY core team member after this renovation.">&#9888; not yet verified</div>
+{{- end -}}
+
+{{- with .Params.author -}}
+  {{- $author := printf "%v" . -}}
+  {{- /* Publication date: `date_label` wins; `date` is the fallback and may be
+         a YAML date (time.Time) or a free-form string. */ -}}
+  {{- $dateLabel := "" -}}
+  {{- with $.Params.date_label -}}
+    {{- $dateLabel = printf "%v" . -}}
+  {{- else -}}
+    {{- with $.Params.date -}}
+      {{- $dateLabel = printf "%v" . -}}
+      {{- if eq (printf "%T" .) "time.Time" -}}
+        {{- $dateLabel = .Format "2006-01-02" -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $extras := slice -}}
+  {{- with $.Params.valid_for -}}
+    {{- $extras = $extras | append (printf "valid for %v" .) -}}
+  {{- end -}}
+  {{- with $.Params.updated -}}
+    {{- $extras = $extras | append (printf "last updated: %v" .) -}}
+  {{- end -}}
+
+  <div class="page-author">Author: {{ $author }}{{ with $dateLabel }}, {{ . }}{{ end }}{{ with $extras }}<br>({{ delimit . ", " }}){{ end }}</div>
+{{- end -}}

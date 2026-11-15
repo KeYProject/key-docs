@@ -121,7 +121,7 @@ obligations.
 ## Visualize proof dependencies of a proof in the KeYIDE
 
 
-1. Do the proof in the [KeYIDE](../KeYIDE/) as normal.
+1. Do the proof in the [KeYIDE](../key-ide/) as normal.
 
     ![](proofDependencies01thumb.png "Visualize proof dependencies of a proof in the KeYIDE")
 
@@ -138,9 +138,9 @@ Dependencies".
 
 ## KeY basics in Eclipse and troubleshooting
 
-- [KeY basics in Eclipse (Cross-project Functionality)](../CrossProject/)
-  - [Create an example project](../CrossProject/#create-an-example-project)
-  - [Change taclet options](../CrossProject/#change-taclet-options)
-  - [Define class path used by KeY](../CrossProject/#define-class-path-used-by-key)
-- [Troubleshooting](../CrossProject/#troubleshooting)
-  - [Unresolved classtype (support for API classes)](../CrossProject/#unresolved-classtype-support-for-api-classes)
+- [KeY basics in Eclipse (Cross-project Functionality)](../cross-project/)
+  - [Create an example project](../cross-project/#create-an-example-project)
+  - [Change taclet options](../cross-project/#change-taclet-options)
+  - [Define class path used by KeY](../cross-project/#define-class-path-used-by-key)
+- [Troubleshooting](../cross-project/#troubleshooting)
+  - [Unresolved classtype (support for API classes)](../cross-project/#unresolved-classtype-support-for-api-classes)

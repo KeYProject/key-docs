@@ -18,7 +18,7 @@ the registration/attachment pattern is the one exercised by
 A *term label* annotates a term occurrence with bookkeeping information
 that is **not soundness-relevant** — erasing all labels must never make a
 proof wrong. Labels travel with their term through rule applications.
-Read [Term Labels](../../TermLabels/) first for the concept and the
+Read [Term Labels](../../../internals/terms-and-parsing/term-labels/) first for the concept and the
 architecture; this page is the recipe.
 
 ## 0. Do you actually need a new label?

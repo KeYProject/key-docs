@@ -9,7 +9,7 @@ Now we apply the described proof obligations to the tutorial example.
 First we demonstrate the generation of proof obligations, then we show
 how these can be handled by the KeY prover. Please make sure that
 the default settings of the KeY prover are selected (see Chapter
-[3.3](#sec:prover){reference-type="ref" reference="sec:prover"}) and the
+[3.3](../loading/#sec:prover)) and the
 maximum number of automatic rule applications is 5000. Be aware that the
 names of the proof rules and the structure of the proof obligations may
 be subject to change in the future.
@@ -83,7 +83,7 @@ circumstances the method is expected to terminate abruptly by throwing
 an exception.
 
 Use the Proof Management (either by clicking onto the button
-:fontawesome-solid-list-check: or
+{{< icon "clipboard-list" >}} or
 [**File**] $|$ [**Proof Management**]).
 Continue as before, but this time, select the method
 `PayCard::charge(int amount)`. In contrast to the previous example, the
@@ -141,7 +141,7 @@ There is one exception: if a method is annotated with the keyword
 example for such a method is `LogRecord::setRecord()`. If a method is
 declared as helper method, the invariant of the object on which the
 method is called does not have to hold for its pre- and postcondition.
-For more details, see [@Weiss2011]. The advantage is a simpler proof
+For more details, see {{< cite "Weiss2011" >}}. The advantage is a simpler proof
 obligation; however, the disadvantage is that in order to show that the
 method fulfills its contract, it is not possible to rely on the
 invariants.
@@ -218,4 +218,4 @@ specifier needs not to add information to the invariant specifying all
 those program variables and fields that are not changed by the loop.
 Of course one has to check that the given assignable clause is
 correct, this is done by the invariant rule. We refer
-to [@KeYBook2016] for further discussion and pointers on this topic.
+to {{< cite "KeYBook2016" >}} for further discussion and pointers on this topic.

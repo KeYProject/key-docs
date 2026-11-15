@@ -16,7 +16,7 @@ Term labels are annotations attached to terms: `heap<<anonHeapFunction>>`,
 occurrence without changing what the term means. This page explains why
 they exist (concept), how they are realized (design), and where the
 extension points are. For the concrete recipe see
-[How to add a term label](howto/AddTermLabel/).
+[How to add a term label](../../../extending/howto/add-term-label/).
 
 ## Concept: why term labels?
 
@@ -223,7 +223,7 @@ and only `origin` registers a policy and a refactoring.
 ## Adding a label
 
 See the verified recipe:
-[How to add a term label](howto/AddTermLabel/). The short version: define
+[How to add a term label](../../../extending/howto/add-term-label/). The short version: define
 the label (+ factory), register it in the profile, attach it from a
 taclet or through `TermBuilder.label(...)`, and only then decide whether
 you need any maintenance hook beyond the default "travels with its

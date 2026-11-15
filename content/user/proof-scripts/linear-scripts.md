@@ -4,7 +4,7 @@ weight: 50
 ---
 
 {{< callout type="info" >}}
-This covers linear scripts. Scripts can also be attached to [JML assertions with scripts](../jml).
+This covers linear scripts. Scripts can also be attached to [JML assertions with scripts](../jml/).
 {{< /callout >}}
 
 Every KeY user knows the pain of manually redoing an interactive proof
@@ -77,7 +77,7 @@ You can also load a script from an external file by writing
 
 ## Available commands for linear scripts
 
-The [list of available script commands](../commands) is subject to
+The [list of available script commands](../commands/) is subject to
 change and to extension.
 
 ## Linearity of scripts

@@ -7,14 +7,14 @@ weight: 10
 `key.ncore.calculus`).*
 
 This appendix collects every cost constant for reference. See
-[Strategy Costs and the Cost-Band Ladder](StrategyCosts.md) for what the layers
+[Strategy Costs and the Cost-Band Ladder](../../internals/proof-search/strategy-costs/) for what the layers
 mean and how to choose a cost.
 
 ## Cost bands
 
 The shared cross-theory ladder (`CostBand`, `key.ncore.calculus`):
 
---8<-- "includes/costband-table.md"
+{{< snippet "snippets/costband-table.md" >}}
 
 ## Combination costs
 

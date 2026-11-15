@@ -6,7 +6,7 @@ weight: 40
 KeY can run its automatic proof search on several processor cores at once. This
 page explains what that means, what it gains, and how it is built. It stays at the
 conceptual level. If you write prover code, read
-[Thread Safety and Determinism](ThreadSafety.md) as well.
+[Thread Safety and Determinism](../../../working-on-code/thread-safety/) as well.
 
 ## Why
 
@@ -35,7 +35,7 @@ Automatic search is then a single loop:
 3. apply it, which either closes the goal or replaces it with sub-goals,
 
 until nothing is open or no rule applies anywhere. What one such step involves is
-described in [the rule-application pipeline](RuleApplicationPipeline.md).
+described in [the rule-application pipeline](../rule-application-pipeline/).
 
 ```mermaid
 graph LR

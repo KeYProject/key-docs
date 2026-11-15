@@ -56,6 +56,9 @@ screenshots may differ from the latest release.
 
 ## Define class path used by KeY
 
+<a id="KeYsClassPath"></a>
+
+
 1. Open project properties of a Java/KeY project via context menu item "Properties".
 
     [![Define class path used by KeY](classPath01thumb.png "Define class path used by KeY")](classPath01.png)
@@ -119,7 +122,7 @@ API.
 3.  Populate the folder with files "System.java" and
     "PrintStream.java" with content from the listings below.
 
-**Hint:** [Stubby](../Stubby/) can generate stub files for
+**Hint:** [Stubby](../stubby/) can generate stub files for
 used API members automatically.
 
 

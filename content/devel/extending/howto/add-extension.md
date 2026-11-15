@@ -11,7 +11,7 @@ This how-to creates a new, self-contained extension module `keyext.demo`
 that contributes a main menu entry and a toolbar button to the KeY GUI.
 The same module skeleton is the home for any other extension point
 (context menus, settings pages, left panels, … — see
-[GUI extensions](../../GUIExtensions/)).
+[GUI extensions](../../gui-extensions/)).
 
 ## 1. Create the module
 
@@ -126,7 +126,7 @@ Notes:
 - `@KeYGuiExtension.Info` supplies metadata: `optional = true` lets users
   disable the extension in the settings dialog; `experimental = true` would
   hide it unless KeY runs with `--experimental`. There is also `priority`.
-- See `HelloAction` in [How to add a main menu entry](../AddMenuEntry/).
+- See `HelloAction` in [How to add a main menu entry](../add-menu-entry/).
 
 ## 4. Register the extension
 

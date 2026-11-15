@@ -11,7 +11,7 @@ closes (`./gradlew :key.ui:run --args='--auto demoTaclet.key'` reports
 Taclets are KeY's schematic calculus rules. This how-to covers *where to
 put* new taclets; for *how to write* them (the taclet language itself,
 schema variables, rule sets) read
-[How to write new taclets](../../HowToTaclet/).
+[How to write new taclets](../../how-to-write-taclets/).
 
 There are two scenarios: taclets for **one verification project**, and
 taclets for **KeY's standard rule base**.
@@ -89,10 +89,10 @@ Steps:
    `de.uka.ilkd.key.strategy`).
 4. **Justify soundness**: derived (non-axiomatic) taclets should be proved
    sound. Add a corresponding entry to the taclet-proof regression suite —
-   see [Regression tests for proved rules](../../Testing/ProveRules/).
+   see [Regression tests for proved rules](../../../testing/prove-rules/).
 5. **Run the tests**: at minimum the parser/prover smoke tests,
    `./gradlew :key.core:test`, and ideally the
-   [RunAllProofs](../../Testing/RunAllProves/) suite, since new automated
+   [RunAllProofs](../../../testing/run-all-proofs/) suite, since new automated
    rules can change proof search behavior globally.
 
 No build-file changes are needed in either scenario — rule files are
@@ -102,4 +102,4 @@ resources of `key.core` and are picked up automatically.
 
 If your rule cannot be expressed schematically as a taclet (it needs
 arbitrary Java code), you need a *built-in rule* instead — see
-[Extending KeY](../../ExtendingKeY/#adding-a-built-in-rule).
+[Extending KeY](../../#adding-a-built-in-rule).

@@ -24,7 +24,7 @@ specification in a mathematically rigorous way. In order to fulfill
 this task, the specification needs to be given in a formal language
 with a precisely defined meaning. In the current version of the
 document, we focus on the popular *Java Modeling Language*
-(JML) [@JMLReferenceManual11][@Leavens-Baker-Ruby04] as specification
+(JML) {{< cite "JMLReferenceManual11" >}}; {{< cite "Leavens-Baker-Ruby04" >}} as specification
 language.
 
 In the next sections, we show how to verify a JML-annotated
@@ -37,7 +37,7 @@ language.
 
 For a longer discussion on the architecture, design philosophy, and
 theoretical underpinnings of the KeY tool  please refer to
-[@KeYBook2016]. In case of questions or comments, don't hesitate to
+{{< cite "KeYBook2016" >}}. In case of questions or comments, don't hesitate to
 contact the KeYsupport team at
 [*support@key-project.org*](mailto:support@key-project.org).
 
@@ -47,12 +47,12 @@ This tutorial was tested for KeY version 2.10.
 
 ## Contents
 
-1. [Installation](install.md): This chapter explains how to install and run the KeY system.
-2. [Loading JML Contracts](loading.md): This chapter explains how to load JML specifications into KeY and gives an introduction to the logical calculus behind KeY.
-3. [ProvingJML Contracts](proving.md): This chapter explains how to apply your knowledge from the previous chapter, showing how KeY generates proof obligations and how to prove them.
-4. [Appendix](appendix.md)
+1. [Installation](../install/): This chapter explains how to install and run the KeY system.
+2. [Loading JML Contracts](../loading/): This chapter explains how to load JML specifications into KeY and gives an introduction to the logical calculus behind KeY.
+3. [ProvingJML Contracts](../proving/): This chapter explains how to apply your knowledge from the previous chapter, showing how KeY generates proof obligations and how to prove them.
+4. [Appendix](../appendix/)
 
 
 ## Bibliography
 
-\full_bibliography
+{{< bibliography >}}

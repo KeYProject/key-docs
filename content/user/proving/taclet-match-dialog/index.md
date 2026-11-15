@@ -102,7 +102,7 @@ not; the dialog uses the active look-and-feel throughout, classic or flat.
 
 <div class="grid" markdown>
 
-![A narrow window folds into tabs](narrow-tabs.png){ width="320" }
+![A narrow window folds into tabs](narrow-tabs.png)
 
 ![The same dialog in the classic theme](metal.png)
 

@@ -4,7 +4,7 @@ weight: 60
 ---
 
 {{< callout type="info" >}}
-This describes proof scripts from JML as opposed to [linear scripts](../linearScripts)
+This describes proof scripts from JML as opposed to [linear scripts](../linear-scripts/)
 that are written in KeY files in JavaDL.
 {{< /callout >}}
 
@@ -13,7 +13,7 @@ Instead of manually clicking through proof steps in the GUI for each verificatio
 
 Scripts make proofs more **resilient to small changes** in code or specifications, while still leaving routine steps to KeY’s automatic proof search.
 
-[Linear proof scripts](../linearScripts) can be used to compose scripts for entire JavaDL proof obligations. The challenge there is that symbolic execution may produce a lot of open proof goals and identifying and navigating to the right open goal in order to apply proof steps can be unnecessarily challenging.
+[Linear proof scripts](../linear-scripts/) can be used to compose scripts for entire JavaDL proof obligations. The challenge there is that symbolic execution may produce a lot of open proof goals and identifying and navigating to the right open goal in order to apply proof steps can be unnecessarily challenging.
 
 Now, you can attach proof scripts to JML assertions directly in the Java sources such that no navigation is needed.
 
@@ -83,7 +83,7 @@ A script consists of a list of commands. The most important ones include:
   Creates a case split.
   The nested block can contain its own script.
 
-The documentation also contains [a full list of all proof script commands](../commands).
+The documentation also contains [a full list of all proof script commands](../commands/).
 
 ## Matching and Disambiguation
 
@@ -189,7 +189,7 @@ rule allLeft on="\forall int b; (b < num_buckets & b >= 0 & b != bucket -> _)"
 ## Examples
 
 Here are some examples of proof scripts in JML.
-See also the curated [Examples](Examples) page with verbatim snippets and links.
+See also the curated Examples page with verbatim snippets and links.
 
 
 ### Heap Simplification and Rule Application

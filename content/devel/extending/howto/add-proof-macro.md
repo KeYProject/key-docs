@@ -9,16 +9,16 @@ executed: a problem file whose proof script invokes the macro closes with
 
 A *proof macro* bundles strategy invocations and rule applications into one
 high-level proof step. Macros appear in the GUI (context menu *Strategy
-macros*) **and** are callable from [proof scripts](../AddScriptCommand/)
+macros*) **and** are callable from [proof scripts](../add-script-command/)
 via `macro "<name>";` — you get both for free from one implementation.
-(See the [user documentation of the shipped macros](../../../user/ProofScripts/macros/).)
+(See the [user documentation of the shipped macros](../../../../user/proof-scripts/macros/).)
 
 ## 1. Where to put the code
 
 Macros live in any module on the classpath. Either add the class to
 `key.core` (package `de.uka.ilkd.key.macros`) if it is of general use, or —
 for a self-contained feature — put it into your own `keyext.<name>` module
-(see [How to add an extension](../AddExtension/) for the module skeleton
+(see [How to add an extension](../add-extension/) for the module skeleton
 and the build-file wiring in `settings.gradle` and `key.ui/build.gradle`;
 a macro-only module just needs `implementation project(":key.core")`).
 

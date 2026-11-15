@@ -5,9 +5,9 @@ weight: 30
 
 *2026 — code compiled against the current KeY sources.*
 
-Toolbars are contributed by a [GUI extension](../AddExtension/) that
+Toolbars are contributed by a [GUI extension](../add-extension/) that
 implements `KeYGuiExtension.Toolbar`. If you do not have an extension
-module yet, follow [How to add an extension](../AddExtension/) first — it
+module yet, follow [How to add an extension](../add-extension/) first — it
 contains the build-file wiring (`settings.gradle`, `key.ui/build.gradle`)
 and the `META-INF/services` registration.
 
@@ -62,6 +62,6 @@ You are free to add any Swing component to the toolbar:
 
 The same `KeyAction` instance can be returned from both
 `getMainMenuActions` (see
-[How to add a main menu entry](../AddMenuEntry/)) and added to the
+[How to add a main menu entry](../add-menu-entry/)) and added to the
 toolbar — this keeps the enabled/selected state in sync automatically,
 since both Swing components observe the same `Action`.

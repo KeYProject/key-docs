@@ -119,7 +119,7 @@ $$
 
      This is a direct consequence of the disjunction $x = c_1 \vee\ldots\vee x = c_n$ resulting from the construction principles of ADTs. This is valid for *generated* ADTs where the values can only be constructed using the constructors. This allows us to make a case distinction about the various constructors.
 
-\[
+$$
 \frac{
 \begin{matrix}
    x = c_1      \Longrightarrow \\
@@ -129,7 +129,7 @@ $$
 }{
      x : ADT ~ \text{(anywhere)}
 }
-\]
+$$
 
 Following our example we obtain the following taclets:
 

@@ -306,7 +306,7 @@ verified against this contract. The API designer may additionally attach
 requirements to the abstract model methods themselves (KeY checks them), or
 provide default *implementations* of the model methods, e.g., a
 weakest-precondition default (see
-[the `\dl_wp_apply` escape](JavaDLinJML.md#the-weakest-precondition-escape-dl_wp_apply)).
+[the `\dl_wp_apply` escape](../../projects/javadi-in-jml/#the-weakest-precondition-escape-dl_wp_apply)).
 
 {{< callout type="info" title="Side-effectful lambdas" >}}
 A side-effectful lambda (one that modifies locations) is specified with

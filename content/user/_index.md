@@ -12,32 +12,32 @@ contributing to KeY lives in the [Developer Guide](../devel/).)
 
 The chapters are arranged so that they can be read front to back:
 
-1. **[Getting Started](../quicktour/)** — install KeY, load a
+1. **[Getting Started](getting-started/quicktour/)** — install KeY, load a
    JML-annotated Java program, and run your first proofs. Start here if
    you are new to KeY.
-2. **[Working with the Prover](UiFeatures/)** — day-to-day interactive
-   proving: [excluding goals from automation](Interactive/),
-   [proof exploration](Exploration/), [node diffs](NodeDiff/), the
-   [linearized proof tree](ProofTreeLinearMode/),
-   [proof caching](ProofCaching/), and [proof slicing](ProofSlicing/).
+2. **[Working with the Prover](proving/)** — day-to-day interactive
+   proving: [excluding goals from automation](proving/interactive/),
+   [proof exploration](proving/exploration/), [node diffs](proving/node-diff/), the
+   [linearized proof tree](proving/proof-tree-linear-mode/),
+   [proof caching](proving/proof-caching/), and [proof slicing](proving/proof-slicing/).
 3. **Structuring Verification Projects** — the
-   [classpath directive](Classpath/), dealing with
-   [generics](RemoveGenerics/), [user-defined data types](ADTs/), and
-   [JavaDL escapes in JML](JavaDLinJML/).
-4. **[Proof Scripts](ProofScripts/)** — make interactive proofs
+   [classpath directive](projects/classpath/), dealing with
+   [generics](projects/generics/), [user-defined data types](projects/adts/), and
+   [JavaDL escapes in JML](projects/javadi-in-jml/).
+4. **[Proof Scripts](proof-scripts/)** — make interactive proofs
    persistent, resilient, and reapplicable with KeY's scripting language.
 5. **SMT Solvers** — how to
-   [add and configure SMT solvers](SMT/AddingSMTSolvers/).
+   [add and configure SMT solvers](smt/adding-smt-solvers/).
 6. **Bridges to Other Tools** — exporting proof obligations to
-   [Isabelle](IsabelleTranslation/).
-7. **Language Reference** — the grammars of [JML](JMLGrammar/), the
-   [KeY input language](KeyGrammar/), and KeY's
-   [Java extensions](JavaGrammar/).
+   [Isabelle](bridges/isabelle/).
+7. **Language Reference** — the grammars of [JML](language/jml-grammar/), the
+   [KeY input language](language/key-grammar/), and KeY's
+   [Java extensions](language/java-grammar/).
 8. **Supported Language Features** — which Java features KeY can verify:
-   the [Java coverage table](SupportedFeatures/JavaCoverage/).
-9. **[FAQ](FAQ/)** — answers to common problems.
+   the [Java coverage table](features/java-coverage/).
+9. **[FAQ](faq/)** — answers to common problems.
 
-The **[Release Notes](../changelog/)** list what changed in each KeY
+The **[Release Notes](release-notes/)** list what changed in each KeY
 release.
 
 ## Learn more

@@ -1,0 +1,4 @@
+# Python dependencies for the migration helpers in scripts/.
+# The site itself is built by Hugo and does not need Python.
+pyyaml
+pybtex

@@ -41,7 +41,7 @@ heuristics. Default rule sets are defined in the file
 `resources/de/uka/ilkd/key/proof/rules/ruleSetsDeclarations.key`.
 How taclets are matched against sequents and selected for automatic
 application is described in
-[The Rule Application Pipeline](../RuleApplicationPipeline/).
+[The Rule Application Pipeline](../../internals/proof-search/rule-application-pipeline/).
 
 ### Quick example
 
@@ -92,7 +92,7 @@ In this branch, the found sub-term is replaced with true (`\replacewith(true)`),
 A particular branch of the taclet can be tagged by enclosing the tag in brackets.
 This tag must be written after the branch label.
 The first branch in this example is tagged with "main".
-This particular value causes the branch to be visually continued on the parent branch if [the linearized Proof Tree mode](../../user/ProofTreeLinearMode/) is active.
+This particular value causes the branch to be visually continued on the parent branch if [the linearized Proof Tree mode](../../../user/proving/proof-tree-linear-mode/) is active.
 
 The second branch of the taclet is labeled "CUT: #cutFormula FALSE".
 In this branch, the found sub-term is replaced with false (`\replacewith(false)`), and the found sub-term is added as a new sequent formula to the succedent: `\add( ==> cutFormula)`.
@@ -158,7 +158,7 @@ At the moment, `\EQ` is the only supported generator.
 ## How to extend the taclet language
 
 {{< callout type="error" >}}
-This section does not reflect recent KeY developments. [The parser was recently rewritten](../../devel/NewKeyParser/).
+This section does not reflect recent KeY developments. [The parser was recently rewritten](../../internals/terms-and-parsing/new-key-parser/).
 {{< /callout >}}
 
 Sometimes, especially when one wants to introduce new symbolic execution

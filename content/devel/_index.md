@@ -9,40 +9,40 @@ of* it. (If you want to *use* KeY to verify programs, see the
 
 ## How this guide is organized
 
-1. **[Architecture](Architecture/)** — how the code base is organized into
+1. **[Architecture](architecture/)** — how the code base is organized into
    Gradle modules and where the important packages live. Read this first.
-2. **[Building KeY](Gradle/)** — checking out, building, running, and
+2. **[Building KeY](building/)** — checking out, building, running, and
    testing KeY with Gradle.
-3. **Working on the Code** — [coding conventions](CodingConventions/),
-   [automatic formatting with Spotless](SpotlessAutomaticFormatting/), and
-   [logging](Logging/); see also `CONTRIBUTING.md` in the repository.
-4. **[Extending KeY](ExtendingKeY/)** — the central chapter for adding
+3. **Working on the Code** — [coding conventions](working-on-code/coding-conventions/),
+   [automatic formatting with Spotless](working-on-code/spotless/), and
+   [logging](working-on-code/logging/); see also `CONTRIBUTING.md` in the repository.
+4. **[Extending KeY](extending/)** — the central chapter for adding
    functionality. It starts with a decision table ("I want to add …") and
-   contains compiled, verified **[How-Tos](howto/)** for the most common
-   tasks: a new [extension module](howto/AddExtension/), a
-   [menu entry](howto/AddMenuEntry/), a [toolbar](howto/AddToolbarAction/),
-   [taclets](howto/AddTaclets/), a [proof macro](howto/AddProofMacro/),
-   and a [script command](howto/AddScriptCommand/). In-depth references:
-   [writing taclets](HowToTaclet/),
-   [polarity triggers](../user/Polarity/),
-   [GUI extension points](GUIExtensions/),
-   [script commands](ScriptCommands/),
-   [SMT solvers](AddingSMTSolvers/), and
-   [event listeners](Listeners/).
+   contains compiled, verified **[How-Tos](extending/howto/)** for the most common
+   tasks: a new [extension module](extending/howto/add-extension/), a
+   [menu entry](extending/howto/add-menu-entry/), a [toolbar](extending/howto/add-toolbar/),
+   [taclets](extending/howto/add-taclets/), a [proof macro](extending/howto/add-proof-macro/),
+   and a [script command](extending/howto/add-script-command/). In-depth references:
+   [writing taclets](extending/how-to-write-taclets/),
+   [polarity triggers](extending/polarity/),
+   [GUI extension points](extending/gui-extensions/),
+   [script commands](extending/script-commands/),
+   [SMT solvers](extending/adding-smt-solvers/), and
+   [event listeners](extending/listeners/).
 5. **Using KeY as a Library** —
-   [KeY in external projects](ExternalProject/) and the
-   [JSON-RPC interface](rpc/).
+   [KeY in external projects](library/external-project/) and the
+   [JSON-RPC interface](library/rpc/).
 6. **Internals** — background on selected subsystems: the
-   [rule application pipeline](RuleApplicationPipeline/) (taclet matching →
+   [rule application pipeline](internals/proof-search/rule-application-pipeline/) (taclet matching →
    strategy evaluation → application),
-   [taclet matching](TacletMatching/) (the match-plan framework and its
+   [taclet matching](internals/proof-search/taclet-matching/) (the match-plan framework and its
    two back-ends),
-   [proof loading/saving](ProofLoadSave/), [the KeY parser](NewKeyParser/),
-   [SMT translation](SMTTranslation/), and
-   [counterexample generation](CounterExampleGeneration/).
-7. **[Testing](Testing/)** — unit tests, `RunAllProofs`,
-   [proved rules](Testing/ProveRules/), CI.
-8. **[Writing Documentation](howtodoc/)** — how to contribute to this
+   [proof loading/saving](internals/proofs-and-solvers/proof-load-save/), [the KeY parser](internals/terms-and-parsing/new-key-parser/),
+   [SMT translation](internals/proofs-and-solvers/smt-translation/), and
+   [counterexample generation](internals/proofs-and-solvers/counterexample-generation/).
+7. **[Testing](testing/)** — unit tests, `RunAllProofs`,
+   [proved rules](testing/prove-rules/), CI.
+8. **[Writing Documentation](writing-documentation/)** — how to contribute to this
    site.
 
 ## Dependencies worth knowing

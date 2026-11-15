@@ -43,7 +43,7 @@ interaction on the level of JML annotated to Java code.
 
 ### Linear Proof Scripts
 
-[Documentation of Linear Proof Scripts](linearScripts)
+[Documentation of Linear Proof Scripts](linear-scripts/)
 
 Linear scripts opperate on the level of JavaDL proofs directly. They
 are added to individual proof obligations (regardless of their
@@ -54,10 +54,10 @@ and interaction.
 
 ### JML Proof Scripts
 
-[Documentation of JML Proof Scripts](jml)
+[Documentation of JML Proof Scripts](jml/)
 
 JML scripts are added to individual assertions within a Java method. They are annotated as JML comments in `.java` files directly and allow the use of Java and JML expressions in proof scripts.
 
 ### Examples
 
-[Examples](Examples) of proof scripts in KeY with verbatim snippets and links to the sources (Quicksort, Boyer–Moore, VerifyThis 2026 h-index).
+Examples of proof scripts in KeY with verbatim snippets and links to the sources (Quicksort, Boyer–Moore, VerifyThis 2026 h-index).
