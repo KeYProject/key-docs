@@ -67,7 +67,6 @@ date: 2026-06-11
 date_label: "June 2026"
 valid_for: "KeY-2.12.0"
 updated: "June 2026"
-approved: mu 2026-06-19
 ---
 ```
 
@@ -149,7 +148,7 @@ other pages need to link to a specific section:
 ### Application of a taclet {#sec:taclet-application}
 ```
 
-The id is used verbatim: `#sec:taclet-application` targets it on this page,
+The id is used verbatim: `#sec:taclet-application` within the page,
 `<other-page>/#sec:taclet-application` from another one. Without an explicit
 id, Hugo derives a slug from the heading text.
 
@@ -178,9 +177,9 @@ Cells may contain inline Markdown and raw HTML, including icons:
 ### Icons
 
 `{{</* icon "name" */>}}` inserts an inline SVG: {{< icon "key" >}} or {{< icon "book-open" >}}.
-Names come from Hextra's bundled set in `data/icons.yaml` (`key`,
-`check-circle`, `paper-airplane`, …); `lucide:rocket` and `tabler:brand-github`
-use a remote provider fetched at build time. An unknown name is a hard build
+Names come from Hextra's bundled icon set; a site-local `data/icons.yaml` can
+add more (`key`, `check-circle`, `paper-airplane`, …). `lucide:rocket` and
+`tabler:brand-github` use a remote provider fetched at build time. An unknown name is a hard build
 error (`icon "…" not found`), so typos surface immediately.
 
 ### Lists
