@@ -24,8 +24,8 @@ repeating proofs.
 Proof scripts are textual representations of rule applications, settings changes
 and macro invocations. They are notated in linear order. The target of a script
 command is usually the first open goal in the proof tree, i.e., the first
-reached when traversing the proof tree (not necessarily the first in the *Goal*
-pane in the GUI).
+reached when traversing the proof tree (not necessarily the first in the *Goals*
+panel in the GUI).
 
 
 ## Syntax of proof scripts
