@@ -123,7 +123,7 @@ proofs.
 ## Customize build settings
 
 
-1. Open project properties of a KeY project\ via context menu item
+1. Open project properties of a KeY project via context menu item
 "Properties".
 
     ![](custom01thumb.png "Customize build settings")

@@ -30,7 +30,7 @@ available on the [Symbolic Execution Debugger](sed/) website.
 
 ## KeY Resources
 
-KeY Resources provides the \"KeY project\" with automatic background
+KeY Resources provides the "KeY project" with automatic background
 proofs. Such projects extends the functionality of a Java project by
 maintaining automatically proofs in background. This means that the tool
 tries to do proofs automatically whenever files in a project change.
