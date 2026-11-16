@@ -1,0 +1,69 @@
+{{- /* Note: this override replaces Chroma's `highlight` with client-side
+       Prism markup, so Chroma's `options` (linenos, hl_lines, …) are
+       intentionally unsupported: they are accepted by the caller but silently
+       ignored here. Hextra attributes such as `class` are likewise not
+       forwarded by this partial. Line numbering/highlighting would have to be
+       implemented in JS/CSS on top of Prism. */ -}}
+{{ $filename := .filename | default "" -}}
+{{ $base_url := .base_url | default "" -}}
+{{ $lang := .lang | default "" }}
+{{ $content := .content }}
+
+{{- if $filename -}}
+  <div class="hextra-code-filename not-prose" dir="auto">
+    {{- if $base_url -}}
+
+      {{- $base_url = strings.TrimSuffix "/" $base_url -}}
+      {{- $filename = strings.TrimPrefix "/" $filename -}}
+      {{- $file_url := urls.JoinPath $base_url $filename -}}
+
+      <a class="hx:no-underline hx:inline-flex hx:items-center hx:gap-1" href="{{ $file_url }}" target="_blank" rel="noopener noreferrer">
+          <span>{{- $filename -}}</span>
+          {{- partial "utils/icon" (dict "name" "external-link" "attributes" "height=1em") -}}
+      </a>
+    {{- else -}}
+      {{- $filename -}}
+    {{- end -}}
+  </div>
+{{- end -}}
+
+{{- /* Syntax highlighting happens client-side with Prism
+       (assets/js/prism, bundled by layouts/_partials/custom/head-end.html).
+       Chroma/`highlight` is bypassed on purpose: emit the `language-<lang>`
+       class the Prism bundle can pick up.
+
+       Fence aliases are normalised to the canonical Prism language name.
+       Anything not listed here (including `text`, `aafigure`, `MACRONAME`
+       and future/unknown fences) deliberately gets no class, so it stays
+       uncoloured instead of showing unhighlighted-but-wrong markup. */ -}}
+{{- $lang = lower (strings.TrimSpace $lang) -}}
+{{- $aliases := dict
+  "bash" "bash"
+  "shell" "bash"
+  "sh" "bash"
+  "c" "c"
+  "c++" "cpp"
+  "cpp" "cpp"
+  "css" "css"
+  "groovy" "groovy"
+  "html" "html"
+  "java" "java"
+  "jml" "jml"
+  "json" "json"
+  "key" "key"
+  "latex" "latex"
+  "markdown" "markdown"
+  "ocaml" "ocaml"
+  "properties" "properties"
+  "python" "python"
+  "xml" "xml"
+  "yaml" "yaml"
+  "yml" "yaml"
+-}}
+{{- $class := index $aliases $lang | default "" -}}
+
+{{- if $class -}}
+  <div><pre tabindex="0"><code class="language-{{ $class }}">{{ $content }}</code></pre></div>
+{{- else -}}
+  <div><pre tabindex="0"><code>{{ $content }}</code></pre></div>
+{{- end -}}

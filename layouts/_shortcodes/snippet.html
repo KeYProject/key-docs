@@ -1,0 +1,24 @@
+{{- /*
+  Include a Markdown file from `assets/` and render it as Markdown.
+
+  Replacement for the MkDocs `pymdownx.snippets` `--8<-- "includes/…"` notation
+  (which does not exist in Hugo).  Snippets live under `assets/snippets/` and are
+  looked up with `resources.Get`, so they take part in Hugo's asset pipeline.
+
+  Usage:  {{< snippet "snippets/costband-table.md" >}}
+
+  @param {string} 0 Path of the snippet below `assets/`, e.g. "snippets/x.md".
+*/ -}}
+{{- $path := "" -}}
+{{- with .Get 0 -}}
+  {{- $path = printf "%v" . | strings.TrimSpace -}}
+{{- end -}}
+{{- if eq $path "" -}}
+  {{- warnf "snippet: missing file argument, expected e.g. {{< snippet \"snippets/foo.md\" >}} (page %s)" .Page.RelPermalink -}}
+{{- else -}}
+  {{- with resources.Get $path -}}
+    {{- .Content | markdownify -}}
+  {{- else -}}
+    {{- warnf "snippet: %q not found under assets/ (page %s)" $path $.Page.RelPermalink -}}
+  {{- end -}}
+{{- end -}}

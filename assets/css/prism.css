@@ -1,0 +1,253 @@
+/* Prism.js token colours for KeY docs.
+ *
+ * The palette mirrors the Chroma "github" style the site used before
+ * switching to client-side Prism highlighting, so fenced blocks keep their
+ * familiar look in light and dark mode. This file only contains token rules;
+ * global site styles live in assets/css/custom.css.
+ *
+ * Grammars: assets/js/prism/prism-*.js (Prism 1.29.0), bundled by
+ * layouts/_partials/custom/head-end.html.
+ */
+
+.hextra-code-block .token.comment,
+.hextra-code-block .token.prolog,
+.hextra-code-block .token.doctype,
+.hextra-code-block .token.cdata {
+  color: #998;
+  font-style: italic;
+}
+
+.hextra-code-block .token.punctuation {
+  color: inherit;
+}
+
+.hextra-code-block .token.namespace {
+  opacity: 0.7;
+}
+
+.hextra-code-block .token.property,
+.hextra-code-block .token.constant,
+.hextra-code-block .token.symbol,
+.hextra-code-block .token.deleted {
+  color: teal;
+}
+
+.hextra-code-block .token.tag {
+  color: navy;
+}
+
+.hextra-code-block .token.boolean {
+  color: #0086b3;
+}
+
+.hextra-code-block .token.number {
+  color: #099;
+}
+
+.hextra-code-block .token.selector,
+.hextra-code-block .token.attr-name,
+.hextra-code-block .token.string,
+.hextra-code-block .token.char,
+.hextra-code-block .token.inserted {
+  color: #d14;
+}
+
+.hextra-code-block .token.builtin {
+  color: #0086b3;
+}
+
+.hextra-code-block .token.operator,
+.hextra-code-block .token.entity,
+.hextra-code-block .token.url {
+  color: #000;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.atrule,
+.hextra-code-block .token.attr-value,
+.hextra-code-block .token.keyword {
+  color: #000;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.function {
+  color: #900;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.class-name {
+  color: #458;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.regex,
+.hextra-code-block .token.variable {
+  color: #009926;
+}
+
+.hextra-code-block .token.annotation {
+  color: #3c5d5d;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.important,
+.hextra-code-block .token.bold {
+  font-weight: 700;
+}
+
+.hextra-code-block .token.italic {
+  font-style: italic;
+}
+
+/* JML tokens (assets/js/prism/prism-jml.js) */
+
+.hextra-code-block .token.jml-delimiter {
+  color: #998;
+  font-style: italic;
+}
+
+.hextra-code-block .token.jml-clause,
+.hextra-code-block .token.jml-declaration {
+  color: #000;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.jml-behavior {
+  color: #458;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.jml-command {
+  color: #0086b3;
+}
+
+/* KeY tokens (assets/js/prism/prism-key.js) */
+
+.hextra-code-block .token.key-taclet {
+  color: #000;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.key-command {
+  color: #0086b3;
+}
+
+.hextra-code-block .token.key-modality {
+  color: #3c5d5d;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.key-sequent-arrow {
+  color: #000;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.key-schema-var {
+  color: #d14;
+}
+
+/* Dark mode */
+
+.dark .hextra-code-block .token.comment,
+.dark .hextra-code-block .token.prolog,
+.dark .hextra-code-block .token.doctype,
+.dark .hextra-code-block .token.cdata {
+  color: #8b949e;
+}
+
+.dark .hextra-code-block .token.property,
+.dark .hextra-code-block .token.constant,
+.dark .hextra-code-block .token.symbol,
+.dark .hextra-code-block .token.deleted {
+  color: #79c0ff;
+}
+
+.dark .hextra-code-block .token.tag {
+  color: #7ee787;
+}
+
+.dark .hextra-code-block .token.boolean {
+  color: #79c0ff;
+}
+
+.dark .hextra-code-block .token.number {
+  color: #a5d6ff;
+}
+
+.dark .hextra-code-block .token.selector,
+.dark .hextra-code-block .token.attr-name,
+.dark .hextra-code-block .token.string,
+.dark .hextra-code-block .token.char,
+.dark .hextra-code-block .token.inserted {
+  color: #a5d6ff;
+}
+
+.dark .hextra-code-block .token.builtin {
+  color: #79c0ff;
+}
+
+.dark .hextra-code-block .token.operator,
+.dark .hextra-code-block .token.entity,
+.dark .hextra-code-block .token.url {
+  color: #ff7b72;
+}
+
+.dark .hextra-code-block .token.atrule,
+.dark .hextra-code-block .token.attr-value,
+.dark .hextra-code-block .token.keyword {
+  color: #ff7b72;
+}
+
+.dark .hextra-code-block .token.function {
+  color: #d2a8ff;
+}
+
+.dark .hextra-code-block .token.class-name {
+  color: #f0883e;
+}
+
+.dark .hextra-code-block .token.regex,
+.dark .hextra-code-block .token.variable {
+  color: #79c0ff;
+}
+
+.dark .hextra-code-block .token.annotation {
+  color: #d2a8ff;
+}
+
+.dark .hextra-code-block .token.jml-delimiter {
+  color: #8b949e;
+}
+
+.dark .hextra-code-block .token.jml-clause,
+.dark .hextra-code-block .token.jml-declaration {
+  color: #ff7b72;
+}
+
+.dark .hextra-code-block .token.jml-behavior {
+  color: #f0883e;
+}
+
+.dark .hextra-code-block .token.jml-command {
+  color: #79c0ff;
+}
+
+.dark .hextra-code-block .token.key-taclet {
+  color: #ff7b72;
+}
+
+.dark .hextra-code-block .token.key-command {
+  color: #79c0ff;
+}
+
+.dark .hextra-code-block .token.key-modality {
+  color: #8b949e;
+}
+
+.dark .hextra-code-block .token.key-sequent-arrow {
+  color: #ff7b72;
+}
+
+.dark .hextra-code-block .token.key-schema-var {
+  color: #a5d6ff;
+}

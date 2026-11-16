@@ -1,0 +1,104 @@
+# Hugo configuration for the KeY documentation site.
+# Hextra is consumed as a Hugo module; its version is pinned in go.mod.
+baseURL: 'https://keyproject.github.io/key-docs/'
+title: 'KeY Documentation'
+enableRobotsTXT: true
+enableGitInfo: true
+defaultContentLanguage: 'en'
+disableKinds: ['taxonomy', 'term']
+
+module:
+  imports:
+    # version pinned via go.mod: require github.com/imfing/hextra v0.13.0
+    - path: github.com/imfing/hextra
+
+markup:
+  goldmark:
+    renderer:
+      # content contains intentional HTML (tables, spans, figures)
+      unsafe: true
+    parser:
+      attribute:
+        block: true
+        title: true
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      strikethrough: true
+      table: true
+      taskList: true
+      typographer: true
+      extras:
+        insert:
+          enable: true
+        delete:
+          enable: true
+        mark:
+          enable: true
+        subscript:
+          enable: true
+        superscript:
+          enable: true
+      passthrough:
+        enable: true
+        # Only dollar delimiters: \(...\) and \[...\] occur literally in KeY
+        # program modalities and must not be consumed as math.
+        delimiters:
+          block: [['$$', '$$']]
+          inline: [['$', '$']]
+  highlight:
+    noClasses: false
+
+menu:
+  main:
+    - name: 'Home'
+      pageRef: '/'
+      weight: 10
+    - name: 'User Guide'
+      pageRef: '/user/'
+      weight: 20
+    - name: 'Developer Guide'
+      pageRef: '/devel/'
+      weight: 30
+    - name: 'Historical'
+      pageRef: '/historical/'
+      weight: 40
+    - name: 'KEPs'
+      pageRef: '/keps/'
+      weight: 50
+    - name: 'Search'
+      weight: 60
+      params:
+        type: search
+    - name: 'GitHub'
+      url: 'https://github.com/KeYProject/key'
+      weight: 90
+      params:
+        icon: github
+    - name: 'KeY Project'
+      url: 'https://key-project.org'
+      weight: 100
+
+params:
+  page:
+    width: full
+  math:
+    engine: mathjax
+  search:
+    enable: true
+    type: flexsearch
+  navbar:
+    width: full
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: 'images/key.png'
+      width: 28
+      height: 28
+  footer:
+    width: full
+    displayPoweredBy: false
+  editURL:
+    enable: true
+    base: 'https://github.com/KeYProject/key-docs/edit/master/content'

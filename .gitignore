@@ -1,5 +1,11 @@
+# Hugo build output
+public/
+resources/
+.hugo_build.lock
+hugo_stats.json
+
+# Legacy static-site build output (still ignored in case an old checkout has it)
 site/
-/public
 
 .DS_Store
 *.out
@@ -17,7 +23,28 @@ site/
 #*#
 *.toc
 *.rel
+*.orig
+*.rej
 
+# PDFs that are part of the documentation and must stay tracked.
+# The global *.pdf rule above is for LaTeX/build residue; documentation PDFs
+# live in page bundles and the static archive.
+!static/old/*.pdf
+!static/smt/*.pdf
+!content/**/*.pdf
+!disabled/**/*.pdf
+!assets/**/*.pdf
+
+# Python tooling for the one-off migration helpers in scripts/
 *.pyc
+*.pyo
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+
 # Local Hugo theme clone (fetched at build time, not part of the repo)
 themes/
+
+# Agent/scratch workspace for the migration (not part of the repo)
+.superpowers/

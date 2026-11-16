@@ -1,0 +1,45 @@
+{{- /*
+  Bottom-of-page customisations: the green "this page was checked" note.
+
+  Companion of `custom/content-begin.html`; see the comment there for the
+  front matter fields. Rendering mirrors `hooks/approval.py`:
+
+    * `approved` missing/empty -> nothing here (the amber pill is shown at the
+      top of the page instead),
+    * `approved: none`         -> nothing,
+    * otherwise                -> "✓ This page was checked by WHO on DATE.",
+      with the date omitted when neither `approved` nor `approved-on`/
+      `approved_on` carries one.
+
+  As in `hooks/approval.py::_normalize`, a list-valued `approved` (YAML block
+  sequence) is joined with spaces before parsing.
+*/ -}}
+{{- $rawApproved := .Params.approved | default "" -}}
+{{- $approved := "" -}}
+{{- if reflect.IsSlice $rawApproved -}}
+  {{- $parts := slice -}}
+  {{- range $rawApproved -}}
+    {{- $parts = $parts | append (printf "%v" .) -}}
+  {{- end -}}
+  {{- $approved = delimit $parts " " | strings.TrimSpace -}}
+{{- else -}}
+  {{- $approved = printf "%v" $rawApproved | strings.TrimSpace -}}
+{{- end -}}
+{{- if and (ne $approved "") (ne (lower $approved) "none") -}}
+  {{- $who := $approved -}}
+  {{- $date := "" -}}
+  {{- with index .Params "approved-on" -}}
+    {{- $date = printf "%v" . -}}
+  {{- else -}}
+    {{- with index .Params "approved_on" -}}
+      {{- $date = printf "%v" . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- /* Date either inside `approved` ("rb 2026-06-11") or in `approved-on`. */ -}}
+  {{- with findRESubmatch "^(.*?)[\\s,]+(\\d{4}-\\d{2}-\\d{2})$" $approved 1 -}}
+    {{- $m := index . 0 -}}
+    {{- $who = strings.TrimSpace (index $m 1) -}}
+    {{- $date = index $m 2 -}}
+  {{- end -}}
+  <div class="approval approval--ok approval--footer" title="This page has been reviewed.">&#10003; This page was checked by {{ $who }}{{ with $date }} on {{ . }}{{ end }}.</div>
+{{- end -}}

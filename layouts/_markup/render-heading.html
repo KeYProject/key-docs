@@ -1,0 +1,24 @@
+{{- /*
+  Local override of Hextra v0.13.0 layouts/_markup/render-heading.html.
+
+  Differences from the theme file:
+  * the anchor span is emitted for *all* levels, including level 1 (the theme
+    only emits it for level > 1, which left H1 setext headings such as
+    `{#app:shortcuts}` without an id);
+  * when `anchorize .Anchor` differs from the original `.Anchor` (case,
+    colons, underscores), a second alias span with the slugified id is emitted
+    so that Hextra's table of contents (`href="#{{ anchorize .ID }}"`)
+    resolves.
+*/ -}}
+<h{{ .Level }} data-hextra-search-id="{{ .Anchor | safeURL }}" {{- with .Attributes.class }} class="{{ . }}" {{- end }}>
+  {{- .Text | safeHTML -}}
+  <span class="hx:absolute hx:-mt-20" id="{{ .Anchor | safeURL }}"></span>
+  {{- $slug := anchorize .Anchor -}}
+  {{- if ne $slug .Anchor -}}
+    <span class="hx:absolute hx:-mt-20" id="{{ $slug }}"></span>
+  {{- end -}}
+  {{- if gt .Level 1 -}}
+    <a href="#{{ .Anchor | safeURL }}" class="subheading-anchor" aria-label="{{ (T "permalinkLabel") | default "Permalink for this section" }}"></a>
+  {{- end -}}
+</h{{ .Level }}>
+{{- /* Drop trailing newlines */ -}}

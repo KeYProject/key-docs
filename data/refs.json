@@ -1,0 +1,158 @@
+{
+  "Beckert01": {
+    "author": "Bernhard Beckert",
+    "editor": "I. Attali and T. Jensen",
+    "title": "A Dynamic Logic for the Formal Verification of Java Card Programs",
+    "year": "2001",
+    "booktitle": "Java on Smart Cards: Programming and Security. Revised Papers, Java Card 2000, International Workshop, Cannes, France",
+    "publisher": "Springer-Verlag",
+    "series": "LNCS 2041",
+    "pages": "6–24"
+  },
+  "BeckertGladisch2007": {
+    "author": "Bernhard Beckert and Christoph Gladisch",
+    "editor": "B. Meyer and Y. Gurevich",
+    "title": "White-box Testing by Combining Deduction-based Specification Extraction and Black-box Testing",
+    "year": "2007",
+    "booktitle": "Proceedings, International Conference on Tests and Proofs (TAP), Zurich, Switzerland",
+    "publisher": "Springer",
+    "series": "LNCS 4454"
+  },
+  "ESC": {
+    "title": "ESC/Java (Extended Static Checking for Java)",
+    "note": "http://research.compaq.com/SRC/esc/"
+  },
+  "Engel05": {
+    "author": "Christian Engel",
+    "title": "A translation from JML to Java Dynamic Logic",
+    "year": "2005",
+    "howpublished": "Studienarbeit, Fakultät für Informatik, Universität Karlsruhe"
+  },
+  "EngelHaehnle07": {
+    "author": "Christian Engel and Reiner Hähnle",
+    "editor": "Bertrand Meyer and Yuri Gurevich",
+    "title": "Generating Unit Tests from Formal Proofs",
+    "year": "2007",
+    "booktitle": "Proc. Tests and Proofs (TAP), Zürich, Switzerland",
+    "publisher": "Springer-Verlag",
+    "series": "LNCS",
+    "volume": "4454"
+  },
+  "Haehnle00a": {
+    "author": "Wolfgang Ahrendt and Thomas Baar and Bernhard Beckert and Martin Giese and Elmar Habermalz and Reiner Hähnle and Wolfram Menzel and Peter H. Schmitt",
+    "editor": "Manuel Ojeda-Aciego and Inma P. de Guzmán and Gerhard Brewka and Luís Moniz Pereira",
+    "title": "The KeY Approach: Integrating Object Oriented Design and Formal Verification",
+    "year": "2000",
+    "booktitle": "Proc. 8th European Workshop on Logics in AI (JELIA), Malaga, Spain",
+    "publisher": "Springer-Verlag",
+    "series": "LNCS",
+    "volume": "1919",
+    "pages": "21–36"
+  },
+  "ICS": {
+    "note": "http://www.icansolve.com"
+  },
+  "JMLReferenceManual11": {
+    "author": "Gary T. Leavens and Erik Poll and Curtis Clifton and Yoonsik Cheon and Clyde Ruby and David Cok and Peter Müller and Joseph Kiniry and Patrice Chalin and Daniel M. Zimmerman",
+    "title": "JML Reference Manual",
+    "year": "2011",
+    "note": "Department of Computer Science, Iowa State University. Available from http://www.jmlspecs.org"
+  },
+  "JavaReduxAPI": {
+    "title": "JavaRedux - API",
+    "note": "API documentation of a restricted subset of the Java Standard Library Classes.",
+    "url": "https://git.key-project.org/key-public/key/-/tree/stable/key/key.core/src/main/resources/de/uka/ilkd/key/java/JavaRedux"
+  },
+  "KeY2003": {
+    "author": "Wolfgang Ahrendt and Thomas Baar and Bernhard Beckert and Richard Bubel and Martin Giese and Reiner Hähnle and Wolfram Menzel and Wojciech Mostowski and Andreas Roth and Steffen Schlager and Peter H. Schmitt",
+    "title": "The KeY Tool",
+    "year": "2003",
+    "note": "Available at: http://i12www.ira.uka.de/~beckert/pub/key03.pdf"
+  },
+  "KeY2005": {
+    "author": "Wolfgang Ahrendt and Thomas Baar and Bernhard Beckert and Richard Bubel and Martin Giese and Reiner Hähnle and Wolfram Menzel and Wojciech Mostowski and Andreas Roth and Steffen Schlager and Peter H. Schmitt",
+    "title": "The KeY Tool",
+    "year": "2005",
+    "journal": "Software and System Modeling",
+    "publisher": "Springer-Verlag",
+    "volume": "4",
+    "pages": "32-54",
+    "doi": "http://springerlink.metapress.com/openurl.asp?genre=article&id=doi:10.1007/s10270-004-0058-x"
+  },
+  "KeYBook2007": {
+    "editor": "Bernhard Beckert and Reiner Hähnle and Peter H. Schmitt",
+    "title": "Verification of Object-Oriented Software: The KeY Approach",
+    "year": "2007",
+    "publisher": "Springer-Verlag",
+    "series": "LNCS 4334"
+  },
+  "KeYBook2016": {
+    "editor": "Wolfgang Ahrendt and Bernhard Beckert and Richard Bubel and Reiner Hähnle and Peter H. Schmitt and Mattias Ulbrich",
+    "title": "Deductive Software Verification - The KeY Book - From Theory to Practice",
+    "year": "2016",
+    "booktitle": "Deductive Software Verification - The KeY Book - From Theory to Practice",
+    "publisher": "Springer",
+    "series": "Lecture Notes in Computer Science",
+    "volume": "10001",
+    "doi": "10.1007/978-3-319-49812-6"
+  },
+  "Leavens-Baker-Ruby04": {
+    "author": "Gary T. Leavens and Albert L. Baker and Clyde Ruby",
+    "title": "Preliminary Design of JML: A Behavioral Interface Specification Language for Java",
+    "year": "2004",
+    "note": "See http://www.jmlspecs.org.",
+    "url": "ftp://ftp.cs.iastate.edu/pub/techreports/TR98-06/TR.ps.gz"
+  },
+  "Meyer97": {
+    "author": "Meyer, Bertrand",
+    "title": "Object-Oriented Software Construction (Second Edition)",
+    "year": "1997",
+    "publisher": "Prentice-Hall"
+  },
+  "RanTin-SMTLIB": {
+    "author": "Clark Barrett and Silvio Ranise and Aaron Stump and Cesare Tinelli",
+    "title": "The Satisfiability Modulo Theories Library (SMT-LIB)",
+    "year": "2008",
+    "howpublished": "www.SMT-LIB.org"
+  },
+  "RothPhD2006": {
+    "author": "Andreas Roth",
+    "title": "Specification and Verification of Object-oriented Components",
+    "year": "2006"
+  },
+  "Schlager02": {
+    "author": "Steffen Schlager",
+    "title": "Handling of Integer Arithmetic in the Verification of Java Programs",
+    "year": "2002",
+    "note": "Available at: http://i12www.ira.uka.de/~key/doc/2002/DA-Schlager.ps.gz"
+  },
+  "SchlagerPhD2007": {
+    "author": "Steffen Schlager",
+    "title": "Symbolic Execution as a Framework for Deductive Verification of Object-Oriented Programs",
+    "year": "2007",
+    "publisher": "Sierke-Verlag"
+  },
+  "Simplify": {
+    "note": "http://secure.ucd.ie/products/opensource/ESCJava2/"
+  },
+  "Steinhoefel2019": {
+    "author": "Dominic Steinhöfel and Reiner Hähnle",
+    "title": "Abstract Execution",
+    "year": "2019",
+    "booktitle": "Formal Methods - The Next 30 Years - Third World Congress, FM 2019, Porto, Portugal, October 7-11, 2019, Proceedings",
+    "publisher": "Springer",
+    "pages": "319–336",
+    "doi": "10.1007/978-3-030-30942-8_20",
+    "url": "http://tubiblio.ulb.tu-darmstadt.de/117206/"
+  },
+  "Weiss2011": {
+    "author": "Benjamin Weiß",
+    "title": "Deductive Verification of Object-Oriented Software: Dynamic Frames, Dynamic Logic and Predicate Abstraction",
+    "year": "2011"
+  },
+  "umlkeyquicktour": {
+    "author": "Thomas Baar and Reiner Hähnle and Steffen Schlager",
+    "title": "KeY Quicktour",
+    "note": "See http://www.key-project.org/download/"
+  }
+}

@@ -1,0 +1,166 @@
+/* Custom styles for the KeY documentation site.
+ *
+ * Ported from the Material for MkDocs stylesheet (`docs/extra.css`, removed
+ * after the migration). Material CSS variables
+ * (`--md-*`) are replaced by concrete colours, with Hextra's `.dark` class for
+ * the dark colour scheme, and every `.md-*` selector is dropped.
+ *
+ * Covered here:
+ *   .approval / .approval--ok / .approval--missing / .approval--footer
+ *   .page-author
+ *   .j-coverage        (Java coverage feature tables)
+ *
+ * The markup is produced by `layouts/_partials/custom/content-begin.html`,
+ * `layouts/_partials/custom/content-end.html` and the content pages.
+ */
+
+/* Wider reading column. Hextra caps the article at 72rem by default; the
+ * page/navbar/footer containers are widened via params.*.width in hugo.yaml.
+ * Raise this to 100% together with params.page.width: full for edge-to-edge. */
+:root {
+  --hextra-max-content-width: 80rem;
+}
+
+/* Wider navigation columns for the full-width layout. Hextra fixes both the
+ * left sidebar and the right-hand table of contents at 16rem (Tailwind w-64);
+ * with the page container at 100% they can grow with the viewport while the
+ * article keeps its 80rem reading cap. */
+@media (min-width: 768px) {
+  .hextra-sidebar-container {
+    width: clamp(20rem, 18vw, 26rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hextra-toc {
+    width: clamp(20rem, 18vw, 26rem);
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Review status badge (port of hooks/approval.py, now content-begin/end).
+ * Pages carry an `approved:` front matter field with reviewer initials and
+ * optionally the date of the check; without it an amber "not yet verified"
+ * badge is shown at the top of the page.
+ * ------------------------------------------------------------------------ */
+.approval {
+  float: right;
+  margin: 0 0 0.4rem 0.8rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.approval--ok {
+  color: #2e7d32;
+  background: #f5f5f5;
+  border: 1px solid #2e7d32;
+}
+
+.approval--missing {
+  color: #e65100;
+  background: #f5f5f5;
+  border: 1px solid #ef6c00;
+}
+
+.dark .approval--ok {
+  color: #81c784;
+  background: #1f2937;
+  border-color: #66bb6a;
+}
+
+.dark .approval--missing {
+  color: #ffb74d;
+  background: #1f2937;
+  border-color: #ff9800;
+}
+
+/* Footer variant of the review badge: full-width line at the end of the
+ * page content instead of a floating pill. */
+.approval--footer {
+  float: none;
+  display: block;
+  margin: 2.5rem 0 0 0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.2rem;
+  font-weight: 400;
+  font-size: 0.8rem;
+  border-width: 0 0 0 0.2rem;
+  border-style: solid;
+}
+
+/* --------------------------------------------------------------------------
+ * Author metadata displayed below the page title, right-aligned
+ * (port of hooks/author.py).
+ * ------------------------------------------------------------------------ */
+.page-author {
+  float: right;
+  margin: 0 0 1rem 1rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: #4b5563;
+  background: #f5f5f5;
+  border-left: 2px solid #1565c0;
+  clear: right;
+}
+
+.dark .page-author {
+  color: #9ca3af;
+  background: #1f2937;
+  border-left-color: #64b5f6;
+}
+
+/* Ensure content after the author box clears the float (the box is emitted
+ * directly after the page title; Hextra wraps the <h1> in a flex div, so the
+ * selector has to hang off the author box itself instead of `h1 + …`). */
+.page-author + * {
+  clear: both;
+}
+
+/* --------------------------------------------------------------------------
+ * Java-coverage feature table (content/user/features/java-coverage.md).
+ * Wrapped in <div class="j-coverage">; keep it readable and scrollable on
+ * narrow screens, and centre the KeY-support column.
+ * ------------------------------------------------------------------------ */
+.j-coverage {
+  overflow-x: auto;
+}
+
+.j-coverage table {
+  font-size: 0.78rem;
+  table-layout: fixed; /* honour the per-column widths below */
+  width: 100%;
+  min-width: 44rem; /* below this, scroll instead of crushing columns */
+}
+
+/* Wrap long code tokens (e.g. LocalClassDeclarationStmt) instead of
+ * overflowing, and drop per-cell minimum widths so the widths below apply. */
+.j-coverage table th,
+.j-coverage table td {
+  overflow-wrap: break-word;
+  min-width: 0 !important;
+}
+
+/* Keep the version/JEP columns compact so the Comments column gets more room. */
+.j-coverage table th:nth-child(1) { width: 18%; }  /* Feature */
+.j-coverage table th:nth-child(2) { width: 9%; }   /* Introduced */
+.j-coverage table th:nth-child(3) { width: 22%; }  /* Later changes */
+.j-coverage table th:nth-child(4) { width: 4%; }   /* KeY */
+.j-coverage table th:nth-child(5) { width: 47%; }  /* Comments */
+
+.j-coverage table td:nth-child(4),
+.j-coverage table th:nth-child(4) {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Slightly larger support glyphs for scanability.  The page uses coloured
+ * <span>s (✓ / (✓) / −), not twemoji images. */
+.j-coverage table td:nth-child(4) span {
+  font-size: 1.15em;
+  font-weight: 700;
+}

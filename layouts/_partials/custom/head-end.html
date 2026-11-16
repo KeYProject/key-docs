@@ -1,0 +1,45 @@
+{{- /* Prism.js syntax highlighting (client-side).
+       Chroma is bypassed for fenced code blocks by
+       layouts/_partials/components/codeblock.html, which emits
+       `<code class="language-<lang>">` for known languages only.
+
+       The bundle below is Prism 1.29.0: core plus the grammars for every
+       fence language used in content/, in dependency order:
+         clike  <- java, groovy, c
+         c      <- cpp
+         markup <- latex, markdown (markup also covers html/xml)
+         java   <- jml <- key
+       jml is the custom JML grammar from the reference site; key extends it
+       with KeY-specific tokens. To support another fence language, vendor
+       prism-<lang>.min.js from https://prismjs.com into assets/js/prism/,
+       add it below in dependency order, and add the fence alias to the map in
+       layouts/_partials/components/codeblock.html. */ -}}
+{{- $files := slice
+  (resources.Get "js/prism/prism-core.min.js")
+  (resources.Get "js/prism/prism-version.js")
+  (resources.Get "js/prism/prism-clike.min.js")
+  (resources.Get "js/prism/prism-java.min.js")
+  (resources.Get "js/prism/prism-markup.min.js")
+  (resources.Get "js/prism/prism-bash.min.js")
+  (resources.Get "js/prism/prism-python.min.js")
+  (resources.Get "js/prism/prism-yaml.min.js")
+  (resources.Get "js/prism/prism-json.min.js")
+  (resources.Get "js/prism/prism-css.min.js")
+  (resources.Get "js/prism/prism-c.min.js")
+  (resources.Get "js/prism/prism-cpp.min.js")
+  (resources.Get "js/prism/prism-groovy.min.js")
+  (resources.Get "js/prism/prism-ocaml.min.js")
+  (resources.Get "js/prism/prism-properties.min.js")
+  (resources.Get "js/prism/prism-latex.min.js")
+  (resources.Get "js/prism/prism-markdown.min.js")
+  (resources.Get "js/prism/prism-jml.js")
+  (resources.Get "js/prism/prism-key.js")
+  (resources.Get "js/prism/prism-init.js")
+-}}
+{{- $js := $files | resources.Concat "js/prism-bundle.js" | minify | fingerprint -}}
+{{- $css := resources.Get "css/prism.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+{{- /* data-manual stops Prism from auto-highlighting on DOMContentLoaded;
+       prism-init.js calls Prism.highlightAll() exactly once, after the
+       deferred bundle has been evaluated. */ -}}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" data-manual defer></script>
