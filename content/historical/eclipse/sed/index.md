@@ -1,5 +1,5 @@
 ---
-title: "SED"
+title: "Symbolic Execution Debugger"
 weight: 20
 ---
 
