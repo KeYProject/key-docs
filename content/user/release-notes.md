@@ -789,7 +789,6 @@ Herda, Peter Schmitt, Richard Bubel, Sarah Grebing, Wolfram Pfeifer
 
 * first version with the JML front-end
 * support of loop invariants
-* lots of new stuff
 
 [!616]: https://git.key-project.org/key/key/-/merge_requests/616
 [!618]: https://git.key-project.org/key/key/-/merge_requests/618
