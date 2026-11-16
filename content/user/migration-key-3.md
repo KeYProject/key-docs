@@ -5,6 +5,7 @@ date: 2026-07-15
 date_label: "July 2026"
 valid_for: "KeY-3.0.0"
 updated: "November 2026"
+approved: "weigl, 2026"
 ---
 
 {{< callout type="info" title="Migrated from the KeY wiki" >}}
@@ -97,7 +98,7 @@ the (implicit) field and method naming conventions from KeY 2.x, or the no longe
 supported sort-dependent function syntax. In this case, open the `.proof` file
 and edit the corresponding rule instantiation to use the new naming scheme.
 
-```diff-key
+```diff-lisp    
 - (rule "allLeft" (formula "22") (inst "t=int::select(heap, IntOpt::final(null, IntOpt::$NONE), IntOpt::$value)"))
 + (rule "allLeft" (formula "22") (inst "t=select<[int]>(heap, IntOpt::final(null, IntOpt::#NONE), IntOpt::#value)"))
 ```
