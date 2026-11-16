@@ -132,14 +132,14 @@ The following differences can be observed.
 
 The following previously allowed notation is not allowed anymore:
 
-```java
+```jml
 public void /*@ helper */ m() { ... }
 ```
 
 Modifiers such as `helper` and `pure` now need to be written before the return
 type:
 
-```java
+```jml
 public /*@ helper */ void m() { ... }
 ```
 
@@ -148,7 +148,7 @@ public /*@ helper */ void m() { ... }
 A chunk of JML annotations is a statement and is treated as such. The following
 Java/JML code is invalid:
 
-```java
+```jml
 if (cond)
   /*@ assert cond; */
   print("cond is true");
@@ -160,7 +160,7 @@ Because `/*@ assert cond; */` is treated as a statement, the following
 print-statement is not considered part of the `then` block, and the `else` is
 left dangling. The parser sees the following:
 
-```java
+```jml
 if (cond) { /*@ assert cond; */ }
 print("cond is true");
 else
@@ -169,14 +169,14 @@ else
 
 Use braces to make the structure clear:
 
-```java
+```jml
 if (cond) { /*@ assert cond; */ print("cond is true"); }
 else      { print("cond is false"); }
 ```
 
 This situation also arises with loops and labeled statements:
 
-```java
+```jml
 k: /*@ loop_invariant true; */
    while (true) ;
 ```
@@ -186,7 +186,7 @@ label is not assigned to the loop. Note that simply putting braces around the
 labeled statement would change its semantics. The solution is to place the loop
 annotation before the label:
 
-```java
+```jml
 /*@ loop_invariant true; */
 k: while (true) ;
 ```
@@ -197,7 +197,7 @@ We are aware of the following parser bug: class modifiers (`pure`,
 `strictly_pure`, `nullable_by_default`) on package-private classes lead to
 silent abortion of parsing. For example, the `pure` modifier in
 
-```java
+```jml
 /*@ pure @*/ class A { ... }
 ```
 
@@ -206,6 +206,6 @@ package-private classes. Instead, either attach the modifier locally to the
 relevant methods or fields, or, if possible, use a Java modifier on the class
 such as `public`, `protected`, `private`, or `final`. The following works:
 
-```java
+```jml
 public /*@ pure @*/ class A { ... }
 ```
