@@ -3,10 +3,11 @@
  * The JMLtk project's grammar was consulted as a design reference only; no
  * upstream code is copied and no upstream licence is asserted.
  *
- * JML source is Java source with specification text in `/*@ ... @*\/`,
- * `//@ ...` and `//+tool@ ...` comments. The grammar therefore starts from
- * Prism's Java grammar and adds the specification delimiters and the JML
- * vocabulary; everything outside an annotation keeps Java highlighting.
+ * JML source is Java source with specification text in `/*@ ... *\/`,
+ * `/*@ ... @*\/`, `//@ ...` and `//+tool@ ...` comments. The grammar
+ * therefore starts from Prism's Java grammar and adds the specification
+ * delimiters and the JML vocabulary; everything outside an annotation keeps
+ * Java highlighting.
  */
 (function (prism) {
   'use strict';
@@ -187,7 +188,7 @@
    * strings, literals, operators and Java names keep their usual colours. */
   var annotationBody = {
     'jml-delimiter': {
-      pattern: /\/(?:\*|\/)[-+]?[\w+,-]*@|@\*\/|(?:^|\n)[ \t]*@(?=[ \t])/,
+      pattern: /\/(?:\*|\/)[-+]?[\w+,-]*@|@\*\/|\*\/|(?:^|\n)[ \t]*@(?=[ \t])/,
       alias: 'comment'
     },
     'string': java.string,

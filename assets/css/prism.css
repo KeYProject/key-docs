@@ -101,9 +101,19 @@
 
 /* JML tokens (assets/js/prism/prism-jml.js) */
 
+/* Specification text gets its own background so annotations stand out from
+ * the surrounding Java code. Line annotations use the same treatment. */
+.hextra-code-block .token.jml-annotation,
+.hextra-code-block .token.jml-line {
+  background-color: #eef4fc;
+  border-radius: 3px;
+}
+
 .hextra-code-block .token.jml-delimiter {
-  color: #998;
-  font-style: italic;
+  color: #0550ae;
+  background-color: #d8e6f8;
+  border-radius: 3px;
+  font-style: normal;
 }
 
 .hextra-code-block .token.jml-clause,
@@ -235,8 +245,14 @@
   color: #d2a8ff;
 }
 
+.dark .hextra-code-block .token.jml-annotation,
+.dark .hextra-code-block .token.jml-line {
+  background-color: rgba(56, 139, 253, 0.1);
+}
+
 .dark .hextra-code-block .token.jml-delimiter {
-  color: #8b949e;
+  color: #79c0ff;
+  background-color: rgba(56, 139, 253, 0.25);
 }
 
 .dark .hextra-code-block .token.jml-clause,
