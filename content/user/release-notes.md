@@ -573,14 +573,10 @@ Wolfram Pfeifer
   * Support of Eclipse PHOTON (!74)
 
 
-### Seveal small and large bug fixes:
+### Several small and large bug fixes
 
-(!331, !297, !296, !293,!290, !288, !286, !284, !277, !276, !273, !272, !271, !270, !265, !264, !234, !228, !227, !225, !224, !222, !219, !213, !212,
-!209, !208, !205, !203, !201, !200, !199, !192, !190, !173, !170, !167, !163, !162, !158, !156,
-!154, !153,  !151, !146, !145, !139, !136, !133, !131, !119, !117,
-!108, !99, !92, !83, !82, !81, !78, !77, !75, !73, !71, !70, !69, !68,
-!67, !66, !65, !58, !52, !47, !46, !45, !40, !39, !37, !33, !31, !30, !24,
-!23, !22, !14, !13, !10, !9, !8, !7, !3, !2)
+See the [2.8.0 release](https://github.com/KeYProject/key/releases/tag/KeY-2.8.0)
+for the complete list of fixes and merge requests.
 
 
 *We like to thank all the contributor to this release:*
