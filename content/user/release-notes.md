@@ -587,16 +587,6 @@ Herda, Peter Schmitt, Richard Bubel, Sarah Grebing, Wolfram Pfeifer
 
 
 
-## 2.6.3 (2017-10-11)
-
-## 2.6.2 (2017-04-13)
-
-## 2.6.1 (2017-01-31)
-
-## 2.6.0 (2016-12-22)
-
-## 2.4.1 (2015-02-18)
-
 ## 2.4.0 (2015-02-17)
 
 * Information flow reasoning
