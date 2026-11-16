@@ -41,6 +41,9 @@ The **[Migrating from KeY 2 to KeY 3](migration-key-3/)** guide explains how to
 carry existing proofs and specifications over to KeY 3. The
 **[Release Notes](release-notes/)** list what changed in each KeY release.
 
+See also **[Treatment of Final Fields](final-fields/)**, which explains how KeY
+3.0 models `final` fields and how to switch back to the legacy heap treatment.
+
 ## Learn more
 
 Additional information is available on the
