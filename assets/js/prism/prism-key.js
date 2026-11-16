@@ -17,9 +17,9 @@
  *   - program modalities `\<...\>`, `\diamond`, `\box`, `\endmodality`, …,
  *   - the JavaDL literals `TRUE` and `FALSE`.
  *
- * The tokens are inserted after the string and comment tokens (before
- * `class-name`) so that Java escape sequences inside strings and comment text
- * are not mistaken for keywords.
+ * JML clauses are matched before Java keywords (`requires` is also a Java
+ * keyword), while modifiers and the remaining tokens are inserted after the
+ * keywords so `public` and `final` keep their Java colour.
  */
 (function (prism) {
   'use strict';
@@ -174,13 +174,20 @@
 
   prism.languages.key = prism.languages.extend('jml', {});
 
-  prism.languages.insertBefore('key', 'class-name', {
+  /* JML clauses are matched before Java keywords because `requires` is also a
+   * Java keyword (module declarations). JML modifiers are matched after the
+   * Java keywords, so words such as `public` and `final` keep their normal
+   * Java colour. */
+  prism.languages.insertBefore('key', 'keyword', {
+    'key-jml-clause': wordPattern(jmlKeywords.clause)
+  });
+
+  prism.languages.insertBefore('key', 'boolean', {
     'key-modality': /\\<|\\>|\\\[|\\\]|\\(?:endmodality|diamond_transaction|box_transaction|throughout_transaction|diamond|box|throughout|modality)\b/,
     'key-sequent-arrow': /<==>|<=!=>|==>|<==/,
 
     'key-schema-var': /#[A-Za-z_]\w*/,
     'key-logic-literal': /\b(?:TRUE|FALSE)\b/,
-    'key-jml-clause': wordPattern(jmlKeywords.clause),
     'key-jml-modifier': wordPattern(jmlKeywords.declaration),
     'key-taclet': new RegExp('\\\\(?:' + tacletKeywords.join('|') + ')\\b', 'i'),
     'key-command': /\\[a-zA-Z_]\w*/
