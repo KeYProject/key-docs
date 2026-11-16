@@ -4,4 +4,5 @@ weight: 60
 approved: none
 ---
 
-This chapter is part of the KeY documentation.
+This chapter shows how to use KeY from external Java projects, either
+as a library or through the JSON-RPC interface.

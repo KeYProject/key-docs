@@ -4,4 +4,5 @@ weight: 100
 approved: none
 ---
 
-This chapter is part of the KeY documentation.
+This appendix contains reference material, including the strategy cost
+tables.

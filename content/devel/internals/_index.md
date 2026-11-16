@@ -4,4 +4,5 @@ weight: 70
 approved: none
 ---
 
-This chapter is part of the KeY documentation.
+This chapter documents selected internal subsystems of KeY for developers
+who need to understand or modify the prover.
