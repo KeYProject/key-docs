@@ -70,7 +70,7 @@ continue.
 
     ![](work04thumb.png "Work with a KeY Project")
 
-5. Proof files can be opend in KeY or the KeYIDE via a marker by
+5. Proof files can be opend in KeY or the KeY IDE via a marker by
 selecting "Open proof" to inspect and finish the proof. In addition,
 a proof can be inspected in the SED via marker menu item "Debug
 proof".

@@ -118,22 +118,22 @@ obligations.
     ![](proof06thumb.png "Do proofs with a DbC diagram")
 
 
-## Visualize proof dependencies of a proof in the KeYIDE
+## Visualize proof dependencies of a proof in the KeY IDE
 
 
-1. Do the proof in the [KeYIDE](../key-ide/) as normal.
+1. Do the proof in the [KeY IDE](../key-ide/) as normal.
 
-    ![](proofDependencies01thumb.png "Visualize proof dependencies of a proof in the KeYIDE")
+    ![](proofDependencies01thumb.png "Visualize proof dependencies of a proof in the KeY IDE")
 
 2. Open view "Proof Dependencies" via main menu item "Window, Show
 View, Proof Dependencies".
 
-    ![](proofDependencies02thumb.png "Visualize proof dependencies of a proof in the KeYIDE")
+    ![](proofDependencies02thumb.png "Visualize proof dependencies of a proof in the KeY IDE")
 
 3. Inspect the used code members and specifications in view "Proof
 Dependencies".
 
-    ![](proofDependencies03thumb.png "Visualize proof dependencies of a proof in the KeYIDE")
+    ![](proofDependencies03thumb.png "Visualize proof dependencies of a proof in the KeY IDE")
 
 
 ## KeY basics in Eclipse and troubleshooting

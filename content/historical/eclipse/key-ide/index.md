@@ -11,19 +11,19 @@ historical reference.
 {{< /callout >}}
 
 
-KeYIDE is an alternative user interface for KeY directly integrated into
+KeY IDE is an alternative user interface for KeY directly integrated into
 Eclipse. The goal of this project is to provide the same functionality
 as the original user interface of KeY. Up to now only the basics (proof
 tree navigation, auto mode, interactive rule application) are available.
 
-The following sections illustrate the main features of the KeYIDE using
+The following sections illustrate the main features of the KeY IDE using
 screenshots. Each section contains numbered screenshots that explain a
 usage scenario step by step. Clicking on each picture produces a more
 detailed view. The screenshots may differ from the latest release.
 
 ### Prerequisites
 
-The KeYIDE is compatible with [Eclipse](http://www.eclipse.org) Indigo
+The KeY IDE is compatible with [Eclipse](http://www.eclipse.org) Indigo
 (3.7) or newer.
 
 Required update-sites and installation instructions are available in the
@@ -45,7 +45,7 @@ Proof".
 
 
 3. Select Application
-"KeYIDE".
+"KeY IDE".
 
     ![](verifyMethod03thumb.png "Verify a method contract")
 

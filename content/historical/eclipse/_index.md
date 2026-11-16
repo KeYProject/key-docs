@@ -66,18 +66,18 @@ available on the [KeY 4 Eclipse Starter](starter/) website.
 
 [<img src="Starter.png" alt="KeY Resources" title="KeY Resources" style="width:100%" />](starter/)
 
-## KeYIDE
+## KeY IDE
 
-KeYIDE is an alternative user interface for KeY directly integrated into
+KeY IDE is an alternative user interface for KeY directly integrated into
 Eclipse. The goal of this project is to provide the same functionality
 as the original user interface of KeY. Up to now only the basics (proof
 tree navigation, auto mode, interactive rule application) are available.
 
 The following screenshot gives an impression of how the tool looks like.
 More details including download instructions and a user guide are
-available on the [KeYIDE](key-ide/) website.
+available on the [KeY IDE](key-ide/) website.
 
-[<img src="KeYIDE.png" alt="KeY Resources" title="KeY Resources" style="width:100%" />](key-ide/)
+[<img src="KeY IDE.png" alt="KeY Resources" title="KeY Resources" style="width:100%" />](key-ide/)
 
 ## MonKeY {#MonKeY}
 
