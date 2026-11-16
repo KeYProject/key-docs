@@ -1,5 +1,5 @@
 ---
-title: "Resources"
+title: "KeY Resources"
 weight: 90
 ---
 
