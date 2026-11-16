@@ -3,16 +3,16 @@ title: "Polarity Triggers for Rewrite Taclets"
 weight: 30
 ---
 
-*Introduced October 2012 by Christoph Scheben*
+*Introduced in October 2012 by Christoph Scheben*
 
 ## The feature and its motivation
 
-Triggered by a soundness bug that I introduced last week (fixed again the day
-afterwards), I introduced the ability to annotate rewrite-taclets with
-a polarity (`\succedentPolarity` or `\antecedentPolarity`) in which the taclet may
-be applied. Roughly speaking the polarity is the side of the sequent on which
-a formula can be found (at most) if all surrounding junctors have been
-decomposed by the corresponding rules. It gives the ability to generalise
+Polarity triggers were introduced after a soundness bug in the taclet
+application logic (fixed shortly afterwards). They allow a rewrite taclet to
+declare the sequent polarity (`\succedentPolarity` or `\antecedentPolarity`)
+in which it may be applied. Roughly speaking, the polarity is the side of the
+sequent on which a formula can be found (at most) if all surrounding junctors
+have been decomposed by the corresponding rules. This generalises
 rewrite-taclets like
 
 ```
@@ -64,15 +64,15 @@ it is already applicable in the sequent
 ```
 
 (where p is a predicate) such that the application of the splitting
-impLeft rule can be avoided. (Indeed I needed it for exactly this
-case, but it is also helpful if for instance the wellformedness
-predicate can be decomposed early in other situations.)
+impLeft rule can be avoided. This case motivated the feature, but it is
+also helpful when the wellformedness predicate can be decomposed early in
+other situations.
 
 
-DEFINITION OF POLARITY:
+## Definition of polarity
 
 A polarity is defined only in particular cases (see below). If the
-polarity can not be deduced, then the corresponding taclet is not
+polarity cannot be deduced, then the corresponding taclet is not
 applicable.
 
 A polarity is defined only in the following cases:
@@ -91,9 +91,9 @@ is undefined.
 
 Let C(F) be a formula containing F and let C(L) be constructed from
 C(F) by replacing F by some literal L .  F has positive polarity in
-C(F) , iff (1) the polarity is defined and (2) L occurs at most
-positive in the KNF of C(L) .  F has negative polarity in C(F) , iff
-(1) the polarity is defined and (2) L occurs at most negative in the
+C(F) , iff (1) the polarity is defined and (2) L occurs only
+positively in the KNF of C(L) .  F has negative polarity in C(F) , iff
+(1) the polarity is defined and (2) L occurs only negatively in the
 KNF of C(L) . The polarity of F in ==> C(F) is succedent (antecedent)
 iff (1) the polarity is defined and (2) F has positive (negative)
 polarity in C(F) . The polarity of F in C(F) ==> is succedent
@@ -120,19 +120,18 @@ definition of succedent polarity). Now the application of the original
 rewrite-taclet replaces all (top-level) occurrences of F by R
 . Application of the rules which transformed S into S_1, ..., S_n in
 the reverse order and in the reverse direction leads the sequent ==>
-C(R) . Hence, the more liberal succedent poliarity taclet is sound iff
+C(R) . Hence, the more liberal succedent polarity taclet is sound iff
 the corresponding simple rewrite-taclet is sound.
 
 At the moment, only some wellformedness-taclets use the new
-`\succedentPolarity` feature. (Sorry that they already went on the
-master branch, but this was to fix the soundness problem I had
-introduced.)
+`\succedentPolarity` feature. They were added to master to fix the soundness
+problem described above.
 
-An other application would be skolemization: one could reformulate the
+Another application would be skolemization: one could reformulate the
 exLeft and allRight rules with `\antecedentPolarity` and
 `\succedentPolarity`, respectively, such that in some cases
 skolemization would be possible even if the quantifiers are not
-top-level. I think this could helpful at least for the automatic proof
+top-level. This could be helpful at least for the automatic proof
 search strategy.
 
 ## Proving correctness
