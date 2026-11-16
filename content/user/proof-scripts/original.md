@@ -129,8 +129,8 @@ list here. The list is sorted alphabetically.
      ```
      instantiate var="x" occ="3" with="42"
      ```
-     The quantified formula can also be specified if wanted.
-     This here for the antecedent.
+     The quantified formula can also be specified explicitly.
+     This example instantiates the formula in the antecedent.
      ```
      instantiate formula="\forall int x; f(x) = 42" with="23"
      ```

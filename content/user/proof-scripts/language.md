@@ -243,8 +243,8 @@ instantiate var="x" occ="3" with="42"
 # variable is called "x" with the value 42
 
 instantiate formula="\forall int x; f(x) = 42" with="23"
-# The quantified formula can also be specified if wanted.
-# This here for the antecedent.
+# The quantified formula can also be specified explicitly.
+# This example instantiates the formula in the antecedent.
 
 instantiate formula="\exists int x; f(x) = 42" with="23"
 # Existentially quantified variables can be instantiated if they
