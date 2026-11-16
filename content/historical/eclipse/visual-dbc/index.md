@@ -38,7 +38,7 @@ included.
 
     ![](generate01thumb.png "Visualize existing source code")
 
-2. Open new wizard via context menu item "New, Other\..." of the
+2. Open new wizard via context menu item "New, Other..." of the
 selected
 package.
 

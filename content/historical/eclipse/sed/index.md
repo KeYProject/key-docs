@@ -103,7 +103,7 @@ shown.
 
 
 1. Edit debug configuration via main menu item "Run, Debug
-Configurations\...".
+Configurations...".
 
     ![](custom01thumb.png "Limit execution paths by customizing the debug configuration")
 
@@ -278,7 +278,7 @@ nodes.
 ### Create Java project with examples for the Symbolic Execution Debugger (Tutorial) {#example}
 
 
-1. Open example wizard via main menu item "File, New, Example\...".
+1. Open example wizard via main menu item "File, New, Example...".
 
     ![](example01thumb.png "Create Java project with examples for the Symbolic Execution Debugger (Tutorial)")
 
@@ -377,7 +377,7 @@ execution engines. Additional UI extensions (*Symbolic Debug UI*) and
 visualization capabilities (*Visualization UI*) are also available.
 
 At last, *KeY Debug Core* implements the extended debug model for
-symbolic execution based on [KeY\'s symbolic execution engine](#SEE).
+symbolic execution based on [KeY's symbolic execution engine](#SEE).
 The required extensions to the user interface to launch Java methods and
 statements symbolically are provided by *KeY Debug UI*.
 
@@ -445,7 +445,7 @@ evaluation of logical formulas. KeY operates on the source code level
 and thus a static symbolic execution is performed meaning that the
 program is never actually executed.
 
-KeY\'s Symbolic Execution Engine constructs a proof and extracts the
+KeY's Symbolic Execution Engine constructs a proof and extracts the
 symbolic execution tree from it. The main difference to verification is
 that no specifications are needed at all. But if they are available,
 they can be used during symbolic execution. Loop invariants ensure

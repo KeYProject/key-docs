@@ -36,7 +36,7 @@ Required update-sites and installation instructions are available in the
 
 
 1. Open new project wizard via Package Explorer context menu item
-"New, Project\...".
+"New, Project...".
 
       ![](create01thumb.png "Create a KeY Project")
 
@@ -56,12 +56,12 @@ Required update-sites and installation instructions are available in the
 
     ![](work01thumb.png "Work with a KeY Project")
 
-2. During build proofs are automatically executed\
+2. During build proofs are automatically executed
 and results are shown via marker.
 
     ![](work02thumb.png "Work with a KeY Project")
 
-3. Proofs are automatically\ maintained in folder "proofs".
+3. Proofs are automatically maintained in folder "proofs".
 
     ![](work03thumb.png "Work with a KeY Project")
 
@@ -82,7 +82,7 @@ proof".
 
 
 1. Select main menu item "Window, Show View,
-Other\...".
+Other...".
 
     ![](status01thumb.png "Customize build settings")
 
@@ -106,7 +106,7 @@ proofs.
 
 ## Inspect verification log
 
-1. Select main menu item "Window, Show View, Other\...".
+1. Select main menu item "Window, Show View, Other...".
 
      ![](log01thumb.png "Customize build settings")
 
