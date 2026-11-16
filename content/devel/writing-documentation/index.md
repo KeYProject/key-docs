@@ -314,6 +314,30 @@ Supporting a new one means vendoring `prism-<lang>.min.js` into `assets/js/prism
 listing it in `layouts/_partials/custom/head-end.html`, and adding the fence
 alias to the map in `components/codeblock.html`.
 
+### Diffs {#diffs}
+
+Use a `diff-<lang>` fence for diffs. Lines starting with `-` are marked as
+removed and lines starting with `+` as added; a leading space marks an unchanged
+line, which keeps the inner language's highlighting. For example:
+
+````markdown
+```diff-json
+ \proofObligation {
+-       "contract": "simple_evoting.Server[java.lang.Object::<inv>()].JML accessible clause.0",
++       "contract": "simple_evoting.Server[java.lang.Object::$inv()].JML accessible clause.0",
+         "class": "de.uka.ilkd.key.proof.init.DependencyContractPO",
+  }
+```
+````
+
+```diff-json
+ \proofObligation {
+-       "contract": "simple_evoting.Server[java.lang.Object::<inv>()].JML accessible clause.0",
++       "contract": "simple_evoting.Server[java.lang.Object::$inv()].JML accessible clause.0",
+         "class": "de.uka.ilkd.key.proof.init.DependencyContractPO",
+  }
+```
+
 Inline code uses single backticks: `` `key` ``.
 
 ## Tabs {#tabs}
