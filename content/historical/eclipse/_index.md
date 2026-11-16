@@ -77,7 +77,7 @@ The following screenshot gives an impression of how the tool looks like.
 More details including download instructions and a user guide are
 available on the [KeY IDE](key-ide/) website.
 
-[<img src="KeY IDE.png" alt="KeY Resources" title="KeY Resources" style="width:100%" />](key-ide/)
+[<img src="KeYIDE.png" alt="KeY IDE" title="KeY IDE" style="width:100%" />](key-ide/)
 
 ## MonKeY {#MonKeY}
 

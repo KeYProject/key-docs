@@ -11,7 +11,7 @@ updated: KeY 2.12
 {{< callout type="info" title="Historical feature documentation" >}}
 This page documents a feature introduced in 2011. The syntax is still
 supported, but the text reflects the original implementation; see the
-[JML grammar](../language/jml-grammar/) for the current language reference.
+[JML grammar](../../language/jml-grammar/) for the current language reference.
 {{< /callout >}}
 
 JML is the standard specification language for KeY (JML&starf; more
