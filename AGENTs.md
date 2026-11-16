@@ -161,11 +161,14 @@ Prism highlights in the browser. Use the correct fence language:
 | Fence | Use for |
 | :---- | :------ |
 | `java` | Java source |
-| `jml` | JML specifications |
+| `jml` | Java with JML specifications|
 | `key` | KeY problem files and taclets |
 | `python`, `bash`, `yaml`, `json` | scripts and configuration |
+| `javascript`, `js` | JavaScript source |
+| `lisp`, `elisp`, `emacs` | Lisp source |
 | `markdown` | Markdown examples |
 | `text` | plain text, ASCII art, output |
+| `diff-<lang>` | diffs, using `<lang>` for unchanged/changed lines (e.g. `diff-java`, `diff-key`) |
 
 Additional bundled grammars: `c`, `cpp`, `css`, `html`/`xml`, `latex`, `groovy`,
 `ocaml`, `properties`; `shell`/`sh` alias `bash`. Do not invent fence names and

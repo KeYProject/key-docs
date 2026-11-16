@@ -303,8 +303,11 @@ The following fence languages are wired up in
 | `jml` | JML specifications |
 | `key` | KeY problem files and taclets |
 | `python`, `bash`, `yaml`, `json` | scripts and configuration |
+| `javascript`, `js` | JavaScript source |
+| `lisp`, `elisp`, `emacs` | Lisp source |
 | `markdown` | Markdown examples (as on this page) |
 | `text` | plain text, ASCII art, command output |
+| `diff-<lang>` | a diff (`-`/`+` lines) highlighted with `<lang>`, e.g. `diff-java`, `diff-key`, `diff-text` |
 
 A few more grammars are bundled (`c`, `cpp`, `css`, `html`/`xml`, `latex`,
 `groovy`, `ocaml`, `properties`). Aliases: `shell`/`sh` → `bash`, `c++` → `cpp`,
@@ -312,6 +315,30 @@ A few more grammars are bundled (`c`, `cpp`, `css`, `html`/`xml`, `latex`,
 Supporting a new one means vendoring `prism-<lang>.min.js` into `assets/js/prism/`,
 listing it in `layouts/_partials/custom/head-end.html`, and adding the fence
 alias to the map in `components/codeblock.html`.
+
+### Diffs {#diffs}
+
+Use a `diff-<lang>` fence for diffs. Lines starting with `-` are marked as
+removed and lines starting with `+` as added; a leading space marks an unchanged
+line, which keeps the inner language's highlighting. For example:
+
+````markdown
+```diff-json
+ \proofObligation {
+-       "contract": "simple_evoting.Server[java.lang.Object::<inv>()].JML accessible clause.0",
++       "contract": "simple_evoting.Server[java.lang.Object::$inv()].JML accessible clause.0",
+         "class": "de.uka.ilkd.key.proof.init.DependencyContractPO",
+  }
+```
+````
+
+```diff-json
+ \proofObligation {
+-       "contract": "simple_evoting.Server[java.lang.Object::<inv>()].JML accessible clause.0",
++       "contract": "simple_evoting.Server[java.lang.Object::$inv()].JML accessible clause.0",
+         "class": "de.uka.ilkd.key.proof.init.DependencyContractPO",
+  }
+```
 
 Inline code uses single backticks: `` `key` ``.
 

@@ -3,7 +3,9 @@ License scope
 
 The MIT licence below covers the vendored PrismJS 1.29.0 components only
 (prism-core.min.js and the prism-<language>.min.js files downloaded from
-https://unpkg.com/prismjs@1.29.0/components/).
+https://unpkg.com/prismjs@1.29.0/components/), plus the diff-highlight plugin
+(prism-diff-highlight.min.js from
+https://unpkg.com/prismjs@1.29.0/plugins/diff-highlight/).
 
 It does not cover prism-jml.js, prism-key.js, prism-init.js or
 prism-version.js, which are original to the KeY documentation repository.
