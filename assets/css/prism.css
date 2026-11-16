@@ -105,13 +105,22 @@
  * the surrounding Java code. Line annotations use the same treatment. */
 .hextra-code-block .token.jml-annotation,
 .hextra-code-block .token.jml-line {
-  background-color: #eef4fc;
+  background-color: #e3edf9;
   border-radius: 3px;
+}
+
+/* Multi-line annotations are made inline-block by prism-init.js so the
+ * background fills the area between the delimiters instead of only the
+ * text. The negative margin and text-indent keep the original indentation. */
+.hextra-code-block .token.jml-annotation--block {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
 }
 
 .hextra-code-block .token.jml-delimiter {
   color: #0550ae;
-  background-color: #d8e6f8;
+  background-color: #c9dcf4;
   border-radius: 3px;
   font-style: normal;
 }
@@ -259,12 +268,12 @@
 
 .dark .hextra-code-block .token.jml-annotation,
 .dark .hextra-code-block .token.jml-line {
-  background-color: rgba(56, 139, 253, 0.1);
+  background-color: rgba(56, 139, 253, 0.16);
 }
 
 .dark .hextra-code-block .token.jml-delimiter {
   color: #79c0ff;
-  background-color: rgba(56, 139, 253, 0.25);
+  background-color: rgba(56, 139, 253, 0.3);
 }
 
 .dark .hextra-code-block .token.jml-clause,
