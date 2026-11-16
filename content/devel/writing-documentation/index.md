@@ -305,6 +305,7 @@ The following fence languages are wired up in
 | `python`, `bash`, `yaml`, `json` | scripts and configuration |
 | `markdown` | Markdown examples (as on this page) |
 | `text` | plain text, ASCII art, command output |
+| `diff-<lang>` | a diff (`-`/`+` lines) highlighted with `<lang>`, e.g. `diff-java`, `diff-key`, `diff-text` |
 
 A few more grammars are bundled (`c`, `cpp`, `css`, `html`/`xml`, `latex`,
 `groovy`, `ocaml`, `properties`). Aliases: `shell`/`sh` → `bash`, `c++` → `cpp`,

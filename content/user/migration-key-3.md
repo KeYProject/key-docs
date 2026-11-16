@@ -37,7 +37,7 @@ two main patterns:
    start with a dollar sign `$` and no longer use angle brackets. This prepares
    the use of polymorphic sorts and generics within JavaDL.
 
-   ```text
+   ```diff-json
     \proofObligation {
    -       "contract": "simple_evoting.Server[java.lang.Object::<inv>()].JML accessible clause.0",
    +       "contract": "simple_evoting.Server[java.lang.Object::$inv()].JML accessible clause.0",
@@ -48,7 +48,7 @@ two main patterns:
 2. Contract names for user-declared methods no longer have a leading `$` sign,
    as that symbol is now reserved for synthetic entities like invariants.
 
-   ```text
+   ```diff-json
     \proofObligation {
    -       "contract": "passwordfile.SecurePasswordFile[passwordfile.SecurePasswordFile::$userIndex()].JML accessible clause.0",
    +       "contract": "passwordfile.SecurePasswordFile[passwordfile.SecurePasswordFile::userIndex()].JML accessible clause.0",
@@ -97,7 +97,7 @@ the (implicit) field and method naming conventions from KeY 2.x, or the no longe
 supported sort-dependent function syntax. In this case, open the `.proof` file
 and edit the corresponding rule instantiation to use the new naming scheme.
 
-```text
+```diff-key
 - (rule "allLeft" (formula "22") (inst "t=int::select(heap, IntOpt::final(null, IntOpt::$NONE), IntOpt::$value)"))
 + (rule "allLeft" (formula "22") (inst "t=select<[int]>(heap, IntOpt::final(null, IntOpt::#NONE), IntOpt::#value)"))
 ```

@@ -146,6 +146,26 @@
   color: #d14;
 }
 
+/* Diff highlighting (assets/js/prism/prism-diff*.js).
+ * The diff-highlight plugin wraps changed lines in `deleted`/`inserted`
+ * tokens; unchanged lines keep the inner language's colours. */
+
+.hextra-code-block .token.deleted {
+  color: #b31d28;
+}
+
+.hextra-code-block .token.inserted {
+  color: #116329;
+}
+
+.hextra-code-block .token.deleted-sign {
+  background-color: #ffebe9;
+}
+
+.hextra-code-block .token.inserted-sign {
+  background-color: #e6ffec;
+}
+
 /* Dark mode */
 
 .dark .hextra-code-block .token.comment,
@@ -250,4 +270,20 @@
 
 .dark .hextra-code-block .token.key-schema-var {
   color: #a5d6ff;
+}
+
+.dark .hextra-code-block .token.deleted {
+  color: #ffa198;
+}
+
+.dark .hextra-code-block .token.inserted {
+  color: #7ee787;
+}
+
+.dark .hextra-code-block .token.deleted-sign {
+  background-color: rgba(248, 81, 73, 0.15);
+}
+
+.dark .hextra-code-block .token.inserted-sign {
+  background-color: rgba(46, 160, 67, 0.15);
 }

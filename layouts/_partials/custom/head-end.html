@@ -10,13 +10,17 @@
          markup <- latex, markdown (markup also covers html/xml)
          java   <- jml <- key
        jml is the custom JML grammar from the reference site; key extends it
-       with KeY-specific tokens. To support another fence language, vendor
-       prism-<lang>.min.js from https://prismjs.com into assets/js/prism/,
-       add it below in dependency order, and add the fence alias to the map in
+       with KeY-specific tokens. prism-diff and the diff-highlight plugin add
+       `diff-<language>` fences (e.g. `diff-java`), which highlight the changed
+       parts of a diff with the inner language's grammar.
+       To support another fence language, vendor prism-<lang>.min.js from
+       https://prismjs.com into assets/js/prism/, add it below in dependency
+       order, and add the fence alias to the map in
        layouts/_partials/components/codeblock.html. */ -}}
 {{- $files := slice
   (resources.Get "js/prism/prism-core.min.js")
   (resources.Get "js/prism/prism-version.js")
+  (resources.Get "js/prism/prism-diff.min.js")
   (resources.Get "js/prism/prism-clike.min.js")
   (resources.Get "js/prism/prism-java.min.js")
   (resources.Get "js/prism/prism-markup.min.js")
@@ -34,6 +38,7 @@
   (resources.Get "js/prism/prism-markdown.min.js")
   (resources.Get "js/prism/prism-jml.js")
   (resources.Get "js/prism/prism-key.js")
+  (resources.Get "js/prism/prism-diff-highlight.min.js")
   (resources.Get "js/prism/prism-init.js")
 -}}
 {{- $js := $files | resources.Concat "js/prism-bundle.js" | minify | fingerprint -}}

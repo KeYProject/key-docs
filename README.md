@@ -130,6 +130,8 @@ Code fences are highlighted in the browser by Prism. Wired languages include
 `java`, `jml`, `key`, `python`, `bash`/`shell`, `yaml`, `json`, `markdown`,
 `c`, `cpp`, `css`, `html`/`xml`, `latex`, `groovy`, `ocaml` and `properties`.
 `text` and unknown languages render uncoloured but do not fail the build.
+Diff fences use `diff-<language>` (for example `diff-java` or `diff-key`) and
+highlight added and removed lines with the inner language's grammar.
 
 Math is typeset by MathJax with exactly two delimiter pairs: `$…$` inline and
 `$$…$$` display. Do **not** use `\(…\)` or `\[…\]`: KeY program modalities are
