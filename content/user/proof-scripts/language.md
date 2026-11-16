@@ -12,12 +12,12 @@ system also referred to as macros).
 
 We need to distinguish between: logic, program, and script variables.
 
-* **logic variable**: Occur on sequents, bounded by a quantifier or in an update
+* **logic variable**: occurs on sequents, bound by a quantifier or in an update.
 
-* **program variable**: declared and used in Java programs. They are constants
+* **program variable**: declared and used in Java programs; it is a constant
   on the sequent.
 
-* **script variable**: declared and assignable within a script
+* **script variable**: declared and assignable within a script.
 
 Proof Script Language has script variables.
 
