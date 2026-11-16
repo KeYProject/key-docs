@@ -366,7 +366,7 @@ shown by the following graphic:
 The core of Eclipse is the *Workspace* managing projects and the user
 interface (*Workbench*) with editors, views and perspectives. Based on
 this, provides the [Debug
-Platform](http://www.eclipse.org/eclipse/debug) language independent
+Platform](https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php) language independent
 facilities for debugging (*Debug Core* and *Debug UI*). Finally, JDT
 offers functionality to edit and debug Java programs (*JDT Core/Debug*
 and *JDT UI*).
@@ -392,7 +392,7 @@ engine into the Symbolic Execution Debugger, can be found
 
 ### The extended debug model for symbolic execution {#ExtendedDebugModel}
 
-The Eclipse [Debug Platform](http://www.eclipse.org/eclipse/debug)
+The Eclipse [Debug Platform](https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php)
 provides language independent facilities for debugging. This is achieved
 by a language independent debug model which is implemented for different
 languages like Java. Once a program is launched, it is represented as
