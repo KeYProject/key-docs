@@ -37,8 +37,9 @@ The chapters are arranged so that they can be read front to back:
    the [Java coverage table](features/java-coverage/).
 9. **[FAQ](faq/)** — answers to common problems.
 
-The **[Release Notes](release-notes/)** list what changed in each KeY
-release.
+The **[Migrating from KeY 2 to KeY 3](migration-key-3/)** guide explains how to
+carry existing proofs and specifications over to KeY 3. The
+**[Release Notes](release-notes/)** list what changed in each KeY release.
 
 ## Learn more
 
