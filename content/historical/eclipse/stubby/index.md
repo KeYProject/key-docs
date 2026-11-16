@@ -1,5 +1,5 @@
 ---
-title: "Stubby"
+title: "Stubby - The Stub Generator"
 weight: 30
 ---
 
