@@ -4,4 +4,4 @@ weight: 20
 approved: none
 ---
 
-This chapter is part of the KeY documentation.
+This chapter covers KeY's parser, term representation, and term labels.

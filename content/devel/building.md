@@ -159,12 +159,11 @@ gradle test --continuous --tests "com.mypackage.foo.*"
 Gradle generates HTML test reports in `build/reports/test/` which also include
 the sysout and stacktraces.
 
-The `check` tasks execute `test` and also also execute (currently not
+The `check` tasks execute `test` and also execute (currently not
 activated) static analyzers like *PMD* or *Checkstyle*.
 
-
-[For more information on testing see the gradle
-manual](https://docs.gradle.org/current/userguide/java_testing.html)
+For more information on testing, see the
+[Gradle manual](https://docs.gradle.org/current/userguide/java_testing.html).
 
 ## Creating a new extension `keyext.*`
 

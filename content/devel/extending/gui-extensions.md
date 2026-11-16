@@ -7,28 +7,28 @@ weight: 40
 `de.uka.ilkd.key.gui.extension.api.KeYGuiExtension` in `key.ui`)*
 
 GUI Extensions defines a couple of extension points for the KeY User Interface.
-It allows to add new functionality into the gui, without digging through the old
+It allows to add new functionality into the GUI, without digging through the old
 UI code. It also should make the UI more consistent, decoupling dependencies and
 easier to implement new functionality.
 
-#### General extension points
+## General extension points
 
 An extension is defined by an interface, which should be implemented by the new
 functionality. This interface defines the methods needed to be successfully
 injected into the UI. GUI Extensions are loaded and found via the
 `ServiceLoader` facility of Java. Therefore, you should mention your extension
-in the appropiate serivce file under `META-INF/services/<full-interface-name>`.
+in the appropriate service file under `META-INF/services/<full-interface-name>`.
 For example, the exploration extension specifies the fully qualified class name
 `org.key_project.exploration.ExplorationExtension` in `keyext.exploration/src/main/resources/META-INF/services/de.uka.ilkd.key.gui.extension.api.KeYGuiExtension`.
 
-Every gui extension should be marked with `KeYGuiExtension` and is only loaded
+Every GUI extension should be marked with `KeYGuiExtension` and is only loaded
 once. It does not matter on how many extension points it participate.
 
-Different GUI extension should not depend on each other, as
-Gui Extension should loaded independent.
+Different GUI extensions should not depend on each other; GUI extensions
+should load independently.
 
 
-## Basic Extension Metadata
+## Basic extension metadata
 
 Additional meta data can plugged to an extension by adding the Java annotation
 `@KeYGuiExtension.Info`.
@@ -41,18 +41,18 @@ Annotation because of accessible via the class w/o instantiation.
 
 ## General UI facilities
 
-### Icon Management
+### Icon management
 
 `KeYIconManagement` and `KeYIcon` introduces a way of icon management and configuration via `UIManager`.
 
-### Key-stroke Management
+### Key-stroke management
 
 `KeyStrokeManager` reworked. It is now possible to define `KeyStroke`s in
 a properties file.
 
-### Color Management
+### Color management
 
-### Sharing Services accross UI extensions
+### Sharing services across UI extensions
 
 Brings `Lookup` a successor for a flexible mediator replacement based on
 a service architecture, incl. Dependency Injection

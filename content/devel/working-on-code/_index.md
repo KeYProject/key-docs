@@ -4,4 +4,5 @@ weight: 40
 approved: none
 ---
 
-This chapter is part of the KeY documentation.
+This chapter covers the conventions, formatting tools, logging, and
+thread-safety rules used when contributing to the KeY code base.

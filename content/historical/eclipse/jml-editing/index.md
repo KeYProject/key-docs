@@ -17,7 +17,7 @@ JML Editing extends the [Java development tools
 convenient as writing Java source code.
 
 The following screenshot shows for instance the extended syntax
-highlighting of the Java Editor:\
+highlighting of the Java Editor:
 ![JML Editing](JMLEditing.png "JML Editing")
 
 ## Prerequisites
@@ -35,7 +35,7 @@ Required update-sites and installation instructions are available in the
 -   Auto indentation of JML comments while writing
 -   Code formatter preserves JML comments
 -   Hovers for JML keywords
--   Support of JDT\'s Rename and Move Refactorings
+-   Support of JDT's Rename and Move Refactorings
 -   Error marker for syntax violations
 -   Profiles for different JML dialects
     -   Predefined profiles for JML standard and KeY

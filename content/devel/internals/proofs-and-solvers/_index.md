@@ -4,4 +4,5 @@ weight: 30
 approved: none
 ---
 
-This chapter is part of the KeY documentation.
+This chapter covers proof loading and saving, the SMT translation, and
+counterexample generation.

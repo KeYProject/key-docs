@@ -41,120 +41,119 @@ Here we give a list of the current special variables
 
 * `__KEY_DEP : BOOL = true`
 
-  no documentation
+  Toggles dependency tracking for the prover.
 
 * `__KEY_MAX_STEPS : INT = 10000`
 
-  Should be a positive number and is the limit for rule application in automatic proof searchs.
-
+  Must be positive; limits rule applications in automatic proof search.
 
 * `__KEY_METHOD_OPTION : STRING = "method"`
 
-  no documentation
+  Selects the method treatment used by the strategy (`method` by default).
 
 * `__KEY_NON_LINEAR_ARITHMETIC : STRING = "none"`
 
-  no documentation
+  Selects the non-linear arithmetic mode.
 
 * `__KEY_QUERY : BOOL = false`
 
-  no documentation
+  Enables query mode.
 
 * `__KEY_SMT__ACTIVE_SOLVER : STRING = ""`
 
-  no documentation
+  Name of the active SMT solver; empty means no solver.
 
 * `__KEY_SMT__CHECK_FOR_SUPPORT : BOOL = true`
 
-  no documentation
+  Check that the selected solver supports the required features.
 
 * `__KEY_SMT__INT_BOUND : INT = 3`
 
-  no documentation
+  Bit-length bound for integer translation.
 
 * `__KEY_SMT__INVARIANT_ALL : BOOL = false`
 
-  no documentation
+  Translate all invariants rather than only the relevant ones.
 
 * `__KEY_SMT__LOCSET_BOUND : INT = 3`
 
-  no documentation
+  Bit-length bound for location-set translation.
 
 * `__KEY_SMT__MAX_CONCURRENT_PROCESSES : INT = 5`
 
-  no documentation
+  Maximum number of concurrent SMT solver processes.
 
 * `__KEY_SMT__MAX_GENERIC_SORTS : INT = 2`
 
-  no documentation
+  Maximum number of generic sorts in the translation.
 
 * `__KEY_SMT__MAX_INTEGER : INT = 2147483645`
 
-  no documentation
+  Largest integer used for bounded integer translation.
 
 * `__KEY_SMT__MIN_INTEGER : INT = -2147483645`
 
-  no documentation
+  Smallest integer used for bounded integer translation.
 
 * `__KEY_SMT__MODE_OF_PROGRESS_DIALOG : INT = 0`
 
-  no documentation
+  Controls the SMT progress dialog.
 
 * `__KEY_SMT__OBJECT_BOUND : INT = 3`
 
-  no documentation
+  Bit-length bound for object translation.
 
 * `__KEY_SMT__PATH_FOR_SMT_TRANSLATION : STRING = ""`
 
-  no documentation
+  Directory for stored SMT translations; empty disables storing.
 
 * `__KEY_SMT__SEQ_BOUND : INT = 3`
 
-  no documentation
+  Bit-length bound for sequence translation.
 
 * `__KEY_SMT__SHOW_RESULTS_AFTER_EXECUTION : BOOL = false`
 
-  no documentation
+  Show SMT solver results after execution.
 
 * `__KEY_SMT__STORE_TRANSLATION_TO_FILE : BOOL = false`
 
-  no documentation
+  Write the SMT translation to a file.
 
 * `__KEY_SMT__TIMEOUT : INT = 5000`
 
-  no documentation
+  SMT solver timeout in milliseconds.
 
 * `__KEY_SMT__USE_BUILTIN_UNIQUENESS : BOOL = false`
 
-  no documentation
+  Use the solver's built-in uniqueness for objects.
 
 * `__KEY_SMT__USE_CONSTANTS_FOR_INTEGERS : BOOL = true`
 
-  no documentation
+  Use constants for integers in the translation.
 
 * `__KEY_SMT__USE_UI_MULTIPLICATION : BOOL = true`
 
-  no documentation
+  Use uninterpreted multiplication.
 
 * `__KEY_SMT__heapBound : INT = 3`
 
-  no documentation
+  Bit-length bound for heap translation.
 
 * `__KEY_SMT__useExplicitTypeHierarchy : BOOL = false`
 
-  no documentation
+  Translate the type hierarchy explicitly.
 
 * `__KEY_SMT__useNullInstantiation : BOOL = true`
 
-  no documentation
+  Instantiate null predicates in the translation.
 
 * `__KEY_STOP_MODE : STRING = "default"`
 
-  no documentation
+  Stop mode used by the strategy.
 
 * `__KEY_TIMEOUT : INT = -1`
 
-  no documentation
+  Prover timeout in milliseconds; `-1` disables the timeout.
 
 ### Interpreter Options
 

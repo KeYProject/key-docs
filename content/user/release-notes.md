@@ -224,15 +224,15 @@ for the complete list of changes):
 ## [2.12.2](https://github.com/KeYProject/key/releases/tag/KeY-2.12.2) (2023-11-10)
 This release contains bug fixes and performance enhancements.
 
-### Performance:
-  - Z3 is now configurable to use the QF (quantifier-free) theory for problems without quantifiers.
+### Performance
+  - Z3 is now configurable to use the QF (quantifier-free) theory for problems without quantifiers
 
-### Bug Fixes:
-  - The pretty printer no longer throws a ClassCastException when printing taclets using schema variables of an array type.
-  - Nullable and non-null modifiers attached to model methods are no longer lost.
-  - Term rule indices are now always up-to-date, preventing potential prover crashes.
-  - The counter-example dialog no longer freezes the GUI, if the example generation fails.
-  - The actual proof status and proof status icon in the task overview are now  consistent after pruning without requiring a manual refresh.
+### Bug fixes
+  - The pretty printer no longer throws a ClassCastException when printing taclets using schema variables of an array type
+  - Nullable and non-null modifiers attached to model methods are no longer lost
+  - Term rule indices are now always up-to-date, preventing potential prover crashes
+  - The counter-example dialog no longer freezes the GUI, if the example generation fails
+  - The actual proof status and proof status icon in the task overview are now consistent after pruning without requiring a manual refresh
 
 ## [2.12.1](https://github.com/KeYProject/key/releases/tag/KEY-2.12.1) (2023-10-13)
 
@@ -573,14 +573,10 @@ Wolfram Pfeifer
   * Support of Eclipse PHOTON (!74)
 
 
-### Seveal small and large bug fixes:
+### Several small and large bug fixes
 
-(!331, !297, !296, !293,!290, !288, !286, !284, !277, !276, !273, !272, !271, !270, !265, !264, !234, !228, !227, !225, !224, !222, !219, !213, !212,
-!209, !208, !205, !203, !201, !200, !199, !192, !190, !173, !170, !167, !163, !162, !158, !156,
-!154, !153,  !151, !146, !145, !139, !136, !133, !131, !119, !117,
-!108, !99, !92, !83, !82, !81, !78, !77, !75, !73, !71, !70, !69, !68,
-!67, !66, !65, !58, !52, !47, !46, !45, !40, !39, !37, !33, !31, !30, !24,
-!23, !22, !14, !13, !10, !9, !8, !7, !3, !2)
+See the [2.8.0 release](https://github.com/KeYProject/key/releases/tag/KeY-2.8.0)
+for the complete list of fixes and merge requests.
 
 
 *We like to thank all the contributor to this release:*
@@ -590,16 +586,6 @@ Kübler, Jonas Schiffl, Lukas Grätz, Lulu Luong, Mattias Ulbrich, Michael Kirst
 Herda, Peter Schmitt, Richard Bubel, Sarah Grebing, Wolfram Pfeifer
 
 
-
-## 2.6.3 (2017-10-11)
-
-## 2.6.2 (2017-04-13)
-
-## 2.6.1 (2017-01-31)
-
-## 2.6.0 (2016-12-22)
-
-## 2.4.1 (2015-02-18)
 
 ## 2.4.0 (2015-02-17)
 
@@ -803,7 +789,6 @@ Herda, Peter Schmitt, Richard Bubel, Sarah Grebing, Wolfram Pfeifer
 
 * first version with the JML front-end
 * support of loop invariants
-* lots of new stuff
 
 [!616]: https://git.key-project.org/key/key/-/merge_requests/616
 [!618]: https://git.key-project.org/key/key/-/merge_requests/618

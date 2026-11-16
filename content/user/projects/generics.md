@@ -44,7 +44,7 @@ The transformed classes can then be loaded into KeY.
 ## Technical Details
 --------------------
 
-The reason why generics are currently not implemented in KeY lie in the type
+The reason why generics are currently not implemented in KeY lies in the type
 system of KeY: There, every Java class is represented by a type of its own. To
 talk about "some" type, "type variables" or "type placeholders" would be needed.
 

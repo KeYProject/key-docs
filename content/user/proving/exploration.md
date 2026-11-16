@@ -47,9 +47,7 @@ activate the *Exploration Mode* in the toolbar.
 
 ## Views
 
-![Image of Exploration Steps]()
-
-Visualization of performed exploration actions. To jump to a node where the
-action was applied to select the entry in the list or the tree view. To prune
-exploration actions simply select an action and all action below this action
-(visible in the tree visualization) are removed.
+The exploration view lists performed exploration actions and shows them in a
+tree. To jump to a node where an action was applied, select the entry in the
+list or the tree view. To prune exploration actions, select an action; all
+actions below it (visible in the tree visualization) are removed.

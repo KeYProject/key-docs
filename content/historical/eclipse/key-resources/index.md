@@ -1,5 +1,5 @@
 ---
-title: "Resources"
+title: "KeY Resources"
 weight: 90
 ---
 
@@ -36,7 +36,7 @@ Required update-sites and installation instructions are available in the
 
 
 1. Open new project wizard via Package Explorer context menu item
-"New, Project\...".
+"New, Project...".
 
       ![](create01thumb.png "Create a KeY Project")
 
@@ -56,12 +56,12 @@ Required update-sites and installation instructions are available in the
 
     ![](work01thumb.png "Work with a KeY Project")
 
-2. During build proofs are automatically executed\
+2. During build proofs are automatically executed
 and results are shown via marker.
 
     ![](work02thumb.png "Work with a KeY Project")
 
-3. Proofs are automatically\ maintained in folder "proofs".
+3. Proofs are automatically maintained in folder "proofs".
 
     ![](work03thumb.png "Work with a KeY Project")
 
@@ -70,7 +70,7 @@ continue.
 
     ![](work04thumb.png "Work with a KeY Project")
 
-5. Proof files can be opend in KeY or the KeYIDE via a marker by
+5. Proof files can be opend in KeY or the KeY IDE via a marker by
 selecting "Open proof" to inspect and finish the proof. In addition,
 a proof can be inspected in the SED via marker menu item "Debug
 proof".
@@ -82,7 +82,7 @@ proof".
 
 
 1. Select main menu item "Window, Show View,
-Other\...".
+Other...".
 
     ![](status01thumb.png "Customize build settings")
 
@@ -106,7 +106,7 @@ proofs.
 
 ## Inspect verification log
 
-1. Select main menu item "Window, Show View, Other\...".
+1. Select main menu item "Window, Show View, Other...".
 
      ![](log01thumb.png "Customize build settings")
 
@@ -123,7 +123,7 @@ proofs.
 ## Customize build settings
 
 
-1. Open project properties of a KeY project\ via context menu item
+1. Open project properties of a KeY project via context menu item
 "Properties".
 
     ![](custom01thumb.png "Customize build settings")

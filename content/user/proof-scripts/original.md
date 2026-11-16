@@ -24,8 +24,8 @@ repeating proofs.
 Proof scripts are textual representations of rule applications, settings changes
 and macro invocations. They are notated in linear order. The target of a script
 command is usually the first open goal in the proof tree, i.e., the first
-reached when traversing the proof tree (not necessarily the first in the *Goal*
-pane in the GUI).
+reached when traversing the proof tree (not necessarily the first in the *Goals*
+panel in the GUI).
 
 
 ## Syntax of proof scripts
@@ -129,8 +129,8 @@ list here. The list is sorted alphabetically.
      ```
      instantiate var="x" occ="3" with="42"
      ```
-     The quantified formula can also be specified if wanted.
-     This here for the antecedent.
+     The quantified formula can also be specified explicitly.
+     This example instantiates the formula in the antecedent.
      ```
      instantiate formula="\forall int x; f(x) = 42" with="23"
      ```

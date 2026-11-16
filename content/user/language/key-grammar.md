@@ -59,6 +59,11 @@ Precedence:
 
 ## Reference
 
+This section lists the declaration keywords of the KeY language grammar,
+grouped by their parser token names. It is intended as a lookup table for
+the keyword spelling and the corresponding grammar anchor; the narrative
+introduction above explains how the declarations are used.
+
 ### SORTS {#Token-SORTS}
 
 #### GENERIC {#Token-GENERIC}
