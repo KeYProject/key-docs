@@ -288,15 +288,6 @@
     'working_space'
   ];
 
-  /* prism-key.js reuses the JML vocabulary for the top level of KeY files,
-   * where JML clauses are not necessarily wrapped in `/*@ ... *\/`. */
-  prism.jmlKeywords = {
-    behaviour: behaviourKeywords,
-    clause: clauseKeywords,
-    declaration: declarationKeywords,
-    command: commandKeywords
-  };
-
   function wordPattern(words) {
     return new RegExp('\\b(?:' + words.join('|') + ')\\b');
   }
