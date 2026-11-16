@@ -156,6 +156,18 @@
   color: #d14;
 }
 
+/* JML keywords at the top level of KeY files (prism-key.js) */
+
+.hextra-code-block .token.key-jml-clause,
+.hextra-code-block .token.key-jml-modifier {
+  color: #000;
+  font-weight: 700;
+}
+
+.hextra-code-block .token.key-logic-literal {
+  color: #0086b3;
+}
+
 /* Diff highlighting (assets/js/prism/prism-diff*.js).
  * The diff-highlight plugin wraps changed lines in `deleted`/`inserted`
  * tokens; unchanged lines keep the inner language's colours. */
@@ -286,6 +298,15 @@
 
 .dark .hextra-code-block .token.key-schema-var {
   color: #a5d6ff;
+}
+
+.dark .hextra-code-block .token.key-jml-clause,
+.dark .hextra-code-block .token.key-jml-modifier {
+  color: #ff7b72;
+}
+
+.dark .hextra-code-block .token.key-logic-literal {
+  color: #79c0ff;
 }
 
 .dark .hextra-code-block .token.deleted {
