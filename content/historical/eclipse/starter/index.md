@@ -1,5 +1,5 @@
 ---
-title: "Starter"
+title: "KeY 4 Eclipse Starter"
 weight: 60
 ---
 
