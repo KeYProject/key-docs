@@ -8,6 +8,12 @@ valid_for: KeY since 2011
 updated: KeY 2.12
 ---
 
+{{< callout type="info" title="Historical feature documentation" >}}
+This page documents a feature introduced in 2011. The syntax is still
+supported, but the text reflects the original implementation; see the
+[JML grammar](../language/jml-grammar/) for the current language reference.
+{{< /callout >}}
+
 JML is the standard specification language for KeY (JML&starf; more
 precisely). Though it is still possible to specify JavaDL-contracts in `.key`
 files, the formalism with model fields, ghost state etc. is really centered on
