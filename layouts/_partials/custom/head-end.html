@@ -3,9 +3,11 @@
        layouts/_partials/components/codeblock.html, which emits
        `<code class="language-<lang>">` for known languages only.
 
-       The bundle below is Prism 1.29.0: core plus the grammars for every
-       fence language used in content/, in dependency order:
-         clike  <- java, groovy, c
+       The bundle below is Prism 1.29.0: core plus all default Prism
+       languages (markup, CSS, C-like and JavaScript) and the additional
+       grammars for every fence language used in content/, in dependency
+       order:
+         clike  <- javascript, java, groovy, c
          c      <- cpp
          markup <- latex, markdown (markup also covers html/xml)
          java   <- jml <- key
@@ -22,6 +24,7 @@
   (resources.Get "js/prism/prism-version.js")
   (resources.Get "js/prism/prism-diff.min.js")
   (resources.Get "js/prism/prism-clike.min.js")
+  (resources.Get "js/prism/prism-javascript.min.js")
   (resources.Get "js/prism/prism-java.min.js")
   (resources.Get "js/prism/prism-markup.min.js")
   (resources.Get "js/prism/prism-bash.min.js")

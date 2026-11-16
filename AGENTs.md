@@ -164,6 +164,7 @@ Prism highlights in the browser. Use the correct fence language:
 | `jml` | Java with JML specifications|
 | `key` | KeY problem files and taclets |
 | `python`, `bash`, `yaml`, `json` | scripts and configuration |
+| `javascript`, `js` | JavaScript source |
 | `markdown` | Markdown examples |
 | `text` | plain text, ASCII art, output |
 | `diff-<lang>` | diffs, using `<lang>` for unchanged/changed lines (e.g. `diff-java`, `diff-key`) |

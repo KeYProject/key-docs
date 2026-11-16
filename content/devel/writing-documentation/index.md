@@ -303,6 +303,7 @@ The following fence languages are wired up in
 | `jml` | JML specifications |
 | `key` | KeY problem files and taclets |
 | `python`, `bash`, `yaml`, `json` | scripts and configuration |
+| `javascript`, `js` | JavaScript source |
 | `markdown` | Markdown examples (as on this page) |
 | `text` | plain text, ASCII art, command output |
 | `diff-<lang>` | a diff (`-`/`+` lines) highlighted with `<lang>`, e.g. `diff-java`, `diff-key`, `diff-text` |
