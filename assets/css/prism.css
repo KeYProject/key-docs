@@ -105,7 +105,7 @@
  * the surrounding Java code. Line annotations use the same treatment. */
 .hextra-code-block .token.jml-annotation,
 .hextra-code-block .token.jml-line {
-  background-color: #e3edf9;
+  background-color: #d8e6f8;
   border-radius: 3px;
 }
 
@@ -120,7 +120,7 @@
 
 .hextra-code-block .token.jml-delimiter {
   color: #0550ae;
-  background-color: #c9dcf4;
+  background-color: #bcd4ef;
   border-radius: 3px;
   font-style: normal;
 }
@@ -262,12 +262,12 @@
 
 .dark .hextra-code-block .token.jml-annotation,
 .dark .hextra-code-block .token.jml-line {
-  background-color: rgba(56, 139, 253, 0.16);
+  background-color: rgba(56, 139, 253, 0.22);
 }
 
 .dark .hextra-code-block .token.jml-delimiter {
   color: #79c0ff;
-  background-color: rgba(56, 139, 253, 0.3);
+  background-color: rgba(56, 139, 253, 0.38);
 }
 
 .dark .hextra-code-block .token.jml-clause,
