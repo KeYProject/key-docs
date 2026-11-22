@@ -170,3 +170,10 @@ Pushes to `master` publish automatically. Pull requests run the same build as a
 check; broken shortcodes, missing icons and unparsable front matter fail the
 build, while unknown citation keys only emit a warning. CI does not run the link
 checker, so run `make check` locally before pushing.
+
+## License
+
+The documentation in this repository is licensed under the
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+See [`LICENSE`](LICENSE) for the full legal text.
